@@ -1,0 +1,64 @@
+//-----------------------------------------------------------------------------
+//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
+//
+//  Distributed under a Reference-only License.  The full license is in
+//  the file COPYRIGHT, distributed as part of this software.
+//-----------------------------------------------------------------------------
+
+#include "Stack.h"
+
+using namespace std;
+
+////////////////////////
+//////// Stack! ////////
+////////////////////////
+
+
+// stack is based on LinkedLists to maximize efficiency. (Singly-linked list)
+
+// init
+Stack::Stack()
+{
+}
+
+Stack::~Stack()
+{
+}
+
+// withdraw from the top
+int Stack::pop(){
+	if(Head != 0x0){
+		ValueNode* node = Head;
+		if(Head->Next != 0x0){ // next is not null
+			Head = Head->Next; // re-assign Head
+		}
+		size--;
+		//cout << "Pop " << node->data << endl;
+		return node->data;
+	}else{
+		return 0x0;
+	}
+}
+
+// pull from top, but do not withdrawl the top one.
+int Stack::poll(){
+	if(Head != 0x0){
+		return Head->data;
+	}else{
+		return 0x0;
+	}
+}
+
+// push to the top
+void Stack::push(int input){
+	ValueNode* node = new ValueNode();
+	node->data=input;
+	//cout << "Push " << input << endl;
+	if(Head == 0x0){
+		Head = node;
+	}else{
+		node->Next = Head;
+		Head = node;
+	}
+	size++;
+}

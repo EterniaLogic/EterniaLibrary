@@ -1,0 +1,35 @@
+#ifndef PHYSSYSTEM_H_
+#define PHYSSYSTEM_H_
+
+#include "../constants.h"
+#include "vector.h"
+#include "../struct/LinkedList.h"
+
+
+enum FType {friction, gravity, direct}; // direct force is when you push on an object, can also be called an initial force
+
+// HE = Heat energy, ME = Mechanical energy, 
+// EM = Electromagnetic energy, MT = Matter transfer, PM = Magnetic energy
+enum EType {HE, ME, EM, MT, PM}; 
+enum MechType {Potential, Kinetic};
+
+
+class BaseForce
+{
+	vector* Force;
+	FType ForceType;
+	vector* AffectedObject, *Affector;
+};
+
+class PhysSystem
+{
+public:
+	PhysSystem();
+	virtual ~PhysSystem();
+	
+	// system that takes all accounts of forces.
+	LinkedList Objects;
+	LinkedList Forces;
+};
+
+#endif /*PHYSSYSTEM_H_*/

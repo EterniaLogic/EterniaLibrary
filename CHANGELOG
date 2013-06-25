@@ -1,0 +1,17 @@
+June 26, 2013:
+    - Added Priority Queue and Heap (Sort) to Data Structures
+    - Added Dijkstra's Algorithm for automatic pathing on a Graph structure.
+    - Fixed LinkedList Template into hpp format
+    - Changed Chem and Elec => engineering/Chemical and Electrical.
+    - Removed PowerNet from Electrical engineering in preparation of new parts.
+    - Moved Phys to engineering/Physics
+    - Renamed Lang to Localization
+    - Added Caps to most directories
+
+June 25, 2013:
+    - Added Government systems under social
+    - Added Company base under social
+    - Added Economic base systems
+    - Added Statistics base
+    - Moved GameLogic
+    - Added Graph (Data Structure, Lines with solid weight)
