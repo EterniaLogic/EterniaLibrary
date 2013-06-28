@@ -7,6 +7,10 @@ June 26, 2013:
     - Moved Phys to engineering/Physics
     - Renamed Lang to Localization
     - Added Caps to most directories
+    - Added natpmp library to open up local NAT ports for p2p
+    - Added P2P headers
+    - Added Basic Networking headers
+    - Added Algorithm/AI basic header
 
 June 25, 2013:
     - Added Government systems under social
