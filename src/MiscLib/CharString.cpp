@@ -8,6 +8,8 @@
 #include "CharString.h"
 #include "SplitResult.h"
 
+using namespace std;
+
 // pre-initialize
 CharString::CharString(){
 	stringx = new char();
@@ -22,6 +24,18 @@ CharString::CharString(const char* stringg, const int length){
 	len = length;
 }
 
+CharString::CharString(const char* stringg){
+    int c = 0;
+    // quick loop through to find exact size c.
+	while(stringg[c] != 0x0 || stringg[c] > 32){c++;}
+    
+    char cc[c+1];
+    strcpy(cc, stringg);
+
+	stringx = cc;
+	len = c;
+}
+
 // populate charString and initialize it with data.
 CharString::CharString(char* stringg, int length){
 	stringx = stringg;
@@ -32,6 +46,16 @@ CharString::CharString(char* stringg, int length){
 // pre-determine what the length is.
 CharString::CharString(char* stringg){
 	this->set(stringg);
+}
+
+CharString::CharString(string &stringg){
+    stringx = (char*)stringg.c_str();;
+    len = stringg.length();
+}
+
+CharString::CharString(const std::string &stringg){
+    stringx = (char*)stringg.c_str();;
+    len = stringg.length();
 }
 
 /* Desc: Takes data from a string and splits it using a splitter

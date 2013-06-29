@@ -1,2 +1,7 @@
 Sim
 buildErrors.txt
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+libEternia.a
+Makefile

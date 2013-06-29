@@ -10,6 +10,7 @@
 
 #include "CharString.h"
 #include "SplitResult.h"
+#include <iostream>
 
 enum SortType {SBefore, SSame, SAfter};
 
@@ -20,6 +21,9 @@ public:
 	CharString(char* stringg, int length); // initialize & populate
 	CharString(char* stringg); // initialize & populate
 	CharString(const char* stringg, const int length);
+	CharString(const char* stringg);
+	CharString(std::string &stringg);
+	CharString(const std::string &stringg);
 	
 	char* shiftLeft(const int len);
 	SplitResult* split(char splitter,char stopper);
