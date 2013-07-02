@@ -46,7 +46,7 @@ Vertex* Graph::makeVertex(CharString* _name){
 Edge* Graph::makeEdge(Vertex* v1, Vertex* v2, int len){
     // combine names together.
     CharString* cnames = v1->name->clone();
-    char c[3];
+    char* c = new char();
     strcpy(c, "||");
     
     cnames->concata(c,2);

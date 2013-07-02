@@ -87,6 +87,8 @@ int prec(MOperator op){
 	else if(op == equals) return 0;
 	else if(op == greaterequals) return 0;
 	else if(op == lessequals) return 0;
+
+	return 0; // has zero procedence (Used at the end)
 }
 
 // repeat operators if the current operator is less in precedence then the top of the stack.
@@ -209,4 +211,6 @@ CharString* Eval(CharString* Line){
 	if(c == -98) cout << "F";
 	else if(c == -99) cout << "T";
 	else cout << c;
+
+	return CharString::ConvertFromInt(c);
 }

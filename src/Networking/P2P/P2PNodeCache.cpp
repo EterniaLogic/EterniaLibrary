@@ -16,4 +16,6 @@ void P2PNodeCache::cache(char* playername, P2PNode* l){
 
 P2PNode* P2PNodeCache::find(char* playername){
 	
+
+	return 0x0; // TODO: FIX
 }

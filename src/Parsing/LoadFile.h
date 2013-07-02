@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "../MiscLib/CharString.h"
 
 using namespace std;

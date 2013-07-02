@@ -44,7 +44,6 @@ public:
 
 	VectorSpace* nullity(); // returns the N(A), or nullity space. Should return B = span(A)
 	int dimension(); // returns the dimension of the vector space.
-	int rank(); // returns the rank, or number of rows that are non-zero.
 	bool isIndependent(); // returns true if the vector space is dependent of equations.
 	bool isBasis(VectorSpace* W); // returns whether the VectorSpace is a Basis of Rn
 	bool isSubSpace(VectorSpace* V); // returns whether this is a subspace of V

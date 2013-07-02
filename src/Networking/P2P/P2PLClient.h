@@ -13,7 +13,7 @@ public:
 	
 	void SendGamePacket(P2PPacket packet);
 	
-	int level = 0; // server level (or L), only changed if participating in P2P. *cough* most likely to happen.
+	int level; // server level (or L), only changed if participating in P2P. *cough* most likely to happen.
 	P2PNode* LBranch; // current L Branch that we are on. (changes over time)
 	P2PTYPE type;
 	

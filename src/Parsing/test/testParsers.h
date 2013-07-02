@@ -5,8 +5,11 @@
 //  the file COPYRIGHT, distributed as part of this software.
 //-----------------------------------------------------------------------------
 
-#include <ctime>
-#include "Engineering/Physics/test/tests.h"
-#include "Math/test/testMath.h"
-#include "Parsing/test/testParsers.h"
-#include "Data/test/testDataStructures.h"
+#ifndef PARSINGTEST_H_
+#define PARSINGTEST_H_
+
+#include "../SimpleParser.h"
+
+void testParsers(); // test parsing system
+
+#endif /*PARSINGTEST_H_*/

@@ -53,9 +53,11 @@ void LinkedListT::freeze(){
     frozenlen = len;
     
     // copy values in!
-    LinkedNodeT * current = baseNode; int i;
+    LinkedNodeT * current = baseNode; 
+	int i=0;
 	while(current != 0x0){
 	    frozen[i] = current->data;
-	    current = current->next; i++;
+	    current = current->next; 
+		i++;
 	}
 }

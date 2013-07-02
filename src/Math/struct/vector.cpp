@@ -90,11 +90,15 @@ double getRoh(vector* body){
 // Get the rotational axis Φ in 3rd-dimentional spherical coordinates
 double getPhi(vector* body){ // Φ
 	//acossin
+
+	return 0;
 }
 
 // Get the rotational axis Θ in 3rd-dimentional spherical coordinates
 double getTheta(vector* body){ // Θ
 	
+
+	return 0;
 }
 
 // directly add another vector to this. v+=v2
@@ -134,7 +138,7 @@ void vector::scale(double scalar){
 
 // get the dot product
 double vector::dot(vector* v2){
-	int sum = 0;
+	double sum = 0;
 	sum += this->x*v2->x;
 	sum += this->y*v2->y;
 	sum += this->z*v2->z;

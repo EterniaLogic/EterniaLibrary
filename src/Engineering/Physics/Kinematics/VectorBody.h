@@ -16,7 +16,7 @@ public:
     VectorBody();
     VectorBody(double x ,double y,double z);
 	double gravitate(VectorBody* body,  double time);
-	double thrust(VectorBody* thrust); // applies force
+	void thrust(VectorBody* thrust); // applies force
 		
 	void tick(); // does operations that are over time (aka, Acceleration)
 	void simSecond();

@@ -122,7 +122,7 @@ double DoubleList::pop(){
 };
 
 int DoubleList::size(){
-    return _Size;
+    return (int)_Size;
 }
 
 void DoubleList::clear(){

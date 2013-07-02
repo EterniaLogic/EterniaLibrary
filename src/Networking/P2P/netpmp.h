@@ -1,7 +1,7 @@
 #ifndef NETPMP_H_
 #define NETPMP_H_
-//#include "../../../Lib/libnatpmp/natpmp.h"
-#include <natpmp.h>
+#include "../../../Lib/libnatpmp/natpmp.h"
+//#include <natpmp.h>
 #include <iostream>
 
 

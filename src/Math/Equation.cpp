@@ -36,6 +36,7 @@ void Equation::set(CharString* eq){
 
 Equation* derive(){
     
+	return 0x0;
 }
 
 // Integration properties
@@ -45,4 +46,6 @@ Equation* derive(){
 // i(  )
 Equation* integrate(){
     
+
+	return 0x0;
 }

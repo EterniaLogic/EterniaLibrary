@@ -59,7 +59,7 @@ namespace Math
     // Used from:
     //  http://www.codeproject.com/Tips/311714/Natural-Logarithms-and-Exponent
     double ln(double x){
-        double A,L,R,P;
+        double A=0,L=0,R=0,P=0;
         double N = 0.00;
         while(P >= E)  
 		{

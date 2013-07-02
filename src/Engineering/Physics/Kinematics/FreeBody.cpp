@@ -68,11 +68,18 @@ double FreeBody::getProperty(KItem item){
         else if(item == KVelocityFinal){}
         else if(item == KTime){}
     }
+
+
+	return 0;
 }
 
 //  #1  d=vi*t + 0.5*a*t^2    << Projectile
-double getProjectileProperty(KItem item){
+double getProjectileProperty(KItem& item){
     // solve for each form.
     Equation* e1 = new Equation(new CharString("xf-xi = vi*t + 0.5*a*t^2",24));
     // KDistance = xf-xi
+
+
+
+	return 0;
 }

@@ -10,8 +10,8 @@ public:
 	long x,y; // x, y coords
 	long x1,y1; // other edge of boundary.
 	
-	long minsectorx = 5; //Min sector boundaries (Prevents P2PLServers from going lower and forces them to Co-server)
-	long minsectory = 5;
+	long minsectorx; //Min sector boundaries (Prevents P2PLServers from going lower and forces them to Co-server)
+	long minsectory;
 };
 
 #endif /*P2PBOUNDARIES_H_*/

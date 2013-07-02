@@ -29,7 +29,7 @@ class HTEntry
         
         if(len < 3){ // 0 collisions
             for(unsigned int i=0;i<len;i++){
-                end = cc[i] + end<<6 + end << 12 - end;
+                end = cc[i] + (end<<6) + (end << 12) - end;
                 //end -= end<<2;
             }
             while(end > size){
@@ -38,7 +38,7 @@ class HTEntry
         }else if(len == 3){ // 0 collisions
             for(unsigned int i=0;i<len;i++){
                 //end = ((end << 5) + end) + (cc[i]);//-31);// * (i+1) * len;
-                end = cc[i] + end<<3 + end<<4 - end;
+                end = cc[i] + (end<<3) + (end<<4) - end;
             }
             while(end > size){
                 end /= 10;
@@ -56,8 +56,8 @@ class HTEntry
             }
         }else{ // 338 collisions out of 9025 tested. (Pretty good, but not perfect.)
             //end = 1;
-            for(int i=0;i<len;i++){
-                end = (cc[i]*len*(i+1)*end)*2 + ~cc[i]<<4 + (end%(len*5)) + (cc[i])%len + end<<7;
+            for(unsigned int i=0;i<len;i++){
+                end = (cc[i]*len*(i+1)*end)*2 + ~(cc[i]<<4) + (end%(len*5)) + ((cc[i])%len) + (end<<7);
                 end = end ^ (32416190071*cc[i]); // XOR with very large prime #
                 end = end | (15487249*cc[i]); // OR with pretty large prime #
                 end = end | (88888*cc[i]);
@@ -82,7 +82,7 @@ class HTEntry
         HTEntry(CharString* key, T* data, int _size){id=0; k=key; d=data; size=_size; setID();}
         HTEntry(long id_, T* data, int _size){id=id_; k=0x0; d=data; size=_size;}
         
-        int size;
+        unsigned long size;
         
         CharString *k;
         T *d;

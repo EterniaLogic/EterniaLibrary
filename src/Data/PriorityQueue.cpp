@@ -294,8 +294,6 @@ PriorityItem* PriorityQueue::findlastinsertionposition(PriorityItem* current){
 // replaces the priority at an address.
 bool PriorityQueue::replaceKey(PriorityItem* current, void* at, int key){
     // recursively replace key.
-    void* cc = at;
-    int kk = key;
     if(current == 0x0) return false;
     
     if(current->data == at){
@@ -309,6 +307,7 @@ bool PriorityQueue::replaceKey(PriorityItem* current, void* at, int key){
         if(current->left != 0x0 && current->left != current) this->replaceKey(current->left, at, key);
         if(current->right != 0x0 && current->right != current) this->replaceKey(current->right, at, key);
     }
+	return false;
 }
 
 // returns the size.

@@ -5,8 +5,8 @@
 //  the file COPYRIGHT, distributed as part of this software.
 //-----------------------------------------------------------------------------
 
-#include <ctime>
-#include "Engineering/Physics/test/tests.h"
-#include "Math/test/testMath.h"
-#include "Parsing/test/testParsers.h"
-#include "Data/test/testDataStructures.h"
+#include "../Math.h"
+#include <iostream>
+#include <cstring>
+
+void testMath();

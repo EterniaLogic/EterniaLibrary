@@ -17,8 +17,10 @@ CharString::CharString(){
 }
 
 CharString::CharString(const char* stringg, const int length){
-    char cc[length+1];
-    strcpy(cc, stringg);
+	//const int lenc = length+1;
+    //char cc[lenc];
+	char* cc = new char();
+    std::strcpy(cc, stringg);
 
 	stringx = cc;
 	len = length;
@@ -29,7 +31,7 @@ CharString::CharString(const char* stringg){
     // quick loop through to find exact size c.
 	while(stringg[c] != 0x0 || stringg[c] > 32){c++;}
     
-    char cc[c+1];
+    char* cc = new char();
     strcpy(cc, stringg);
 
 	stringx = cc;
@@ -219,7 +221,7 @@ int CharString::getInt(){
 
 // takes input and changes current
 void CharString::set_(const char* stringg, const int length){
-    char cc[length+1];
+    char* cc = new char();
     strcpy(cc, stringg);
 	stringx = cc;
 	len = length;
@@ -397,7 +399,8 @@ bool CharString::contains(char* c){
 
 
 void CharString::concata_(const char* str, const int lenx){
-    char cc[lenx+1];
+    char* cc = new char();
+	std::strcpy(cc,str);
     concata(cc, lenx);
 }
 

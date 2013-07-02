@@ -27,13 +27,14 @@ public:
 	
 	double solveSquareDeterminant(double a, double b, double c, double d); // solve a 2x2 determinant
 	double getDeterminant(int n, int m); // do inter-sequential determinants at location m,n.
-	
+	int rank(); // number of non-zero rows after echeolon form.
 public:
 	void transpose(); // transpose the matrix A T
 	double adjMinor(int x, int y); // find the minor (find inner keys)
 	Matrix* adjutant(); // find the adjutant (obtained from minor of all values)
 	double determinant(); // finds the determinant by using minor(n,0) on top row.
 	void inverse(); // invert this matrix. (requires determinants)
+	
 	
 	// Forming the echeolon form using gaussian row 
 	void rowSolve(double scalar, int row, int toRow); // solves a single row using a scaled row.

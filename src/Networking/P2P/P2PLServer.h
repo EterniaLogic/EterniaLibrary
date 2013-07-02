@@ -10,7 +10,7 @@ public:
 	P2PLServer();
 	virtual ~P2PLServer();
 	
-	int level = 0; // server level (or L), only changed if participating in P2P. *cough* most likely to happen.
+	int level; // server level (or L), only changed if participating in P2P. *cough* most likely to happen.
 	P2PNode* neighbors; // Neighbors on this L Level. (AKA, boundary partners)
 	P2PNode* clients; // E-Client player, Potential node.
 	P2PNode* subNodes; // Sub L Nodes (May come in pairs based on pop. density)

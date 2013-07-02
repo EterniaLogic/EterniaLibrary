@@ -29,7 +29,7 @@ CharString* fileGetLine(ifstream &file){
     string sLine = "";
     if (!file.eof())
     {
-        getline(file, sLine);
+        std::getline(file, sLine);
         const int linelen = sLine.size();
         //cout << sLine << endl;
         char *line = new char[linelen];

@@ -7,6 +7,8 @@
 
 #include "VectorBody.h"
 #include <iostream>
+#include <ctime>
+
 using namespace physical::unit;
 using namespace std;
 
@@ -51,7 +53,7 @@ double VectorBody::gravitate(VectorBody* body, double seconds){
 	return accel*seconds;
 }
 
-double VectorBody::thrust(VectorBody* thrust){
+void VectorBody::thrust(VectorBody* thrust){
 	this->add(thrust);
 }
 
@@ -66,10 +68,12 @@ void VectorBody::simSecond(){
 double ltime=0;
 void VectorBody::tick(){
 	// * determines gravity with other objects
-	// * Applies Acceleration
+	// * Applies Acceleration and figures out velocity, position, angular velo and position.
 	
 	double dtime = (ltime-clock())/1000000; // time diff in milliseconds
 	double secondstime = dtime/1000;
 	
+	// do tick!
+
 	ltime = clock();
 }

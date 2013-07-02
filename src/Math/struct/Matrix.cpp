@@ -41,6 +41,7 @@ Matrix* Matrix::clone(){
     }
     
     two->set(vset,columns,rows);
+	return two;
 }
 
 double** Matrix::createMatrixContainer(const int x, const int y){
@@ -380,7 +381,28 @@ void Matrix::echeolonForm(){
     upper();
 }
 
+// returns the rank, or number of rows that are non-zero.
+// returns -1 if impossible to find.
+int Matrix::rank(){
+	// solve for echeolon form
+	Matrix* m = this->clone();
+	m->echeolonForm();
 
+	// Scan through the rows. Make sure that each row is 0. If not, do not count that row.
+	int ret = 0;
+	for(int y = 0; y<this->rows;y++){
+		bool isZero = true;
+		// loop through columns for this row.
+		for(int x=0;x<this->columns;x++){
+			if(this->values[y][x] != 0){
+				isZero = false;
+			}
+		}
+		if(isZero) ret++;
+	}
+
+	return ret;
+}
 
 /////////////////////////////////////////
 ///////////////// MISC //////////////////
@@ -396,7 +418,7 @@ CharString* Matrix::toOutput(){
     CharString* ccc = new CharString();
     for(int i=0;i<rows;i++){
         for(int j=0;j<columns;j++){
-        int a1 = values[i][j];
+        double a1 = values[i][j];
             ccc->concata(CharString::ConvertFromInt(a1));
             
             ccc->concata_(" ",1);

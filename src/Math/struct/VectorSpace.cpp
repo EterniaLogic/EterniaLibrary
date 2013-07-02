@@ -39,6 +39,7 @@ VectorSpace* VectorSpace::clone(){
     }
     
     two->set(vset,columns,rows);
+	return two;
 }
 
 
@@ -112,24 +113,26 @@ VectorSpace* VectorSpace::nullity(){
     if(hasInfiniteDimensions()) return 0x0; 
     VectorSpace* ret = new VectorSpace();
     // Ax = 0
+	// TODO: FIX THIS!!!
+	return ret;
 }
 
 // returns the dimension of the vector space.
 // returns -1 if impossible to find.
 int VectorSpace::dimension(){
     if(hasInfiniteDimensions()) return -1;
-}
-
-// returns the rank, or number of rows that are non-zero.
-// returns -1 if impossible to find.
-int VectorSpace::rank(){
-    if(hasInfiniteDimensions()) return -1;
+	return columns;
 }
 
 // returns true if the vector space is dependent of equations.
 bool VectorSpace::isIndependent(){
     // Rn is never dependent because no number is recurring.
     if(hasInfiniteDimensions()) return true;
+
+	//TODO: FIX THIS!
+
+	// IDK
+	return false;
 }
 
 // does this (V) spans W? {or V spans W?}
@@ -179,8 +182,10 @@ bool VectorSpace::spans(VectorSpace* W){
             }else return false;          
         }
     }else{
-        
+        // blah?
     }
+
+	return false;
 }
 
 
