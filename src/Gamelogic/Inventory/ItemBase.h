@@ -8,23 +8,31 @@
 #ifndef ITEM_BASE_H_
 #define ITEM_BASE_H_
 
-#include "../Data/LinkedList.h"
-#include "../MiscLib/CharString.h"
+#include "../../Data/LinkedList.hpp"
+#include "../../MiscLib/CharString.h"
+#include "DynamicAttribute.h"
 
 // Item base is used to define the very base elements of any item.
 //  This may inclue static damage, stats bonuses and other important variables.
 
 class ItemBase
-{
+{   
+public:
+    void init(); // initializes basic item base, use in declaration of item.
+    
+private:
     // Static attributes (act as a base for dynamic attributes)
-    double sDamage, sDefense, sDodge, sPrice;
-    CharString* name, description, craftedBy;
+    int max_stack; // maximum stackable (gear is normally 0, not stackable)
+    float sDamage;
+    float sDefense;
+    float sDodge;
+    float sPrice;
+    CharString* name;
+    CharString* description; // description of the item
+    CharString* crafter; // generic crafter name, can be queried
     
     // Dynamic attributes (Dynamic attributes act as special systems, such as levelable weapons)
     LinkedList<DynamicAttribute>* dynamicList;
-    
-public:
-    void init(); // initializes basic item base, use in declaration of item.
 };
 
 #endif

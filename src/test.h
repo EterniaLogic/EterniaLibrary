@@ -10,3 +10,4 @@
 #include "Math/test/testMath.h"
 #include "Parsing/test/testParsers.h"
 #include "Data/test/testDataStructures.h"
+#include "Gamelogic/test/testGameLogic.h"

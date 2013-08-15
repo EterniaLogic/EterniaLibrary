@@ -86,7 +86,7 @@ void Matrix::multiply(Matrix* matrix){
                 }
                 
                 // store result into new matrix at row i, column j
-                newMatrix[i][j] = result;weak
+                newMatrix[i][j] = result;
             }
         }
         

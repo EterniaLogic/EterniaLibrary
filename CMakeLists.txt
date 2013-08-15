@@ -4,7 +4,7 @@ set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 PROJECT(EterniaLibrary) 
 
 #build for windows under linux
-set(WIN32 1)
+############################set(WIN32 1)
 IF(WIN32)
     message("NOTE: Building for Windows!")
 	# the name of the target operating system
@@ -72,7 +72,7 @@ SUBDIRLIST(SUBDIRS src)
 
 # STATIC SHARED
 ADD_LIBRARY(Eternia STATIC ${CC_src})
-#ADD_EXECUTABLE(EterniaLib.a ${CC_src})
+ADD_EXECUTABLE(testenv ${CC_src})
 
 
 

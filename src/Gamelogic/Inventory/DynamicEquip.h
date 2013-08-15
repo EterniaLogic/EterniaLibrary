@@ -5,12 +5,12 @@
 //  the file COPYRIGHT, distributed as part of this software.
 //-----------------------------------------------------------------------------
 
-#ifndef DYNAMIC_WEAPON_H_
-#define DYNAMIC_WEAPON_H_
+#ifndef DYNAMIC_Equip_H_
+#define DYNAMIC_Equip_H_
 
 #include "ItemBase.h"
 
-class DynamicWeapon : public ItemBase
+class DynamicEquip : public ItemBase
 {
     
 };
