@@ -8,6 +8,13 @@
 #ifndef ITEM_BASE_H_
 #define ITEM_BASE_H_
 
+//-----------------------------------------------------------------------------
+//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
+//
+//  Distributed under a Reference-only License.  The full license is in
+//  the file COPYRIGHT, distributed as part of this software.
+//-----------------------------------------------------------------------------
+
 #include "../../Data/LinkedList.hpp"
 #include "../../MiscLib/CharString.h"
 #include "DynamicAttribute.h"

@@ -1,4 +1,11 @@
- #ifndef Mood_h_
+//-----------------------------------------------------------------------------
+//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
+//
+//  Distributed under a Reference-only License.  The full license is in
+//  the file COPYRIGHT, distributed as part of this software.
+//-----------------------------------------------------------------------------
+
+#ifndef Mood_h_
 #define Mood_h_
 
 enum MOOD {AM_Happy, AM_Sad, AM_Mad, AM_Accomplished, AM_Alone, AM_Amused, AM_Annoyed, AM_Anxious, AM_Apathetic, AM_Awake,
