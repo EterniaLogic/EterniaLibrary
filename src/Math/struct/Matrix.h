@@ -53,7 +53,7 @@ public:
 	
 	// output
 	CharString* toOutput(); // converts to a string for output into console. (or w/e)
-	//VectorSpace* toVectorSpace(); // vector spaces are based off of matricies.
+	//VectorSpace* toVectorSpace(); // vertex spaces are based off of matricies.
 	
 	
 	

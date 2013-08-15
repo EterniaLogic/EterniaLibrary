@@ -25,7 +25,7 @@ LinkedListT* SimpleParseLine(CharString* input, char separator){
     SplitResult* s = input->split(separator, '`');
     
     for(int i=0;i<s->getSize();i++){
-        cout << s->get(i) << endl;
+        //cout << s->get(i) << endl;
         list->add(new CharString(s->get(i), s->getLen(i)));
     }
     
@@ -47,10 +47,11 @@ LinkedListT* SimpleParseFile(CharString* filename, char separator){
     //cout << "parse-1" << endl;
     CharString* read;
     while((read = fileGetLine(file)) != 0x0){
-        cout << "parse-2 - " << read->get() << endl;
-        LinkedListT* list2 = SimpleParseLine(read, separator);
-        if(list2 != 0x0){
-            list->add(list2);
+        if(!read->startsWith(new CharString("#"))){
+            LinkedListT* list2 = SimpleParseLine(read, separator);
+            if(list2 != 0x0){
+                list->add(list2);
+            }
         }
     }
     //cout << "parse-3" << endl;

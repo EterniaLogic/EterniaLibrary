@@ -147,7 +147,7 @@ void CharString::replace(char* a, char* b){
 					for(int i=0;i<B->getSize();i++) stringx[iniX+i] = b[i];
 				}
 			}else{
-				// set initial vector if possible.
+				// set initial vertex if possible.
 				iniX = (iniX==1) ? i : iniX;
 				
 				// quite not there yet... lets increase endX
@@ -486,5 +486,25 @@ CharString* CharString::clone(){
 	}
 	
 	return new CharString(cc,len);
+}
+
+bool CharString::startsWith(CharString* starter){
+    int lenx = starter->getSize();
+    if(lenx > len) return false; // cannot start with something that is bigger!
+    // compare each
+    for(int l = 0;l<lenx; l++){
+        if(stringx[l] != starter->get()[l]) return false;
+    }
+    return true;
+}
+bool CharString::endsWith(CharString* ender){
+    int lenx = ender->getSize();
+    if(lenx > len) return false; // cannot end with something that is bigger!
+    // compare each
+    for(int l = 0;l<lenx; l++){
+        int tat = (len-lenx)-1; // location to start at for compare
+        if(stringx[tat] != ender->get()[l]) return false;
+    }
+    return true;
 }
 

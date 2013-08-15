@@ -17,3 +17,7 @@ This library is used for server back-end systems and simulations.
 
 Required Libraries: Included (Lib/)
 
+Building:
+    * cmake .
+    * make
+

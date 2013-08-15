@@ -9,12 +9,26 @@
 #define PLANET_H_
 
 #include "../../Engineering/Chemistry/Composite.h"
-#include "../../Math/struct/vector.h"
+#include "../../Math/struct/vertex.h"
+#include "../../Data/LinkedList.hpp"
+#include "../../constants.h"
 #include "Ocean.h"
-#include "TerraGen.h"
 
 
-
+/*
+ * Seed = single-template system that gets changes and converts it to a 3D Map. can only be
+ * 		generated when using a TerrGen... any and all map changes will be saved to a new
+ * 		seed.
+ * 2-255 digits long, alphaneumeric.
+ * 
+ * [0] => Planet shape
+ * [1] => Planet type
+ * 
+ * Please note that the seed system is also based on enviromental variables:
+ * 		* Closeness to sun(s)
+ *      * Race that controls it
+ *      * # of moons & closeness (+size for gravitational shifts)
+ */
 class Terrain
 {
 	
@@ -24,26 +38,33 @@ class Atmosphere
 {
 public:
 	Composite* AtmosphericMaterials;// ppk materials, less-mass materials float up.
-	double groundDensity; // density of atmosphere near ground. (M*V, km*m^3)
-	double height; // max height (km)
+	float groundDensity; // density of atmosphere near ground. (M*V, km*m^3)
+	float height; // max height (km)
 	
-	double getDensity(double relativeHeight); // returns current air density at location, relative to ground
+	float getDensity(float relativeHeight); // returns current air density at location, relative to ground
 	
 };
 
-class Planet : public vector
+class Planet : public vertex
 {
+    float seed; // seed for planet. (Randomly generated, or loaded from server)
 public:
 	Planet();
 	virtual ~Planet();
 	
-	Atmosphere* atmosphere; //
-	Terrain* terrain; // defines terrain and oceans, ect.
-	vector* Objects; // any and all objects on planet (or at least the ones in view range)
+	Atmosphere* atmosphere; // defines planetary atmosphere
+	LinkedList<Terrain>* terrain; // defines terrain and oceans, ect.
+	
+	
+	// get list of verticies based on MIPMap level
+	// Used in drawing functions
+	LinkedList<vertex>* listOfVerticies(int MIPLevel); 
+	
 	
 	
 	// Air friction is based on location in atmosphere the atmospheric gradient.
-	double airFriction(vector* object);
+	// Very small number, since air is very light.
+	float airFriction(vertex* object);
 };
 
 #endif /*PLANET_H_*/

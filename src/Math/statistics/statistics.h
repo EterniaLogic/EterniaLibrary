@@ -20,7 +20,7 @@
 //  Data Analysis
 
 
-#include "../struct/vector.h"
+#include "../struct/vertex.h"
 #include "../../Data/DoubleList.h"
 
 enum SAMPLERTYPE {SAMPLERDouble, SAMPLERVector, SAMPLERVectorWWeight};
@@ -35,27 +35,27 @@ public:
     
     // Data collection (Please use only one type at a time for each sampler)
     void sampleDouble(double number); // adds a double
-    void sampleVector(vector* v); // add a vector
-    void sampleVectorWithWeight(vector* v, double weight); // adds a vector with a weight (trails)
+    void sampleVector(vertex* v); // add a vertex
+    void sampleVectorWithWeight(vertex* v, double weight); // adds a vertex with a weight (trails)
     
     
     // Data Analysis
     
     // double data
     double getMean(); // used to get the average of a list of Doubles
-    vector* getMedian(); // get the number is in the "Middle"
-    vector* getMode(); // returns the number that occurs the most times
+    vertex* getMedian(); // get the number is in the "Middle"
+    vertex* getMode(); // returns the number that occurs the most times
     double getRange(); // determines that maximum possible data value
     double getVariance(); // determines the variance of the values sum[(i-mean)^2]
     double getDeviation(); // determines the standard deviation of the points sqrt(variance)
     double getQuartile(int quartile); // returns the quarter*quartile (ie: 1/4*2 = second quarter of the data)
     double getIQR(); // returns the Inter-Quartile range
     
-    //vector data
-    vector* getMeanVector(); // returns the average vector, sample with the weight to act as a center of mass
-    vector* getMedianVector(); // returns vector that is in the "Middle" of all of the vectors
-    vector* getModeVector(); // returns the vector with most occurences
-    double getRangeVector(); // determines the largest vector (from origin)
+    //vertex data
+    vertex* getMeanVector(); // returns the average vertex, sample with the weight to act as a center of mass
+    vertex* getMedianVector(); // returns vertex that is in the "Middle" of all of the vertexs
+    vertex* getModeVector(); // returns the vertex with most occurences
+    double getRangeVector(); // determines the largest vertex (from origin)
 };
 
 #endif

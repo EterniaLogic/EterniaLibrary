@@ -73,13 +73,8 @@ void testEquation(char* a){
 
 
 void testMath(){
-#if WIN32
-	char a[12];
-	strcpy_s(a, "[TestMath] ");
-#else
-	char* a = new char();
+    char* a = new char();
     strcpy(a,"[TestMath] ");
-#endif
     testBasics(a);
     testStructures(a);
     testEquation(a);

@@ -861,6 +861,8 @@ namespace physical {
 	// direction (Axis) on which this is directed to.
     enum KDirection {Kx, Ky, Kz};
     
+    enum KEnergyType {PotentialGravEnergy, PotentialSpringEnergy, KineticTEnergy, KineticREnergy};
+    
     CharString* getVariableFromKItem(KItem *item);
 }
 
@@ -923,6 +925,11 @@ namespace electromagnetic
     const double ultraviolet = 750*petaHertz;//15
     const double xray = 3*exaHertz; //18
     const double gamma = 30*exaHertz; //19 
+}
+
+namespace PlanetaryConstants
+{
+    enum TerrainTypes {TTOcean, TTGrassland, TTMarsh, TTForest, TTBurning};
 }
 
 #endif /*CONSTANTS_H_*/

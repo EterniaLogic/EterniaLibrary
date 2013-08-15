@@ -12,7 +12,6 @@
 #include "src/Economics/economics.h"
 #include "src/Social/Government/Government.h"
 #include "src/Math/statistics/statistics.h"
-#include "src/Networking/P2P/netpmp.h"
 
 #include <iostream>
 
@@ -36,13 +35,5 @@ int main(){
 	//testDataStructures();
 	
 	
-	// test p2p systems
-	netpmp* nat = new netpmp();
-	nat->redirect();
-	//nat->advancedRedirect();
-	
-	// pause until hit key
-	std::cin.ignore();
-	nat->close();
 #endif
 }

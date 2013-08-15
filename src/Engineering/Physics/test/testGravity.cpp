@@ -47,7 +47,7 @@ void testGravity(){
 		}
 		cc->gravitate(Planet,1);
 		// infinitely propel object at y = 5 m/s
-		//cc->thrust(new vector(0,5,0));
+		//cc->thrust(new vertex(0,5,0));
 		cc->simSecond();
 		ii++;
 	}

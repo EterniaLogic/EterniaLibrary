@@ -1,0 +1,127 @@
+./Lib/libnatpmp/natpmp.c: In function ‘initnatpmp’:
+./Lib/libnatpmp/natpmp.c:57: error: ‘initnatpmp’: definition is marked as dllimport
+./Lib/libnatpmp/natpmp.c: At top level:
+./Lib/libnatpmp/natpmp.c:255: warning: ‘readnatpmpresponseorretry’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/libnatpmp/natpmp.c: In function ‘readnatpmpresponseorretry’:
+./Lib/libnatpmp/natpmp.c:187: error: ‘readnatpmpresponse’: definition is marked as dllimport
+./Lib/libnatpmp/getgateway.c:505: warning: ‘getdefaultgateway’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/upnperrors.c:15: warning: ‘strupnperror’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/minisoap.c:22:30: error: miniupnpcstrings.h: No such file or directory
+./Lib/miniupnpc/minisoap.c: In function ‘soapPostSubmit’:
+./Lib/miniupnpc/minisoap.c:99: error: expected ‘)’ before ‘OS_STRING’
+./Lib/miniupnpc/upnpcommands.c: In function ‘UPNP_GetTotalBytesSent’:
+./Lib/miniupnpc/upnpcommands.c:26: error: ‘UPNP_GetTotalBytesSent’: definition is marked as dllimport
+./Lib/miniupnpc/minihttptestserver.c:13:24: error: sys/socket.h: No such file or directory
+./Lib/miniupnpc/minihttptestserver.c:14:22: error: sys/wait.h: No such file or directory
+./Lib/miniupnpc/minihttptestserver.c:15:23: error: arpa/inet.h: No such file or directory
+./Lib/miniupnpc/minihttptestserver.c:16:24: error: netinet/in.h: No such file or directory
+./Lib/miniupnpc/minihttptestserver.c: In function ‘main’:
+./Lib/miniupnpc/minihttptestserver.c:333: error: storage size of ‘server_addr’ isn’t known
+./Lib/miniupnpc/minihttptestserver.c:334: error: ‘socklen_t’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:334: error: (Each undeclared identifier is reported only once
+./Lib/miniupnpc/minihttptestserver.c:334: error: for each function it appears in.)
+./Lib/miniupnpc/minihttptestserver.c:334: error: expected ‘;’ before ‘server_addrlen’
+./Lib/miniupnpc/minihttptestserver.c:335: error: storage size of ‘client_addr’ isn’t known
+./Lib/miniupnpc/minihttptestserver.c:336: error: expected ‘;’ before ‘client_addrlen’
+./Lib/miniupnpc/minihttptestserver.c:367: error: ‘SIGCHLD’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:372: error: ‘AF_INET6’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:372: error: ‘AF_INET’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:372: error: ‘SOCK_STREAM’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:377: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr_storage’ 
+./Lib/miniupnpc/minihttptestserver.c:378: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr_storage’ 
+./Lib/miniupnpc/minihttptestserver.c:381: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:382: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:383: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:383: error: ‘in6addr_loopback’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:386: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:387: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:388: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:388: error: ‘INADDR_LOOPBACK’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:391: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr_in6’ 
+./Lib/miniupnpc/minihttptestserver.c:391: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr_in’ 
+./Lib/miniupnpc/minihttptestserver.c:399: error: ‘server_addrlen’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:399: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr_storage’ 
+./Lib/miniupnpc/minihttptestserver.c:406: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:409: error: dereferencing pointer to incomplete type
+./Lib/miniupnpc/minihttptestserver.c:447: error: ‘client_addrlen’ undeclared (first use in this function)
+./Lib/miniupnpc/minihttptestserver.c:447: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr_storage’ 
+./Lib/miniupnpc/miniupnpc.c: In function ‘parserootdesc’:
+./Lib/miniupnpc/miniupnpc.c:95: error: ‘parserootdesc’: definition is marked as dllimport
+./Lib/miniupnpc/miniupnpc.c: At top level:
+./Lib/miniupnpc/miniupnpc.c:846: warning: ‘UPNPIGD_IsConnected’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/miniupnpc.c: In function ‘UPNP_GetValidIGD’:
+./Lib/miniupnpc/miniupnpc.c:740: error: ‘GetUPNPUrls’: definition is marked as dllimport
+./Lib/miniupnpc/miniupnpc.c:829: error: ‘FreeUPNPUrls’: definition is marked as dllimport
+./Lib/miniupnpc/miniupnpc.c: At top level:
+./Lib/miniupnpc/miniupnpc.c:987: warning: ‘UPNP_GetIGDFromUrl’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/miniwget.c:50:30: error: miniupnpcstrings.h: No such file or directory
+./Lib/miniupnpc/miniwget.c:63: warning: ‘getHTTPResponse’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/miniwget.c: In function ‘miniwget3’:
+./Lib/miniupnpc/miniwget.c:366: error: expected ‘)’ before ‘OS_STRING’
+./Lib/miniupnpc/miniwget.c: At top level:
+./Lib/miniupnpc/miniwget.c:540: warning: ‘miniwget’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/miniwget.c:558: warning: ‘miniwget_getaddr’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/portlistingparse.c:133: warning: ‘ParsePortListing’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/portlistingparse.c:151: warning: ‘FreePortListing’ redeclared without dllimport attribute: previous dllimport ignored
+./Lib/miniupnpc/miniupnpcmodule.c:8:20: error: Python.h: No such file or directory
+./Lib/miniupnpc/miniupnpcmodule.c:10:26: error: structmember.h: No such file or directory
+./Lib/miniupnpc/miniupnpcmodule.c:39: error: expected specifier-qualifier-list before ‘PyObject_HEAD’
+./Lib/miniupnpc/miniupnpcmodule.c:50: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘UPnP_members’
+./Lib/miniupnpc/miniupnpcmodule.c: In function ‘UPnPObject_dealloc’:
+./Lib/miniupnpc/miniupnpcmodule.c:70: error: ‘UPnPObject’ has no member named ‘devlist’
+./Lib/miniupnpc/miniupnpcmodule.c:71: error: ‘UPnPObject’ has no member named ‘urls’
+./Lib/miniupnpc/miniupnpcmodule.c:72: error: ‘PyObject’ undeclared (first use in this function)
+./Lib/miniupnpc/miniupnpcmodule.c:72: error: (Each undeclared identifier is reported only once
+./Lib/miniupnpc/miniupnpcmodule.c:72: error: for each function it appears in.)
+./Lib/miniupnpc/miniupnpcmodule.c:72: error: expected expression before ‘)’ token
+./Lib/miniupnpc/miniupnpcmodule.c:72: error: expected ‘)’ before ‘self’
+./Lib/miniupnpc/miniupnpcmodule.c: At top level:
+./Lib/miniupnpc/miniupnpcmodule.c:75: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:101: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:121: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:132: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:143: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:154: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:165: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:187: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:207: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:230: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:270: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:294: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:315: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:354: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘*’ token
+./Lib/miniupnpc/miniupnpcmodule.c:400: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘UPnP_methods’
+./Lib/miniupnpc/miniupnpcmodule.c:446: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘UPnPType’
+./Lib/miniupnpc/miniupnpcmodule.c:493: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘miniupnpc_methods’
+./Lib/miniupnpc/miniupnpcmodule.c: In function ‘initminiupnpc’:
+./Lib/miniupnpc/miniupnpcmodule.c:522: error: ‘PyObject’ undeclared (first use in this function)
+./Lib/miniupnpc/miniupnpcmodule.c:522: error: ‘m’ undeclared (first use in this function)
+./Lib/miniupnpc/miniupnpcmodule.c:525: error: ‘UPnPType’ undeclared (first use in this function)
+./Lib/miniupnpc/miniupnpcmodule.c:525: error: ‘PyType_GenericNew’ undeclared (first use in this function)
+./Lib/miniupnpc/miniupnpcmodule.c:533: error: ‘miniupnpc_methods’ undeclared (first use in this function)
+./Lib/miniupnpc/miniupnpcmodule.c:538: error: expected expression before ‘)’ token
+In file included from ./src/Data/Graph.h:12,
+                 from ./src/Data/Graph.cpp:8:
+./src/Data/HashMap.hpp:61: error: integer constant is too large for ‘long’ type
+./src/Data/HashMap.hpp:64: error: integer constant is too large for ‘long’ type
+In file included from ./src/Data/test/../FileCache.hpp:11,
+                 from ./src/Data/test/testDataStructures.h:13,
+                 from ./src/Data/test/testDataStructures.cpp:8:
+./src/Data/test/../HashMap.hpp:61: error: integer constant is too large for ‘long’ type
+./src/Data/test/../HashMap.hpp:64: error: integer constant is too large for ‘long’ type
+In file included from ./src/Data/test/../FileCache.hpp:11,
+                 from ./src/Data/test/test.h:12,
+                 from ./src/Data/test/test.cpp:8:
+./src/Data/test/../HashMap.hpp:61: error: integer constant is too large for ‘long’ type
+./src/Data/test/../HashMap.hpp:64: error: integer constant is too large for ‘long’ type
+./src/Networking/P2P/P2PLClient.cpp:11:79: warning: no newline at end of file
+./src/Networking/P2P/P2PCPUServer.cpp:18:4: warning: no newline at end of file
+./src/Networking/P2P/P2PDataServer.cpp:14:4: warning: no newline at end of file
+./src/Math/test/testMath.cpp: In function ‘void testMath()’:
+./src/Math/test/testMath.cpp:78: error: ‘strcpy_s’ was not declared in this scope
+In file included from ./src/Data/test/../FileCache.hpp:11,
+                 from ./src/Data/test/testDataStructures.h:13,
+                 from ./src/test.h:12,
+                 from ./main.cpp:10:
+./src/Data/test/../HashMap.hpp:61: error: integer constant is too large for ‘long’ type
+./src/Data/test/../HashMap.hpp:64: error: integer constant is too large for ‘long’ type

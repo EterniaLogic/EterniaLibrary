@@ -16,7 +16,8 @@ class LinkedNode
 		LinkedNode<T> * next;
 		T* data;
 		LinkedNode(){
-	        // do nothing.
+	        prev = next = 0x0;
+	        data = 0x0;
         }
 };
 
@@ -31,6 +32,7 @@ class LinkedList
 		LinkedList(){
 	        baseNode = new LinkedNode<T>();
 	        currentNode = baseNode;
+	        _size = 0;
         }
 		
 		// add item
@@ -59,6 +61,10 @@ class LinkedList
         // return the size
 		int size(){
             return _size;
+        }
+        
+        LinkedNode<T>* top(){
+            return baseNode;
         }
 		
 		// convert from linkedList to a static list.

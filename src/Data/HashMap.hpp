@@ -56,12 +56,16 @@ class HTEntry
             }
         }else{ // 338 collisions out of 9025 tested. (Pretty good, but not perfect.)
             //end = 1;
+            unsigned long a1 = 32416190071;
+            unsigned long a2 = 15487249;
+            unsigned long a3 = 88888;
+            unsigned long a4 = 32416190071;
             for(unsigned int i=0;i<len;i++){
                 end = (cc[i]*len*(i+1)*end)*2 + ~(cc[i]<<4) + (end%(len*5)) + ((cc[i])%len) + (end<<7);
-                end = end ^ (32416190071*cc[i]); // XOR with very large prime #
-                end = end | (15487249*cc[i]); // OR with pretty large prime #
-                end = end | (88888*cc[i]);
-                end = end | (32416190071*cc[i]);
+                end = end ^ (a1*cc[i]); // XOR with very large prime #
+                end = end | (a2*cc[i]); // OR with pretty large prime #
+                end = end | (a3*cc[i]);
+                end = end | (a4*cc[i]);
             }
         
             

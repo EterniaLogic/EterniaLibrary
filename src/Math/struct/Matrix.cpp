@@ -26,7 +26,7 @@ Matrix* Matrix::clone(){
     Matrix* two = new Matrix();
     
     
-    // re-create vector set.
+    // re-create vertex set.
     const int x = columns;
     const int y = rows;
     double** vset = new double*[y];
@@ -86,7 +86,7 @@ void Matrix::multiply(Matrix* matrix){
                 }
                 
                 // store result into new matrix at row i, column j
-                newMatrix[i][j] = result;
+                newMatrix[i][j] = result;weak
             }
         }
         

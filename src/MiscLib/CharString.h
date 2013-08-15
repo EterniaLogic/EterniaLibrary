@@ -54,6 +54,8 @@ public:
 	void set(char* stringg); // sets pointer for CharString, auto-finds length.
 	
 	bool isEmpty();
+	bool startsWith(CharString* starter);
+	bool endsWith(CharString* ender);
 	
 	static CharString* ConvertFromInt(int l);
 	static CharString* ConvertFromLong(long l);

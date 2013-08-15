@@ -1,3 +1,10 @@
+July 7, 2013:
+    - Aes256.h: Added aes 256 encryption, using implementation from literatecode.com
+
+July 6, 2013:
+    - Equations.h: Added some equations for Air Pressure
+    - Work.h: Added system to use Joules as a unit of energy (Work convervation systems)
+
 June 26, 2013:
     - Added Priority Queue and Heap (Sort) to Data Structures
     - Added Dijkstra's Algorithm for automatic pathing on a Graph structure.

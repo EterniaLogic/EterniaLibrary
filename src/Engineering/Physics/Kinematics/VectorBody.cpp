@@ -38,7 +38,7 @@ double VectorBody::gravitate(VectorBody* body, double seconds){
 	
 	disposition->add(body);
 	disposition->sub(this);
-	vector* directionVector = disposition->unitVector();
+	vertex* directionVector = disposition->unitVector();
 //	cout << accel << " " << N << endl;
 	directionVector->scale(accel);
 	this->ax += directionVector->x;

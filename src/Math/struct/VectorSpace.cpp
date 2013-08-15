@@ -24,7 +24,7 @@ VectorSpace* VectorSpace::clone(){
     VectorSpace* two = new VectorSpace();
     
     
-    // re-create vector set.
+    // re-create vertex set.
     const int x = columns;
     const int y = rows;
     double** vset = new double*[y];
@@ -43,8 +43,8 @@ VectorSpace* VectorSpace::clone(){
 }
 
 
-// adds vector to rows.
-void addVector(vector* v){
+// adds vertex to rows.
+void addVector(vertex* v){
     // add as another row.
     // modify main values function.
     
@@ -61,7 +61,7 @@ bool VectorSpace::hasInfiniteDimensions() {
 }
 
 // <A,A>
-// gets the general dot product between two vector spaces.
+// gets the general dot product between two vertex spaces.
 double VectorSpace::innerProduct(VectorSpace* V){
     // dot product of all items
     //  [ Ax * Bx ]
@@ -117,14 +117,14 @@ VectorSpace* VectorSpace::nullity(){
 	return ret;
 }
 
-// returns the dimension of the vector space.
+// returns the dimension of the vertex space.
 // returns -1 if impossible to find.
 int VectorSpace::dimension(){
     if(hasInfiniteDimensions()) return -1;
 	return columns;
 }
 
-// returns true if the vector space is dependent of equations.
+// returns true if the vertex space is dependent of equations.
 bool VectorSpace::isIndependent(){
     // Rn is never dependent because no number is recurring.
     if(hasInfiniteDimensions()) return true;

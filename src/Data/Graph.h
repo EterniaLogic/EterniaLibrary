@@ -37,7 +37,7 @@ public:
     Vertex* makeVertex(CharString* _name); // initialize a vertex if it doesn't exist.
     Edge* makeEdge(Vertex* v1, Vertex* v2, int len); // creates an edge if it doesn't exist.
     
-    void createAdjMatrix(); // Computes the adjacency Matrix for each vector.
+    void createAdjMatrix(); // Computes the adjacency Matrix for each vertex.
     
     void insertVertex(Vertex* o); // inserts a vertex if it doesn't exist.
     void insertEdge(Edge* e); // inserts an edge if it doesn't exist.

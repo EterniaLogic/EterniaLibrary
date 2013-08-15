@@ -7,10 +7,10 @@
 
 #ifndef VECTORBODY_H_
 #define VECTORBODY_H_
-#include "../../../Math/struct/vector.h"
+#include "../../../Math/struct/vertex.h"
 #include "../../../constants.h"
 
-class VectorBody : public vector
+class VectorBody : public vertex
 {
 public:
     VectorBody();

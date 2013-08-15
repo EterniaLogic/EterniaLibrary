@@ -1,0 +1,242 @@
+cmake_minimum_required(VERSION 2.8)
+include(ExternalProject)
+#include(Hg)
+#include(CVS)
+SET(program Engine)
+
+set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+
+PROJECT(EterniaEngine)
+
+#build for windows under linux
+#set(WIN32 1)
+IF(WIN32)
+    message("NOTE: Building for Windows!")
+	# the name of the target operating system
+	SET(CMAKE_SYSTEM_NAME Windows)
+
+	# which compilers to use for C and C++
+	SET(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
+	SET(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
+	SET(CMAKE_RC_COMPILER x86_64-w64-mingw32-windres)
+
+	# here is the target environment located
+	SET(CMAKE_FIND_ROOT_PATH  /usr/x86_64-w64-mingw32 )
+
+	# adjust the default behaviour of the FIND_XXX() commands:
+	# search headers and libraries in the target environment, search 
+	# programs in the host environment
+	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+	
+	#rename resultant compiled object to .exe because the compiler is still thinking in linux extensions.
+	add_custom_command(TARGET EterniaEngine
+                    POST_BUILD
+                    COMMAND mv ${CMAKE_BINARY_DIR}/${program} ${CMAKE_BINARY_DIR}/${program}.exe)
+    ADD_DEFINITIONS(-w) #cygwin throws a LOT of errors.
+    link_libraries(opengl32)
+    
+    set(GLEW_ARGS SYSTEM=linux-mingw64)
+    set(WIN32_CARGS -DWINDOWS=1 -DWIN32=1 )
+ENDIF()
+
+set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_CXX_FLAGS "-Wall -pedantic -Wextra")
+set(CMAKE_CXX_FLAGS " -pedantic -pipe -DDEBUG -std=c++0x")
+
+
+MACRO(SUBDIRLIST result curdir)
+  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
+  SET(dirlist "")
+  FOREACH(child ${children})
+    IF(IS_DIRECTORY ${curdir}/${child})
+        SET(dirlist ${dirlist} ${child})
+    ENDIF()
+  ENDFOREACH()
+  SET(${result} ${dirlist})
+ENDMACRO()
+SUBDIRLIST(SUBDIRS src)
+
+
+#add ALL files. (If you don't want a file to compile, just change the extension)
+file(GLOB CC_src
+    "*.h"
+    "*.c"
+    "*.cpp"
+    "*.hpp"
+    "src/*.h"
+    "src/*.c"
+    "src/*.cpp"
+    "src/*.hpp"
+    "src/*/*.h"
+    "src/*/*.c"
+    "src/*/*.cpp"
+    "src/*/*.hpp"
+    "src/*/*/*.h"
+    "src/*/*/*.c"
+    "src/*/*/*.cpp"
+    "src/*/*/*.hpp"
+)
+
+ADD_EXECUTABLE(${program} ${CC_src})
+
+#ExternalProject_Add(PATH=${CMAKE_CURRENT_BINARY_DIR}/EterniaLib)
+
+
+
+######################################
+####### Mainstream Libraries #########
+######################################
+
+
+# list all of the direct download dependencies here.
+set(PROGRAMz SFML SFGUI )#openal rapidxml tinyxml ogre pcre libsndfile libjpeg libfreetype2 OIS)
+#set(glewDDIR GIT_REPOSITORY "git://glew.git.sourceforge.net/gitroot/glew/glew")
+set(SFGUIDDIR GIT_REPOSITORY "git://boxbox.org/SFGUI.git")
+set(SFMLDDIR GIT_REPOSITORY "https://github.com/LaurentGomila/SFML.git")
+
+foreach(programz ${PROGRAMz})
+    ExternalProject_Add(${programz}
+      PREFIX "${CMAKE_CURRENT_BINARY_DIR}/dep/${programz}"
+      ${${programz}DDIR}
+      INSTALL_DIR "${CMAKE_CURRENT_BINARY_DIR}/dep/${programz}"
+      CMAKE_ARGS "-DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/dep/${programz} -w"
+    )
+
+    ExternalProject_Get_Property(${programz} install_dir)
+    include_directories(${install_dir}/include)
+
+    add_dependencies(${program} ${programz})
+    file(GLOB p_src
+        "${install_dir}/lib/*.a"
+        "${install_dir}/lib/*.so"
+    )
+    
+    set(${programz}_DIR .)
+    
+    
+    find_package(${programz} REQUIRED)
+    
+    link_directories(${install_dir}/lib)
+    target_link_libraries(${program} ${p_src})
+    #link_libraries(${program} ${p_src})
+endforeach(programz) 
+
+link_libraries(${program} ${p_src})
+
+## GLEW
+add_custom_target(
+   glew
+   COMMAND make all ${GLEW_ARGS}
+   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/dep/glew/src/glew/"
+)
+include_directories(${CMAKE_BINARY_DIR}/dep/glew/src/glew/include)
+link_directories(${CMAKE_BINARY_DIR}/dep/glew/src/lib)
+IF(WIN32)
+    link_libraries(${CMAKE_BINARY_DIR}/dep/glew/lib/glew32.dll)
+    link_libraries(${CMAKE_BINARY_DIR}/dep/glew/lib/glew32mx.dll)
+ELSE()
+    target_link_libraries(${program} GLEW)
+ENDIF()
+add_dependencies(${program} glew)
+
+
+# set interlinking dependencies
+add_dependencies(SFML glew)
+add_dependencies(SFGUI SFML)
+add_dependencies(SFGUI glew)
+
+## Add my library
+add_custom_target(EterniaLib
+   COMMAND make all
+   WORKING_DIRECTORY "${CMAKE_BINARY_DIR}/EterniaLib/"
+)
+
+include_directories("EterniaLib")
+link_directories(${CMAKE_BINARY_DIR})
+link_libraries(Eternia)
+
+add_dependencies(${program} EterniaLib)
+
+add_custom_command(TARGET EterniaLib
+                    POST_BUILD
+                    COMMAND cp ${CMAKE_BINARY_DIR}/EterniaLib/libEternia.a ${CMAKE_BINARY_DIR}/ )
+
+######################################
+########## My Libraries ##############
+######################################
+#IF (WIN32)
+#	TARGET_LINK_LIBRARIES(${program} C:\Users\Dread\build\EterniaLib\Debug\Eternia.lib)
+#ELSE()
+#	TARGET_LINK_LIBRARIES(${program} /home/dread/build/EterniaLib/libEternia.a)
+#ENDIF()
+
+#set(PROGRAMS oglfirst pointers)
+set(CONFIGS_FOLDER .)
+#set(SFML_DIR ${CONFIGS_FOLDER})
+set(OpenCL_DIR ${CONFIGS_FOLDER})
+#set(CEGUI_DIR ${CONFIGS_FOLDER})
+IF(WIN32)
+
+ELSE()
+    find_package(OpenGL REQUIRED)
+ENDIF()
+#find_package(GLEW REQUIRED)
+#Find_package(SFML REQUIRED) #use sfml-config.cmake
+find_package(OpenCL REQUIRED) #use opencl-config.cmake
+#find_Package(CEGUI REQUIRED COMPONENTS OPENGL) #use cegui-config.cmake
+
+
+
+set(CORELIBS ${OPENGL_LIBRARY} ${OPENCL_LIBRARY})
+target_link_libraries(${program} ${CORELIBS})
+
+add_custom_command(TARGET EterniaLibrary
+    POST_BUILD
+    COMMAND cp ${CMAKE_BINARY_DIR}/EterniaLib/libEternia.a ${CMAKE_BINARY_DIR}/)
+    
+# Merge all of the dependency libraries (?)
+#add_custom_command(TARGET EterniaEngine
+#    POST_BUILD
+#    COMMAND cp ${CMAKE_BINARY_DIR}/EterniaLib/libEternia.a ${CMAKE_BINARY_DIR}/)
+#######################
+#######################
+#######################
+
+
+
+######################################
+############### Install! #############
+######################################
+INSTALL_FILES(/include src/*.h)
+INSTALL_FILES(/include src/*/*.h)
+INSTALL_FILES(/include src/*/*/*.h)
+INSTALL_FILES(/include src/*/*/*/*.h)
+INSTALL_FILES(/include src/*/*/*/*/*.h)
+INSTALL_FILES(/include src/*/*/*/*/*/*.h)
+#INSTALL_PROGRAMS(${program} FILES scr1 ${CMAKE_CURRENT_BINARY_DIR}/scr2)
+
+set( CEGUI_DATA_INSTALL_DIR "share${CEGUI_VER_INSTALL_SUBDIR}" )
+set( CEGUI_DOC_INSTALL_DIR "share/doc${CEGUI_VER_INSTALL_SUBDIR}" )
+
+set( CEGUI_PKGCONFIG_INSTALL_DIR "${CEGUI_LIB_INSTALL_DIR}/pkgconfig" )
+set( CEGUI_MODULE_INSTALL_DIR "${CEGUI_LIB_INSTALL_DIR}/CEGUI" )
+set( CEGUI_SAMPLE_INSTALL_DIR "${CEGUI_MODULE_INSTALL_DIR}" ) # TODO: put into /samples subdir!
+set( CEGUI_INCLUDE_INSTALL_DIR "include${CEGUI_VER_INSTALL_SUBDIR}" )
+
+INSTALL(TARGETS ${program}
+  RUNTIME DESTINATION bin
+)
+
+
+FOREACH(subdir ${SUBDIRS})
+    #ADD_SUBDIRECTORY(${subdir})
+	file(GLOB ${subdir}_files
+		"*.h"
+		"*.c"
+		"*.cpp"
+		"*.hpp"
+	)
+	SOURCE_GROUP(${subdir} FILES ${subdir}_files)
+ENDFOREACH()
