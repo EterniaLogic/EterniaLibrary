@@ -15,22 +15,32 @@ Queue::Queue()
 {
 }
 
+// clean up!
+Queue::~Queue()
+{
+    CharString* cc = dequeue();
+    while(cc != 0x0){
+      delete cc;
+      CharString* cc = dequeue();
+    }
+}
+
 /* Desc: Add to the back of the queue
  */
 void Queue::enqueue(CharString* data){
-	// increment address system
-	QueueNode* item = new QueueNode();
-	item->data = data;
-	if(Tail == 0x0){ // is head null?
-		Head = item; // tadah! :D
-		Tail = item;
-	}else{
-		// insert item at end.
-		item->Prev = Tail;
-		Tail->Next = item;
-		Tail = item;
-	}
-	Size++;
+      // increment address system
+      QueueNode* item = new QueueNode();
+      item->data = data;
+      if(Tail == 0x0){ // is head null?
+            Head = item; // tadah! :D
+            Tail = item;
+      }else{
+            // insert item at end.
+            item->Prev = Tail;
+            Tail->Next = item;
+            Tail = item;
+      }
+      Size++;
 }
 
 /* Desc: Return the front of the queue without removing it.

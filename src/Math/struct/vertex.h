@@ -11,15 +11,22 @@
 //#include <math.h>
 #include "../Functions/Basic.h"
 
-/*#ifndef PLANET_H_
-	#include "../objects/Planet.h"
-#endif*/
-
 class vertex{
 public:
-	float x,y,z;
-	float ax,ay,az,mass,radius,velocity; // Acceleration and resistance to momentum
+	float x;
+        float y;
+        float z;
+	float ax; // Acceleration of x
+        float ay; // Acceleration of y
+        float az; // Acceleration of z
+        float mass; // for use with physics
+        float radius; // useful for sperical collision detection
+        float velocity; 
 	long dimension; // Current Dimension (4, XYZt is default)
+	
+	vertex(float x,float y,float z);
+        vertex();
+        virtual ~vertex();
 	
 	vertex* operator =(vertex* b);
 	vertex* operator +=(vertex* b);
@@ -30,12 +37,11 @@ public:
  	vertex* operator *(int b);
  	vertex* operator /(vertex* b);
  	
+        // convert to spherical coords
  	float getRoh(vertex* body);
  	float getPhi(vertex* body);
  	float getTheta(vertex* body);
-	
-	vertex(float x,float y,float z);
-	vertex();
+        
 	float dot(vertex* v2); // Dot-product
 	vertex* cross(vertex* v2); // Cross-product
 	vertex* unitVector(); // Directional vector

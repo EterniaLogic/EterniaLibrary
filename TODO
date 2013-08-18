@@ -3,16 +3,27 @@ TODO
 2.) work on Economics
 3.) Begin work on Chemical Engineering
 4.) Begin work on Electrical Engineering
-5.) Finish work on Vector spaces and matricies
-6.) work on Social system
+5.) work on Social system
         a.) Companies
         b.) Chat System
         c.) Friend System
         d.) Government
         e.) Voip (?) if applicable
+6.) Set up Networking (NAT)
+7.) Set up P2P Systems
+8.) Work on Game Logic
 
 
-Math: (Requirement tree)
+Math: (Requirement Tree)
     Algebra
+        Linear Algebra
         Calculus
     Statistics
+
+Sciences: (Requirement Tree)
+    Algebra+CALC 
+        Physics
+            Chemistry
+            Electrical
+    Biology
+        Environment

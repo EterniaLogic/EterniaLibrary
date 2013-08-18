@@ -5,6 +5,7 @@
 //  the file COPYRIGHT, distributed as part of this software.
 //-----------------------------------------------------------------------------
 
+// These basic math libraries are bound to be inaccurate. Just use <math> instead.
 
 #include "Basic.h"
 
@@ -35,23 +36,23 @@ namespace Math
     // Used from:
     //  http://www.codeproject.com/Tips/311714/Natural-Logarithms-and-Exponent
     double powe(double Exponent)
-	{
-		double X, P, Frac, I, L;
-		X = Exponent;
-		Frac = X;
-		P = (1.0 + X);
-		I = 1.0;
-				
-		do
-		{
-			I++;
-			Frac *= (X / I);
-			L = P;
-			P += Frac;
-		}while(L != P);
-			
-		return P;
-	}
+    {
+            double X, P, Frac, I, L;
+            X = Exponent;
+            Frac = X;
+            P = (1.0 + X);
+            I = 1.0;
+                            
+            do
+            {
+                    I++;
+                    Frac *= (X / I);
+                    L = P;
+                    P += Frac;
+            }while(L != P);
+                    
+            return P;
+    }
     
     
     

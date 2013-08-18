@@ -28,7 +28,7 @@ IF(WIN32)
 ENDIF()
 
 
-set( CMAKE_CXX_FLAGS "-pipe -std=c++0x -fPIC -w" )
+set( CMAKE_CXX_FLAGS "-pipe -std=c++0x -fPIC -w -DDEBUG" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB CC_src
@@ -56,6 +56,10 @@ file(GLOB CC_src
     "src/*/*/*/*/*.c"
     "src/*/*/*/*/*.cpp"
     "src/*/*/*/*/*.hpp"
+    "src/*/*/*/*/*/*.h"
+    "src/*/*/*/*/*/*.c"
+    "src/*/*/*/*/*/*.cpp"
+    "src/*/*/*/*/*/*.hpp"
 )
 MACRO(SUBDIRLIST result curdir)
   FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)

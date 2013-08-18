@@ -8,7 +8,12 @@
 #include "PriorityQueue.h"
 
 // initialize PriorityItem.
-PriorityItem::PriorityItem(){ priority = 0; data = 0x0; }
+PriorityItem::PriorityItem(){ priority = 0; data = 0x0;left = right = parent = 0x0; }
+
+// Clean up Item!
+PriorityItem::~PriorityItem(){
+  left = right = parent = 0x0;
+}
 
 /////////////
 /////////////
@@ -16,6 +21,12 @@ PriorityItem::PriorityItem(){ priority = 0; data = 0x0; }
 
 // initialize PriorityQueue.
 PriorityQueue::PriorityQueue(){ head = 0x0; size = 0; }
+
+// Clean up Queue!
+PriorityQueue::~PriorityQueue(){
+  // head
+  while(removeMin() != 0x0); // empty it!
+}
 
 
 // swap values from a to b.

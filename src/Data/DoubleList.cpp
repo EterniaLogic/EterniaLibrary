@@ -7,8 +7,22 @@
 
 #include "DoubleList.h"
 
+// Initialize!
 DoubleList::DoubleList(){
     isCategorized=false;
+    _Size=0;
+    Head=Tail=CNext=0x0;
+    categorizer=0x0;
+}
+
+// Clean up the mess!
+DoubleList::~DoubleList(){
+    DoubleNode* current = Head;
+    while(current != 0x0){
+      DoubleNode* cc = current;
+      current = current->next;
+      delete cc;
+    }
 }
 
 void DoubleList::addFront(double input){

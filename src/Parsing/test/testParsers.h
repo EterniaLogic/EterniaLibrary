@@ -9,6 +9,7 @@
 #define PARSINGTEST_H_
 
 #include "../SimpleParser.h"
+#include "../SecuredParser.h"
 
 void testParsers(); // test parsing system
 

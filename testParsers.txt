@@ -1,0 +1,4 @@
+test1=50
+test2 = 52
+car1  = 3
+car5    =       4

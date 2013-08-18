@@ -29,11 +29,9 @@ void sleep( time_t delay )
 
 int main(){
 #ifdef DEBUG
-	//testGravity(); // tests Gravity calculation
-	//testMath();
-	//testParsers();
-	//testDataStructures();
-	
-	
+    //testGravity(); // tests Gravity calculation
+    //testMath();
+    testParsers();
+    //testDataStructures();
 #endif
 }

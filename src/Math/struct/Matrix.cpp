@@ -35,7 +35,7 @@ Matrix* Matrix::clone(){
         vset[i] = vset2;
         
         // fill in.
-        for(int k=0;k<y;k++){
+        for(int k=0;k<x;k++){
             vset2[k] = values[k][i];
         }
     }

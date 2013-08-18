@@ -19,6 +19,7 @@ vertex::vertex(float _x,float _y,float _z){
 	dimension = 3;
 }
 vertex::vertex(){ dimension = 3; }
+vertex::~vertex(){  }
 
 // add another vertex a+=b
 vertex* vertex::operator +=(vertex* b){

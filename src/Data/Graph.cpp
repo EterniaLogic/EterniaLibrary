@@ -32,6 +32,14 @@ Graph::Graph(){
     AdjacencyMatrix = 0x0;
 }
 
+// aaand take them all down! >:D
+Graph::~Graph(){
+  lookupEdges->~HashMap();
+  lookupVerticies->~HashMap();
+  verticiesList->~LinkedListT();
+  edgesList->~LinkedListT();
+}
+
 // creates a vertex if it doesn't exist.
 Vertex* Graph::makeVertex(CharString* _name){
     // lookup vertex to see if it exists in the HashMap.
@@ -122,7 +130,7 @@ void Graph::createAdjMatrix(){
     }
     
     
-#ifdef DEBUG
+#ifdef DEBUGx
     // print-out of this adjacency graph.
     // DEBUG!
     cout << "    ";
@@ -213,6 +221,13 @@ Vertex::Vertex(){ incidentEdges = new LinkedListT(); label=0; name=0x0; data=0x0
 // initialize vertex with a name.
 Vertex::Vertex(CharString* _name){ incidentEdges = new LinkedListT(); graph=0x0; label=0; name=_name; data=0x0;distance=0;}
 
+Vertex::~Vertex(){
+  incidentEdges->~LinkedListT();
+  vertexList->~LinkedListT();
+  delete data;
+  delete name;
+}
+
 Vertex* Edge::opposite(Vertex* v){
     if(a == v){
         return b;
@@ -226,6 +241,7 @@ Vertex* Edge::opposite(Vertex* v){
 
 // initialize edge.
 Edge::Edge(){a=b=0X0; data=0;}
+
 // initialize edge with two verticies and a depth length.
 Edge::Edge(Vertex* A, Vertex* B, int LEN){
     // set edge structure.
@@ -237,4 +253,10 @@ Edge::Edge(Vertex* A, Vertex* B, int LEN){
     // add this edge.
     a->incidentEdges->add(this);
     b->incidentEdges->add(this);
+}
+
+Edge::~Edge(){
+    a->~Vertex();
+    b->~Vertex();
+    edgeList->~LinkedListT();
 }

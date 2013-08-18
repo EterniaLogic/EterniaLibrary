@@ -22,6 +22,7 @@ class DoubleList
     double _Size;
     public:
         DoubleList();
+        virtual ~DoubleList();
         void addFront(double a);
         void addBack(double a);
         
@@ -35,14 +36,16 @@ class DoubleList
         double pop(); // erase front
         
         void clear();
-	    double front();
-	    
-	    int size();
-	    bool empty();
-	   
-	    
-	    DoubleNode *Head, *Tail, *CNext;
-	    double* categorizer;
+        double front();
+        
+        int size();
+        bool empty();
+        
+        
+        DoubleNode *Head;
+        DoubleNode *Tail;
+        DoubleNode *CNext;
+        double* categorizer;
 	    
         bool isCategorized;// is the list categorized doubleo a fast fixed list?
 };

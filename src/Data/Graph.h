@@ -33,6 +33,7 @@ class Graph
     
 public:
     Graph();
+    virtual ~Graph();
     
     Vertex* makeVertex(CharString* _name); // initialize a vertex if it doesn't exist.
     Edge* makeEdge(Vertex* v1, Vertex* v2, int len); // creates an edge if it doesn't exist.
@@ -53,6 +54,7 @@ class Vertex
 public:
     Vertex();
     Vertex(CharString* _name);
+    virtual ~Vertex();
     
     // involved edge types, static list of len Elen.
     // note: on a directed graph, only E edges that are beginning with this node will be available.
@@ -75,6 +77,7 @@ class Edge
 public:
     Edge();
     Edge(Vertex *a_, Vertex *b_, int c);
+    virtual ~Edge();
     
     // pair
     Vertex *a, *b;

@@ -22,6 +22,7 @@ class IntegerList
     int _Size;
     public:
         IntegerList();
+        virtual ~IntegerList();
         void addFront(int a);
         void addBack(int a);
         

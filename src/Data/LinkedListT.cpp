@@ -8,7 +8,10 @@
 #include "LinkedListT.h"
 
 LinkedNodeT::LinkedNodeT(){
-	// do nothing.
+    // do nothing.
+}
+
+LinkedNodeT::~LinkedNodeT(){
 }
 
 LinkedListT::LinkedListT()
@@ -17,8 +20,15 @@ LinkedListT::LinkedListT()
 	currentNode = baseNode;
 }
 
+// remove all nodes
 LinkedListT::~LinkedListT()
 {
+  LinkedNodeT* current = baseNode;
+  while(current != 0x0){
+    LinkedNodeT* cc = current;
+    current = current->next;
+    delete cc;
+  }
 }
 
 void LinkedListT::add(void *cc){

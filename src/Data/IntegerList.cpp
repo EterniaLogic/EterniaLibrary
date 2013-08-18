@@ -7,8 +7,22 @@
 
 #include "IntegerList.h"
 
+// Start it up!
 IntegerList::IntegerList(){
     isCategorized=false;
+    _Size=0;
+    Head=Tail=CNext=0x0;
+    categorizer=0x0;
+}
+
+// Ye clean the mess!
+IntegerList::~IntegerList(){
+    IntegerNode* current = Head;
+    while(current != 0x0){
+      IntegerNode* cc = current;
+      current = current->next;
+      delete cc;
+    }
 }
 
 void IntegerList::addFront(int input){

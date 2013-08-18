@@ -23,21 +23,24 @@ Stack::Stack()
 
 Stack::~Stack()
 {
+  // deflate the stack
+  while(Head != 0x0) pop();
 }
 
 // withdraw from the top
 int Stack::pop(){
-	if(Head != 0x0){
-		ValueNode* node = Head;
-		if(Head->Next != 0x0){ // next is not null
-			Head = Head->Next; // re-assign Head
-		}
-		size--;
-		//cout << "Pop " << node->data << endl;
-		return node->data;
-	}else{
-		return 0x0;
-	}
+    if(Head != 0x0){
+        ValueNode* node = Head;
+        if(Head->Next != 0x0){ // next is not null
+                Head = Head->Next; // re-assign Head
+        }
+        size--;
+        int data = node->data;
+        delete node;
+        return data;
+    }else{
+        return 0x0;
+    }
 }
 
 // pull from top, but do not withdrawl the top one.

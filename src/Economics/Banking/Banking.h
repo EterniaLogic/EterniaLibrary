@@ -12,7 +12,6 @@
 #include "../../Data/SecureFileCache.hpp"
 #include "../../MiscLib/CharString.h"
 #include "Account.h"
-#include "Loan.h"
 
 enum interestTYPE {Interest_HOURLY, Interest_DAILY, Interest_WEEKLY, Interest_MONTHLY, Interest_YEARLY};
 enum accountATTRIBUTE {ACCATT_Account, ACCATT_Loan};
@@ -30,7 +29,7 @@ public:
   
   void tick(); // tick the accounts in the secure cache (Modified time based on interest type)
 private:
-  SecureFileCache<Account>* accounts;
+  //>>>>> SecureFileCache<Account>* accounts;
   float interest;
   interestTYPE interest_type;
   

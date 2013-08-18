@@ -13,6 +13,8 @@ class Heap
     int *HeapList, size;
 public:
     Heap(int maxSize);
+    virtual ~Heap();
+    
     int removeMin();
     
     void sortDown(); // implement downheap and sort the list.

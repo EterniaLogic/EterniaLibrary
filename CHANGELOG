@@ -1,3 +1,9 @@
+September 2, 2013:
+    - Defined P2P, GameLogic and CPU/GPU Processing Packet Header-source files (hpp)
+
+September 1, 2013:
+    - Defined Avatar, inventory and banking header files
+
 July 7, 2013:
     - Aes256.h: Added aes 256 encryption, using implementation from literatecode.com
 

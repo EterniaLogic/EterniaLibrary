@@ -48,6 +48,11 @@ Heap::Heap(int maxSize){
     }
 }
 
+// Clean it up!
+Heap::~Heap(){
+  delete HeapList;
+}
+
 // remove the root node. (Shift every item left, Right-most item is -999999)
 int Heap::removeMin(){
     int a = HeapList[0];

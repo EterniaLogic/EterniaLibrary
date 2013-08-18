@@ -8,6 +8,8 @@
 #ifndef HashMap_H_
 #define HashMap_H_
 
+// woo for messy template time! =P
+
 #include <iostream>
 #include "../MiscLib/CharString.h"
 using namespace std;
@@ -21,7 +23,6 @@ class HTEntry
 
     // h(k), hashing function.
     void setID(){
-        //char* table = "sadg-9u4yjhropajhaslmanm"; // quick hash
         // does a HashMap<T> implementation.    
         unsigned int len = k->getSize();
         char* cc = k->get();
@@ -37,7 +38,7 @@ class HTEntry
             }
         }else if(len == 3){ // 0 collisions
             for(unsigned int i=0;i<len;i++){
-                //end = ((end << 5) + end) + (cc[i]);//-31);// * (i+1) * len;
+                // 3-len collision test
                 end = cc[i] + (end<<3) + (end<<4) - end;
             }
             while(end > size){
@@ -45,8 +46,7 @@ class HTEntry
             }
         }else if(len == 5){ // len = 5, ? collisions. (tested 8700 -> 61 collisions)
             for(unsigned int i=0;i<len;i++){
-                //end = ((end << 5) + end) + (cc[i]);//-31);// * (i+1) * len;
-                //end = cc[i]<<len + (end<<4)/3 - end;
+                // 5-len collision test
                 end += (cc[i]-31)<<(10*(i+1));
             }
             
@@ -163,6 +163,7 @@ class HashMap
     HTEntry<T>* entries;
     public:
         HashMap(){
+            // initialize hashmap
             entries=new HTEntry<T>[40000];
             size=40000;
             for(int i=0;i<size;i++){
@@ -172,6 +173,7 @@ class HashMap
         
         
         HashMap(int max){
+            // initialize hashmap with pre-defined value
             entries = new HTEntry<T>[(const int)max];
             size=max;
             for(int i=0;i<size;i++){

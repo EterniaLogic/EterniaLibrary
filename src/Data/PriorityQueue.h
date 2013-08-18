@@ -14,6 +14,7 @@ class PriorityItem
 public:
     PriorityItem();
     PriorityItem *left, *right, *parent; // node selections.
+    virtual ~PriorityItem();
     
     int priority;
     void* data;
@@ -26,6 +27,7 @@ class PriorityQueue
     int size;
 public:
     PriorityQueue();
+    virtual ~PriorityQueue();
     
     
     void* removeMin(); // removes the minimum item

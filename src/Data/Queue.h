@@ -11,23 +11,25 @@
 #include "../MiscLib/CharString.h"
 
 class QueueNode{
-	public:
-		CharString *data;
-		QueueNode *Prev, *Next;
+    public:
+      CharString *data;
+      QueueNode *Prev, *Next;
 };
 
 class Queue
 {
 private:
-	QueueNode *Head,*Tail;
+    QueueNode *Head,*Tail;
 public:
-	int Size;
-	Queue();
-	void enqueue(CharString* data);
-	CharString* dequeue();
-	CharString* front();
-	int size();
-	bool empty();
+    Queue(); 
+    virtual ~Queue();
+  
+    int Size;
+    void enqueue(CharString* data);
+    CharString* dequeue();
+    CharString* front();
+    int size();
+    bool empty();
 };
 
 #endif /*QUEUE_H_*/
