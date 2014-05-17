@@ -14,13 +14,13 @@
  
  // Normal processing speed for programs: 10% of total potential (unless somebody has designated a new percentage)
  
- const float programWaittime = 800; // nanoseconds
- const float renderingWaitTime = 180; // nanoseconds
- const float hashingWaitTime = 90; // nanoseconds
- const float physicsWaitTime = 50; // nanoseconds
- const float arithmeticWaitTime = 20; // nanoseconds (arithmetic usually is for bank accounts, super-fast operations)
+ const double programWaittime = 800; // nanoseconds
+ const double renderingWaitTime = 180; // nanoseconds
+ const double hashingWaitTime = 90; // nanoseconds
+ const double physicsWaitTime = 50; // nanoseconds
+ const double arithmeticWaitTime = 20; // nanoseconds (arithmetic usually is for bank accounts, super-fast operations)
  
  // percentage usage
- const float max_PERCENTAGE_MEMORY_PROGRAM = 10;
+ const double max_PERCENTAGE_MEMORY_PROGRAM = 10;
  
 #endif

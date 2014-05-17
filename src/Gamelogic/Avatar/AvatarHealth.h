@@ -21,23 +21,23 @@ class AvatarHealth
 private: // Health variables (Body-part based health)
   
   // VITAL
-  float head;
-  float torso;
-  float abdomen;
+  double head;
+  double torso;
+  double abdomen;
   
   // Effects movement
-  float leftfoot; 
-  float rightfoot;
-  float leftknee;
-  float rightknee;
+  double leftfoot; 
+  double rightfoot;
+  double leftknee;
+  double rightknee;
   
   // Effects accuracy and precision (you don't want to medicate somebody while you have a broken hand)
-  float lefthand;
-  float leftwrist;
-  float leftarm;
-  float righthand;
-  float rightwrist;
-  float rightarm;
+  double lefthand;
+  double leftwrist;
+  double leftarm;
+  double righthand;
+  double rightwrist;
+  double rightarm;
   
   // Overall health
   LinkedList<Disease>* diseases; // list of ailments, toxins, drugs, ect.

@@ -28,7 +28,7 @@ public:
   void addSkill();
   
   // Physical character effects
-  DAMAGERESULT damage(BODYPART part, float k); // damage character with k damage (note: defenses are taken into account)
+  DAMAGERESULT damage(BODYPART part, double k); // damage character with k damage (note: defenses are taken into account)
   
   void tick(); // game tick, evaluate avatar hp, skills, ect.
   
@@ -42,16 +42,16 @@ private:
   AvatarHealth health; // Advanced Health class that includes physiology, diseases, ect.
   
   // Base Stats (Can be increased by player)
-  float strength; // Attack Strength / Carry ability / Awe
-  float agility; // Attack Speed / Avoid
-  float intelligence; // Research / Tech / Strategist / Crafting
-  float awareness; // Keen senses / detection / timing
-  float constitution; // Health / Defense / Def Rate
+  double strength; // Attack Strength / Carry ability / Awe
+  double agility; // Attack Speed / Avoid
+  double intelligence; // Research / Tech / Strategist / Crafting
+  double awareness; // Keen senses / detection / timing
+  double constitution; // Health / Defense / Def Rate
   
   // Hidden Stats (Cannot be increased by player, change on their own accord)
-  float luck; // Crafting luck / likelihood of mistakes / mining luck
-  float perception; // Accuracy / Intelligence
-  float insight; // Intelligence / Discovery
+  double luck; // Crafting luck / likelihood of mistakes / mining luck
+  double perception; // Accuracy / Intelligence
+  double insight; // Intelligence / Discovery
   
   LinkedList<Skill>* skills;
   

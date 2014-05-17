@@ -65,7 +65,7 @@ class Skill
 {
 private:
   AVATAR_SKILLS skilltype;
-  float level;
+  double level;
 };
 
 #endif

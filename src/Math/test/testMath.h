@@ -10,3 +10,4 @@
 #include <cstring>
 
 void testMath();
+void testStructures(char* a);

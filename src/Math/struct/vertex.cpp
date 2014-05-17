@@ -9,10 +9,10 @@
 
 using namespace Math; // ../Math.h
 
-float ubersignificant = 1.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f;
+double ubersignificant = 1.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f;
 
 // pre-defines vertex's coordinates
-vertex::vertex(float _x,float _y,float _z){
+vertex::vertex(double _x,double _y,double _z){
 	this->x = _x;
 	this->y = _y;
 	this->z = _z;
@@ -57,7 +57,7 @@ vertex* vertex::operator *(vertex* b){
 }
 
 // Scalar multiply
-vertex* vertex::operator *(float b){
+vertex* vertex::operator *(double b){
 	vertex* v = new vertex();
 	v->x = this->x * b;
 	v->y = this->y * b;
@@ -84,20 +84,20 @@ vertex* vertex::operator /(vertex* b){
 }
 
 // Get the rotational axis Ρ in 3rd-dimentional spherical coordinates
-float getRoh(vertex* body){ 
+double getRoh(vertex* body){
 	return sqrt(pow(body->x,2)+pow(body->y,2)+pow(body->z,2));
 }
 
 // Get the rotational axis Φ in 3rd-dimentional spherical coordinates
-float getPhi(vertex* body){ // Φ
+double getPhi(vertex* body){ // Φ
 	//acossin
 
 	return 0;
 }
 
 // Get the rotational axis Θ in 3rd-dimentional spherical coordinates
-float getTheta(vertex* body){ // Θ
-	
+double getTheta(vertex* body){ // Θ
+
 
 	return 0;
 }
@@ -131,15 +131,15 @@ void vertex::div(vertex* v2){
 }
 
 // directly scale with a scalar.
-void vertex::scale(float scalar){
+void vertex::scale(double scalar){
 	this->x *= scalar;
 	this->y *= scalar;
 	this->z *= scalar;
 }
 
 // get the dot product
-float vertex::dot(vertex* v2){
-	float sum = 0;
+double vertex::dot(vertex* v2){
+	double sum = 0;
 	sum += this->x*v2->x;
 	sum += this->y*v2->y;
 	sum += this->z*v2->z;
@@ -156,7 +156,7 @@ vertex* vertex::cross(vertex* v2){
 }
 
 // get the magnitude of the vertex
-float vertex::length(){
+double vertex::length(){
 	return sqrt(x*x + y*y + z*z);
 }
 
@@ -169,24 +169,24 @@ vertex* vertex::unitVector(){
 }
 
 // get the angle of the vertex
-float vertex::angle(vertex* w){
+double vertex::angle(vertex* w){
 	// (v.w / |w|*|w|) * w
 	return (this->dot(w) / (this->length() * w->length()));
 }
 
 // get the distance between two vertexs.
-float vertex::distance(vertex* v2){
+double vertex::distance(vertex* v2){
 	vertex* c = new vertex();
 	c->add(this);
 	c->sub(v2);
-	float out = c->length();
+	double out = c->length();
 	delete c;
 	return out;
 }
 
 // returns whether this is orthagonal.
 bool vertex::isOrthagonal(vertex* v){
-    // 
+    //
     return dot(v) == 0;
 }
 
@@ -195,7 +195,7 @@ bool vertex::isOrthagonal(vertex* v){
 // abs(dot(u,v)) <= length(u)*length(v)
 bool vertex::cauchySchwarzInequality(vertex* v){
     return abs(dot(v)) <= length() * v->length();
-} 
+}
 
 // length(u+v) <= length(u) + length(v)
 bool vertex::triangleInequality(vertex* v){
@@ -217,20 +217,20 @@ bool vertex::pythagroreanInequality(vertex* v){
 
 // directly convert to vertex space
 /*VectorSpace* vertex::getVectorSpace(){
-    // example: <a,b,c> = 
+    // example: <a,b,c> =
     //          [ a ]
     //          [ b ]
     //          [ c ]
     // if d == 0, height = 2 -> [[a],[b]]
     int height = 3;
     if(z == 0) height = 2;
-    
-    // get float** via vertexspace
-    float** matrix = Matrix::createMatrixContainer(height, 1);
+
+    // get double** via vertexspace
+    double** matrix = Matrix::createMatrixContainer(height, 1);
     matrix[0][0] = x;
     matrix[1][0] = y;
     if(height == 2) matrix[2][0] = z;
-    
+
     return new VectorSpace(matrix,height,1);
 }*/
 

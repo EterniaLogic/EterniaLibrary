@@ -1,7 +1,17 @@
 cmake_minimum_required(VERSION 2.8)
 set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
-PROJECT(EterniaLibrary) 
+PROJECT(EterniaLibrary)
+
+
+# determine "Bitness" for 32-bit or 64-bit compiling.
+#get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)#if (${LIB64} STREQUAL "TRUE")
+    set(LIBSUFFIX 64)
+else()
+    set(LIBSUFFIX "32")
+endif()
+
 
 #build for windows under linux
 ############################set(WIN32 1)
@@ -19,16 +29,18 @@ IF(WIN32)
 	SET(CMAKE_FIND_ROOT_PATH  /usr/x86_64-w64-mingw32 )
 
 	# adjust the default behaviour of the FIND_XXX() commands:
-	# search headers and libraries in the target environment, search 
+	# search headers and libraries in the target environment, search
 	# programs in the host environment
 	set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 	set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 	set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
-	
+
 ENDIF()
 
 
-set( CMAKE_CXX_FLAGS "-pipe -std=c++0x -fPIC -w -DDEBUG" )
+set( CMAKE_CXX_FLAGS "-pipe -std=c++0x -fPIC -w -DDEBUG -s" )
+
+#include_directories("Lib/adept.sdk/inc")
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB CC_src
@@ -60,6 +72,10 @@ file(GLOB CC_src
     "src/*/*/*/*/*/*.c"
     "src/*/*/*/*/*/*.cpp"
     "src/*/*/*/*/*/*.hpp"
+    "src/*/*/*/*/*/*/*.h*"
+    "src/*/*/*/*/*/*/*.c*"
+    "src/*/*/*/*/*/*/*/*.h*"
+    "src/*/*/*/*/*/*/*/*.c*"
 )
 MACRO(SUBDIRLIST result curdir)
   FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
@@ -74,10 +90,26 @@ ENDMACRO()
 SUBDIRLIST(SUBDIRS src)
 
 
+#message(${LIBSUFFIX},${LIBSUFFIX})
+#if(${LIBSUFFIX} MATCHES "64")
+#        file(GLOB Basys2LIBS
+#                "Lib/adept.sdk/lib64/*.so"
+#        )
+#else()
+#        file(GLOB Basys2LIBS
+#                "Lib/adept.sdk/lib/*.so"
+#        )
+#endif()
+
+
+
+
 # STATIC SHARED
 ADD_LIBRARY(Eternia STATIC ${CC_src})
-ADD_EXECUTABLE(testenv ${CC_src})
+ADD_EXECUTABLE(EterniaLibrary ${CC_src})
 
+
+#target_link_libraries(Eternia ${Basys2LIBS})
 
 
 FOREACH(subdir ${SUBDIRS})

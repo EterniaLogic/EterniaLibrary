@@ -30,10 +30,10 @@ public:
 private:
     // Static attributes (act as a base for dynamic attributes)
     int max_stack; // maximum stackable (gear is normally 0, not stackable)
-    float sDamage;
-    float sDefense;
-    float sDodge;
-    float sPrice;
+    double sDamage;
+    double sDefense;
+    double sDodge;
+    double sPrice;
     CharString* name;
     CharString* description; // description of the item
     CharString* crafter; // generic crafter name, can be queried

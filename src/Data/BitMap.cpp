@@ -15,9 +15,9 @@ BitMap::BitMap(const int wid, const int hei){
     
     
     // Populate bitmap! :D
-    bmbit** vset = new bmbit*[hei];
-    for(int i=0;i<hei;i++){
-        vset[i] = new bmbit[wid];
+    bmbit** vset = new bmbit*[wid];
+    for(int i=0;i<wid;i++){
+        vset[i] = new bmbit[hei];
         
         // fill in.
         /*for(int k=0;k<hei;k++){
@@ -29,7 +29,7 @@ BitMap::BitMap(const int wid, const int hei){
 }
 
 BitMap::~BitMap(){
-  for(int i = 0; i<height; i++){
+  for(int i = 0; i<width; i++){
       delete map[i];
   }
   delete map;

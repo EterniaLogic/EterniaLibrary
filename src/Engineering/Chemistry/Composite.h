@@ -8,7 +8,7 @@
 #ifndef COMPOSITE_H_
 #define COMPOSITE_H_
 
-#include "atom.h"
+#include "Atom.h"
 
 enum STATE {solid, liquid, gas, plasma};
 
@@ -16,7 +16,7 @@ class AtomNode
 {
 public:
 	AtomNode();
-	atom* Atom;
+	Atom* atom;
 	AtomNode* linkedNodes;
 	int linkedNodeNum; // number of linked atomic nodes
 };

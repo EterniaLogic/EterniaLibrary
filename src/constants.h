@@ -4,6 +4,9 @@
 #include <cstring>
 #include "MiscLib/CharString.h"
 
+// Unknown constant used to define unknown doubles
+#define UNKNOWN 1.111e11
+
 namespace physical {
 	namespace unit { // conversion factor
 		const double radian = 1.0;

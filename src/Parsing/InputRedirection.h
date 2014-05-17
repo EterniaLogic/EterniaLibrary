@@ -17,6 +17,8 @@ using namespace std;
 class InputRedirection
 {
     bool process(); // process line by line
+    bool stop;
+    
 public:
     InputRedirection();
     // OVERRIDE with your input
@@ -25,7 +27,7 @@ public:
 
     // InputRedirector redirects line of data to handleInputLine
     // common usage: InputRedirector(&cin);  Will do a while loop until program is forcibly stopped.
-    void redirect(istream* input); 
+    void redirect(); 
 };
 
 

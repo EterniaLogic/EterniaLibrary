@@ -30,7 +30,7 @@ public:
   void tick(); // tick the accounts in the secure cache (Modified time based on interest type)
 private:
   //>>>>> SecureFileCache<Account>* accounts;
-  float interest;
+  double interest;
   interestTYPE interest_type;
   
   accountATTRIBUTE main_attribute; // account or a loan?

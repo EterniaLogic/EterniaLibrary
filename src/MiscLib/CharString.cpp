@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------------
 
 #include "CharString.h"
-#include "SplitResult.h"
+//#include "SplitResult.h"
 
 using namespace std;
 
@@ -30,7 +30,7 @@ CharString::CharString(const char* stringg){
   int c = 0;
   // quick loop through to find exact size c.
       while(stringg[c] != 0x0 || stringg[c] > 32){c++;}
-  
+
   char* cc = new char();
   strcpy(cc, stringg);
 
@@ -60,13 +60,17 @@ CharString::CharString(const std::string &stringg){
   len = stringg.length();
 }
 
+void CharString::operator =(char* stringg){
+  set(stringg);
+}
+
 /* Desc: Takes data from a string and splits it using a splitter
 * Input: String str, it's length, single-character splitter
 * Output: SplitResult from the splitting
 */
 SplitResult* CharString::split(char splitter,char stopper){
       SplitResult* sr = new SplitResult(100);
-      
+
       int carrot1=0,carrot2=0,commaplace=0; // positions for exclusive selection
   // loop through
       for(int i=0;i<len;i++){
@@ -81,26 +85,26 @@ SplitResult* CharString::split(char splitter,char stopper){
                       const int slen = carrot2-carrot1;
                       char* cc = new char[slen];
                       for(int j=carrot1;j<carrot2;j++) cc[j-carrot1] = stringx[j]; // populate charString
-                      
+
                       sr->add(cc,slen); // add data!
                       carrot1 = i+1;
                       carrot2 = i+1;
-                      
+
               }else{
           // else, just increment.
                       carrot2++;
               }
       }
-      
+
       // If size is greater then override, and there is a change in carrots
       if(carrot2 > carrot1){
               const int slen = carrot2-carrot1; // length of split
               char* cc = new char[slen]; // use up some space
               for(int j=carrot1;j<carrot2;j++) cc[j-carrot1] = stringx[j]; // populate charString
-              
+
               sr->add(cc,slen); // Add to split result
       }
-      
+
       return sr;
 }
 
@@ -113,11 +117,11 @@ SplitResult* CharString::split(char splitter,char stopper){
 void CharString::replace(char* a, char* b){
     // resizes charString if required. Also shifts charString upon resize.
     // for(int i=copyx;i<len;i++){ out[i-copyx] = stringx[i]; }
-    
+
     // ok, now we will convert a and b into charStrings.
     CharString* A = new CharString(a);
     CharString* B = new CharString(b);
-    
+
     // special case, Singly repeated (lengths 1, 0)
     if(B->getSize() == 0){
         // store result temporarily
@@ -134,7 +138,7 @@ void CharString::replace(char* a, char* b){
         stringx = tt;
         len=tlen;
     }else{
-    
+
         // find occurences and auto-patch them.
         int iniX = -1, endX=-1;
         for(int i=0;i<this->len;i++){
@@ -166,7 +170,7 @@ void CharString::replace(char* a, char* b){
                 }else{
                     // set initial vertex if possible.
                     iniX = (iniX==1) ? i : iniX;
-                    
+
                     // quite not there yet... lets increase endX
                     endX = i;
                 }
@@ -186,7 +190,7 @@ void CharString::replace(char* a, char* b){
 char* CharString::shiftLeft(const int lenh){
       const int lenx = len-lenh;
       char* out = new char[lenx];
-      
+
       int copyx = lenh; // start of move location
       for(int i=copyx;i<len;i++){ out[i-copyx] = stringx[i]; }
       return out;
@@ -216,20 +220,20 @@ void CharString::setSize(int i){
 int CharString::getInt(){
       if(stringx == 0x0) return 0;
       int size=len; // size from CharString len
-      
-      
+
+
       int out = 0;
       bool neg = false;
       if(stringx[0] == '-') { neg=true; stringx = shiftLeft(1); size--; } // removes sign
       for(int i=0;i<size;i++){
-              int c = (int)(stringx[i])-48; 
+              int c = (int)(stringx[i])-48;
               if(c == -48) continue; // prevents annoying bug :/
               int digit = size-(i+1);
-              
+
               //get exponent of 10.
               int exp = 1;
               for(int j=0;j<digit;j++) exp*=10; // expotentiate
-              
+
               out += exp * c;
       }
       if(neg) out*=-1;
@@ -270,9 +274,45 @@ CharString* CharString::ConvertFromInt(int integer){
 }
 
 CharString* CharString::ConvertFromLong(long integer){
-  const int ASCIIOffset = 48; // offset on the ASCII chart
-      
-      if(integer == 0){
+    const int ASCIIOffset = 48; // offset on the ASCII chart
+
+    // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
+    int len = 0;
+    bool neg = false;
+
+    // is negative?
+    if(integer < 0) neg = true;
+    if(neg) integer = integer*(-1); // remove negative sign, we know the negation. :D
+
+    // determine # of digits
+    for(int i=0;i<20;i++){
+        int exp = 1;
+        for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
+        if((integer % (exp)) != integer) len++; // if integer mod exp is not equal to self, it is a digit (10/1000 = 10)
+    }
+
+    const int tlen = len + (neg ? 1 : 0); // constify length, if negative, add digit.
+    char* out = new char[tlen];
+
+    int t=0; // temp var used to store modulus digit addifier
+    int kk = neg ? 1 : 0;
+    int offset = neg ? -2 : -1; // offsets char based on neg
+    if(neg) out[0] = '-';
+    for(int i = tlen+offset; i >= 0; i--){
+        int exp = 1;
+        for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
+        int digit = integer / exp -(t*10);
+        t *= 10; // shift all digits in t left 1
+        t += digit; // enter digit into very last slot of t
+        out[kk] = (char)(digit+ASCIIOffset);
+        kk++; // increment out digit
+    }
+    CharString* g = new CharString();
+    g->set(out,tlen);
+    return g;
+
+
+      /*if(integer == 0){
           char* c = new char[2];
           strcpy(c,"0");
           CharString* g = new CharString();
@@ -282,27 +322,27 @@ CharString* CharString::ConvertFromLong(long integer){
           // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
           int len = 0;
           bool neg = false;
-      
+
           // is negative?
           if(integer < 0) neg = true;
           if(neg) integer = integer*(-1); // remove negative sign, we know the negation. :D
-      
+
           // determine # of digits
           do {
           integer /= 10;
           len++;
       } while (integer > 0);
-      
-          
+
+
           /*for(int i=0;i<30;i++){
                   int exp = 1;
                   for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
                   if((integer % (exp)) != integer) len++; // if integer mod exp is not equal to self, it is a digit (10/1000 = 10)
-          }*/
-      
+          }* /
+
           const int tlen = len + (neg ? 1 : 0); // constify length, if negative, add digit.
           char* out = new char[tlen];
-      
+
           int t=0; // temp var used to store modulus digit addifier
           int kk = neg ? 1 : 0;
           int offset = neg ? -2 : -1; // offsets char based on neg
@@ -319,14 +359,14 @@ CharString* CharString::ConvertFromLong(long integer){
           CharString* g = new CharString();
           g->set(out,tlen);
           return g;
-      }
+      }*/
 }
 
 
 /* Desc: direct compare with a char string
 *  Input: char* and it's length
 *  Output: boolean
-*/ 
+*/
 bool CharString::Compare(char* b,int lenx){
       bool r = true;
       for(int i=0;i<lenx;i++){
@@ -334,7 +374,7 @@ bool CharString::Compare(char* b,int lenx){
                       r=false;
               }
       }
-      
+
       return r;
 }
 
@@ -350,7 +390,7 @@ bool CharString::CompareNoCase(char* b,int lenx){
                       r=false;
               }
       }
-      
+
       return r;
 }
 
@@ -372,7 +412,7 @@ bool CharString::Compare(CharString* b, bool useCase){
 SortType CharString::SortCompare(CharString* str){
       SortType ret = SSame;
       // if str is "longer" then this, than it is more "precise".
-      
+
       int minlen = len < str->getSize() ? len : str->getSize();
       char* c = str->get();
       // compare visible lengths. Note: if this is shorter then str, then it may be much less.
@@ -389,7 +429,7 @@ SortType CharString::SortCompare(CharString* str){
                       ret = SBefore;
               }
       }
-      
+
       // if they are the same at length then:
       if(ret == SSame && len < str->getSize()){
               // str is greater.
@@ -429,21 +469,21 @@ void CharString::concata(char* str, int lenx){
       int lenb = lenx;
       const int lenab = lena+lenb;
       char* tmp = new char[lenab+1];
-      
+
       for(int i=0;i<lenab+1;i++){
               tmp[i] = '\0';
       }
-      
+
       // add to the beginning.
       for(int i=0;i<lena;i++){
               tmp[i] = stringx[i];
       }
-      
+
       // append after beginning.
       for(int i=0;i<lenb;i++){
               tmp[i+(lena)] = str[i];
       }
-      
+
       // imprint changes
       this->set(tmp,lenab);
 }
@@ -461,21 +501,21 @@ void CharString::concatb(char* str, int lenx){
       int lenb = len;
       const int lenab = lena+lenb;
       char* tmp = new char[lenab+1];
-              
+
               for(int i=0;i<lenab+1;i++){
                       tmp[i] = '\0';
               }
-      
+
       // add to the beginning.
       for(int i=0;i<lena;i++){
               tmp[i] = str[i];
       }
-      
+
       // append after beginning.
       for(int i=0;i<lenb;i++){
               tmp[i+(lena)] = stringx[i];
       }
-      
+
       //cout << "tmp: '" << tmp << "' (" << lena << "," << lenb << "="<< lenab <<")" << endl;
       // imprint changes
       this->set(tmp,lenab);
@@ -502,7 +542,7 @@ CharString* CharString::clone(){
       for(int i=0;i<len;i++){
               cc[i] = stringx[i];
       }
-      
+
       return new CharString(cc,len);
 }
 

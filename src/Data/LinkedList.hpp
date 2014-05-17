@@ -8,6 +8,9 @@
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
 
+#include <iostream>
+using namespace std;
+
 // Gar! I don't like writing templates because of this!
 
 template<class T>
@@ -35,14 +38,14 @@ class LinkedList
 	LinkedNode<T> * currentNode;
 	int _size;
 public:
-  
+
         // Initialize!
         LinkedList(){
             baseNode = new LinkedNode<T>();
             currentNode = baseNode;
             _size = 0;
         }
-        
+
         // Clean up!
         ~LinkedList(){
             LinkedNode<T>* current = baseNode;
@@ -52,7 +55,7 @@ public:
               delete cc;
             }
         }
-		
+
         // add item
         void add(T* cc){
             //adds a Void* Object. This can be declared when using the list.
@@ -66,7 +69,7 @@ public:
             }
             _size++;
         }
-        
+
         // return item
         T* get(int index){
             LinkedNode<T> * current = baseNode;
@@ -75,32 +78,37 @@ public:
             }
             return current->data;
         }
-        
+
         // return the size
         int size(){
             return _size;
         }
-        
+
         LinkedNode<T>* top(){
             return baseNode;
         }
-		
+
 		// convert from linkedList to a static list.
         void freeze(){
-            const int len = _size;
-            frozen = new T*[len];
-            frozenlen = len;
-            
-            // copy values in!
-            LinkedNode<T> * current = baseNode; 
-            int i;
-            while(current != 0x0){
-                frozen[i] = current->data;
-                current = current->next; 
-                i++;
+            if(_size > 0){
+                //cout << "freeze-1 " << _size << endl;
+                const int len = _size;
+                frozen = new T*[len];
+                frozenlen = len;
+                //cout << "freeze-2" << endl;
+
+                // copy values in!
+                LinkedNode<T> * current = baseNode->next;
+                for(int i=0;i<_size;i++){
+                    frozen[i] = current->data;
+                    current = current->next;
+                }
+            }else{
+                frozenlen = 0;
+                frozen = 0x0;
             }
         }
-		
+
         T **frozen;
         int frozenlen;
 };

@@ -9,6 +9,7 @@
 #define EQUATION_H_
 
 #include "../MiscLib/CharString.h"
+#include "../Data/LinkedList.hpp"
 
 // Equation structure
 // y = x^2 + x
@@ -28,18 +29,19 @@
 
 class Equation;
 
-enum EqType {ENumber, EOperator, EComplex};
+enum EqType {EVar, ENumber, EOperator, EComplex};
 
 class EquationNode
 {
     EqType mode;
     double data;
-    Equation* dataeq;
+    Equation* dataeq; // subnode
 };
 
 class Equation
 {
     CharString* eq;
+    LinkedList<EquationNode>* baseNodes; // nodes on the "Bottom Step".
     
     
 public:
@@ -52,8 +54,10 @@ public:
     Equation* solveForVariable(CharString* variable); // algeraeically solve the equation for variable.
     
     double solve(CharString* variable); // calls solveForVariable() and determines if it can be solved directly for an answer.
-    Equation* derive(); // derive this equation.
-    Equation* integrate(); // integrate this equation.
+    Equation* derive(char* wrt); // derive this equation.
+    Equation* integrate(char* wrt); // integrate this equation.
+    double evaluate(double a, double b); // evaluate equation with a TO b. only works with one variable.
+    
 };
 
 #endif

@@ -28,7 +28,7 @@ public:
   void tick();
   
 private:
-  float strain; // Strain ID, applied when researches find a strain
+  double strain; // Strain ID, applied when researches find a strain
   DISEASE_TYPE type; // type id for disease (parasite, virus, ect)
   LinkedList<DISEASE_ATTRIBUTES>* attributes; // list of attributes of the disease
   LinkedList<DISEASE_SYMPTOMS>* symptoms; // symptoms of the disease

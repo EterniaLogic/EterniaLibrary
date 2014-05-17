@@ -7,9 +7,11 @@
 
 #include "InputRedirection.h"
 
-InputRedirection::InputRedirection(){}
+InputRedirection::InputRedirection(){
+        stop = false;
+}
 
-void InputRedirection::handleInputLine(CharString* input){}
+//void InputRedirection::handleInputLine(CharString* input){}
 
 bool InputRedirection::process(){
 	const int readlen = 5000;
@@ -22,19 +24,19 @@ bool InputRedirection::process(){
 	cin.getline(readt,readlen);
 	CharString* Line = new CharString(readt,readlen);
 	
-	if(!(Line->isEmpty()) && Line->getSize() > 1){ // is the line not empty? Is it longer then 1?
+	//if(!(Line->isEmpty()) && Line->getSize() > 1){ // is the line not empty? Is it longer then 1?
 		handleInputLine(Line); // EXECUTE the line.
-	}else{
-		return true;
-	}
+	//}else{
+	//	return true;
+	//}
 	return false;
 }
 
-void InputRedirection::redirect(istream* input){
-    while(true){ //we cannot measure the number of words coming in.
-		
-		if(process()) { // can we continue processing?
-			break;
-		}
-	}
+void InputRedirection::redirect(){
+    while(!stop){ //we cannot measure the number of words coming in.
+        cout << "#> ";
+        if(process()) { // can we continue processing?
+                break;
+        }
+    }
 }

@@ -11,14 +11,14 @@ class TestStructure
 {
     //int tileSet[100][100];
     public:
-        TestStructure(){ 
+        TestStructure(){
             //for(int i=0;i<100;i++){
             //    for(int j=0;j<100;j++){
             //        tileSet[i][j] = i*j;
             //    }
             //}
         }
-        
+
         int dataValue;
 };
 
@@ -40,10 +40,10 @@ void testFileCache(){
         int OUT = fileCache.add(ts);
     }
     long t2 = clock()-t1;
-    
+
     // test object from Get
     t1 = clock();
-    
+
     for(long i=0;i<intmax*2;i++){
         TestStructure* ffs = fileCache.get(i);
         if(ffs->dataValue != i+1) {
@@ -51,7 +51,7 @@ void testFileCache(){
         }
     }
     t2 = clock()-t1;
-    
+
     if(errors == 0){
       cout << "Pass" << endl;
     }else{
@@ -64,25 +64,58 @@ void testBitMap(){
   cout << "BitMap => ";
   BitMap* cc = new BitMap(1024,768); // suggested size: 59 mb
   //cout << "Size: " << (cc->width*cc->height*sizeof(bmbit))/1024/1024 << endl;
-  
+
   // change every single value
   for(int i=0;i<cc->width;i++){
     for(int j=0;j<cc->height;j++){
       //cout << i << ", " << j << endl;
-      cc->map[j][i].r = 128;
-      cc->map[j][i].g = 8;
-      cc->map[j][i].b = 254;
-      cc->map[j][i].a = 64;
+      cc->map[i][j].r = 128;
+      cc->map[i][j].g = 8;
+      cc->map[i][j].b = 254;
+      cc->map[i][j].a = 64;
     }
   }
   //cout << "changed" << endl;
-  
+
   cc->~BitMap();
-  
+
   cout << "Pass" << endl;
+}
+
+// tests the queue for ability.
+void testQueue()
+{
+        cout << "Queue => ";
+        Queue* q = new Queue();
+        CharString* cc = new CharString("test@#$%^*()_+1234567890");
+        q->push(cc);
+        CharString* qq = (CharString*)q->pop();
+        if(qq == cc){
+                cout << "Pass" << endl;
+        } else{
+                cout << "Fail" << "(" << qq->get() << ")" << endl;
+        }
+}
+
+void testPriorityQueue()
+{
+     cout << "PriorityQueue => ";
+        PriorityQueue* q = new PriorityQueue();
+        CharString* cc = new CharString("test@#$%^*()_+1234567890",24);
+        q->insert(0,cc);
+        CharString* qq = (CharString*)q->removeMin();
+        if(qq == cc){
+                cout << "Pass" << endl;
+        } else{
+                cout << "Fail" << "(" << qq->get() << ")" << endl;
+        }
 }
 
 void testDataStructures(){
     testFileCache();
     testBitMap();
+    testQueue();
+    testPriorityQueue();
+
+    cout << "Datastructures test Done" << endl;
 }

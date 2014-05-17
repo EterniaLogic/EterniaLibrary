@@ -60,6 +60,8 @@ public:
 	static CharString* ConvertFromInt(int l);
 	static CharString* ConvertFromLong(long l);
 	
+	void operator =(char* string);
+	
 private:
 	char* stringx;
 	int len;

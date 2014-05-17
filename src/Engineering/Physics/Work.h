@@ -14,11 +14,11 @@ using namespace physical;
 class EnergyValue
 {
 public:
-    EnergyValue(KEnergyType type, float value);
+    EnergyValue(KEnergyType type, double value);
     KEnergyType energyType; // PotentialGravEnergy, PotentialSpringEnergy, KineticTEnergy, KineticREnergy
-    float Gravity, heightx, velocity, RotVelo, springK; // input vars.
+    double Gravity, heightx, velocity, RotVelo, springK; // input vars.
     
-    float computeEnergy(); // solve for the total energy
+    double computeEnergy(); // solve for the total energy
     bool unsolvedVars(); // does this have unsolved variables?
 };
 
@@ -29,12 +29,12 @@ private:
     // Potential Energy due to Spring
     // Translational Kinetic Energy
     // Rotational Kinetic Energy
-    float mass, TEnergy; // stored mass (Since mass doesn't normally change)
+    double mass, TEnergy; // stored mass (Since mass doesn't normally change)
 public:
     LinkedList<EnergyValue>* listOfTypes;
-    Work(float Mass);
-    float compute(); // Compute the energy of the system
-    float getTotalWatts(float time); // divides joules by time
+    Work(double Mass);
+    double compute(); // Compute the energy of the system
+    double getTotalWatts(double time); // divides joules by time
     
 };
 

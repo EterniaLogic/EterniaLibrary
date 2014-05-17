@@ -18,16 +18,16 @@ Queue::Queue()
 // clean up!
 Queue::~Queue()
 {
-    CharString* cc = dequeue();
+    void* cc = pop();
     while(cc != 0x0){
       delete cc;
-      CharString* cc = dequeue();
+      void* cc = pop();
     }
 }
 
 /* Desc: Add to the back of the queue
  */
-void Queue::enqueue(CharString* data){
+void Queue::push(void* data){
       // increment address system
       QueueNode* item = new QueueNode();
       item->data = data;
@@ -46,7 +46,7 @@ void Queue::enqueue(CharString* data){
 /* Desc: Return the front of the queue without removing it.
  * Output: Addr* of Front of queue.
  */
-CharString* Queue::front(){
+void* Queue::front(){
 	// return head. :D
 	if(Head != 0x0){
 		return Head->data;
@@ -58,7 +58,7 @@ CharString* Queue::front(){
 /* Desc: Return the Front of the queue and remove it from list.
  * Output: Addr* from Front of queue.
  */
-CharString* Queue::dequeue(){
+void* Queue::pop(){
 	// modify tail.
 	if(Head != 0x0){
 		QueueNode* item = Head;

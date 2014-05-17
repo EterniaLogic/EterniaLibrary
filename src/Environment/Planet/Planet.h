@@ -8,7 +8,7 @@
 #ifndef PLANET_H_
 #define PLANET_H_
 
-#include "../../Engineering/Chemistry/Composite.h"
+//#include "../../Engineering/Chemistry/Composite.h"
 #include "../../Math/struct/vertex.h"
 #include "../../Data/LinkedList.hpp"
 #include "../../constants.h"
@@ -37,17 +37,16 @@ class Terrain
 class Atmosphere
 {
 public:
-	Composite* AtmosphericMaterials;// ppk materials, less-mass materials float up.
-	float groundDensity; // density of atmosphere near ground. (M*V, km*m^3)
-	float height; // max height (km)
+	//Composite* AtmosphericMaterials;// ppk materials, less-mass materials double up.
+	double groundDensity; // density of atmosphere near ground. (M*V, km*m^3)
+	double height; // max height (km)
 	
-	float getDensity(float relativeHeight); // returns current air density at location, relative to ground
-	
+	double getDensity(double relativeHeight); // returns current air density at location, relative to ground
 };
 
 class Planet : public vertex
 {
-    float seed; // seed for planet. (Randomly generated, or loaded from server)
+    double seed; // seed for planet. (Randomly generated, or loaded from server)
 public:
 	Planet();
 	virtual ~Planet();
@@ -64,7 +63,7 @@ public:
 	
 	// Air friction is based on location in atmosphere the atmospheric gradient.
 	// Very small number, since air is very light.
-	float airFriction(vertex* object);
+	double airFriction(vertex* object);
 };
 
 #endif /*PLANET_H_*/

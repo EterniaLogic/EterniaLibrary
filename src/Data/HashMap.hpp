@@ -120,6 +120,20 @@ class HTEntry
             return 0x0;
         } // get using EXACT key values.
         
+        T* get(long key){
+            // add to the end.    
+            HTEntry<T>* current = this;
+            // loop through the list.
+            while(current != 0x0) {
+                if(current->getKey()->Compare(key)){    
+                    return current->getData();
+                }
+                current = current->next;
+            }
+            
+            return 0x0;
+        } // get using EXACT key values.
+        
         T* remove(CharString* key){
             // add to the end.    
             HTEntry<T>* current = this, last = 0x0;

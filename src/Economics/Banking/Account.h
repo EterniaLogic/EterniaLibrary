@@ -6,17 +6,17 @@
 class Account
 {
 public:
-  Account(float ID, float Value, float key);
+  Account(double ID, double Value, double key);
    
-  float getID(); // return the account id
-  float getValue();
-  float getKey();
-  float createKey(char* passcode); // create a key based on a passcode
+  double getID(); // return the account id
+  double getValue();
+  double getKey();
+  double createKey(char* passcode); // create a key based on a passcode
   
 private:
-  float id; // account id
-  float value; // account value
-  float key; // number-key for accessing account
+  double id; // account id
+  double value; // account value
+  double key; // number-key for accessing account
 };
 
 #endif

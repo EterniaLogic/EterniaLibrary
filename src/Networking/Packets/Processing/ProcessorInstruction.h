@@ -21,8 +21,8 @@ private:
   INSTRUCTIONTYPE typecode; // what to do? (Determines variables below)
   
   //// Arithmetic (List) <<<<<<<<< GPU (or cpu if no gpu)
-    float number1;
-    float number2;
+    double number1;
+    double number2;
   
   //// Physics (Bulk) <<<<<<<<<< GPU
     // COLLISIONS

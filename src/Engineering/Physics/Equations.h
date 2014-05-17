@@ -14,8 +14,8 @@
 class PhysicsEquations
 {
     //                      m/s**2          meters          kilograms
-    float getAirPressure(float gravity, float radius, float atmosMass); // Get P0 at sea level based on information
-    float getGravity(float mass1, float mass2, float radius); // Gravity of an object with respect to another object (m/s**2)
+    double getAirPressure(double gravity, double radius, double atmosMass); // Get P0 at sea level based on information
+    double getGravity(double mass1, double mass2, double radius); // Gravity of an object with respect to another object (m/s**2)
 };
 
 #endif

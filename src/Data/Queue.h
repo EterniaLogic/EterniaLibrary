@@ -12,7 +12,7 @@
 
 class QueueNode{
     public:
-      CharString *data;
+      void *data;
       QueueNode *Prev, *Next;
 };
 
@@ -21,13 +21,13 @@ class Queue
 private:
     QueueNode *Head,*Tail;
 public:
-    Queue(); 
+    Queue();
     virtual ~Queue();
-  
+
     int Size;
-    void enqueue(CharString* data);
-    CharString* dequeue();
-    CharString* front();
+    void push(void* data);
+    void* pop();
+    void* front();
     int size();
     bool empty();
 };

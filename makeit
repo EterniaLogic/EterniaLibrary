@@ -1,8 +1,12 @@
 #!/bin/sh
-rm ./Sim > /dev/null
+#rm ./Sim > /dev/null
 
 #g++ -pipe -std=c++0x -g3 -O3 -DDEBUG $(find . -name "*.cpp") $(find . -name "*.hpp") -o ./Sim 2> buildErrors.txt
 #g++ -pipe -std=c++0x -g3 -DDEBUG $(find . -name "*.cpp") $(find . -name "*.hpp") -o Sim 2> buildErrors.txt
 
 
-g++ -pipe -std=c++0x -g3 -DDEBUG $(find . -name "*.c") $(find . -name "*.cpp") $(find . -name "*.hpp") -o ./Sim 2> buildErrors.txt
+#g++ -pipe -std=c++0x -g3 -DDEBUG $(find . -name "*.c") $(find . -name "*.cpp") $(find . -name "*.hpp") -o ./Sim 2> buildErrors.txt
+
+cmake . 2> /dev/null
+#make 2> build.txt
+make

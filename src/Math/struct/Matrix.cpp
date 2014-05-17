@@ -24,8 +24,8 @@ Matrix::~Matrix(){
 // clone the matrix so we can use it again without modifying this matrix.
 Matrix* Matrix::clone(){
     Matrix* two = new Matrix();
-    
-    
+
+
     // re-create vertex set.
     const int x = columns;
     const int y = rows;
@@ -33,13 +33,13 @@ Matrix* Matrix::clone(){
     for(int i=0;i<y;i++){
         double* vset2 = new double[x];
         vset[i] = vset2;
-        
+
         // fill in.
         for(int k=0;k<x;k++){
             vset2[k] = values[k][i];
         }
     }
-    
+
     two->set(vset,columns,rows);
 	return two;
 }
@@ -51,7 +51,7 @@ double** Matrix::createMatrixContainer(const int x, const int y){
     for(int i=0; i<x; i++) {
         newset[i] = (double*)calloc(y+1,sizeof(double*));
     }
-    
+
     return newset;
 }
 
@@ -74,7 +74,7 @@ void Matrix::multiply(Matrix* matrix){
     if(columns == matrix->rows){ // n m x n m => mxn w/ size nxm
         double** newMatrix = createMatrixContainer(rows, matrix->columns);
         Matrix* mm = new Matrix(newMatrix,rows, matrix->columns);
-        // multiply 
+        // multiply
         // select row i and dot-product it with column j @ matrix->m
         for(int i=0;i<rows;i++){
             for(int j=0;j<matrix->columns;j++){
@@ -84,12 +84,12 @@ void Matrix::multiply(Matrix* matrix){
                 for(int k=0;k<columns;k++){
                     result += values[i][k] * matrix->values[j][k];
                 }
-                
+
                 // store result into new matrix at row i, column j
                 newMatrix[i][j] = result;
             }
         }
-        
+
         values = newMatrix;
         columns = rows;
         rows = matrix->columns;
@@ -102,11 +102,11 @@ void Matrix::add(Matrix* matrix){
     // get maximum sizes between the two.
     int sizex = (matrix->columns > columns ? matrix->columns : columns);
     int sizey = (matrix->rows > rows ? matrix->rows : rows);
-    
+
     double** newMatrix = createMatrixContainer(sizex, sizey);
     double** MatrixA = matrix->values;
     double** MatrixB = values;
-    
+
     // not done....
 }
 
@@ -142,7 +142,7 @@ void Matrix::transpose(){
     //cout << "transposed-1" << endl;
     Matrix* copy = clone(); // use to reference to.
     double** m2 = createMatrixContainer(rows, columns);
-    
+
     // all we have to do is flip x and y during express copy.
     for(int i=0;i<columns;i++){
         for(int j=0;j<rows;j++){
@@ -150,7 +150,8 @@ void Matrix::transpose(){
             m2[j][i] = copy->values[j][i];
         }
     }
-    
+
+    // clean up!
     for(int i=0;i<rows;i++){
         delete values[i];
     }
@@ -166,33 +167,33 @@ double Matrix::adjMinor(int n, int m){
     // block the row and column of the current, but do the others. If 2x2, solve for Square determinant.
     //  if greater, then separate that region as a matrix and find it's determinate.
     // Minor: (@ 0, 0)
-    //  ! * * 
+    //  ! * *
     //  * a b
     //  * c d
-    
+
     // Minor: @ (1,1)
     // a * b
     // * ! *
     // c * d
-    
+
     double** cValues = createMatrixContainer(columns-1, rows-1);
-    
+
     // used as positional controllers, note that xinc takes precedence over yinc.
     int xinc = 0;
     int yinc = 0;
-    
+
     // solve for before this column.
     int i;
     for(i=0;i<columns;i++){
         // skip this column.
         if(i == m) continue;
-        
+
         int j;
         // loop through rows.
         for(j=0;j<rows;j++){
             // skip this row.
             if(j == n) continue;
-            
+
             // determine row and column in cMatrix.
             cValues[yinc][xinc] = values[j][i];
             yinc++;
@@ -201,15 +202,14 @@ double Matrix::adjMinor(int n, int m){
         xinc++;
         yinc=0;
     }
-    
+
     // solve if needed.
     Matrix* c = new Matrix(cValues, columns-1, rows-1);
     double det = c->determinant();
-    
     // clean up memory and return
-    delete c->values;
+    //delete c->values;
     delete c;
-    
+
     return det;
 }
 
@@ -221,33 +221,33 @@ Matrix* Matrix::adjutant(){
     //cout << "adj-0" << endl;
     Matrix* ret = clone();
     //cout << "adj-1" << endl;
-    
+
     for(int i=0;i<rows;i++){
         for(int j=0;j<columns;j++){
-            ret->values[i][j] = ((i%2 != 0 && j%2 == 0 
-                                    || i%2 == 0 && j%2 != 0) 
+            ret->values[i][j] = ((i%2 != 0 && j%2 == 0
+                                    || i%2 == 0 && j%2 != 0)
                                     ? -1 : 1);
             ret->values[i][j] *= adjMinor(i,j);
         }
     }
-    
+
     for(int i=0;i<rows;i++){
         for(int j=0;j<columns;j++){
             cout << ret->values[i][j] << " ";
         }
         cout << endl;
     }
-    
+
     cout << endl;
     ret->transpose();
-    
+
     for(int i=0;i<rows;i++){
         for(int j=0;j<columns;j++){
             cout << ret->values[i][j] << " ";
         }
         cout << endl;
     }
-    
+
     return ret;
 }
 
@@ -255,14 +255,14 @@ Matrix* Matrix::adjutant(){
 // returns -9999 as non-square or inconclusive.
 double Matrix::determinant(){
     double result = 0;
-    
+
     if(rows == 2 && columns == 2){
         return solveSquareDeterminant(values[0][0],
                             values[1][0],
                             values[0][1],
                             values[1][1]);
     }else if(columns%2 == rows%2){
-    
+
         // This is a square matrix. Find and add the top-row Minors.
         // coefficient matrix:
         //   + - + -
@@ -279,7 +279,7 @@ double Matrix::determinant(){
         }
         return result;
     }
-    
+
     return -9999;
 }
 
@@ -288,7 +288,7 @@ void Matrix::inverse(){
     // adj*determinant = inverse.
     Matrix* A = adjutant();
     A->scale( 1/determinant() );
-    
+
     values = A->values;
 }
 
@@ -308,13 +308,13 @@ void Matrix::rowSolve(double scalar, int row, int toRow){
 // solves a single column using a scaled column.
 void Matrix::colSolve(double scalar, int col, int toCool){
 
-} 
+}
 
 // linearly solves the lower quadrant
 void Matrix::lower(){
-    // Use row operations to solve. 
+    // Use row operations to solve.
     // Also use scalar multiplication to scale rows if necessary.
-    
+
     // method:
     // * * *    * * *    * * *    * * *
     // ! * * => 0 * * => 0 * * => 0 * *
@@ -322,32 +322,32 @@ void Matrix::lower(){
     // (R2/R1) * R1 + R2 -> R2
     // (R3/R2) * R2 + R3 -> R3
     // * * * * *
-    // 0 * * * * 
+    // 0 * * * *
     // 0 0 * * *
     // 0 0 0 * * 1 2 3 4
     // 0 0 0 0 * 1 3 6 10
-    
+
     // First, calculate the second row's first column position.
     // Second, find a row that cancels out ONLY that number.
     // Third, apply the calculation using rowSolve.
-    cout << "lower" << endl;
+    //cout << "lower" << endl;
     for(int j=0;j<columns;j++){
         for(int i=j+1;i<rows;i++){
             // i,j => position of first spot to solve.
-            
+
             // now we need to find the row that can help resolve our problems.
             //      We should be able to start from row 1
             int essrow = -1;
             for(int k=0;k<rows;k++){
                 // determine if this location has a zero at it.
                 if(values[k][j] != 0){
-                    
+
                     // done testing. this row is good.
                     essrow = k;
                     break;
                 }
             }
-            
+
             if(essrow != -1){
                 // apply row change.
                 double scale = -values[essrow][j]/values[i][j];
@@ -355,14 +355,14 @@ void Matrix::lower(){
             }
         }
     }
-    
-    for(int i=0;i<rows;i++){
+
+    /*for(int i=0;i<rows;i++){
         for(int j=0;j<columns;j++){
             cout << values[i][j] << " ";
         }
         cout << endl;
-    }
-    
+    }*/
+
 }
 
 // linearly solves the upper quadrant
@@ -372,7 +372,7 @@ void Matrix::upper(){
 
 void Matrix::echeolonForm(){
     // solve for each Row. If not found, solve for each column.
-    // since this is not done by a human, any mid-term result may be found, 
+    // since this is not done by a human, any mid-term result may be found,
     //  so using (?) R1 to solve will occur most often.
     //  * 0 0
     //  0 * 0
@@ -420,13 +420,13 @@ CharString* Matrix::toOutput(){
         for(int j=0;j<columns;j++){
         double a1 = values[i][j];
             ccc->concata(CharString::ConvertFromInt(a1));
-            
+
             ccc->concata_(" ",1);
         }
-        
+
         ccc->concata_("\n",1);
     }
-    
+
     return ccc;
 }
 
