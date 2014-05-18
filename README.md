@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Eternia Library
 
 Author: Brent Clancy (EterniaLogic)
@@ -125,3 +126,9 @@ No Refunds: Licensee warrants that he inspected The Software according to clause
 Indemnification: Licensee hereby warrants to hold Licensor harmless and indemnify Licensor for any lawsuit brought against it in regards to Licensee’s use of The Software in means that violate, breach or otherwise circumvent this license, Licensor's intellectual property rights or Licensor's title in The Software. Licensor shall promptly notify Licensee in case of such legal action and request Licensee’s consent prior to any settlement in relation to such lawsuit or claim.
 
 Governing Law, Jurisdiction: Licensee hereby agrees not to initiate class-action lawsuits against Licensor in relation to this license and to compensate Licensor for any legal fees, cost or attorney fees should any claim brought by Licensee against Licensor be denied, in part or in full.
+=======
+EterniaLibrary
+==============
+
+Eternia Library is a bare-bones library for C++ that enables everything from cryptography to Engineering concepts and game engine s
+>>>>>>> a5fe2039e026fcb7bbcf2f946233ed970cb8e494
