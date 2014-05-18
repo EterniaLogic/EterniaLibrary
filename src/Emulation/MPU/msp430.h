@@ -28,7 +28,7 @@
 #define _mem_2(addr) this->Memory[addr+1]
 #define _m(addr) _mem(addr)
 #define _m16(addr) _mem(addr) + _mem_2(addr)<<4 // Little Endian has MSB go first
-#define _setTo16Value1(addr, val) _mem(addr) = value & 0xFF00; _mem_2(addr) = value & 0xFF;
+#define _setTo16Value1(addr, value) _mem(addr) = value & 0xFF00; _mem_2(addr) = value & 0xFF;
 #define _setTo16Value2(addr, val, val16) _mem(addr) = val16; _mem_2(addr) = val;
 
 
@@ -104,20 +104,21 @@ public:
    
    // Internal operations
 private:
-   void rrc();
+   void rrc(unsigned int addr);
    void swpb(unsigned int addr);
-   void mov(unsigned int value, unsigned int addr);
-   void rra();
-   void sxt();
-   void push(); // move operator to stack and SP+2
-   void call(); // push twice and change PC
+   void mov(unsigned int addr, unsigned int value);
+   void rra(unsigned int addr);
+   void sxt(unsigned int addr);
+   void push(unsigned int addr); // move operator to stack and SP+2
+   void call(unsigned int addr); // push twice and change PC
    void reti(); // gets location from stack reg
    
    void jne(unsigned int location); // jnz
    void jeq(unsigned int location); // jz
-   void jnc(unsigned int location);
-   void jc(unsigned int location);
-   void jn(unsigned int location);
+   void jnc(unsigned int location); // jump not carry
+   void jc(unsigned int location); // jump carry
+   void jn(unsigned int location); // jump negative
+   void jge(unsigned int location);
    void jl(unsigned int location);
    void jmp(unsigned int location);
 };

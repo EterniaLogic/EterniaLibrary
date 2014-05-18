@@ -91,6 +91,11 @@ void MSP430::smclk(){
     handleUSCIA();
     handleUSCIB();
 }
+
+// execute an instruction
+void MSP430::exec(unsigned int){
+    
+}
    
    
 // get a byte from the memory
