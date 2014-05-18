@@ -1,9 +1,14 @@
 Eternia Library
 
+Version: 0.6a
+
 Author: Brent Clancy (EterniaLogic)
+
 Email: brent.clancy@ttu.edu, eternialogic@gmail.com (alias> dreadslicer@gmail.com)
+
 Original Creation Date: January 13, 2012
-==========
+
+
 
 Language: C++
 
