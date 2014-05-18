@@ -1,7 +1,0 @@
-test placement
-SetTime = 0
-GetTime = 0
-test done.
-8
-4
-4
