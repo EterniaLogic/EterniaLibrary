@@ -14,7 +14,7 @@
 // Move
 
 // Controls how the AI Moves based on inquiry, command, ect.
-// can only be calculated on a client computer.
+// can calculate on client computer or server
 class AIMovement
 {
 public:

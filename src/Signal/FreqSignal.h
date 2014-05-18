@@ -3,15 +3,13 @@
 //
 //  Distributed under a Reference-only License.  The full license is in
 //  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-#ifndef SIGNAL_H
-#define SIGNAL_H
+//----------------------------------------------------------------------------- 
+#ifndef FreqSignal_H_
+#define FreqSignal_H_ 
 
-// abstract signal container
-class Signal
+class FreqSignal
 {
-public:
-        Signal(){}
+    
 };
 
 #endif

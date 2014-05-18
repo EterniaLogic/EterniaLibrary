@@ -8,7 +8,7 @@
 #ifndef AI_Use_h_
 #define AI_Use_h_ 
 
-// Do
+// AI uses an item, vehicle or "thing"
 
 class AIUse
 {
