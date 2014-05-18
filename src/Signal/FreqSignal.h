@@ -9,6 +9,9 @@
 
 class FreqSignal
 {
+public:
+    FreqSignal();
+    
     
 };
 

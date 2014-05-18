@@ -13,3 +13,5 @@
 #include "Gamelogic/test/testGameLogic.h"
 #include "Networking/test/testP2P.h"
 #include "Networking/test/testPackets.h"
+
+#include "Algorithm/Cryptography/CryptoDefines.h"
