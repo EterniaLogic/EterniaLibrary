@@ -1,6 +1,16 @@
 #!/bin/bash
 
 sudo mkdir /usr/include/Eternia
-sudo cp src/* /usr/include/Eternia/ -R
+
+rm include -R
+mkdir include
+cp src/* include/ -R
+
+# filter out tests and cpp files
+rm $(find include -name "*.cpp") $(find include -name "*.c")
+rm $(find include -name "test") -R
+
+# copy into system
+sudo cp include/* /usr/include/Eternia/ -R
 cp libEternia.a libEternia.so
 sudo cp libEternia.so /usr/lib/
