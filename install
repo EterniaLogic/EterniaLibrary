@@ -1,0 +1,6 @@
+#!/bin/bash
+
+sudo mkdir /usr/include/Eternia
+sudo cp src/* /usr/include/Eternia/ -R
+cp libEternia.a libEternia.so
+sudo cp libEternia.so /usr/lib/
