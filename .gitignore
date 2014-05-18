@@ -29,3 +29,6 @@ Makefile
 *.out
 *.app
 >>>>>>> a5fe2039e026fcb7bbcf2f946233ed970cb8e494
+
+# Test files
+test*.txt
