@@ -1,14 +1,14 @@
 #ifndef CONVERT_H_ 
 #define CONVERT_H_
 
-#include "../../Math/struct/vertex.h"
+#include "../struct/vertex.h"
 
-vector* LongToVector(long); // converts a long to a 3-char vector
+/*vector* LongToVector(long); // converts a long to a 3-char vector
 CharString* LongToHex(long);
 
 
 
 long HexToLong(CharString*);
-long VectorToLong(Vertex*);
+long VectorToLong(Vertex*);*/
 
 #endif

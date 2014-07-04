@@ -13,10 +13,10 @@ MSP430::MSP430(){
     init();
     paused = 0;
     // initialize interrupt handle lists using a hashmap
-    interruptHandles = new HashMap<LinkedList<InterruptHandle>>(20);
+    interruptHandles = new HashMap< LinkedList<InterruptHandle> >(20);
     for(int i=0;i<20;i++){
-        HTEntry<LinkedList<InterruptHandle>>* entry = 
-                new HTEntry<LinkedList<InterruptHandle>>(0L,
+        HTEntry<LinkedList<InterruptHandle> >* entry =
+                new HTEntry<LinkedList<InterruptHandle> >(0L,
                         new LinkedList<InterruptHandle>(), 20);
         interruptHandles->add(entry);
     }
@@ -27,23 +27,23 @@ void MSP430::init(){
     for(int i=0;i<MEM_SIZE;i++){
         _mem(i) = 0; // _mem(a) = Memory[a]
     }
-    
+
     // value placeholders for cal data
     _mem(CALDCO_1MHZ) =  _mem(CALBC1_1MHZ) =    CAL1MHZ;
     _mem(CALDCO_8MHZ) =  _mem(CALBC1_8MHZ) =    CAL8MHZ;
     _mem(CALDCO_12MHZ) = _mem(CALBC1_12MHZ) =   CAL12MHZ;
     _mem(CALDCO_16MHZ) = _mem(CALBC1_16MHZ) =   CAL16MHZ;
-    
+
     // Set default values
     // Default 1 MHz clock
     _mem(DCOCTL) = _mem(CALDCO_1MHZ);
     _mem(BCSCTL1) = _mem(CALBC1_1MHZ);
-    
+
     // init vars
     smclk_cnt = 0;
     PC=0xC000; // Program Counter
     SP=0x0400; // Stack Pointer
-    
+
     // reset all other vars
     SR=R3=R4=R5=R6=R7=R8=R9=R10=R11=R12=R13=R14=R15=0;
 }
@@ -58,24 +58,24 @@ void MSP430::mclk(){
             smclk_cnt = 0;
             smclk(); // exe smclk
         } else smclk_cnt++;
-        
+
         // Handle interrupts
         testInterrupts();
-        
+
         // Handle timer countdowns
         runTimer0(1);
         runTimer1(1);
-        
+
         // main loop
         PC++; // increment pc
         exec(PC); // execute line
-        
+
         // non-msp430: Handle master timing (DCOCTL == CALDCO_1MHZ)?
         // BCSCTL2 DIVMx
         char divm = (_m(BCSCTL2) & 0x8|0x10) >> 4;
         char speed = _m(DCOCTL);
         int mdiv = CLOCKS_PER_SEC/(speed*1000000*divm);
-        
+
         // sleep for time
         for(int i=0;i<mdiv;i++);
     }
@@ -86,7 +86,7 @@ void MSP430::smclk(){
     // Handle timer countdowns
     runTimer0(0);
     runTimer1(0);
-    
+
     // handle Serial communications for A and B USCI ports
     handleUSCIA();
     handleUSCIB();
@@ -94,10 +94,10 @@ void MSP430::smclk(){
 
 // execute an instruction
 void MSP430::exec(unsigned int){
-    
+
 }
-   
-   
+
+
 // get a byte from the memory
 // [address]
 unsigned char MSP430::getByte(unsigned int address){
