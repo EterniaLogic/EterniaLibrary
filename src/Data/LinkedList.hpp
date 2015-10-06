@@ -98,10 +98,17 @@ public:
                 //cout << "freeze-2" << endl;
 
                 // copy values in!
-                LinkedNode<T> * current = baseNode->next;
-                for(int i=0;i<_size;i++){
-                    frozen[i] = current->data;
-                    current = current->next;
+                if(baseNode != 0x0){
+                    LinkedNode<T> * current = baseNode->next;
+                    for(int i=0;i<_size;i++){
+                        if(current != 0x0){
+                            frozen[i] = current->data;
+                            current = current->next;
+                        } else{
+                            frozenlen = i;
+                            break;
+                        }
+                    }
                 }
             }else{
                 frozenlen = 0;

@@ -11,7 +11,7 @@
 
 
 // increasing the accuracy could result in some questionably long solutions.
-#define ACCURACY 40
+#define ACCURACY 50
 
 namespace Math
 {

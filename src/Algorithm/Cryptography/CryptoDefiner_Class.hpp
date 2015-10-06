@@ -1,3 +1,9 @@
+//-----------------------------------------------------------------------------
+//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
+//
+//  Distributed under a Reference-only License.  The full license is in
+//  the file COPYRIGHT, distributed as part of this software.
+//-----------------------------------------------------------------------------
 #ifndef CRYPTO_DEFINER_CLASS_H_
 #define CRYPTO_DEFINER_CLASS_H_
 
@@ -64,7 +70,6 @@ public:
         ///////// T Value types
         // basic operators
         T operator =(T val){    set(val);               }
-        
         T operator +(T val){    return get() + val;     }
         T operator -(T val){    return get() - val;     }
         T operator *(T val){    return get() * val;     }
@@ -98,6 +103,8 @@ public:
         }
         
         T set(T val){
+            falseValue = val;
+            
             /*unsigned char* tt = new char[128];
             tt = (T*) (&val);
             
