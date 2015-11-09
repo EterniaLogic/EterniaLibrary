@@ -100,7 +100,11 @@ class HTEntry
         // nodes
         void add(HTEntry<T>* entry){
             HTEntry<T>* current = this;
-            while(current->next != 0x0) current = current->next;
+            while(current->next != 0x0){
+                current = current->next;
+                cout << current << endl;
+            }
+            entry->next = 0x0;
             current->next = entry;
         } // add to the list.
         

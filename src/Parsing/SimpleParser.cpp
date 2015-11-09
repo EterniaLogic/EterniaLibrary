@@ -18,8 +18,8 @@
 
 // parse input and split it by separator.
 // output: LinkedListT of (CharString *)
-LinkedListT* SimpleParseLine(CharString* input, char separator){
-    LinkedListT* list = new LinkedListT();
+LinkedList<CharString>* SimpleParseLine(CharString* input, char separator){
+    LinkedList<CharString>* list = new LinkedList<CharString>();
     
     // do the splitting!!!
     SplitResult* s = input->split(separator, '`');
@@ -35,8 +35,8 @@ LinkedListT* SimpleParseLine(CharString* input, char separator){
 
 // take data in line-by-line and parse it
 // output: LinkedListT of LinkedListT of (CharString *)
-LinkedListT* SimpleParseFile(CharString* filename, char separator){
-    LinkedListT* list = new LinkedListT();
+LinkedList<LinkedList<CharString>>* SimpleParseFile(CharString* filename, char separator){
+    LinkedList<LinkedList<CharString>>* list = new LinkedList<LinkedList<CharString>>();
     //cout << "parse-01" << endl;
     
     ifstream file;
@@ -47,8 +47,8 @@ LinkedListT* SimpleParseFile(CharString* filename, char separator){
     //cout << "parse-1" << endl;
     CharString* read;
     while((read = fileGetLine(file)) != 0x0){
-        if(!read->startsWith(new CharString("#"))){
-            LinkedListT* list2 = SimpleParseLine(read, separator);
+        if(!read->startsWith(new CharString("#")) && !read->startsWith(new CharString("//")) && !read->startsWith(new CharString("["))){
+            LinkedList<CharString>* list2 = SimpleParseLine(read, separator);
             if(list2 != 0x0){
                 list->add(list2);
             }
