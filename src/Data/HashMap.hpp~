@@ -104,7 +104,6 @@ class HTEntry
                 current = current->next;
                 cout << current << endl;
             }
-            entry->next = 0x0;
             current->next = entry;
         } // add to the list.
         

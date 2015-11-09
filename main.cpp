@@ -19,7 +19,7 @@
 #include <iostream>
 
 
-// input redirection
+// input redirection/media/MStuffs/Dev/EterniaLib/EterniaLib/src/Data/test/testAbstractDB.cpp
 void InputRedirection::handleInputLine(CharString* input){
         if(input->Compare("exit",4)){
                 this->stop = true;
@@ -42,6 +42,8 @@ void InputRedirection::handleInputLine(CharString* input){
                 testStructures(a);
         } else if(input->Compare("DataStruTest",12)){
                 testDataStructures();
+        }else if(input->Compare("AbstractDB",10)){
+                testAbstractDB();
         } else if(input->Compare("TestALL",8)){
                 testDataStructures();
                 testMath();
@@ -50,6 +52,7 @@ void InputRedirection::handleInputLine(CharString* input){
                 testStructures(a);
                 testGravity();
                 testASM();
+                testAbstractDB();
         } else if(input->Compare("test",4)){
                 cout << "[Tests]:" << endl;
                 cout << "  AsmTest      - tests embedded assembler" << endl;
@@ -59,6 +62,7 @@ void InputRedirection::handleInputLine(CharString* input){
                 cout << "  EngineerTest - tests Engineering systems" << endl;
                 cout << "  PhysTest     - tests Physics systems" << endl;
                 cout << "  DataStruTest - tests Data structures" << endl;
+                cout << "  AbstractDB   - tests the Abstract Database" << endl;
                 cout << "  NetworkTest  - tests Networking systems (P2p, Server, Client, ect)" << endl;
                 cout << "  RenderTest   - tests rendering systems" << endl;
                 cout << "  TestALL      - tests all the above" << endl;
@@ -80,17 +84,16 @@ void sleep( time_t delay )
 }
 
 int main(){
-#ifdef DEBUG
     //testGravity(); // tests Gravity calculation
     //testMath();
     //testParsers();
     //testDataStructures();
+    testAbstractDB();
 
     //b2 = new Basys2();
     InputRedirection* ir = new InputRedirection();
     ir->redirect();
     //b2->~Basys2();*/
 
-#endif
     return 0;
 }

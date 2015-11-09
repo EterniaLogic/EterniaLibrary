@@ -53,3 +53,6 @@ include/Parsing
 include/Signal
 include/Social
 include/test.h
+add
+bin/Debug
+obj/Debug
