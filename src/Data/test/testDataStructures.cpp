@@ -57,7 +57,7 @@ void testFileCache(){
     }else{
       cout << "FAIL" << endl;
     }
-    fileCache.clean();
+    //fileCache.clean();
 }
 
 void testBitMap(){

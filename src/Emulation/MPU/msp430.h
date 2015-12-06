@@ -61,7 +61,7 @@ private:
    bool paused, T0_up, T1_up;
 
    // internal handle
-   HashMap< LinkedList<InterruptHandle> >* interruptHandles;
+   HashMap<LinkedList<InterruptHandle> >* interruptHandles;
    void handleInterrupt(INTERRUPT_ID id);
    void testInterrupts();
    void exec(unsigned int address); // execute a line with PC

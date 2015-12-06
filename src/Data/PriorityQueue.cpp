@@ -32,6 +32,8 @@ PriorityQueue::~PriorityQueue(){
 // swap values from a to b.
 void PriorityQueue::dataswap(PriorityItem *a, PriorityItem *b){
     // only swap data.
+    if(a==0x0 || b==0x0) return;
+    
     void* tmpdata = a->data;
     int tmppriority = a->priority;
     
@@ -41,50 +43,23 @@ void PriorityQueue::dataswap(PriorityItem *a, PriorityItem *b){
     
     b->data = tmpdata;
     b->priority = tmppriority;
-    
-    
-    // swap all pointers, do not swap data.
-    // broken.
-    
-    /*PriorityItem *tmpleft = a->left, 
-                *tmpright = a->right, 
-                *tmpparent = a->parent;
-    
-    a->left = b->left;
-    if(a->left != 0x0) a->left->parent = a;
-    
-    a->right = b->right;
-    if(a->right != 0x0) a->right->parent = a;
-    
-    a->parent = b->parent;
-    if(a->parent != 0x0){
-        if(a->parent->left == b) a->parent->left = a;
-        if(a->parent->right == b) a->parent->right = a;
-    }
-    
-    // focus on b now.
-    b->left = tmpleft;
-    if(tmpleft != 0x0) b->left->parent = b;
-    
-    b->right = tmpright;
-    if(tmpright != 0x0) b->right->parent = b;
-    
-    b->parent = tmpparent;
-    if(tmpparent != 0x0){
-        if(b->parent->left == a) b->parent->left = b;
-        if(b->parent->right == a) b->parent->right = b;
-    }*/
 }
 
 // remove minimum item.
 void* PriorityQueue::removeMin(){
     // place last-inserted at top.
+    if(head == 0x0) {
+        size=0;
+        return 0x0;
+    }
+    
     if(size == 1){ // head item.
         void* ret = head->data;
         PriorityItem* last = head;
         head = 0x0;
+        size=0;
         
-        delete last;
+        //delete last;
         
         return ret;
     } else if(!empty()){ // not empty and not head.
@@ -105,7 +80,7 @@ void* PriorityQueue::removeMin(){
         }
         
         // remove the last item from the list.
-        delete last;
+        //delete last;
         
         
         // re-sort the entire structure.
@@ -120,6 +95,46 @@ void* PriorityQueue::removeMin(){
     }
 }
 
+void _remove(PriorityQueue* queue, PriorityItem* item){
+        // recursive branch to the arms of the tree
+        if(item == 0x0) return;
+        
+        if(item->left != 0x0){
+                _remove(queue, item->left);
+        }
+        if(item->right != 0x0){
+                _remove(queue, item->right);
+        }
+        
+        // remove all items that have the priority of 2<<32-1 (4.2 billion)
+        if(item->priority == 2<<31-1){
+                // remove this item
+                if(item->parent != 0x0){
+                        if(item->parent->left == item) item->parent->left = 0x0;
+                        if(item->parent->right == item) item->parent->right = 0x0;
+                        item->parent = 0x0;
+                        queue->getSize();
+                }else{
+                        // remove the parent
+                        queue->clearAll();
+                }
+        }
+}
+
+void PriorityQueue::remove(PriorityItem* item){
+        if(item == 0x0) return;
+        
+        item->priority = 2<<31-1;
+        downheap(top());
+        _remove(this,item);
+}
+
+void PriorityQueue::clearAll(){
+        while(!empty()){
+                removeMin();
+        }
+}
+
 // returns the head of the queue.
 PriorityItem* PriorityQueue::top(){
     return head;
@@ -129,6 +144,8 @@ PriorityItem* PriorityQueue::top(){
 // is not perfect, but gets the job done.
 void PriorityQueue::downheap(PriorityItem* current){
     // repeat another time to enforce proper placement.
+    if(current == 0x0) return;
+    
     if(current->left != 0x0){
         this->downheap(current->left);
     }
@@ -172,14 +189,12 @@ void PriorityQueue::upheap(PriorityItem* current){
 
 
 
-
-
 ///////////////////////////////////////////////
 ////////////// insertion systems //////////////
 ///////////////////////////////////////////////
 
 // insert item into list.
-PriorityItem* PriorityQueue::insert(int priority, void* data){
+PriorityItem* PriorityQueue::insert(unsigned long priority, void* data){
     // pick location to add at.
     PriorityItem* location = head == 0x0 ? head : findinsertionposition(head);
     
@@ -223,7 +238,9 @@ int PriorityQueue::depth(PriorityItem* c, int initial){
 
 // determines if the item c's branch is full at the bottom.
 bool PriorityQueue::fullAtDepth(PriorityItem* c){
-    // quick depth check to determine fullness.
+    // quick depth check to determine fullness
+    if(c == 0x0) return false;
+    
     int depthleft = depth(c->left, 0);
     int depthright = depth(c->right, 0);
     if(depthleft > depthright) return false; // is the maxdepth of the left greater then the right?
@@ -241,6 +258,8 @@ bool PriorityQueue::fullAtDepth(PriorityItem* c){
 
 // finds the correct insertion position.
 PriorityItem* PriorityQueue::findinsertionposition(PriorityItem* current){
+    if(current == 0x0) return 0x0;
+    
     if(current->left == current) current->left = 0x0;
     if(current->right == current) current->right = 0x0;
 
@@ -272,6 +291,8 @@ PriorityItem* PriorityQueue::findinsertionposition(PriorityItem* current){
 
 // finds the LAST available tree leaf.
 PriorityItem* PriorityQueue::findlastinsertionposition(PriorityItem* current){
+    if(current == 0x0) return 0x0;
+    
     if(current->left == current) current->left = 0x0;
     if(current->right == current) current->right = 0x0;
 
@@ -303,7 +324,7 @@ PriorityItem* PriorityQueue::findlastinsertionposition(PriorityItem* current){
 }
 
 // replaces the priority at an address.
-bool PriorityQueue::replaceKey(PriorityItem* current, void* at, int key){
+bool PriorityQueue::replaceKey(PriorityItem* current, void* at, unsigned long key){
     // recursively replace key.
     if(current == 0x0) return false;
     

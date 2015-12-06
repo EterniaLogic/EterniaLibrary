@@ -16,7 +16,7 @@ public:
     PriorityItem *left, *right, *parent; // node selections.
     virtual ~PriorityItem();
     
-    int priority;
+    unsigned long priority;
     void* data;
     
 };
@@ -31,6 +31,8 @@ public:
     
     
     void* removeMin(); // removes the minimum item
+    void remove(PriorityItem* item); // remove a specific item
+    void clearAll(); // clear all items
     
     PriorityItem* top(); // returns the head item.
     
@@ -39,7 +41,7 @@ public:
     void downheap(PriorityItem* current);
     void upheap(PriorityItem* current); // sort through list to make sure that it is sorted (Bottom up)
     
-    PriorityItem* insert(int priority, void* data); // insert item into list.
+    PriorityItem* insert(unsigned long priority, void* data); // insert item into list.
     
     
     // depth is useful for searching each branch for height levels.
@@ -50,7 +52,7 @@ public:
     PriorityItem* findinsertionposition(PriorityItem* current); // finds the correct insertion position.
     PriorityItem* findlastinsertionposition(PriorityItem* current); // finds the LAST available tree leaf.
     
-    bool replaceKey(PriorityItem* current, void* at, int key); // replaces a priority via data key.
+    bool replaceKey(PriorityItem* current, void* at, unsigned long key); // replaces a priority via data key.
     
     int getSize(); // returns the total size
     bool empty(); // returns whether the size is zero, or the head is empty.

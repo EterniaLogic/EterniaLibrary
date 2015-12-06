@@ -88,7 +88,7 @@ class LanguageController
 {
 public:
 	LanguageController();
-	void addTranslation(CharString* english, CharString* );
+	void addTranslation(LANG langid, CharString* english, CharString* language); // single-word translation
 	
 	CharString* translateWord(CharString* word);
 	CharString* translateString(CharString* sentence);

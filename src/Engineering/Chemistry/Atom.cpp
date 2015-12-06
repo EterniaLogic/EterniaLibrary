@@ -47,7 +47,7 @@ double Atom::getConductivity(){return 1/resistivity;}
 // Chemical Properties
  // N = p
 double Atom::getAtomicNumber(){
-  
+        return protons;
 }
 
 // W = (p+n+e)

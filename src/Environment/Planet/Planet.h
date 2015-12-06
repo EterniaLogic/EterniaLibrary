@@ -14,6 +14,13 @@
 #include "../../constants.h"
 #include "Ocean.h"
 
+// SURFACE is the maximum possible closeness (i.e: <1000m)
+// 1000 > x > 5000      MIP_NEAR
+// 5000 > x > 65k       MIP_AIR
+// 65k > x > 300k       MIP_ORBIT
+// 300k > 30Mil         MIP_DOT (too small to see, just a dot)
+//
+enum MIPP {MIP_SURFACE,MIP_NEAR,MIP_AIR,MIP_ORBIT,MIP_FAR,MIP_DOT};
 
 /*
  * Seed = single-template system that gets changes and converts it to a 3D Map. can only be

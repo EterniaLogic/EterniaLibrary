@@ -1,6 +1,7 @@
 #ifndef WindowsDriver_h
 #define WindowsDriver_h
 
-// the Windows driver enables this system to run under windows
+// the Linux driver enables this system to run under linux
+// includes requirements from linux to run daemon to kernel level operations
 
 #endif

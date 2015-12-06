@@ -16,3 +16,6 @@
 #include "Networking/test/testPackets.h"
 
 #include "Algorithm/Cryptography/CryptoDefines.h"
+
+#include "Events/test/testEventHandler.hpp"
+#include "Serialization/test/testSerializers.hpp"
