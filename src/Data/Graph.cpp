@@ -22,11 +22,11 @@ Graph::Graph(){
     // lookup verticies to store vertexes in a fast map.
     lookupVerticies = new HashMap<Vertex>(20000);
     lookupEdges = new HashMap<Edge>(20000);
-    
+
     // LinkedListT to store verticies in linear order.
     verticiesList = new LinkedListT();
     edgesList = new LinkedListT();
-    
+
     // leave undeclared null so we can use it later
     //  on.
     AdjacencyMatrix = 0x0;
@@ -56,10 +56,10 @@ Edge* Graph::makeEdge(Vertex* v1, Vertex* v2, int len){
     CharString* cnames = v1->name->clone();
     char* c = new char();
     strcpy(c, "||");
-    
+
     cnames->concata(c,2);
     cnames->concata(v2->name);
-    
+
     // lookup edge to see if it exists in the HashMap.
     Edge* newEdge = lookupEdges->get(cnames);
     if(newEdge == 0x0){
@@ -70,15 +70,15 @@ Edge* Graph::makeEdge(Vertex* v1, Vertex* v2, int len){
 
 // creates the adjacency matrix.
 void Graph::createAdjMatrix(){
-    // initialize matrix    
+    // initialize matrix
     const int L = verticiesList->size();
     // make void** matrix using int* as base.
     //  note: int* has a length of 1
     // This allows us to use very small amounts
     //    of memory.
-    
+
     // also note that we are using triple *.
-    //    this means that we can point to ANYTHING.    
+    //    this means that we can point to ANYTHING.
     // write matrix base
     AdjacencyMatrix = new Edge**[L+1];
     for(int i=0;i<=L;i++){
@@ -89,24 +89,24 @@ void Graph::createAdjMatrix(){
             AdjacencyMatrix[i][j] = 0x0;
         }
     }
-    
+
     // form adjacency matrix
     // loop through every vertex and use their lists of connected items to form a matrix.
     // Note: each item in the list has it's own number.
-    
+
     // freezes the vertex list for very fast traversal.
     // frozen list gets converted to an array list.
-    verticiesList->freeze();     
+    verticiesList->freeze();
     // loop through all of the verticies.
     for(int i=0;i<verticiesList->size();i++){
         Vertex* v = (Vertex*)verticiesList->frozen[i];
-        
-        if(v != 0x0){    
+
+        if(v != 0x0){
             //v->incidentEdges->freeze();
             // loop through the incident edge list.
             for(int j=0;j<v->incidentEdges->size();j++){
                 //Edge* e = (Edge*)v->incidentEdges->frozen[j];
-                Edge* e = (Edge*)v->incidentEdges->get(j);    
+                Edge* e = (Edge*)v->incidentEdges->get(j);
                 if(e != 0x0){
                     Vertex* end = e->b;
                     // determine the index position of the endpoint.
@@ -118,7 +118,7 @@ void Graph::createAdjMatrix(){
                             z = 999999;
                          }
                     }
-                    
+
                     // assign incidence points on adjacency matrix.
                     int x = i+1;
                     int y = endpoint+1;
@@ -128,8 +128,8 @@ void Graph::createAdjMatrix(){
             }
         }
     }
-    
-    
+
+
 #ifdef DEBUGx
     // print-out of this adjacency graph.
     // DEBUG!
@@ -143,7 +143,7 @@ void Graph::createAdjMatrix(){
           }
     }
     cout << endl;
-    
+
      for(int i=0;i<=L;i++){
          for(int j=0;j<=L;j++){
             Edge* e = AdjacencyMatrix[j][i];
@@ -166,7 +166,7 @@ void Graph::insertVertex(Vertex* o){
     if(lookupVerticies->get(o->name) == 0x0){
         // it doesn't exist!
         // add to verticies HashMap.
-        lookupVerticies->add(new HTEntry<Vertex>(o->name, o, lookupVerticies->size));
+        lookupVerticies->add(o->name, o);
         // add to verticies LinkedList.
         verticiesList->add(o);
     }
@@ -184,7 +184,7 @@ void Graph::insertEdge(Edge* e){
     if(lookupEdges->get(cnames) == 0x0){
         // it doesn't exist!
         // add to edges HashMap.
-        lookupEdges->add(new HTEntry<Edge>(cnames,e, lookupEdges->size)); 
+        lookupEdges->add(cnames,e);
         // add to edges LinkedList.
         edgesList->add(e);
     }
@@ -192,12 +192,12 @@ void Graph::insertEdge(Edge* e){
 
 // remove all related edges
 void Graph::eraseVertex(Vertex* v){
-    
+
 }
 
 // erase all related verticies
 void Graph::eraseEdge(Edge* e){
-    
+
 }
 
 // return the verticies list.
@@ -245,11 +245,11 @@ Edge::Edge(){a=b=0X0; data=0;}
 // initialize edge with two verticies and a depth length.
 Edge::Edge(Vertex* A, Vertex* B, int LEN){
     // set edge structure.
-    a=A; 
-    b=B; 
-    
+    a=A;
+    b=B;
+
     data=LEN;
-    
+
     // add this edge.
     a->incidentEdges->add(this);
     b->incidentEdges->add(this);

@@ -14,10 +14,10 @@ void testSimpleParser(){
   strcpy(a,"testParsers.txt");
   
   CharString* location = new CharString(a,15);
-  LinkedList<CharString>* list = SimpleParseFile(location,'=');
+  LinkedListT* list = SimpleParseFile(location,'=');
   
   for(int i=0;i<list->size();i++){
-      LinkedList<CharString>* list2 = list->get(i);
+      LinkedListT* list2 = (LinkedListT*)list->get(i);
       for(int j=0;j<list2->size();j++){
           CharString* item = (CharString*)list2->get(j);
           item->replace(" ","");

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo rm /usr/include/Eternia* -R 2>/dev/null
+sudo rm /usr/lib/libEternia.so -R 2>/dev/null
 sudo mkdir /usr/include/Eternia
 
 rm include -R
@@ -12,5 +14,5 @@ rm $(find include -name "test") -R
 
 # copy into system
 sudo cp include/* /usr/include/Eternia/ -R
-cp libEternia.a libEternia.so
+sudo cp libEternia.a libEternia.so
 sudo cp libEternia.so /usr/lib/

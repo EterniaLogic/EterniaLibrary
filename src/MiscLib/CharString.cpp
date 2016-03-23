@@ -19,23 +19,23 @@ CharString::CharString(){
 CharString::CharString(const char* stringg, const int length){
       //const int lenc = length+1;
   //char cc[lenc];
-      char* cc = new char();
+  char* cc = new char();
   std::strcpy(cc, stringg);
 
-      stringx = cc;
-      len = length;
+  stringx = cc;
+  len = length;
 }
 
 CharString::CharString(const char* stringg){
   int c = 0;
   // quick loop through to find exact size c.
-      while(stringg[c] != 0x0 || stringg[c] > 32){c++;}
+  while(stringg[c] != 0x0 /* || stringg[c] > 32 */){c++;}
 
-  char* cc = new char();
+  char cc[(unsigned int)c];
   strcpy(cc, stringg);
 
-      stringx = cc;
-      len = c;
+  stringx = cc;
+  len = c;
 }
 
 // populate charString and initialize it with data.
@@ -51,7 +51,7 @@ CharString::CharString(char* stringg){
 }
 
 CharString::CharString(string &stringg){
-  stringx = (char*)stringg.c_str();;
+  stringx = (char*)stringg.c_str();
   len = stringg.length();
 }
 
@@ -64,11 +64,20 @@ void CharString::operator =(char* stringg){
   set(stringg);
 }
 
+bool CharString::isValidCharString(){
+    if(this == 0x0) return false;
+    if(this->stringx == 0x0) return false;
+
+    return true;
+}
+
 /* Desc: Takes data from a string and splits it using a splitter
 * Input: String str, it's length, single-character splitter
 * Output: SplitResult from the splitting
 */
 SplitResult* CharString::split(char splitter,char stopper){
+      if(!isValidCharString()) return new SplitResult(0);
+
       SplitResult* sr = new SplitResult(100);
 
       int carrot1=0,carrot2=0,commaplace=0; // positions for exclusive selection
@@ -115,6 +124,7 @@ SplitResult* CharString::split(char splitter,char stopper){
 * Output: none
 */
 void CharString::replace(char* a, char* b){
+    if(!isValidCharString()) return;
     // resizes charString if required. Also shifts charString upon resize.
     // for(int i=copyx;i<len;i++){ out[i-copyx] = stringx[i]; }
 
@@ -188,6 +198,7 @@ void CharString::replace(char* a, char* b){
 * output: Modified char* string of end size
 */
 char* CharString::shiftLeft(const int lenh){
+      if(!isValidCharString()) return (char*)"";
       const int lenx = len-lenh;
       char* out = new char[lenx];
 
@@ -218,7 +229,7 @@ void CharString::setSize(int i){
 *  output: integer converted from char* list.
 */
 int CharString::getInt(){
-      if(stringx == 0x0) return 0;
+      if(!isValidCharString()) return 0;
       int size=len; // size from CharString len
 
 
@@ -245,8 +256,8 @@ int CharString::getInt(){
 void CharString::set_(const char* stringg, const int length){
   char* cc = new char();
   strcpy(cc, stringg);
-      stringx = cc;
-      len = length;
+  stringx = cc;
+  len = length;
 }
 
 // takes input and changes current
@@ -368,7 +379,10 @@ CharString* CharString::ConvertFromLong(long integer){
 *  Output: boolean
 */
 bool CharString::Compare(char* b,int lenx){
+      if(!isValidCharString()) return false;
       bool r = true;
+
+      // else, loop through the string
       for(int i=0;i<lenx;i++){
               if(this->stringx[i] != b[i]) {
                       r=false;
@@ -380,7 +394,9 @@ bool CharString::Compare(char* b,int lenx){
 
 // compare where case is useless
 bool CharString::CompareNoCase(char* b,int lenx){
+      if(!isValidCharString()) return false;
       bool r = true;
+
       for(int i=0;i<lenx;i++){
               char char1 = this->stringx[i], char2 = b[i];
               bool c1 = char1 == char2;
@@ -410,6 +426,7 @@ bool CharString::Compare(CharString* b, bool useCase){
 
 // Compares with another string to determine placement in a sorting scheme.
 SortType CharString::SortCompare(CharString* str){
+      if(!isValidCharString()) return *(new SortType());
       SortType ret = SSame;
       // if str is "longer" then this, than it is more "precise".
 
@@ -444,6 +461,13 @@ SortType CharString::SortCompare(CharString* str){
 
 // contains single character?
 bool CharString::contains(char* c){
+      if(!isValidCharString()) return false;
+      // test to make sure this is not null
+      if(this == 0x0) return *(new SortType());
+
+      // test to make sure that the string is usable
+      if(this->stringx == 0x0) return *(new SortType());
+
       bool co=false;
   // loop through length
       for(int i=0;i<this->len;i++){
@@ -457,6 +481,7 @@ bool CharString::contains(char* c){
 
 
 void CharString::concata_(const char* str, const int lenx){
+  if(!isValidCharString()) return;
   char* cc = new char();
       std::strcpy(cc,str);
   concata(cc, lenx);
@@ -465,6 +490,7 @@ void CharString::concata_(const char* str, const int lenx){
 // Combine CharStrings after the current charString.=
 void CharString::concata(char* str, int lenx){
       // initialize variables
+      if(!isValidCharString()) return;
       int lena = len;
       int lenb = lenx;
       const int lenab = lena+lenb;
@@ -497,6 +523,7 @@ void CharString::concata(CharString* str){
 // Combine CharStrings before the current charString.=
 void CharString::concatb(char* str, int lenx){
       // initialize variables
+      if(!isValidCharString()) return;
       int lena = lenx;
       int lenb = len;
       const int lenab = lena+lenb;
@@ -533,10 +560,12 @@ bool CharString::operator==(CharString* ins){
 
 // determines if the CharString is Empty
 bool CharString::isEmpty(){
+      if(!isValidCharString()) return false;
       return (stringx[0] == 0x0 || len == 0);
 }
 
 CharString* CharString::clone(){
+      if(!isValidCharString()) return new CharString();
       char* cc = new char();
       for(int i=0;i<=len;i++) cc[i] = '\0';
       for(int i=0;i<len;i++){
@@ -547,6 +576,7 @@ CharString* CharString::clone(){
 }
 
 bool CharString::startsWith(CharString* starter){
+  if(!isValidCharString()) return false;
   int lenx = starter->getSize();
   if(lenx > len) return false; // cannot start with something that is bigger!
   // compare each
@@ -556,6 +586,7 @@ bool CharString::startsWith(CharString* starter){
   return true;
 }
 bool CharString::endsWith(CharString* ender){
+  if(!isValidCharString()) return false;
   int lenx = ender->getSize();
   if(lenx > len) return false; // cannot end with something that is bigger!
   // compare each

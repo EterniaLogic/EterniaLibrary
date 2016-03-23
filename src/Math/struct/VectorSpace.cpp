@@ -22,8 +22,8 @@ VectorSpace::VectorSpace(VECSPACE_PROPERTY _property, int N_Dimensions){
 
 VectorSpace* VectorSpace::clone(){
     VectorSpace* two = new VectorSpace();
-    
-    
+
+
     // re-create vertex set.
     const int x = columns;
     const int y = rows;
@@ -31,13 +31,13 @@ VectorSpace* VectorSpace::clone(){
     for(int i=0;i<y;i++){
         double* vset2 = new double[x];
         vset[i] = vset2;
-        
+
         // fill in.
         for(int k=0;k<y;k++){
             vset2[k] = values[k][i];
         }
     }
-    
+
     two->set(vset,columns,rows);
 	return two;
 }
@@ -47,7 +47,7 @@ VectorSpace* VectorSpace::clone(){
 void addVector(vertex* v){
     // add as another row.
     // modify main values function.
-    
+
 }
 
 
@@ -68,16 +68,16 @@ double VectorSpace::innerProduct(VectorSpace* V){
     //  [ Ay * By ]
     //  [ Az * Bz ]
     double result = 0;
-    
+
     if(columns != V->columns || rows != V->rows) return 0;
-    
+
     for(int j=0;j<columns;j++){
     	for(int i=0;i<rows;i++){
             // multiply and sum
             result = values[j][i] * V->values[j][i];
         }
     }
-    
+
     return result;
 }
 
@@ -97,12 +97,12 @@ bool VectorSpace::isBasis(VectorSpace* W){
     if(hasInfiniteDimensions() && !W->hasInfiniteDimensions()){
         return false;
     }
-    
+
     // V spans W and this is Independent?
     if(spans(W) && isIndependent()){
         return true;
     }
-    
+
     return false;
 }
 
@@ -110,7 +110,7 @@ bool VectorSpace::isBasis(VectorSpace* W){
 // returns 0x0 if not possible.
 VectorSpace* VectorSpace::nullity(){
     // cannot find null space if infinite dimensions.
-    if(hasInfiniteDimensions()) return 0x0; 
+    if(hasInfiniteDimensions()) return 0x0;
     VectorSpace* ret = new VectorSpace();
     // Ax = 0
 	// TODO: FIX THIS!!!
@@ -129,7 +129,7 @@ bool VectorSpace::isIndependent(){
     // Rn is never dependent because no number is recurring.
     if(hasInfiniteDimensions()) return true;
 
-	//TODO: FIX THIS!
+	//TODO: Add actual stuff for independence?
 
 	// IDK
 	return false;
@@ -139,12 +139,12 @@ bool VectorSpace::isIndependent(){
 bool VectorSpace::spans(VectorSpace* W){
     // if this is in R3 and W is also in R3, then it is true.
     // else if this is an infinite expansion (All real numbers in R1->3 or n), then false.
-    if(property == W->property) return true; 
+    if(property == W->property) return true;
     else if(property == VS_Rn || property == VS_R1 || property == VS_R2 || property == VS_R3) return false;
-    
+
     // we cannot compare to an infinite-dimensional set.
     if(W->hasInfiniteDimensions()) return false;
-    
+
     // determined by the relationship of: (If W is R3)
     //      1 0 0
     //      0 1 0
@@ -154,32 +154,32 @@ bool VectorSpace::spans(VectorSpace* W){
     //      0 89 0
     //      0 0 45
     // then it spans W.
-    
+
     VectorSpace* vs = clone();
     vs->echeolonForm(); // converts to echeolon form. (Simplest form of this matrix)
-    
+
     // I believe that this means that V spans W means that there are 0s in V, where there are 0s are in W.
     if(isIndependent()){
         // matrix dimension (n) must match W's size.
-        
+
         // is in R1 or in 0 space
         if(W->property == VS_R1 || W->property == VS_0){ // (x) or (0)
             if(columns == 1){
-            
+
             }else return false;
         }else if(W->property == VS_R2){ // in R2? (x,y)
             if(columns == 1){
-            
+
             }else return false;
         }else if(W->property == VS_R3){ // in R3? (x,y,z)
             if(columns == 1){
-            
+
             }else return false;
         }else if(W->property == VS_Rn){ // in Rn? (x,y,z,w, ... n)
-            // must match dim  
+            // must match dim
             if(columns == dim){
-                
-            }else return false;          
+
+            }else return false;
         }
     }else{
         // blah?

@@ -9,31 +9,32 @@ class TestSerializerClass : public BasicSerializer{
 /*private:
         char cc;
         char cc1;
-        int cc2;      */  
-        
+        int cc2;      */
+
 public:
         TestSerializerClass();
 };
 
 TestSerializerClass::TestSerializerClass(){
         initSerializer((void*)this, sizeof(this));
+        //initSerializer((void*)this, sizeof(this));
 }
 
 
 void testSerializers(){
         TestSerializerClass *tsc1 = new TestSerializerClass(); // = new TestSerializerClass();
-        
+
         //char* data = tsc1.serialize();
-        
+
         int size=100;
         char* data = (char*)calloc(size+1,1);
         data[size] = 0x0; // null so that info can be output to console
-        
+
         // copy data over
         for(int i=0;i<size;i++){
                 //data[i] = (char)(((char*)tsc1)[i]);
                 cout << data[i];
         }
-        
+
         cout << data << endl;
 }

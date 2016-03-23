@@ -10,6 +10,8 @@
 #include <fstream>
 #include <math.h>
 
+#include "../PriorityQueue.h"
+
 using namespace std;
 
 // all definitions in bytes (8 bits)
@@ -100,53 +102,6 @@ public:
 	int getSize();
 
 	AbstractDBLinkedNode *head, *tail;
-};
-
-class AbstractDBPriorityItem
-{
-public:
-	AbstractDBPriorityItem();
-	AbstractDBPriorityItem *left, *right, *parent; // node selections.
-	virtual ~AbstractDBPriorityItem();
-
-	int priority;
-	void* data;
-
-};
-class AbstractDBPriorityQueue
-{
-	AbstractDBPriorityItem *head;
-	int size;
-
-	void dataswap(AbstractDBPriorityItem *a, AbstractDBPriorityItem *b); // swap data between two priority items.
-
-	void compareswap(AbstractDBPriorityItem* a, AbstractDBPriorityItem* b);
-	void downheap(AbstractDBPriorityItem* current);
-	void upheap(AbstractDBPriorityItem* current); // sort through list to make sure that it is sorted (Bottom up)
-
-	AbstractDBPriorityItem* insert(int priority, void* data); // insert item into list.
-
-
-	// depth is useful for searching each branch for height levels.
-	int depth(AbstractDBPriorityItem* c, int initial); // find max depth of item c from c's location.
-	bool fullAtDepth(AbstractDBPriorityItem* c); // determines if the branch has even left and right bottoms.
-
-	// finds positions based on leaf locations.
-	AbstractDBPriorityItem* findinsertionposition(AbstractDBPriorityItem* current); // finds the correct insertion position.
-	AbstractDBPriorityItem* findlastinsertionposition(AbstractDBPriorityItem* current); // finds the LAST available tree leaf.
-
-	bool replaceKey(AbstractDBPriorityItem* current, void* at, int key); // replaces a priority via data key.
-public:
-	AbstractDBPriorityQueue();
-	~AbstractDBPriorityQueue();
-
-	void* pop();
-	void* top();
-	void push(int priority, void* data);
-	void clearQueue();
-
-	int getSize(); // returns the total size
-	bool empty(); // returns whether the size is zero, or the head is empty.
 };
 
 class AbstractDBDate

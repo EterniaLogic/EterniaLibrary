@@ -73,7 +73,7 @@ AbstractDBCacheMap::~AbstractDBCacheMap(){
 void AbstractDBCacheMap::clearCache(){
 	bool base_constant = (base == ADB_BASE_MAXV_1000 || base == ADB_BASE_MAXV_10000 || base == ADB_BASE_MAXV_100000 || base == ADB_BASE_MAXV_1000000 || base == ADB_BASE_MAXV_10000000 || base == ADB_BASE_MAXV_100000000);
 	AbstractDBCacheMap* submap;
-	AbstractDBPriorityQueue* subheap;
+	PriorityQueue* subheap;
 
 	// loop through rows
 	for (int i = 0; i < rowList->getSize(); i++){
@@ -86,8 +86,8 @@ void AbstractDBCacheMap::clearCache(){
 			else{
 				// Priority queue more efficient for smaller regions
 				if (row->mapindex < 8){
-					subheap = (AbstractDBPriorityQueue*)mapArray[row->mapindex];
-					subheap->clearQueue();
+					subheap = (PriorityQueue*)mapArray[row->mapindex];
+					subheap->clearAll();
 				}else{
 					submap = (AbstractDBCacheMap*)mapArray[row->mapindex];
 					submap->clearCache();

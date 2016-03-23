@@ -20,25 +20,25 @@
 // output: LinkedListT of (CharString *)
 LinkedList<CharString>* SimpleParseLine(CharString* input, char separator){
     LinkedList<CharString>* list = new LinkedList<CharString>();
-    
+
     // do the splitting!!!
     SplitResult* s = input->split(separator, '`');
-    
+
     for(int i=0;i<s->getSize();i++){
         //cout << s->get(i) << endl;
         list->add(new CharString(s->get(i), s->getLen(i)));
     }
-    
+
     if(list->size() == 0) list = 0x0;
     return list;
 }
 
 // take data in line-by-line and parse it
 // output: LinkedListT of LinkedListT of (CharString *)
-LinkedList<LinkedList<CharString>>* SimpleParseFile(CharString* filename, char separator){
-    LinkedList<LinkedList<CharString>>* list = new LinkedList<LinkedList<CharString>>();
+LinkedList<LinkedList<CharString> >* SimpleParseFile(CharString* filename, char separator){
+    LinkedList<LinkedList<CharString> >* list = new LinkedList<LinkedList<CharString> >();
     //cout << "parse-01" << endl;
-    
+
     ifstream file;
     //cout << "parse-02 " << filename << endl;
     //cout << "parse-02 " << filename->getSize() << endl;
@@ -55,7 +55,7 @@ LinkedList<LinkedList<CharString>>* SimpleParseFile(CharString* filename, char s
         }
     }
     //cout << "parse-3" << endl;
-    
+
     fileClose(file);
 
     return list;

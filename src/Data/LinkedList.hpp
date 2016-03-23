@@ -87,6 +87,29 @@ public:
         LinkedNode<T>* top(){
             return baseNode;
         }
+        
+        T* remove(long index){
+            T* r = 0x0;
+            if(index< _size){
+                // erase element at i
+                LinkedNode<T>* current = baseNode;
+                for(long i=0;i<index;i++){
+                    if(current != 0x0){
+                        if(current->data == index){
+                            if(current->next != 0x0) current->next->prev = 0x0;
+                            if(current->prev != 0x0) current->prev->next = 0x0;
+                            r = current->data;
+                            break;
+                        }else{
+                            current = current->next;
+                        }
+                    }else{
+                        break;
+                    }
+                }
+            }
+            return r;
+        }
 
 		// convert from linkedList to a static list.
         void freeze(){
