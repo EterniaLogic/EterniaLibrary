@@ -36,43 +36,31 @@ void InputRedirection::handleInputLine(CharString* input)
         cout << "[Commands]:" << endl;
         cout << "  test         - lists possible tests" << endl;
         cout << "  exit         - Exits the program" << endl;
-    }
-    else if(input->Compare("MathTest",8))
-    {
+    } else if(input->Compare("MathTest",8)){
         testMath();
-    }
-    else if(input->Compare("AsmTest",7))
-    {
+    } else if(input->Compare("AsmTest",7)){
         testASM();
-    }
-    else if(input->Compare("PhysTest",8))
-    {
+    } else if(input->Compare("ExHashTest",10)){
+        testExHash();
+    } else if(input->Compare("PhysTest",8)){
         testGravity();
-    }
-    else if(input->Compare("EngineerTest",12))
-    {
+    } else if(input->Compare("EngineerTest",12)){
 
-    }if(input->Compare("AbstractDB",10)){
+    } else if(input->Compare("AbstractDB",10)){
         testAbstractDB();
-    }else if(input->Compare("EventHandler",12)){
+    } else if(input->Compare("EventHandler",12)){
         testEventHandler();
-    }
-    else if(input->Compare("GameTest",8))
-    {
-    }
-    else if(input->Compare("LinearTest",10))
-    {
+    } else if(input->Compare("GameTest",8)){
+    } else if(input->Compare("LinearTest",10)){
         char* a = new char();
         strcpy(a,"[LinearTest] ");
         testStructures(a);
     }
-    else if(input->Compare("DataStruTest",12))
-    {
+    else if(input->Compare("DataStruTest",12)){
         testDataStructures();
     }else if(input->Compare("SerializerTest",12)){
         testSerializers();
-    }else if(input->Compare("TestALL",8))
-    {
+    }else if(input->Compare("TestALL",8)){
         testDataStructures();
         testMath();
         char a[14];
@@ -84,8 +72,9 @@ void InputRedirection::handleInputLine(CharString* input)
     else if(input->Compare("test",4))
     {
         cout << "[Tests]:" << endl;
-        cout << "  AbstractDB   - tests the Abstract Database" << endl;
+        cout << "  AbstractDB    - tests the Abstract Database" << endl;
         cout << "  AsmTest       - tests embedded assembler" << endl;
+        cout << "  ExHashTest    - tests embedded assembler" << endl;
         cout << "  MathTest      - tests basic math systems" << endl;
         cout << "  LinearTest    - tests linear algebra" << endl;
         cout << "  GameTest      - tests backend game systems" << endl;

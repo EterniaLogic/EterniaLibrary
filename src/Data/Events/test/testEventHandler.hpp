@@ -30,26 +30,20 @@ void testEventHandler(){
 
         //handler->createEvent(&testObjectTOP, 0);
         EventHandle *handle1 = handler->createEvent(&testObjectMID, 2);
-        handle1->setRecurrences(6);
-        handle1->setPeriod(100);
+        handle1->setRecurrences(6); // "Times" to happen
+        handle1->setPeriod(100); // period in milliseconds
+		
         EventHandle *handle = handler->createEvent(&testObjectBOT, 1);
         handle->setRecurrences(3);
         handle->setPeriod(100);
-        /*cout << "Adding 10000 events...";
-        cout.flush();
-        for(int i=0;i<10000;i++){
-                if(i % 100 == 0) {cout << "add " << i << endl; cout.flush(); }
-                EventHandle *handley = handler->createEvent(&testObjectSingle, 0);
-                handley->setRecurrences(200);
-                //handlex->setPeriod(1); // 1 ms
-                handley->arg1 = (void*)"XXXX GTFO!";
-        }*/
 
+		// add a single event
         EventHandle *handlex = handler->createEvent(&testObjectSingle, 0);
         handlex->setRecurrences(200);
-        handlex->setPeriod(10);
+        handlex->setPeriod(10); 
         handlex->arg1 = (void*)"aaa";
 
+		// slower single event
         EventHandle *handlex2 = handler->createEvent(&testObjectSingle, 0);
         handlex2->setRecurrences(5);
         handlex2->setPeriod(1000);

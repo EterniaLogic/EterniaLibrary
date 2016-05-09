@@ -9,9 +9,14 @@
 #define QUEUE_H_
 
 #include "../MiscLib/CharString.h"
+#include <iostream>
+#include <fstream>
+#include <cstdlib>
+#include <stdio.h>
 
 class QueueNode{
     public:
+      QueueNode();
       void *data;
       QueueNode *Prev, *Next;
 };

@@ -42,7 +42,8 @@ enum ADB_STOREBASE {								  // MapSize: Normal = 32, Extended = b*32. Wide = b
 	// Direct keys
 	ADB_BASE_MAXV_1000, ADB_BASE_MAXV_10000,		  // 1000,	   10000
 	ADB_BASE_MAXV_100000, ADB_BASE_MAXV_1000000,	  // 100000,   1000000  << HIGH PERFORMANCE DATAINDEX SIZES, predefined disk and ram usage
-	ADB_BASE_MAXV_10000000, ADB_BASE_MAXV_100000000 };// 10000000, 100000000 // WARNING: will use a LOT of ram just to hold the main map
+	ADB_BASE_MAXV_10000000, ADB_BASE_MAXV_100000000,  // 10000000, 100000000 // WARNING: will use a LOT of ram just to hold the main map
+	ADB_BASE_DYNAMIC}; // Dynamic base allows for the base to change over the number of values in the file.
 // Using a larger base will achieve a larger maximum index value.
 //		Larger index values are useful if you need to
 //		store extremely large amounts of data with low priority 

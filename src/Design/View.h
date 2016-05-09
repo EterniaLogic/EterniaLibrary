@@ -9,7 +9,7 @@
 //	it can be broken down into a window
 //	the window can be broken down into a layout
 //	that layout can hold multiple lower-level elements.
-// This system should be able to support any library for mid-level design.
+// This system should be able to support any library for high-low-level designs.
 
 // supported bottom-level libraries: (Implemented in EterniaEngine)
 //	OpenGL

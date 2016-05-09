@@ -851,7 +851,7 @@
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Social/Citizen.cpp
 	"Citizen.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/main.cpp
+1459384023 source:/home/eternialogic/Cpp/EterniaLib/main.cpp
 	<time.h>
 	"src/test.h"
 	"src/Economics/economics.h"
@@ -861,8 +861,9 @@
 	"src/asm/asm1.h"
 	<iostream>
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/test.h
+1459382459 /home/eternialogic/Cpp/EterniaLib/src/test.h
 	<ctime>
+	"Algorithm/Cryptography/test/testExHash.hpp"
 	"Engineering/Physics/test/tests.h"
 	"Math/test/testMath.h"
 	"Parsing/test/testParsers.h"
@@ -892,7 +893,7 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Basic.h
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/constants.h
+1458720281 /home/eternialogic/Cpp/EterniaLib/src/constants.h
 	<cstring>
 	"MiscLib/CharString.h"
 
@@ -1005,15 +1006,19 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/PriorityQueue.h
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/Queue.h
+1458725668 /home/eternialogic/Cpp/EterniaLib/src/Data/Queue.h
 	"../MiscLib/CharString.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<stdio.h>
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/TreeList.h
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/test/testAbstractDB.h
 	"../AbstractDatabase/AbstractDB.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
+1459342570 /home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -1196,7 +1201,7 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefiner_Class.hpp
 	"Aes256.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Events/test/testEventHandler.hpp
+1458720642 /home/eternialogic/Cpp/EterniaLib/src/Events/test/testEventHandler.hpp
 	"../EventHandler.h"
 	<iostream>
 
@@ -1356,13 +1361,13 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/PriorityQueue.cpp
 	"PriorityQueue.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Queue.cpp
+1458725817 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Queue.cpp
 	"Queue.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Stack.cpp
 	"Stack.h"
 
-1458696858 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
+1459381358 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
 	"testDataStructures.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/TreeList.cpp
@@ -1412,10 +1417,10 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Emulation/SecondTick.h
 	<time.h>
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
+1458794052 source:/home/eternialogic/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
 	"Atom.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
+1458720001 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
 	"../../constants.h"
 	"../../Design/Colors.h"
 
@@ -1606,7 +1611,7 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/test/testMath.cpp
 	"testMath.h"
 
-1458446397 source:/home/eternialogic/Cpp/EterniaLib/src/MiscLib/CharString.cpp
+1459382433 source:/home/eternialogic/Cpp/EterniaLib/src/MiscLib/CharString.cpp
 	"CharString.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/MiscLib/EfficiencyTimer.cpp
@@ -1719,7 +1724,7 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBRow.cpp
 	"AbstractDB.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
+1459379033 source:/home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
 	"AbstractDB.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/BasicFixedPointerArray.cpp
@@ -1731,7 +1736,7 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.h
 	"LinkedList.hpp"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
+1459342659 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
 	"testAbstractDB.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
@@ -1744,6 +1749,12 @@
 1458462335 /home/eternialogic/Cpp/EterniaLib/src/Data/SpecialTypes.hpp
 	<inttypes.h>
 
-1458692317 source:/home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
+1459389264 source:/home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
 	"ExHash.h"
+
+1459388487 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/test/testExHash.hpp
+	<iostream>
+	<stdlib.h>
+	"../../../MiscLib/CharString.h"
+	"../ExHash.h"
 

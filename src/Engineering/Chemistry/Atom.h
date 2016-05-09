@@ -41,6 +41,10 @@ public:
   
   // Thermal Properties
   
+  
+  // Operations for bondings and ions
+  bool isBondPossible(Atom* atom); // checks valence and ions
+  
 private:
   char* name;
   char* symbol;

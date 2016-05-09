@@ -8,6 +8,8 @@
 #include "CharString.h"
 //#include "SplitResult.h"
 
+#define SIZEOFA(x) (sizeof(x) / sizeof(x[0]))
+
 using namespace std;
 
 // pre-initialize
@@ -27,11 +29,11 @@ CharString::CharString(const char* stringg, const int length){
 }
 
 CharString::CharString(const char* stringg){
-  int c = 0;
+  int c = SIZEOFA(stringg);
   // quick loop through to find exact size c.
-  while(stringg[c] != 0x0 /* || stringg[c] > 32 */){c++;}
+  //while(stringg[c] != 0x0 /* || stringg[c] > 32 */){c++;}
 
-  char cc[(unsigned int)c];
+  char cc[(const unsigned int)c];
   strcpy(cc, stringg);
 
   stringx = cc;

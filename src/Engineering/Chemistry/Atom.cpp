@@ -10,21 +10,21 @@
 using namespace physical::constant; // from constants.h
 
 // assign base constants
-Atom::Atom(const char* Name, const char* label, double Group, double Period, 
-      double Protons, double Neutrons, double Electrons, double Density, 
-      double Resistivity, double ThermConductivity, double Melting, 
+Atom::Atom(const char* Name, const char* label, double Group, double Period,
+      double Protons, double Neutrons, double Electrons, double Density,
+      double Resistivity, double ThermConductivity, double Melting,
       double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENT_TYPE Type){
   name = (char*)Name;
   symbol = (char*)label;
-  
+
   group = Group;
   period = Period;
-  
+
   protons = Protons;
   neutrons = Neutrons;
   electrons = Electrons;
   valence = Valence;
-  
+
   // Properties
   density = Density;
   resistivity = Resistivity;
@@ -32,10 +32,10 @@ Atom::Atom(const char* Name, const char* label, double Group, double Period,
   melting_point = Melting;
   boiling_point = Boiling;
   specific_heat = SpecificHeat;
-  
+
   color = Color; // visible color at room temperature
   type = Type; // Periodic group type
-  
+
 }
 Atom::~Atom(){}
 

@@ -38,7 +38,8 @@ IF(WIN32)
 ENDIF()
 
 
-set( CMAKE_CXX_FLAGS "-pipe -std=c++0x -fPIC -w -DDEBUG -s" )
+# Extra options to GCC when compiling to help enforce memory security
+set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fstack-protector-all -Wstack-protector --param ssp-buffer-size=4" )
 
 #include_directories("Lib/adept.sdk/inc")
 

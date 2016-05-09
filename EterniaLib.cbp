@@ -40,6 +40,7 @@
 		<Unit filename="src/Algorithm/Cryptography/ExHash.h" />
 		<Unit filename="src/Algorithm/Cryptography/md5.cpp" />
 		<Unit filename="src/Algorithm/Cryptography/md5.h" />
+		<Unit filename="src/Algorithm/Cryptography/test/testExHash.hpp" />
 		<Unit filename="src/Algorithm/Pathing/DijkstraPath.hpp" />
 		<Unit filename="src/Algorithm/Sorting/InsertionSort.cpp" />
 		<Unit filename="src/Algorithm/Sorting/InsertionSort.h" />
@@ -145,6 +146,7 @@
 		<Unit filename="src/Engineering/Chemistry/Hadron/Quarks/Gluon.h" />
 		<Unit filename="src/Engineering/Chemistry/Hadron/Quarks/UpQuark.h" />
 		<Unit filename="src/Engineering/Chemistry/Hadron/Quarks/Up_AntiQuark.h" />
+		<Unit filename="src/Engineering/Chemistry/Ore.h" />
 		<Unit filename="src/Engineering/Chemistry/elementals.h" />
 		<Unit filename="src/Engineering/Electrical/Circuit.h" />
 		<Unit filename="src/Engineering/Electrical/Components/Capacitor.h" />
@@ -208,6 +210,8 @@
 		<Unit filename="src/Environment/Space/Galaxy.h" />
 		<Unit filename="src/Environment/Space/Nebula.h" />
 		<Unit filename="src/Environment/Space/Star.h" />
+		<Unit filename="src/Environment/Weather/Air.h" />
+		<Unit filename="src/Environment/Weather/Wind.h" />
 		<Unit filename="src/Environment/environment.h" />
 		<Unit filename="src/Events/EventHandle.cpp" />
 		<Unit filename="src/Events/EventHandle.h" />
@@ -308,6 +312,7 @@
 		<Unit filename="src/Networking/Packets/Processing/ProcessorInstruction.h" />
 		<Unit filename="src/Networking/test/testP2P.h" />
 		<Unit filename="src/Networking/test/testPackets.h" />
+		<Unit filename="src/Parsing/CodeParser.h" />
 		<Unit filename="src/Parsing/HTMLParser.cpp" />
 		<Unit filename="src/Parsing/HTMLParser.h" />
 		<Unit filename="src/Parsing/HTMLTags.h" />

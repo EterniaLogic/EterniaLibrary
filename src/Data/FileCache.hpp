@@ -8,13 +8,15 @@
 #ifndef FILECACHE_H_
 #define FILECACHE_H_
 
-#include "HashMap.hpp"
+// #include "HashMap.hpp"
 #include "LinkedList.hpp"
 #include "../MiscLib/CharString.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
 #include <stdio.h>
+#include <unordered_map>
+#include <string>
 
 using namespace std;
 
@@ -32,7 +34,7 @@ using namespace std;
 template<class T>
 class FileCache
 {
-    HashMap<T>* entries; // RAM entries.
+    unordered_map<long, T> entries; // RAM entries.
     LinkedList<long> *loadedIDs;
     long max_ram_size;
     long current_ram_size;
@@ -59,7 +61,7 @@ class FileCache
             // make sure it's deleted first.
             remove(storeFile);
 
-            entries = new HashMap<T>(40000);
+            //entries = new HashMap<T>(40000);
             loadedIDs = new LinkedList<long>();
 
             // initialize the file.
@@ -73,11 +75,13 @@ class FileCache
         // return!
         T* get(long id){
             //CharString* tt = CharString::ConvertFromLong(id);
-            T* preloaded = entries->getL(id);
+            T preloaded = entries[id];
+			
+			cout << "preloaded" << preloaded << endl;
 
             // return data if it is pre-loaded
-            if(preloaded != 0x0){
-                    return preloaded;
+            if(loadedIDs->get(id) != 0){
+                    return &preloaded;
             }else{
                     dFile.seekg((id * sizeof(T)), ios::beg);
                     dFile.seekp((id * sizeof(T)), ios::beg);
@@ -125,7 +129,9 @@ class FileCache
             if(data == 0x0) return; // determine that it does not exists
 
             loadedIDs->remove(ID); // remove from the ID list
-            entries->removeL(ID); // remove data from the HashMap
+            //entries->removeL(ID); // remove data from the HashMap
+			// entries[ID]
+			
 
             add(data);
         }

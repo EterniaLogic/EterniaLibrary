@@ -5,7 +5,7 @@
 #include "MiscLib/CharString.h"
 
 // Unknown constant used to define unknown doubles
-#define UNKNOWN 1.111e11
+#define UNKNOWN 1.111e-11
 
 namespace physical {
 	namespace unit { // conversion factor

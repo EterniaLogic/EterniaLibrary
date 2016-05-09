@@ -7,12 +7,23 @@
 
 #include "Queue.h"
 
+using namespace std;
+
 ////////////////////////
 //////// Queue! ////////
 ////////////////////////
 
+QueueNode::QueueNode(){
+    data = 0x0;
+    Prev = 0x0;
+    Next = 0x0;
+}
+
 Queue::Queue()
 {
+    Head=0x0;
+    Tail=0x0;
+    Size=0;
 }
 
 // clean up!
@@ -60,12 +71,18 @@ void* Queue::front(){
  */
 void* Queue::pop(){
 	// modify tail.
+	cout << "Queue Head: " << Head << endl; cout.flush();
 	if(Head != 0x0){
 		QueueNode* item = Head;
 		Tail = (Head->Next == 0x0) ? 0x0 : Tail; // set head to null if this is the end of list.
 		Head = Head->Next;
+		
 		if(Head != 0x0) Head->Prev = 0x0;
 		Size--;
+		
+		// error checking
+		if(item == 0x0) return 0x0;
+		 
 		return item->data;
 	}else{
 	    return 0x0;
