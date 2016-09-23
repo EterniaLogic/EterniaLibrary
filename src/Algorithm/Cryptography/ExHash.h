@@ -1,7 +1,7 @@
 #ifndef ExHash_h_
 #define ExHash_h_
 
-#include "../../MiscLib/CharString.h"
+#include "../../Data/CharString.h"
 #include "../../Data/SpecialTypes.hpp"
 
 // algorithm block solely for HashMaps

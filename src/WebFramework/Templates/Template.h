@@ -1,7 +1,8 @@
 #ifndef TEMPLATE_H_
 #define TEMPLATE_H_
 
-#include "../../../Data/LinkedList.hpp"
+#include "../../Data/LinkedList.hpp"
+#include "../../Data/CharString.h"
 
 // Templates are HTML files where certain places can be replaced with active content.
 // A good example is an entire website layout in an HTML file, where the content and

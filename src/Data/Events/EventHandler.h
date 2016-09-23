@@ -1,7 +1,7 @@
 #ifndef EVENTHANDLER_H_
 #define EVENTHANDLER_H_
 
-#include "../Data/PriorityQueue.h"
+#include "../PriorityQueue.h"
 #include "EventHandle.h"
 
 #include <iostream> // testing purposes only

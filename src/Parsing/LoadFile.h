@@ -11,7 +11,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 
 using namespace std;
 

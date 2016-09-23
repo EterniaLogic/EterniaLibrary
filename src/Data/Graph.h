@@ -10,22 +10,23 @@
 
 #include "LinkedListT.h"
 #include "HashMap.hpp"
+#include "../Data/CharString.h"
+#include "../Math/struct/vertex.h"
 
 // pre-load library types:
-class Vertex;
-class Edge;
-class CharString;
+class GVertex;
+class GEdge;
 
 
 class Graph
 {
     // maintained automatically, may be slow.
-    Edge*** AdjacencyMatrix; 
+    GEdge*** AdjacencyMatrix; 
     
     // hashmap to store verticies for looking up new verticies
     // 	 Used to quickly find certain verticies by a name.
-    HashMap<Vertex>* lookupVerticies;
-    HashMap<Edge>* lookupEdges;
+    HashMap<GVertex>* lookupVerticies;
+    HashMap<GEdge>* lookupEdges;
     
     // LinkedListT to store verticies in linear order.
     LinkedListT* verticiesList;
@@ -35,26 +36,24 @@ public:
     Graph();
     virtual ~Graph();
     
-    Vertex* makeVertex(CharString* _name); // initialize a vertex if it doesn't exist.
-    Edge* makeEdge(Vertex* v1, Vertex* v2, int len); // creates an edge if it doesn't exist.
+    GEdge* makeEdge(GVertex* v1, GVertex* v2, int len); // creates an edge if it doesn't exist.
     
     void createAdjMatrix(); // Computes the adjacency Matrix for each vertex.
     
-    void insertVertex(Vertex* o); // inserts a vertex if it doesn't exist.
-    void insertEdge(Edge* e); // inserts an edge if it doesn't exist.
-    void eraseVertex(Vertex* v); // remove all related edges
-    void eraseEdge(Edge* e); // erase an edge
+    void insertVertex(GVertex* o); // inserts a vertex if it doesn't exist.
+    void insertEdge(GEdge* e); // inserts an edge if it doesn't exist.
+    void eraseVertex(GVertex* v); // remove all related edges
+    void eraseEdge(GEdge* e); // erase an edge
     LinkedListT* verticies(); // returns the full list of verticies
     LinkedListT* edges(); // returns the full list of edges
 };
 
 
-class Vertex
+class GVertex
 {
 public:
-    Vertex();
-    Vertex(CharString* _name);
-    virtual ~Vertex();
+    GVertex();
+    virtual ~GVertex();
     
     // involved edge types, static list of len Elen.
     // note: on a directed graph, only E edges that are beginning with this node will be available.
@@ -62,36 +61,28 @@ public:
     
     int label;
     
-    // internal storage
-    CharString* name;
-    void* data;
-    Graph *graph;
-    
     LinkedListT* vertexList; // structure that stores this.
     
-    int distance;
+    vertex location;
 };
 
-class Edge
+class GEdge
 {
 public:
-    Edge();
-    Edge(Vertex *a_, Vertex *b_, int c);
-    virtual ~Edge();
+    GEdge();
+    GEdge(GVertex *a_, GVertex *b_, int c);
+    virtual ~GEdge();
     
     // pair
-    Vertex *a, *b;
+    GVertex *a, *b;
     
     // data, such as distance between pair.
     // applications are casted with (type*)
     int data;
     
-    // refer to the graph.
-    Graph *graph;
     
-    
-    bool isAdjacentTo(Vertex* v);
-    Vertex* opposite(Vertex* v);
+    bool isAdjacentTo(GVertex* v);
+    GVertex* opposite(GVertex* v);
     
     
     LinkedListT* edgeList; // structure that stores this.

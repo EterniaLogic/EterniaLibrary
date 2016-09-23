@@ -9,8 +9,8 @@
 
 #include "src/test.h"
 // include most sections to find include errors if any
-#include "src/Economics/economics.h"
-#include "src/Social/Government/Government.h"
+//#include "src/Economics/economics.h"
+//#include "src/Social/Government/Government.h"
 #include "src/Math/statistics/statistics.h"
 //#include "src/Engineering/Electrical/Interfaces/FPGA/Basys2.h"
 #include "src/Parsing/InputRedirection.h"
@@ -19,7 +19,11 @@
 #include <iostream>
 
 #define DEBUG
+//#define GAME
 
+#ifdef GAME
+    #include "src/Gamelogic/test/test.h"
+#endif
 
 // input redirection
 void InputRedirection::handleInputLine(CharString* input)

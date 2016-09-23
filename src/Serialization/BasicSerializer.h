@@ -10,6 +10,8 @@
 //      static methods to convert over.
 
 
+// All sub-classes must have the declaration for BasicSerializer
+
 namespace BasicSerialize{
         // usage: BasicSerialize::serializeClass((void*)object, sizeof(object));
         char* serializeClass(void* object, int size); // use a pointer for the class

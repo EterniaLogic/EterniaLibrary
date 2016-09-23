@@ -27,7 +27,7 @@ void testSerializers(){
         //char* data = tsc1.serialize();
 
         int size=100;
-        char* data = (char*)calloc(size+1,1);
+        char* data = (char*)calloc(size+1,sizeof(char));
         data[size] = 0x0; // null so that info can be output to console
 
         // copy data over

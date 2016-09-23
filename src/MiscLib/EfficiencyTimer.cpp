@@ -11,8 +11,8 @@
 
 using namespace std;
 
-EfficiencyTimer::EfficiencyTimer()
-{
+EfficiencyTimer::EfficiencyTimer(){
+    
 }
 
 void EfficiencyTimer::Start(){

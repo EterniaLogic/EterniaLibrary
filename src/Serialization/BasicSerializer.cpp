@@ -20,7 +20,7 @@ namespace BasicSerialize{
         }
         
         long classChecksum(void* object, int size){
-        
+            
         }
 }
 

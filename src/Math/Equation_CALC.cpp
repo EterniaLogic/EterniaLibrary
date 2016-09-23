@@ -21,8 +21,10 @@
 // i( 1 ) = x
 // i( cx^n ) = (x^(n+1)) / (n/c)
 // i(  )
+
+
 Equation* Equation::derive(char* wrt){
-        
+    
 }
 
 Equation* Equation::integrate(char* wrt){

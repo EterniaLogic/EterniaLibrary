@@ -9,7 +9,6 @@
 
 using namespace std;
 using namespace Math;
-using namespace Math::Trig;
 
 void testBasics(char* a){
     if(abs(-999) != 999) { cout << a << "abs(-999) fail." << endl; }

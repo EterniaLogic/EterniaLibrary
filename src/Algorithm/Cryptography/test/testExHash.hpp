@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "../../../MiscLib/CharString.h"
+#include "../../../Data/CharString.h"
 #include "../ExHash.h"
 using namespace std;
 

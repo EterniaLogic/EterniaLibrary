@@ -46,10 +46,10 @@ Matrix* Matrix::clone(){
 
 double** Matrix::createMatrixContainer(const int x, const int y){
     // initialize x-wide container.
-    double** newset =  (double**)calloc(x+1,sizeof(double**));
+    double** newset =  (double**)calloc(x+1,sizeof(double*));
     // initialize all of the arrays.
     for(int i=0; i<x; i++) {
-        newset[i] = (double*)calloc(y+1,sizeof(double*));
+        newset[i] = (double*)calloc(y+1,sizeof(double));
     }
 
     return newset;

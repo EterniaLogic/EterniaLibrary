@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include "LoadFile.h"
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 #define HASHTABLE_H_
 
 #include <iostream>
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 
 
 

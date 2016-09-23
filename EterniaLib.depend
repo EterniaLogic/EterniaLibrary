@@ -60,14 +60,14 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/constants.h
 	<cstring>
-	"MiscLib/CharString.h"
+	"Data/CharString.h"
 
-1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/MiscLib/CharString.h
+1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.h
 	"CharString.h"
 	"SplitResult.h"
 	<iostream>
 
-1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/MiscLib/SplitResult.h
+1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
 	<cstring>
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.h
@@ -90,7 +90,7 @@
 	"Basic.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.h
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	<cstdlib>
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.h
@@ -98,14 +98,14 @@
 	"vertex.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	"../Data/Stack.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.h
 	<iostream>
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
@@ -119,13 +119,13 @@
 	<iostream>
 	"LoadFile.h"
 	"../Data/LinkedListT.h"
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
 	<iostream>
 	<fstream>
 	<string>
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.h
 
@@ -154,7 +154,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileCache.hpp
 	"HashMap.hpp"
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	<iostream>
 	<fstream>
 	<cstdlib>
@@ -162,7 +162,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashMap.hpp
 	<iostream>
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.h
 
@@ -171,7 +171,7 @@
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.h
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.h
 
@@ -231,7 +231,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/ItemBase.h
 	"../../Data/LinkedList.hpp"
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"DynamicAttribute.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
@@ -327,7 +327,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/Packets/Processing/CPU/SecuredCPUInstructables.hpp
 	"../../../../Data/LinkedList.hpp"
-	"../../../../MiscLib/CharString.h"
+	"../../../../Data/CharString.h"
 	"../../Packet.hpp"
 	"../ProcessorInstruction.h"
 
@@ -339,7 +339,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/Packets/Processing/GPU/SecuredGPUInstructables.hpp
 	"../../../../Data/LinkedList.hpp"
-	"../../../../MiscLib/CharString.h"
+	"../../../../Data/CharString.h"
 	"../../Packet.hpp"
 	"../ProcessorInstruction.h"
 
@@ -369,7 +369,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Economics/Banking/Banking.h
 	"../../Data/SecureFileCache.hpp"
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"Account.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SecureFileCache.hpp
@@ -410,7 +410,7 @@
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.h
 	<iostream>
 	"LoadFile.h"
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.h
 
@@ -465,7 +465,7 @@
 	"FileSystem.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.cpp
 	"Graph.h"
@@ -480,7 +480,7 @@
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.h
 	<iostream>
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.cpp
 	"Heap.h"
@@ -600,7 +600,7 @@
 	"ComponentRating.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"PowerValue.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
@@ -708,7 +708,7 @@
 	"LanguageController.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.cpp
 	"Convert.h"
@@ -750,17 +750,17 @@
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.cpp
 	"testMath.h"
 
-1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/MiscLib/CharString.cpp
+1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.cpp
 	"CharString.h"
 
-1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/MiscLib/EfficiencyTimer.cpp
+1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/EfficiencyTimer.cpp
 	"EfficiencyTimer.h"
 	<iostream>
 	<ctime>
 
-1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/MiscLib/EfficiencyTimer.h
+1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/EfficiencyTimer.h
 
-1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/MiscLib/SplitResult.cpp
+1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.cpp
 	"SplitResult.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/NetworkManager.cpp
@@ -851,17 +851,15 @@
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Social/Citizen.cpp
 	"Citizen.h"
 
-1459384023 source:/home/eternialogic/Cpp/EterniaLib/main.cpp
+1473773028 source:/home/eternialogic/Cpp/EterniaLib/main.cpp
 	<time.h>
 	"src/test.h"
-	"src/Economics/economics.h"
-	"src/Social/Government/Government.h"
 	"src/Math/statistics/statistics.h"
 	"src/Parsing/InputRedirection.h"
 	"src/asm/asm1.h"
 	<iostream>
 
-1459382459 /home/eternialogic/Cpp/EterniaLib/src/test.h
+1473390260 /home/eternialogic/Cpp/EterniaLib/src/test.h
 	<ctime>
 	"Algorithm/Cryptography/test/testExHash.hpp"
 	"Engineering/Physics/test/tests.h"
@@ -870,10 +868,8 @@
 	"Data/test/testDataStructures.h"
 	"Data/test/testAbstractDB.h"
 	"Gamelogic/test/testGameLogic.h"
-	"Networking/test/testP2P.h"
-	"Networking/test/testPackets.h"
 	"Algorithm/Cryptography/CryptoDefines.h"
-	"Events/test/testEventHandler.hpp"
+	"Data/Events/test/testEventHandler.hpp"
 	"Serialization/test/testSerializers.hpp"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Physics/test/tests.h
@@ -891,18 +887,19 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/struct/vertex.h
 	"../Functions/Basic.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Basic.h
+1473782297 /home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Basic.h
+	<malloc.h>
 
 1458720281 /home/eternialogic/Cpp/EterniaLib/src/constants.h
 	<cstring>
-	"MiscLib/CharString.h"
+	"Data/CharString.h"
 
-1458446295 /home/eternialogic/Cpp/EterniaLib/src/MiscLib/CharString.h
+1473775828 /home/eternialogic/Cpp/EterniaLib/src/Data/CharString.h
 	"CharString.h"
 	"SplitResult.h"
 	<iostream>
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/MiscLib/SplitResult.h
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/SplitResult.h
 	<cstring>
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.h
@@ -921,11 +918,11 @@
 	"Eval.h"
 	"Equation.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Trig.h
+1473782815 /home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Trig.h
 	"Basic.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/struct/Matrix.h
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	<cstdlib>
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/struct/VectorSpace.h
@@ -933,17 +930,17 @@
 	"vertex.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/Eval.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	"../Data/Stack.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/Stack.h
 	<iostream>
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/Equation.h
-	"../MiscLib/CharString.h"
+1473554090 /home/eternialogic/Cpp/EterniaLib/src/Math/Equation.h
+	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/LinkedList.hpp
+1473783790 /home/eternialogic/Cpp/EterniaLib/src/Data/LinkedList.hpp
 	<iostream>
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Parsing/test/testParsers.h
@@ -954,13 +951,13 @@
 	<iostream>
 	"LoadFile.h"
 	"../Data/LinkedList.hpp"
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Parsing/LoadFile.h
 	<iostream>
 	<fstream>
 	<string>
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Parsing/SecuredParser.h
 	"SimpleParser.h"
@@ -986,18 +983,19 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/BitMap.h
 	"../Parsing/LoadFile.h"
 
-1458696043 /home/eternialogic/Cpp/EterniaLib/src/Data/FileCache.hpp
-	"HashMap.hpp"
+1473767324 /home/eternialogic/Cpp/EterniaLib/src/Data/FileCache.hpp
 	"LinkedList.hpp"
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	<iostream>
 	<fstream>
 	<cstdlib>
 	<stdio.h>
+	<unordered_map>
+	<string>
 
 1458696588 /home/eternialogic/Cpp/EterniaLib/src/Data/HashMap.hpp
 	<iostream>
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	"../Algorithm/Cryptography/ExHash.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/Heap.h
@@ -1007,7 +1005,7 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/PriorityQueue.h
 
 1458725668 /home/eternialogic/Cpp/EterniaLib/src/Data/Queue.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 	<iostream>
 	<fstream>
 	<cstdlib>
@@ -1027,7 +1025,7 @@
 	<math.h>
 	"../PriorityQueue.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.h
+1473387791 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.h
 	"../gamelogic.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/gamelogic.h
@@ -1049,7 +1047,7 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/AI/AIAttack.h
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/AI/AICommand.h
+1473647512 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/AI/AICommand.h
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/AI/AIDecide.h
 
@@ -1057,38 +1055,42 @@
 	"../../Math/struct/vertex.h"
 	"../../Data/LinkedList.hpp"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/AI/AIUse.h
+1473644714 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/AI/AIUse.h
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.h
+1473781972 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.h
 	"AvatarHealth.h"
-	"Skill.h"
+	"AvatarGear.h"
+	"SkillSet.h"
+	"../Location.h"
+	"../../Math/struct/vertex.h"
+	"../Crafting/CraftingStats.h"
+	"../../Serialization/SpecificSerializer.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
+1473781157 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
 	"../../Data/LinkedList.hpp"
 	"Disease.h"
 	"Mood.h"
+	"../../Serialization/SpecificSerializer.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.h
+1473773110 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.h
 	"../../Data/LinkedList.hpp"
-	"Avatar.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.h
-	"Avatar.h"
+1473769100 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.h
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Skill.h
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/BaseInventory.h
+1473602428 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/BaseInventory.h
 	"../../Data/LinkedList.hpp"
 	"ItemBase.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/ItemBase.h
+1473391191 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/ItemBase.h
 	"../../Data/LinkedList.hpp"
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"DynamicAttribute.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
+1473612339 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicEquip.h
+1473772511 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicEquip.h
 	"ItemBase.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Networking/test/testP2P.h
@@ -1179,7 +1181,7 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Networking/Packets/Processing/CPU/SecuredCPUInstructables.hpp
 	"../../../../Data/LinkedList.hpp"
-	"../../../../MiscLib/CharString.h"
+	"../../../../Data/CharString.h"
 	"../../Packet.hpp"
 	"../ProcessorInstruction.h"
 
@@ -1191,7 +1193,7 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Networking/Packets/Processing/GPU/SecuredGPUInstructables.hpp
 	"../../../../Data/LinkedList.hpp"
-	"../../../../MiscLib/CharString.h"
+	"../../../../Data/CharString.h"
 	"../../Packet.hpp"
 	"../ProcessorInstruction.h"
 
@@ -1213,10 +1215,10 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Events/EventHandle.h
 	<time.h>
 
-1458358351 /home/eternialogic/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
+1473776898 /home/eternialogic/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
 	"../BasicSerializer.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
+1473772716 /home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
 	<stdlib.h>
 	<malloc.h>
 
@@ -1228,7 +1230,7 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Economics/Banking/Banking.h
 	"../../Data/SecureFileCache.hpp"
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"Account.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/SecureFileCache.hpp
@@ -1269,7 +1271,7 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Parsing/InputRedirection.h
 	<iostream>
 	"LoadFile.h"
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/asm/asm1.h
 
@@ -1324,15 +1326,17 @@
 	"FileSystem.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/FileSystem.h
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
-1458359878 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Graph.cpp
+1473758036 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Graph.cpp
 	"Graph.h"
 	<iostream>
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/Graph.h
+1473757992 /home/eternialogic/Cpp/EterniaLib/src/Data/Graph.h
 	"LinkedListT.h"
 	"HashMap.hpp"
+	"../Data/CharString.h"
+	"../Math/struct/vertex.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/LinkedListT.h
 
@@ -1341,7 +1345,7 @@
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/HashTable.h
 	<iostream>
-	"../MiscLib/CharString.h"
+	"../Data/CharString.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Heap.cpp
 	"Heap.h"
@@ -1367,7 +1371,7 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Stack.cpp
 	"Stack.h"
 
-1459381358 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
+1473767234 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
 	"testDataStructures.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/TreeList.cpp
@@ -1424,7 +1428,7 @@
 	"../../constants.h"
 	"../../Design/Colors.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Design/Colors.h
+1459406250 /home/eternialogic/Cpp/EterniaLib/src/Design/Colors.h
 	"../Math/struct/vertex.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
@@ -1461,7 +1465,7 @@
 	"ComponentRating.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"PowerValue.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
@@ -1568,8 +1572,8 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Localization/LanguageController.cpp
 	"LanguageController.h"
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/Localization/LanguageController.h
-	"../MiscLib/CharString.h"
+1473781659 /home/eternialogic/Cpp/EterniaLib/src/Localization/LanguageController.h
+	"../Data/CharString.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Conversion/Convert.cpp
 	"Convert.h"
@@ -1580,16 +1584,16 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Equation.cpp
 	"Equation.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Equation_CALC.cpp
+1473553578 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Equation_CALC.cpp
 	"Equation.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Eval.cpp
 	"Eval.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
+1473782377 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
 	"Basic.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Trig.cpp
+1473782798 source:/home/eternialogic/Cpp/EterniaLib/src/Math/Functions/Trig.cpp
 	"Trig.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/struct/Basis.cpp
@@ -1598,7 +1602,7 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Math/struct/Basis.h
 	"Matrix.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
+1473776940 source:/home/eternialogic/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
 	"Matrix.h"
 	<iostream>
 
@@ -1608,20 +1612,20 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/struct/vertex.cpp
 	"vertex.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Math/test/testMath.cpp
+1473782831 source:/home/eternialogic/Cpp/EterniaLib/src/Math/test/testMath.cpp
 	"testMath.h"
 
-1459382433 source:/home/eternialogic/Cpp/EterniaLib/src/MiscLib/CharString.cpp
+1473781818 source:/home/eternialogic/Cpp/EterniaLib/src/Data/CharString.cpp
 	"CharString.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/MiscLib/EfficiencyTimer.cpp
+1473534734 source:/home/eternialogic/Cpp/EterniaLib/src/Data/EfficiencyTimer.cpp
 	"EfficiencyTimer.h"
 	<iostream>
 	<ctime>
 
-1457662179 /home/eternialogic/Cpp/EterniaLib/src/MiscLib/EfficiencyTimer.h
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/EfficiencyTimer.h
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/MiscLib/SplitResult.cpp
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/SplitResult.cpp
 	"SplitResult.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Networking/NetworkManager.cpp
@@ -1739,22 +1743,291 @@
 1459342659 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
 	"testAbstractDB.h"
 
-1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
+1473780295 source:/home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
 	"BasicSerializer.h"
 
 1458460063 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.h
-	"../../MiscLib/CharString.h"
+	"../../Data/CharString.h"
 	"../../Data/SpecialTypes.hpp"
 
 1458462335 /home/eternialogic/Cpp/EterniaLib/src/Data/SpecialTypes.hpp
 	<inttypes.h>
 
-1459389264 source:/home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
+1459390099 source:/home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
 	"ExHash.h"
 
 1459388487 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/test/testExHash.hpp
 	<iostream>
 	<stdlib.h>
-	"../../../MiscLib/CharString.h"
+	"../../../Data/CharString.h"
 	"../ExHash.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Events/EventHandle.cpp
+	"EventHandle.h"
+	<iostream>
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/Events/EventHandle.h
+	<time.h>
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/Events/EventHandler.cpp
+	"EventHandler.h"
+	<iostream>
+
+1473390288 /home/eternialogic/Cpp/EterniaLib/src/Data/Events/EventHandler.h
+	"../PriorityQueue.h"
+	"EventHandle.h"
+	<iostream>
+
+1473783495 /home/eternialogic/Cpp/EterniaLib/src/Serialization/SpecificSerializer.h
+	<stdlib.h>
+	<malloc.h>
+	"../Data/CharString.h"
+	"../Data/LinkedList.hpp"
+	"../Algorithm/Cryptography/md5.h"
+
+1473767434 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarGear.h
+	"../Inventory/BaseInventory.h"
+	"../Inventory/DynamicEquip.h"
+
+1473781491 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.h
+	"../../Serialization/SpecificSerializer.h"
+
+1473767817 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Location.h
+	"../Math/struct/vertex.h"
+
+1473781104 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.h
+	"../../Serialization/SpecificSerializer.h"
+
+1459737226 /home/eternialogic/Cpp/EterniaLib/src/Data/Events/test/testEventHandler.hpp
+	"../EventHandler.h"
+	<iostream>
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.cpp
+	"CLKProvider.h"
+
+1473782413 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.h
+	"Signal.h"
+	<time.h>
+	"../../../Data/LinkedList.hpp"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Signal/Signal.h
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.cpp
+	"PWM.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.h
+	"Signal.h"
+	<time.h>
+
+1473781928 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.cpp
+	"Avatar.h"
+
+1473781864 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.cpp
+	"AvatarHealth.h"
+
+1473771741 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.cpp
+	"SkillSet.h"
+
+1473771831 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.cpp
+	"CraftingStats.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.cpp
+	"Tax.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.h
+	"TaxRefund.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/TaxRefund.h
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.cpp
+	"Ocean.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.h
+
+1473784110 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.cpp
+	"Planet.h"
+
+1473782617 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.h
+	"../../../Math/struct/vertex.h"
+	"../../../Math/Math.h"
+	"../../../Data/LinkedList.hpp"
+	"../../../Algorithm/RNG/RNG_Twister.hpp"
+	"../../../Data/Graph.h"
+	"../../../constants.h"
+	"Ocean.h"
+
+1473782654 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/RNG/RNG_Twister.hpp
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet_Atmosphere.cpp
+	"Planet.h"
+
+1473767834 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Location.cpp
+	"Location.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.cpp
+	"Citizen.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.h
+
+1473393277 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.cpp
+	"testGameLogic.h"
+
+1473776883 source:/home/eternialogic/Cpp/EterniaLib/src/Programming/Program.cpp
+	"Program.h"
+
+1473762036 /home/eternialogic/Cpp/EterniaLib/src/Programming/Program.h
+	"../Data/CharString.h"
+	"../Data/LinkedList.hpp"
+	"ProgramNode.h"
+	"ProgramError.h"
+	"ProgramVariable.h"
+	"../Math/Math.h"
+	<cstdlib>
+	<math.h>
+
+1473761932 /home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramNode.h
+
+1473761536 /home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramError.h
+
+1473763107 /home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramVariable.h
+	"../Data/CharString.h"
+
+1473763141 source:/home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramError.cpp
+	"ProgramError.h"
+
+1473763121 source:/home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramVariable.cpp
+	"ProgramVariable.h"
+
+1459738070 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/HTMLServer.cpp
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/NetworkManager.cpp
+	"NetworkManager.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/NetworkManager.h
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.cpp
+	"P2PBoundaries.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.h
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PCPUServer.cpp
+	"P2PCPUServer.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PCPUServer.h
+	"P2PNode.h"
+	"P2PPacket.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNode.h
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.h
+	"P2PNode.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PDataServer.cpp
+	"P2PDataServer.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PDataServer.h
+	"P2PInc.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PInc.h
+	"P2PPacket.h"
+	"P2PBoundaries.h"
+	"P2PNode.h"
+	"P2PCPUServer.h"
+	"P2PDataServer.h"
+	"P2PStreamServer.h"
+	"P2PIRCServer.h"
+	"P2PLServer.h"
+	"P2PLClient.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PStreamServer.h
+	"P2PInc.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PIRCServer.h
+	"P2PInc.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLServer.h
+	"P2PInc.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLClient.h
+	"P2PInc.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PIRCServer.cpp
+	"P2PIRCServer.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLClient.cpp
+	"P2PLClient.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLServer.cpp
+	"P2PLServer.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PManager.cpp
+	"P2PManager.h"
+
+1457662179 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PManager.h
+	"P2PInc.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNode.cpp
+	"P2PNode.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNodeCache.cpp
+	"P2PNodeCache.h"
+
+1473782869 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNodeCache.h
+	"P2PNode.h"
+	"../../../../Data/LinkedList.hpp"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.cpp
+	"P2PPacket.h"
+
+1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PStreamServer.cpp
+	"P2PStreamServer.h"
+
+1473767031 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/SockClient.cpp
+	"SockClient.h"
+
+1473767084 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/SockClient.h
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<string.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<netdb.h>
+	<thread>
+	"../../Data/CharString.h"
+
+1473767049 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
+	"SocketServer.h"
+
+1473767081 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<thread>
+	"SockClient.h"
+	"../../Data/LinkedList.hpp"
+	"../../Data/CharString.h"
+
+1462832413 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Templates/Template.cpp
+	"Template.h"
+
+1473767146 /home/eternialogic/Cpp/EterniaLib/src/WebFramework/Templates/Template.h
+	"../../Data/LinkedList.hpp"
+	"../../Data/CharString.h"
+	<Eternia/Encoding/HtmlEncode.h>
+	<Eternia/WebFramework/Templates/Template.h>
+
+1473783734 source:/home/eternialogic/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
+	"SpecificSerializer.h"
+
+1473783998 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.cpp
+	"Disease.h"
+
+1473784098 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.cpp
+	"Mood.h"
 

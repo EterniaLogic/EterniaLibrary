@@ -11,7 +11,7 @@
 // woo for messy template time! =P
 
 #include <iostream>
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 #include "../Algorithm/Cryptography/ExHash.h"
 using namespace std;
 

@@ -8,7 +8,7 @@
 #ifndef EVAL_H_
 #define EVAL_H_
 
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 #include "../Data/Stack.h"
 
 // Pre-initialization Enumerators, enables labels and such within the source.

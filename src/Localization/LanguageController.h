@@ -8,7 +8,7 @@
 #ifndef LANGCONTROLLER_H_
 #define LANGCONTROLLER_H_
 
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 
 // english, spanish, french, german, chinese, Bulgarian, Russian, Swedish, Italian, Japanese
 enum LANG{
@@ -91,7 +91,7 @@ public:
 	void addTranslation(LANG langid, CharString* english, CharString* language); // single-word translation
 	
 	CharString* translateWord(CharString* word);
-	CharString* translateString(CharString* sentence);
+	CharString* translateString(CharString* sentence); // Determine
 };
 
 const LanguageController languages[0xff];

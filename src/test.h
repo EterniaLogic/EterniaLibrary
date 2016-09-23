@@ -14,11 +14,11 @@
 #include "Parsing/test/testParsers.h"
 #include "Data/test/testDataStructures.h"
 #include "Data/test/testAbstractDB.h"
-#include "Gamelogic/test/testGameLogic.h"
+//#include "Gamelogic/test/testGameLogic.h"
 //#include "Networking/test/testP2P.h"
 //#include "Networking/test/testPackets.h"
 
 #include "Algorithm/Cryptography/CryptoDefines.h"
 
-#include "Events/test/testEventHandler.hpp"
+#include "Data/Events/test/testEventHandler.hpp"
 #include "Serialization/test/testSerializers.hpp"

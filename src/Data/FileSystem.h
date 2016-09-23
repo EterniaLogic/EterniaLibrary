@@ -1,7 +1,7 @@
 #ifndef FILESYSTEM_H_
 #define FILESYSTEM_H_
 
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 
 // basic filesystem data structure
 // set file/dir types

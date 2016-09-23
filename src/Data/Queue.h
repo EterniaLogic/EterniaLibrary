@@ -8,7 +8,7 @@
 #ifndef QUEUE_H_
 #define QUEUE_H_
 
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>

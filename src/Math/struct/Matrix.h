@@ -8,7 +8,7 @@
 #ifndef MATRIX_H_
 #define MATRIX_H_
 
-#include "../../MiscLib/CharString.h"
+#include "../../Data/CharString.h"
 #include <cstdlib>
 
 class Matrix

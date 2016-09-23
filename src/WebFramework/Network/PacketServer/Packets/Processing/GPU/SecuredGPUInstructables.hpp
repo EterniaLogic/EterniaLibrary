@@ -9,7 +9,7 @@
 #define SECURED_GPU_INSTRUCTABLES_H_
 
 #include "../../../../Data/LinkedList.hpp"
-#include "../../../../MiscLib/CharString.h"
+#include "../../../../Data/CharString.h"
 #include "../../Packet.hpp"
 #include "../ProcessorInstruction.h"
 

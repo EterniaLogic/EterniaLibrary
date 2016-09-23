@@ -8,7 +8,7 @@
 #define PIN_H
 
 
-#include "../../MiscLib/CharString.h"
+#include "../../Data/CharString.h"
 #include "PowerValue.h"
 
 class Pin

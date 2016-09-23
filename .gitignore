@@ -7,6 +7,10 @@ cmake_install.cmake
 libEternia.a
 Makefile
 
+.gitignore
+
+src/Gamelogic/
+
 # Compiled Object files
 *.slo
 *.lo
@@ -47,7 +51,7 @@ include/Environment
 include/Gamelogic
 include/Localization
 include/Math
-include/MiscLib
+include/Data
 include/Networking
 include/Parsing
 include/Signal

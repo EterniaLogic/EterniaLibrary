@@ -17,15 +17,15 @@ using namespace std;
 //////////////////// GRAPH! //////////////////////
 //////////////////////////////////////////////////
 
-
+/*
 Graph::Graph(){
-    // lookup verticies to store vertexes in a fast map.
-    lookupVerticies = new HashMap<Vertex>(20000);
-    lookupEdges = new HashMap<Edge>(20000);
+    // lookup verticies to store GVertexes in a fast map.
+    //lookupVerticies = new HashMap<GVertex>(20000);
+    //lookupEdges = new HashMap<GEdge>(20000);
 
     // LinkedListT to store verticies in linear order.
-    verticiesList = new LinkedListT();
-    edgesList = new LinkedListT();
+    //verticiesList = new LinkedListT();
+    //edgesList = new LinkedListT();
 
     // leave undeclared null so we can use it later
     //  on.
@@ -34,24 +34,14 @@ Graph::Graph(){
 
 // aaand take them all down! >:D
 Graph::~Graph(){
-  lookupEdges->~HashMap();
+  /*lookupEdges->~HashMap();
   lookupVerticies->~HashMap();
   verticiesList->~LinkedListT();
   edgesList->~LinkedListT();
 }
 
-// creates a vertex if it doesn't exist.
-Vertex* Graph::makeVertex(CharString* _name){
-    // lookup vertex to see if it exists in the HashMap.
-    Vertex* newVertex = lookupVerticies->get(_name);
-    if(newVertex == 0x0){
-        newVertex = new Vertex(_name); // if not, create one!
-    }
-    return newVertex;
-}
-
-// creates an edge if it doesn't exist.
-Edge* Graph::makeEdge(Vertex* v1, Vertex* v2, int len){
+// creates an GEdge if it doesn't exist.
+GEdge* Graph::makeEdge(GVertex* v1, GVertex* v2, int len){
     // combine names together.
     CharString* cnames = v1->name->clone();
     char* c = new char();
@@ -60,10 +50,10 @@ Edge* Graph::makeEdge(Vertex* v1, Vertex* v2, int len){
     cnames->concata(c,2);
     cnames->concata(v2->name);
 
-    // lookup edge to see if it exists in the HashMap.
-    Edge* newEdge = lookupEdges->get(cnames);
+    // lookup GEdge to see if it exists in the HashMap.
+    GEdge* newEdge = lookupEdges->get(cnames);
     if(newEdge == 0x0){
-        newEdge = new Edge(v1,v2,len); // if not, create one!
+        newEdge = new GEdge(v1,v2,len); // if not, create one!
     }
     return newEdge;
 }
@@ -80,10 +70,10 @@ void Graph::createAdjMatrix(){
     // also note that we are using triple *.
     //    this means that we can point to ANYTHING.
     // write matrix base
-    AdjacencyMatrix = new Edge**[L+1];
+    AdjacencyMatrix = new GEdge**[L+1];
     for(int i=0;i<=L;i++){
         // write matrix sub-base
-        AdjacencyMatrix[i] = new Edge*[L+1];
+        AdjacencyMatrix[i] = new GEdge*[L+1];
         for(int j=0;j<=L;j++){
             // NULLify sub-base's data values.
             AdjacencyMatrix[i][j] = 0x0;
@@ -91,28 +81,28 @@ void Graph::createAdjMatrix(){
     }
 
     // form adjacency matrix
-    // loop through every vertex and use their lists of connected items to form a matrix.
+    // loop through every GVertex and use their lists of connected items to form a matrix.
     // Note: each item in the list has it's own number.
 
-    // freezes the vertex list for very fast traversal.
+    // freezes the GVertex list for very fast traversal.
     // frozen list gets converted to an array list.
     verticiesList->freeze();
     // loop through all of the verticies.
     for(int i=0;i<verticiesList->size();i++){
-        Vertex* v = (Vertex*)verticiesList->frozen[i];
+        GVertex* v = (GVertex*)verticiesList->frozen[i];
 
         if(v != 0x0){
             //v->incidentEdges->freeze();
-            // loop through the incident edge list.
+            // loop through the incident GEdge list.
             for(int j=0;j<v->incidentEdges->size();j++){
-                //Edge* e = (Edge*)v->incidentEdges->frozen[j];
-                Edge* e = (Edge*)v->incidentEdges->get(j);
+                //GEdge* e = (GEdge*)v->incidentEdges->frozen[j];
+                GEdge* e = (GEdge*)v->incidentEdges->get(j);
                 if(e != 0x0){
-                    Vertex* end = e->b;
+                    GVertex* end = e->b;
                     // determine the index position of the endpoint.
                     int endpoint = -1;
                     for(int z=0;z<verticiesList->size();z++){
-                         Vertex* v = (Vertex*)verticiesList->frozen[z];
+                         GVertex* v = (GVertex*)verticiesList->frozen[z];
                          if(v == end){
                             endpoint = z;
                             z = 999999;
@@ -135,7 +125,7 @@ void Graph::createAdjMatrix(){
     // DEBUG!
     cout << "    ";
     for(int i=0;i<L;i++){
-          Vertex* v = (Vertex*)verticiesList->frozen[i];
+          GVertex* v = (GVertex*)verticiesList->frozen[i];
           if(v != 0x0){
             cout << v->name->get() << "   ";
           }else{
@@ -146,7 +136,7 @@ void Graph::createAdjMatrix(){
 
      for(int i=0;i<=L;i++){
          for(int j=0;j<=L;j++){
-            Edge* e = AdjacencyMatrix[j][i];
+            GEdge* e = AdjacencyMatrix[j][i];
             if(e != 0x0){
                 cout << e->a->name->get();
                 cout << e->b->name->get();
@@ -160,9 +150,9 @@ void Graph::createAdjMatrix(){
 #endif
 }
 
-// insert vertex
-void Graph::insertVertex(Vertex* o){
-    // insert vertex (if it doesn't exist)
+// insert GVertex
+void Graph::insertVertex(GVertex* o){
+    // insert GVertex (if it doesn't exist)
     if(lookupVerticies->get(o->name) == 0x0){
         // it doesn't exist!
         // add to verticies HashMap.
@@ -172,31 +162,31 @@ void Graph::insertVertex(Vertex* o){
     }
 }
 
-// insert the edge
-void Graph::insertEdge(Edge* e){
+// insert the GEdge
+/*void Graph::insertEdge(GEdge* e){
     // connect the names together.
     CharString* cnames = e->a->name->clone();
     char c[3];
     strcpy(c, "||");
     cnames->concata(c,2);
     cnames->concata(e->b->name);
-    // insert edge
+    // insert GEdge
     if(lookupEdges->get(cnames) == 0x0){
         // it doesn't exist!
-        // add to edges HashMap.
+        // add to GEdges HashMap.
         lookupEdges->add(cnames,e);
-        // add to edges LinkedList.
+        // add to GEdges LinkedList.
         edgesList->add(e);
     }
 }
 
-// remove all related edges
-void Graph::eraseVertex(Vertex* v){
+// remove all related GEdges
+void Graph::eraseVertex(GVertex* v){
 
 }
 
 // erase all related verticies
-void Graph::eraseEdge(Edge* e){
+void Graph::eraseEdge(GEdge* e){
 
 }
 
@@ -205,30 +195,30 @@ LinkedListT* Graph::verticies(){
     return verticiesList;
 }
 
-// return the edges list.
-LinkedListT* Graph::edges(){
+// return the GEdges list.
+LinkedListT* Graph::GEdges(){
     return edgesList;
 }
 
 
 
 //////////////////////////////////////////////////
-//////////////// EDGES & Verticies ///////////////
+//////////////// GEdgeS & Verticies ///////////////
 //////////////////////////////////////////////////
 
-// initialize vertex.
-Vertex::Vertex(){ incidentEdges = new LinkedListT(); label=0; name=0x0; data=0x0; graph=0x0; distance=0; }
-// initialize vertex with a name.
-Vertex::Vertex(CharString* _name){ incidentEdges = new LinkedListT(); graph=0x0; label=0; name=_name; data=0x0;distance=0;}
+// initialize GVertex.
+GVertex::GVertex(){ incidentEdges = new LinkedListT(); label=0; name=0x0; data=0x0; graph=0x0; location = new GVertex(); }
+// initialize GVertex with a name.
+GVertex::GVertex(CharString* _name){ incidentEdges = new LinkedListT(); graph=0x0; label=0; name=_name; data=0x0;distance=0;}
 
-Vertex::~Vertex(){
+GVertex::~GVertex(){
   incidentEdges->~LinkedListT();
   vertexList->~LinkedListT();
-  delete data;
-  delete name;
+  //delete data;
+  //delete name;
 }
 
-Vertex* Edge::opposite(Vertex* v){
+GVertex* GEdge::opposite(GVertex* v){
     if(a == v){
         return b;
     }else if(b == v){
@@ -239,24 +229,25 @@ Vertex* Edge::opposite(Vertex* v){
 }
 
 
-// initialize edge.
-Edge::Edge(){a=b=0X0; data=0;}
+// initialize GEdge.
+GEdge::GEdge(){a=b=0X0; data=0;}
 
-// initialize edge with two verticies and a depth length.
-Edge::Edge(Vertex* A, Vertex* B, int LEN){
-    // set edge structure.
+
+// initialize GEdge with two verticies and a depth length.
+GEdge::GEdge(GVertex* A, GVertex* B, int LEN){
+    // set GEdge structure.
     a=A;
     b=B;
 
     data=LEN;
 
-    // add this edge.
+    // add this GEdge.
     a->incidentEdges->add(this);
     b->incidentEdges->add(this);
 }
 
-Edge::~Edge(){
-    a->~Vertex();
-    b->~Vertex();
+GEdge::~GEdge(){
+    a->~GVertex();
+    b->~GVertex();
     edgeList->~LinkedListT();
-}
+}*/

@@ -8,7 +8,7 @@
 #ifndef EQUATION_H_
 #define EQUATION_H_
 
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 #include "../Data/LinkedList.hpp"
 
 // Equation structure
@@ -57,7 +57,6 @@ public:
     Equation* derive(char* wrt); // derive this equation.
     Equation* integrate(char* wrt); // integrate this equation.
     double evaluate(double a, double b); // evaluate equation with a TO b. only works with one variable.
-    
 };
 
 #endif

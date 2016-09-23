@@ -9,7 +9,8 @@
 
 #include "Basic.h"
 
-#define ACCURACY 10
+#define ACCURACY 0.00001
+#define MAX_RUNS 200
 
 namespace Math
 {
@@ -23,62 +24,110 @@ namespace Math
     double pow(double x, double b){
         double out = 1;
         
+        // if a fractional exponent, calculate it with a taylor's series
+        if((double)floor(b) != b){
+            // Taylor series for denominator
+            double val = 1;
+            
+            for(int n=1; n<=MAX_RUNS;n++){
+                out += (pow(-1+b, n)*x*pow(ln(x),n))/factorial(n);
+            }
+        }else{
+            for(int i=0;i<abs(b);i++){
+                out *= x;
+            }
+            // reverse if b is negative.
+            if(b < 0) out = 1/out;
+        }
+
+        return out;
+    }
+    
+    // Basic power
+    double powb(double x, double b){
+        double out = 1;
         for(int i=0;i<abs(b);i++){
             out *= x;
         }
-        
         // reverse if b is negative.
         if(b < 0) out = 1/out;
+        
         return out;
-    } 
+    }
     
-    // return x^e
-    // Used from:
-    //  http://www.codeproject.com/Tips/311714/Natural-Logarithms-and-Exponent
-    double powe(double Exponent)
-    {
-            double X, P, Frac, I, L;
-            X = Exponent;
-            Frac = X;
-            P = (1.0 + X);
-            I = 1.0;
-                            
-            do
-            {
-                    I++;
-                    Frac *= (X / I);
-                    L = P;
-                    P += Frac;
-            }while(L != P);
-                    
-            return P;
+    // http://stackoverflow.com/questions/5124743/algorithm-for-simplifying-decimal-to-fractions
+    int* decToFrac(double dec){
+        int n = floor(dec);
+        int x = -n;
+        int* t = (int*)calloc(2,sizeof(int));
+        // The lower fraction is 0/1
+        int lower_n = 0;
+        int lower_d = 1;
+        // The upper fraction is 1/1
+        int upper_n = 1;
+        int upper_d = 1;
+        
+        
+        
+        if (x < ACCURACY){
+            t[0] = n;
+            t[1] = 1;
+            return t;
+        }else if(1 - ACCURACY < x){
+            t[0] = n+1;
+            t[1] = 1;
+            return t;
+        }
+
+        
+        while(true){
+            // The middle fraction is (lower_n + upper_n) / (lower_d + upper_d)
+            int middle_n = lower_n + upper_n;
+            int middle_d = lower_d + upper_d;
+            // If x + error < middle
+            if(middle_d * (x + ACCURACY) < middle_n){
+                // middle is our new upper
+                upper_n = middle_n;
+                upper_d = middle_d;
+            // Else If middle < x - error
+            }else if(middle_n < (x - ACCURACY) * middle_d){
+                // middle is our new lower
+                lower_n = middle_n;
+                lower_d = middle_d;
+            }else{ // Else middle is our best fraction
+                t[0] = n * middle_d + middle_n;
+                t[1] = middle_d;
+                return t;
+            }
+        }
+            
+    }
+    
+    // get the floor
+    int floor(double val){
+        int v = 0;
+        
+        // 5.6 < 6
+        if(val < (int)val && val > 0){
+            return (int)val-1;
+        }else if(val > (int)val && val < 0){
+            return (int)val+1;
+        }
+        
+        return (int)val;
     }
     
     
-    
     // natural log function
-    // Used from:
-    //  http://www.codeproject.com/Tips/311714/Natural-Logarithms-and-Exponent
     double ln(double x){
-        double A=0,L=0,R=0,P=0;
-        double N = 0.00;
-        while(P >= E)  
-		{
-			P /= E;
-			N++;
-		}
-		N += (P / E);
-		P = x;
+        double out=0;
+        
+        
+        for(int n=1; n<=MAX_RUNS;n++){
+            out += (powb(-1, n+1)/n) * powb(x-1, n);
+        }
 		
-		do
-		{
-			A = N;
-			L = (P / (powe(N - 1.0)));
-			R = ((N - 1.0) * E);
-			N = ((L + R) / E);
-		}while(N != A);
-		
-		return N;
+		return out;
     }
     
     // direct base log
@@ -96,27 +145,26 @@ namespace Math
     // ref: http://www.cs.uni.edu/~jacobson/C++/newton.html
     double sqrt(double number)
     {
-        const double ACC=0.001;
         double lower, upper, guess;
 
          if (number < 1)
          {
-          lower = number;
-          upper = 1;
+            lower = number;
+            upper = 1;
          }
          else
          {
-          lower = 1;
-          upper = number;
+            lower = 1;
+            upper = number;
          }
 
-         while ((upper-lower) > ACC)
-         {
-          guess = (lower + upper)/2;
-          if(guess*guess > number)
-            upper =guess;
-          else
-            lower = guess; 
+         // Taylor's series'
+         while ((upper-lower) > ACCURACY){
+              guess = (lower + upper)/2;
+              if(guess*guess > number)
+                upper = guess;
+              else
+                lower = guess; 
          }
          return (lower + upper)/2;
     } 

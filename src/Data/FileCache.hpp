@@ -10,7 +10,7 @@
 
 // #include "HashMap.hpp"
 #include "LinkedList.hpp"
-#include "../MiscLib/CharString.h"
+#include "../Data/CharString.h"
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
@@ -77,7 +77,7 @@ class FileCache
             //CharString* tt = CharString::ConvertFromLong(id);
             T preloaded = entries[id];
 			
-			cout << "preloaded" << preloaded << endl;
+			//cout << "preloaded" << preloaded << endl;
 
             // return data if it is pre-loaded
             if(loadedIDs->get(id) != 0){

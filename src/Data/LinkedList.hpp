@@ -20,6 +20,7 @@ public:
     LinkedNode<T> * prev;
     LinkedNode<T> * next;
     T* data;
+    int id;
     LinkedNode(){
       prev = next = 0x0;
       data = 0x0;
@@ -37,13 +38,18 @@ class LinkedList
 	LinkedNode<T> * baseNode;
 	LinkedNode<T> * currentNode;
 	int _size;
+	bool changed; // used with freezing to help keep better performance
 public:
+        T **frozen;
+        int frozenlen;
+
 
         // Initialize!
         LinkedList(){
             baseNode = new LinkedNode<T>();
             currentNode = baseNode;
             _size = 0;
+            changed=true;
         }
 
         // Clean up!
@@ -68,15 +74,13 @@ public:
             currentNode = item;
             }
             _size++;
+            changed=true;
         }
 
         // return item
         T* get(int index){
-            LinkedNode<T> * current = baseNode;
-            for(int i=0;i<index+1;i++){
-                    current = current->next;
-            }
-            return current->data;
+            freeze();
+            return frozen[index];
         }
 
         // return the size
@@ -87,7 +91,7 @@ public:
         LinkedNode<T>* top(){
             return baseNode;
         }
-        
+
         T* remove(long index){
             T* r = 0x0;
             if(index< _size){
@@ -95,25 +99,35 @@ public:
                 LinkedNode<T>* current = baseNode;
                 for(long i=0;i<index;i++){
                     if(current != 0x0){
-                        if(current->data == index){
+                        if (i == index){
                             if(current->next != 0x0) current->next->prev = 0x0;
                             if(current->prev != 0x0) current->prev->next = 0x0;
                             r = current->data;
                             break;
-                        }else{
-                            current = current->next;
                         }
                     }else{
                         break;
                     }
                 }
             }
+            changed=true;
             return r;
+        }
+
+        // Clears up the list
+        void clear(){
+            while(remove(0L) != 0x0);
+            changed=true;
+        }
+
+        // Returns the type-size of the data
+        int typeSize(){
+            return sizeof(T);
         }
 
 		// convert from linkedList to a static list.
         void freeze(){
-            if(_size > 0){
+            if(_size > 0 && changed){
                 //cout << "freeze-1 " << _size << endl;
                 const int len = _size;
                 frozen = new T*[len];
@@ -133,14 +147,27 @@ public:
                         }
                     }
                 }
+                changed=false;
             }else{
                 frozenlen = 0;
                 frozen = 0x0;
             }
         }
 
-        T **frozen;
-        int frozenlen;
+
+        // unfreeze will determine if there are any new addresses added
+        // First, clears the list, then goes through a brand new list
+        void unfreeze(void* list, int bytes){
+            clear();
+            _size = bytes/sizeof(T);
+            T* thislist = (T*)list;
+
+            for(int i=0;i<_size;i++){
+                add(&thislist[i]);
+            }
+
+            changed=true;
+        }
 };
 
 #endif

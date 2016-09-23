@@ -10,6 +10,8 @@
 #ifndef MATHBASIC_H_
 #define MATHBASIC_H_
 
+#include <malloc.h>
+
 namespace Math
 {
     const double E = 2.71828182845904523536028747135266249775724709369995;
@@ -18,7 +20,10 @@ namespace Math
     // basic functions
     double abs(double a); // flips value if negative to positive
     double pow(double a, double b); // power of function, gets the exponent a^b
-    double powe(double x); // gets x^e
+    double powb(double x, double b); // Cheap and easy power for integers of b
+    
+    int* decToFrac(double dec);
+    int floor(double val);
     
     double ln(double x); // natural log function
     double log(double base, double x); // log_b(x)

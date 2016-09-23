@@ -2,7 +2,7 @@
 #define CONSTANTS_H_
 // copyright reserved.
 #include <cstring>
-#include "MiscLib/CharString.h"
+#include "Data/CharString.h"
 
 // Unknown constant used to define unknown doubles
 #define UNKNOWN 1.111e-11

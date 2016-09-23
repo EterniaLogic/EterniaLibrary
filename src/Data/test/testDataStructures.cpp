@@ -44,7 +44,7 @@ void testFileCache(){
     // test object from Get
     t1 = clock();
 
-    for(long i=0;i<sampleSize;i++){
+    for(long int i=0;i<sampleSize;i++){
         TestStructure* ffs = fileCache.get(i);
         if(ffs == 0x0 || ffs->dataValue != i+2) {
             errors++;
