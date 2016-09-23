@@ -11,6 +11,9 @@ Makefile
 
 src/Gamelogic/
 
+
+data.dat
+
 # Compiled Object files
 *.slo
 *.lo
