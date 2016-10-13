@@ -17,16 +17,15 @@
 //      - Number of Secured Process Instructable packets
 //      - Number of data packets
 
-class SecuredGPUHeader : private Packet
-{
-public:
-  SecuredGPUHeader(char* in){
-    id = 1024512;
-  }
-  
-private:
-  int instructablePackets;
-  int dataPackets;
+class SecuredGPUHeader : private Packet {
+    public:
+        SecuredGPUHeader(char* in) {
+            id = 1024512;
+        }
+
+    private:
+        int instructablePackets;
+        int dataPackets;
 };
 
 #endif

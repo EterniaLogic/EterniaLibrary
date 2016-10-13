@@ -10,11 +10,10 @@
 
 #include "../../Algorithm/Cryptography/Aes256.h"
 
-class Packet
-{
-public:
-  char* RAW;
-  long id;
+class Packet {
+    public:
+        char* RAW;
+        long id;
 };
 
 #endif

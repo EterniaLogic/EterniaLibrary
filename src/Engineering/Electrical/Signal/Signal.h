@@ -8,10 +8,9 @@
 #define SIGNAL_H
 
 // abstract signal container
-class Signal
-{
-public:
-        Signal(){}
+class Signal {
+    public:
+        Signal() {}
 };
 
 #endif

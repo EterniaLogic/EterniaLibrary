@@ -1,5 +1,5 @@
 #include "SockClient.h"
 
-SockClient::SockClient(){
-	this->alive = true;
+SockClient::SockClient() {
+    this->alive = true;
 }

@@ -10,8 +10,8 @@
 //      Mute Others
 //      Word Filter
 
-class ChatFilter : public SpecificSerializer{
-    ChatFilter();
+class ChatFilter : public SpecificSerializer {
+        ChatFilter();
 };
 
 

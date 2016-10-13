@@ -3,9 +3,8 @@
 
 // combined to form Hadrons
 
-class UpQuark
-{
-  
+class UpQuark {
+
 };
 
-#endif 
+#endif

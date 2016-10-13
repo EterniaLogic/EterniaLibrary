@@ -13,9 +13,8 @@
 // The HTML parser takes in an HTML file and converts it to it's elements.
 
 // Main parser
-class HTMLParser
-{
-  
+class HTMLParser {
+
 };
 
 #endif

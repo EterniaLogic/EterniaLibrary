@@ -12,13 +12,13 @@
 #include "LinkedList.hpp"
 
 //template<T>
-class ConcurrentLinkedList{
+class ConcurrentLinkedList {
 
 //private:
 
-public:
-    ConcurrentLinkedList(){};
-    //void add(T* item); // concurrently add an item to the list
+    public:
+        ConcurrentLinkedList() {};
+        //void add(T* item); // concurrently add an item to the list
 };
 
 

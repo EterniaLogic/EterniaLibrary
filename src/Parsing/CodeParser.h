@@ -4,7 +4,7 @@
 
 // The CodeParser is a generic for parsing code
 
-class CodeParser{
+class CodeParser {
         // abstract parser
 }
 

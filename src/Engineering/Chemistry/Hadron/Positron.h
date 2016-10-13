@@ -4,10 +4,9 @@
 // A positron is an Anti-Electron
 // +1e
 
-class Positron
-{
-  Positron();
-  virtual ~Positron();
+class Positron {
+        Positron();
+        virtual ~Positron();
 };
 
 #endif

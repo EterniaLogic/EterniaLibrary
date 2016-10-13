@@ -18,25 +18,25 @@
 
 // f = 1.44/((R1+2*R2)*C)
 
-IC555::IC555(){
-  setPins(new LinkedList<Pin>()); // set the pins list
+IC555::IC555() {
+    setPins(new LinkedList<Pin>()); // set the pins list
 }
 
-IC555::~IC555(){
-  setPins(0x0);
+IC555::~IC555() {
+    setPins(0x0);
 }
 
 // operate the component
-void IC555::tick(SecondTick* tickTime){
-  
+void IC555::tick(SecondTick* tickTime) {
+
 }
 
 // get the pin value
-double IC555::getPin(int pin){
-  
+double IC555::getPin(int pin) {
+
 }
 
 // Set the pin value
-void IC555::setPin(int pin, double value){
- 
+void IC555::setPin(int pin, double value) {
+
 }

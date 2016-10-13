@@ -23,20 +23,19 @@
 //      - Instructions ender
 //      - pure stream
 
-class SecuredCPUInstructables : private Packet
-{
-public:
-  SecuredCPUInstructables(char* packet){  // pure decrypted packet data taken in
-    id = 1024512;
-  }
-  
-private:
-  int instructionNumber;
-  char separator;
-  char ender;
-  
-  LinkedList<CharString>* instructions;
+class SecuredCPUInstructables : private Packet {
+    public:
+        SecuredCPUInstructables(char* packet) { // pure decrypted packet data taken in
+            id = 1024512;
+        }
+
+    private:
+        int instructionNumber;
+        char separator;
+        char ender;
+
+        LinkedList<CharString>* instructions;
 };
 
-#endif 
- 
+#endif
+

@@ -12,17 +12,16 @@
 #include "Basic.h"
 
 
-namespace Math
-{
+namespace Math {
     double sin(double); // x - x3/3! + x5/5! - x7/7! ...
     double cos(double); //
     double tan(double); //
-    
-    // 
+
+    //
     double sinh(double); //(e^x−e^−x)/2
     double cosh(double);
     double tanh(double);
-    
+
     // arc functions, implemented as 1/sin(a)
     double asin(double);
     double acos(double);

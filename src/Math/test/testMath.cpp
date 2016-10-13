@@ -10,18 +10,24 @@
 using namespace std;
 using namespace Math;
 
-void testBasics(char* a){
-    if(abs(-999) != 999) { cout << a << "abs(-999) fail." << endl; }
-    if(Math::pow(3,19) != 1162261467) { cout << a << "pow(3,19) fail " << Math::pow(3,19) << endl; }
-    if(pow(3,-5) != 0.00411523) { cout << a << "pow(3,-5) fail " << pow(3,-5) << endl; }
-    if(ln(10) != 2.30259) cout << a << "ln(10) fail " << ln(10) << endl;
-    cout << a << "factorial(70) = " << factorial(70) << endl;
+void testBasics(char* a) {
+    if(Math::abs(-999) != 999) {
+        cout << a << "abs(-999) fail." << endl;
+    }
+    if(Math::pow(3,19) != 1162261467) {
+        cout << a << "pow(3,19) fail " << Math::pow(3,19) << endl;
+    }
+    if(Math::pow(3,-5) != 0.00411523) {
+        cout << a << "pow(3,-5) fail " << Math::pow(3,-5) << endl;
+    }
+    if(Math::ln(10) != 2.30259) cout << a << "ln(10) fail " << Math::ln(10) << endl;
+    cout << a << "factorial(70) = " << Math::factorial(70) << endl;
 
-    cout << a << "sin(pi) = " << sin(PI) << endl;
-    cout << a << "sqrt(64) = " << sqrt(64) << endl;
+    cout << a << "sin(pi) = " << Math::sin(PI) << endl;
+    cout << a << "sqrt(64) = " << Math::sqrt(64) << endl;
 }
 
-void testStructures(char* a){
+void testStructures(char* a) {
     // tests structures
     cout << "test "<< a << endl;
 
@@ -72,16 +78,16 @@ void testStructures(char* a){
 }
 
 
-void testEquation(char* a){
+void testEquation(char* a) {
 
 }
 
 
-void testMath(){
+void testMath() {
     char* a = new char();
     strcpy(a,"[TestMath] ");
     testBasics(a);
-        //testStructures(a);
+    //testStructures(a);
     testEquation(a);
     cout << "done Math" << endl;
 }

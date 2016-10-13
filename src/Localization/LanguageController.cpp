@@ -12,7 +12,6 @@
 // Possible Speech2Text system for subtitles, ect.
 
 
-LanguageController::LanguageController()
-{
+LanguageController::LanguageController() {
     // initialize language library from files.
 }

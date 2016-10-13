@@ -5,7 +5,8 @@
 #include "../../Data/SpecialTypes.hpp"
 
 // algorithm block solely for HashMaps
-unsigned long exSumMap(CharString *str, unsigned long maxVal, int steps);
+//unsigned long exSumMap(CharString *str, unsigned long maxVal, int steps);
+uint64_t exSumMap(CharString *str, uint64_t maxVal, int steps);
 
 // algorithm for generating a hash
 // str: input string

@@ -7,12 +7,10 @@
 
 #include "P2PDataServer.h"
 
-P2PDataServer::P2PDataServer()
-{
+P2PDataServer::P2PDataServer() {
 }
 
-P2PDataServer::~P2PDataServer()
-{
+P2PDataServer::~P2PDataServer() {
 }
 
 /*

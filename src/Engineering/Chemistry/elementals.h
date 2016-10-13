@@ -7,6 +7,9 @@
 
 #include "Atom.h"
 
+#ifndef ELEM_H_
+#define ELEM_H_
+
 // density in g/cm3
 
 // This is a list of constants for each Atom.
@@ -132,3 +135,5 @@ const Atom Ununoctium = new Atom("Ununoctium", "Uuo", 18, 7, 118,  ,117, UNKNOWN
 
 // List of all of the elements by atomic number!
 const Atom[118] atomList = {Hydrogen, Helium, Lithium, Beryllium, Boron, Carbon, Nitrogen, Oxygen, Fluorine, Neon, Sodium, Magnesium, Aluminum, Silicon, Phosphorus, Sulfur, Chlorine, Argon, Potassium, Calcium, Scandium, Titanium, Vanadium, Chromium, Manganese, Iron, Cobalt, Nickel, Copper, Zinc, Gallium, Germanium, Arsenic, Selenium, Bronium, Krypton, Rubidium, Strontium, Yttrium, Zirconium, Niobium, Molybdenum, Technetium, Ruthenium, Rhodium, Palladium, Silver, Cadmium, Indium, Tin, Antimony, Tellurium, Iodine, Xenon, Caesium, Barium, Lanthanum, Cerium, Praseodymium, Neodymium, Promethium, Samarium, Europium, Gadolinium, Terbium, Dysprosium, Holmium, Erbium, Thulmium, Ytterbium, Lutetium, Hafnium, Tantalium, Tungsten, Rhenium, Osmium, Iridium, Platinum, Gold, Mercury, Thallium, Lead, Bismuth, Polonium, Astanine, Radon, Francium, Radium, Actinium, Thorium, Protactinium, Uranium, Neptunium, Plutonium, Americium, Curium, Berkelium, Californium, Einsteinium, Fermium, Mendelevium, Nobelium, Lawrencium, Rutherfordium, Dubnium, Seaborgium, Bohrium, Hassium, Meitnerium, Darmstadtium, Roentgenium, Copernicium, Ununtrium, Flerovium, Ununpentium, Livermorium, Ununseptium, Ununoctium};
+
+#endif

@@ -13,110 +13,148 @@
 using namespace std;
 
 // pre-initialize
-CharString::CharString(){
-      stringx = new char();
-      len = 0;
+CharString::CharString() {
+    stringx = 0x0;
+    len = 0;
 }
 
-CharString::CharString(const char* stringg, const int length){
-      //const int lenc = length+1;
-  //char cc[lenc];
-  char* cc = new char();
-  std::strcpy(cc, stringg);
+CharString::CharString(const char* stringg, const int length) {
+    //const int lenc = length+1;
+    //char cc[lenc];
+    char* cc = (char*)calloc(length+1, sizeof(char));
+    std::strcpy(cc, stringg);
 
-  stringx = cc;
-  len = length;
+    stringx = cc;
+    len = length;
 }
 
-CharString::CharString(const char* stringg){
-  int c = SIZEOFA(stringg);
-  // quick loop through to find exact size c.
-  //while(stringg[c] != 0x0 /* || stringg[c] > 32 */){c++;}
+CharString::CharString(const char* stringg) {
+    int clen = SIZEOFA(stringg);
 
-  char cc[(const unsigned int)c];
-  strcpy(cc, stringg);
+    char* cc = (char*)calloc(clen+1, sizeof(char));
+    strcpy(cc, stringg);
 
-  stringx = cc;
-  len = c;
+    cc[clen] = '\0'; // at end of string, add 0x0
+    stringx = cc;
+    len = clen-1;
 }
 
 // populate charString and initialize it with data.
-CharString::CharString(char* stringg, int length){
-      stringx = stringg;
-      len = length;
+CharString::CharString(char* stringg, int length) {
+    char* cc = (char*)calloc(length+1, sizeof(char));
+    std::strcpy(cc, stringg);
+
+    stringx = cc;
+    len = length;
 }
 
 // populate charString and initialize it.
 // pre-determine what the length is.
-CharString::CharString(char* stringg){
-      this->set(stringg);
+CharString::CharString(char* stringg) {
+    this->set(stringg);
 }
 
-CharString::CharString(string &stringg){
-  stringx = (char*)stringg.c_str();
-  len = stringg.length();
+CharString::CharString(string &stringg) {
+    stringx = (char*)stringg.c_str();
+    len = stringg.length();
 }
 
-CharString::CharString(const std::string &stringg){
-  stringx = (char*)stringg.c_str();;
-  len = stringg.length();
+CharString::CharString(const std::string &stringg) {
+    stringx = (char*)stringg.c_str();;
+    len = stringg.length();
 }
 
-void CharString::operator =(char* stringg){
-  set(stringg);
+void CharString::operator =(char* stringg) {
+    set(stringg);
 }
 
-bool CharString::isValidCharString(){
+bool CharString::isValidCharString() {
     if(this == 0x0) return false;
     if(this->stringx == 0x0) return false;
 
     return true;
 }
 
+// checks for "0-9, -, ."
+bool CharString::isValidNumber(){
+    if(!isValidCharString()) return false;
+
+    // loop through string, find non-numbers
+    //  Floats have e or E for exponent for scientific numbers
+    for(int i=0;i<len;i++){
+        if(stringx[i] > '9' && stringx[i] < '0' && stringx[i] != '-' && stringx[i] != '.'){
+            return false;
+        }else if((stringx[i] != 'e' || stringx[i] != 'E') && i < 0 && i >= len-1){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// checks for a valid scientific number (or infinity / NaN)
+bool CharString::isValidScientific(){
+    bool hasE = false;
+    bool hasPeriod = false;
+
+    if(len < 6) return false; // number has to have at least 6 digits: 1.0e+1
+
+    for(int i=0;i<len;i++){
+        // search for e,
+        if(stringx[i] == '.'){
+            hasPeriod=true;
+        }else if((stringx[i] == 'e' || stringx[i] == 'E') && i > 0 && i < len-1){
+            hasE=true;
+        }
+    }
+
+    return hasE && hasPeriod;
+}
+
 /* Desc: Takes data from a string and splits it using a splitter
 * Input: String str, it's length, single-character splitter
 * Output: SplitResult from the splitting
 */
-SplitResult* CharString::split(char splitter,char stopper){
-      if(!isValidCharString()) return new SplitResult(0);
+SplitResult* CharString::split(char splitter,char stopper) {
+    SplitResult* sr = new SplitResult();
+    int i=0,j=0,carrot1=0,carrot2=0,commaplace=0; // positions for exclusive selection
+    char* cc;
+    int temp = 0;
 
-      SplitResult* sr = new SplitResult(100);
+    if(!isValidCharString()) return new SplitResult();
 
-      int carrot1=0,carrot2=0,commaplace=0; // positions for exclusive selection
-  // loop through
-      for(int i=0;i<len;i++){
-              // if this is the stopper
-              if(stringx[i] == stopper){
-                      if(commaplace >= 4) commaplace = 0; // reset it!
-                      carrot2++;
-                      commaplace++;
-              }
-      // else make sure that the carrot is in place and populate.
-              else if(stringx[i] == splitter && (commaplace >= 3 || commaplace == 0)){ // Is same as splitter?
-                      const int slen = carrot2-carrot1;
-                      char* cc = new char[slen];
-                      for(int j=carrot1;j<carrot2;j++) cc[j-carrot1] = stringx[j]; // populate charString
+    // loop through
+    for(i=0; i<len; i++) {
+        // if this is the stopper
+        if(stringx[i] == stopper) {
+            if(commaplace >= 4) commaplace = 0; // reset it!
+            carrot2++;
+            commaplace++;
+        }
+        // else make sure that the carrot is in place and populate.
+        else if(stringx[i] == splitter && (commaplace >= 3 || commaplace == 0)) { // Is same as splitter?
+            cc = (char*)calloc(carrot2-carrot1, sizeof(char));
+            for(j=carrot1; j<carrot2; j++) cc[j-carrot1] = stringx[j]; // populate charString
 
-                      sr->add(cc,slen); // add data!
-                      carrot1 = i+1;
-                      carrot2 = i+1;
+            sr->add(cc,carrot2-carrot1); // add data!
+            carrot1 = i+1;
+            carrot2 = i+1;
 
-              }else{
-          // else, just increment.
-                      carrot2++;
-              }
-      }
+        } else {
+            // else, just increment.
+            carrot2++;
+        }
+    }
 
-      // If size is greater then override, and there is a change in carrots
-      if(carrot2 > carrot1){
-              const int slen = carrot2-carrot1; // length of split
-              char* cc = new char[slen]; // use up some space
-              for(int j=carrot1;j<carrot2;j++) cc[j-carrot1] = stringx[j]; // populate charString
+    // If size is greater then override, and there is a change in carrots
+    if(carrot2 > carrot1) {
+        cc = (char*)calloc(carrot2-carrot1, sizeof(char));
+        for(j=carrot1; j<carrot2; j++) cc[j-carrot1] = stringx[j]; // populate charString
 
-              sr->add(cc,slen); // Add to split result
-      }
+        sr->add(cc,carrot2-carrot1); // Add to split result
+    }
 
-      return sr;
+    return sr;
 }
 
 /*
@@ -125,7 +163,7 @@ SplitResult* CharString::split(char splitter,char stopper){
 * Input: 2 char* strings used as needles
 * Output: none
 */
-void CharString::replace(char* a, char* b){
+void CharString::replace(char* a, char* b) {
     if(!isValidCharString()) return;
     // resizes charString if required. Also shifts charString upon resize.
     // for(int i=copyx;i<len;i++){ out[i-copyx] = stringx[i]; }
@@ -135,58 +173,60 @@ void CharString::replace(char* a, char* b){
     CharString* B = new CharString(b);
 
     // special case, Singly repeated (lengths 1, 0)
-    if(B->getSize() == 0){
+    if(B->getSize() == 0) {
         // store result temporarily
         int tlen = 0;
         char* tt = clone()->get();
         // filter out all results
-        for(int i=0;i<this->len;i++){
+        for(int i=0; i<this->len; i++) {
             // find all that are not occurences
-            if(stringx[i] != *a){
-              tt[tlen] = stringx[i];
-              tlen++;
+            if(stringx[i] != *a) {
+                tt[tlen] = stringx[i];
+                tlen++;
             }
         }
         stringx = tt;
         len=tlen;
-    }else{
+    } else {
 
         // find occurences and auto-patch them.
         int iniX = -1, endX=-1;
-        for(int i=0;i<this->len;i++){
+        for(int i=0; i<this->len; i++) {
             int lenAwe = endX-iniX;
-            if(stringx[i] == a[lenAwe]){
-                if(lenAwe+1 >= A->getSize()){
+            if(stringx[i] == a[lenAwe]) {
+                if(lenAwe+1 >= A->getSize()) {
                     // patch it up!
-                    if(A->getSize() == B->getSize()){
+                    if(A->getSize() == B->getSize()) {
                         // same sizes, don't do anything special. Just a copy-over.
-                        for(int i=0;i<A->getSize();i++) stringx[iniX+i] = b[i];
-                    }
-                    else if(A->getSize() > B->getSize()){
+                        for(int i=0; i<A->getSize(); i++) stringx[iniX+i] = b[i];
+                    } else if(A->getSize() > B->getSize()) {
                         // downsize the string.
                         int change = A->getSize() - B->getSize();
                         // downsize.
-                        for(int i=endX-change;i<len-1;i++){ stringx[i] = stringx[i+1]; }
+                        for(int i=endX-change; i<len-1; i++) {
+                            stringx[i] = stringx[i+1];
+                        }
                         len--;
                         // replace.
-                        for(int i=0;i<B->getSize();i++) stringx[iniX+i] = b[i];
-                    }
-                    else if(A->getSize() < B->getSize()){
+                        for(int i=0; i<B->getSize(); i++) stringx[iniX+i] = b[i];
+                    } else if(A->getSize() < B->getSize()) {
                         // upsize the string.
                         int change = B->getSize() - A->getSize();
-                        for(int i=endX+change;i<len-1;i++){ stringx[i] = stringx[i+1]; }
+                        for(int i=endX+change; i<len-1; i++) {
+                            stringx[i] = stringx[i+1];
+                        }
                         len++;
                         // replace.
-                        for(int i=0;i<B->getSize();i++) stringx[iniX+i] = b[i];
+                        for(int i=0; i<B->getSize(); i++) stringx[iniX+i] = b[i];
                     }
-                }else{
+                } else {
                     // set initial vertex if possible.
                     iniX = (iniX==1) ? i : iniX;
 
                     // quite not there yet... lets increase endX
                     endX = i;
                 }
-            }else{
+            } else {
                 // no go!
                 iniX = endX = -1;
             }
@@ -199,99 +239,204 @@ void CharString::replace(char* a, char* b){
 * Input: the start of the cutting head.
 * output: Modified char* string of end size
 */
-char* CharString::shiftLeft(const int lenh){
-      if(!isValidCharString()) return (char*)"";
-      const int lenx = len-lenh;
-      char* out = new char[lenx];
+char* CharString::shiftLeft(const int lenh) {
+    if(!isValidCharString()) return (char*)"";
+    const int lenx = len-lenh;
+    char* out = new char[lenx+1];
 
-      int copyx = lenh; // start of move location
-      for(int i=copyx;i<len;i++){ out[i-copyx] = stringx[i]; }
-      return out;
+    int copyx = lenh; // start of move location
+    for(int i=copyx; i<len; i++) {
+        out[i-copyx] = stringx[i];
+    }
+    out[lenx] = 0x0;
+    return out;
 }
 
 // basic function that returns the string's value
-char* CharString::get(){
-  // prevents any extra endings to stringx
-      //stringx[len] = '\0';
-      return stringx;
+char* CharString::get() {
+    // prevents any extra endings to stringx
+    //stringx[len] = '\0';
+    return stringx;
 }
 
 // returns the size.
-int CharString::getSize(){
-      return len;
+int CharString::getSize() {
+    return len;
 }
 
 //allows you to set the size of the string
-void CharString::setSize(int i){
-      len = i;
+void CharString::setSize(int i) {
+    len = i;
 }
 
 /* Desc: converts entire character string to an integer
 *  Input: char* list of characters, length automatically detected.
 *  output: integer converted from char* list.
 */
-int CharString::getInt(){
-      if(!isValidCharString()) return 0;
-      int size=len; // size from CharString len
+int CharString::getInt() {
+    if(!isValidNumber()) return 0;
+    int size=len; // size from CharString len
+
+    if(contains(".")) return (int)getFloat();
 
 
-      int out = 0;
-      bool neg = false;
-      if(stringx[0] == '-') { neg=true; stringx = shiftLeft(1); size--; } // removes sign
-      for(int i=0;i<size;i++){
-              int c = (int)(stringx[i])-48;
-              if(c == -48) continue; // prevents annoying bug :/
-              int digit = size-(i+1);
+    int out = 0;
+    bool neg = false;
+    if(stringx[0] == '-') {
+        neg=true;    // removes sign
+        stringx = shiftLeft(1);
+        len--;
+    }
 
-              //get exponent of 10.
-              int exp = 1;
-              for(int j=0;j<digit;j++) exp*=10; // expotentiate
+    if(stringx[0] == '+') {
+        stringx = shiftLeft(1);
+        len--;
+    }
 
-              out += exp * c;
-      }
-      if(neg) out*=-1;
-      //cout << out << endl;
-      return out;
+    for(int i=0; i<size; i++) {
+        int c = (int)(stringx[i])-48;
+        if(c == -48) continue; // prevents annoying bug :/
+        int digit = size-(i+1);
+
+        //get exponent of 10.
+        int exp = 1;
+        for(int j=0; j<digit; j++) exp*=10; // expotentiate
+
+        out += exp * c;
+    }
+    if(neg) out*=-1;
+    //cout << out << endl;
+    return out;
+}
+
+// returns a scientific float value
+float CharString::getScientific(float val){
+    // get location of E
+    int eloc = -1;
+    int sloc = -1; // Sign location
+    int js = 0;
+    int i=0;
+    CharString cval;
+    float vale = 0.0;
+    char *valg = 0x0;
+    int sizeE = 0;
+
+    for(int i=len-1; i>=0; i--) {
+        if(stringx[i] == 'e' || stringx[i] == 'E'){
+            eloc = i;
+        }
+    }
+
+    if(eloc == -1) return val; // location of the e value
+
+    // get value into a CharString
+    sizeE = len-eloc-2;
+    valg = (char*)calloc(sizeE+2, sizeof(char));
+
+    // copy the data over
+    for(i=eloc+1; i < len; i++) {
+        valg[js] = stringx[i];
+        js++;
+    }
+
+    cval.set(valg);
+
+    // use power
+    vale = Math::pow(10,cval.getInt());
+
+    return val*vale;
+}
+
+/* Desc: converts entire character string to an float
+*  Input: char* list of characters, length automatically detected.
+*  output: float converted from char* list.
+*/
+float CharString::getFloat() {
+    if(!isValidNumber()) return 0;
+
+    int sizey=len; // size from CharString len
+    float c=0;
+    int digit = 0;
+    int periodloc = -1;
+    float exp;
+    float out = 0.0;
+    bool neg = false;
+    int i = 0;
+
+    if(stringx[0] == '-') {
+        neg=true;    // removes sign
+        stringx = shiftLeft(1);
+        sizey--;
+    }
+
+
+    // Find period (if doesnt exist, just do getInt() and return float)
+    for(i=sizey-1; i>=0; i--) {
+        if(stringx[i] == '.'){
+            periodloc = i;
+            i=-1;
+        }
+    }
+
+    if(periodloc == -1) return (float)getInt();
+
+    // 0.0001  <-- digit = -4, len=6
+    // -12038.22828282302012031929319 <-- digit = -24
+
+    for(i=0; i<sizey; i++) {
+        if(stringx[i] == 0x0 || stringx[i] == '.') continue; // 0x0 '\0' value, ignore
+        c = (int)(stringx[i])-48;
+        digit = periodloc-i+((periodloc-i > 0) ? -1 : 0); // 5-30 = -25
+
+        exp = Math::pow(10, digit);
+
+        out += exp * c;
+    }
+    if(neg) out *= -1;
+
+    if(isValidScientific()) return getScientific(out);
+
+    return out;
+}
+
+
+// takes input and changes current
+void CharString::set_(const char* stringg, const int length) {
+    int clen = SIZEOFA(stringg);
+    char* cc = (char*)calloc(length+1, sizeof(char));
+    std::strcpy(cc, stringg);
+
+    stringx = cc;
+    len = length;
 }
 
 // takes input and changes current
-void CharString::set_(const char* stringg, const int length){
-  char* cc = new char();
-  strcpy(cc, stringg);
-  stringx = cc;
-  len = length;
+void CharString::set(char* stringg, int length) {
+    stringx = stringg;
+    len = length;
 }
 
 // takes input and changes current
-void CharString::set(char* stringg, int length){
-      stringx = stringg;
-      len = length;
+void CharString::set(char* stringg) {
+    // set the data into place.
+    this->set(stringg,SIZEOFA(stringg));
 }
 
-// takes input and changes current
-void CharString::set(char* stringg){
-      int c = 0;
-  // quick loop through to find exact size c.
-      while(stringg[c] != 0x0 || stringg[c] > 32){c++;}
-  // set the data into place.
-      this->set(stringg,c);
-}
-
-void CharString::setPtr(char* data, int length){ // sets a raw pointer, no changes or copying
+void CharString::setPtr(char* data, int length) { // sets a raw pointer, no changes or copying.
     stringx = data;
     len = length;
 }
 
-// fun thing to write :D
 
+// fun thing to write :D
 // Desc:  Custom function to convert integers to a list of characters (string)
 // Input:  Integer (int)
 // return: character string (CharString)
-CharString* CharString::ConvertFromInt(int integer){
-      return ConvertFromLong((long)integer);
+CharString* CharString::ConvertFromInt(int integer) {
+    return ConvertFromLong((long)integer);
 }
 
-CharString* CharString::ConvertFromLong(long integer){
+CharString* CharString::ConvertFromLong(long integer) {
     const int ASCIIOffset = 48; // offset on the ASCII chart
 
     // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
@@ -303,81 +448,32 @@ CharString* CharString::ConvertFromLong(long integer){
     if(neg) integer = integer*(-1); // remove negative sign, we know the negation. :D
 
     // determine # of digits
-    for(int i=0;i<20;i++){
+    for(int i=0; i<20; i++) {
         int exp = 1;
-        for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
+        for(int j=0; j<i; j++) exp *= 10; // set exponent 10^i => exp
         if((integer % (exp)) != integer) len++; // if integer mod exp is not equal to self, it is a digit (10/1000 = 10)
     }
 
-    const int tlen = len + (neg ? 1 : 0); // constify length, if negative, add digit.
+    const int tlen = len + (neg ? 1 : 0)+1; // constify length, if negative, add digit.
     char* out = new char[tlen];
 
     int t=0; // temp var used to store modulus digit addifier
     int kk = neg ? 1 : 0;
     int offset = neg ? -2 : -1; // offsets char based on neg
     if(neg) out[0] = '-';
-    for(int i = tlen+offset; i >= 0; i--){
+    for(int i = tlen+offset; i >= 0; i--) {
         int exp = 1;
-        for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
+        for(int j=0; j<i; j++) exp *= 10; // set exponent 10^i => exp
         int digit = integer / exp -(t*10);
         t *= 10; // shift all digits in t left 1
         t += digit; // enter digit into very last slot of t
         out[kk] = (char)(digit+ASCIIOffset);
         kk++; // increment out digit
     }
-    CharString* g = new CharString();
-    g->set(out,tlen);
+
+    out[tlen-1]='\0';
+    CharString* g = new CharString(out,tlen);
     return g;
-
-
-      /*if(integer == 0){
-          char* c = new char[2];
-          strcpy(c,"0");
-          CharString* g = new CharString();
-          g->set(c,1);
-          return g;
-      }else{
-          // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
-          int len = 0;
-          bool neg = false;
-
-          // is negative?
-          if(integer < 0) neg = true;
-          if(neg) integer = integer*(-1); // remove negative sign, we know the negation. :D
-
-          // determine # of digits
-          do {
-          integer /= 10;
-          len++;
-      } while (integer > 0);
-
-
-          /*for(int i=0;i<30;i++){
-                  int exp = 1;
-                  for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
-                  if((integer % (exp)) != integer) len++; // if integer mod exp is not equal to self, it is a digit (10/1000 = 10)
-          }* /
-
-          const int tlen = len + (neg ? 1 : 0); // constify length, if negative, add digit.
-          char* out = new char[tlen];
-
-          int t=0; // temp var used to store modulus digit addifier
-          int kk = neg ? 1 : 0;
-          int offset = neg ? -2 : -1; // offsets char based on neg
-          if(neg) out[0] = '-';
-          for(int i = tlen+offset; i >= 0; i--){
-                  int exp = 1;
-                  for(int j=0;j<i;j++) exp *= 10; // set exponent 10^i => exp
-                  int digit = integer / exp -(t*10);
-                  t *= 10; // shift all digits in t left 1
-                  t += digit; // enter digit into very last slot of t
-                  out[kk] = (char)(digit+ASCIIOffset);
-                  kk++; // increment out digit
-          }
-          CharString* g = new CharString();
-          g->set(out,tlen);
-          return g;
-      }*/
 }
 
 
@@ -385,222 +481,237 @@ CharString* CharString::ConvertFromLong(long integer){
 *  Input: char* and it's length
 *  Output: boolean
 */
-bool CharString::Compare(char* b,int lenx){
-      if(!isValidCharString()) return false;
-      bool r = true;
+bool CharString::Compare(char* b,int lenx) {
+    if(!isValidCharString()) return false;
+    bool r = true;
 
-      // else, loop through the string
-      for(int i=0;i<lenx;i++){
-              if(this->stringx[i] != b[i]) {
-                      r=false;
-              }
-      }
+    // else, loop through the string
+    for(int i=0; i<lenx; i++) {
+        if(this->stringx[i] != b[i]) {
+            r=false;
+        }
+    }
 
-      return r;
+    return r;
+}
+
+
+bool CharString::Compare(const char* b,int lenx) {
+    return Compare((char*)b, lenx);
 }
 
 // compare where case is useless
-bool CharString::CompareNoCase(char* b,int lenx){
-      if(!isValidCharString()) return false;
-      bool r = true;
+bool CharString::CompareNoCase(char* b,int lenx) {
+    if(!isValidCharString()) return false;
+    bool r = true;
 
-      for(int i=0;i<lenx;i++){
-              char char1 = this->stringx[i], char2 = b[i];
-              bool c1 = char1 == char2;
-              bool c2 = ((((int) char1) < 123) && char1+32 == char2); // char1 is lower case?
-              bool c3 = ((((int) char1) > 64) && char1 == char2+32); // char1 is upper case?
-              if(c1 || c2 || c3) {
-                      r=false;
-              }
-      }
+    for(int i=0; i<lenx; i++) {
+        char char1 = this->stringx[i], char2 = b[i];
+        bool c1 = char1 == char2;
+        bool c2 = ((((int) char1) < 123) && char1+32 == char2); // char1 is lower case?
+        bool c3 = ((((int) char1) > 64) && char1 == char2+32); // char1 is upper case?
+        if(c1 || c2 || c3) {
+            r=false;
+        }
+    }
 
-      return r;
+    return r;
 }
 
 // high-speed string comparison
-bool CharString::Compare(CharString* b){
-      return Compare(b->get(),b->getSize());
+bool CharString::Compare(CharString* b) {
+    return Compare(b->get(),b->getSize());
 }
 
 // high-speed string comparison
-bool CharString::Compare(CharString* b, bool useCase){
-      if(useCase){
-              return Compare(b->get(),b->getSize());
-      }else{
-              return CompareNoCase(b->get(),b->getSize());
-      }
+bool CharString::Compare(CharString* b, bool useCase) {
+    if(useCase) {
+        return Compare(b->get(),b->getSize());
+    } else {
+        return CompareNoCase(b->get(),b->getSize());
+    }
 }
 
 // Compares with another string to determine placement in a sorting scheme.
-SortType CharString::SortCompare(CharString* str){
-      if(!isValidCharString()) return *(new SortType());
-      SortType ret = SSame;
-      // if str is "longer" then this, than it is more "precise".
+SortType CharString::SortCompare(CharString* str) {
+    if(!isValidCharString()) return *(new SortType());
+    SortType ret = SSame;
+    // if str is "longer" then this, than it is more "precise".
 
-      int minlen = len < str->getSize() ? len : str->getSize();
-      char* c = str->get();
-      // compare visible lengths. Note: if this is shorter then str, then it may be much less.
-      // AABB
-      // AABBc
-      // AABBCC
-      // aabb
-      //cout << "COMPARE: " << stringx << " with " << c << endl;
-      for(int i=0;i<minlen;i++){
-              //cout << (stringx[i] > c[i]) << " - " << (stringx[i] < c[i]) << endl;
-              if(stringx[i] > c[i]){
-                      ret = SAfter;
-              }else if(stringx[i] < c[i]){
-                      ret = SBefore;
-              }
-      }
+    int minlen = len < str->getSize() ? len : str->getSize();
+    char* c = str->get();
+    // compare visible lengths. Note: if this is shorter then str, then it may be much less.
+    // AABB
+    // AABBc
+    // AABBCC
+    // aabb
+    //cout << "COMPARE: " << stringx << " with " << c << endl;
+    for(int i=0; i<minlen; i++) {
+        //cout << (stringx[i] > c[i]) << " - " << (stringx[i] < c[i]) << endl;
+        if(stringx[i] > c[i]) {
+            ret = SAfter;
+        } else if(stringx[i] < c[i]) {
+            ret = SBefore;
+        }
+    }
 
-      // if they are the same at length then:
-      if(ret == SSame && len < str->getSize()){
-              // str is greater.
-              ret = SBefore;
-      }else if(ret == SSame && len > str->getSize()){
-              // this is greater.
-              ret = SAfter;
-      }
-      //cout << ret << endl;
-      return ret;
+    // if they are the same at length then:
+    if(ret == SSame && len < str->getSize()) {
+        // str is greater.
+        ret = SBefore;
+    } else if(ret == SSame && len > str->getSize()) {
+        // this is greater.
+        ret = SAfter;
+    }
+    //cout << ret << endl;
+    return ret;
 }
 
 // contains single character?
-bool CharString::contains(char* c){
-      if(!isValidCharString()) return false;
-      // test to make sure this is not null
-      if(this == 0x0) return *(new SortType());
+bool CharString::contains(char* c) {
+    if(!isValidCharString()) return false;
+    // test to make sure this is not null
+    if(this == 0x0) return *(new SortType());
 
-      // test to make sure that the string is usable
-      if(this->stringx == 0x0) return *(new SortType());
+    // test to make sure that the string is usable
+    if(this->stringx == 0x0) return *(new SortType());
 
-      bool co=false;
-  // loop through length
-      for(int i=0;i<this->len;i++){
-      // does string contain this EXACT single character?
-              if(stringx[i] == *c){
-                      co=true;
-              }
-      }
-      return co;
+    bool co=false;
+    // loop through length
+    for(int i=0; i<this->len; i++) {
+        // does string contain this EXACT single character?
+        if(stringx[i] == *c) {
+            co=true;
+        }
+    }
+    return co;
 }
 
 
-void CharString::concata_(const char* str, const int lenx){
-  if(!isValidCharString()) return;
-  char* cc = new char();
-      std::strcpy(cc,str);
-  concata(cc, lenx);
+void CharString::concata_(const char* str, const int lenx) {
+    if(!isValidCharString()) return;
+    char* cc = new char();
+    std::strcpy(cc,str);
+    concata(cc, lenx);
 }
 
 // Combine CharStrings after the current charString.=
-void CharString::concata(char* str, int lenx){
-      // initialize variables
-      if(!isValidCharString()) return;
-      int lena = len;
-      int lenb = lenx;
-      const int lenab = lena+lenb;
-      char* tmp = new char[lenab+1];
+void CharString::concata(char* str, int lenx) {
+    // initialize variables
+    if(this->len == 0){
+        stringx = str;
+        len = lenx;
+        return;
+    }
 
-      for(int i=0;i<lenab+1;i++){
-              tmp[i] = '\0';
-      }
+    if(lenx == 0) return;
 
-      // add to the beginning.
-      for(int i=0;i<lena;i++){
-              tmp[i] = stringx[i];
-      }
+    int lena = len;
+    int lenb = lenx;
+    const int lenab = lena+lenb;
 
-      // append after beginning.
-      for(int i=0;i<lenb;i++){
-              tmp[i+(lena)] = str[i];
-      }
+    char* tmp = new char[lenab+1];
 
-      // imprint changes
-      this->set(tmp,lenab);
+    for(int i=0; i<lenab+1; i++) {
+        tmp[i] = '\0';
+    }
+
+    // add to the beginning.
+    for(int i=0; i<lena; i++) {
+        tmp[i] = stringx[i];
+    }
+
+    // append after beginning.
+    for(int i=0; i<lenb; i++) {
+        tmp[i+(lena)] = str[i];
+    }
+
+    // imprint changes
+    char* v = stringx;
+    this->set(tmp,lenab);
+    free(v);
 }
 
 /* Combine CharStrings after the current charString.
 */
-void CharString::concata(CharString* str){
-      concata(str->get(),str->getSize());
+void CharString::concata(CharString* str) {
+    concata(str->get(),str->getSize());
 }
 
 // Combine CharStrings before the current charString.=
-void CharString::concatb(char* str, int lenx){
-      // initialize variables
-      if(!isValidCharString()) return;
-      int lena = lenx;
-      int lenb = len;
-      const int lenab = lena+lenb;
-      char* tmp = new char[lenab+1];
+void CharString::concatb(char* str, int lenx) {
+    // initialize variables
+    if(!isValidCharString()) return;
+    int lena = lenx;
+    int lenb = len;
+    const int lenab = lena+lenb;
+    char* tmp = new char[lenab+1];
 
-              for(int i=0;i<lenab+1;i++){
-                      tmp[i] = '\0';
-              }
+    for(int i=0; i<lenab+1; i++) {
+        tmp[i] = '\0';
+    }
 
-      // add to the beginning.
-      for(int i=0;i<lena;i++){
-              tmp[i] = str[i];
-      }
+    // add to the beginning.
+    for(int i=0; i<lena; i++) {
+        tmp[i] = str[i];
+    }
 
-      // append after beginning.
-      for(int i=0;i<lenb;i++){
-              tmp[i+(lena)] = stringx[i];
-      }
+    // append after beginning.
+    for(int i=0; i<lenb; i++) {
+        tmp[i+(lena)] = stringx[i];
+    }
 
-      //cout << "tmp: '" << tmp << "' (" << lena << "," << lenb << "="<< lenab <<")" << endl;
-      // imprint changes
-      this->set(tmp,lenab);
+    //cout << "tmp: '" << tmp << "' (" << lena << "," << lenb << "="<< lenab <<")" << endl;
+    // imprint changes
+    this->set(tmp,lenab);
 }
 
 // Combine CharStrings before the current charString.
-void CharString::concatb(CharString* str){
-      concatb(str->get(),str->getSize());
+void CharString::concatb(CharString* str) {
+    concatb(str->get(),str->getSize());
 }
 
 //shortcut for Compare command, must use * before each to use :/
-bool CharString::operator==(CharString* ins){
-      return Compare(ins);
+bool CharString::operator==(CharString* ins) {
+    return Compare(ins);
 }
 
 // determines if the CharString is Empty
-bool CharString::isEmpty(){
-      if(!isValidCharString()) return false;
-      return (stringx[0] == 0x0 || len == 0);
+bool CharString::isEmpty() {
+    if(!isValidCharString()) return false;
+    return (stringx[0] == 0x0 || len == 0);
 }
 
-CharString* CharString::clone(){
-      if(!isValidCharString()) return new CharString();
-      char* cc = new char();
-      for(int i=0;i<=len;i++) cc[i] = '\0';
-      for(int i=0;i<len;i++){
-              cc[i] = stringx[i];
-      }
+CharString* CharString::clone() {
+    if(!isValidCharString()) return new CharString();
+    char* cc = new char();
+    for(int i=0; i<=len; i++) cc[i] = '\0';
+    for(int i=0; i<len; i++) {
+        cc[i] = stringx[i];
+    }
 
-      return new CharString(cc,len);
+    return new CharString(cc,len);
 }
 
-bool CharString::startsWith(CharString* starter){
-  if(!isValidCharString()) return false;
-  int lenx = starter->getSize();
-  if(lenx > len) return false; // cannot start with something that is bigger!
-  // compare each
-  for(int l = 0;l<lenx; l++){
-      if(stringx[l] != starter->get()[l]) return false;
-  }
-  return true;
+bool CharString::startsWith(CharString* starter) {
+    if(!isValidCharString()) return false;
+    int lenx = starter->getSize();
+    if(lenx > len) return false; // cannot start with something that is bigger!
+    // compare each
+    for(int l = 0; l<lenx; l++) {
+        if(stringx[l] != starter->get()[l]) return false;
+    }
+    return true;
 }
-bool CharString::endsWith(CharString* ender){
-  if(!isValidCharString()) return false;
-  int lenx = ender->getSize();
-  if(lenx > len) return false; // cannot end with something that is bigger!
-  // compare each
-  for(int l = 0;l<lenx; l++){
-      int tat = (len-lenx)-1; // location to start at for compare
-      if(stringx[tat] != ender->get()[l]) return false;
-  }
-  return true;
+bool CharString::endsWith(CharString* ender) {
+    if(!isValidCharString()) return false;
+    int lenx = ender->getSize();
+    if(lenx > len) return false; // cannot end with something that is bigger!
+    // compare each
+    for(int l = 0; l<lenx; l++) {
+        int tat = (len-l)-1; // location to start at for compare
+        if(stringx[tat] != ender->get()[lenx-l-1]) return false;
+    }
+    return true;
 }
 

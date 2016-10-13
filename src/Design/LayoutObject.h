@@ -7,19 +7,19 @@
 // The Layout object is used to reference multiple sub-objects
 // These objects as an example can be buttons, dropdowns or other layouts.
 
-class LayoutObject{
-private:
-	int x,y;
-	int width, height;
-	bool resize, draw;
+class LayoutObject {
+    private:
+        int x,y;
+        int width, height;
+        bool resize, draw;
         LinkedList<LayoutObject> *children; // children
         LayoutObject *parent; // parent object
-        
+
         private initObject(); // initialize variables
 
-public:
+    public:
         ~LayoutObject();
-        
+
         // event methods
         public void _draw();                    // pre-draw event
         public virtual void draw();             // abstract draw method (implements OpenGL, SDL, ect.)
@@ -27,12 +27,12 @@ public:
 
         // Child methods
         public void addChild(LayoutObject* child);      // add a child
-        public LayoutOjbect* getChildren();             // get all children        
+        public LayoutOjbect* getChildren();             // get all children
         public void removeChild(LayoutObject* child);   // remove a single child
         public void clearChildren();                    // clears all children
-        
 
-        
+
+
         // Parent methods
         public void setParent(LayoutObject* child);
         public LayoutObject* getParent();

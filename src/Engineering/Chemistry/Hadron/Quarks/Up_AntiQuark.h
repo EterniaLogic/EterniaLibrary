@@ -3,10 +3,9 @@
 
 // combined to form Hadrons
 
-class Up_AntiQuark
-{
-  
+class Up_AntiQuark {
+
 };
 
-#endif 
- 
+#endif
+

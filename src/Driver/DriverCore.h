@@ -3,12 +3,12 @@
 
 // The Driver core is used to help make supplementary drivers for hardware.
 
-#if WIN 
-        #include "WinDriver.h"
+#if WIN
+#include "WinDriver.h"
 #elseif MacOSX
-        #include "OSXDriver.h"
+#include "OSXDriver.h"
 #elseif Linux
-        #include "LinuxDriver.h"
+#include "LinuxDriver.h"
 #endif
 
 

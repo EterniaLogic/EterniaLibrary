@@ -6,10 +6,9 @@
 // Muon neutrino / antineutrino
 // Tau neutrino / antineutrino
 
-class Neutrino
-{
-  Neutrino();
-  virtual ~Neutrino();
+class Neutrino {
+        Neutrino();
+        virtual ~Neutrino();
 };
 
 #endif

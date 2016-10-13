@@ -28,52 +28,52 @@ using namespace std;
 // Constant shuffle bits
 const int shufflelocs[64] = {32, 41, 42, 12, 14, 45, 48, 37, 13, 63, 5, 44, 20, 58, 18, 22, 2, 8, 33, 6, 60, 51, 16, 49, 57, 50, 46, 21, 43, 19, 61, 38, 11, 10, 24, 3, 52, 47, 28, 9, 27, 35, 26, 25, 54, 62, 36, 4, 40, 0, 1, 56, 7, 34, 30, 15, 17, 31, 53, 39, 29, 23, 59, 55};
 
-int countBits(uint64_t maxVal){
-	// get the number of bits required for the maxVal
-	int ret = 0;
+int countBits(uint64_t maxVal) {
+    // get the number of bits required for the maxVal
+    int ret = 0;
 
-	while(maxVal > 0){
-		maxVal = maxVal>>1;
-		ret++;
-	}
+    while(maxVal > 0) {
+        maxVal = maxVal>>1;
+        ret++;
+    }
 
-	return ret;
+    return ret;
 }
 
 // reverse the 64 bits
-uint64_t reverseBits(uint64_t val){
-	uint64_t newv = 0;
+uint64_t reverseBits(uint64_t val) {
+    uint64_t newv = 0;
 
-	for(int i=0;i<64;i++){
-		newv |= 2<<(63-i) & val;
-	}
+    for(int i=0; i<64; i++) {
+        newv |= 2<<(63-i) & val;
+    }
 
-	return newv;
+    return newv;
 }
 
 // generates a number where all bits up to the specified bits are 1
-uint64_t genBitmask(int bits){
-	uint64_t newv = 1;
+uint64_t genBitmask(int bits) {
+    uint64_t newv = 1;
 
-	for(int i=0;i<bits-1;i++){
-		newv |= 2<<i;
-	}
+    for(int i=0; i<bits-1; i++) {
+        newv |= 2<<i;
+    }
 
-	return newv;
+    return newv;
 }
 
 
 // Add prive large numbers to help add entropy for the shuffle stage
-uint64_t exHashPrime(char* str, int len, uint64_t maxVal){
+uint64_t exHashPrime(char* str, int len, uint64_t maxVal) {
     // Bitwise AND/or prime numbers
     uint64_t sum = 0;
-	int bits = countBits(maxVal); // the # of bits is used here to help prevent collisions, full hash just uses 64 bits
+    int bits = countBits(maxVal); // the # of bits is used here to help prevent collisions, full hash just uses 64 bits
     sum = 0;
 
-	const unsigned int bitmask = genBitmask(bits); // generates a bitmask (i.e: 0xFFFF for 32-bit)
+    const unsigned int bitmask = genBitmask(bits); // generates a bitmask (i.e: 0xFFFF for 32-bit)
 
     // lots and lots of xor here.
-    for(int i=0;i<len;i++){
+    for(int i=0; i<len; i++) {
         unsigned char valx = str[i];
         //sum += (sum^(valx^len))<<(i+1);
         //sum += (2<<63 - valx);
@@ -82,7 +82,7 @@ uint64_t exHashPrime(char* str, int len, uint64_t maxVal){
         //sum += ~(valx<<4);
         sum += (sum ^ len) & bitmask;
 
-		sum += 2<<(str[i]-1);
+        sum += 2<<(str[i]-1);
 
         // preleminary prime number xors
         sum ^= ((exa1&bitmask)^valx);
@@ -95,22 +95,22 @@ uint64_t exHashPrime(char* str, int len, uint64_t maxVal){
 
     }
 
-	/*for(int i=0;i<len;i++){
+    /*for(int i=0;i<len;i++){
         unsigned char valx = str[i];
 
-		// Follow the # of bits that are allowed to be occupied
-		sum = sum^(valx&maxVal);
-	}*/
+        // Follow the # of bits that are allowed to be occupied
+        sum = sum^(valx&maxVal);
+    }*/
 
-	//sum = reverseBits(sum); // reverse bits to keep lower values non-colliding
+    //sum = reverseBits(sum); // reverse bits to keep lower values non-colliding
 
-	cout << sum << endl;
+    cout << sum << endl;
 
     return sum;
 }
 
 // Divide value to both "lose" information and trim to wanted value size
-uint64_t exHashDivValue(uint64_t sum, uint64_t maxVal){
+uint64_t exHashDivValue(uint64_t sum, uint64_t maxVal) {
     sum = reverseBits(sum);
 
     while(sum > maxVal) sum /= 3;
@@ -119,10 +119,10 @@ uint64_t exHashDivValue(uint64_t sum, uint64_t maxVal){
 }
 
 // fully shuffle the bits based on # of bits
-uint64_t exHashShuffleBits(uint64_t sum){
+uint64_t exHashShuffleBits(uint64_t sum) {
     uint64_t newsum = 0;
-    for(int i=0;i<64;i++){
-		// sum AND 2^(v[i]-1)
+    for(int i=0; i<64; i++) {
+        // sum AND 2^(v[i]-1)
         newsum |= (sum & (2<<(shufflelocs[i]-1)));
     }
 
@@ -134,11 +134,11 @@ uint64_t exHashShuffleBits(uint64_t sum){
 // steps help maximize entropy at the cost of CPU time
 // Approximate cost: O(steps * maxval)
 // Note: since unsigned longs are used here along with divs, this is not useful for Microcontrollers.
-uint64_t exSumMap(CharString *str, uint64_t maxVal, int steps){
+uint64_t exSumMap(CharString *str, uint64_t maxVal, int steps) {
     uint64_t endx = 0;
 
     // loop through N steps, produces entropy.
-    for(int i=0;i<steps;i++){
+    for(int i=0; i<steps; i++) {
         // ID generation via bit-wise operations with constants as the base values to produce a hash
         endx ^= exHashPrime(str->get(), (uint64_t)str->getSize(), maxVal);
 

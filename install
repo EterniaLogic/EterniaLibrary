@@ -4,6 +4,8 @@ sudo rm /usr/include/Eternia* -R 2>/dev/null
 sudo rm /usr/lib/libEternia.so -R 2>/dev/null
 sudo mkdir /usr/include/Eternia
 
+# cp EterniaLibrary libEternia.a
+
 rm include -R
 mkdir include
 cp src/* include/ -R

@@ -5,7 +5,7 @@
 //  the file COPYRIGHT, distributed as part of this software.
 //-----------------------------------------------------------------------------
 
-#include "../Kinematics/VectorBody.h"
+#include "../../../Math/struct/vertex.h"
 #include "../../../constants.h"
 
 void testGravity();

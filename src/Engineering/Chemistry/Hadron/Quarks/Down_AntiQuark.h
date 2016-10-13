@@ -3,10 +3,9 @@
 
 // combined to form Anti-particles
 
-class Down_AntiQuark
-{
-  
+class Down_AntiQuark {
+
 };
 
-#endif 
- 
+#endif
+

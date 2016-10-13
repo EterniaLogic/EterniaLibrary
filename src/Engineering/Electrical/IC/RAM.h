@@ -11,13 +11,12 @@
 
 // Direct RAM access. Simulates RAM memory structure using managed C++
 
-class RAM: private IC
-{
-public:
-  RAM(long size); // defines maximum size of this RAM.
-  virtual ~RAM();
-  
-  void setPower(PowerValue* value); // Sets the input power value
+class RAM: private IC {
+    public:
+        RAM(long size); // defines maximum size of this RAM.
+        virtual ~RAM();
+
+        void setPower(PowerValue* value); // Sets the input power value
 };
 
-#endif  
+#endif

@@ -12,25 +12,24 @@
 
 
 
-class P2PManager
-{
-	public:
-		P2PManager();
-		virtual ~P2PManager();
-		int GlobalMaxSubClients; // Global max # of clients.
-		int GlobalMinSubClients; // max # of clients before a sub-node is created.
-		
-		int MaxSubNodes; // Max # of sub-nodes to manage.
-		int MinSubNodes; // Max # of sub-nodes to manage.
-		
-		int GetP2PPort(); // determines if this computer can become a P2P Server. If so, port above -1 will be assigned.
-		
-		// connection
-		P2PLClient connectP2PLServer(P2PNode server);
-		
-		
-		// handles
-		void handleP2PPacket(P2PNode player);
+class P2PManager {
+    public:
+        P2PManager();
+        virtual ~P2PManager();
+        int GlobalMaxSubClients; // Global max # of clients.
+        int GlobalMinSubClients; // max # of clients before a sub-node is created.
+
+        int MaxSubNodes; // Max # of sub-nodes to manage.
+        int MinSubNodes; // Max # of sub-nodes to manage.
+
+        int GetP2PPort(); // determines if this computer can become a P2P Server. If so, port above -1 will be assigned.
+
+        // connection
+        P2PLClient connectP2PLServer(P2PNode server);
+
+
+        // handles
+        void handleP2PPacket(P2PNode player);
 };
 
 #endif /*P2PMANAGER_H_*/

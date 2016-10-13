@@ -14,98 +14,99 @@ using namespace std;
 // Gar! I don't like writing templates because of this!
 
 template<class T>
-class LinkedNode
-{
-public:
-    LinkedNode<T> * prev;
-    LinkedNode<T> * next;
-    T* data;
-    int id;
-    LinkedNode(){
-      prev = next = 0x0;
-      data = 0x0;
-    }
-    ~LinkedNode(){
-      prev = next = 0x0;
-      data = 0x0;
-    }
+class LinkedNode {
+    public:
+        LinkedNode<T> * prev;
+        LinkedNode<T> * next;
+        T* data;
+        int id;
+        LinkedNode() {
+            prev = next = 0x0;
+            data = 0x0;
+        }
+        ~LinkedNode() {
+            prev = next = 0x0;
+            data = 0x0;
+        }
 };
 
 template<class T>
-class LinkedList
-{
-	//Written January 25th, 2013
-	LinkedNode<T> * baseNode;
-	LinkedNode<T> * currentNode;
-	int _size;
-	bool changed; // used with freezing to help keep better performance
-public:
+class LinkedList {
+        //Written January 25th, 2013
+        LinkedNode<T> * baseNode;
+        LinkedNode<T> * currentNode;
+        int _size;
+        bool changed; // used with freezing to help keep better performance
+    public:
         T **frozen;
         int frozenlen;
 
 
         // Initialize!
-        LinkedList(){
+        LinkedList() {
             baseNode = new LinkedNode<T>();
             currentNode = baseNode;
             _size = 0;
             changed=true;
+            frozen=0x0;
+            frozenlen=0;
         }
 
         // Clean up!
-        ~LinkedList(){
+        ~LinkedList() {
             LinkedNode<T>* current = baseNode;
-            while(current != 0x0){
-              LinkedNode<T>* cc = current;
-              current = current->next;
-              delete cc;
+            while(current != 0x0) {
+                LinkedNode<T>* cc = current;
+                current = current->next;
+                delete cc;
             }
         }
 
         // add item
-        void add(T* cc){
+        void add(T* cc) {
             //adds a Void* Object. This can be declared when using the list.
             LinkedNode<T>* item = new LinkedNode<T>();
             item->data = cc;
-            if(currentNode == 0x0){
+            if(currentNode == 0x0) {
                 baseNode = currentNode = item;
-            }else{
-            currentNode->next = item;
-            currentNode = item;
+            } else {
+                currentNode->next = item;
+                currentNode = item;
             }
             _size++;
             changed=true;
         }
 
         // return item
-        T* get(int index){
+        T* get(int index) {
             freeze();
+            if(index > _size-1) return 0x0;
             return frozen[index];
         }
 
         // return the size
-        int size(){
+        int size() {
             return _size;
         }
 
-        LinkedNode<T>* top(){
+        LinkedNode<T>* top() {
             return baseNode;
         }
 
-        T* remove(long index){
+        T* remove(long index) {
             T* r = 0x0;
-            if(index< _size){
+            if(index< _size) {
                 // erase element at i
                 LinkedNode<T>* current = baseNode;
-                for(long i=0;i<index;i++){
-                    if(current != 0x0){
-                        if (i == index){
+                for(long i=0; i<index; i++) {
+                    if(current != 0x0) {
+                        if (i == index) {
                             if(current->next != 0x0) current->next->prev = 0x0;
                             if(current->prev != 0x0) current->prev->next = 0x0;
                             r = current->data;
                             break;
                         }
-                    }else{
+                    } else {
                         break;
                     }
                 }
@@ -115,19 +116,19 @@ public:
         }
 
         // Clears up the list
-        void clear(){
+        void clear() {
             while(remove(0L) != 0x0);
             changed=true;
         }
 
         // Returns the type-size of the data
-        int typeSize(){
+        int typeSize() {
             return sizeof(T);
         }
 
-		// convert from linkedList to a static list.
-        void freeze(){
-            if(_size > 0 && changed){
+        // convert from linkedList to a static list.
+        void freeze() {
+            if((_size > 0 && changed) || _size != frozenlen) {
                 //cout << "freeze-1 " << _size << endl;
                 const int len = _size;
                 frozen = new T*[len];
@@ -135,34 +136,39 @@ public:
                 //cout << "freeze-2" << endl;
 
                 // copy values in!
-                if(baseNode != 0x0){
+                if(baseNode != 0x0) {
                     LinkedNode<T> * current = baseNode->next;
-                    for(int i=0;i<_size;i++){
-                        if(current != 0x0){
+                    for(int i=0; i<_size; i++) {
+                        if(current != 0x0) {
                             frozen[i] = current->data;
                             current = current->next;
-                        } else{
-                            frozenlen = i;
+                        } else {
+                            //frozenlen = i;
                             break;
                         }
                     }
                 }
                 changed=false;
-            }else{
-                frozenlen = 0;
-                frozen = 0x0;
+            }else if(_size <= 0){
+                frozenlen = _size;
             }
+        }
+
+        void refreeze(){
+            changed=true;
+            frozenlen=0;
+            freeze();
         }
 
 
         // unfreeze will determine if there are any new addresses added
         // First, clears the list, then goes through a brand new list
-        void unfreeze(void* list, int bytes){
+        void unfreeze(void* list, int bytes) {
             clear();
             _size = bytes/sizeof(T);
             T* thislist = (T*)list;
 
-            for(int i=0;i<_size;i++){
+            for(int i=0; i<_size; i++) {
                 add(&thislist[i]);
             }
 

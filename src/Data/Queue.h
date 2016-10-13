@@ -14,27 +14,26 @@
 #include <cstdlib>
 #include <stdio.h>
 
-class QueueNode{
+class QueueNode {
     public:
-      QueueNode();
-      void *data;
-      QueueNode *Prev, *Next;
+        QueueNode();
+        void *data;
+        QueueNode *Prev, *Next;
 };
 
-class Queue
-{
-private:
-    QueueNode *Head,*Tail;
-public:
-    Queue();
-    virtual ~Queue();
+class Queue {
+    private:
+        QueueNode *Head,*Tail;
+    public:
+        Queue();
+        virtual ~Queue();
 
-    int Size;
-    void push(void* data);
-    void* pop();
-    void* front();
-    int size();
-    bool empty();
+        int Size;
+        void push(void* data);
+        void* pop();
+        void* front();
+        int size();
+        bool empty();
 };
 
 #endif /*QUEUE_H_*/

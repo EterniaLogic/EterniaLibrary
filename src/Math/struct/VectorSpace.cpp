@@ -7,20 +7,22 @@
 
 #include "VectorSpace.h"
 
-VectorSpace::VectorSpace(){}
-VectorSpace::VectorSpace(double **values_, int _m, int _n) { set(values_,_m,_n); }
+VectorSpace::VectorSpace() {}
+VectorSpace::VectorSpace(double **values_, int _m, int _n) {
+    set(values_,_m,_n);
+}
 
-VectorSpace::VectorSpace(VECSPACE_PROPERTY _property){
+VectorSpace::VectorSpace(VECSPACE_PROPERTY _property) {
     property = _property;
 }
 
 // define VS_Rn's exact number of dimensions.
-VectorSpace::VectorSpace(VECSPACE_PROPERTY _property, int N_Dimensions){
+VectorSpace::VectorSpace(VECSPACE_PROPERTY _property, int N_Dimensions) {
     property = _property;
     dim = N_Dimensions;
 }
 
-VectorSpace* VectorSpace::clone(){
+VectorSpace* VectorSpace::clone() {
     VectorSpace* two = new VectorSpace();
 
 
@@ -28,23 +30,23 @@ VectorSpace* VectorSpace::clone(){
     const int x = columns;
     const int y = rows;
     double** vset = new double*[y];
-    for(int i=0;i<y;i++){
+    for(int i=0; i<y; i++) {
         double* vset2 = new double[x];
         vset[i] = vset2;
 
         // fill in.
-        for(int k=0;k<y;k++){
+        for(int k=0; k<y; k++) {
             vset2[k] = values[k][i];
         }
     }
 
     two->set(vset,columns,rows);
-	return two;
+    return two;
 }
 
 
 // adds vertex to rows.
-void addVector(vertex* v){
+void addVector(vertex* v) {
     // add as another row.
     // modify main values function.
 
@@ -62,7 +64,7 @@ bool VectorSpace::hasInfiniteDimensions() {
 
 // <A,A>
 // gets the general dot product between two vertex spaces.
-double VectorSpace::innerProduct(VectorSpace* V){
+double VectorSpace::innerProduct(VectorSpace* V) {
     // dot product of all items
     //  [ Ax * Bx ]
     //  [ Ay * By ]
@@ -71,8 +73,8 @@ double VectorSpace::innerProduct(VectorSpace* V){
 
     if(columns != V->columns || rows != V->rows) return 0;
 
-    for(int j=0;j<columns;j++){
-    	for(int i=0;i<rows;i++){
+    for(int j=0; j<columns; j++) {
+        for(int i=0; i<rows; i++) {
             // multiply and sum
             result = values[j][i] * V->values[j][i];
         }
@@ -93,13 +95,13 @@ double VectorSpace::innerProduct(VectorSpace* V){
 }*/
 
 // returns whether the VectorSpace is a Basis of Rn
-bool VectorSpace::isBasis(VectorSpace* W){
-    if(hasInfiniteDimensions() && !W->hasInfiniteDimensions()){
+bool VectorSpace::isBasis(VectorSpace* W) {
+    if(hasInfiniteDimensions() && !W->hasInfiniteDimensions()) {
         return false;
     }
 
     // V spans W and this is Independent?
-    if(spans(W) && isIndependent()){
+    if(spans(W) && isIndependent()) {
         return true;
     }
 
@@ -108,35 +110,35 @@ bool VectorSpace::isBasis(VectorSpace* W){
 
 // returns the N(A), or nullity space. Should return B = span(A)
 // returns 0x0 if not possible.
-VectorSpace* VectorSpace::nullity(){
+VectorSpace* VectorSpace::nullity() {
     // cannot find null space if infinite dimensions.
     if(hasInfiniteDimensions()) return 0x0;
     VectorSpace* ret = new VectorSpace();
     // Ax = 0
-	// TODO: FIX THIS!!!
-	return ret;
+    // TODO: FIX THIS!!!
+    return ret;
 }
 
 // returns the dimension of the vertex space.
 // returns -1 if impossible to find.
-int VectorSpace::dimension(){
+int VectorSpace::dimension() {
     if(hasInfiniteDimensions()) return -1;
-	return columns;
+    return columns;
 }
 
 // returns true if the vertex space is dependent of equations.
-bool VectorSpace::isIndependent(){
+bool VectorSpace::isIndependent() {
     // Rn is never dependent because no number is recurring.
     if(hasInfiniteDimensions()) return true;
 
-	//TODO: Add actual stuff for independence?
+    //TODO: Add actual stuff for independence?
 
-	// IDK
-	return false;
+    // IDK
+    return false;
 }
 
 // does this (V) spans W? {or V spans W?}
-bool VectorSpace::spans(VectorSpace* W){
+bool VectorSpace::spans(VectorSpace* W) {
     // if this is in R3 and W is also in R3, then it is true.
     // else if this is an infinite expansion (All real numbers in R1->3 or n), then false.
     if(property == W->property) return true;
@@ -159,33 +161,33 @@ bool VectorSpace::spans(VectorSpace* W){
     vs->echeolonForm(); // converts to echeolon form. (Simplest form of this matrix)
 
     // I believe that this means that V spans W means that there are 0s in V, where there are 0s are in W.
-    if(isIndependent()){
+    if(isIndependent()) {
         // matrix dimension (n) must match W's size.
 
         // is in R1 or in 0 space
-        if(W->property == VS_R1 || W->property == VS_0){ // (x) or (0)
-            if(columns == 1){
+        if(W->property == VS_R1 || W->property == VS_0) { // (x) or (0)
+            if(columns == 1) {
 
-            }else return false;
-        }else if(W->property == VS_R2){ // in R2? (x,y)
-            if(columns == 1){
+            } else return false;
+        } else if(W->property == VS_R2) { // in R2? (x,y)
+            if(columns == 1) {
 
-            }else return false;
-        }else if(W->property == VS_R3){ // in R3? (x,y,z)
-            if(columns == 1){
+            } else return false;
+        } else if(W->property == VS_R3) { // in R3? (x,y,z)
+            if(columns == 1) {
 
-            }else return false;
-        }else if(W->property == VS_Rn){ // in Rn? (x,y,z,w, ... n)
+            } else return false;
+        } else if(W->property == VS_Rn) { // in Rn? (x,y,z,w, ... n)
             // must match dim
-            if(columns == dim){
+            if(columns == dim) {
 
-            }else return false;
+            } else return false;
         }
-    }else{
+    } else {
         // blah?
     }
 
-	return false;
+    return false;
 }
 
 

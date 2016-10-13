@@ -7,12 +7,10 @@
 
 #include "P2PLServer.h"
 
-P2PLServer::P2PLServer()
-{
+P2PLServer::P2PLServer() {
 }
 
-P2PLServer::~P2PLServer()
-{
+P2PLServer::~P2PLServer() {
 }
 
 /*

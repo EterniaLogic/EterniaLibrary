@@ -5,12 +5,12 @@
 // The response of an HTML server request
 // R/W permissions
 
-class HTMLResponse{
-private:
-	CharString *body, *head, *raw;
-public:
-	HTMLResponse();
-	
+class HTMLResponse {
+    private:
+        CharString *body, *head, *raw;
+    public:
+        HTMLResponse();
+
 };
 
 

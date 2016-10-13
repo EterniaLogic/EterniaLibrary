@@ -9,48 +9,45 @@
 
 using namespace std;
 
-bool checkFileExistence(const char* filename)
-{
+bool checkFileExistence(const char* filename) {
     ifstream f(filename);
     return f.is_open();
 }
 
 // open a file
-void fileOpen(ifstream &infile, char* filename){
+void fileOpen(ifstream &infile, char* filename) {
     //cout << "fileopen = " << filename << endl;
-    if(checkFileExistence(filename)){
+    if(checkFileExistence(filename)) {
         //cout << "@" << endl;
         infile.open(filename);
-    }    
+    }
 }
 
 // get a line from the file.
-CharString* fileGetLine(ifstream &file){
+CharString* fileGetLine(ifstream &file) {
     string sLine = "";
-    if (!file.eof())
-    {
+    if (!file.eof()) {
         std::getline(file, sLine);
         const int linelen = sLine.size();
         //cout << sLine << endl;
         char *line = new char[linelen];
-        for (int a=0;a<linelen;a++)
-        {
+        for (int a=0; a<linelen; a++) {
             line[a]=sLine[a];
         }
         //cout << line << endl;
         return new CharString(line, linelen);
-    }else{
+    } else {
         return 0x0;
     }
 }
 
 // write a block to a file.
-void fileWrite(ifstream &file, CharString* data){
-    
+void fileWrite(ifstream &file, CharString* data) {
+
 }
 
 // closeFile
-void fileClose(ifstream &file){
+void fileClose(ifstream &file) {
     file.close();
 }
 

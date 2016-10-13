@@ -17,27 +17,27 @@
 //      Remove item: O(N^2)
 //      loop through all items: O(N)
 
-class EventHandler{
-private:
+class EventHandler {
+    private:
         PriorityQueue *handles; // events to handle
-        
-public:
+
+    public:
         EventHandler();
         ~EventHandler();
-        
+
         // O(N)
         void handleEvents(); // handles automatic events
-        
+
         // Create Event O(N^2) due to priority heap
         EventHandle* createEvent(void (*func)(), unsigned long priority);
         EventHandle* createEvent(void (*func)(void*), unsigned long priority);
         EventHandle* createEvent(void (*func)(void*,void*), unsigned long priority);
         void addEvent(EventHandle *event, int priority); // add Event, the priority is set by lowest value
         void removeEvent(EventHandle *event); // remove a specific object (expensive)
-        
+
         // O(N^2)
         void clearEvents(); // clear all objects
-        
+
         // O(k)
         bool isEmpty(); // returns if the event queue is empty
 };

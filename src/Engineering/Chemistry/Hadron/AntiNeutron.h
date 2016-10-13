@@ -5,10 +5,9 @@
 //    !u   !d
 //      !d
 
-class AntiNeutron
-{
-  AntiNeutron();
-  virtual ~AntiNeutron();
+class AntiNeutron {
+        AntiNeutron();
+        virtual ~AntiNeutron();
 };
 
 #endif

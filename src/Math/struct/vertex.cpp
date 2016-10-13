@@ -9,183 +9,203 @@
 
 using namespace Math; // ../Math.h
 
-double ubersignificant = 1.000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000f;
+
+#define VECOP_IMP(op) vertex vertex::operator op(vertex b) { \
+    vertex v; \
+    v.x = this->x op b.x; \
+    v.y = this->y op b.y; \
+    v.z = this->z op b.z; \
+    return v; \
+} \
+vertex vertex::operator op(double b) { \
+    vertex v; \
+    v.x = this->x op b; \
+    v.y = this->y op b; \
+    v.z = this->z op b; \
+    return v; \
+}
+
+#define VECOP_IMP_EQ(op) void vertex::operator op(vertex b) { \
+    this->x op b.x; \
+    this->x op b.y; \
+    this->x op b.z; \
+} \
+void vertex::operator op(double b) { \
+    this->x op b; \
+    this->x op b; \
+    this->x op b; \
+}
+
 
 // pre-defines vertex's coordinates
-vertex::vertex(double _x,double _y,double _z){
-	this->x = _x;
-	this->y = _y;
-	this->z = _z;
-	dimension = 3;
+vertex::vertex(double _x,double _y,double _z) {
+    this->x = _x;
+    this->y = _y;
+    this->z = _z;
+    
+    addSerial(&x,SSE_double);
+    addSerial(&y,SSE_double);
+    addSerial(&z,SSE_double);
 }
-vertex::vertex(){ dimension = 3; }
-vertex::~vertex(){  }
+vertex::vertex() {
+    x=y=z=0;
+    addSerial(&x,SSE_double);
+    addSerial(&y,SSE_double);
+    addSerial(&z,SSE_double);
+}
+vertex::~vertex() {  }
 
-// add another vertex a+=b
-vertex* vertex::operator +=(vertex* b){
-	this->x += b->x;
-	this->y += b->y;
-	this->z += b->z;
-	return new vertex(this->x, this->y, this->z);
+
+VertexObject::VertexObject(double _x,double _y,double _z) {
+    this->x = _x;
+    this->y = _y;
+    this->z = _z;
+    dimension = 0;
+    
+    addSerial(&velocity,SSE_SSerializer);
+    addSerial(&acceleration,SSE_SSerializer);
+    addSerial(&mass,SSE_double);
+    addSerial(&dimension,SSE_double);
+}
+VertexObject::VertexObject() {
+    x=y=z=0;
+    dimension = 0;
+    
+    addSerial(&velocity,SSE_SSerializer);
+    addSerial(&acceleration,SSE_SSerializer);
+    addSerial(&mass,SSE_double);
+    addSerial(&dimension,SSE_double);
+}
+VertexObject::~VertexObject() {  }
+
+
+// Implementations via MACROs
+VECOP_IMP(+)
+VECOP_IMP(-)
+VECOP_IMP(*)
+VECOP_IMP(/)
+
+VECOP_IMP_EQ(+=)
+VECOP_IMP_EQ(-=)
+VECOP_IMP_EQ(*=)
+VECOP_IMP_EQ(/=)
+
+
+
+// tick values
+void VertexObject::tick(double second){
+    // second is just a scalar
+    velocity += (acceleration*second);
+    *this += velocity*second;
 }
 
-// add with another vertex a+b
-vertex* vertex::operator +(vertex* b){
-	vertex* v = new vertex();
-	v->x = this->x + b->x;
-	v->y = this->y + b->y;
-	v->z = this->z + b->z;
-	return v;
+// basic physics momentum
+double VertexObject::gravitate(VertexObject body, double seconds) {
+    //m3 kg-1 s-2
+
+    //seconds act more like a scalar.
+
+    //cout << "G=" << constants::G << " thisMass=" << this->mass << " EarthMass=" << body->mass << " distance="<<this->distance(body) << endl;
+    double r = this->distance(body);
+    double gForce = physical::constant::G * (this->mass * body.mass) / (r*r);
+    double N = (gForce*1e-6)*seconds;
+    double accel = N / this->mass; // acceleration to body
+
+    //get directional VectorBody towards the body
+    //get the difference between this and the body. (disposition)
+    VertexObject disposition = body;
+    disposition -= *this;
+    vertex directionVector = disposition.unitVector();
+    //cout << accel << " " << N << endl;
+
+    *this -= directionVector*accel;
+    //cout << directionVector -> x << endl;
+
+
+    return accel*seconds;
 }
 
-// subtract with another vertex a-b
-vertex* vertex::operator -(vertex* b){
-	vertex* v = new vertex();
-	v->x = this->x - b->x;
-	v->y = this->y - b->y;
-	v->z = this->z - b->z;
-	return v;
+void VertexObject::thrust(VertexObject thrust) {
+    *this += thrust;
 }
 
-// multiply with another vertex a*b
-vertex* vertex::operator *(vertex* b){
-	vertex* v = new vertex();
-	v->x = this->x * b->x;
-	v->y = this->y * b->y;
-	v->z = this->z * b->z;
-	return v;
+void VertexObject::simSecond() {
+    //simulates exactly (1) second. mostly for debugging.
+    *this += acceleration / physical::unit::kilometer;
+    //cout << "Rect Velocity: (" << ax << "," << ay << "," << az << ") POS: " << x << "," << y << "," << z << endl;
 }
 
-// Scalar multiply
-vertex* vertex::operator *(double b){
-	vertex* v = new vertex();
-	v->x = this->x * b;
-	v->y = this->y * b;
-	v->z = this->z * b;
-	return v;
-}
 
-// Scalar multiply (integer)
-vertex* vertex::operator *(int b){
-	vertex* v = new vertex();
-	v->x = this->x * b;
-	v->y = this->y * b;
-	v->z = this->z * b;
-	return v;
-}
 
-// Divide with another vertex
-vertex* vertex::operator /(vertex* b){
-	vertex* v = new vertex();
-	v->x = this->x / b->x;
-	v->y = this->y / b->y;
-	v->z = this->z / b->z;
-	return v;
-}
+
+
 
 // Get the rotational axis Ρ in 3rd-dimentional spherical coordinates
-double getRoh(vertex* body){
-	return sqrt(pow(body->x,2)+pow(body->y,2)+pow(body->z,2));
+double getRoh(vertex body) {
+    return Math::sqrt(Math::pow(body.x,2)+Math::pow(body.y,2)+Math::pow(body.z,2));
 }
 
 // Get the rotational axis Φ in 3rd-dimentional spherical coordinates
-double getPhi(vertex* body){ // Φ
-	//acossin
+double getPhi(vertex body) { // Φ
+    //acossin
 
-	return 0;
+    return 0;
 }
 
 // Get the rotational axis Θ in 3rd-dimentional spherical coordinates
-double getTheta(vertex* body){ // Θ
+double getTheta(vertex body) { // Θ
 
 
-	return 0;
+    return 0;
 }
 
-// directly add another vertex to this. v+=v2
-void vertex::add(vertex* v2){
-	this->x += v2->x;
-	this->y += v2->y;
-	this->z += v2->z;
-}
 
-// directly subtract another vertex to this. v-=v2
-void vertex::sub(vertex* v2){
-	this->x -= v2->x;
-	this->y -= v2->y;
-	this->z -= v2->z;
-}
-
-// directly multiply another vertex to this. v*=v2
-void vertex::mul(vertex* v2){
-	this->x *= v2->x;
-	this->y *= v2->y;
-	this->z *= v2->z;
-}
-
-// directly divide another vertex to this. v/=v2
-void vertex::div(vertex* v2){
-	this->x /= v2->x;
-	this->y /= v2->y;
-	this->z /= v2->z;
-}
-
-// directly scale with a scalar.
-void vertex::scale(double scalar){
-	this->x *= scalar;
-	this->y *= scalar;
-	this->z *= scalar;
-}
 
 // get the dot product
-double vertex::dot(vertex* v2){
-	double sum = 0;
-	sum += this->x*v2->x;
-	sum += this->y*v2->y;
-	sum += this->z*v2->z;
-	return sum;
+double vertex::dot(vertex v2) {
+    double sum = 0;
+    sum += this->x*v2.x;
+    sum += this->y*v2.y;
+    sum += this->z*v2.z;
+    return sum;
 }
 
 // get the cross product
-vertex* vertex::cross(vertex* v2){
-	vertex* rv = new vertex(0,0,0);
-	rv->x = this->y*v2->z - this->z*v2->y;
-	rv->y = this->z*v2->x - this->x*v2->z;
-	rv->z = this->x*v2->y - this->y*v2->x;
-	return rv;
+vertex vertex::cross(vertex v2) {
+    vertex rv;
+    rv.x = this->y*v2.z - this->z*v2.y;
+    rv.y = this->z*v2.x - this->x*v2.z;
+    rv.z = this->x*v2.y - this->y*v2.x;
+    return rv;
 }
 
 // get the magnitude of the vertex
-double vertex::length(){
-	return sqrt(x*x + y*y + z*z);
+double vertex::length() {
+    return Math::sqrt(x*x + y*y + z*z);
 }
 
 // get the unit vertex (len = 1)
-vertex* vertex::unitVector(){
-	vertex* rv = new vertex(0,0,0);
-	rv->add(this);
-	rv->scale(ubersignificant/rv->length());
-	return rv;
+vertex vertex::unitVector() {
+    vertex rv = *this;
+    rv /= rv.length();
+    return rv;
 }
 
 // get the angle of the vertex
-double vertex::angle(vertex* w){
-	// (v.w / |w|*|w|) * w
-	return (this->dot(w) / (this->length() * w->length()));
+double vertex::angle(vertex w) {
+    // (v.w / |w|*|w|) * w
+    return (this->dot(w) / (this->length() * w.length()));
 }
 
 // get the distance between two vertexs.
-double vertex::distance(vertex* v2){
-	vertex* c = new vertex();
-	c->add(this);
-	c->sub(v2);
-	double out = c->length();
-	delete c;
-	return out;
+double vertex::distance(vertex v2) {
+    vertex c =*this;
+    c -= v2;
+    return c.length();
 }
 
 // returns whether this is orthagonal.
-bool vertex::isOrthagonal(vertex* v){
+bool vertex::isOrthagonal(vertex v) {
     //
     return dot(v) == 0;
 }
@@ -193,20 +213,18 @@ bool vertex::isOrthagonal(vertex* v){
 
 // linear algebra
 // abs(dot(u,v)) <= length(u)*length(v)
-bool vertex::cauchySchwarzInequality(vertex* v){
-    return abs(dot(v)) <= length() * v->length();
+bool vertex::cauchySchwarzInequality(vertex v) {
+    return Math::abs(dot(v)) <= length() * v.length();
 }
 
 // length(u+v) <= length(u) + length(v)
-bool vertex::triangleInequality(vertex* v){
-	vertex This = *this;
-    return (*this+v)->length() <= length() + v->length();
+bool vertex::triangleInequality(vertex v) {
+    return (*this+v).length() <= length() + v.length();
 }
 
 // length(u+v)^2 = length(u)^2 + length(v)^2
-bool vertex::pythagroreanInequality(vertex* v){
-	vertex This = *this;
-	return pow((*this+v)->length(),2) <= (length(),2) + pow(v->length(),2);
+bool vertex::pythagroreanInequality(vertex v) {
+    return Math::pow((*this+v).length(),2) <= ((length(),2) + pow(v.length(),2));
 }
 
 

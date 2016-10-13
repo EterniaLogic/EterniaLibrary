@@ -11,20 +11,20 @@
 
 
 
-class Ore{
-    CharString *name, *formula, *elements; // ore name
-    vertex* color; // color of this ore
-    Composite* formula; // formula used for this ore
-    
-    double oreSize; // amount of ore in deposit, measrured in kilograms.
+class Ore {
+        CharString *name, *formula, *elements; // ore name
+        vertex* color; // color of this ore
+        Composite* formula; // formula used for this ore
 
-public:
-    Ore(char* name, char* formula, char* elements);
-    
-    Ore* Clone(); // clone this ore for use with implementations
-    
-    vertex* getColor(); // get the color for this ore based on the formula given
-    Composite* getComposite(); // get the full composite of materials
+        double oreSize; // amount of ore in deposit, measrured in kilograms.
+
+    public:
+        Ore(char* name, char* formula, char* elements);
+
+        Ore* Clone(); // clone this ore for use with implementations
+
+        vertex* getColor(); // get the color for this ore based on the formula given
+        Composite* getComposite(); // get the full composite of materials
 };
 
 

@@ -16,11 +16,10 @@
 // sinc(i) is the best describer for fluid's oscillations when something falls into it. Without
 //      gravity, friction in water is almost nothing except for present air.
 
-class FluidMechanics
-{
-public:
-	FluidMechanics();
-	virtual ~FluidMechanics();
+class FluidMechanics {
+    public:
+        FluidMechanics();
+        virtual ~FluidMechanics();
 };
 
 #endif /*FLUIDMECHANICS_H_*/

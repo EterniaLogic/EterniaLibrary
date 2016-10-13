@@ -57,10 +57,10 @@ extern "C" {
 * STATUS REGISTER BITS
 ************************************************************/
 
-#define C                      (0x0001)
-#define Z                      (0x0002)
-#define N                      (0x0004)
-#define V                      (0x0100)
+#define _C                      (0x0001)
+#define _Z                      (0x0002)
+#define _N                      (0x0004)
+#define _V                      (0x0100)
 #define GIE                    (0x0008)
 #define CPUOFF                 (0x0010)
 #define OSCOFF                 (0x0020)

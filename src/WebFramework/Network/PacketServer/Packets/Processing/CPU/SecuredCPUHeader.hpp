@@ -17,16 +17,15 @@
 //      - Number of Secured Process Instructable packets
 //      - Number of data packets
 
-class SecuredCPUHeader : private Packet
-{
-public:
-  SecuredCPUHeader(char* in){
-    id = 68850;
-  }
-  
-private:
-  int instructablePackets;
-  int dataPackets;
+class SecuredCPUHeader : private Packet {
+    public:
+        SecuredCPUHeader(char* in) {
+            id = 68850;
+        }
+
+    private:
+        int instructablePackets;
+        int dataPackets;
 };
 
 #endif

@@ -24,19 +24,18 @@
 //      - Instructions ender
 //      - pure stream
 
-class SecuredGPUInstructables : private Packet
-{
-public:
-  SecuredGPUInstructables(char* packet){
-    id = 7912;
-  }
-private:
-  int instructionNumber;
-  char separator;
-  char ender;
-  
-  LinkedList<CharString>* instructions;
+class SecuredGPUInstructables : private Packet {
+    public:
+        SecuredGPUInstructables(char* packet) {
+            id = 7912;
+        }
+    private:
+        int instructionNumber;
+        char separator;
+        char ender;
+
+        LinkedList<CharString>* instructions;
 };
 
-#endif 
- 
+#endif
+

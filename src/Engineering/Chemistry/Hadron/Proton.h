@@ -6,10 +6,9 @@
 //      u
 //    d   d
 
-class Proton: protected Baryon
-{
-  Proton();
-  virtual ~Proton();
+class Proton: protected Baryon {
+        Proton();
+        virtual ~Proton();
 };
 
-#endif 
+#endif

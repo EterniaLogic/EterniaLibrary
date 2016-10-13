@@ -1,6 +1,6 @@
 #include "ProgramError.h"
 
 
-ProgramError::ProgramError(){
-        
+ProgramError::ProgramError() {
+
 }

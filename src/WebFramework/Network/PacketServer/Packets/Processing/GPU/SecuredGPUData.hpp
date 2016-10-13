@@ -20,19 +20,18 @@
 //      - Listlength (if list type)
 //      - pure data
 
-class SecuredGPUData : public Packet
-{
-public:
-  SecuredGPUData(char* direct){
-    id=130866;
-    bitlen=0;
-    listlen=0;
-    
-  }
-  
-private:
-  int bitlen;
-  int listlen;
+class SecuredGPUData : public Packet {
+    public:
+        SecuredGPUData(char* direct) {
+            id=130866;
+            bitlen=0;
+            listlen=0;
+
+        }
+
+    private:
+        int bitlen;
+        int listlen;
 };
 
-#endif 
+#endif

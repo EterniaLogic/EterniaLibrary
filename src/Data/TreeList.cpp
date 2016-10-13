@@ -9,4 +9,4 @@
 
 using namespace std;
 
-TreeList::TreeList(){}
+TreeList::TreeList() {}

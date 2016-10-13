@@ -9,19 +9,19 @@
 #include "msp430.h"
 
 
-MSP430::MSP430(){
+MSP430::MSP430() {
     init();
     paused = 0;
     // initialize interrupt handle lists using a hashmap
     interruptHandles = new HashMap<LinkedList<InterruptHandle> >(20);
-    for(int i=0;i<20;i++){
+    for(int i=0; i<20; i++) {
         interruptHandles->addL(0UL, new LinkedList<InterruptHandle>());
     }
 }
 
-void MSP430::init(){
+void MSP430::init() {
     // clear out memory
-    for(int i=0;i<MEM_SIZE;i++){
+    for(int i=0; i<MEM_SIZE; i++) {
         _mem(i) = 0; // _mem(a) = Memory[a]
     }
 
@@ -46,12 +46,12 @@ void MSP430::init(){
 }
 
 // handle master clock
-void MSP430::mclk(){
-    if(!paused){
+void MSP430::mclk() {
+    if(!paused) {
         // Handle smclk
         // get smclk division BCSCTL2 DIVSx
         char divs = (_m(BCSCTL2) & 0x6) >> 1;
-        if(smclk_cnt >= divs){
+        if(smclk_cnt >= divs) {
             smclk_cnt = 0;
             smclk(); // exe smclk
         } else smclk_cnt++;
@@ -74,12 +74,12 @@ void MSP430::mclk(){
         int mdiv = CLOCKS_PER_SEC/(speed*1000000*divm);
 
         // sleep for time
-        for(int i=0;i<mdiv;i++);
+        for(int i=0; i<mdiv; i++);
     }
 }
 
 // handle sub-master clock
-void MSP430::smclk(){
+void MSP430::smclk() {
     // Handle timer countdowns
     runTimer0(0);
     runTimer1(0);
@@ -90,39 +90,39 @@ void MSP430::smclk(){
 }
 
 // execute an instruction
-void MSP430::exec(unsigned int){
+void MSP430::exec(unsigned int) {
 
 }
 
 
 // get a byte from the memory
 // [address]
-unsigned char MSP430::getByte(unsigned int address){
+unsigned char MSP430::getByte(unsigned int address) {
     return _mem(address);
 }
 
 // get a word from the memory
 // [address]<<4 +[address+1]
-unsigned int MSP430::getWord(unsigned int address){
+unsigned int MSP430::getWord(unsigned int address) {
     return _m16(address); //_mem(address)<<4 + _mem_2(address);
 }
 
-void MSP430::setByte(unsigned int address, unsigned char value){
+void MSP430::setByte(unsigned int address, unsigned char value) {
     _mem(address) = value;
 }
 
-void MSP430::setWord(unsigned int address, unsigned int value){
+void MSP430::setWord(unsigned int address, unsigned int value) {
     _setTo16Value1(address, value);
 }
 
 // sets ADC10MEM and sets ADC10IFG
-void MSP430::setADC10Value(unsigned int value){
+void MSP430::setADC10Value(unsigned int value) {
     _mem(ADC10MEM) = value;
 }
 
-void MSP430::Pause(){
+void MSP430::Pause() {
     paused = 1;
 }
-void MSP430::Continue(){
+void MSP430::Continue() {
     paused = 0;
 }

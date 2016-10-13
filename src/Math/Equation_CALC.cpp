@@ -23,14 +23,14 @@
 // i(  )
 
 
-Equation* Equation::derive(char* wrt){
-    
+Equation* Equation::derive(char* wrt) {
+
 }
 
-Equation* Equation::integrate(char* wrt){
-        
+Equation* Equation::integrate(char* wrt) {
+
 }
 
-double Equation::evaluate(double a, double b){
-        // 
+double Equation::evaluate(double a, double b) {
+    //
 }

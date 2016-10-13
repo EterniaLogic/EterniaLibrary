@@ -14,20 +14,19 @@
 
 using namespace std;
 
-class InputRedirection
-{
-    bool process(); // process line by line
-    bool stop;
-    
-public:
-    InputRedirection();
-    // OVERRIDE with your input
-    // virtual void handleInputLine(CharString* input);
-    virtual void handleInputLine(CharString* input);
+class InputRedirection {
+        bool process(); // process line by line
+        bool stop;
 
-    // InputRedirector redirects line of data to handleInputLine
-    // common usage: InputRedirector(&cin);  Will do a while loop until program is forcibly stopped.
-    void redirect(); 
+    public:
+        InputRedirection();
+        // OVERRIDE with your input
+        // virtual void handleInputLine(CharString* input);
+        virtual void handleInputLine(CharString* input);
+
+        // InputRedirector redirects line of data to handleInputLine
+        // common usage: InputRedirector(&cin);  Will do a while loop until program is forcibly stopped.
+        void redirect();
 };
 
 

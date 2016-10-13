@@ -6,14 +6,14 @@ vector* LongToVector(long){
 }
 
 CharString* LongToHex(long){
-    
+
 }
 
 
 long HexToLong(CharString*){
-    
+
 }
 
 long VectorToLong(Vertex*){
-    
+
 }*/

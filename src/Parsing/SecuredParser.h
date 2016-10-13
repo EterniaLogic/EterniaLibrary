@@ -14,31 +14,30 @@
 #include "../Algorithm/Cryptography/Aes256.h"
 #include "../Data/LinkedList.hpp"
 
-class SecuredParser
-{
-public:
-    SecuredParser(CharString* k, CharString* File);
-    virtual ~SecuredParser();
-    
-    // read every single character in the file
-    CharString* getText(); 
-    
-    // read every line in the file
-    LinkedList<CharString>* getLines();
-    
-    // read every line in the file, split them by character
-    LinkedList<CharString>* getLinesSplit(char splitter);
-    
-    // Generate a hashmap from split line pairs
-    LinkedList<CharString>* getMap(char splitter);
-    
-    // Encrypt text-
-    CharString* encodeText(CharString* ss);
-    
-private:
-    uint8_t key[32];
-    aes256_context ctx;
-    CharString* file;
+class SecuredParser {
+    public:
+        SecuredParser(CharString* k, CharString* File);
+        virtual ~SecuredParser();
+
+        // read every single character in the file
+        CharString* getText();
+
+        // read every line in the file
+        LinkedList<CharString>* getLines();
+
+        // read every line in the file, split them by character
+        LinkedList<CharString>* getLinesSplit(char splitter);
+
+        // Generate a hashmap from split line pairs
+        LinkedList<CharString>* getMap(char splitter);
+
+        // Encrypt text-
+        CharString* encodeText(CharString* ss);
+
+    private:
+        uint8_t key[32];
+        aes256_context ctx;
+        CharString* file;
 };
 
 #endif

@@ -5,12 +5,11 @@
 
 // basic filesystem data structure
 // set file/dir types
-enum DType{Directory,File};
+enum DType {Directory,File};
 
 // node to store siblings, parents, children and data.
-class FileStructureNode
-{
-public:
+class FileStructureNode {
+    public:
         CharString* name;
         DType type;
 
@@ -28,10 +27,9 @@ public:
 
 
 // Complete filesystem that manages internal data.
-class FileSystem
-{
+class FileSystem {
         FileStructureNode *Root, *Current;
-public:
+    public:
         FileSystem();
         virtual ~FileSystem();
 

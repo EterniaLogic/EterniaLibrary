@@ -12,24 +12,23 @@
 
 enum STATE {solid, liquid, gas, plasma};
 
-class AtomNode
-{
-public:
-	AtomNode();
-	Atom* atom;
-	AtomNode* linkedNodes;
-	int linkedNodeNum; // number of linked atomic nodes
+// Bond between atoms
+class AtomBond {
+private:
+	float strength; // strength, in kJ/mol
+	float length; // distance, normal in pico-meters
+	
+	Atom *a, *b;
 };
 
-class Composite
-{
-public:
-	Composite();
-	virtual ~Composite();
-	
-	STATE Type;
-	double density; // used for stuff like atmospheres, ect.
-	double totalMass; // total composite mass
+class Composite {
+    public:
+        Composite();
+        virtual ~Composite();
+
+        STATE Type;
+        double density; // used for stuff like atmospheres, ect.
+        double totalMass; // total composite mass
 };
 
 #endif /*COMPOSITE_H_*/

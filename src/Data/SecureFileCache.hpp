@@ -1,7 +1,6 @@
 // not implemented
 
 template <class T>
-class SourceFileCache
-{
-  
+class SourceFileCache {
+
 };

@@ -3,18 +3,17 @@
 
 #include "Component.h"
 
-// 
+//
 
-class  : private Component
-{
-public:
-  ();
-  virtual ~();
-  
-  void tick(SecondTick* tickTime); // operate time
-  
-private:
-  
+class  : private Component {
+    public:
+        ();
+        virtual ~();
+
+        void tick(SecondTick* tickTime); // operate time
+
+    private:
+
 };
 
-#endif 
+#endif

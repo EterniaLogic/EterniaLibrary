@@ -5,10 +5,9 @@
 //    !u   !u
 //      !d
 
-class AntiProton
-{
-  AntiProton();
-  virtual ~AntiProton();
+class AntiProton {
+        AntiProton();
+        virtual ~AntiProton();
 };
 
 #endif

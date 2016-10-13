@@ -6,11 +6,11 @@
 enum PEType {PE_None, PE_TypeError1, PE_TypeError2, PE_NoInput};
 
 class VProgramError : public ProgramError {
-public:
-    VProgramError(PEType t, int node);
-    
-    PEType type;
-    int nodeid; // node which caused the error
+    public:
+        VProgramError(PEType t, int node);
+
+        PEType type;
+        int nodeid; // node which caused the error
 };
 
 #endif

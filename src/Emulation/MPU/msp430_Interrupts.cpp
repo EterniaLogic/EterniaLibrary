@@ -10,14 +10,14 @@
 
 // tests for all interrupts
 // only runs off of IFG bits
-void MSP430::testInterrupts(){
+void MSP430::testInterrupts() {
     //test for RESET
 }
 
 
 // handle interrupts (aka: set address from vector bytes)
-void MSP430::handleInterrupt(INTERRUPT_ID id){
-    switch(id){
+void MSP430::handleInterrupt(INTERRUPT_ID id) {
+    switch(id) {
         case IID_RESET:                        // RESET
             setWord(PC, getWord(RESET_VECTOR));
             break;

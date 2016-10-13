@@ -1,7 +1,7 @@
 #include "VProgramVariable.h"
 
 
-VProgramVariable::VProgramVariable(){
+VProgramVariable::VProgramVariable() {
     type = PV_None;
     name.set("DEFAULT_NAME"); // name of the variable
     string.set(""); // string value of this variable

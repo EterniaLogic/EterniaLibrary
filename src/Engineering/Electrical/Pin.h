@@ -11,18 +11,17 @@
 #include "../../Data/CharString.h"
 #include "PowerValue.h"
 
-class Pin
-{
-  CharString* name;
-  PowerValue* val;
-public:
-  Pin(CharString* PinName, PowerValue* value);
-  virtual ~Pin();
-  
-  void setValue(PowerValue* value);
-  PowerValue* getValue();
-  
-  CharString* getName();
+class Pin {
+        CharString* name;
+        PowerValue* val;
+    public:
+        Pin(CharString* PinName, PowerValue* value);
+        virtual ~Pin();
+
+        void setValue(PowerValue* value);
+        PowerValue* getValue();
+
+        CharString* getName();
 };
 
 #endif

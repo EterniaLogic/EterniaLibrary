@@ -10,9 +10,8 @@
 
 // Add a peer to this server
 
-class P2PPeerAdd
-{
-  
+class P2PPeerAdd {
+
 };
 
 #endif

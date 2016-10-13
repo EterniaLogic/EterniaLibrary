@@ -12,17 +12,16 @@
 // Boundaries are defined by the players inside of that fractal.
 // The universe is essentially divided into 10-10,000 parts on startup.
 
-class P2PBoundaries
-{
-public:
-	P2PBoundaries();
-	virtual ~P2PBoundaries();
-	
-	long x,y; // x, y coords
-	long x1,y1; // other edge of boundary.
-	
-	long minsectorx; //Min sector boundaries (Prevents P2PLServers from going lower and forces them to Co-server)
-	long minsectory;
+class P2PBoundaries {
+    public:
+        P2PBoundaries();
+        virtual ~P2PBoundaries();
+
+        long x,y; // x, y coords
+        long x1,y1; // other edge of boundary.
+
+        long minsectorx; //Min sector boundaries (Prevents P2PLServers from going lower and forces them to Co-server)
+        long minsectory;
 };
 
 #endif /*P2PBOUNDARIES_H_*/

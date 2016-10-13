@@ -3,9 +3,8 @@
 
 // combined to form Hadrons
 
-class DownQuark
-{
-  
+class DownQuark {
+
 };
 
 #endif

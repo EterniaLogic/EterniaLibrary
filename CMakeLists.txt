@@ -102,13 +102,18 @@ SUBDIRLIST(SUBDIRS src)
 #        )
 #endif()
 
+FIND_PACKAGE(Threads REQUIRED)
 
+#target_link_libraries(${program} ${CMAKE_THREAD_LIBS_INIT})
 
 
 # STATIC SHARED
 ADD_LIBRARY(Eternia STATIC ${CC_src})
 ADD_EXECUTABLE(EterniaLibrary ${CC_src})
 
+
+TARGET_LINK_LIBRARIES(EterniaLibrary ${CMAKE_THREAD_LIBS_INIT})
+TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
 
 #target_link_libraries(Eternia ${Basys2LIBS})
 

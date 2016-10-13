@@ -19,6 +19,8 @@
 #include "../Queue.h"
 #include "../Stack.h"
 #include "../TreeList.h"
+#include "testPType.h"
+#include "testAbstractDB.h"
 
 
 

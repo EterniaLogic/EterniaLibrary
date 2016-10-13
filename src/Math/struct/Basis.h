@@ -10,10 +10,9 @@
 
 #include "Matrix.h"
 
-class Basis : public Matrix
-{
-public:
-    Basis();
+class Basis : public Matrix {
+    public:
+        Basis();
 };
 
 #endif

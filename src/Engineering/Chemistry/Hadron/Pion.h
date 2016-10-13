@@ -10,12 +10,11 @@
 //   Pion+ => Antimuon + Muon-Netrino
 //   Pion- => muon + Muon-Netrino
 
-class Pion
-{
-public:
-  Pion();
-  virtual ~Pion();
-private:
+class Pion {
+    public:
+        Pion();
+        virtual ~Pion();
+    private:
 };
 
 #endif

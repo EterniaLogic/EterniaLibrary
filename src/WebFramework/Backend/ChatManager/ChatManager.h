@@ -14,14 +14,14 @@
 enum VOIPQuality {VQ_8k, VQ_22k, VQ_48k}; // Voice quality sample rates
 
 
-class ChatManager{
-public:
-    ChatManager();
-    
-    // determine the distance for Local chat, VOIP, ect.
-    
-    
-    // Manage audio, downsample, ect.
+class ChatManager {
+    public:
+        ChatManager();
+
+        // determine the distance for Local chat, VOIP, ect.
+
+
+        // Manage audio, downsample, ect.
 };
 
 #endif

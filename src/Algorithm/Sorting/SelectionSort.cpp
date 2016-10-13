@@ -7,14 +7,13 @@
 
 #include "SelectionSort.h"
 
-void SelectionSort(int *list, int len){
-    for(int i = 0;i<len;i++)
-    {
+void SelectionSort(int *list, int len) {
+    for(int i = 0; i<len; i++) {
         // select the smallest element in list[i..listSize-1];
         int smallestNum = list[i];
         int atloc = i;
-        for(int k=i;k<len;k++){
-            if(smallestNum > list[k]){
+        for(int k=i; k<len; k++) {
+            if(smallestNum > list[k]) {
                 // position and value
                 smallestNum = list[k];
                 atloc=k;
@@ -22,7 +21,7 @@ void SelectionSort(int *list, int len){
         }
         // swap the smallest with list[i], if necessary;
         // so... we swap the positions?
-        if(atloc != i){
+        if(atloc != i) {
             list[atloc] = list[i];
             list[i] = smallestNum;
         }

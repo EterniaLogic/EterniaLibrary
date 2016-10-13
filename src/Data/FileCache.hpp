@@ -32,20 +32,19 @@ using namespace std;
 // TODO: Follow a class's subclass data to allow complex data saving
 
 template<class T>
-class FileCache
-{
-    unordered_map<long, T> entries; // RAM entries.
-    LinkedList<long> *loadedIDs;
-    long max_ram_size;
-    long current_ram_size;
-    char* store_file;
-    bool autoManage;
-    fstream dFile;
-    long iterator;
+class FileCache {
+        unordered_map<long, T> entries; // RAM entries.
+        LinkedList<long> *loadedIDs;
+        long max_ram_size;
+        long current_ram_size;
+        char* store_file;
+        bool autoManage;
+        fstream dFile;
+        long iterator;
 
     public:
         // file used to store data and maxSize for the file.
-        FileCache(char* storeFile, long maxRAMSize, bool manual){
+        FileCache(char* storeFile, long maxRAMSize, bool manual) {
             long kilo = 1024;
             long mega = kilo*kilo;
             long giga = mega*kilo;
@@ -68,35 +67,35 @@ class FileCache
             dFile.open(storeFile, ios::out | ios::in | ios::trunc);
         };
 
-        ~FileCache(){
+        ~FileCache() {
 
         };
 
         // return!
-        T* get(long id){
+        T* get(long id) {
             //CharString* tt = CharString::ConvertFromLong(id);
             T preloaded = entries[id];
-			
-			//cout << "preloaded" << preloaded << endl;
+
+            //cout << "preloaded" << preloaded << endl;
 
             // return data if it is pre-loaded
-            if(loadedIDs->get(id) != 0){
-                    return &preloaded;
-            }else{
-                    dFile.seekg((id * sizeof(T)), ios::beg);
-                    dFile.seekp((id * sizeof(T)), ios::beg);
+            if(loadedIDs->get(id) != 0) {
+                return &preloaded;
+            } else {
+                dFile.seekg((id * sizeof(T)), ios::beg);
+                dFile.seekp((id * sizeof(T)), ios::beg);
 
-                    // convert data to type.
-                    char* tdata = (char*)malloc(sizeof(T));
-                    dFile.read(tdata,sizeof(T));
+                // convert data to type.
+                char* tdata = (char*)malloc(sizeof(T));
+                dFile.read(tdata,sizeof(T));
 
-                    // return value
-                    return (T*)tdata;
+                // return value
+                return (T*)tdata;
             }
         };
 
         // returns ID
-        long add(T* data){
+        long add(T* data) {
             long id = iterator++;
 
             // add item to disk
@@ -113,7 +112,7 @@ class FileCache
 
         // manual management of data
         // force these items into the RAM.
-        void preload(long ID){
+        void preload(long ID) {
             //CharString* tt = CharString::ConvertFromLong(ID);
 
             if(entries->get(ID) == 0x0) return; // determine if it has been added before
@@ -123,20 +122,20 @@ class FileCache
         }
 
         // remove these items from the RAM. (place them back into the file cache)
-        void unload(long ID){
+        void unload(long ID) {
             //CharString* tt = CharString::ConvertFromLong(ID);
             T* data = entries->getL(ID);
             if(data == 0x0) return; // determine that it does not exists
 
             loadedIDs->remove(ID); // remove from the ID list
             //entries->removeL(ID); // remove data from the HashMap
-			// entries[ID]
-			
+            // entries[ID]
+
 
             add(data);
         }
 
-        void clean(){
+        void clean() {
             remove(store_file);
         }
 };

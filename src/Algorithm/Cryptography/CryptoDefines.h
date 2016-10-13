@@ -27,7 +27,7 @@
 #define D_LONG(DVAR) CryptoDefiner<long>   DVAR(PLONG);
 #define D_BOOL(DVAR) CryptoDefiner<bool>   DVAR(PBOOL);
 
-void testfunc(){
+void testfunc() {
     D_INT( testVar );
     CryptoDefiner<int> testVar2(PINT);
 

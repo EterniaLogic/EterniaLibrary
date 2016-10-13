@@ -10,7 +10,7 @@
 
 #include "../../../constants.h"
 #include "../../../Data/LinkedListT.h"
-#include "VectorBody.h"
+#include "../../../Math/struct/vertex.h"
 #include "../../../Math/Equation.h"
 
 using namespace physical;
@@ -24,27 +24,25 @@ CharString* getVariableFromKItem(KItem item);
 
 class FreeBody;
 
-class Force
-{
-public:
-    Force();
-    KItem* force; // type of force
-    double quantity; // quantity of force
-    KDirection* direction; // direction of force
-    Equation* equation;
-    
-    
-    bool directionNegative; // is the direction on the opposite side?
-    
-    // tied item when using T for Tension.
-    FreeBody* tiedItem;
+class Force {
+    public:
+        Force();
+        KItem* force; // type of force
+        double quantity; // quantity of force
+        KDirection* direction; // direction of force
+        Equation* equation;
+
+
+        bool directionNegative; // is the direction on the opposite side?
+
+        // tied item when using T for Tension.
+        FreeBody* tiedItem;
 };
 
-class FreeBody : public VectorBody
-{
-    LinkedListT *forceList;
-    
-    bool hasItemType(KItem item);
+class FreeBody : public VertexObject {
+        LinkedListT *forceList;
+
+        bool hasItemType(KItem item);
     public:
         FreeBody();
         void addItem(KItem item, double quantity); // KForce in constants.h defines a set of kinematic forces that can be used.

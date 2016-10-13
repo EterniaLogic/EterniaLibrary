@@ -18,13 +18,13 @@
 
 // parse input and split it by separator.
 // output: LinkedListT of (CharString *)
-LinkedList<CharString>* SimpleParseLine(CharString* input, char separator){
+LinkedList<CharString>* SimpleParseLine(CharString* input, char separator) {
     LinkedList<CharString>* list = new LinkedList<CharString>();
 
     // do the splitting!!!
     SplitResult* s = input->split(separator, '`');
 
-    for(int i=0;i<s->getSize();i++){
+    for(int i=0; i<s->getSize(); i++) {
         //cout << s->get(i) << endl;
         list->add(new CharString(s->get(i), s->getLen(i)));
     }
@@ -35,7 +35,7 @@ LinkedList<CharString>* SimpleParseLine(CharString* input, char separator){
 
 // take data in line-by-line and parse it
 // output: LinkedListT of LinkedListT of (CharString *)
-LinkedList<LinkedList<CharString> >* SimpleParseFile(CharString* filename, char separator){
+LinkedList<LinkedList<CharString> >* SimpleParseFile(CharString* filename, char separator) {
     LinkedList<LinkedList<CharString> >* list = new LinkedList<LinkedList<CharString> >();
     //cout << "parse-01" << endl;
 
@@ -46,10 +46,10 @@ LinkedList<LinkedList<CharString> >* SimpleParseFile(CharString* filename, char 
     fileOpen(file, filename->get());
     //cout << "parse-1" << endl;
     CharString* read;
-    while((read = fileGetLine(file)) != 0x0){
-        if(!read->startsWith(new CharString("#")) && !read->startsWith(new CharString("//")) && !read->startsWith(new CharString("["))){
+    while((read = fileGetLine(file)) != 0x0) {
+        if(!read->startsWith(new CharString("#")) && !read->startsWith(new CharString("//")) && !read->startsWith(new CharString("["))) {
             LinkedList<CharString>* list2 = SimpleParseLine(read, separator);
-            if(list2 != 0x0){
+            if(list2 != 0x0) {
                 list->add(list2);
             }
         }
