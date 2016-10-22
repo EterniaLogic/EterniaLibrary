@@ -1,9 +1,5 @@
 # Eternia Library #
 
-Builds on github fully compile. This is the current build:
-
-[![Build Status](http://eternialogic.com/jenkins/buildStatus/icon?job=Eternia Library)](http://eternialogic.com/jenkins/job/Eternia%20Library/)
-
 **Version**: 0.9b
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
