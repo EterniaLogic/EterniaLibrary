@@ -11,9 +11,13 @@ Makefile
 .gitignore
 
 src/Gamelogic/
+AI/
 
 
 data.dat
+data.txt
+gmon.out
+AerisAvatar.dat
 
 # Compiled Object files
 *.slo
@@ -62,5 +66,6 @@ include/Signal
 include/Social
 include/test.h
 add
-bin/Debug
-obj/Debug
+bin
+obj
+lib

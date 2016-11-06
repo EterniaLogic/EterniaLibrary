@@ -6,7 +6,7 @@ using namespace std;
 
 // Remove this node from existance. Patch siblings together.
 void FileStructureNode::del() {
-    //cout << "Removing dir: " << this->name->get() << endl;
+    //cout << "Removing dir: " << this->name.get() << endl;
 
     if(this->Parent != 0x0) {
         if(this->Parent->Child == this) {
@@ -52,14 +52,14 @@ void FileStructureNode::addObject(FileStructureNode* object) {
         // determine whether this is "Before" or after the current placement.
 
         // quick compare items
-        SortType st = object->name->SortCompare(current->name);
+        SortType st = object->name.SortCompare(current->name);
         if(st == SAfter) {
             // this is After the current placement.
 
             // determine if it is before the next one.
             while(current->Sibling != 0x0) {
                 // quick compare items
-                SortType st = object->name->SortCompare(current->Sibling->name);
+                SortType st = object->name.SortCompare(current->Sibling->name);
                 if(st == SBefore) {
                     //this is before the sibling of the after item. It works.
                     break;
@@ -79,7 +79,7 @@ void FileStructureNode::addObject(FileStructureNode* object) {
             // loop through the previous siblings
             while(current->PrevSibling != 0x0) {
                 // quick compare items
-                SortType st = object->name->SortCompare(current->PrevSibling->name);
+                SortType st = object->name.SortCompare(current->PrevSibling->name);
                 if(st == SAfter) {
                     // This is after the previous sibling.
                     isBefore=false;
@@ -119,7 +119,7 @@ void FileStructureNode::addObject(FileStructureNode* object) {
 FileSystem::FileSystem() {
     // initialize the "/" directory.
     this->Root = new FileStructureNode();
-    this->Root->name = new CharString(""); // stagnant name
+    this->Root->name = ""; // stagnant name
     this->Root->type = Directory;
     this->Current = this->Root;
 }
@@ -130,20 +130,20 @@ FileSystem::~FileSystem() {}
 *  Input: node
 *  Output: String location of node
  */
-CharString* FileSystem::getStringFromNode(FileStructureNode* location) {
+CharString FileSystem::getStringFromNode(FileStructureNode* location) {
     // place a string before the current string.
-    CharString* cstring = new CharString();
+    CharString cstring = CharString();
 
     FileStructureNode* current = location;
 
     // loop through and append "/" to all the names
     while(current != 0x0 && current != Root) {
-        cstring->concatb(current->name);
-        cstring->concatb("/",1);
+        cstring.concatb(current->name);
+        cstring.concatb("/",1);
 
         current = current->Parent;
     }
-    //cstring->concatb("/",1);
+    //cstring.concatb("/",1);
     return cstring;
 }
 
@@ -152,16 +152,16 @@ CharString* FileSystem::getStringFromNode(FileStructureNode* location) {
 *  Input: String location
 *  Output: node from location
 */
-FileStructureNode* FileSystem::getBaseNodeFromString(CharString* location) {
+FileStructureNode* FileSystem::getBaseNodeFromString(CharString location) {
     // get the Node from the location... trying to get as accurate as possible.
     //cout << "nodeFromString" << endl;
-    if(location->contains("/")) {
-        SplitResult* sresult = location->split('/','`');
+    if(location.contains("/")) {
+        LinkedList<CharString>* sresult = location.split('/','`');
         FileStructureNode* current = this->Root;
         //cout << "/" << endl;
-        for(int i=1; i<sresult->getSize(); i++) {
+        for(int i=1; i<sresult->size(); i++) {
             // search this node if it is a directory.
-            CharString* item = new CharString(sresult->get(i));
+            
 
             // is directory?
             if(current->type == Directory && current->Child != 0x0) {
@@ -169,7 +169,7 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString* location) {
                 // quickie loop through this dirs siblings
                 while(tmp != 0x0) {
                     // compare the tmp node with the item we are seeking.
-                    if(tmp->name->Compare(item)) {
+                    if(tmp->name.Compare(*sresult->get(i))) {
                         current = tmp;
                         break;
                     }
@@ -188,7 +188,7 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString* location) {
 
             // loop through and find the item based on name.
             while(tmp != 0x0) {
-                if(tmp->name->Compare(location)) {
+                if(tmp->name.Compare(location)) {
                     current = tmp;
                     exists=true;
                     break;
@@ -210,17 +210,17 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString* location) {
 // Finds a node based on a string. If location does not exist, stop at the current point.
 // Input: String location
 // Output: Node from location
-FileStructureNode* FileSystem::getNodeFromString(CharString* location) {
+FileStructureNode* FileSystem::getNodeFromString(CharString location) {
     // get the Node from the location... trying to get as accurate as possible.
     //cout << "nodeFromString" << endl;
-    if(location->contains("/")) {
-        SplitResult* sresult = location->split('/','`');
+    if(location.contains("/")) {
+        LinkedList<CharString>* sresult = location.split('/','`');
         FileStructureNode* current = this->Root;
 
         // loop through the result set
-        for(int i=1; i<sresult->getSize(); i++) {
+        for(int i=1; i<sresult->size(); i++) {
             // search this node if it is a directory.
-            CharString* item = new CharString(sresult->get(i));
+            
 
             // if it is a directory, go!
             if(current->type == Directory && current->Child != 0x0) {
@@ -228,7 +228,7 @@ FileStructureNode* FileSystem::getNodeFromString(CharString* location) {
                 bool exists = false;
                 while(tmp != 0x0) {
                     // compare items
-                    if(tmp->name->Compare(item)) {
+                    if(tmp->name.Compare(*sresult->get(i))) {
                         current = tmp;
                         exists=true;
                         break;
@@ -243,7 +243,7 @@ FileStructureNode* FileSystem::getNodeFromString(CharString* location) {
                 return 0x0;
             }
         }
-        //cout << "Found: '" << current->name->get() << "'" << endl;
+        //cout << "Found: '" << current->name.get() << "'" << endl;
         return current;
     } else {
         // appending item to the current working dir.
@@ -255,7 +255,7 @@ FileStructureNode* FileSystem::getNodeFromString(CharString* location) {
 
             // loop through and determine if it exists in the sibling set.
             while(tmp != 0x0) {
-                if(tmp->name->Compare(location)) {
+                if(tmp->name.Compare(location)) {
                     current = tmp;
                     exists=true;
                     break;
@@ -279,20 +279,20 @@ FileStructureNode* FileSystem::getNodeFromString(CharString* location) {
 *  Input: String location
 *  Output: Very ending of string after last "/"
  */
-CharString* FileSystem::getNameFromString(CharString* location) {
+CharString FileSystem::getNameFromString(CharString location) {
     // gets the name of the last "/dir/dir2/name", even if it ends with "/".
-    if(location->get()[location->getSize()-1] == '/') {
+    if(location.get()[location.getSize()-1] == '/') {
         // remove trailing "/".
-        location->get()[location->getSize()-1] = '\0';
-        location->setSize(location->getSize()-1);
+        location.get()[location.getSize()-1] = '\0';
+        location.setSize(location.getSize()-1);
     }
 
-    CharString* result = 0x0;
+    CharString result = CharString("");
     // split all by "/".
-    if(location->contains("/")) {
+    if(location.contains("/")) {
         // get the very last result of the split.
-        SplitResult* sresult = location->split('/','`');
-        result = new CharString(sresult->get(sresult->getSize()-1));
+        LinkedList<CharString>* sresult = location.split('/','`');
+        result = *sresult->get(sresult->size()-1);
     } else {
         result = location;
     }
@@ -319,11 +319,11 @@ void FileSystem::removeAll(DType t, FileStructureNode* location) {
 }
 
 // Adds a directory to the current directory based on location.
-void FileSystem::addDirectory(CharString* location) {
+void FileSystem::addDirectory(CharString location) {
     // get base node of location path.
     FileStructureNode* node = getBaseNodeFromString(location);
     // get name from last "/"
-    CharString* name = getNameFromString(location);
+    CharString name = getNameFromString(location);
 
     // init a new node
     FileStructureNode* nodenew = new FileStructureNode();
@@ -337,14 +337,14 @@ void FileSystem::addDirectory(CharString* location) {
 
 /* Adds a file to the current directory based on location.
  */
-void FileSystem::addFile(CharString* location) {
+void FileSystem::addFile(CharString location) {
     // get base path
     FileStructureNode* node = getBaseNodeFromString(location);
     // get name from last "/"
-    CharString* name = getNameFromString(location);
+    CharString name = getNameFromString(location);
 
     // make sure that the node is viable. (base path is current dir)
-    if(node == 0x0 && !location->contains("/")) node = Current;
+    if(node == 0x0 && !location.contains("/")) node = Current;
 
     // init a new node
     FileStructureNode* nodenew = new FileStructureNode();
@@ -358,32 +358,32 @@ void FileSystem::addFile(CharString* location) {
 
 // Desc: Removes a file from the current directory based on location.
 // Input: String location
-void FileSystem::removeFile(CharString* location) {
+void FileSystem::removeFile(CharString location) {
     FileStructureNode* node = getNodeFromString(location);
     if(node != 0x0) { // is node available?
         if(node->type == File) { // is node a file?
             // directly delete file.
             node->del();
         } else { // else throw DNE error
-            CharString* cs = new CharString("rm: ");
-            cs->concata(location);
-            cs->concata(": file does not exist",21);
-            this->ErrorString = cs->get();
+            CharString cs = CharString("rm: ");
+            cs.concata(location);
+            cs.concata(": file does not exist",21);
+            this->ErrorString = cs.get();
             throw 6;
         }
     } else { // else throw DNE error
         // throw error!
-        CharString* cs = new CharString("rm: ");
-        cs->concata(location);
-        cs->concata(": file does not exist",21);
-        this->ErrorString = cs->get();
+        CharString cs = CharString("rm: ");
+        cs.concata(location);
+        cs.concata(": file does not exist",21);
+        this->ErrorString = cs.get();
         throw 5;
     }
 }
 
 // Removes a directory from the current directory based on location.
 // Input: String location
-void FileSystem::removeDir(CharString* location) {
+void FileSystem::removeDir(CharString location) {
     FileStructureNode* node = getNodeFromString(location);
     if(node != 0x0 && node != Root) {
         // type-dir
@@ -418,27 +418,27 @@ void FileSystem::removeDir(CharString* location) {
                 node->del();
             } else {
                 // this is restricted by call directory
-                CharString* cs = new CharString("rmdir: ");
-                cs->concata(location);
-                cs->concata(": directory cannot be deleted",29);
-                this->ErrorString = cs->get();
+                CharString cs = CharString("rmdir: ");
+                cs.concata(location);
+                cs.concata(": directory cannot be deleted",29);
+                this->ErrorString = cs.get();
                 throw 15;
             }
 
         } else {
             // cannot find!
-            CharString* cs = new CharString("rmdir: ");
-            cs->concata(location);
-            cs->concata(": directory does not exist",26);
-            this->ErrorString = cs->get();
+            CharString cs = CharString("rmdir: ");
+            cs.concata(location);
+            cs.concata(": directory does not exist",26);
+            this->ErrorString = cs.get();
             throw 8;
         }
     } else {
         // throw error!
-        CharString* cs = new CharString("rmdir: ");
-        cs->concata(location);
-        cs->concata(": directory does not exist",26);
-        this->ErrorString = cs->get();
+        CharString cs = CharString("rmdir: ");
+        cs.concata(location);
+        cs.concata(": directory does not exist",26);
+        this->ErrorString = cs.get();
         throw 7;
     }
 }
@@ -454,7 +454,7 @@ void FileSystem::listDirs() {
         FileStructureNode* cc = Current->Child;
         // loop through all of the siblings
         while(cc != 0x0) {
-            cout << this->getStringFromNode(cc)->get() << endl;
+            cout << this->getStringFromNode(cc).get() << endl;
             cc = cc->Sibling;
         }
     } else {
@@ -464,14 +464,14 @@ void FileSystem::listDirs() {
 
 // NON-USED
 /*// Lists all files and dirs in a specific directory.
-void FileStructure::listDirs(CharString* location){
+void FileStructure::listDirs(CharString location){
 
 }*/
 
 
 // Set the Current variable to the current directory.
-void FileSystem::callDirectory(CharString* location) {
-    if(location->Compare("..",2)) {
+void FileSystem::callDirectory(CharString location) {
+    if(location.Compare("..",2)) {
         if(Current->Parent != 0x0) {
             Current = Current->Parent;
         }
@@ -482,18 +482,18 @@ void FileSystem::callDirectory(CharString* location) {
                 Current = node;
             } else {
                 // throw error!
-                CharString* cs = new CharString("cd: ");
-                cs->concata(location);
-                cs->concata(": not a directory",17);
-                this->ErrorString = cs->get();
+                CharString cs = CharString("cd: ");
+                cs.concata(location);
+                cs.concata(": not a directory",17);
+                this->ErrorString = cs.get();
                 throw 10;
             }
         } else {
             // throw error!
-            CharString* cs = new CharString("cd: ");
-            cs->concata(location);
-            cs->concata(": directory does not exist",26);
-            this->ErrorString = cs->get();
+            CharString cs = CharString("cd: ");
+            cs.concata(location);
+            cs.concata(": directory does not exist",26);
+            this->ErrorString = cs.get();
             throw 9;
         }
     }
@@ -504,6 +504,6 @@ void FileSystem::printWorkingDirectory() {
     if(Current == Root) {
         //cout << "/" << endl;
     } else {
-        //cout << this->getStringFromNode(Current)->get() << endl;
+        //cout << this->getStringFromNode(Current).get() << endl;
     }
 }

@@ -16,13 +16,7 @@ SplitResult::SplitResult() {
 
 }
 
-SplitResult::~SplitResult() {
-    /*delete listOfSizes;
-
-    for(int i=0;i<20;i++){
-        delete listStr[i];
-    }*/
-}
+SplitResult::~SplitResult() {}
 
 // returns the total size of the split result.
 int SplitResult::getSize() {
@@ -31,11 +25,13 @@ int SplitResult::getSize() {
 
 // get a splitresult
 char* SplitResult::get(int i) {
+    if(listStr.get(i) == 0x0) return "";
     return listStr.get(i)->get();
 }
 
-CharString* SplitResult::getCS(int i) {
-    return listStr.get(i);
+CharString SplitResult::getCS(int i) {
+    if(listStr.get(i) == 0x0) return CharString();
+    return *listStr.get(i);
 }
 
 // get Length of a particular splitResult
@@ -46,8 +42,11 @@ const int SplitResult::getLen(int i) {
 // add a splitresult to the list.
 void SplitResult::add(char* str, int strLen) {
     // quick string copy
-    CharString* a = new CharString();
-    a->setPtr(str, strLen);
-    listStr.add(a);
+    listStr.add(CharString(str, strLen));
+}
+
+void SplitResult::clear() {
+    // clear out the list
+    listStr.clear();
 }
 

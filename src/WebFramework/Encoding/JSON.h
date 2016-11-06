@@ -7,16 +7,16 @@
 
 class JSON {
     private:
-        CharString* data;
+        CharString data;
     public:
-        JSON(CharString* data);
+        JSON(CharString data);
 
-        void loadFile(CharString* loc); // load JSON from file
-        void saveFile(CharString* loc); // save JSON (overwrite) to file
+        void loadFile(CharString loc); // load JSON from file
+        void saveFile(CharString loc); // save JSON (overwrite) to file
 
         // Static methods to help speed up the process
-        CharString* static encode(CharString* data);
-        CharString* static decode(CharString* data);
+        CharString static encode(CharString data);
+        CharString static decode(CharString data);
 };
 
 

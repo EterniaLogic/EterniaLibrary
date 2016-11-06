@@ -1,4 +1,0 @@
-#!/bin/sh
-./makeit
-chmod +x Sim
-./Sim

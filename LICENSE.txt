@@ -2,7 +2,7 @@ GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
 Original Work by EterniaLogic: (May be modified in the interest of stability, cleanliness and portability)
-Copyright (C) 2016 Brent Clancy (EterniaLogic alias> dreadslicer)
+Copyright (C) 2016 Brent Clancy (eternialogic@gmail.com)
 
 License copyright:
 Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>

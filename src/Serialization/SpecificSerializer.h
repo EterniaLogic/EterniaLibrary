@@ -14,7 +14,7 @@ class PType;
 
 using namespace std;
 
-#define DBGSSE
+//#define DBGSSE
 
 #ifdef DBGSSE
     #define _DBGSSE(m) cout << m << endl; cout.flush()
@@ -39,28 +39,29 @@ class PointerType {
 };
 
 class SpecificSerializer {
-    private:
-        LinkedList<PointerType> addresses; // local addresses for this class
-    public:
-        SpecificSerializer();
-        virtual ~SpecificSerializer();
+private:
+    LinkedList<PointerType> addresses; // local addresses for this class
+public:
+    SpecificSerializer();
+    virtual ~SpecificSerializer();
 
-        // Add
-        void addSerial(void* ptr, SSEType); // Use on the class creation
-        void addSerialClass(void* ptr, SSEType type, int classSize);
+    // Add
+    void addSerial(void* ptr, SSEType); // Use on the class creation
+    void addSerialClass(void* ptr, SSEType type, int classSize);
+    void clearSerial();
 
-        // ID-specific serialization
-        CharString serializeId(int id);
-        void deserializeId(int id, CharString data);
-        uint32_t checksumId(int id);
-        bool checksumCompareId(int id, uint32_t otherid);
+    // ID-specific serialization
+    CharString serializeId(int id);
+    void deserializeId(int id, CharString data);
+    uint32_t checksumId(int id);
+    bool checksumCompareId(int id, uint32_t otherid);
 
-        // Full serialization
-        CharString serialize(); // converts this class into a byte stream, enforce the use of size.
-        void deserialize(CharString data); // converts a byte array into this class
-        uint32_t checksum(); // XOR. do a checksum, useful for detecting if the class needs to be updated from a server
-        bool checksumCompare(uint32_t other_checksum); // compares the checksum with the current class
-        int getClassSize(); // get the size of all of the combined addresses with data types
+    // Full serialization
+    CharString serialize(); // converts this class into a byte stream, enforce the use of size.
+    void deserialize(CharString data); // converts a byte array into this class
+    uint32_t checksum(); // XOR. do a checksum, useful for detecting if the class needs to be updated from a server
+    bool checksumCompare(uint32_t other_checksum); // compares the checksum with the current class
+    int getClassSize(); // get the size of all of the combined addresses with data types
 };
 
 #endif

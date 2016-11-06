@@ -20,6 +20,7 @@ LinkedMap::LinkedMap() {
 }
 
 LinkedMap::~LinkedMap() {
+    
 }
 
 void LinkedMap::add(char* key,char* cc) {

@@ -255,6 +255,8 @@
 		<Unit filename="src/Gamelogic/AI/AIUse.h" />
 		<Unit filename="src/Gamelogic/Avatar/Avatar.cpp" />
 		<Unit filename="src/Gamelogic/Avatar/Avatar.h" />
+		<Unit filename="src/Gamelogic/Avatar/AvatarAppearance.cpp" />
+		<Unit filename="src/Gamelogic/Avatar/AvatarAppearance.h" />
 		<Unit filename="src/Gamelogic/Avatar/AvatarGear.h" />
 		<Unit filename="src/Gamelogic/Avatar/AvatarHealth.cpp" />
 		<Unit filename="src/Gamelogic/Avatar/AvatarHealth.h" />
@@ -276,6 +278,7 @@
 		<Unit filename="src/Gamelogic/Buildings/Power/Building.h" />
 		<Unit filename="src/Gamelogic/Buildings/Power/PowerPlant.cpp" />
 		<Unit filename="src/Gamelogic/Buildings/Power/PowerPlant.h" />
+		<Unit filename="src/Gamelogic/Buildings/SpaceLaunchers/BasicLauncher.h" />
 		<Unit filename="src/Gamelogic/Buildings/SpaceLaunchers/stub.h" />
 		<Unit filename="src/Gamelogic/Buildings/Terraformers/stub.h" />
 		<Unit filename="src/Gamelogic/Crafting/Circuit.h" />
@@ -298,6 +301,7 @@
 		<Unit filename="src/Gamelogic/Environment/Planet/Planet.cpp" />
 		<Unit filename="src/Gamelogic/Environment/Planet/Planet.h" />
 		<Unit filename="src/Gamelogic/Environment/Planet/Planet_Atmosphere.cpp" />
+		<Unit filename="src/Gamelogic/Environment/Planet/Planet_Terrain.cpp" />
 		<Unit filename="src/Gamelogic/Environment/Space/Asteroid.h" />
 		<Unit filename="src/Gamelogic/Environment/Space/Galaxy.h" />
 		<Unit filename="src/Gamelogic/Environment/Space/Nebula.h" />

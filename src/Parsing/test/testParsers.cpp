@@ -13,8 +13,8 @@ void testSimpleParser() {
     char* a = new char[13];
     strcpy(a,"testParsers.txt");
 
-    CharString* location = new CharString(a,15);
-    LinkedList<LinkedList<CharString> >* list = SimpleParseFile(location,'=');
+    CharString location = CharString(a,15);
+    LinkedList<LinkedList<CharString>>* list = SimpleParseFile(location,'=');
 
     for(int i=0; i<list->size(); i++) {
         LinkedList<CharString>* list2 = list->get(i);

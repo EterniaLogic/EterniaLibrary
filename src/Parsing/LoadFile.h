@@ -17,7 +17,7 @@ using namespace std;
 
 
 void fileOpen(ifstream &infile, char* filename); // open a file for writing
-CharString* fileGetLine(ifstream &file); // read a single line from the file
+CharString fileGetLine(ifstream &file); // read a single line from the file
 void fileWrite(ifstream &file, CharString* data); // write a block of text to the file
 void fileClose(ifstream &file); // close the file stream
 

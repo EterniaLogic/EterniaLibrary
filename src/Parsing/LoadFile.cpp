@@ -24,7 +24,7 @@ void fileOpen(ifstream &infile, char* filename) {
 }
 
 // get a line from the file.
-CharString* fileGetLine(ifstream &file) {
+CharString fileGetLine(ifstream &file) {
     string sLine = "";
     if (!file.eof()) {
         std::getline(file, sLine);
@@ -35,9 +35,11 @@ CharString* fileGetLine(ifstream &file) {
             line[a]=sLine[a];
         }
         //cout << line << endl;
-        return new CharString(line, linelen);
+        //cout << "xx" << endl; cout.flush();
+        return CharString(line, linelen);
     } else {
-        return 0x0;
+        //cout << "xx" << endl; cout.flush();
+        return CharString("",-1);
     }
 }
 

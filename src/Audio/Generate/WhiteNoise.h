@@ -2,6 +2,7 @@
 #define WHITENOISE_H_
 
 // White noise is generated
+#include <random>
 
 class WhiteNoise {
     public:

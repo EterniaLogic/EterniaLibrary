@@ -58,9 +58,9 @@
 
 // store the value, store in temporary buffer x
 #define _storeV(x)  \
-    this->tmp = x; \
+    tmp = x; \
     this->honeypot = tmp; \
-    xortmp = _XORp(tmp, vec1); \
+    long long xortmp = _XORp(tmp, vec1); \
     this->value = * _TCAST(xortmp); \
     xortmp = _XORp(value, vec2); \
     this->tvalue = * _TCAST(xortmp); \
@@ -85,14 +85,14 @@
 
 //// ptype += T => ptype
 #define OP_PTP_DO_EQ(op,opeq) PType<T> operator opeq(T v){ \
-    this->tmp = get() op v; \
+    T tmp = get() op v; \
     _storeV(tmp); \
     return *this; \
 }
 
 //// ptype += ptype => ptype
 #define OP_PPP_DO_EQ(op,opeq) PType<T> operator opeq(PType<T> v){ \
-    this->tmp = get() op v.get(); \
+    T tmp = get() op v.get(); \
     _storeV(tmp); \
     return *this; \
 }
@@ -137,14 +137,12 @@ private:
     long long *vec1, *vec2;
     T value; // Base value
     T tvalue; // vector to determine memory hacking
-
-    T tmp;
-    long long xortmp; // tmp value for a xored value
+    T honeypot; // actual value, just resets every change
     // vectors declared on making this pint
 
     bool changed;
 
-    T honeypot; // actual value, just resets every change
+    
 
 
 /////////////// INTERNALS ///////////////
@@ -180,6 +178,7 @@ public:
         *vec2 = uni(rng);
 
         T vx= (T)0; // should be 0
+        T tmp;
         _storeV(vx);
 
         // values->add((int*)this);
@@ -229,11 +228,13 @@ public:
 /////////////// BASIC OPERATIONS ///////////////
     // set this
     PType<T> operator =(T v){
+        T tmp;
         _storeV(v); // store value
         return *this;
     }
 
     PType<T> operator =(PType<T> v){
+        T tmp;
         _storeV(v.get()); // store value
         return *this;
     }

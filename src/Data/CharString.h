@@ -32,32 +32,33 @@ class CharString {
         CharString(const char* stringg);
         CharString(std::string &stringg);
         CharString(const std::string &stringg);
+        virtual ~CharString();
 
         void operator =(char* string);
-        bool operator ==(CharString* other); // operator for 'compare'
+        bool operator ==(CharString other); // operator for 'compare'
 
         bool isValidCharString(); // checks if empty
         bool isValidNumber(); // checks for "0-9, -, ."
         bool isValidScientific(); // checks for a valid scientific number (or infinity / NaN)
 
         char* shiftLeft(const int len);
-        SplitResult* split(char splitter,char stopper);
+        LinkedList<CharString>* split(char splitter,char stopper);
         void replace(char* toFind,char* replaceWith);
 
 
-        bool Compare(CharString* b); // compare exactly with another CharString
-        bool Compare(CharString* b,bool useCase); // compare exactly or without case with another CharString
+        bool Compare(CharString b); // compare exactly with another CharString
+        bool Compare(CharString b,bool useCase); // compare exactly or without case with another CharString
         bool Compare(char* b, int c); // compare exactly with another char
         bool Compare(const char* b, int c); // compare exactly with another char
         bool CompareNoCase(char* b, int c); // compare with a char* of length c if it contains the same letters with same case.
         bool contains(char* c); // does this string contain the single character 'c'?
-        CharString* clone(); // creates a clone!
+        CharString clone(); // creates a clone!
         void concata_(const char* str, const int lenx);
         void concata(char* str, int len);
         void concatb(char* str, int len);
-        void concata(CharString* str); //Combine CharStrings after the current charString.
-        void concatb(CharString* str);  //Combine CharStrings before the current charString.
-        SortType SortCompare(CharString* str); // determines if this is "less" then another string. Used for automated sorting.
+        void concata(CharString str); //Combine CharStrings after the current charString.
+        void concatb(CharString str);  //Combine CharStrings before the current charString.
+        SortType SortCompare(CharString str); // determines if this is "less" then another string. Used for automated sorting.
 
 
 
@@ -75,11 +76,11 @@ class CharString {
         void setPtr(char* data, int length); // sets a raw pointer, no changes or copying
 
         bool isEmpty();
-        bool startsWith(CharString* starter);
-        bool endsWith(CharString* ender);
+        bool startsWith(CharString starter);
+        bool endsWith(CharString ender);
 
-        static CharString* ConvertFromInt(int l);
-        static CharString* ConvertFromLong(long l);
+        static CharString ConvertFromInt(int l);
+        static CharString ConvertFromLong(long l);
 
 
     private:

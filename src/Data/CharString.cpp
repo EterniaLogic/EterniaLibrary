@@ -18,34 +18,26 @@ CharString::CharString() {
     len = 0;
 }
 
+CharString::~CharString(){
+    /*if(stringx != 0x0)
+        delete [] stringx;*/
+    stringx = 0x0;
+}
+
 CharString::CharString(const char* stringg, const int length) {
     //const int lenc = length+1;
     //char cc[lenc];
-    char* cc = (char*)calloc(length+1, sizeof(char));
-    std::strcpy(cc, stringg);
-
-    stringx = cc;
-    len = length;
+    
+    this->set((char*)stringg,length);
 }
 
 CharString::CharString(const char* stringg) {
-    int clen = SIZEOFA(stringg);
-
-    char* cc = (char*)calloc(clen+1, sizeof(char));
-    strcpy(cc, stringg);
-
-    cc[clen] = '\0'; // at end of string, add 0x0
-    stringx = cc;
-    len = clen-1;
+    set((char*)stringg);
 }
 
 // populate charString and initialize it with data.
 CharString::CharString(char* stringg, int length) {
-    char* cc = (char*)calloc(length+1, sizeof(char));
-    std::strcpy(cc, stringg);
-
-    stringx = cc;
-    len = length;
+    this->set((char*)stringg, length);
 }
 
 // populate charString and initialize it.
@@ -115,13 +107,13 @@ bool CharString::isValidScientific(){
 * Input: String str, it's length, single-character splitter
 * Output: SplitResult from the splitting
 */
-SplitResult* CharString::split(char splitter,char stopper) {
-    SplitResult* sr = new SplitResult();
+LinkedList<CharString>* CharString::split(char splitter,char stopper) {
+    LinkedList<CharString>* sr = new LinkedList<CharString>();
     int i=0,j=0,carrot1=0,carrot2=0,commaplace=0; // positions for exclusive selection
     char* cc;
     int temp = 0;
 
-    if(!isValidCharString()) return new SplitResult();
+    if(!isValidCharString()) return sr;
 
     // loop through
     for(i=0; i<len; i++) {
@@ -133,10 +125,11 @@ SplitResult* CharString::split(char splitter,char stopper) {
         }
         // else make sure that the carrot is in place and populate.
         else if(stringx[i] == splitter && (commaplace >= 3 || commaplace == 0)) { // Is same as splitter?
-            cc = (char*)calloc(carrot2-carrot1, sizeof(char));
+            cc = (char*)calloc(carrot2-carrot1+1, sizeof(char));
             for(j=carrot1; j<carrot2; j++) cc[j-carrot1] = stringx[j]; // populate charString
 
-            sr->add(cc,carrot2-carrot1); // add data!
+            cc[carrot2-carrot1] = '\0';
+            sr->add(new CharString(cc,carrot2-carrot1)); // add data!
             carrot1 = i+1;
             carrot2 = i+1;
 
@@ -148,10 +141,11 @@ SplitResult* CharString::split(char splitter,char stopper) {
 
     // If size is greater then override, and there is a change in carrots
     if(carrot2 > carrot1) {
-        cc = (char*)calloc(carrot2-carrot1, sizeof(char));
+        cc = (char*)calloc(carrot2-carrot1+1, sizeof(char));
         for(j=carrot1; j<carrot2; j++) cc[j-carrot1] = stringx[j]; // populate charString
-
-        sr->add(cc,carrot2-carrot1); // Add to split result
+        cc[carrot2-carrot1] = '\0';
+        //cout << "splitcarrot " << carrot1 << "->" << carrot2 << " =" << cc << endl;
+        sr->add(new CharString(cc,carrot2-carrot1)); // Add to split result
     }
 
     return sr;
@@ -169,14 +163,14 @@ void CharString::replace(char* a, char* b) {
     // for(int i=copyx;i<len;i++){ out[i-copyx] = stringx[i]; }
 
     // ok, now we will convert a and b into charStrings.
-    CharString* A = new CharString(a);
-    CharString* B = new CharString(b);
+    CharString A = CharString(a);
+    CharString B = CharString(b);
 
     // special case, Singly repeated (lengths 1, 0)
-    if(B->getSize() == 0) {
+    if(B.getSize() == 0) {
         // store result temporarily
         int tlen = 0;
-        char* tt = clone()->get();
+        char* tt = clone().get();
         // filter out all results
         for(int i=0; i<this->len; i++) {
             // find all that are not occurences
@@ -194,30 +188,30 @@ void CharString::replace(char* a, char* b) {
         for(int i=0; i<this->len; i++) {
             int lenAwe = endX-iniX;
             if(stringx[i] == a[lenAwe]) {
-                if(lenAwe+1 >= A->getSize()) {
+                if(lenAwe+1 >= A.getSize()) {
                     // patch it up!
-                    if(A->getSize() == B->getSize()) {
+                    if(A.getSize() == B.getSize()) {
                         // same sizes, don't do anything special. Just a copy-over.
-                        for(int i=0; i<A->getSize(); i++) stringx[iniX+i] = b[i];
-                    } else if(A->getSize() > B->getSize()) {
+                        for(int i=0; i<A.getSize(); i++) stringx[iniX+i] = b[i];
+                    } else if(A.getSize() > B.getSize()) {
                         // downsize the string.
-                        int change = A->getSize() - B->getSize();
+                        int change = A.getSize() - B.getSize();
                         // downsize.
                         for(int i=endX-change; i<len-1; i++) {
                             stringx[i] = stringx[i+1];
                         }
                         len--;
                         // replace.
-                        for(int i=0; i<B->getSize(); i++) stringx[iniX+i] = b[i];
-                    } else if(A->getSize() < B->getSize()) {
+                        for(int i=0; i<B.getSize(); i++) stringx[iniX+i] = b[i];
+                    } else if(A.getSize() < B.getSize()) {
                         // upsize the string.
-                        int change = B->getSize() - A->getSize();
+                        int change = B.getSize() - A.getSize();
                         for(int i=endX+change; i<len-1; i++) {
                             stringx[i] = stringx[i+1];
                         }
                         len++;
                         // replace.
-                        for(int i=0; i<B->getSize(); i++) stringx[iniX+i] = b[i];
+                        for(int i=0; i<B.getSize(); i++) stringx[iniX+i] = b[i];
                     }
                 } else {
                     // set initial vertex if possible.
@@ -249,6 +243,7 @@ char* CharString::shiftLeft(const int lenh) {
         out[i-copyx] = stringx[i];
     }
     out[lenx] = 0x0;
+    free(stringx);
     return out;
 }
 
@@ -256,6 +251,8 @@ char* CharString::shiftLeft(const int lenh) {
 char* CharString::get() {
     // prevents any extra endings to stringx
     //stringx[len] = '\0';
+    
+    if(this == 0x0 || stringx == 0x0) return (char*)"";
     return stringx;
 }
 
@@ -402,6 +399,12 @@ float CharString::getFloat() {
 
 // takes input and changes current
 void CharString::set_(const char* stringg, const int length) {
+    if(length < 1){
+        stringx = 0x0;
+        len = length;
+        return;
+    }
+
     int clen = SIZEOFA(stringg);
     char* cc = (char*)calloc(length+1, sizeof(char));
     std::strcpy(cc, stringg);
@@ -432,11 +435,11 @@ void CharString::setPtr(char* data, int length) { // sets a raw pointer, no chan
 // Desc:  Custom function to convert integers to a list of characters (string)
 // Input:  Integer (int)
 // return: character string (CharString)
-CharString* CharString::ConvertFromInt(int integer) {
+CharString CharString::ConvertFromInt(int integer) {
     return ConvertFromLong((long)integer);
 }
 
-CharString* CharString::ConvertFromLong(long integer) {
+CharString CharString::ConvertFromLong(long integer) {
     const int ASCIIOffset = 48; // offset on the ASCII chart
 
     // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
@@ -472,8 +475,7 @@ CharString* CharString::ConvertFromLong(long integer) {
     }
 
     out[tlen-1]='\0';
-    CharString* g = new CharString(out,tlen);
-    return g;
+    return CharString(out,tlen);
 }
 
 
@@ -483,6 +485,7 @@ CharString* CharString::ConvertFromLong(long integer) {
 */
 bool CharString::Compare(char* b,int lenx) {
     if(!isValidCharString()) return false;
+    if(b == 0x0) return false;
     bool r = true;
 
     // else, loop through the string
@@ -519,27 +522,27 @@ bool CharString::CompareNoCase(char* b,int lenx) {
 }
 
 // high-speed string comparison
-bool CharString::Compare(CharString* b) {
-    return Compare(b->get(),b->getSize());
+bool CharString::Compare(CharString b) {
+    return Compare(b.get(),b.getSize());
 }
 
 // high-speed string comparison
-bool CharString::Compare(CharString* b, bool useCase) {
+bool CharString::Compare(CharString b, bool useCase) {
     if(useCase) {
-        return Compare(b->get(),b->getSize());
+        return Compare(b.get(),b.getSize());
     } else {
-        return CompareNoCase(b->get(),b->getSize());
+        return CompareNoCase(b.get(),b.getSize());
     }
 }
 
 // Compares with another string to determine placement in a sorting scheme.
-SortType CharString::SortCompare(CharString* str) {
-    if(!isValidCharString()) return *(new SortType());
+SortType CharString::SortCompare(CharString str) {
+    if(!isValidCharString()) return SortType();
     SortType ret = SSame;
     // if str is "longer" then this, than it is more "precise".
 
-    int minlen = len < str->getSize() ? len : str->getSize();
-    char* c = str->get();
+    int minlen = len < str.getSize() ? len : str.getSize();
+    char* c = str.get();
     // compare visible lengths. Note: if this is shorter then str, then it may be much less.
     // AABB
     // AABBc
@@ -556,10 +559,10 @@ SortType CharString::SortCompare(CharString* str) {
     }
 
     // if they are the same at length then:
-    if(ret == SSame && len < str->getSize()) {
+    if(ret == SSame && len < str.getSize()) {
         // str is greater.
         ret = SBefore;
-    } else if(ret == SSame && len > str->getSize()) {
+    } else if(ret == SSame && len > str.getSize()) {
         // this is greater.
         ret = SAfter;
     }
@@ -571,20 +574,19 @@ SortType CharString::SortCompare(CharString* str) {
 bool CharString::contains(char* c) {
     if(!isValidCharString()) return false;
     // test to make sure this is not null
-    if(this == 0x0) return *(new SortType());
+    if(this == 0x0) return false;
 
     // test to make sure that the string is usable
-    if(this->stringx == 0x0) return *(new SortType());
+    if(this->stringx == 0x0) return false;
 
-    bool co=false;
     // loop through length
     for(int i=0; i<this->len; i++) {
         // does string contain this EXACT single character?
         if(stringx[i] == *c) {
-            co=true;
+            return true;
         }
     }
-    return co;
+    return false;
 }
 
 
@@ -634,8 +636,8 @@ void CharString::concata(char* str, int lenx) {
 
 /* Combine CharStrings after the current charString.
 */
-void CharString::concata(CharString* str) {
-    concata(str->get(),str->getSize());
+void CharString::concata(CharString str) {
+    concata(str.get(),str.getSize());
 }
 
 // Combine CharStrings before the current charString.=
@@ -663,16 +665,17 @@ void CharString::concatb(char* str, int lenx) {
 
     //cout << "tmp: '" << tmp << "' (" << lena << "," << lenb << "="<< lenab <<")" << endl;
     // imprint changes
+    delete stringx;
     this->set(tmp,lenab);
 }
 
 // Combine CharStrings before the current charString.
-void CharString::concatb(CharString* str) {
-    concatb(str->get(),str->getSize());
+void CharString::concatb(CharString str) {
+    concatb(str.get(),str.getSize());
 }
 
 //shortcut for Compare command, must use * before each to use :/
-bool CharString::operator==(CharString* ins) {
+bool CharString::operator==(CharString ins) {
     return Compare(ins);
 }
 
@@ -682,35 +685,35 @@ bool CharString::isEmpty() {
     return (stringx[0] == 0x0 || len == 0);
 }
 
-CharString* CharString::clone() {
-    if(!isValidCharString()) return new CharString();
+CharString CharString::clone() {
+    if(!isValidCharString()) return CharString();
     char* cc = new char();
     for(int i=0; i<=len; i++) cc[i] = '\0';
     for(int i=0; i<len; i++) {
         cc[i] = stringx[i];
     }
 
-    return new CharString(cc,len);
+    return CharString(cc,len);
 }
 
-bool CharString::startsWith(CharString* starter) {
+bool CharString::startsWith(CharString starter) {
     if(!isValidCharString()) return false;
-    int lenx = starter->getSize();
+    int lenx = starter.getSize();
     if(lenx > len) return false; // cannot start with something that is bigger!
     // compare each
     for(int l = 0; l<lenx; l++) {
-        if(stringx[l] != starter->get()[l]) return false;
+        if(stringx[l] != starter.get()[l]) return false;
     }
     return true;
 }
-bool CharString::endsWith(CharString* ender) {
+bool CharString::endsWith(CharString ender) {
     if(!isValidCharString()) return false;
-    int lenx = ender->getSize();
+    int lenx = ender.getSize();
     if(lenx > len) return false; // cannot end with something that is bigger!
     // compare each
     for(int l = 0; l<lenx; l++) {
         int tat = (len-l)-1; // location to start at for compare
-        if(stringx[tat] != ender->get()[lenx-l-1]) return false;
+        if(stringx[tat] != ender.get()[lenx-l-1]) return false;
     }
     return true;
 }

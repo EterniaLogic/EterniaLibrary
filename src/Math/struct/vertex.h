@@ -10,15 +10,21 @@
 
 #include "../../Serialization/SpecificSerializer.h"
 #include "../Functions/Basic.h"
+#include "../Functions/Trig.h"
 #include "../../constants.h"
+#include <math.h>
 
 
+#define NULL_VERTEX vertex(NAN,NAN,NAN)
 
 #define VECOP_DEC(op) vertex operator op(vertex b); \
     vertex operator op(double b)
 
 #define VECOP_DEC_EQ(op) void operator op(vertex b); \
     void operator op(double b)
+  
+#define VECOP_DEC_COMP(op) bool operator op(vertex b); \
+    bool operator op(double b)
 
 
 class vertex : public SpecificSerializer{
@@ -31,6 +37,7 @@ public:
     vertex();
     virtual ~vertex();
 
+    vertex operator=(vertex b);
 
     VECOP_DEC(+);
     VECOP_DEC(-);
@@ -41,17 +48,19 @@ public:
     VECOP_DEC_EQ(-=);
     VECOP_DEC_EQ(*=);
     VECOP_DEC_EQ(/=);
+    
+    VECOP_DEC_COMP(==);
+    VECOP_DEC_COMP(!=);
 
     // convert to spherical coords
-    double getRoh(vertex body);
-    double getPhi(vertex body);
-    double getTheta(vertex body);
+    double getPhi();
+    double getTheta();
 
     double dot(vertex v2); // Dot-product
     vertex cross(vertex v2); // Cross-product
     vertex unitVector(); // Directional vector
 
-
+    void rotate(double theta, double phi); // rotate this vector around the origin. (additive)
 
     double angle(vertex  v2); // angle from v2 based on 0 deg (X-direction)
     double length(); // returns total distance between point and origin.
@@ -73,6 +82,8 @@ public:
     //VectorSpace* getVectorSpace(); // gets a vertex space directly
 };
 
+
+
 class VertexObject : public vertex{
 public:
     vertex velocity, acceleration;
@@ -83,6 +94,11 @@ public:
     virtual ~VertexObject();
 
     double gravitate(VertexObject body,  double time);
+    double getGravity(VertexObject body, double height);
+    
+    // Place this object at a stable orbit around another.
+    void setStableOrbit(VertexObject body, double eccentricity, bool CCW_orbit);
+    
     void thrust(VertexObject thrust); // applies force
 
     void tick(double second); // tick for acceleration and velocity

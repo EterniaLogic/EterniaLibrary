@@ -6,7 +6,7 @@ using namespace std;
 HTEntry::HTEntry() {}
 
 // Used when entering new data, setID() is the hashing function.
-HTEntry::HTEntry(CharString* key, CharString* data) {
+HTEntry::HTEntry(CharString key, CharString data) {
     k=key;
     d=data;
     setID();
@@ -19,8 +19,8 @@ void HTEntry::setID() {
     //char* table = "sadg-9u4yjhropajhaslmanm"; // quick hash
     // does a hashtable implementation.
     //cout << "GAH!" << endl;
-    unsigned int len = k->getSize();
-    char* cc = k->get();
+    unsigned int len = k.getSize();
+    char* cc = k.get();
     unsigned long end = 0;
 
     if(len < 3) { // 0 collisions
@@ -79,12 +79,12 @@ int HTEntry::getID() {
 }
 
 // returns stored key pointer
-CharString* HTEntry::getKey() {
+CharString HTEntry::getKey() {
     return k;
 }
 
 // returns data pointer
-CharString* HTEntry::getData() {
+CharString HTEntry::getData() {
     return d;
 }
 
@@ -102,19 +102,19 @@ void HTEntry::add(HTEntry* entry) {
     current->next = entry;
 }
 
-CharString* HTEntry::get(CharString* key) {
+CharString HTEntry::get(CharString key) {
     // add to the end.
     //cout << d << endl;
     HTEntry* current = this;
     while(current != 0x0) {
-        if(current->getKey()->Compare(key)) {
+        if(current->getKey().Compare(key)) {
             //cout << current->getData() << endl;
             return current->getData();
         }
         current = current->next;
     }
 
-    return 0x0;
+    return CharString();
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -139,15 +139,15 @@ void HashTable::add(HTEntry* entry) {
 
 }
 
-CharString* HashTable::get(CharString* key) {
+CharString HashTable::get(CharString key) {
     // add at [id]
     //cout << "ht::get - 1" << endl;
-    HTEntry* S = new HTEntry(key, 0x0);
+    HTEntry* S = new HTEntry(key, CharString());
     //cout << "ht::get - 2" << endl;
     //cout << "keyat: " << S->getID() << endl;
     if(entries[S->getID()].getID() != 0) {
         //cout << "ht::get - 3" << endl;
-        if(entries[S->getID()].getKey()->Compare(key)) {
+        if(entries[S->getID()].getKey().Compare(key)) {
             //cout << "ht::get - 4" << endl;
             return entries[S->getID()].getData();
         } else {

@@ -28,12 +28,14 @@ class SplitResult {
 
         // returns the selected index for the char*
         char* get(int i);
-        CharString* getCS(int i);
+        CharString getCS(int i);
 
         const int getLen(int i);
 
         void add(char* str, int strLen);
-
+        void clear(); // used when a ridiculous number of splitresults will be required
+        
+        
         // initializes splitlist by size sizeof
         //void initList(int sizeOf);
 

@@ -41,8 +41,6 @@ ENDIF()
 # Extra options to GCC when compiling to help enforce memory security
 set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fstack-protector-all -Wstack-protector --param ssp-buffer-size=4" )
 
-#include_directories("Lib/adept.sdk/inc")
-
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB CC_src
     "*.h"
@@ -91,31 +89,26 @@ ENDMACRO()
 SUBDIRLIST(SUBDIRS src)
 
 
-#message(${LIBSUFFIX},${LIBSUFFIX})
-#if(${LIBSUFFIX} MATCHES "64")
-#        file(GLOB Basys2LIBS
-#                "Lib/adept.sdk/lib64/*.so"
-#        )
-#else()
-#        file(GLOB Basys2LIBS
-#                "Lib/adept.sdk/lib/*.so"
-#        )
-#endif()
 
 FIND_PACKAGE(Threads REQUIRED)
 
-#target_link_libraries(${program} ${CMAKE_THREAD_LIBS_INIT})
+set(${PROJECT_NAME}_DEFINITIONS
+    CACHE INTERNAL "${PROJECT_NAME}: Definitions" FORCE)
 
 
 # STATIC SHARED
-ADD_LIBRARY(Eternia STATIC ${CC_src})
-ADD_EXECUTABLE(EterniaLibrary ${CC_src})
+ADD_LIBRARY("Eternia" STATIC ${CC_src})
+ADD_EXECUTABLE("EterniaLibrary" ${CC_src})
 
-
-TARGET_LINK_LIBRARIES(EterniaLibrary ${CMAKE_THREAD_LIBS_INIT})
 TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
+TARGET_LINK_LIBRARIES(EterniaLibrary ${CMAKE_THREAD_LIBS_INIT})
 
-#target_link_libraries(Eternia ${Basys2LIBS})
+add_custom_command(TARGET Eternia
+                PRE_BUILD
+                WORKING_DIRECTORY ./
+                COMMAND bash copyincludes.sh
+                COMMENT "EterniaLibrary - Copying includes over"
+)
 
 
 FOREACH(subdir ${SUBDIRS})

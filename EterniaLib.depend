@@ -3192,7 +3192,7 @@
 1475334836 source:g:\home\eternialogic\cpp\eternialib\src\gamelogic\buildings\building.cpp
 	"Building.h"
 
-1476221285 source:/media/GStuffs/Dev/Cpp/EterniaLib/main.cpp
+1476327058 source:/media/GStuffs/Dev/Cpp/EterniaLib/main.cpp
 	<time.h>
 	"src/test.h"
 	"src/Math/statistics/statistics.h"
@@ -3200,9 +3200,9 @@
 	"src/asm/asm1.h"
 	"version.h"
 	<iostream>
-	"src/Gamelogic/test/test.h"
+	"src/Gamelogic/test/testGameLogic.h"
 
-1476170984 /media/GStuffs/Dev/Cpp/EterniaLib/src/test.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/test.h
 	<ctime>
 	"Algorithm/Cryptography/test/testExHash.hpp"
 	"Engineering/Physics/test/tests.h"
@@ -3213,13 +3213,13 @@
 	"Data/Events/test/testEventHandler.hpp"
 	"Serialization/test/testSerializers.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/test/testExHash.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/test/testExHash.hpp
 	<iostream>
 	<stdlib.h>
 	"../../../Data/CharString.h"
 	"../ExHash.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.h
 	"CharString.h"
 	"SplitResult.h"
 	<iostream>
@@ -3227,29 +3227,29 @@
 	"../Math/Functions/Basic.h"
 	"SplitResult.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
 	<cstring>
 	"LinkedList.hpp"
 	"CharString.h"
 
-1476211153 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
+1476752570 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
 	<iostream>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.h
 	<malloc.h>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.h
 	"../../Data/CharString.h"
 	"../../Data/SpecialTypes.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SpecialTypes.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SpecialTypes.hpp
 	<inttypes.h>
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/tests.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/tests.h
 	"testGravity.h"
 	"testFriction.h"
 
-1476226660 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.h
 	"../../../Math/struct/vertex.h"
 	"../../../constants.h"
 
@@ -3257,23 +3257,25 @@
 	"../../../Math/struct/vertex.h"
 	"../../../constants.h"
 
-1476227882 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.h
-	"../Functions/Basic.h"
-	"../../constants.h"
+1476750602 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.h
 	"../../Serialization/SpecificSerializer.h"
+	"../Functions/Basic.h"
+	"../Functions/Trig.h"
+	"../../constants.h"
+	<math.h>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/constants.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/constants.h
 	<cstring>
 	"Data/CharString.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.h
 	"../Math.h"
 	<iostream>
 	<cstring>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Math.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Math.h
 	"Functions/Basic.h"
 	"Functions/Trig.h"
 	"struct/Matrix.h"
@@ -3282,53 +3284,53 @@
 	"Eval.h"
 	"Equation.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.h
 	"Basic.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.h
 	"../../Data/CharString.h"
 	<cstdlib>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.h
 	"Matrix.h"
 	"vertex.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.h
 	"../Data/CharString.h"
 	"../Data/Stack.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.h
 	<iostream>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.h
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.h
 	"../SimpleParser.h"
 	"../SecuredParser.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.h
 	<iostream>
 	"LoadFile.h"
 	"../Data/LinkedList.hpp"
 	"../Data/CharString.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
 	<iostream>
 	<fstream>
 	<string>
 	"../Data/CharString.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.h
 	"SimpleParser.h"
 	"../Algorithm/Cryptography/Aes256.h"
 	"../Data/LinkedList.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
 	<inttypes.h>
 
-1476170972 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.h
 	<ctime>
 	"../BitMap.h"
 	"../FileCache.hpp"
@@ -3343,10 +3345,10 @@
 	"testPType.h"
 	"testAbstractDB.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.h
 	"../Parsing/LoadFile.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileCache.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileCache.hpp
 	"LinkedList.hpp"
 	"../Data/CharString.h"
 	<iostream>
@@ -3356,30 +3358,30 @@
 	<unordered_map>
 	<string>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashMap.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashMap.hpp
 	<iostream>
 	"../Data/CharString.h"
 	"../Algorithm/Cryptography/ExHash.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.h
 	"../Data/CharString.h"
 	<iostream>
 	<fstream>
 	<cstdlib>
 	<stdio.h>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.h
 	"../AbstractDatabase/AbstractDB.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -3388,225 +3390,223 @@
 	<math.h>
 	"../PriorityQueue.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefines.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefines.h
 	"CryptoDefiner_Class.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefiner_Class.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefiner_Class.hpp
 	"Aes256.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/test/testEventHandler.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/test/testEventHandler.hpp
 	"../EventHandler.h"
 	<iostream>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.h
 	"../PriorityQueue.h"
 	"EventHandle.h"
 	<iostream>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.h
 	<time.h>
 
-1476222340 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
 	"../SpecificSerializer.h"
-	"../../Gamelogic/Avatar/Avatar.h"
-	<iomanip>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
 	<stdlib.h>
 	<malloc.h>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/statistics/statistics.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/statistics/statistics.h
 	"../struct/vertex.h"
 	"../../Data/DoubleList.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.h
 	<iostream>
 	"LoadFile.h"
 	"../Data/CharString.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.h
 
 1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/version.h
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.cpp
 	"asm1.h"
 	<iostream>
 	<stdio.h>
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/constants.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/constants.cpp
 	"constants.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
 	"Atom.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
 	"../../constants.h"
 	"../../Design/Colors.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Design/Colors.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Design/Colors.h
 	"../Math/struct/vertex.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
 	"Composite.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.h
 	"Atom.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.cpp
 	"ComponentRating.h"
 	<math.h>
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.h
 	"../PowerValue.h"
 	"../../Chemistry/Atom.h"
 	"../../../Emulation/SecondTick.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.h
 	<time.h>
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.cpp
 	"IC555.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.h
 	"../IC.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.h
 	"../Components/Component.h"
 	"../../../Data/LinkedList.hpp"
 	"../Pin.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/Component.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/Component.h
 	"../PowerValue.h"
 	"../../../Emulation/SecondTick.h"
 	"ComponentRating.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
 	"../../Data/CharString.h"
 	"PowerValue.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
 	"IC.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.cpp
 	"RAM.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.h
 	"IC.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.cpp
 	"Pin.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.cpp
 	"PowerValue.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.cpp
 	"CLKProvider.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.h
 	"Signal.h"
 	<time.h>
 	"../../../Data/LinkedList.hpp"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/Signal.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/Signal.h
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.cpp
 	"PWM.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.h
 	"Signal.h"
 	<time.h>
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Equations.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Equations.cpp
 	"Equations.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Equations.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Equations.h
 	"../../constants.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.cpp
 	"FluidMechanics.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.h
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.cpp
 	"CircularMotion.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.h
 
-1476227954 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.cpp
 	"Collision1D.h"
 
-1476227076 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.h
 	"../../../Math/struct/vertex.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.cpp
 	"FreeBody.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.h
 	"../../../constants.h"
 	"../../../Data/LinkedListT.h"
-	"VectorBody.h"
+	"../../../Math/struct/vertex.h"
 	"../../../Math/Equation.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.h
 
 1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/VectorBody.cpp
 	"VectorBody.h"
 	<iostream>
 	<ctime>
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.cpp
 	"RotationalFuncs.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.h
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.cpp
 	"testFriction.h"
 
-1476226817 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.cpp
 	"testGravity.h"
 	<iostream>
 	<ctime>
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.cpp
 	"ThermalDynamics.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.h
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.cpp
 	"Work.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.h
 	"../../Data/LinkedList.hpp"
 	"../../constants.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.cpp
 	"P2PBoundaries.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.h
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PCPUServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PCPUServer.cpp
 	"P2PCPUServer.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PCPUServer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PCPUServer.h
 	"P2PNode.h"
 	"P2PPacket.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNode.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNode.h
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.h
 	"P2PNode.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PDataServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PDataServer.cpp
 	"P2PDataServer.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PDataServer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PDataServer.h
 	"P2PInc.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PInc.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PInc.h
 	"P2PPacket.h"
 	"P2PBoundaries.h"
 	"P2PNode.h"
@@ -3617,189 +3617,189 @@
 	"P2PLServer.h"
 	"P2PLClient.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PStreamServer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PStreamServer.h
 	"P2PInc.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PIRCServer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PIRCServer.h
 	"P2PInc.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLServer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLServer.h
 	"P2PInc.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLClient.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLClient.h
 	"P2PInc.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PIRCServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PIRCServer.cpp
 	"P2PIRCServer.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLClient.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLClient.cpp
 	"P2PLClient.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PLServer.cpp
 	"P2PLServer.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PManager.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PManager.cpp
 	"P2PManager.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PManager.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PManager.h
 	"P2PInc.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNode.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNode.cpp
 	"P2PNode.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNodeCache.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNodeCache.cpp
 	"P2PNodeCache.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNodeCache.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PNodeCache.h
 	"P2PNode.h"
 	"../../../../Data/LinkedList.hpp"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.cpp
 	"P2PPacket.h"
 
-1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PStreamServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PStreamServer.cpp
 	"P2PStreamServer.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes267.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes267.cpp
 	"Aes256.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
 	"ExHash.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/md5.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/md5.cpp
 	"md5.h"
 	<cstdio>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/md5.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/md5.h
 	<cstring>
 	<iostream>
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.cpp
 	"InsertionSort.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.cpp
 	"MergeSort.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.h
 	"../../Data/IntegerList.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.cpp
 	"QuickSort.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.h
 	"../../Data/IntegerList.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.cpp
 	"SelectionSort.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBCacheMap.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBCacheMap.cpp
 	"AbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBField.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBField.cpp
 	"AbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBLinkedData.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBLinkedData.cpp
 	"AbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBRow.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBRow.cpp
 	"AbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
 	"AbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/BasicFixedPointerArray.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/BasicFixedPointerArray.cpp
 	"AbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.cpp
 	"BitMap.h"
 
-1476213518 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.cpp
+1476787520 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.cpp
 	"CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.cpp
 	"ConcurrentLinkedList.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.h
 	"LinkedList.hpp"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.cpp
 	"DoubleList.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.cpp
 	"EventHandle.h"
 	<iostream>
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.cpp
 	"EventHandler.h"
 	<iostream>
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.cpp
 	"FileSystem.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
 	"../Data/CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.cpp
 	"Graph.h"
 	<iostream>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.h
 	"LinkedListT.h"
 	"HashMap.hpp"
 	"../Data/CharString.h"
 	"../Math/struct/vertex.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.cpp
 	"HashTable.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.h
 	<iostream>
 	"../Data/CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.cpp
 	"Heap.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.cpp
 	"IntegerList.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.cpp
 	"LinkedListT.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.cpp
 	"LinkedMap.h"
 	"iostream"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.cpp
 	"PriorityQueue.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.cpp
 	"Queue.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.cpp
+1476786381 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.cpp
 	"SplitResult.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.cpp
 	"Stack.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
 	"testAbstractDB.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
 	"testDataStructures.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.cpp
 	"TreeList.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.cpp
 	"msp430.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.h
 	<math.h>
 	<ctime>
 	"msp430g2553.h"
@@ -3809,38 +3809,39 @@
 	"../../Data/LinkedList.hpp"
 	"../../Data/HashMap.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430g2553.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430g2553.h
 	"in430.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/in430.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/in430.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Opcodes.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Opcodes.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Registers.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Registers.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_declare_consts.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_declare_consts.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Instructions.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Instructions.cpp
 	"msp430.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Interrupts.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Interrupts.cpp
 	"msp430.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_timers.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_timers.cpp
 	"msp430.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_USCI.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_USCI.cpp
 	"msp430.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.cpp
 	"SecondTick.h"
 
-1476209184 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.cpp
 	"Avatar.h"
 
-1476208914 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.h
 	"AvatarHealth.h"
 	"AvatarGear.h"
+	"AvatarAppearance.h"
 	"SkillSet.h"
 	"../Location.h"
 	"../../Math/struct/vertex.h"
@@ -3848,22 +3849,22 @@
 	"../Crafting/CraftingStats.h"
 	"../../Serialization/SpecificSerializer.h"
 
-1476198232 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
 	"../../Data/LinkedList.hpp"
 	"../../Data/Protect/PType.hpp"
 	"Disease.h"
 	"Mood.h"
 	"../../Serialization/SpecificSerializer.h"
 
-1476197442 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.h
 	"../../Data/LinkedList.hpp"
 	"../../Data/Protect/PType.hpp"
 
-1476198813 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.h
 	"../../Data/Protect/PType.hpp"
 	"../../Serialization/SpecificSerializer.h"
 
-1476220978 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.h
 	<stdlib.h>
 	<malloc.h>
 	"../Data/CharString.h"
@@ -3871,108 +3872,111 @@
 	"../Algorithm/Cryptography/md5.h"
 	"../Data/Protect/PType.hpp"
 
-1476209219 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarGear.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarGear.h
 	"../Inventory/BaseInventory.h"
 	"../Inventory/DynamicEquip.h"
 	"../../Serialization/SpecificSerializer.h"
 
-1476158850 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/BaseInventory.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/BaseInventory.h
 	"../../Data/LinkedList.hpp"
 	"ItemBase.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/ItemBase.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/ItemBase.h
 	"../../Data/LinkedList.hpp"
 	"../../Data/CharString.h"
 	"DynamicAttribute.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicEquip.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicEquip.h
 	"ItemBase.h"
 
-1476197582 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.h
 	"../../Serialization/SpecificSerializer.h"
 	"../../Data/Protect/PType.hpp"
 
-1476224349 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.h
 	"../Math/struct/vertex.h"
 	"../Serialization/SpecificSerializer.h"
 
-1476197533 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.h
 	"../../Serialization/SpecificSerializer.h"
 	"../../Data/Protect/PType.hpp"
 
-1476198341 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.cpp
 	"AvatarHealth.h"
 
-1476197559 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.cpp
 	"Disease.h"
 
-1476197719 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.cpp
 	"Mood.h"
 
-1476197586 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.cpp
 	"SkillSet.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Building.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Building.cpp
 	"Building.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Building.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Building.h
+	"../../Serialization/SpecificSerializer.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Power/PowerPlant.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Power/PowerPlant.cpp
 	"PowerPlant.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Power/PowerPlant.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Power/PowerPlant.h
 	"../Building.h"
 
-1476197547 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.cpp
 	"CraftingStats.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.cpp
 	"Tax.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.h
 	"TaxRefund.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/TaxRefund.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/TaxRefund.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.cpp
 	"Ocean.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.cpp
 	"Planet.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.h
+	"../../../Engineering/Chemistry/Composite.h"
 	"../../../Math/struct/vertex.h"
 	"../../../Math/Math.h"
 	"../../../Data/LinkedList.hpp"
-	"../../../Algorithm/RNG/RNG_Twister.hpp"
 	"../../../Data/Graph.h"
 	"../../../constants.h"
 	"Ocean.h"
+	<random>
 
 1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/RNG/RNG_Twister.hpp
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet_Atmosphere.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet_Atmosphere.cpp
 	"Planet.h"
 
-1476227058 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.cpp
 	"Location.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.cpp
 	"Citizen.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.h
 
-1476170110 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.cpp
 	"testGameLogic.h"
+	<iomanip>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.h
 	"../gamelogic.h"
 
-1476160454 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/gamelogic.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/gamelogic.h
 	"AI/AI.h"
 	"AI/AIAttack.h"
 	"AI/AICommand.h"
@@ -3987,100 +3991,100 @@
 	"Inventory/DynamicEquip.h"
 	"Inventory/ItemBase.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AI.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AI.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIAttack.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIAttack.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AICommand.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AICommand.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIDecide.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIDecide.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIMovement.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIMovement.h
 	"../../Math/struct/vertex.h"
 	"../../Data/LinkedList.hpp"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIUse.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIUse.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.cpp
 	"LanguageController.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
 	"../Data/CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.cpp
 	"Convert.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.h
 	"../struct/vertex.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.cpp
 	"Equation.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation_CALC.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation_CALC.cpp
 	"Equation.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.cpp
 	"Eval.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
 	"Basic.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.cpp
 	"Trig.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Basis.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Basis.cpp
 	"Basis.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Basis.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Basis.h
 	"Matrix.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
 	"Matrix.h"
 	<iostream>
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.cpp
 	"VectorSpace.h"
 
-1476170661 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.cpp
 	"vertex.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.cpp
 	"testMath.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.cpp
 	"HTMLParser.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.h
 	"HTMLTags.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLTags.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLTags.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.cpp
 	"InputRedirection.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.cpp
+1476785443 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.cpp
 	"LoadFile.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.cpp
 	"SecuredParser.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.cpp
 	"SimpleParser.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.cpp
 	"testParsers.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.cpp
 	"EfficiencyTimer.h"
 	<iostream>
 	<ctime>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Program.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Program.cpp
 	"Program.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Program.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Program.h
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 	"Visual/VProgramNode.h"
@@ -4090,45 +4094,45 @@
 	<cstdlib>
 	<math.h>
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramNode.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramNode.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.h
 	"../ProgramError.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/ProgramError.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/ProgramError.h
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.h
 	"../../Data/CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/ProgramError.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/ProgramError.cpp
 	"ProgramError.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VisualProgram.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VisualProgram.cpp
 	"../Program.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.cpp
 	"VProgramError.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.cpp
 	"VProgramVariable.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
 	"BasicSerializer.h"
 
-1476221144 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
 	"SpecificSerializer.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTMLServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTMLServer.cpp
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/NetworkManager.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/NetworkManager.cpp
 	"NetworkManager.h"
 
-1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/NetworkManager.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/NetworkManager.h
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.cpp
 	"SockClient.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.h
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
@@ -4143,10 +4147,10 @@
 	<thread>
 	"../../Data/CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
 	"SocketServer.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -4163,19 +4167,19 @@
 	"../../Data/LinkedList.hpp"
 	"../../Data/CharString.h"
 
-1475996155 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.cpp
 	"Template.h"
 
-1475996155 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.h
 	"../../Data/LinkedList.hpp"
 	"../../Data/CharString.h"
 	<Eternia/Encoding/HtmlEncode.h>
 	<Eternia/WebFramework/Templates/Template.h>
 
-1476171092 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.h
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.h
 	"../Protect/PType.hpp"
 
-1476217916 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Protect/PType.hpp
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Protect/PType.hpp
 	"../LinkedList.hpp"
 	"../../Math/Functions/Basic.h"
 	<malloc.h>
@@ -4184,6 +4188,12 @@
 	<typeinfo>
 	<float.h>
 
-1476193081 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.cpp
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.cpp
 	"testPType.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarAppearance.h
+	"../../Math/struct/vertex.h"
+	"../../Data/Protect/PType.hpp"
+	"../../Data/CharString.h"
+	"../../Serialization/SpecificSerializer.h"
 

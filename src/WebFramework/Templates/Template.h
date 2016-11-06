@@ -72,10 +72,12 @@ class Template {
         LinkedList<TemplateDefinition> templateList;
     public:
         Template(CharString fileloc); // pre-loads a template file
+        Template();
+        virtual ~Template();
 
         // the replace is a pointer string, so it can be changed later with replacer->set("");
-        void addRegexDefinition(CharString toreplace, CharString* replacer); // Add a regex definition, occurs every single time during a render
-        void addReplacingDefinition(CharString toreplace, CharString* replacer); // Add a replacing definition, occurs every single time during a render
+        void addRegexDefinition(CharString toreplace, CharString replacer); // Add a regex definition, occurs every single time during a render
+        void addReplacingDefinition(CharString toreplace, CharString replacer); // Add a replacing definition, occurs every single time during a render
 
         void addDefaultDefinitions(); // must be called to have default definitions like {date}, {page}
 

@@ -10,18 +10,14 @@
 // P2P features might be useful here.
 
 
-// VOIP Quality for this manager
-enum VOIPQuality {VQ_8k, VQ_22k, VQ_48k}; // Voice quality sample rates
-
-
 class ChatManager {
-    public:
-        ChatManager();
+public:
+    ChatManager();
 
-        // determine the distance for Local chat, VOIP, ect.
+    // determine the distance for Local chat, VOIP, ect.
+    
 
-
-        // Manage audio, downsample, ect.
+    // Manage audio, downsample, ect.
 };
 
 #endif

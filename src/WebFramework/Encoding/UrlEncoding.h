@@ -7,8 +7,8 @@ class UrlEncoding {
     public:
         UrlEncoding();
 
-        static CharString* decodeUrl(CharString* url);
-        static CharString* encodeUrl(CharString* url);
+        static CharString decodeUrl(CharString url);
+        static CharString encodeUrl(CharString url);
 };
 
 #endif

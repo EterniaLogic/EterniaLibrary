@@ -22,8 +22,8 @@ class HTEntry {
         void setID() {
             // does a HashMap<T> implementation.
 
-            id = exSumMap(k,size,3);
-            cout << "DBG HMID ("<< k->get() <<") " << id << " " << size << endl;
+            id = exSumMap(&k,size,3);
+            //cout << "DBG HMID ("<< k.get() <<") " << id << " " << size << endl;
             cout.flush();
         }
 
@@ -36,7 +36,7 @@ class HTEntry {
             this->size=40000;
             this->next=0x0;
         }
-        HTEntry(CharString* key, T* data,int size) {
+        HTEntry(CharString key, T* data,int size) {
             this->id=-1;
             this->k=key;
             this->d=data;
@@ -55,14 +55,14 @@ class HTEntry {
         unsigned long size;
         HTEntry<T>* next; // for over-load of collisions. (separate chaining)
 
-        CharString *k;
+        CharString k;
         T *d;
         int id;
 
         int getID() {
             return id;    // returns ID (Hashed key)
         }
-        CharString* getKey() {
+        CharString getKey() {
             return k;    // returns key
         }
         T* getData() {
@@ -85,12 +85,12 @@ class HTEntry {
 
 
 
-        T* get(CharString* key) {
+        T* get(CharString key) {
             // add to the endx.
             HTEntry<T>* current = this;
             // loop through the list.
             while(current != 0x0) {
-                if(current->getKey()->Compare(key)) {
+                if(current->getKey().Compare(key)) {
                     return current->getData();
                 }
                 current = current->next;
@@ -104,7 +104,7 @@ class HTEntry {
             HTEntry<T>* current = this;
             // loop through the list.
             while(current != 0x0) {
-                if(current->getKey()->Compare(key)) {
+                if(current->getKey().Compare(key)) {
                     return current->getData();
                 }
                 current = current->next;
@@ -118,7 +118,7 @@ class HTEntry {
             HTEntry<T>* current = this, last = 0x0;
             // loop through the list.
             while(current != 0x0) {
-                if(current->getKey()->Compare(key)) {
+                if(current->getKey().Compare(key)) {
                     T* data = current->getData();
 
                     if(last == 0x0) {
@@ -180,7 +180,7 @@ class HashMap {
         };
 
 
-        void add(CharString* key, T* data) {
+        void add(CharString key, T* data) {
             HTEntry<T>* entry = new HTEntry<T>(key,data,size);
             entry->size = size;
 
@@ -210,7 +210,7 @@ class HashMap {
         }
 
 
-        T* get(CharString* key) {
+        T* get(CharString key) {
             // basic key to search with.
             HTEntry<T>* S = new HTEntry<T>(key, 0x0, size);
             // does this key exist?
@@ -218,7 +218,7 @@ class HashMap {
             if(entries[S->getID()].id > -1) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
-                if(entries[S->getID()].getKey()->Compare(key)) {
+                if(entries[S->getID()].getKey().Compare(key)) {
                     return entries[S->getID()].getData();
                 } else {
                     // if not, then we need to loop through the linked list for it.
@@ -253,7 +253,7 @@ class HashMap {
 
 
         // remove item based on key.
-        T* remove(CharString* key) {
+        T* remove(CharString key) {
             // basic key to search with.
             HTEntry<T>* S = new HTEntry<T>(key, 0x0, size);
             // does this key exist?
@@ -262,7 +262,7 @@ class HashMap {
                 // determine if item on this list is within bounds.
 
                 //cout << "a1" << key->get() << endxl;
-                if(entries[S->getID()].getKey()->Compare(key)) {
+                if(entries[S->getID()].getKey().Compare(key)) {
                     //cout << "a2" << endxl;
                     T* item = entries[S->getID()].getData();
                     entries[S->getID()].reset();

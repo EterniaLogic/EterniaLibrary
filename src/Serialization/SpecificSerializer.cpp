@@ -26,8 +26,14 @@ PointerType::PointerType(void* ptr, SSEType type) {
 
 
 
-SpecificSerializer::SpecificSerializer(){}
-SpecificSerializer::~SpecificSerializer(){}
+SpecificSerializer::SpecificSerializer(){
+    //cout << "Add serial" << endl; cout.flush();
+}
+
+SpecificSerializer::~SpecificSerializer(){
+    //cout << "Remove serial" << endl; cout.flush();
+    addresses.clear();
+}
 
 // Use on the class creation
 void  SpecificSerializer::addSerial(void* ptr, SSEType type) {
@@ -48,6 +54,10 @@ void  SpecificSerializer::addSerialClass(void* ptr, SSEType type, int classSize)
     PointerType* t = new PointerType(ptr, type);
     t->classSize = classSize;
     addresses.add(t);
+}
+
+void SpecificSerializer::clearSerial(){
+    addresses.clear();
 }
 
 int GetSizeOfType(PointerType* pt) {
@@ -332,7 +342,7 @@ CharString SpecificSerializer::serialize() {
     for(int i=0;i<addresses.frozenlen;i++){
         CharString t = serializeId(i);
         _DBGSSE("   [Specific Serializer] Serialize:" << t.get());
-        tstring.concata(&t); // insert id after
+        tstring.concata(t); // insert id after
     }
     _DBGSSE("[Specific Serializer] Serialize End");
 

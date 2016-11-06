@@ -171,7 +171,7 @@ bool Program::compareVars(VProgramNode* node) {
                 break;
         }
     } else if(v1->type == PV_String && node->ctype == PCC_Equals) {
-        if(v1->string.Compare(&v2->string)) return true;
+        if(v1->string.Compare(v2->string)) return true;
     } else if(v1->type == PV_Object && node->ctype == PCC_Equals) {
         if(v1->object == v2->object) return true;
     }

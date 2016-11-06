@@ -3,7 +3,7 @@
 
 #include "../../../Serialization/SpecificSerializer.h"
 
-// The Chat Filter is a client-side filter.
+// The Chat Filter is a client/server-side filter.
 
 //  It should include:
 //      Anti-spam
@@ -11,7 +11,8 @@
 //      Word Filter
 
 class ChatFilter : public SpecificSerializer {
-        ChatFilter();
+public:
+    ChatFilter();
 };
 
 

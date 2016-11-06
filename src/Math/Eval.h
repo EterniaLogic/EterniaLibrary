@@ -18,6 +18,6 @@ enum MOperator {none=1,Less=2,Greater=3,equals=4,greaterequals=5,lessequals=6,
 enum nxx {PrimNULL = -99999};
 
 // Evaluates a mathematical expression.
-CharString* Eval(CharString* Line);
+CharString Eval(CharString Line);
 
 #endif /*EVAL_H_*/

@@ -127,16 +127,16 @@ void dumpOp(MOperator op) {
  * Input: CharString* Line.
  * Output: (Console) Output of all expressions.
  * */
-CharString* Eval(CharString* Line) {
+CharString Eval(CharString Line) {
     //cout << line << endl;
     // get length of line
     int lsize = 0;
-    for(int i=0; i<Line->getSize(); i++) {
-        if(Line->get()[i] != 0x0) {
+    for(int i=0; i<Line.getSize(); i++) {
+        if(Line.get()[i] != 0x0) {
             lsize++;
         }
     }
-    Line->setSize(lsize);
+    Line.setSize(lsize);
 
 
     // PARSE each section. Format SHOULD be like this:
@@ -163,11 +163,11 @@ CharString* Eval(CharString* Line) {
 
     // note that both stacks store information through the same MathOperationNode Type.
     //  This will be solved later when we interlace the operators with the variables.
-    char* LineD = Line->get();
+    char* LineD = Line.get();
     char* NumTemp = new char();
     int NumTempLen = 0;
     MOperator OpTemp = none;
-    for(int i=0; i<Line->getSize(); i++) {
+    for(int i=0; i<Line.getSize(); i++) {
         char g = LineD[i];
         MOperator tOp = getOperatorFromChar(g);
 

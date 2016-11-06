@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------------
 
 #include "vertex.h"
-
 using namespace Math; // ../Math.h
 
 
@@ -27,13 +26,20 @@ vertex vertex::operator op(double b) { \
 
 #define VECOP_IMP_EQ(op) void vertex::operator op(vertex b) { \
     this->x op b.x; \
-    this->x op b.y; \
-    this->x op b.z; \
+    this->y op b.y; \
+    this->z op b.z; \
 } \
 void vertex::operator op(double b) { \
     this->x op b; \
-    this->x op b; \
-    this->x op b; \
+    this->y op b; \
+    this->z op b; \
+}
+
+#define VECOP_IMP_COMP(op) bool vertex::operator op(vertex b) { \
+    return (x op b.x && y op b.y && z op b.z); \
+} \
+bool vertex::operator op(double b) { \
+    return (x op b && y op b && z op b); \
 }
 
 
@@ -43,17 +49,25 @@ vertex::vertex(double _x,double _y,double _z) {
     this->y = _y;
     this->z = _z;
     
+    //cout << "Add vertex" << endl; cout.flush();
+    /*clearSerial();
     addSerial(&x,SSE_double);
     addSerial(&y,SSE_double);
-    addSerial(&z,SSE_double);
+    addSerial(&z,SSE_double);*/
 }
 vertex::vertex() {
     x=y=z=0;
+    
+    //cout << "Add vertex 0" << endl; cout.flush();
+    clearSerial();
     addSerial(&x,SSE_double);
     addSerial(&y,SSE_double);
     addSerial(&z,SSE_double);
 }
-vertex::~vertex() {  }
+
+vertex::~vertex() { 
+    //cout << "vertex destroy..." << endl; cout.flush();
+}
 
 
 VertexObject::VertexObject(double _x,double _y,double _z) {
@@ -79,6 +93,13 @@ VertexObject::VertexObject() {
 VertexObject::~VertexObject() {  }
 
 
+vertex vertex::operator=(vertex b){
+    this->x = b.x;
+    this->y = b.y;
+    this->z = b.z;
+    return *this;
+}
+
 // Implementations via MACROs
 VECOP_IMP(+)
 VECOP_IMP(-)
@@ -89,6 +110,9 @@ VECOP_IMP_EQ(+=)
 VECOP_IMP_EQ(-=)
 VECOP_IMP_EQ(*=)
 VECOP_IMP_EQ(/=)
+
+VECOP_IMP_COMP(==)
+VECOP_IMP_COMP(!=)
 
 
 
@@ -125,6 +149,38 @@ double VertexObject::gravitate(VertexObject body, double seconds) {
     return accel*seconds;
 }
 
+double VertexObject::getGravity(VertexObject body, double distance){
+    return physical::constant::G * (this->mass * body.mass) / (distance*distance);
+}
+
+// Place this object at a stable orbit around another.
+// inclination above 90* will be counter-clockwise
+// inclination is relative to the position of this object. 
+// If the object is directly above a planet, the inclination is 90 "for that planet"
+void VertexObject::setStableOrbit(VertexObject body, double eccentricity, bool CCW_orbit){
+    // v = sqrt(gm/h)   <-- assumes eccentricity = 0
+    double distance = this->distance(body);
+    double apoapsis = distance/Math::sqrt(1-eccentricity*eccentricity); // b = a*sqrt(1-e^2)
+    double mu = getGravity(body, distance) * body.mass;
+    
+    
+    // eccentricity equation
+    // mu = GM
+    // a = distance of apoapsis
+    double v = Math::sqrt(mu*(2/distance - 1/apoapsis));
+    
+    // determine the vector for the orbit velocity
+    vertex localvector = *this - body;
+    vertex up(0,1,0); // upward vector, rotated based on local position.
+    if(!CCW_orbit) up *= -1;
+    
+    // rotate up vector
+    up.rotate(getTheta(), getPhi());
+    
+    // do final cross & unit value * velocity
+    this->velocity = localvector.cross(up).unitVector() * v;
+}
+
 void VertexObject::thrust(VertexObject thrust) {
     *this += thrust;
 }
@@ -138,27 +194,34 @@ void VertexObject::simSecond() {
 
 
 
-
-
-// Get the rotational axis Ρ in 3rd-dimentional spherical coordinates
-double getRoh(vertex body) {
-    return Math::sqrt(Math::pow(body.x,2)+Math::pow(body.y,2)+Math::pow(body.z,2));
+// theta, phi in radians
+// rotate the vertex around the origin.
+void vertex::rotate(double theta_, double phi_){
+    // convert rectangular to polar coordinates
+    double rho = length();
+    double theta = Math::atan(y/x);
+    double phi = Math::atan(Math::sqrt(x*x+y*y)/z);
+    
+    // add theta and phi
+    theta += theta_;
+    phi += phi_;
+    
+    // convert back to rectangular.
+    x = rho*Math::sin(phi)*Math::cos(theta);
+    y = rho*Math::sin(phi)*Math::sin(theta);
+    z = rho*Math::cos(phi);
 }
 
-// Get the rotational axis Φ in 3rd-dimentional spherical coordinates
-double getPhi(vertex body) { // Φ
-    //acossin
 
-    return 0;
+// get the Theta based on origin
+double vertex::getTheta(){
+    return Math::atan(y/x);
 }
 
-// Get the rotational axis Θ in 3rd-dimentional spherical coordinates
-double getTheta(vertex body) { // Θ
-
-
-    return 0;
+// get the Phi based on origin
+double vertex::getPhi(){
+    return Math::atan(Math::sqrt(x*x+y*y)/z);;
 }
-
 
 
 // get the dot product

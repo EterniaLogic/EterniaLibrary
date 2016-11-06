@@ -68,7 +68,7 @@ class FileCache {
         };
 
         ~FileCache() {
-
+            delete [] store_file;
         };
 
         // return!

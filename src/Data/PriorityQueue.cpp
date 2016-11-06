@@ -32,7 +32,11 @@ PriorityQueue::PriorityQueue() {
 // Clean up Queue!
 PriorityQueue::~PriorityQueue() {
     // head
-    while(removeMin() != 0x0); // empty it!
+    void* item = removeMin();
+    while(item != 0x0){
+        delete item;
+        item = removeMin();
+    }
 }
 
 
