@@ -1,12 +1,17 @@
 # Eternia Library #
 
-**Version**: 0.5a
+**Version**: 0.9b
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
+
 **Email**: brent.clancy@ttu.edu, eternialogic@gmail.com (alias> dreadslicer@gmail.com)
+
 **Original Creation Date**: January 13, 2012
+
 **Copyright**: Copyright 2016 Brent Clancy, no transfers will ever be allowed. (All rights reserved)
+
 **License**: GNU v3
+
 **Language**: C++, ASM
 
 	This library is used for server/client back-end systems and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
