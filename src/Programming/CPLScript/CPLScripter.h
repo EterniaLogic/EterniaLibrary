@@ -20,6 +20,7 @@
 class CPLScripter {
         // built-in memory
         HashMap<CPLVariable> globalvars; // Global variables. Used everywhere in text, for this specific script.
+        LinkedList<Instruction> instructions; // general list of compiled instructions.
         //HashMap<CPLVariable> localvars; // Local variables used in the current scope (clears data at end of scope)
 
         int line; // current line

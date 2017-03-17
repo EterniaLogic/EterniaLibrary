@@ -1,6 +1,8 @@
 #include "SocketServer.h"
 
+SocketServer::SocketServer(){
 
+}
 
 SocketServer::SocketServer(SocketServerType serverType,
                            char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
@@ -69,28 +71,29 @@ void ClientHandler_(SockClient* tclient) {
 
 
 // Accept connections while listening
-void connectionAcceptor(SocketServer* server) {
-    while(server->dolisten) {
+void SocketServer::tcpConnectionAcceptor() {
+    while(dolisten) {
 #if __linux__ || __unix__
-        listen(server->socketfd,5); // Listen for clients
+        listen(socketfd,5); // Listen for clients
 #endif
 
         // Construct the client
         SockClient *c = new SockClient();
 #if __linux__ || __unix__
-        server->clilen = sizeof(c->cli_addr); // get the address
-        c->sockd = accept(server->socketfd,
+        clilen = sizeof(c->cli_addr); // get the address
+        c->sockd = accept(socketfd,
                           (struct sockaddr *) &(c->cli_addr),
-                          &server->clilen);
+                          &clilen);
 #endif
         if (c->sockd < 0)
             error("ERROR on accepting client");
 
-        server->clients.add(c);
-        c->_clientHandler = server->_clientHandler;
+        clients.add(c);
+        c->_clientHandler = _clientHandler;
 
         // create a new client thread
-        c->clientthread = std::thread(ClientHandler_, c);
+        // TODO: Commented out, but REQUIRED
+        //c->clientthread = std::thread(&ClientHandler_, c);
     }
 }
 
@@ -107,7 +110,7 @@ void SocketServer::start() {
     // TCP only request detection
     switch(stype) {
         case SS_TCP: // TCP connection listener
-            acceptorThread = std::thread(connectionAcceptor,this);
+            acceptorThread = std::thread(&SocketServer::tcpConnectionAcceptor,this);
             break;
         case SS_UDP: // UDP basic listener
 

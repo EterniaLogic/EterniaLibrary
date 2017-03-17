@@ -10,6 +10,7 @@
 
 #include "../Data/CharString.h"
 
+// Languages are incredibly unique...
 // english, spanish, french, german, chinese, Bulgarian, Russian, Swedish, Italian, Japanese
 enum LANG {
     LANG_ARABIC = 0x00,

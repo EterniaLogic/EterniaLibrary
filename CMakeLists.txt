@@ -39,55 +39,18 @@ ENDIF()
 
 
 # Extra options to GCC when compiling to help enforce memory security
+# -fPIC
 set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fstack-protector-all -Wstack-protector --param ssp-buffer-size=4" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
-file(GLOB CC_src
+file(GLOB_RECURSE CC_src2
     "*.h"
     "*.c"
     "*.cpp"
     "*.hpp"
-    "src/*.h"
-    "src/*.c"
-    "src/*.cpp"
-    "src/*.hpp"
-    "src/*/*.h"
-    "src/*/*.c"
-    "src/*/*.cpp"
-    "src/*/*.hpp"
-    "src/*/*/*.h"
-    "src/*/*/*.c"
-    "src/*/*/*.cpp"
-    "src/*/*/*.hpp"
-    "src/*/*/*/*.h"
-    "src/*/*/*/*.c"
-    "src/*/*/*/*.cpp"
-    "src/*/*/*/*.hpp"
-    "src/*/*/*/*/*.h"
-    "src/*/*/*/*/*.c"
-    "src/*/*/*/*/*.cpp"
-    "src/*/*/*/*/*.hpp"
-    "src/*/*/*/*/*/*.h"
-    "src/*/*/*/*/*/*.c"
-    "src/*/*/*/*/*/*.cpp"
-    "src/*/*/*/*/*/*.hpp"
-    "src/*/*/*/*/*/*/*.h*"
-    "src/*/*/*/*/*/*/*.c*"
-    "src/*/*/*/*/*/*/*/*.h*"
-    "src/*/*/*/*/*/*/*/*.c*"
 )
-MACRO(SUBDIRLIST result curdir)
-  FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
-  SET(dirlist "")
-  FOREACH(child ${children})
-    IF(IS_DIRECTORY ${curdir}/${child})
-        SET(dirlist ${dirlist} ${child})
-    ENDIF()
-  ENDFOREACH()
-  SET(${result} ${dirlist})
-ENDMACRO()
-SUBDIRLIST(SUBDIRS src)
 
+include_directories(src/)
 
 
 FIND_PACKAGE(Threads REQUIRED)
@@ -97,11 +60,11 @@ set(${PROJECT_NAME}_DEFINITIONS
 
 
 # STATIC SHARED
-ADD_LIBRARY("Eternia" STATIC ${CC_src})
-ADD_EXECUTABLE("EterniaLibrary" ${CC_src})
+ADD_LIBRARY("Eternia" STATIC ${CC_src2})
+#ADD_EXECUTABLE("EterniaLibrary" ${CC_src2})
 
 TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
-TARGET_LINK_LIBRARIES(EterniaLibrary ${CMAKE_THREAD_LIBS_INIT})
+#TARGET_LINK_LIBRARIES(EterniaLibrary ${CMAKE_THREAD_LIBS_INIT})
 
 add_custom_command(TARGET Eternia
                 PRE_BUILD
@@ -110,14 +73,3 @@ add_custom_command(TARGET Eternia
                 COMMENT "EterniaLibrary - Copying includes over"
 )
 
-
-FOREACH(subdir ${SUBDIRS})
-    #ADD_SUBDIRECTORY(${subdir})
-	file(GLOB ${subdir}_files
-		"*.h"
-		"*.c"
-		"*.cpp"
-		"*.hpp"
-	)
-	SOURCE_GROUP(${subdir} FILES ${subdir}_files)
-ENDFOREACH()

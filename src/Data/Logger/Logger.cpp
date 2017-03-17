@@ -1,5 +1,7 @@
 #include "Logger.h"
 
+using namespace std;
+
 void loggerThread(Logger* logger){
     long ticks_per_sec, time, last;
     
@@ -9,7 +11,7 @@ void loggerThread(Logger* logger){
         // handle logs
         if(!logger->handleLogs()) break;
         
-        ticks_per_sec = 10.0;
+        ticks_per_sec = 5.0;
         time = (1000000.0/ticks_per_sec) - (((clock()-last)*1000000.0)/CLOCKS_PER_SEC);
         if(time > 0) std::this_thread::sleep_for(std::chrono::microseconds(time));
     }
@@ -17,13 +19,16 @@ void loggerThread(Logger* logger){
 
 
 // if ASYNC, start thread
-Logger::Logger(CharString logfileloc, CharString prefix, bool async, bool console){
+Logger::Logger(CharString logfileloc, CharString prefix, bool async, bool console, bool clearfile){
     this->logfileloc = logfileloc;
     this->prefix = prefix;
     this->async = async;
     this->console = console;
     
     // open file
+    if(clearfile) file.open (logfileloc.get(), ios::out | ios::app);
+    else file.open (logfileloc.get(), ios::out | ios::app | ios::trunc);
+    file.seekp(0, ios::end);
     
     if(async){
         asyncthread = std::thread(loggerThread, this);
@@ -39,6 +44,8 @@ Logger::~Logger(){
         ending=true;
         asyncthread.join();
     }
+    
+    file.close();
 }
 
 void Logger::Log(CharString data){
@@ -48,7 +55,9 @@ void Logger::Log(CharString data){
     // async
     if(async){
         // save for the thread
-        //asyncLog.push(data);
+        CharString* cc = new CharString();
+        *cc = data;
+        asyncLog.push(cc);
     }else{
         processLog(data);
     }
@@ -61,6 +70,10 @@ void Logger::processLog(CharString data){
     }
     
     // push data to file
+    if(file.is_open()){
+        file.write(data.get(), data.getSize());
+        file.write((char*)"\r\n", 2);
+    }
 }
 
 bool Logger::handleLogs(){

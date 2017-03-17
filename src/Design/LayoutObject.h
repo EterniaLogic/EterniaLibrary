@@ -27,7 +27,7 @@ class LayoutObject {
 
         // Child methods
         public void addChild(LayoutObject* child);      // add a child
-        public LayoutOjbect* getChildren();             // get all children
+        public LayoutObject* getChildren();             // get all children
         public void removeChild(LayoutObject* child);   // remove a single child
         public void clearChildren();                    // clears all children
 

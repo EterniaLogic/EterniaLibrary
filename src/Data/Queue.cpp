@@ -69,8 +69,8 @@ void* Queue::front() {
  */
 void* Queue::pop() {
     // modify tail.
-    cout << "Queue Head: " << Head << endl;
-    cout.flush();
+    //cout << "Queue Head: " << Head << endl;
+    //cout.flush();
     if(Head != 0x0) {
         QueueNode* item = Head;
         Tail = (Head->Next == 0x0) ? 0x0 : Tail; // set head to null if this is the end of list.

@@ -61,11 +61,14 @@ public:
 #endif
     void (*_clientHandler)(CharString* dataIn, CharString* dataOut); // Assigned handler for the client
 
+    SocketServer();
     SocketServer(SocketServerType serverType,
                  char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
                  int port,
                  int bufferSize, // Packet buffer size
                  void (*clientHandler)(CharString* dataIn, CharString* dataOut)); // dataIn is read-only, for dataOut use dataOut.set(char*)
+
+    void tcpConnectionAcceptor();
 
     void start(); // Start the server
     void Close();

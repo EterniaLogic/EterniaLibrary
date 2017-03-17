@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include <thread>
 #include <chrono>
 
@@ -16,9 +17,11 @@ private:
     bool async, console, ending;
     Queue asyncLog;
     std::thread asyncthread;
+    
+    std::ofstream file;
 
 public:
-    Logger(CharString logfileloc, CharString prefix, bool async, bool console); // if ASYNC, start thread
+    Logger(CharString logfileloc, CharString prefix, bool async, bool console, bool clearfile); // if ASYNC, start thread
     virtual ~Logger(); // if ASYNC, stop thread
     
     void Log(CharString data);

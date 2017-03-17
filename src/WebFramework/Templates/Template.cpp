@@ -29,5 +29,5 @@ void Template::addDefaultDefinitions(){
 
 // Finalizes the template for usage
 CharString Template::render(){
-    
+    // loop through definitions
 }

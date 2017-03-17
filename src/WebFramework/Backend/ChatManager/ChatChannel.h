@@ -2,6 +2,8 @@
 #define CHATCHANNEL_H_
 
 #include "../../../Design/Colors.h"
+#include "../../../Data/CharString.h"
+#include "ChatClient.h"
 
 // The Chat Channel
 // This ChatChannel is player-specific
@@ -21,10 +23,8 @@ class ChatChannel {
 
         ChatChannel(char* name, vertex channelcolor, char* tag, vertex tagcolor, int chatspeed);
 
-
-        // Server-side only
-        bool muted; // is this person muted to chat here?
-        bool moderator; // is this person a moderator?
+        void sendMessage(ChatClient* client, CharString message); // send a chat message on this channel
+        void sendAudioBuffer(ChatClient* client, CharString buffer, int bitrate); // send a buffered audio value
 };
 
 #endif

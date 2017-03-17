@@ -64,7 +64,7 @@ class FileCache {
             loadedIDs = new LinkedList<long>();
 
             // initialize the file.
-            dFile.open(storeFile, ios::out | ios::in | ios::trunc);
+            dFile.open(storeFile, ios::out | ios::in);
         };
 
         ~FileCache() {
@@ -130,7 +130,6 @@ class FileCache {
             loadedIDs->remove(ID); // remove from the ID list
             //entries->removeL(ID); // remove data from the HashMap
             // entries[ID]
-
 
             add(data);
         }

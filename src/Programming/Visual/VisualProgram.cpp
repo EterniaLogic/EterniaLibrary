@@ -124,7 +124,7 @@ VProgramVariable* Program::getVariable(int slot, VarTYPE typex) {
     }
 }
 
-// get a specific variable from inputs or locals
+// set a specific variable from inputs or locals
 VProgramVariable* Program::setVariable(int slot, VarTYPE typex, VProgramVariable* var) {
     VProgramVariable* vx = locals.get(slot);
     switch(typex) {
