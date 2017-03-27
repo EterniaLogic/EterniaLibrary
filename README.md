@@ -26,6 +26,13 @@ Documentation and Examples
 Sub-sections
 ------------
 
+**Application Program Interface** [/API/]:
+
+- Core API system to allow multiple languages to cross-talk with shared memory
+- Permissions for different users and API modules
+	
+	Not to be confused with a Web API, which interfaces a server's language with a client of a different language. This API is to enable multiple languages to be connected with the core program.
+
 **Web Framework** [/WebFramework/]: (*in progress, these are the initial goals)
 
 - HTML Engine with multi-threading (C++2011)
