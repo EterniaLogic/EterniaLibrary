@@ -1,6 +1,8 @@
 #ifndef APIPERMISSION_H_
 #define APIPERMISSION_H_
 
+#include "../Data/CharString.h"
+
 // What type of permission is this?
 enum APIPermType {NONE, USER, GLOBAL, MOD, DB, API};
 

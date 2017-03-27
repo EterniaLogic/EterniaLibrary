@@ -2,13 +2,13 @@
 #define EVENT_H_
 
 #include "../HashMap.hpp"
-
+#include "../CharString.h"
 // An event sent to mods or systems.
 class Event{
 private:
     CharString name;
     bool cancelled;
-    HashMap properties; // property map
+    HashMap<CharString> properties; // property map
 public:
     Event(CharString eventname);
     

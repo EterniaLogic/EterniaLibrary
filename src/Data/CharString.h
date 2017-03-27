@@ -58,6 +58,7 @@ class CharString {
         void concatb(char* str, int len);
         void concata(CharString str); //Combine CharStrings after the current charString.
         void concatb(CharString str);  //Combine CharStrings before the current charString.
+        CharString substr(int index, int len); // grab a string of size LEN beginning at index.
         SortType SortCompare(CharString str); // determines if this is "less" then another string. Used for automated sorting.
 
 
@@ -72,12 +73,15 @@ class CharString {
         void set_(const char* stringg, const int length);
         void set(char* stringg, int length); // sets both the size and pointer for charString
         void set(char* stringg); // sets pointer for CharString, auto-finds length.
+        void set(CharString stringg);
 
         void setPtr(char* data, int length); // sets a raw pointer, no changes or copying
 
         bool isEmpty();
         bool startsWith(CharString starter);
         bool endsWith(CharString ender);
+        
+        void removeChar(int index); // remove character at index.
 
         static CharString ConvertFromInt(int l);
         static CharString ConvertFromLong(long l);

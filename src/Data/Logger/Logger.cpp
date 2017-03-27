@@ -35,6 +35,10 @@ Logger::Logger(CharString logfileloc, CharString prefix, bool async, bool consol
     }
 }
 
+Logger::Logger(){
+
+}
+
 
 Logger::~Logger(){
     // flush the file, close it

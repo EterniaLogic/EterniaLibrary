@@ -1,5 +1,5 @@
-#ifndef APICore_H_
-#define APICore_H_
+#ifndef APIEVENTREG_H_
+#define APIEVENTREG_H_
 
 #include "../Data/Events/Event.h"
 #include "../Data/Events/EventHandle.h"
@@ -12,7 +12,7 @@
 class APIEventRegistry{
     HashMap<EventHandler> handlers; // list of known handlers
 public:
-    APIRegistry();
+    APIEventRegistry();
     
     // Used by game developer
     bool callEvent(CharString name, Event* event); // call an event, used by dev. Returns false if cancelled.

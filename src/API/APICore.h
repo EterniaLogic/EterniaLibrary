@@ -3,6 +3,14 @@
 
 #include "APIEventRegistry.h"
 #include "APIPermissionsRegistry.h"
+
+#ifndef APIMod_H_
+    #include "APIMod.h"
+#else
+    class APIMod;
+#endif
+
+
 #include "../Data/Logger/Logger.h"
 #include "../Data/LinkedList.hpp"
 
@@ -32,6 +40,7 @@ private:
 //    LinkedList<APIObjectList> objects; // object registry
 public:
     APICore(CharString modfolder, CharString logfile);
+    APICore();
     
     // Module management
     void preloadMods(); // pre-loads mod files and dependencies chains

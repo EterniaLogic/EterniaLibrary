@@ -2,6 +2,12 @@
 #define APIMod_H_
 
 #include "../Data/CharString.h"
+#include "APIEventRegistry.h"
+#ifndef APICore_H_
+    #include "APICore.h"
+#else
+    class APICore;
+#endif
 
 // Core header for a mod.
 //  Actual module using C++ can use this directly via inheritance. (C++ loaded .dll/.so on runtime)
@@ -29,12 +35,17 @@ class APIMod{
 private:
     // private data stored for this module.
     APICore* core; // Linked core
-    CharString file, name, language;
+    CharString file, name, language, version;
     LinkedList<APIMod> dependencies;
     APIModType type; // Type derived from the mod file
 public:
     APIMod(CharString file, CharString name, CharString language, CharString version);
+    APIMod();
     
+    virtual ~APIMod();
+    
+    // Same as the initializer, used if main initializer isn't used.
+    void init(CharString file, CharString name, CharString language, CharString version);
     
     // API language implementation functions.
     virtual void onLoad();

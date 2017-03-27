@@ -22,6 +22,8 @@ private:
 
 public:
     Logger(CharString logfileloc, CharString prefix, bool async, bool console, bool clearfile); // if ASYNC, start thread
+    Logger(); // Runs basic properties, unknown values?
+    
     virtual ~Logger(); // if ASYNC, stop thread
     
     void Log(CharString data);

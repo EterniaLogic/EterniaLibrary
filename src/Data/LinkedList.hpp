@@ -96,6 +96,41 @@ public:
         if(index > _size-1) return 0x0;
         return frozen[index];
     }
+    
+    // insert at the specified location
+    void insert(T* data, int location){
+        if(location >= _size || baseNode == 0x0){
+            add(data);
+            return;
+        }
+    
+        LinkedNode<T>* current = baseNode;
+        LinkedNode<T>* cnt = 0x0;
+        int i=0;
+        LinkedNode<T>* item = new LinkedNode<T>();
+        item->data = data;
+        
+        while(current != 0x0){
+            if(i == location){
+                if(location == 0){
+                    cnt = baseNode;
+                    baseNode = item;
+                    item->next = cnt;
+                }else{
+                    cnt->next = item;
+                    item->next = current;
+                }
+                _size++;
+                break;
+            }
+            
+            cnt = current;
+            current = current->next;
+            i++;
+        }
+        
+        changed=true;
+    }
 
     // return the size
     int size() {
@@ -113,7 +148,8 @@ public:
             // erase element at i
             
             LinkedNode<T>* current = baseNode;
-            for(long i=0; i<index; i++) {
+            LinkedNode<T>* prev = 0x0;
+            for(long i=0; i<=index; i++) {
                 if(current != 0x0) {
                     if (i == index) {
                         /*if(current->next != 0x0){
@@ -125,6 +161,7 @@ public:
                             else current->prev->next = 0x0;
                         }*/
                         
+                        prev->next = current->next;
                         current->next = 0x0;
                         //current->prev = 0x0;
                         r = current->data;
@@ -137,6 +174,8 @@ public:
                 } else {
                     break;
                 }
+                prev = current;
+                current = current->next;
             }
         }
         changed=true;

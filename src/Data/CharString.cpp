@@ -233,18 +233,37 @@ void CharString::replace(char* a, char* b) {
 * Input: the start of the cutting head.
 * output: Modified char* string of end size
 */
-char* CharString::shiftLeft(const int lenh) {
+char* CharString::shiftLeft(const int x) {
     if(!isValidCharString()) return (char*)"";
-    const int lenx = len-lenh;
+    const int lenx = len-x;
+    if(lenx < 0) return (char*)"";
+    
     char* out = new char[lenx+1];
 
-    int copyx = lenh; // start of move location
-    for(int i=copyx; i<len; i++) {
-        out[i-copyx] = stringx[i];
+    for(int i=x; i<len; i++) {
+        out[i-x] = stringx[i];
     }
     out[lenx] = 0x0;
-    free(stringx);
-    return out;
+    stringx = out;
+    return stringx;
+}
+
+// grabs a new string of size len, copy it over
+CharString CharString::substr(int index, int lenx){
+    char* returnstr = new char[lenx+1];
+    for(int i=0;i<lenx+1;i++){
+        returnstr[i] = 0;
+    }
+    
+    int copylen = ((index+lenx) > len) ? len-(lenx+index) : lenx;
+    
+    if(lenx < 0) return CharString();
+    
+    for(int i=index;i< index+lenx;i++){
+        returnstr[i-index] = stringx[i]; 
+    }
+    
+    return CharString(returnstr, lenx);
 }
 
 // basic function that returns the string's value
@@ -430,6 +449,10 @@ void CharString::setPtr(char* data, int length) { // sets a raw pointer, no chan
     len = length;
 }
 
+
+void CharString::set(CharString stringg){
+    set(stringg.get(), stringg.getSize());
+}
 
 // fun thing to write :D
 // Desc:  Custom function to convert integers to a list of characters (string)
@@ -716,5 +739,27 @@ bool CharString::endsWith(CharString ender) {
         if(stringx[tat] != ender.get()[lenx-l-1]) return false;
     }
     return true;
+}
+
+// remove character at index.
+void CharString::removeChar(int index){
+    
+    // bounds tests
+    if(index < 0) return;
+    if(index > len-1) return;
+    
+    if(index == 0){ // first char
+        // Just shift left
+        shiftLeft(1);
+    }else if(index == len-1){ // last char
+        // do substring
+        set(substr(0,len-1));
+    }else{
+        // in-between, harder to do, requires substrings and concats
+        CharString a = substr(0,index);
+        CharString b = substr(index+1, len-(index+1));
+        a.concata(b);
+        set(a);
+    }
 }
 
