@@ -8,7 +8,7 @@
 
 **Original Creation Date**: January 13, 2012
 
-**Copyright**: Copyright 2016 Brent Clancy, no transfers will ever be allowed. (All rights reserved)
+**Copyright**: Copyright 2016 Brent Clancy, GPL-3+
 
 **License**: GNU v3
 
