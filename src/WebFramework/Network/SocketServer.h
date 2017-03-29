@@ -3,20 +3,49 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string>
 
-#if defined(WIN32) || defined(_WIN32) || defined(_WIN64) || defined(__WIN32) && !defined(__CYGWIN__)
+#ifdef _WIN64
+   #define WINDOWSXX
+#elif _WIN32
+   #define WINDOWSXX
+   #define _WIN32_WINNT 0x1000
+#elif __APPLE__
+    #include "TargetConditionals.h"
+    #if TARGET_OS_IPHONE && TARGET_IPHONE_SIMULATOR
+        // define something for simulator
+    #elif TARGET_OS_IPHONE
+        // define something for iphone
+    #else
+        #define TARGET_OS_OSX 1
+        // define something for OSX
+    #endif
+#elif __linux
+    #define LINUXXX
+#elif __unix // all unices not caught above
+    #define LINUXXX
+#elif __posix
+    #define LINUXXX
+#endif
+
+
+
+
+
+#ifdef WINDOWSXX
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#pragma comment (lib, "Ws2_32.lib")
 
-#elif defined(__linux__) || defined(__unix__)
+#elif defined(LINUXXX)
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 #include <netdb.h>
-#elif __APPLE__
+#include <netinet/in.h>
+
+#elifdef __APPLE__
 
 #endif
 
@@ -41,34 +70,39 @@ private:
     int port, bufferSize;
 
     SocketServerType stype; // UDP, TCP or ICMP. Changes some of the control logic
-#if defined(__linux__) || defined(__unix__)
+#ifdef LINUXXX
     sockaddr_in serv_addr;
+    socklen_t clilen;
+    int socketfd;
+#elif defined(WINDOWSXX)
+    WSADATA wsaData;
+    SOCKET ListenSocket = INVALID_SOCKET;
+    struct addrinfo *result = NULL;
+    struct addrinfo hints;
 #endif
     char* address;
     bool started;
     std::thread acceptorThread;
     //void connectionAcceptor();
-    void ClientHandler_(SockClient* tclient, std::thread thisthread);   // Pre-client handler, reads from the buffer
-    
-    
+    //void ClientHandler_(SockClient* tclient);   // Pre-client handler, reads from the buffer
+    void tcpConnectionAcceptor();
+
 
 public:
     bool dolisten;
-	int socketfd;
+    void* exVAL;
     LinkedList<SockClient> clients;
-#if defined(__linux__) || defined(__unix__)
-    socklen_t clilen;
-#endif
-    void (*_clientHandler)(CharString* dataIn, CharString* dataOut); // Assigned handler for the client
+
+    void (*_clientHandler)(CharString* dataIn, CharString* dataOut, void* exVAL); // Assigned handler for the client
 
     SocketServer();
     SocketServer(SocketServerType serverType,
                  char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
                  int port,
                  int bufferSize, // Packet buffer size
-                 void (*clientHandler)(CharString* dataIn, CharString* dataOut)); // dataIn is read-only, for dataOut use dataOut.set(char*)
+                 void (*clientHandler)(CharString* dataIn, CharString* dataOut, void* exVAL)); // dataIn is read-only, for dataOut use dataOut.set(char*), ex is just an extra parameter
 
-    void tcpConnectionAcceptor();
+
 
     void start(); // Start the server
     void Close();

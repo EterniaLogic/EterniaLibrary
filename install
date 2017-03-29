@@ -18,3 +18,7 @@ rm $(find include -name "test") -R
 sudo cp include/* /usr/include/Eternia/ -R
 sudo cp libEternia.a libEternia.so
 sudo cp libEternia.so /usr/lib/
+
+sudo rm include -R
+sudo rm libEternia.a
+sudo rm libEternia.so

@@ -9,7 +9,7 @@
 
 #include "Aes256.h"
 
-enum PTypes {PCHAR, PINT, PFLOAT, PLONG, PBOOL};
+enum PTypes {PCHAR_, PINT_, PFLOAT_, PLONG_, PBOOL_};
 
 // CryptoDefiner is used to prevent actual values from being detected
 //      in raw memory. Extra functions are used to maximize flexibility.

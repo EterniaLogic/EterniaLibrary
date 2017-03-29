@@ -104,7 +104,7 @@ uint64_t exHashPrime(char* str, int len, uint64_t maxVal) {
 
     //sum = reverseBits(sum); // reverse bits to keep lower values non-colliding
 
-    cout << sum << endl;
+    //cout << sum << endl;
 
     return sum;
 }

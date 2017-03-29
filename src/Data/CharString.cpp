@@ -441,6 +441,9 @@ void CharString::set(char* stringg, int length) {
 // takes input and changes current
 void CharString::set(char* stringg) {
     // set the data into place.
+    int len=0;
+    //while(stringg[len] > 0) len++;
+    
     this->set(stringg,SIZEOFA(stringg));
 }
 

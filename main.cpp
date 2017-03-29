@@ -76,6 +76,8 @@ void InputRedirection::handleInputLine(CharString* input) {
         testPType();
     } else if(input->Compare("SerializerTest",12)) {
         testSerializers();
+    }else if(input->Compare("NetworkTest",11)) {
+        testNetwork();
     } else if(input->Compare("TestALL",8)) {
         testDataStructures();
         testMath();

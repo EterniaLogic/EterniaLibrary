@@ -2,6 +2,7 @@
 #define APIPERMS_H_
 
 #include "APIPermission.h"
+#include "APIUser.h"
 
 // The Permissions Registry allows administrators, modders, developers to have
 //  better access for giving players specific permissions related to the game.
@@ -11,11 +12,13 @@
 
 class APIPermissionsRegistry{
 private:
-    
+    LinkedList<APIUser> users;
 public:
     APIPermissionsRegistry();
-    
-    bool registerPermission(APIPermission* perm);
+    virtual ~APIPermissionsRegistry();
+
+    void registerUser(APIUser *user); // register a user if it doesn't exist.
+    bool userHasPermission(APIUser *user, APIPermission perm);
 };
 
 #endif

@@ -1,14 +1,20 @@
 #include "ChannelledServer.h"
 
-ChannelledServer::ChannelledServer(int port, CharString addr){
-    // place a client handler
-    
-    
+void csClientHandler(CharString* dataIn, CharString* dataOut, void* instance){
+    // handle packets. First 2 bytes on the packet are the channel to use.
+    ChannelledServer *serv = (ChannelledServer*)instance;
+
+    if(dataIn->getSize() > 2){
+        char* val = dataIn->get();
+        short channel = ((short)val[1]) + ((short)val[0])<<4;
+
+        cout << "Received packet for channel: " << channel << endl;
+    }
 }
 
-// Get a specific channel from the server
-PacketChannel* ChannelledServer::getChannel(int id){
-    if(id < 0 || id > 65535) return 0x0;
-    
-    return &(channels[(const int)id]);
+
+ChannelledServer::ChannelledServer(SocketServerType serverType, CharString addr, int port){
+    // place a client handler
+    this->_clientHandler = csClientHandler;
+    this->exVAL = this;
 }

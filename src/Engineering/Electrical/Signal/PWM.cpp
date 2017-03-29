@@ -72,6 +72,6 @@ bool PWM::getSlow() {
     return (tickRes < 20);
 }
 
-void setPWMEvent(void (function)(bool)) {
+void PWM::setPWMEvent(void (*function)(bool)) {
     func = function;
 }

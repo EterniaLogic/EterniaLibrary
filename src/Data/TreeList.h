@@ -14,15 +14,17 @@ class TreeNode {
         bool isRoot(); // is top node?
         bool isLeaf(); // is leaf (end) node?
         int Depth(); // how far in is this node?
-
+        
+        void* data;
         TreeNode *Parent, *Child;
         TreeNode *Sibling, *PrevSibling;
 };
 
 
 class TreeList {
-        TreeNode *Root;
+        
     public:
+        TreeNode *Root;
         TreeList();
         int Height(); // maximum depth
         int Size(); // total size

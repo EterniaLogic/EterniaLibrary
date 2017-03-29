@@ -24,6 +24,7 @@ RAM::RAM(long IO) {
     }
 
     pins -> add(new Pin(new CharString("Vcc"), new PowerValue(0,0)));
+    pins -> add(new Pin(new CharString("CLK"), new PowerValue(0,0)));
 }
 
 RAM::~RAM() {

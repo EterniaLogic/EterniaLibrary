@@ -24,7 +24,7 @@ class HTEntry {
 
             id = exSumMap(&k,size,3);
             //cout << "DBG HMID ("<< k.get() <<") " << id << " " << size << endl;
-            cout.flush();
+            //cout.flush();
         }
 
 

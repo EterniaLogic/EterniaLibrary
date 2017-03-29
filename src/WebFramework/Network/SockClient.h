@@ -6,18 +6,25 @@
 #include <unistd.h>
 #include <string.h>
 
-// Linux
 #if defined(WIN32) || defined(_WIN32) || defined(_WIN64) || defined(__WIN32) && !defined(__CYGWIN__)
+#define WINDOWSXX
+#endif
+
+#ifdef __linux__ || __unix__
+#define LINUXXX
+#endif
+
+#ifdef WINDOWSXX
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
-
-#elif __linux__ || __unix__
+#elif defined(LINUXXX)
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 #include <netdb.h>
-#elif __APPLE__
+#include <netinet/in.h>
+#elifdef __APPLE__
 
 #endif
 
@@ -27,6 +34,8 @@
 #include <thread>
 #include "../../Data/CharString.h"
 using namespace std;
+
+typedef unsigned int sa_family_t;
 
 #if __linux__ || __unix__
 struct sockaddr_un {
@@ -38,16 +47,18 @@ struct sockaddr_un {
 class SockClient {
     public:
         SockClient();
-
+        void* exVAL;
+#ifdef LINUXXX
         int sockd;
-#ifdef __linux__ || __unix__
         socklen_t address;
         sockaddr_in cli_addr;
+#elif defined(WINDOWSXX)
+        SOCKET ClientSocket;
 #endif
         bool alive;
         std::thread clientthread;
 
-        void (*_clientHandler)(CharString* dataIn, CharString* dataOut);
+        void (*_clientHandler)(CharString* dataIn, CharString* dataOut, void* d);
 };
 
 #endif

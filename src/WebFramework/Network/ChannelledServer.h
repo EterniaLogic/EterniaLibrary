@@ -8,12 +8,9 @@
 
 class ChannelledServer : public SocketServer{
 private:
-    PacketChannel channels[65536];
-    
 public:
-    ChannelledServer(int port, CharString addr);
-    
-    PacketChannel* getChannel(int id);
+    ChannelledServer(SocketServerType serverType, CharString addr, int port);
+
 };
 
 #endif

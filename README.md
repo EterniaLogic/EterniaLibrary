@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 0.9b
+**Version**: 1.05b
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -12,9 +12,9 @@
 
 **License**: GNU v3
 
-**Language**: C++, ASM
+**Language**: C/C++, ASM
 
-	This library is used for server/client back-end systems and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
+	This library is used for server/client back-end systems and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.a, *.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
 
 
 	Anybody willing to help in this project may contribute!
@@ -40,11 +40,6 @@ Sub-sections
 - RESTFul API
 - Backend scripting is automatically compiled under python
 - MySQL or other database connector not yet planned/supported due to dependencies
-
-**Game Logic** [/GameLogic/]:
- 
- - Environments
- - Dynamic Game Logic
 
 **Mathematics** [/Math/]:
 
@@ -79,12 +74,14 @@ Sub-sections
    - Extended string class "CharString", which automatically handles strings along with conversions.
    - Wrapper for OpenGL/SDL, other frameworks to draw windows and 2D graphics.
 
-**Required Libraries**: 
+	
+**Building**:
 
-- Included (Lib/)
-	- MiniUpnpc (http://miniupnp.free.fr/)
+Linux:
+- no direct dependencies besides "build-essential"
+- cmake .
+- make -j 4
 
-Building:
-
-    cmake .
-    make -j 4
+Windows:
+- Use the Code::Blocks project file
+- libatomic.a and libws_32.a required.

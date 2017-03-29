@@ -23,6 +23,7 @@
 // Scripts are sorted into distributables based off of the script types.
 // Server - Main server
 // Client - Game Client
+// Shared - Used on any system
 // Node - Distributed node (Processes data, store or transmit, specific id is decided by the dev)
 enum APIModType {APIMT_Server, APIMT_Client, APIMT_Shared, APIMT_Node};
 
@@ -31,75 +32,76 @@ enum APIModType {APIMT_Server, APIMT_Client, APIMT_Shared, APIMT_Node};
 
 // A database mod shouldnt be accessed by a logging mod.
 
-class APIMod{
+class APIMod : public APIUser{
 private:
     // private data stored for this module.
     APICore* core; // Linked core
-    CharString file, name, language, version;
+    CharString file, language, version;
+    //CharString name; // inherited from APIUser
     LinkedList<APIMod> dependencies;
-    APIModType type; // Type derived from the mod file
+    APIModType type;
 public:
     APIMod(CharString file, CharString name, CharString language, CharString version);
     APIMod();
-    
+
     virtual ~APIMod();
-    
+
     // Same as the initializer, used if main initializer isn't used.
     void init(CharString file, CharString name, CharString language, CharString version);
-    
+
     // API language implementation functions.
     virtual void onLoad();
     virtual void onEnable();
     virtual void onDisable();
     virtual void onUnload(); // C/C++/Go modules cannot be directly unloaded.
     virtual void onReload(); // reload configs
-    
-    
-    
+
+
+
     // Client-Side
     virtual void onGuiDraw(); // [SYNC] specific function that enables openGL contexts
     virtual void onRenderDraw(); // [SYNC] Draw 3D things
     virtual void onShader(); // [SYNC] draw a specific shader
-    
+
     // Node-Side (Nodes are sub-servers)
     virtual void onNodeTick(); // Node processing
-    
+
     // Shared
     virtual void onNetworkTick();
-    
+
     // Server-side (or cross tracking)
     virtual void onTick(double time); // time between ticks given to script engines
     virtual Event onEvent(Event event); // send an event to the scripts
-    
-    
+
+
     // internal systems (Compiled languages still need an API)
 	virtual void addClass(int size); // add a class for use by scripts
 	virtual void addFunction(void* func, int params); // add a function for use by scripts
 	virtual void compile(); // compileable languages can be dynamically compiled, others will just run a check
-    
+
     // any type of script
     virtual void stop(); // stop the script engine (Unloads script, attempts to unload DLL)
     virtual void start(); // start the script engine (Loads the script, preps modules)
     virtual void restart(); // runs Stop() then Start()
     virtual void gc();    // clear garbage (For specific languages, such as java and C#)
-    
-    
+
+
     CharString getName(); // module name
     CharString getLanguage(); // get the language of the module (e.g: C++, Lua, ect.)
     CharString getVersion(); // get the versions of the module
     CharString getConfigDir(); // specific dir string for the directory
     CharString getDataDir();
     CharString getLogDir();
-    
-    
+
+
     // Cross-memory referencing (Heavily required to make a good API)
     // Good language implementations can allow these to almost seem like real-time
     //  values in the API.
-    
+
     // if "mod" is null, the core module is referenced.
     void* getValue(APIMod* mod, CharString valname); // retrieve a value
     void* getClass(APIMod* mod, CharString classN); // retrieve a class
-    
+
     bool setValue(APIMod* mod, CharString valname, void* val);
 };
 

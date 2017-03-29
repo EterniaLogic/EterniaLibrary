@@ -9,6 +9,7 @@
 #define LINKEDLIST_H_
 
 #include <iostream>
+#include <malloc.h>
 using namespace std;
 
 // Gar! I don't like writing templates because of this!
@@ -21,7 +22,7 @@ public:
     T* data;
     int id;
     LinkedNode() {
-        //prev = 
+        //prev =
         next = 0x0;
         data = 0x0;
     }
@@ -81,7 +82,7 @@ public:
         _size++;
         changed=true;
     }
-    
+
     // Add non-pointer
     void add(T cc) {
         //adds a Void* Object. This can be declared when using the list.
@@ -96,20 +97,20 @@ public:
         if(index > _size-1) return 0x0;
         return frozen[index];
     }
-    
+
     // insert at the specified location
     void insert(T* data, int location){
         if(location >= _size || baseNode == 0x0){
             add(data);
             return;
         }
-    
+
         LinkedNode<T>* current = baseNode;
         LinkedNode<T>* cnt = 0x0;
         int i=0;
         LinkedNode<T>* item = new LinkedNode<T>();
         item->data = data;
-        
+
         while(current != 0x0){
             if(i == location){
                 if(location == 0){
@@ -123,12 +124,12 @@ public:
                 _size++;
                 break;
             }
-            
+
             cnt = current;
             current = current->next;
             i++;
         }
-        
+
         changed=true;
     }
 
@@ -143,10 +144,10 @@ public:
 
     T* remove(long index) {
         T* r = 0x0;
-        
+
         if(index< _size) {
             // erase element at i
-            
+
             LinkedNode<T>* current = baseNode;
             LinkedNode<T>* prev = 0x0;
             for(long i=0; i<=index; i++) {
@@ -160,14 +161,14 @@ public:
                             if(current->next != 0x0) current->prev->next = current->next->prev;
                             else current->prev->next = 0x0;
                         }*/
-                        
+
                         prev->next = current->next;
                         current->next = 0x0;
                         //current->prev = 0x0;
                         r = current->data;
                         current->data = 0x0;
                         _size--;
-                        
+
                         //delete current;
                         break;
                     }
@@ -190,18 +191,41 @@ public:
         while(current != 0x0){
             current->data = 0x0;
             //current->prev = 0x0;
-            
+
             cnt = current->next;
             current->next = 0x0;
             current = cnt;
         }
-        
+
         baseNode = 0x0;
         currentNode = 0x0;
         _size = 0;
         changed=true;
         frozen=0x0;
         frozenlen=0;
+    }
+
+    // slice this list up into parts, output new one
+    LinkedList<T> slice(int start, int count, int skip){
+        LinkedList<T> newList;
+
+        freeze();
+        for(int i=0; i<count && i<frozenlen; i++){
+            newList.add(frozen[start+i*skip]);
+        }
+
+        return newList;
+    }
+
+    // retrieve item?
+    T operator [](int i) const {
+        freeze();
+        return frozen[i];
+    }
+
+    T& operator [](int i){
+        freeze();
+        return *frozen[i];
     }
 
     // Returns the type-size of the data
@@ -214,7 +238,7 @@ public:
         LinkedNode<T>* current;
         const int len = _size;
         int i;
-        
+
         if(changed || _size != frozenlen) {
             //cout << "freeze-1 " << _size << endl;
             if(frozen != 0x0){
@@ -223,7 +247,7 @@ public:
                 delete [] frozen;
                 frozen = 0x0;
             }
-            
+
             if(_size == 0) {
                 changed=false;
                 return;
@@ -231,10 +255,10 @@ public:
 
             // copy values in!
             if(baseNode != 0x0) {
-                
+
                 this->frozenlen = _size;
                 this->frozen = new T*[len];
-            
+
                 current = baseNode;
                 //cout << "FREEZE: ";
                 for(i=0; i<len; i++) {

@@ -14,8 +14,8 @@
 #include "Parsing/test/testParsers.h"
 #include "Data/test/testDataStructures.h"
 //#include "Gamelogic/test/testGameLogic.h"
-//#include "Networking/test/testP2P.h"
-//#include "Networking/test/testPackets.h"
+
+#include "WebFramework/Network/test/NetworkTest.hpp"
 
 #include "Algorithm/Cryptography/CryptoDefines.h"
 

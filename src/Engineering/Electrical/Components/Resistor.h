@@ -11,6 +11,7 @@ class Resistor: private Component {
         virtual ~Resistor();
 
         void tick(SecondTick* tickTime); // operate time
+        float getPower(); // returns power in watts. (P=I^2*R)
 
     private:
         double ohms; // Resistance

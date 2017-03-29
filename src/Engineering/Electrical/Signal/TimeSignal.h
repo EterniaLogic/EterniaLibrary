@@ -10,31 +10,39 @@
 #include "../Data/LinkedList.hpp"
 #include "FreqSignal.h"
 
-class Sample {
-        bool digital;
-        float value;
-        float time; // time displacement
+class TimeSample {
+public:
+    float value;
+    float time; // time displacement in seconds.
 };
 
 
 // A time signal is a sampled signal from either a digital source
 //      or an analog source.
+
+// An fft can get the frequency domain.
 class TimeSignal {
-        LinkedList<Sample>* samples;
-    public:
-        TimeSignal();
+private:
+    LinkedList<Sample> samples;
+public:
+    TimeSignal();
+    virtual ~TimeSignal();
 
-        // time constants and delays are factored in these functions
-        void sampleDigital(boolean value); // sample a digital signal
-        void sampleAnalog(float value); // sample an analog signal
+    // time constants and delays are factored in these functions
+    void sampleDigital(boolean value, float time); // sample a digital signal (0->1f)
+    void sampleAnalog(float value, float time); // sample an analog signal (-1f -> 1f)
+    
+    // sample in real-time
+    void startSample(); // sets up time offset
+    void sampleDigital(boolean value); // sample a digital signal (0->1f)
+    void sampleAnalog(float value); // sample an analog signal (-1f -> 1f)
+    
+    void clearSamples();
 
-        // math functions
-        TimeSignal* subtract(TimeSignal* signal);
-        TimeSignal* add(TimeSignal* signal);
-        TimeSignal* multiply(TimeSignal* signal);
-        TimeSignal* divide(TimeSignal* signal);
+    // math functions
+    void amplify(float value);
 
-        FreqSignal* FFT(); // outputs raw FFT frequency domain
+    FreqSignal FFT(); // outputs the frequency domain, useful to apply filters
 };
 
 #endif

@@ -21,15 +21,15 @@
 #include "CryptoDefiner_Class.hpp"
 
 
-#define D_CHAR(DVAR) CryptoDefiner<char>   DVAR(PCHAR);
-#define D_INT(DVAR) CryptoDefiner<int>     DVAR(PINT);
-#define D_FLOAT(DVAR) CryptoDefiner<float> DVAR(PFLOAT);
-#define D_LONG(DVAR) CryptoDefiner<long>   DVAR(PLONG);
-#define D_BOOL(DVAR) CryptoDefiner<bool>   DVAR(PBOOL);
+#define D_CHAR(DVAR) CryptoDefiner<char>   DVAR(PCHAR_);
+#define D_INT(DVAR) CryptoDefiner<int>     DVAR(PINT_);
+#define D_FLOAT(DVAR) CryptoDefiner<float> DVAR(PFLOAT_);
+#define D_LONG(DVAR) CryptoDefiner<long>   DVAR(PLONG_);
+#define D_BOOL(DVAR) CryptoDefiner<bool>   DVAR(PBOOL_);
 
 void testfunc() {
     D_INT( testVar );
-    CryptoDefiner<int> testVar2(PINT);
+    CryptoDefiner<int> testVar2(PINT_);
 
     testVar2 = 20;
 }
