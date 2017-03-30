@@ -6,7 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
-#if defined(WIN32) || defined(_WIN32) || defined(_WIN64) || defined(__WIN32) && !defined(__CYGWIN__)
+// && !defined(__CYGWIN__)
+#if defined(WIN32) || defined(_WIN32) || defined(_WIN64) || defined(__WIN32)
 #define WINDOWSXX
 #endif
 
@@ -24,7 +25,8 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>
-#elifdef __APPLE__
+
+#elif defined(__APPLE__)
 
 #endif
 
@@ -35,9 +37,9 @@
 #include "../../Data/CharString.h"
 using namespace std;
 
-typedef unsigned int sa_family_t;
 
-#if __linux__ || __unix__
+
+#ifdef LINUXXX
 struct sockaddr_un {
     sa_family_t sun_family;               /* AF_UNIX */
     char        sun_path[108];            /* pathname */

@@ -45,7 +45,7 @@
 #include <netdb.h>
 #include <netinet/in.h>
 
-#elifdef __APPLE__
+#elif defined(__APPLE__)
 
 #endif
 
