@@ -81,7 +81,7 @@ void ClientHandler_(SockClient* tclient) {
         CharString* writeto = new CharString(); // writeto is a string that we write to, used by the
 
         if(tclient->_clientHandler != 0x0) {
-            tclient->_clientHandler(new CharString(buffer,BUFFER_SIZEX), writeto);
+            tclient->_clientHandler(new CharString(buffer,BUFFER_SIZEX), writeto, tclient->exVAL);
 
             n = write(tclient->sockd, writeto->get(), writeto->getSize());
             if (n < 0) error("ERROR writing to socket");
@@ -135,6 +135,7 @@ void SocketServer::tcpConnectionAcceptor() {
 
         // Construct the client
         SockClient *c = new SockClient();
+        c->exVAL = exVAL;
 #ifdef LINUXXX
         clilen = sizeof(c->cli_addr); // get the address
         c->sockd = accept(socketfd,
