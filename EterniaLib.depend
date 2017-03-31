@@ -4819,10 +4819,10 @@
 1476829010 source:h:\dev\cpp\eterniaengine\eternialib\src\serialization\specificserializer.cpp
 	"SpecificSerializer.h"
 
-1490817390 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
+1490818468 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
 	"ChannelledServer.h"
 
-1490817589 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
+1490818439 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
 	"SocketServer.h"
 	"PacketChannel.h"
 
@@ -5308,4 +5308,11 @@
 	<machine/endian.h>
 
 1486905345 c:\cygwin32\usr\include\cygwin\in6.h
+
+1490818541 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.cpp
+	"ChannelledClient.h"
+
+1490818530 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.h
+	"SockClient.h"
+	"PacketChannel.h"
 
