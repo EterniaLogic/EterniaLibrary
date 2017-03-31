@@ -1,5 +1,4 @@
 <<<<<<< HEAD
-Sim
 buildErrors.txt
 CMakeCache.txt
 CMakeFiles
@@ -45,26 +44,6 @@ test/testParsers.txt
 test/testSecureParser.txt
 test/test.txt
 build.txt
-include
-include/Algorithm
-include/asm
-include/constants.h
-include/Data
-include/Design
-include/Driver
-include/Economics
-include/Emulation
-include/Engineering
-include/Environment
-include/Gamelogic
-include/Localization
-include/Math
-include/Data
-include/Networking
-include/Parsing
-include/Signal
-include/Social
-include/test.h
 add
 bin
 obj

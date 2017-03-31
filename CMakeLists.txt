@@ -45,10 +45,12 @@ set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
-    "*.h"
-    "*.c"
-    "*.cpp"
-    "*.hpp"
+    "src/*.h"
+    "src/*.c"
+    "src/*.cpp"
+    "src/*.hpp"
+	"main.cpp"
+	"version.h"
 )
 
 include_directories(src/)
