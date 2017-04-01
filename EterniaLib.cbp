@@ -12,12 +12,15 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-march=i386" />
 					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add option="-m32" />
 				</Compiler>
 				<Linker>
 					<Add option="-lpthread" />
+					<Add library="C:\MinGW\winbuilds\x86_64-w64-mingw32\lib32\libws2_32.a" />
+					<Add library="C:\cygwin32\lib\gcc\i686-pc-cygwin\5.4.0\libatomic.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -71,6 +74,20 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="main.cpp" />
+		<Unit filename="src/API/APICore.cpp" />
+		<Unit filename="src/API/APICore.h" />
+		<Unit filename="src/API/APIEventRegistry.cpp" />
+		<Unit filename="src/API/APIEventRegistry.h" />
+		<Unit filename="src/API/APIMod.cpp" />
+		<Unit filename="src/API/APIMod.h" />
+		<Unit filename="src/API/APIPermission.cpp" />
+		<Unit filename="src/API/APIPermission.h" />
+		<Unit filename="src/API/APIPermissionsRegistry.cpp" />
+		<Unit filename="src/API/APIPermissionsRegistry.h" />
+		<Unit filename="src/API/APIUser.cpp" />
+		<Unit filename="src/API/APIUser.h" />
+		<Unit filename="src/Algorithm/Compression/BasicCompressor.cpp" />
+		<Unit filename="src/Algorithm/Compression/BasicCompressor.h" />
 		<Unit filename="src/Algorithm/Cryptography/Aes256.h" />
 		<Unit filename="src/Algorithm/Cryptography/Aes267.cpp" />
 		<Unit filename="src/Algorithm/Cryptography/CryptoDefiner_Class.hpp" />
@@ -90,6 +107,7 @@
 		<Unit filename="src/Algorithm/Sorting/QuickSort.h" />
 		<Unit filename="src/Algorithm/Sorting/SelectionSort.cpp" />
 		<Unit filename="src/Algorithm/Sorting/SelectionSort.h" />
+		<Unit filename="src/Audio/AudioBuffer.h" />
 		<Unit filename="src/Audio/Generate/WhiteNoise.h" />
 		<Unit filename="src/Data/AbstractDatabase/AbstractDB.h" />
 		<Unit filename="src/Data/AbstractDatabase/AbstractDBCacheMap.cpp" />
@@ -102,10 +120,11 @@
 		<Unit filename="src/Data/BitMap.h" />
 		<Unit filename="src/Data/CharString.cpp" />
 		<Unit filename="src/Data/CharString.h" />
-		<Unit filename="src/Data/ConcurrentLinkedList.cpp" />
-		<Unit filename="src/Data/ConcurrentLinkedList.h" />
+		<Unit filename="src/Data/ConcurrentLinkedList.hpp" />
+		<Unit filename="src/Data/CyclicList.hpp" />
 		<Unit filename="src/Data/DoubleList.cpp" />
 		<Unit filename="src/Data/DoubleList.h" />
+		<Unit filename="src/Data/Events/Event.h" />
 		<Unit filename="src/Data/Events/EventHandle.cpp" />
 		<Unit filename="src/Data/Events/EventHandle.h" />
 		<Unit filename="src/Data/Events/EventHandler.cpp" />
@@ -128,6 +147,8 @@
 		<Unit filename="src/Data/LinkedListT.h" />
 		<Unit filename="src/Data/LinkedMap.cpp" />
 		<Unit filename="src/Data/LinkedMap.h" />
+		<Unit filename="src/Data/Logger/Logger.cpp" />
+		<Unit filename="src/Data/Logger/Logger.h" />
 		<Unit filename="src/Data/PriorityQueue.cpp" />
 		<Unit filename="src/Data/PriorityQueue.h" />
 		<Unit filename="src/Data/Protect/PType.hpp" />
@@ -139,6 +160,8 @@
 		<Unit filename="src/Data/SplitResult.h" />
 		<Unit filename="src/Data/Stack.cpp" />
 		<Unit filename="src/Data/Stack.h" />
+		<Unit filename="src/Data/TimeProfiler.cpp" />
+		<Unit filename="src/Data/TimeProfiler.h" />
 		<Unit filename="src/Data/TreeList.cpp" />
 		<Unit filename="src/Data/TreeList.h" />
 		<Unit filename="src/Data/test/testAbstractDB.cpp" />
@@ -190,6 +213,12 @@
 		<Unit filename="src/Engineering/Chemistry/Hadron/Quarks/Up_AntiQuark.h" />
 		<Unit filename="src/Engineering/Chemistry/Ore.h" />
 		<Unit filename="src/Engineering/Chemistry/elementals.h" />
+		<Unit filename="src/Engineering/Civil/Building.h" />
+		<Unit filename="src/Engineering/Civil/Commercial.h" />
+		<Unit filename="src/Engineering/Civil/Industry.h" />
+		<Unit filename="src/Engineering/Civil/Infrastructure/Road.h" />
+		<Unit filename="src/Engineering/Civil/Residence.h" />
+		<Unit filename="src/Engineering/Civil/Utility.h" />
 		<Unit filename="src/Engineering/Electrical/Circuit.h" />
 		<Unit filename="src/Engineering/Electrical/Components/Capacitor.h" />
 		<Unit filename="src/Engineering/Electrical/Components/Component.h" />
@@ -266,8 +295,11 @@
 		<Unit filename="src/Gamelogic/Avatar/Mood.h" />
 		<Unit filename="src/Gamelogic/Avatar/SkillSet.cpp" />
 		<Unit filename="src/Gamelogic/Avatar/SkillSet.h" />
+		<Unit filename="src/Gamelogic/Avatar/Skills/Skill.h" />
 		<Unit filename="src/Gamelogic/Buildings/Building.cpp" />
 		<Unit filename="src/Gamelogic/Buildings/Building.h" />
+		<Unit filename="src/Gamelogic/Buildings/Computing/AIEvolver.h" />
+		<Unit filename="src/Gamelogic/Buildings/Computing/Computer.h" />
 		<Unit filename="src/Gamelogic/Buildings/Defense/Building.h" />
 		<Unit filename="src/Gamelogic/Buildings/Defense/stub.h" />
 		<Unit filename="src/Gamelogic/Buildings/Factory/Building.h" />
@@ -281,6 +313,10 @@
 		<Unit filename="src/Gamelogic/Buildings/SpaceLaunchers/BasicLauncher.h" />
 		<Unit filename="src/Gamelogic/Buildings/SpaceLaunchers/stub.h" />
 		<Unit filename="src/Gamelogic/Buildings/Terraformers/stub.h" />
+		<Unit filename="src/Gamelogic/CoreSystems/Hardpoint.h" />
+		<Unit filename="src/Gamelogic/CoreSystems/PhysicalMaterial.h" />
+		<Unit filename="src/Gamelogic/CoreSystems/Reactor.h" />
+		<Unit filename="src/Gamelogic/CoreSystems/Turret.h" />
 		<Unit filename="src/Gamelogic/Crafting/Circuit.h" />
 		<Unit filename="src/Gamelogic/Crafting/CraftingStats.cpp" />
 		<Unit filename="src/Gamelogic/Crafting/CraftingStats.h" />
@@ -309,9 +345,11 @@
 		<Unit filename="src/Gamelogic/Environment/Weather/Air.h" />
 		<Unit filename="src/Gamelogic/Environment/Weather/Wind.h" />
 		<Unit filename="src/Gamelogic/Environment/environment.h" />
+		<Unit filename="src/Gamelogic/Inventory/BagList.h" />
 		<Unit filename="src/Gamelogic/Inventory/BaseInventory.h" />
 		<Unit filename="src/Gamelogic/Inventory/DynamicAttribute.h" />
 		<Unit filename="src/Gamelogic/Inventory/DynamicEquip.h" />
+		<Unit filename="src/Gamelogic/Inventory/Item.h" />
 		<Unit filename="src/Gamelogic/Inventory/ItemBase.h" />
 		<Unit filename="src/Gamelogic/Inventory/PortableArmor.h" />
 		<Unit filename="src/Gamelogic/Location.cpp" />
@@ -321,6 +359,10 @@
 		<Unit filename="src/Gamelogic/Race/Race.h" />
 		<Unit filename="src/Gamelogic/Race/Relations.h" />
 		<Unit filename="src/Gamelogic/Ship/Autopilot/Autopilot.h" />
+		<Unit filename="src/Gamelogic/Ship/FTL/FTL.h" />
+		<Unit filename="src/Gamelogic/Ship/FTL/Hyperlane.h" />
+		<Unit filename="src/Gamelogic/Ship/FTL/Jumpdrive.h" />
+		<Unit filename="src/Gamelogic/Ship/FTL/Wormhole.h" />
 		<Unit filename="src/Gamelogic/Ship/ModularShip.h" />
 		<Unit filename="src/Gamelogic/Ship/ModularShipPart.h" />
 		<Unit filename="src/Gamelogic/Ship/Ship.h" />
@@ -338,12 +380,15 @@
 		<Unit filename="src/Gamelogic/Superweapons/MegaCannon/MegaCannon.h" />
 		<Unit filename="src/Gamelogic/Superweapons/Superweapon.h" />
 		<Unit filename="src/Gamelogic/Superweapons/Void/Void.h" />
+		<Unit filename="src/Gamelogic/Voxel/Block.h" />
+		<Unit filename="src/Gamelogic/Voxel/VoxelGeom.h" />
 		<Unit filename="src/Gamelogic/gamelogic.h" />
 		<Unit filename="src/Gamelogic/key.h" />
 		<Unit filename="src/Gamelogic/test/testGameLogic.cpp" />
 		<Unit filename="src/Gamelogic/test/testGameLogic.h" />
 		<Unit filename="src/Localization/LanguageController.cpp" />
 		<Unit filename="src/Localization/LanguageController.h" />
+		<Unit filename="src/Math/Complex.hpp" />
 		<Unit filename="src/Math/Conversion/Convert.cpp" />
 		<Unit filename="src/Math/Conversion/Convert.h" />
 		<Unit filename="src/Math/Equation.cpp" />
@@ -353,6 +398,8 @@
 		<Unit filename="src/Math/Eval.h" />
 		<Unit filename="src/Math/Functions/Basic.cpp" />
 		<Unit filename="src/Math/Functions/Basic.h" />
+		<Unit filename="src/Math/Functions/FFT.cpp" />
+		<Unit filename="src/Math/Functions/FFT.h" />
 		<Unit filename="src/Math/Functions/Trig.cpp" />
 		<Unit filename="src/Math/Functions/Trig.h" />
 		<Unit filename="src/Math/Math.h" />
@@ -386,6 +433,7 @@
 		<Unit filename="src/Programming/CPLScript/CPLVariable.h" />
 		<Unit filename="src/Programming/EfficiencyTimer.cpp" />
 		<Unit filename="src/Programming/EfficiencyTimer.h" />
+		<Unit filename="src/Programming/Instruction.h" />
 		<Unit filename="src/Programming/Program.cpp" />
 		<Unit filename="src/Programming/Program.h" />
 		<Unit filename="src/Programming/ProgramError.cpp" />
@@ -412,8 +460,14 @@
 		<Unit filename="src/WebFramework/Encoding/JSON.h" />
 		<Unit filename="src/WebFramework/Encoding/UrlEncoding.h" />
 		<Unit filename="src/WebFramework/FrameworkAll.h" />
+		<Unit filename="src/WebFramework/Network/ChannelledClient.cpp" />
+		<Unit filename="src/WebFramework/Network/ChannelledClient.h" />
+		<Unit filename="src/WebFramework/Network/ChannelledServer.cpp" />
+		<Unit filename="src/WebFramework/Network/ChannelledServer.h" />
 		<Unit filename="src/WebFramework/Network/HTMLServer.cpp" />
 		<Unit filename="src/WebFramework/Network/HTMLServer.h" />
+		<Unit filename="src/WebFramework/Network/PacketChannel.cpp" />
+		<Unit filename="src/WebFramework/Network/PacketChannel.h" />
 		<Unit filename="src/WebFramework/Network/PacketServer/NetworkManager.cpp" />
 		<Unit filename="src/WebFramework/Network/PacketServer/NetworkManager.h" />
 		<Unit filename="src/WebFramework/Network/PacketServer/P2P/P2PBoundaries.cpp" />
@@ -464,6 +518,7 @@
 		<Unit filename="src/WebFramework/Network/SocketServer.h" />
 		<Unit filename="src/WebFramework/Network/Types/HTMLRequest.h" />
 		<Unit filename="src/WebFramework/Network/Types/HTMLResponse.h" />
+		<Unit filename="src/WebFramework/Network/test/NetworkTest.hpp" />
 		<Unit filename="src/WebFramework/Templates/Template.cpp" />
 		<Unit filename="src/WebFramework/Templates/Template.h" />
 		<Unit filename="src/asm/asm1.cpp" />

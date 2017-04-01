@@ -1,0 +1,15 @@
+Source: libeternia
+Section: libs
+Priority: optional
+Maintainer: Brent Clancy <eternialogic@gmail.com>
+Standards-Version: 3.9.5
+Build-Depends: cmake (>=3.4), debhelper (>=5.0.0), build-essential
+Version: 0:1.05b
+Vcs-Git: https://github.com/EterniaLogic/EterniaLibrary
+Homepage: https://github.com/EterniaLogic/EterniaLibrary
+
+Package: libeternia
+Architecture: amd64
+Depends: ${shlibs:Depends}
+Description: Low-end support library, which includes basic
+ algorithms and data structures.

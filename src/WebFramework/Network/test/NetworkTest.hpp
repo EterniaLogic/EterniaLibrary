@@ -2,6 +2,7 @@
 #define NETTEST_H_
 
 #include "../SocketServer.h"
+#include "../ChannelledServer.h"
 #include <time.h>
 
 // echo out data, send "TEST!" to the client
@@ -10,19 +11,40 @@ void testClientHandler(CharString* dataIn, CharString* dataOut, void* d){
     dataOut->set("TEST!",5);
 }
 
-void testNetwork(){
-    cout << "[Network] testing network server. 127.0.0.1:3001" << endl;
+void testChannelClientHandler(ChannelledClient *client){
+    
+}
 
-    SocketServer server(SS_TCP, "127.0.0.1", 3001, 256, testClientHandler);
+void testNetwork(){
+    cout << "[Network] testing Socket Server" << endl;
+    char* c = new char[5];
+    // Pure SocketServer
+    SocketServer server(SS_TCP,"0.0.0.0", 9999, 256, false, testClientHandler);
 
     server.start(); // async startup
 
-    cout << "Press anything to continue" << endl;
-    const int readlen = 5;
-    char* readt = new char[readlen];
-    cin.getline(readt,readlen);
+    cout << "[Network] Press enter to continue to ChannelledServer" << endl;
+    cin.getline(c,5);
+    
 
-    //server.Close();
+    server.Close();
+    
+    // Channelled Server
+    ChannelledServer server2(SS_TCP,"0.0.0.0", 9999, 256, testChannelClientHandler);
+    
+    server2.start();
+    
+    cout << "[Network] Press enter to continue." << endl;
+    cin.getline(c,5);
+    
+    // HTML Server
+    // server3.setHTMLDir("htdocs"); // HTML directory
+    
+    // RESTFul Server
+    // Combined HTML/Restful server
+    // server4.setHTMLDir("htdocs");
+    // server4.addEndpoint(R_GET, "test/get", testGet);
+    // server4.addEndpoint(R_POST, "test/post", testPost);
 }
 
 

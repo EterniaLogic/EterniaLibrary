@@ -13,8 +13,13 @@ void csClientHandler(CharString* dataIn, CharString* dataOut, void* instance){
 }
 
 
-ChannelledServer::ChannelledServer(SocketServerType serverType, CharString addr, int port){
+ChannelledServer::ChannelledServer(SocketServerType serverType, char* addr, int port, short buffer, void (*handler)(ChannelledClient*)){
     // place a client handler
+    this->bufferSize = buffer;
+    this->port = port;
+    this->address = addr;
+    this->stype = serverType;
     this->_clientHandler = csClientHandler;
+    this->_clientHandlerCH = handler;
     this->exVAL = this;
 }
