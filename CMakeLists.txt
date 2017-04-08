@@ -40,12 +40,8 @@ ENDIF()
 
 # Extra options to GCC when compiling to help enforce memory security
 # -fPIC
-#<<<<<<< HEAD
-#set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -m64 -fPIC -w -DDEBUG -s -pie -fPIE -fstack-protector-all -Wstack-protector --param ssp-buffer-size=4" )
-#=======
 # -fstack-protector-all
 set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack-protector -Wstack-protector --param ssp-buffer-size=4" )
-#>>>>>>> 487016f3a71bd2934fea51526447446c8dc775d1
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
