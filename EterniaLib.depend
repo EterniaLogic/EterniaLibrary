@@ -3871,7 +3871,7 @@
 	"../../Data/CharString.h"
 	"../../Serialization/SpecificSerializer.h"
 
-1490807904 source:h:\dev\cpp\eterniaengine\eternialib\main.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\main.cpp
 	<time.h>
 	"src/test.h"
 	"src/Math/statistics/statistics.h"
@@ -3881,7 +3881,7 @@
 	<iostream>
 	"src/Gamelogic/test/testGameLogic.h"
 
-1490808252 h:\dev\cpp\eterniaengine\eternialib\src\test.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\test.h
 	<ctime>
 	"Algorithm/Cryptography/test/testExHash.hpp"
 	"Engineering/Physics/test/tests.h"
@@ -3893,13 +3893,13 @@
 	"Data/Events/test/testEventHandler.hpp"
 	"Serialization/test/testSerializers.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\test\testexhash.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\test\testexhash.hpp
 	<iostream>
 	<stdlib.h>
 	"../../../Data/CharString.h"
 	"../ExHash.h"
 
-1490587849 h:\dev\cpp\eterniaengine\eternialib\src\data\charstring.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\charstring.h
 	"CharString.h"
 	"SplitResult.h"
 	<iostream>
@@ -3907,41 +3907,41 @@
 	"../Math/Functions/Basic.h"
 	"SplitResult.h"
 
-1476814162 h:\dev\cpp\eterniaengine\eternialib\src\data\splitresult.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\splitresult.h
 	<cstring>
 	"LinkedList.hpp"
 	"CharString.h"
 
-1490802487 h:\dev\cpp\eterniaengine\eternialib\src\data\linkedlist.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\linkedlist.hpp
 	<iostream>
 	<malloc.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\functions\basic.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\functions\basic.h
 	<malloc.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\exhash.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\exhash.h
 	"../../Data/CharString.h"
 	"../../Data/SpecialTypes.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\specialtypes.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\specialtypes.hpp
 	<inttypes.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\tests.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\tests.h
 	"testGravity.h"
 	"testFriction.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testgravity.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testgravity.h
 	"../../../Math/struct/vertex.h"
 	"../../../constants.h"
 
-1476754202 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vertex.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vertex.h
 	"../../Serialization/SpecificSerializer.h"
 	"../Functions/Basic.h"
 	"../Functions/Trig.h"
 	"../../constants.h"
 	<math.h>
 
-1476821159 h:\dev\cpp\eterniaengine\eternialib\src\serialization\specificserializer.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\serialization\specificserializer.h
 	<stdlib.h>
 	<malloc.h>
 	"../Data/CharString.h"
@@ -3949,11 +3949,11 @@
 	"../Algorithm/Cryptography/md5.h"
 	"../Data/Protect/PType.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\md5.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\md5.h
 	<cstring>
 	<iostream>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\protect\ptype.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\protect\ptype.hpp
 	"../LinkedList.hpp"
 	"../../Math/Functions/Basic.h"
 	<malloc.h>
@@ -3962,21 +3962,21 @@
 	<typeinfo>
 	<float.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\functions\trig.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\functions\trig.h
 	"Basic.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\constants.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\constants.h
 	<cstring>
 	"Data/CharString.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testfriction.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testfriction.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\test\testmath.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\test\testmath.h
 	"../Math.h"
 	<iostream>
 	<cstring>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\math.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\math.h
 	"Functions/Basic.h"
 	"Functions/Trig.h"
 	"struct/Matrix.h"
@@ -3985,50 +3985,50 @@
 	"Eval.h"
 	"Equation.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\matrix.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\matrix.h
 	"../../Data/CharString.h"
 	<cstdlib>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vectorspace.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vectorspace.h
 	"Matrix.h"
 	"vertex.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\eval.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\eval.h
 	"../Data/CharString.h"
 	"../Data/Stack.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\stack.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\stack.h
 	<iostream>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\equation.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\equation.h
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\parsing\test\testparsers.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\test\testparsers.h
 	"../SimpleParser.h"
 	"../SecuredParser.h"
 
-1476891283 h:\dev\cpp\eterniaengine\eternialib\src\parsing\simpleparser.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\simpleparser.h
 	<iostream>
 	"LoadFile.h"
 	"../Data/LinkedList.hpp"
 	"../Data/CharString.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\parsing\loadfile.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\loadfile.h
 	<iostream>
 	<fstream>
 	<string>
 	"../Data/CharString.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\parsing\securedparser.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\securedparser.h
 	"SimpleParser.h"
 	"../Algorithm/Cryptography/Aes256.h"
 	"../Data/LinkedList.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\aes256.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\aes256.h
 	<inttypes.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\test\testdatastructures.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\test\testdatastructures.h
 	<ctime>
 	"../BitMap.h"
 	"../FileCache.hpp"
@@ -4043,10 +4043,10 @@
 	"testPType.h"
 	"testAbstractDB.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\bitmap.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\bitmap.h
 	"../Parsing/LoadFile.h"
 
-1478405259 h:\dev\cpp\eterniaengine\eternialib\src\data\filecache.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\filecache.hpp
 	"LinkedList.hpp"
 	"../Data/CharString.h"
 	<iostream>
@@ -4056,33 +4056,33 @@
 	<unordered_map>
 	<string>
 
-1490722999 h:\dev\cpp\eterniaengine\eternialib\src\data\hashmap.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\hashmap.hpp
 	<iostream>
 	"../Data/CharString.h"
 	"../Algorithm/Cryptography/ExHash.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\heap.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\heap.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\integerlist.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\integerlist.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\priorityqueue.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\priorityqueue.h
 
-1477820539 h:\dev\cpp\eterniaengine\eternialib\src\data\queue.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\queue.h
 	"../Data/CharString.h"
 	<iostream>
 	<fstream>
 	<cstdlib>
 	<stdio.h>
 
-1490724630 h:\dev\cpp\eterniaengine\eternialib\src\data\treelist.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\treelist.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\test\testptype.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\test\testptype.h
 	"../Protect/PType.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\test\testabstractdb.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\test\testabstractdb.h
 	"../AbstractDatabase/AbstractDB.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdb.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdb.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -4091,41 +4091,41 @@
 	<math.h>
 	"../PriorityQueue.h"
 
-1490808310 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\cryptodefines.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\cryptodefines.h
 	"CryptoDefiner_Class.hpp"
 
-1490808279 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\cryptodefiner_class.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\cryptodefiner_class.hpp
 	"Aes256.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\events\test\testeventhandler.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\events\test\testeventhandler.hpp
 	"../EventHandler.h"
 	<iostream>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandler.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandler.h
 	"../PriorityQueue.h"
 	"EventHandle.h"
 	<iostream>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandle.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandle.h
 	<time.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\serialization\test\testserializers.hpp
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\serialization\test\testserializers.hpp
 	"../SpecificSerializer.h"
 
-1478401920 h:\dev\cpp\eterniaengine\eternialib\src\math\statistics\statistics.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\statistics\statistics.h
 	"../struct/vertex.h"
 	"../../Data/DoubleList.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\doublelist.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\doublelist.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\parsing\inputredirection.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\inputredirection.h
 	<iostream>
 	"LoadFile.h"
 	"../Data/CharString.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\asm\asm1.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\asm\asm1.h
 
-1475999754 h:\dev\cpp\eterniaengine\eternialib\version.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\version.h
 
 1476753474 h:\dev\cpp\eterniaengine\eternialib\src\gamelogic\test\testgamelogic.h
 	"../gamelogic.h"
@@ -4223,84 +4223,84 @@
 	"../../Serialization/SpecificSerializer.h"
 	"../../Data/Protect/PType.hpp"
 
-1476899448 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\compression\basiccompressor.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\compression\basiccompressor.cpp
 	"BasicCompressor.h"
 
-1476899684 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\compression\basiccompressor.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\compression\basiccompressor.h
 	"../../Data/CharString.h"
 	"../../Data/LinkedList.hpp"
 	"../../Data/IntegerList.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\aes267.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\aes267.cpp
 	"Aes256.h"
 
-1490723213 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\exhash.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\exhash.cpp
 	"ExHash.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\md5.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\cryptography\md5.cpp
 	"md5.h"
 	<cstdio>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\insertionsort.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\insertionsort.cpp
 	"InsertionSort.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\insertionsort.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\insertionsort.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\mergesort.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\mergesort.cpp
 	"MergeSort.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\mergesort.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\mergesort.h
 	"../../Data/IntegerList.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\quicksort.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\quicksort.cpp
 	"QuickSort.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\quicksort.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\quicksort.h
 	"../../Data/IntegerList.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\selectionsort.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\selectionsort.cpp
 	"SelectionSort.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\selectionsort.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\sorting\selectionsort.h
 
-1489732196 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apicore.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apicore.cpp
 	"APICore.h"
 
-1489732887 h:\dev\cpp\eterniaengine\eternialib\src\api\apicore.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apicore.h
 	"APIEventRegistry.h"
 	"APIPermissionsRegistry.h"
 	"APIMod.h"
 	"../Data/Logger/Logger.h"
 	"../Data/LinkedList.hpp"
 
-1490803907 h:\dev\cpp\eterniaengine\eternialib\src\api\apieventregistry.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apieventregistry.h
 	"../Data/Events/Event.h"
 	"../Data/Events/EventHandle.h"
 	"../Data/Events/EventHandler.h"
 	"../Data/LinkedList.hpp"
 
-1489733048 h:\dev\cpp\eterniaengine\eternialib\src\data\events\event.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\events\event.h
 	"../HashMap.hpp"
 	"../CharString.h"
 
-1490805884 h:\dev\cpp\eterniaengine\eternialib\src\api\apipermissionsregistry.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apipermissionsregistry.h
 	"APIPermission.h"
 	"APIUser.h"
 
-1490805390 h:\dev\cpp\eterniaengine\eternialib\src\api\apipermission.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apipermission.h
 	"../Data/CharString.h"
 
-1490806373 h:\dev\cpp\eterniaengine\eternialib\src\api\apiuser.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apiuser.h
 	"../Serialization/SpecificSerializer.h"
 	"APIPermission.h"
 	"../Data/HashMap.hpp"
 
-1490805733 h:\dev\cpp\eterniaengine\eternialib\src\api\apimod.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apimod.h
 	"../Data/CharString.h"
 	"APIEventRegistry.h"
 	"APICore.h"
 
-1489733095 h:\dev\cpp\eterniaengine\eternialib\src\data\logger\logger.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\logger\logger.h
 	"../CharString.h"
 	"../Queue.h"
 	<stdio.h>
@@ -4310,134 +4310,134 @@
 	<thread>
 	<chrono>
 
-1490805560 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apimod.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apimod.cpp
 	"APIMod.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\asm\asm1.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\asm\asm1.cpp
 	"asm1.h"
 	<iostream>
 	<stdio.h>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\constants.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\constants.cpp
 	"constants.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbcachemap.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbcachemap.cpp
 	"AbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbfield.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbfield.cpp
 	"AbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdblinkeddata.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdblinkeddata.cpp
 	"AbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbrow.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbrow.cpp
 	"AbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbtable.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\abstractdbtable.cpp
 	"AbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\basicfixedpointerarray.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\abstractdatabase\basicfixedpointerarray.cpp
 	"AbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\bitmap.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\bitmap.cpp
 	"BitMap.h"
 
-1490728015 source:h:\dev\cpp\eterniaengine\eternialib\src\data\charstring.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\charstring.cpp
 	"CharString.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\doublelist.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\doublelist.cpp
 	"DoubleList.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandle.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandle.cpp
 	"EventHandle.h"
 	<iostream>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandler.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\events\eventhandler.cpp
 	"EventHandler.h"
 	<iostream>
 
-1476891501 source:h:\dev\cpp\eterniaengine\eternialib\src\data\filesystem.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\filesystem.cpp
 	"FileSystem.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\filesystem.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\filesystem.h
 	"../Data/CharString.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\graph.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\graph.cpp
 	"Graph.h"
 	<iostream>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\graph.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\graph.h
 	"LinkedListT.h"
 	"HashMap.hpp"
 	"../Data/CharString.h"
 	"../Math/struct/vertex.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\linkedlistt.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\linkedlistt.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\hashtable.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\hashtable.cpp
 	"HashTable.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\hashtable.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\hashtable.h
 	<iostream>
 	"../Data/CharString.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\heap.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\heap.cpp
 	"Heap.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\integerlist.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\integerlist.cpp
 	"IntegerList.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\linkedlistt.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\linkedlistt.cpp
 	"LinkedListT.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\linkedmap.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\linkedmap.cpp
 	"LinkedMap.h"
 	"iostream"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\data\linkedmap.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\linkedmap.h
 
-1489733110 source:h:\dev\cpp\eterniaengine\eternialib\src\data\logger\logger.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\logger\logger.cpp
 	"Logger.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\priorityqueue.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\priorityqueue.cpp
 	"PriorityQueue.h"
 
-1482852644 source:h:\dev\cpp\eterniaengine\eternialib\src\data\queue.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\queue.cpp
 	"Queue.h"
 
-1476832906 source:h:\dev\cpp\eterniaengine\eternialib\src\data\splitresult.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\splitresult.cpp
 	"SplitResult.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\stack.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\stack.cpp
 	"Stack.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\test\testabstractdb.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\test\testabstractdb.cpp
 	"testAbstractDB.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\test\testdatastructures.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\test\testdatastructures.cpp
 	"testDataStructures.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\test\testptype.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\test\testptype.cpp
 	"testPType.h"
 
-1490723089 source:h:\dev\cpp\eterniaengine\eternialib\src\data\timeprofiler.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\timeprofiler.cpp
 	"TimeProfiler.h"
 
-1490721484 h:\dev\cpp\eterniaengine\eternialib\src\data\timeprofiler.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\timeprofiler.h
 	"HashMap.hpp"
 	"CharString.h"
 	"CyclicList.hpp"
 	<time.h>
 
-1490723283 h:\dev\cpp\eterniaengine\eternialib\src\data\cycliclist.hpp
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\cycliclist.hpp
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\data\treelist.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\treelist.cpp
 	"TreeList.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430.cpp
 	"msp430.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430.h
 	<math.h>
 	<ctime>
 	"msp430g2553.h"
@@ -4447,167 +4447,167 @@
 	"../../Data/LinkedList.hpp"
 	"../../Data/HashMap.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430g2553.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430g2553.h
 	"in430.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\in430.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\in430.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_opcodes.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_opcodes.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_registers.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_registers.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_declare_consts.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_declare_consts.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_instructions.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_instructions.cpp
 	"msp430.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_interrupts.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_interrupts.cpp
 	"msp430.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_timers.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_timers.cpp
 	"msp430.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_usci.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\mpu\msp430_usci.cpp
 	"msp430.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\secondtick.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\emulation\secondtick.cpp
 	"SecondTick.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\emulation\secondtick.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\emulation\secondtick.h
 	<time.h>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\atom.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\atom.cpp
 	"Atom.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\atom.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\atom.h
 	"../../constants.h"
 	"../../Design/Colors.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\design\colors.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\design\colors.h
 	"../Math/struct/vertex.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\composite.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\composite.cpp
 	"Composite.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\composite.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\chemistry\composite.h
 	"Atom.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\components\componentrating.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\components\componentrating.cpp
 	"ComponentRating.h"
 	<math.h>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\components\componentrating.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\components\componentrating.h
 	"../PowerValue.h"
 	"../../Chemistry/Atom.h"
 	"../../../Emulation/SecondTick.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\powervalue.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\powervalue.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\general\ic555.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\general\ic555.cpp
 	"IC555.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\general\ic555.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\general\ic555.h
 	"../IC.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ic.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ic.h
 	"../Components/Component.h"
 	"../../../Data/LinkedList.hpp"
 	"../Pin.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\components\component.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\components\component.h
 	"../PowerValue.h"
 	"../../../Emulation/SecondTick.h"
 	"ComponentRating.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\pin.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\pin.h
 	"../../Data/CharString.h"
 	"PowerValue.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ic.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ic.cpp
 	"IC.h"
 
-1490767830 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ram.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ram.cpp
 	"RAM.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ram.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\ic\ram.h
 	"IC.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\pin.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\pin.cpp
 	"Pin.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\powervalue.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\powervalue.cpp
 	"PowerValue.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\clkprovider.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\clkprovider.cpp
 	"CLKProvider.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\clkprovider.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\clkprovider.h
 	"Signal.h"
 	<time.h>
 	"../../../Data/LinkedList.hpp"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\signal.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\signal.h
 
-1490767830 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\pwm.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\pwm.cpp
 	"PWM.h"
 
-1490767831 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\pwm.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\electrical\signal\pwm.h
 	"Signal.h"
 	<time.h>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\equations.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\equations.cpp
 	"Equations.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\equations.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\equations.h
 	"../../constants.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\fluidmechanics\fluidmechanics.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\fluidmechanics\fluidmechanics.cpp
 	"FluidMechanics.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\fluidmechanics\fluidmechanics.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\fluidmechanics\fluidmechanics.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\circularmotion.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\circularmotion.cpp
 	"CircularMotion.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\circularmotion.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\circularmotion.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\collision1d.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\collision1d.cpp
 	"Collision1D.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\collision1d.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\collision1d.h
 	"../../../Math/struct/vertex.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\freebody.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\freebody.cpp
 	"FreeBody.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\freebody.h
+1491627974 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\kinematics\freebody.h
 	"../../../constants.h"
 	"../../../Data/LinkedListT.h"
 	"../../../Math/struct/vertex.h"
 	"../../../Math/Equation.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\rotational\rotationalfuncs.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\rotational\rotationalfuncs.cpp
 	"RotationalFuncs.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\rotational\rotationalfuncs.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\rotational\rotationalfuncs.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testfriction.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testfriction.cpp
 	"testFriction.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testgravity.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\test\testgravity.cpp
 	"testGravity.h"
 	<iostream>
 	<ctime>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\thermaldynamics\thermaldynamics.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\thermaldynamics\thermaldynamics.cpp
 	"ThermalDynamics.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\thermaldynamics\thermaldynamics.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\thermaldynamics\thermaldynamics.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\work.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\work.cpp
 	"Work.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\work.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\engineering\physics\work.h
 	"../../Data/LinkedList.hpp"
 	"../../constants.h"
 
@@ -4688,96 +4688,96 @@
 	"testGameLogic.h"
 	<iomanip>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\localization\languagecontroller.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\localization\languagecontroller.cpp
 	"LanguageController.h"
 
-1484592853 h:\dev\cpp\eterniaengine\eternialib\src\localization\languagecontroller.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\localization\languagecontroller.h
 	"../Data/CharString.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\conversion\convert.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\conversion\convert.cpp
 	"Convert.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\conversion\convert.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\conversion\convert.h
 	"../struct/vertex.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\equation.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\equation.cpp
 	"Equation.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\equation_calc.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\equation_calc.cpp
 	"Equation.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\eval.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\eval.cpp
 	"Eval.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\functions\basic.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\functions\basic.cpp
 	"Basic.h"
 
-1490767830 source:h:\dev\cpp\eterniaengine\eternialib\src\math\functions\fft.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\functions\fft.cpp
 	"FFT.h"
 
-1490767830 h:\dev\cpp\eterniaengine\eternialib\src\math\functions\fft.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\functions\fft.h
 	"../Complex.hpp"
 	"../../Data/LinkedList.hpp"
 
-1490767830 h:\dev\cpp\eterniaengine\eternialib\src\math\complex.hpp
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\complex.hpp
 	<math.h>
 
-1478401956 source:h:\dev\cpp\eterniaengine\eternialib\src\math\functions\trig.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\functions\trig.cpp
 	"Trig.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\basis.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\basis.cpp
 	"Basis.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\basis.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\math\struct\basis.h
 	"Matrix.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\matrix.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\matrix.cpp
 	"Matrix.h"
 	<iostream>
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vectorspace.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vectorspace.cpp
 	"VectorSpace.h"
 
-1476892576 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vertex.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\struct\vertex.cpp
 	"vertex.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\math\test\testmath.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\math\test\testmath.cpp
 	"testMath.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\htmlparser.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\htmlparser.cpp
 	"HTMLParser.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\parsing\htmlparser.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\htmlparser.h
 	"HTMLTags.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\parsing\htmltags.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\parsing\htmltags.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\inputredirection.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\inputredirection.cpp
 	"InputRedirection.h"
 
-1476797188 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\loadfile.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\loadfile.cpp
 	"LoadFile.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\securedparser.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\securedparser.cpp
 	"SecuredParser.h"
 
-1476891311 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\simpleparser.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\simpleparser.cpp
 	"SimpleParser.h"
 
-1476891360 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\test\testparsers.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\parsing\test\testparsers.cpp
 	"testParsers.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\efficiencytimer.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\efficiencytimer.cpp
 	"EfficiencyTimer.h"
 	<iostream>
 	<ctime>
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\programming\efficiencytimer.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\programming\efficiencytimer.h
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\program.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\program.cpp
 	"Program.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\programming\program.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\programming\program.h
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 	"Visual/VProgramNode.h"
@@ -4787,46 +4787,47 @@
 	<cstdlib>
 	<math.h>
 
-1476995713 h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramnode.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramnode.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramerror.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramerror.h
 	"../ProgramError.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\programming\programerror.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\programming\programerror.h
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramvariable.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramvariable.h
 	"../../Data/CharString.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\programerror.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\programerror.cpp
 	"ProgramError.h"
 
-1482852371 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\visualprogram.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\visualprogram.cpp
 	"../Program.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramerror.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramerror.cpp
 	"VProgramError.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramvariable.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\programming\visual\vprogramvariable.cpp
 	"VProgramVariable.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\serialization\basicserializer.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\serialization\basicserializer.cpp
 	"BasicSerializer.h"
 
-1476753474 h:\dev\cpp\eterniaengine\eternialib\src\serialization\basicserializer.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\serialization\basicserializer.h
 	<stdlib.h>
 	<malloc.h>
 
-1476829010 source:h:\dev\cpp\eterniaengine\eternialib\src\serialization\specificserializer.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\serialization\specificserializer.cpp
 	"SpecificSerializer.h"
 
-1490818468 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
 	"ChannelledServer.h"
 
-1490818439 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
 	"SocketServer.h"
 	"PacketChannel.h"
+	"ChannelledClient.h"
 
-1490817566 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\socketserver.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\socketserver.h
 	<stdio.h>
 	<stdlib.h>
 	<string>
@@ -4839,16 +4840,18 @@
 	<sys/socket.h>
 	<netdb.h>
 	<netinet/in.h>
+	<arpa/inet.h>
 	<thread>
 	"SockClient.h"
 	"../../Data/LinkedList.hpp"
 	"../../Data/CharString.h"
 
-1490817068 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\sockclient.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\sockclient.h
 	<stdio.h>
 	<stdlib.h>
 	<unistd.h>
 	<string.h>
+	<math.h>
 	<windows.h>
 	<winsock2.h>
 	<ws2tcpip.h>
@@ -4860,12 +4863,12 @@
 	<thread>
 	"../../Data/CharString.h"
 
-1490817764 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetchannel.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetchannel.h
 	"../../Data/CharString.h"
 	"../../Data/Queue.h"
 	"SockClient.h"
 
-1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\htmlserver.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\htmlserver.cpp
 
 1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetserver\networkmanager.cpp
 	"NetworkManager.h"
@@ -4949,38 +4952,39 @@
 1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetserver\p2p\p2pstreamserver.cpp
 	"P2PStreamServer.h"
 
-1490811527 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\sockclient.cpp
+1492694971 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\sockclient.cpp
 	"SockClient.h"
 
-1490817631 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\socketserver.cpp
+1492693947 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\socketserver.cpp
 	"SocketServer.h"
 
-1482845259 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\templates\template.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\templates\template.cpp
 	"Template.h"
 
-1477548196 h:\dev\cpp\eterniaengine\eternialib\src\webframework\templates\template.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\templates\template.h
 	"../../Data/LinkedList.hpp"
 	"../../Data/CharString.h"
 	<Eternia/Encoding/HtmlEncode.h>
 	<Eternia/WebFramework/Templates/Template.h>
 
-1490803851 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apieventregistry.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apieventregistry.cpp
 	"APIEventRegistry.h"
 
-1490805848 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apipermission.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apipermission.cpp
 	"APIPermission.h"
 
-1490806076 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apipermissionsregistry.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apipermissionsregistry.cpp
 	"APIPermissionsRegistry.h"
 
-1490807318 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apiuser.cpp
+1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apiuser.cpp
 	"APIUser.h"
 
-1490817844 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetchannel.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetchannel.cpp
 	"PacketChannel.h"
 
-1490817007 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\test\networktest.hpp
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\test\networktest.hpp
 	"../SocketServer.h"
+	"../ChannelledServer.h"
 	<time.h>
 
 1486905344 c:\cygwin32\usr\include\time.h
@@ -5309,10 +5313,10 @@
 
 1486905345 c:\cygwin32\usr\include\cygwin\in6.h
 
-1490818541 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.cpp
+1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.cpp
 	"ChannelledClient.h"
 
-1490818530 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.h
+1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.h
 	"SockClient.h"
 	"PacketChannel.h"
 

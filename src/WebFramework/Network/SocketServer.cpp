@@ -27,7 +27,7 @@ void ClientHandler_(SockClient* tclient, SocketServer *server) {
     CharString* writeto = new CharString();
     const int buflen = server->bufferSize;
     cout << "Client start!" << endl;
-    
+
     while(tclient->alive) {
 #ifdef LINUXXX
         n = read(tclient->sockd, buffer, buflen);
@@ -38,15 +38,15 @@ void ClientHandler_(SockClient* tclient, SocketServer *server) {
 
         if(tclient->_clientHandler != 0x0) {
             tclient->_clientHandler(new CharString(buffer,buflen), writeto, tclient->exVAL);
-            
+
             if(writeto->getSize() > 0){
                 tclient->sendc(*writeto);
             }
         }
 #elif defined(WINDOWSXX)
         int iSendResult;
-        
-        char recvbuf[bufferSize];
+
+        char recvbuf[server->bufferSize];
         int iResult = recv(tclient->sockd, recvbuf, buflen, 0);
         if (iResult > 0) {
             //printf("Bytes received: %d\n", iResult);
@@ -54,7 +54,7 @@ void ClientHandler_(SockClient* tclient, SocketServer *server) {
             if(tclient->_clientHandler != 0x0) {
                 tclient->_clientHandler(new CharString(recvbuf,buflen), writeto, tclient->exVAL);
                 if(writeto->getSize() > 0){
-                    tclient->sendc(writeto);
+                    tclient->sendc(*writeto);
                 }
             }
         }
@@ -86,7 +86,7 @@ void SocketServer::tcpConnectionAcceptor() {
         return;
     }
 #endif
-    
+
     cout << "Waiting for connections on " << address << ":" <<port << endl;
     while(this->dolisten) {
         // Construct the client
@@ -96,7 +96,7 @@ void SocketServer::tcpConnectionAcceptor() {
             c->_clientHandler = _clientHandler;
             gotClient=false;
         }
-        
+
 #ifdef LINUXXX
         clilen = sizeof(c->cli_addr); // get the address size
         c->sockd = accept(socketfd,
@@ -106,7 +106,7 @@ void SocketServer::tcpConnectionAcceptor() {
             std::this_thread::sleep_for(std::chrono::microseconds(10000));
             continue;
         }
-        
+
         char s[INET6_ADDRSTRLEN];
         inet_ntop(AF_INET,
             &(c->cli_addr.sin_addr),
@@ -152,25 +152,25 @@ void SocketServer::start() {
             proto = IPPROTO_ICMP;
             break;
     }
-    
+
 #ifdef LINUXXX
-    
+
     // connect socket
     socketfd = socket(ipv6 ? AF_UNSPEC : AF_INET, ntype, proto); // << Defines socket type
     if (socketfd < 0){
         cout << "Error opening socket..." << endl;
         return;
     }
-    
+
     // allow port to be reusable
     int reusePort = 1;
     setsockopt(socketfd, SOL_SOCKET, SO_REUSEPORT, &reusePort, sizeof(reusePort));
-    
+
     serv_addr = *(sockaddr_in*)calloc(sizeof(serv_addr),1);
     serv_addr.sin_family = ipv6 ? AF_UNSPEC : AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons((short)port);
-    
+
     // bind port
     if (bind(socketfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
         std::cout << "Error on binding port " << port << std::endl;
@@ -182,7 +182,7 @@ void SocketServer::start() {
     }
 
     ZeroMemory(&hints, sizeof(hints));
-    hints.ai_family = IPv6 ? AF_UNSPEC : AF_INET;
+    hints.ai_family = ipv6 ? AF_UNSPEC : AF_INET;
     hints.ai_socktype = ntype;
     hints.ai_protocol = IPPROTO_TCP;
     hints.ai_flags = AI_PASSIVE;
@@ -196,7 +196,7 @@ void SocketServer::start() {
         WSACleanup();
         return;
     }
-    
+
     // Create a SOCKET for connecting to server
     socketfd = socket(result->ai_family, result->ai_socktype, result->ai_protocol);
     if (socketfd == INVALID_SOCKET) {
@@ -208,7 +208,7 @@ void SocketServer::start() {
 
 
     // Setup the TCP listening socket
-    int iResult = bind( socketfd, result->ai_addr, (int)result->ai_addrlen);
+    iResult = bind( socketfd, result->ai_addr, (int)result->ai_addrlen);
     if (iResult == SOCKET_ERROR) {
         printf("bind failed with error: %d\n", WSAGetLastError());
         freeaddrinfo(result);
@@ -218,7 +218,7 @@ void SocketServer::start() {
     }
     freeaddrinfo(result);
 #endif
-    
+
     dolisten=true;
 
     // TCP only request detection
@@ -250,12 +250,12 @@ void SocketServer::Close() {
     closesocket(socketfd);
     WSACleanup();
 #endif
-    
+
     cout << "a" <<endl;
     dolisten=false;
     //if(async) acceptorThread.join();
     cout << "b" <<endl;
-    
+
     // Stop listening to clients
     clients.freeze();
     for(int i=0; i<clients.frozenlen; i++) {
@@ -268,5 +268,5 @@ void SocketServer::Close() {
     }
     clients.clear();
 
-    
+
 }

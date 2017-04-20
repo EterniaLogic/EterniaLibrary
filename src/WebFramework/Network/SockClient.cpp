@@ -8,7 +8,7 @@ SockClient::SockClient() {
 }
 
 // connect to a specific server
-void SockClient::connectc(SocketClientType ctype, 
+void SockClient::connectc(SocketClientType ctype,
                 char* addr, short port, int buffersize, bool IPv6,
                 void (*_clientHandler)(CharString* dataIn, CharString* dataOut, void* d)){
     this->ctype = ctype;
@@ -18,7 +18,7 @@ void SockClient::connectc(SocketClientType ctype,
     this->ipv6 = IPv6;
     this->_clientHandler = _clientHandler;
     this->async=true;
-    
+
     // socket setup is the same as the server.
     int ntype = SOCK_STREAM;
     int proto = 0;
@@ -34,24 +34,24 @@ void SockClient::connectc(SocketClientType ctype,
             proto = IPPROTO_ICMP;
             break;
     }
-    
+
 #ifdef LINUXXX
     // set up base data
     /*serv_addr = *(sockaddr_in*)calloc(sizeof(serv_addr),1);
     serv_addr.sin_family = IPv6 ? AF_UNSPEC : AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons((short)port);*/
-    
-    // establish a socket 
+
+    // establish a socket
     // connect socket
     sockd = socket(IPv6 ? AF_UNSPEC : AF_INET, ntype, proto); // << Defines socket type
     if (sockd < 0){
         cout << "Error opening socket..." << endl;
         return;
     }
-    
+
     // connect to server
-    
+
     // start a data thread, if async
 #endif
 }
@@ -64,11 +64,14 @@ bool SockClient::sendc(CharString message){
     int looptimes=1;
     int i, msgret, msgsize;
     char* msg;
+#ifdef LINUXXX
     if(message.getSize() > bufferSize){
-        flags |= MSG_MORE; 
+
+        flags |= MSG_MORE;
+
         looptimes = floor((float)message.getSize() / (float)bufferSize);
     }
-    
+
     for(i=0; i<looptimes;i++){
         if(i >= looptimes-1){
             flags=0;
@@ -76,17 +79,17 @@ bool SockClient::sendc(CharString message){
         }else{
             msgsize = (message.getSize() < bufferSize) ? message.getSize() : message.getSize();
         }
-        
+
         msg = message.substr(i*bufferSize, msgsize).get();
-        
+
         // send data
         if(ctype == SC_TCP)
             msgret = send(sockd, msg, msgsize, flags);
         //else msgret = sendto(sockd, msg, msgsize, addr, addrlen);
-        
+
         // detect error
         if(msgret == -1) return false;
     }
-    
+#endif
     return true;
 }
