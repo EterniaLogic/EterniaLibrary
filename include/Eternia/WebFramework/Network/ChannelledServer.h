@@ -10,10 +10,13 @@
 class ChannelledServer : public SocketServer{
 private:
 public:
-    void (*_clientHandlerCH)(ChannelledClient*); // channelled data
+    void (*handler)(ChannelledClient*, PacketChannel* channel); // channelled data
     
-    ChannelledServer(SocketServerType serverType, char* addr, int port, short buffer, void (*handler)(ChannelledClient*));
-
+    ChannelledServer(SocketServerType serverType, char* addr, int port, short buffer, void (*handler)(ChannelledClient*, PacketChannel* channel));
+    
+    ChannelledClient* getChannelledClient(SockClient* cli);
+    
+    LinkedList<ChannelledClient> cclients;
 };
 
 #endif

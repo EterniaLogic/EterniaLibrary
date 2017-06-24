@@ -1,12 +1,16 @@
 #include "AbstractDB.h"
 
 
+AbstractDBCacheMap::AbstractDBCacheMap(){
+    //mapArray = (void**)calloc(32,sizeof(void*));
+}
+
 AbstractDBCacheMap::AbstractDBCacheMap(ADB_STOREBASE Base, ADBT_SECURITY Security) {
     base = Base;
     security = Security;
 
     // init Wide Range Cache Map
-    switch (base) {
+    /*switch (base) {
         case ADB_BASE_2:
             mapArray = (void**)calloc(32,sizeof(void*));
             break;
@@ -61,9 +65,7 @@ AbstractDBCacheMap::AbstractDBCacheMap(ADB_STOREBASE Base, ADBT_SECURITY Securit
         case ADB_BASE_MAXV_100000000:
             mapArray = (void**)calloc(100000000, sizeof(void*));
             break;
-    }
-
-    rowList = new AbstractDBLinkedDataset();
+    }*/
 }
 
 AbstractDBCacheMap::~AbstractDBCacheMap() {
@@ -74,10 +76,12 @@ void AbstractDBCacheMap::clearCache() {
     bool base_constant = (base == ADB_BASE_MAXV_1000 || base == ADB_BASE_MAXV_10000 || base == ADB_BASE_MAXV_100000 || base == ADB_BASE_MAXV_1000000 || base == ADB_BASE_MAXV_10000000 || base == ADB_BASE_MAXV_100000000);
     AbstractDBCacheMap* submap;
     PriorityQueue* subheap;
+    
+    rowList.clear();
 
     // loop through rows
-    for (int i = 0; i < rowList->getSize(); i++) {
-        AbstractDBRow* row = (AbstractDBRow*)rowList->frozen_get(i);
+    /*for (int i = 0; i < rowList->getSize(); i++) {
+        AbstractDBRow* row = (AbstractDBRow*)rowList->get(i);
         row->clearRow();
         if (mapArray[row->mapindex] != NULL) {
             if (base_constant) {
@@ -94,7 +98,7 @@ void AbstractDBCacheMap::clearCache() {
             }
         }
         delete(row);
-    }
+    }*/
 
 
 }
@@ -166,9 +170,9 @@ int AbstractDBCacheMap::getKey(double index) {
 }
 
 AbstractDBRow* AbstractDBCacheMap::getRow(double index) {
-    return (AbstractDBRow*)rowList->frozen_get(index);
+    return (AbstractDBRow*)rowList.get((int)index);
 }
 
-AbstractDBLinkedDataset* AbstractDBCacheMap::getAllRows() {
+LinkedList<AbstractDBRow> AbstractDBCacheMap::getAllRows() {
     return rowList;
 }

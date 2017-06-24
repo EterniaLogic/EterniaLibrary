@@ -26,7 +26,7 @@ using namespace std;
 // The difference between 64/32 must be taken into account.
 
 enum SSEType {SSE_Int, SSE_CharString, SSE_CharArray, SSE_double, SSE_float, SSE_Long,
-            SSE_SUBClass, SSE_LinkedList, SSE_SSerializer, SSE_PType=99};
+            SSE_SUBClass, SSE_LinkedList, SSE_SSerializer, SSE_bool, SSE_LinkedListClass, SSE_PType=99};
 
 class PointerType {
     public:

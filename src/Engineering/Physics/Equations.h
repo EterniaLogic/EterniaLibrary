@@ -15,6 +15,10 @@ class PhysicsEquations {
         //                      m/s**2          meters          kilograms
         double getAirPressure(double gravity, double radius, double atmosMass); // Get P0 at sea level based on information
         double getGravity(double mass1, double mass2, double radius); // Gravity of an object with respect to another object (m/s**2)
+        
+        double calcSTDGrav(double mass1, double mass2); // calculates standard gravity parameter, Mu = G*(m1*m2)
+        
+        // REF: view-source:http://files.arklyffe.com/orbcalc.html
 };
 
 #endif

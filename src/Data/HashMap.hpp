@@ -12,7 +12,8 @@
 
 #include <iostream>
 #include "../Data/CharString.h"
-#include "../Algorithm/Cryptography/ExHash.h"
+#include "LinkedList.hpp"
+#include "../Algorithm/Cryptography/ExHash_SumMap.hpp"
 using namespace std;
 
 template<class T>
@@ -22,7 +23,15 @@ class HTEntry {
         void setID() {
             // does a HashMap<T> implementation.
 
-            id = exSumMap(&k,size,3);
+            if(size < sizeof(uint8_t))
+                id = (uint8_t)exSumMap<uint8_t>(&k,(uint8_t)size,3);
+            else if(size < sizeof(uint16_t))
+                id = (uint16_t)exSumMap<uint16_t>(&k,(uint16_t)size,3);
+            else if(size < sizeof(uint32_t))
+                id = (uint32_t)exSumMap<uint32_t>(&k,(uint32_t)size,3);
+            else if(size < sizeof(uint64_t)) // That is a BIG list.. better have exabytes of memory...
+                id = (uint64_t)exSumMap<uint64_t>(&k,(uint64_t)size,3);
+                
             //cout << "DBG HMID ("<< k.get() <<") " << id << " " << size << endl;
             //cout.flush();
         }
@@ -52,14 +61,14 @@ class HTEntry {
             this->size=size;
         }
 
-        unsigned long size;
+        uint64_t size;
         HTEntry<T>* next; // for over-load of collisions. (separate chaining)
 
         CharString k;
         T *d;
-        int id;
+        uint64_t id;
 
-        int getID() {
+        uint64_t getID() {
             return id;    // returns ID (Hashed key)
         }
         CharString getKey() {
@@ -151,6 +160,7 @@ class HTEntry {
 template<class T>
 class HashMap {
         HTEntry<T>* entries;
+        LinkedList<CharString> keys;
     public:
         HashMap() {
             // initialize hashmap
@@ -188,6 +198,7 @@ class HashMap {
 
             // prevent repetitive code
             this->addLoc(idx,entry);
+            keys.add(new CharString(key.get(), key.getSize()));
         };
 
         void addL(unsigned long key, T* data) {
@@ -236,6 +247,10 @@ class HashMap {
             }
             return 0x0;
         }; // get value
+        
+        LinkedList<T> getKeys(){
+            return keys;
+        }
 
 
         // get the direct item

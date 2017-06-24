@@ -242,6 +242,11 @@ vertex vertex::cross(vertex v2) {
     return rv;
 }
 
+// get the magnitude (same as length)
+double vertex::magnitude() {
+    return length();
+}
+
 // get the magnitude of the vertex
 double vertex::length() {
     return Math::sqrt(x*x + y*y + z*z);

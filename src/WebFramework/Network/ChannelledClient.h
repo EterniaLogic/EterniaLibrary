@@ -10,10 +10,12 @@ class ChannelledClient : public SockClient{
 private:
     PacketChannel channels[65536];
 public:
-    ChannelledClient();
+    ChannelledClient(SockClient* _socketClient);
     virtual ~ChannelledClient();
+    
+    SockClient* socketClient;
 
-    PacketChannel* getChannel(short id);
+    PacketChannel* getChannel(unsigned short id);
 };
 
 #endif

@@ -8,9 +8,11 @@
 class PacketChannel{
 private:
     Queue packetQ;
-    SockClient client;
+    SockClient* client;
+    unsigned short id;
 public:
     PacketChannel();
+    PacketChannel(SockClient* cli, unsigned short id);
     virtual ~PacketChannel();
 
     // internal
@@ -18,7 +20,8 @@ public:
 
 
     // send/retrieve data
-    void sendPacket(CharString data); // SYNC
+    void sendPacket(CharString data); // don't wait around, send a message.
+    
     CharString recvPacket(); // returns null if no new data.
     CharString recvWaitPacket(); // efficiently waits for a new packet. SYNC
 };

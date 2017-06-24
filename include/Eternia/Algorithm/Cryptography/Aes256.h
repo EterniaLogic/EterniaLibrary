@@ -21,9 +21,12 @@
 #ifndef AES256_h_
 #define AES256_h_
 
+
 #include <inttypes.h>
 
+
 #ifdef __cplusplus
+#include "../../Data/CharString.h"
 extern "C" {
 #endif
 
@@ -41,6 +44,31 @@ void aes256_decrypt_ecb(aes256_context *, uint8_t * /* cipertext */);
 
 #ifdef __cplusplus
 }
+#endif
+
+
+#ifdef __cplusplus
+// C++ converter
+class AES256{
+private:
+    aes256_context ctx;
+    uint8_t key[16];
+public:
+    AES256(CharString key);
+    AES256(uint8_t keyv[16]);
+    AES256(); // auto-generates key
+    virtual ~AES256();
+    
+    CharString genKey(); // auto-generate 256-bit key
+    uint8_t* getKey(); // get a 256-bit key
+    
+    CharString encrypt(CharString plaintext);
+    CharString decrypt(CharString encrypttext);
+    
+    // native algorithm types
+    uint8_t* encrypt(uint8_t plaintext[16]);
+    uint8_t* decrypt(uint8_t encrypttext[16]);
+};
 #endif
 
 #endif

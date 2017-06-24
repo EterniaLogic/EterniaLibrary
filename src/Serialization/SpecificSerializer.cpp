@@ -76,6 +76,9 @@ int GetSizeOfType(PointerType* pt) {
         case SSE_double:
             return sizeof(double);
             break;
+        case SSE_bool:
+            return sizeof(bool);
+            break;
         case SSE_float:
             return sizeof(float);
             break;
@@ -189,7 +192,7 @@ CharString SpecificSerializer::serializeId(int id){
 
         rawCpy(vi, data, xsize, 0, byteloc);
         byteloc += xsize;
-    } else { // Loop through normal type
+    }else { // Loop through normal type
         vi = (char*)ptr;
         data = (char*)calloc(xsize, sizeof(char));
         rawCpy(vi, data, xsize, 0, byteloc);

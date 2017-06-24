@@ -35,11 +35,10 @@ Sub-sections
 
 **Web Framework** [/WebFramework/]: (*in progress, these are the initial goals)
 
-- HTML Engine with multi-threading (C++2011)
+- HTTP Server with multi-threading (C++2011)
 - Template Engine for use with HTML template files
-- RESTFul API
-- Backend scripting is automatically compiled under python
-- MySQL or other database connector not yet planned/supported due to dependencies
+- RESTFul HTTP Server
+- JSON
 
 **Mathematics** [/Math/]:
 
@@ -47,12 +46,21 @@ Sub-sections
   - Linear Algebra
   - Statistics
 
+**Audio & Frequency manipulaiton** [/Audio/&nbsp;&nbsp;&nbsp;/Engineering/Electrical/Signal/]:
+
+  - Time to Frequency conversion using FFT (TimeSignal.h)
+  - Frequency to Time conversion using IFFT (FreqSignal.h)
+  - White Noise generator
+  - Frequency Window generation / Audio filtering *Planned*
+
+
 **Base Engineering** [/Engineering/]:
 
 - Physics
 - Chemistry
+- Electrical
 
-**Computer Science** [/Algorithm/&nbsp;&nbsp;&nbsp;/Data/]:
+**Computer Science** [/Algorithm/&nbsp;&nbsp;&nbsp;/Data/&nbsp;&nbsp;&nbsp;/Programming]:
 
    - Discrete Data Structures
    - Sorting Algorithms

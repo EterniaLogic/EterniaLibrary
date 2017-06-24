@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
+#include <math.h>
 
 #ifdef _WIN64
    #define WINDOWSXX
@@ -45,6 +46,7 @@
 #include <netdb.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <fcntl.h>
 
 #elif defined(__APPLE__)
 
@@ -84,18 +86,19 @@ protected:
     char* address;
     bool started, async, ipv6;
     std::thread acceptorThread;
-    //void connectionAcceptor();
-    //void ClientHandler_(SockClient* tclient);   // Pre-client handler, reads from the buffer
     void tcpConnectionAcceptor();
-
 
 public:
     bool dolisten;
     int bufferSize;
     void* exVAL;
     LinkedList<SockClient> clients;
+    void (*connected)(SockClient*);
+    void (*disconnected)(SockClient*);
+    CharString (*encryptor)(CharString); // encrypting function pre-send
+    CharString (*decryptor)(CharString); // decrypting function pre-recieve
 
-    void (*_clientHandler)(CharString* dataIn, CharString* reply, void* exVAL); // Assigned handler for the client
+    void (*_clientHandler)(CharString dataIn, CharString &reply, SockClient* client, void* exVAL); // Assigned handler for the client
 
     SocketServer();
     SocketServer(SocketServerType serverType,
@@ -103,7 +106,7 @@ public:
                  int port,
                  int bufferSize, // Packet buffer size
                  bool IPv6,
-                 void (*clientHandler)(CharString* dataIn, CharString* dataOut, void* exVAL)); // dataIn is read-only, for dataOut use dataOut.set(char*), ex is just an extra parameter
+                 void (*clientHandler)(CharString dataIn, CharString &dataOut, SockClient* client, void* exVAL)); // dataIn is read-only, for dataOut use dataOut.set(char*), ex is just an extra parameter
 
 
 

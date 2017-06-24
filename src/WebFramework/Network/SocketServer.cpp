@@ -2,6 +2,12 @@
 
 SocketServer::SocketServer(){
     async=true;
+    this->bufferSize = 2048;
+    this->stype = SS_TCP;
+    this->connected = 0x0;
+    this->disconnected = 0x0;
+    this->encryptor = 0x0;
+    this->decryptor = 0x0;
 }
 
 SocketServer::SocketServer(SocketServerType serverType,
@@ -9,7 +15,7 @@ SocketServer::SocketServer(SocketServerType serverType,
                            int port,
                            int bufferSize, // Packet buffer size
                            bool IPv6,
-                           void (*clientHandler)(CharString* dataIn, CharString* dataOut,void* d)) {
+                           void (*clientHandler)(CharString dataIn, CharString &dataOut, SockClient* client,void* d)) {
     this->bufferSize = bufferSize;
     this->port = port; // listen port
     this->address = address; // listen address
@@ -17,32 +23,71 @@ SocketServer::SocketServer(SocketServerType serverType,
     this->stype = serverType;
     this->async=true;
     this->ipv6=IPv6;
+    
+    // external function events
+    this->connected = 0x0;
+    this->disconnected = 0x0;
+    this->encryptor = 0x0;
+    this->decryptor = 0x0;
 }
 
 // Handle basic client stuff
-void ClientHandler_(SockClient* tclient, SocketServer *server) {
+void ClientHandler_(SockClient *tclient, SocketServer *server) {
     // Talk with the client, pre-load into a buffer
     int n;
-    char buffer[BUFFER_SIZEX];
-    CharString* writeto = new CharString();
     const int buflen = server->bufferSize;
-    cout << "Client start!" << endl;
-
+    char buffer[buflen];
+    CharString writeto;
+    
+    if(server->connected != 0x0) server->connected(tclient);
+    //cout << "Client start! " << tclient << endl;
+    
+    // prevent blocking
+    int x;
+    x=fcntl(tclient->sockd, F_GETFL, 0);
+    fcntl(tclient->sockd, F_SETFL, x | O_NONBLOCK);
+    
+    
     while(tclient->alive) {
 #ifdef LINUXXX
+        int error_code;
+        int error_code_size = sizeof(error_code);
+        int ret = getsockopt(tclient->sockd, SOL_SOCKET, SO_ERROR, &error_code, (socklen_t*)&error_code_size);
+        //cout << "socket val = " << error_code << " " << error_code_size << " " << ret << endl;
+        
+        if(error_code > 0){
+            //cout << "Client disconnected!" << endl;
+            if(server->disconnected != 0x0) server->disconnected(tclient);
+            tclient->alive = false;
+            server->clients.remove(tclient);
+            return;
+        }
+        
         n = read(tclient->sockd, buffer, buflen);
         if (n < 0){
-            cout << "read error from client" << endl;
+            std::this_thread::sleep_for(std::chrono::milliseconds(5));
             continue;
+        }else if(n==0){
+            //cout << "blank packet... (Term connection?)" << endl;   
+            if(server->disconnected != 0x0) server->disconnected(tclient);
+            tclient->alive = false;
+            server->clients.remove(tclient);
+            return;
         }
+        
+        // post-clear extra data in packet... (Prevents extra cpu usage, clearer data stream)
+        for(int i=n-1;i<buflen;i++) buffer[i] = 0;
 
         if(tclient->_clientHandler != 0x0) {
-            tclient->_clientHandler(new CharString(buffer,buflen), writeto, tclient->exVAL);
+            CharString d = (server->decryptor!=0x0) ? server->decryptor(CharString(buffer,n)) : CharString(buffer,n); // decrypt
+            tclient->_clientHandler(d, writeto, tclient, tclient->exVAL);
 
-            if(writeto->getSize() > 0){
-                tclient->sendc(*writeto);
+            if(writeto.getSize() > 0){
+                // segment packet if it is too large.
+                tclient->sendc(writeto); // encryption in-client
             }
         }
+        
 #elif defined(WINDOWSXX)
         int iSendResult;
 
@@ -52,9 +97,10 @@ void ClientHandler_(SockClient* tclient, SocketServer *server) {
             //printf("Bytes received: %d\n", iResult);
 
             if(tclient->_clientHandler != 0x0) {
-                tclient->_clientHandler(new CharString(recvbuf,buflen), writeto, tclient->exVAL);
-                if(writeto->getSize() > 0){
-                    tclient->sendc(*writeto);
+                CharString d = (server->decryptor!=0x0) ? server->decryptor(CharString(recvbuf,n)) : CharString(recvbuf,n); // decrypt
+                tclient->_clientHandler(d, writeto, tclient, tclient->exVAL);
+                if(writeto.getSize() > 0){
+                    tclient->sendc(writeto); // encryption in-client
                 }
             }
         }
@@ -90,28 +136,30 @@ void SocketServer::tcpConnectionAcceptor() {
     cout << "Waiting for connections on " << address << ":" <<port << endl;
     while(this->dolisten) {
         // Construct the client
-        if(gotClient){
-            c = new SockClient();
-            c->exVAL = exVAL;
-            c->_clientHandler = _clientHandler;
-            gotClient=false;
-        }
-
+        c = new SockClient();
+        c->exVAL = exVAL;
+        c->_clientHandler = _clientHandler;
+        c->connected = connected;
+        c->disconnected = disconnected;
+        c->encryptor = encryptor;
+        
 #ifdef LINUXXX
         clilen = sizeof(c->cli_addr); // get the address size
         c->sockd = accept(socketfd,
                           (struct sockaddr *) &(c->cli_addr),
                           &clilen);
+                          
         if(c->sockd == -1){
             std::this_thread::sleep_for(std::chrono::microseconds(10000));
             continue;
         }
-
+        
         char s[INET6_ADDRSTRLEN];
         inet_ntop(AF_INET,
             &(c->cli_addr.sin_addr),
             s, sizeof s);
 
+        //cout << "[Network] Client connected: " << s << endl;
 #elif defined(WINDOWSXX)
         // Setup the TCP listening socket
         int iResult = bind( socketfd, result->ai_addr, (int)result->ai_addrlen);
@@ -124,9 +172,12 @@ void SocketServer::tcpConnectionAcceptor() {
         }
         freeaddrinfo(result);
 #endif
-
+        
+        
         clients.add(c);
-
+        
+        //cout << clients.size() << endl;
+        
         // create a new client thread
         //if(async){
             c->clientthread = std::thread(&ClientHandler_, c, this);
@@ -251,10 +302,8 @@ void SocketServer::Close() {
     WSACleanup();
 #endif
 
-    cout << "a" <<endl;
     dolisten=false;
     //if(async) acceptorThread.join();
-    cout << "b" <<endl;
 
     // Stop listening to clients
     clients.freeze();
@@ -262,11 +311,11 @@ void SocketServer::Close() {
         clients.frozen[i]->alive = false;
 #ifdef LINUXXX
         close(clients.frozen[i]->sockd);
+        clients.frozen[i]->clientthread.join();
 #endif
         //if(async) clients.frozen[i]->clientthread.join();
 
     }
     clients.clear();
-
-
+    std::this_thread::sleep_for(std::chrono::milliseconds(20));
 }

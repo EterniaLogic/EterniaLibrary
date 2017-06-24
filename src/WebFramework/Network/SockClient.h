@@ -58,6 +58,11 @@ public:
     void* exVAL;
     bool async;
     int sockd;
+    
+    void (*connected)(SockClient*);
+    void (*disconnected)(SockClient*);
+    CharString (*encryptor)(CharString); // encrypting function pre-send
+    
 #ifdef LINUXXX
     socklen_t address;
     sockaddr_in cli_addr;
@@ -66,12 +71,12 @@ public:
     std::thread clientthread;
 
     // handler for receiving data
-    void (*_clientHandler)(CharString* dataIn, CharString* dataOut, void* d); 
+    void (*_clientHandler)(CharString dataIn, CharString &dataOut, SockClient* client, void* d); 
     
     // connect to a specific server
     void connectc(SocketClientType ctype, 
                 char* addr, short port, int buffersize, bool IPv6,
-                void (*handler)(CharString* dataIn, CharString* dataOut, void* d));
+                void (*handler)(CharString dataIn, CharString &dataOut, SockClient* client, void* d));
     
     // if connected, send out a message
     // returns false if not connected or error.

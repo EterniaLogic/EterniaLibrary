@@ -8,7 +8,7 @@
 #ifndef SPLITRESULT_H_
 #define SPLITRESULT_H_
 
-#include <cstring>
+#include <string.h>
 #include "LinkedList.hpp"
 
 #ifndef CHARSTRING_H_

@@ -23,7 +23,7 @@ public:
     }
     
     // use ONLY if you are using a number...
-    // if you aren't using a number for the template, this may fail during comp.
+    // if you aren't using a number for the template, this may fail during compilation.
     T getAverage(){
         T avg=0;
         

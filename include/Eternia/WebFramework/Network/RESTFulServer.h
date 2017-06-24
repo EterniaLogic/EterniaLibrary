@@ -1,25 +1,41 @@
 #ifndef RESTFULSERVER_H_
 #define RESTFULSERVER_H_
 
-#include "HTMLServer.h"
+#include "HTTPServer.h"
 
 // RESTFul Server
 // Allows for endpoints and JSON encoding
 
-class RESTFulServer {
+// Endpoint
+class RESTFulEndpoint{
+private:
+    CharString uri;
+    void (*returnfunc)(HTTPRequest request, HTTPResponse &response);
+public:
+    HTTPMETHOD requestMethod;
+    
+    
+    RESTFulEndpoint(CharString uri, // "Overriding URI location /index/data/1/1"
+                       HTTPMETHOD requestMethod, // HPOST/HGET/HPUT, ect.
+                       void (*returnfunc)(HTTPRequest request, HTTPResponse &response));
+    
+    bool correctURI(CharString uri);
+    bool handle(HTTPRequest request, HTTPResponse &response);
+};
+
+// Server
+class RESTFulServer : public HTTPServer {
     private:
-        unordered_list<string,string>* endpoints;
+        LinkedList<RESTFulEndpoint> _get, _trace, _post, _put, _delete, _options, _head, _patch, _connect;
 
     public:
-        RESTFulServer(int port);
+        RESTFulServer(CharString addr, int port, CharString wwwroot);
 
-        RESTFulServer* newEndpoint(CharString* url,
-                                   HTMLMETHOD requestMethod,
-                                   void (*returnfunc)(HTMLRequest* request, HTMLResponse* response)); // e.g.: &index, where "void index(HTMLRequest* request, HTMLResponse* response)"
+        RESTFulServer* addEndpoint(RESTFulEndpoint *endpoint); 
 
-        void request(); // HTML Request fron a client
-
-        void start(); // Start the RESTFul server
+        // used during request.
+        bool handleEndpoint(HTTPRequest request, HTTPResponse &response);
+        
 };
 
 #endif

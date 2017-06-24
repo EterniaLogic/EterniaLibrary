@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <malloc.h>
+#include <stdlib.h>
 using namespace std;
 
 // Gar! I don't like writing templates because of this!
@@ -20,7 +21,7 @@ public:
     //LinkedNode<T> * prev;
     LinkedNode<T> * next;
     T* data;
-    int id;
+    //int id;
     LinkedNode() {
         //prev =
         next = 0x0;
@@ -153,16 +154,9 @@ public:
             for(long i=0; i<=index; i++) {
                 if(current != 0x0) {
                     if (i == index) {
-                        /*if(current->next != 0x0){
-                            if(current->prev != 0x0) current->next->prev = current->prev->next;
-                            else current->next->prev = 0x0;
-                        }
-                        if(current->prev != 0x0){
-                            if(current->next != 0x0) current->prev->next = current->next->prev;
-                            else current->prev->next = 0x0;
-                        }*/
-
-                        prev->next = current->next;
+                        if(prev != 0x0) prev->next = current->next;
+                        else baseNode = current->next;
+                        
                         current->next = 0x0;
                         //current->prev = 0x0;
                         r = current->data;
@@ -180,6 +174,37 @@ public:
             }
         }
         changed=true;
+        return r;
+    }
+    
+    T* remove(T* v) {
+        T* r = 0x0;
+
+        // erase element with data of v
+
+        LinkedNode<T>* current = baseNode;
+        LinkedNode<T>* prev = 0x0;
+        for(long i=0; i<_size; i++) {
+            if(current != 0x0) {
+                if (v == current->data) {
+
+                    if(prev != 0x0) prev->next = current->next;
+                    else baseNode = current->next;
+                    current->next = 0x0;
+                    
+                    r = current->data;
+                    current->data = 0x0;
+                    _size--;
+
+                    changed = true;
+                    break;
+                }
+            } else {
+                break;
+            }
+            prev = current;
+            current = current->next;
+        }
         return r;
     }
 

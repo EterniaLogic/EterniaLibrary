@@ -6,7 +6,6 @@
 //-----------------------------------------------------------------------------
 
 #include "CharString.h"
-//#include "SplitResult.h"
 
 #define SIZEOFA(x) (sizeof(x) / sizeof(x[0]))
 
@@ -14,7 +13,7 @@ using namespace std;
 
 // pre-initialize
 CharString::CharString() {
-    stringx = 0x0;
+    stringx = "\0";
     len = 0;
 }
 
@@ -151,6 +150,44 @@ LinkedList<CharString>* CharString::split(char splitter,char stopper) {
     return sr;
 }
 
+
+/* Desc: Takes data from a string and splits it using a splitter
+* Input: String str, it's length, single-character splitter
+* Output: SplitResult from the splitting
+*/
+LinkedList<CharString> CharString::split(CharString splitter) {
+    LinkedList<CharString> sr;
+    int i=0,carrot=0; // positions for exclusive selection
+    int spliti=0; // used when comparing string with splitter.
+    bool splitstart=false;
+    char* tmp;
+
+    if(!isValidCharString()) return sr;
+
+    // loop through!
+    for(i=0;i<getSize();i++){
+        if(i+1 >= getSize() && i-carrot > 0){ // Add the end of the string
+            //cout << "SPLIT:: EOS " << endl;
+            sr.add(substr(getSize()-1-(i-carrot), 1+i-carrot));
+        }
+        
+        
+        if(stringx[i] == splitter.get()[spliti] && (splitstart || spliti==0)){
+            splitstart = true;
+            if(spliti+1 >= splitter.getSize()){
+                // split done!
+                sr.add(substr(carrot, i-splitter.getSize()+1-carrot));
+                splitstart = false;
+                spliti=0;
+                carrot = i+1;
+            }else spliti++;
+        }
+    }
+
+    return sr;
+}
+
+
 /*
 * Replaces needle a with object b inside the haystack.
 * Target: this
@@ -284,6 +321,44 @@ int CharString::getSize() {
 void CharString::setSize(int i) {
     len = i;
 }
+
+
+long CharString::getLong() {
+    if(!isValidNumber()) return 0;
+    int size=len; // size from CharString len
+
+    if(contains(".")) return (long)getFloat();
+
+
+    long out = 0;
+    bool neg = false;
+    if(stringx[0] == '-') {
+        neg=true;    // removes sign
+        stringx = shiftLeft(1);
+        len--;
+    }
+
+    if(stringx[0] == '+') {
+        stringx = shiftLeft(1);
+        len--;
+    }
+
+    for(int i=0; i<size; i++) {
+        long c = (long)(stringx[i])-48;
+        if(c == -48) continue; // prevents annoying bug :/
+        long digit = size-(i+1);
+
+        //get exponent of 10.
+        long exp = 1;
+        for(long j=0; j<digit; j++) exp*=10; // expotentiate
+
+        out += exp * c;
+    }
+    if(neg) out*=-1;
+    //cout << out << endl;
+    return out;
+}
+
 
 /* Desc: converts entire character string to an integer
 *  Input: char* list of characters, length automatically detected.
@@ -426,7 +501,7 @@ void CharString::set_(const char* stringg, const int length) {
 
     int clen = SIZEOFA(stringg);
     char* cc = (char*)calloc(length+1, sizeof(char));
-    std::strcpy(cc, stringg);
+    strcpy(cc, stringg);
 
     stringx = cc;
     len = length;
@@ -477,11 +552,13 @@ CharString CharString::ConvertFromLong(long integer) {
     if(neg) integer = integer*(-1); // remove negative sign, we know the negation. :D
 
     // determine # of digits
-    for(int i=0; i<20; i++) {
+    for(int i=0; i<32; i++) {
         int exp = 1;
         for(int j=0; j<i; j++) exp *= 10; // set exponent 10^i => exp
         if((integer % (exp)) != integer) len++; // if integer mod exp is not equal to self, it is a digit (10/1000 = 10)
     }
+
+    
 
     const int tlen = len + (neg ? 1 : 0)+1; // constify length, if negative, add digit.
     char* out = new char[tlen];
@@ -489,6 +566,9 @@ CharString CharString::ConvertFromLong(long integer) {
     int t=0; // temp var used to store modulus digit addifier
     int kk = neg ? 1 : 0;
     int offset = neg ? -2 : -1; // offsets char based on neg
+    
+    //cout << "CFL: " << tlen << " " << offset << endl;
+    
     if(neg) out[0] = '-';
     for(int i = tlen+offset; i >= 0; i--) {
         int exp = 1;
@@ -496,7 +576,8 @@ CharString CharString::ConvertFromLong(long integer) {
         int digit = integer / exp -(t*10);
         t *= 10; // shift all digits in t left 1
         t += digit; // enter digit into very last slot of t
-        out[kk] = (char)(digit+ASCIIOffset);
+        //cout << "out["<<kk<<"] =" <<  (char)(digit+ASCIIOffset) << endl;
+        out[kk-1] = (char)(digit+ASCIIOffset);
         kk++; // increment out digit
     }
 
@@ -512,6 +593,7 @@ CharString CharString::ConvertFromLong(long integer) {
 bool CharString::Compare(char* b,int lenx) {
     if(!isValidCharString()) return false;
     if(b == 0x0) return false;
+    if(lenx != getSize()) return false;
     bool r = true;
 
     // else, loop through the string
@@ -619,7 +701,7 @@ bool CharString::contains(char* c) {
 void CharString::concata_(const char* str, const int lenx) {
     if(!isValidCharString()) return;
     char* cc = new char();
-    std::strcpy(cc,str);
+    strcpy(cc,str);
     concata(cc, lenx);
 }
 
@@ -633,31 +715,27 @@ void CharString::concata(char* str, int lenx) {
     }
 
     if(lenx == 0) return;
+    
+    char* tmp = new char[len+lenx+1];
 
-    int lena = len;
-    int lenb = lenx;
-    const int lenab = lena+lenb;
-
-    char* tmp = new char[lenab+1];
-
-    for(int i=0; i<lenab+1; i++) {
+    for(int i=0; i<len+lenx+1; i++) {
         tmp[i] = '\0';
     }
 
-    // add to the beginning.
-    for(int i=0; i<lena; i++) {
+    // add original to the beginning.
+    for(int i=0; i<len; i++) {
         tmp[i] = stringx[i];
     }
 
     // append after beginning.
-    for(int i=0; i<lenb; i++) {
-        tmp[i+(lena)] = str[i];
+    for(int i=0; i<lenx; i++) {
+        tmp[i+len] = str[i];
     }
 
     // imprint changes
-    char* v = stringx;
-    this->set(tmp,lenab);
-    free(v);
+    //cout << "CONCAT(" << len+lenx << "): " << tmp << endl;
+    this->stringx = tmp;
+    this->len = len+lenx;
 }
 
 /* Combine CharStrings after the current charString.
@@ -713,7 +791,7 @@ bool CharString::isEmpty() {
 
 CharString CharString::clone() {
     if(!isValidCharString()) return CharString();
-    char* cc = new char();
+    char* cc = (char*)malloc(len);
     for(int i=0; i<=len; i++) cc[i] = '\0';
     for(int i=0; i<len; i++) {
         cc[i] = stringx[i];

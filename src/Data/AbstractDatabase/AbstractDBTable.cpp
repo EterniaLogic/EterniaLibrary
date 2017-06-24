@@ -2,42 +2,45 @@
 
 using namespace std;
 
+// directly retrieve file size
 std::ifstream::pos_type filesize(fstream &in) {
     in.seekg(0, std::ifstream::end);
     return in.tellg();
 }
 
-AbstractDBTable::AbstractDBTable(const char* loc, ADB_STOREBASE Base, ADBT_SECURITY sec) {
-    fileloc = (char*)loc;
+// init advanced
+AbstractDBTable::AbstractDBTable(CharString loc, ADB_STOREBASE Base, ADBT_SECURITY sec) {
+    fileloc = loc;
     security = sec;
     base = Base;
-    cache = new AbstractDBCacheMap(base, sec);
+    cache = AbstractDBCacheMap(base, sec);
     seekfirst = seeksize = 0;
     headersize = 0;
     initFile(loc);
 }
 
-AbstractDBTable::AbstractDBTable(const char* loc) {
-    fileloc = (char*)loc;
+// init basic
+AbstractDBTable::AbstractDBTable(CharString loc) {
     security = ADBT_NONE;
+    fileloc = loc;
     base = ADB_BASE_2;
-    cache = new AbstractDBCacheMap(base, security);
+    cache = AbstractDBCacheMap(base, security);
     seekfirst = seeksize = 0;
     headersize = 0;
     initFile(loc);
 }
 
-void AbstractDBTable::initFile(const char* loc) {
-    fclose(fopen(loc, "a+"));
+void AbstractDBTable::initFile(CharString loc) {
+    fileloc = loc;
+    fclose(fopen(loc.get(), "a+"));
     fclose(fopen("/tmp/db.tmp", "a+"));
-    fileloc = (char*)loc;
-    file.open(loc);
+    file.open(loc.get());
     filetmp.open("/tmp/db.tmp", std::fstream::trunc);
     if (filesize(file) > 0) {
         readHeader();
     } else {
         // Assume that data size is 0
-        fields = new AbstractDBLinkedDataset();
+        fields.clear();
         file.put('\0');
         file.put(base);
     }
@@ -53,9 +56,9 @@ void AbstractDBTable::readHeader() {
     cout << "Header has " << headersize << " fields" << endl;
 
     // pupulate fields container
-    fields = new AbstractDBLinkedDataset();
+    fields.clear();
     for (int i = 0; i < headersize; i++) {
-        fields->push_front(NULL);
+        fields.add(NULL);
     }
 
     // read in file base
@@ -152,17 +155,19 @@ void AbstractDBTable::readHeader() {
         seeksize += field->getSize();
         seekfirst++;
 
-        fields->frozen_set(i, (void*)field);
+        fields.freeze();
+        fields.frozen[i] = field;
+        fields.unfreeze(fields.frozen, fields.size());
     }
 }
 
 // unload all cached rows
 AbstractDBTable::~AbstractDBTable() {
-    cache->clearCache();
+    cache.clearCache();
 }
 
 void AbstractDBTable::addField(AbstractDBField* field) {
-    AbstractDBLinkedDataset* rowList = cache->getAllRows();
+    LinkedList<AbstractDBRow> rowList = cache.getAllRows();
     // increment the header size by 1
     file.seekp(0, std::fstream::beg);
     file.put(++headersize);
@@ -182,9 +187,11 @@ void AbstractDBTable::addField(AbstractDBField* field) {
 
     filetmp.flush();
 
+    rowList.freeze();
+
     // loop through cache rows and add the field
-    for (int i = 0; i < rowList->getSize(); i++) {
-        AbstractDBRow* row = (AbstractDBRow*)rowList->frozen_get(i);
+    for (int i = 0; i < rowList.frozenlen; i++) {
+        AbstractDBRow* row = rowList.frozen[i];
         row->addField(field);
 
         for (int i = 0; i < seeksize; i++)
@@ -206,7 +213,7 @@ void AbstractDBTable::addField(AbstractDBField* field) {
     // add field to the list.
     seeksize += field->getSize();
     seekfirst++;
-    fields->push_back(field); // push field to end of list
+    fields.add(field); // push field to end of list
 }
 
 void AbstractDBTable::flushTable() {
@@ -216,11 +223,10 @@ void AbstractDBTable::flushTable() {
 
 void AbstractDBTable::reinitTable() {
     flushTable();
-    cache->clearCache();
+    cache.clearCache();
 
-    if (fields != NULL) {
-        fields->~AbstractDBLinkedDataset();
-        delete(fields);
+    if (fields.getSize() > 0) {
+        fields.clear();
     }
 }
 

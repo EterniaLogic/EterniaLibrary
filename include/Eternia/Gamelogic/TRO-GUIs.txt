@@ -1,0 +1,45 @@
+TRO GUIs that are specifically related to in-game mechanics:
+
+
+
+
+TRADE :
+----- NET = plans transmitted via data-link hub, players must have a quantum entangled send/receiver -----
+*   NET Blueprint Buy/Sell (Buy plans from another player or sell, unlimited quantity since it's copy/paste)
+*   NET Long-ranged trade, request items/materials via trade ships.
+*   NET Banking, Loans - Allow for virtual credits to be transferred to/from a bank, or accept a loan.
+
+----- MANUFACTURE = Materials in base/station, ect. Use blueprint to make a system.
+*   MANUFACTURE Ships, weapons, bio/tech,
+
+*   direct Player to Player trades
+*   direct Player to NPC/PNPC trades
+
+
+PLAYER:
+* Inventory / Equipment
+* Skills
+* Stats
+* Implants (Skills/passives, i.e: Nano-tech controllers, exosuit, ect.)
+* Clones
+* Nano-tech management
+
+NPCs:
+* Commands (Follow me, ect.)
+* RTS Commands, select multiple, kill, search and destroy, ect. (Also affects players under your command)
+
+VEHICLE MANAGEMENT:
+* Positions, NPC/Player roles
+* Cargo charter (If vehicle has cargo? Some vehicles in the real world you can just throw stuff on the sides... Not sure if this is doable for land/sea)
+* Fuel
+* On-board manufacturing (If there is an on-board factory on a large vessel, Carriers may be able to manufacture fighters, ect.)
+
+
+
+MULTI-SYSTEM GOVERNMENT:
+* Hierarchy changes (# Positions, Dictatorship, military, security, ect.)
+* Laws
+* Internal News
+* Agencies (Police, counter-intel, ect.)
+* Government formation
+* Government/Territory Takeover (If last planet, allow for a government to sieze territory, deletes old one)

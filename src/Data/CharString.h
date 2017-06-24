@@ -43,6 +43,7 @@ class CharString {
 
         char* shiftLeft(const int len);
         LinkedList<CharString>* split(char splitter,char stopper);
+        LinkedList<CharString> split(CharString splitter);
         void replace(char* toFind,char* replaceWith);
 
 
@@ -65,6 +66,7 @@ class CharString {
 
         char* get(); // returns pointer to char variable
         int getInt(); // automatically converts char variable into an integer
+        long getLong(); // automatically converts char variable into an integer
         float getFloat(); // automatically converts char variable into an float
         float getScientific(float val);
 

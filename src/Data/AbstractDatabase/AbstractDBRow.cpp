@@ -5,11 +5,10 @@ AbstractDBRow::AbstractDBRow() {
 }
 
 void AbstractDBRow::addField(AbstractDBField* field) {
-    fieldList->push_back(field);
+    fieldList.add(field);
 }
 
 void AbstractDBRow::clearRow() {
     // loop through and remove fields then dispose of values
-    fieldList->clearAll();
-    valueList->clearAll();
+    fieldList.clear();
 }

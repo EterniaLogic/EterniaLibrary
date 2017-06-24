@@ -10,7 +10,9 @@
 #include <fstream>
 #include <math.h>
 
+#include "../LinkedList.hpp"
 #include "../PriorityQueue.h"
+#include "../CharString.h"
 
 using namespace std;
 
@@ -27,6 +29,14 @@ using namespace std;
 #define DB_DOUBLE_SIZE  8
 #define DB_QUAD_SIZE    16 // 128-bit Mantissa precision 64
 
+// Unix timestamp info (may not be used, but is useful here...)
+#define EPOCH_MIN 60
+#define EPOCH_HR 3600
+#define EPOCH_DAY 86400
+#define EPOCH_WEEK 604800
+#define EPOCH_MONTH 2629743
+#define EPOCH_YEAR 31556926
+
 // number of bits corresponding to type
 // DB_STRING data type is a pointer to a string file
 enum ADBF_TYPE { DB_CHAR, DB_INT, DB_LONG,
@@ -34,6 +44,7 @@ enum ADBF_TYPE { DB_CHAR, DB_INT, DB_LONG,
                  DB_REAL, DB_FLOAT, DB_DOUBLE, DB_QUAD
                };
 enum ADBT_SECURITY {ADBT_NONE, ADBT_AES256};
+
 enum ADB_STOREBASE {                                  // MapSize: Normal = 32, Extended = b*32. Wide = b*1000*32 (b = base number)
     // log-based keys
     ADB_BASE_2, ADB_BASE_2_EXTENDED, ADB_BASE_2_WIDE, // 32, 64,  2048  << DYNAMIC PERFORMANCE AND DATAINDEX SIZES with dynamic ram and disk usage
@@ -59,56 +70,24 @@ enum ADB_STOREBASE {                                  // MapSize: Normal = 32, E
 
 std::ifstream::pos_type filesize(fstream &in);
 
-class BasicFixedPointerArray {
-        void** arr;
-        int length;
-    public:
-        BasicFixedPointerArray(int size);
-        ~BasicFixedPointerArray();
-
-        void* get(int index);
-        bool set(int index, void* value);
-};
-
-class AbstractDBLinkedNode {
-    public:
-        void* data;
-        AbstractDBLinkedNode *prev, *next;
-};
-class AbstractDBLinkedDataset {
-        AbstractDBLinkedNode** frozenList;
-        bool changed;
-        int length;
-    public:
-        AbstractDBLinkedDataset();
-        ~AbstractDBLinkedDataset();
-
-        void push_front(void* data);
-        void push_back(void* data);
-        void* pop_front();
-        void* pop_back();
-
-        void* remove(AbstractDBLinkedNode* node);
-        void clearAll(); // removes all of the elements from the list
-
-        // freezes list for fastest traversal
-        void listFreeze();
-        void clearFreeze();
-
-        bool traverse_find(void* data); // find if data exists
-
-        void* frozen_get(int index);  // get an element
-        void frozen_set(int index, void* value); // set an element
-        void* frozen_remove(int index); // remove an element
-
-        int getSize();
-
-        AbstractDBLinkedNode *head, *tail;
-};
 
 class AbstractDBDate {
-        int day, month, year;
-        int second, minute, hour;
+public:
+        // 2038... cannot wait!
+        uint64_t unixtimestamp; // 32-bit timestamp = time(NULL);
+        
+        int getDayOfYear();
+        int getDayOfMonth();
+        uint8_t getDayOfWeek(); // 0 = sunday, 6 = saturday
+        int getMonth();
+        int getYear();
+        int getSecond();
+        int getWeek(); // Week of month
+        int getMinute();
+        int getHour();
+        
+        void setTimestamp();
+        unsigned int getTimestamp();
 };
 
 
@@ -126,29 +105,21 @@ class AbstractDBField {
         ADBF_TYPE getType();
 };
 
-class AbstractDBFieldValue {
-        char* value; // raw character value list
-        int vLen;
-        AbstractDBField* field;
-    public:
-        AbstractDBFieldValue(AbstractDBField* Field);
-        virtual ~AbstractDBFieldValue();
-
-        int getIntValue();
-        char* getStringValue();
-        AbstractDBDate* getDateValue();
-};
 
 // Abstract DB row that is read from file
 // may be temporarily stored based on frequency of use
 class AbstractDBRow {
-        AbstractDBLinkedDataset* fieldList;
-        AbstractDBLinkedDataset* valueList;
+        LinkedList<AbstractDBField> fieldList;
+        CharString value;
     public:
         AbstractDBRow();
-        AbstractDBLinkedDataset* getFieldValues();
-        void addField(AbstractDBField* field);
+        LinkedList<AbstractDBField> getFieldValues();
+        void addField(AbstractDBField *field);
         void clearRow();
+        
+        int getIntValue();
+        CharString getStringValue();
+        AbstractDBDate getDateValue();
 
         int mapindex;
 };
@@ -158,30 +129,31 @@ class AbstractDBRow {
 class AbstractDBCacheMap {
         ADBT_SECURITY security;
         ADB_STOREBASE base;
-        void** mapArray;
-        AbstractDBLinkedDataset* rowList;
+        LinkedList<char> mapArray;
+        LinkedList<AbstractDBRow> rowList;
     public:
         AbstractDBCacheMap(ADB_STOREBASE Base, ADBT_SECURITY Security);
+        AbstractDBCacheMap();
         ~AbstractDBCacheMap();
 
         void clearCache();
         int getKey(double index);
         AbstractDBRow* getRow(double index);
 
-        AbstractDBLinkedDataset* getAllRows();
+        LinkedList<AbstractDBRow> getAllRows();
 };
 
 class AbstractDBTable {
-        AbstractDBLinkedDataset *fields;
-        char* fileloc;
+        LinkedList<AbstractDBField> fields;
+        CharString fileloc;
         ADBT_SECURITY security;
         ADB_STOREBASE base;
-        AbstractDBCacheMap *cache;
+        AbstractDBCacheMap cache;
         fstream file, filetmp;
         int headersize;
         int seekfirst; // seek to go to get to first row
         int seeksize; // size total of each row
-        void initFile(const char* file);
+        void initFile(CharString file);
         void readHeader();
     public:
         // input file and Row security
@@ -190,12 +162,12 @@ class AbstractDBTable {
         // Base 2 goes from 0 to 4,294,967,296 (DEFAULT)
         // Base 3 goes from 0 to 1,853,020,188,851,841
         // Base 5 goes from 0 to 23,283,064,365,386,962,890,625
-        AbstractDBTable(const char* file, ADB_STOREBASE Base, ADBT_SECURITY Security);
-        AbstractDBTable(const char* file); // no security, Default Base 2
+        AbstractDBTable(CharString file, ADB_STOREBASE Base, ADBT_SECURITY Security);
+        AbstractDBTable(CharString file); // no security, Default Base 2
         ~AbstractDBTable();
 
-        AbstractDBLinkedDataset* getFields(); // returns header that was read from file on init
-        AbstractDBLinkedDataset* getAllRows(); // SLOW: reads all data from DB file
+        LinkedList<AbstractDBField> getFields(); // returns header that was read from file on init
+        LinkedList<AbstractDBRow> getAllRows(); // SLOW: reads all data from DB file
 
         void addField(AbstractDBField* field); // add a field (insert data into file and change all rows)
         void deleteField(AbstractDBField* field); // remove a field
@@ -204,6 +176,16 @@ class AbstractDBTable {
 
         void flushTable(); // writes all data in cache to file
         void reinitTable(); // close resources for reinit
+};
+
+
+class AbstractDB {
+private:
+    LinkedList<AbstractDBTable> tables;
+public:
+    AbstractDB(CharString folder, ADB_STOREBASE Base, ADBT_SECURITY Security);
+    
+    
 };
 
 #endif

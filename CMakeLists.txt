@@ -42,6 +42,7 @@ ENDIF()
 # -fPIC
 # -fstack-protector-all
 set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack-protector -Wstack-protector --param ssp-buffer-size=4" )
+set( CMAKE_C_FLAGS "-fPIC" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2

@@ -37,7 +37,9 @@
 	<iostream>
 	"src/Gamelogic/test/testGameLogic.h"
 
-1475295167 
+1491627974 ogic/test/testGameLogic.h"
+
+1486905344 
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/test.h
 	<ctime>
@@ -60,6 +62,8 @@
 	"Data/Events/test/testEventHandler.hpp"
 	"Serialization/test/testSerializers.hpp"
 
+1491627975 tion/test/testSerializers.hpp"
+
 1449288345 st/testEventHandler.hpp"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/tests.h
@@ -68,7 +72,7 @@
 	"testGravity.h"
 	"testFriction.h"
 
-1475295164 ion.h"
+1491627975 ion.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.h
 	"../Kinematics/VectorBody.h"
@@ -76,7 +80,7 @@
 	"../../../Math/struct/vertex.h"
 	"../../../constants.h"
 
-1475295162 constants.h"
+1491627975 constants.h"
 
 1475996154 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/VectorBody.h
 	"../../../Math/struct/vertex.h"
@@ -103,7 +107,7 @@
 	<cstring>
 	"Data/CharString.h"
 
-1475295164 String.h"
+1491627975 String.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.h
 	"CharString.h"
@@ -116,11 +120,15 @@
 	"../Math/Functions/Basic.h"
 	"SplitResult.h"
 
+1491627974 lt.h"
+
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
 	<cstring>
 	<cstring>
 	"LinkedList.hpp"
 	"CharString.h"
+
+1491627974 g.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.h
 
@@ -148,7 +156,7 @@
 	"Eval.h"
 	"Equation.h"
 
-1475334836 h"
+1491627975 h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.h
 	"Basic.h"
@@ -172,7 +180,7 @@
 	"../Data/CharString.h"
 	"../Data/Stack.h"
 
-1475295164 tack.h"
+1491627975 tack.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.h
 	<iostream>
@@ -184,7 +192,7 @@
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 
-1475295162 inkedList.hpp"
+1491627974 inkedList.hpp"
 
 1476752570 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
 	<iostream>
@@ -196,7 +204,7 @@
 	"../SimpleParser.h"
 	"../SecuredParser.h"
 
-1475295165 dParser.h"
+1491627975 dParser.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.h
 	<iostream>
@@ -208,7 +216,7 @@
 	"../Data/LinkedList.hpp"
 	"../Data/CharString.h"
 
-1475295163 harString.h"
+1491627975 harString.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
 	<iostream>
@@ -232,6 +240,8 @@
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
 	<inttypes.h>
+
+1486905345 h>
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.h
 	<ctime>
@@ -259,13 +269,15 @@
 	"testPType.h"
 	"testAbstractDB.h"
 
-1475295165 st.h"
+1491627974 actDB.h"
+
+1491627974 st.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.h
 	"../Parsing/LoadFile.h"
 	"../Parsing/LoadFile.h"
 
-1475295166 g/LoadFile.h"
+1491627974 g/LoadFile.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileCache.hpp
 	"HashMap.hpp"
@@ -290,6 +302,8 @@
 	"../Data/CharString.h"
 	"../Algorithm/Cryptography/ExHash.h"
 
+1491627974 thm/Cryptography/ExHash.h"
+
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.h
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.h
@@ -310,7 +324,7 @@
 	"../gamelogic.h"
 	"../gamelogic.h"
 
-1475295166 gic.h"
+1476753474 gic.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/gamelogic.h
 	"AI/AI.h"
@@ -340,7 +354,7 @@
 	"Inventory/DynamicEquip.h"
 	"Inventory/ItemBase.h"
 
-1475295164 /ItemBase.h"
+1476753474 /ItemBase.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AI.h
 
@@ -356,7 +370,7 @@
 	"../../Math/struct/vertex.h"
 	"../../Data/LinkedList.hpp"
 
-1475295164 a/LinkedList.hpp"
+1491627975 a/LinkedList.hpp"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIUse.h
 
@@ -373,6 +387,8 @@
 	"../Crafting/CraftingStats.h"
 	"../../Serialization/SpecificSerializer.h"
 
+1476753474 ialization/SpecificSerializer.h"
+
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
 	"../../Data/LinkedList.hpp"
 	"Disease.h"
@@ -388,6 +404,8 @@
 	"Avatar.h"
 	"../../Data/LinkedList.hpp"
 	"../../Data/Protect/PType.hpp"
+
+1476753474 a/Protect/PType.hpp"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.h
 	"Avatar.h"
@@ -410,7 +428,7 @@
 	"../../Data/CharString.h"
 	"DynamicAttribute.h"
 
-1475295162 tribute.h"
+1484593885 tribute.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
 
@@ -434,12 +452,12 @@
 	"P2PLServer.h"
 	"P2PLClient.h"
 
-1475334598 t.h"
+1492694971 t.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PPacket.h
 	"P2PNode.h"
 
-1475295163 "
+1491627974 "
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PNode.h
 
@@ -449,7 +467,7 @@
 	"P2PNode.h"
 	"P2PPacket.h"
 
-1475295163 .h"
+1476753474 .h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PDataServer.h
 	"P2PInc.h"
@@ -546,7 +564,7 @@
 	"CryptoDefiner_Class.hpp"
 	"CryptoDefiner_Class.hpp"
 
-1475295164 iner_Class.hpp"
+1491627974 iner_Class.hpp"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefiner_Class.hpp
 	"Aes256.h"
@@ -612,7 +630,7 @@
 	"../struct/vertex.h"
 	"../../Data/DoubleList.h"
 
-1475295166 a/DoubleList.h"
+1491627975 a/DoubleList.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.h
 
@@ -646,7 +664,7 @@
 	"InsertionSort.h"
 	"InsertionSort.h"
 
-1475295166 Sort.h"
+1491627974 Sort.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.h
 
@@ -658,7 +676,7 @@
 	"../../Data/IntegerList.h"
 	"../../Data/IntegerList.h"
 
-1475295165 a/IntegerList.h"
+1491627974 a/IntegerList.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.cpp
 	"QuickSort.h"
@@ -698,7 +716,7 @@
 	"FileSystem.h"
 	"FileSystem.h"
 
-1475295164 m.h"
+1491627975 m.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
 	"../Data/CharString.h"
@@ -717,6 +735,8 @@
 	"HashMap.hpp"
 	"../Data/CharString.h"
 	"../Math/struct/vertex.h"
+
+1491627974 truct/vertex.h"
 
 1449288345 pp"
 
@@ -742,7 +762,7 @@
 	"LinkedListT.h"
 	"LinkedListT.h"
 
-1475295166 tT.h"
+1491627974 tT.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.cpp
 	"LinkedMap.h"
@@ -756,7 +776,7 @@
 	"PriorityQueue.h"
 	"PriorityQueue.h"
 
-1475295163 ueue.h"
+1491627974 ueue.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.cpp
 	"Queue.h"
@@ -770,7 +790,7 @@
 	"testDataStructures.h"
 	"testDataStructures.h"
 
-1475295164 tructures.h"
+1491627974 tructures.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.cpp
 	"TreeList.h"
@@ -800,7 +820,7 @@
 	"../../Data/LinkedList.hpp"
 	"../../Data/HashMap.hpp"
 
-1475295166 a/HashMap.hpp"
+1491627974 a/HashMap.hpp"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430g2553.h
 	"in430.h"
@@ -834,7 +854,7 @@
 	"SecondTick.h"
 	"SecondTick.h"
 
-1475295162 k.h"
+1491627974 k.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.h
 	<time.h>
@@ -850,13 +870,11 @@
 	"../../constants.h"
 	"../../Design/Colors.h"
 
-1475295166 ign/Colors.h"
+1491627974 ign/Colors.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Design/Colors.h
 	"../Math/struct/vertex.h"
 	"../Math/struct/vertex.h"
-
-1475295166 truct/vertex.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
 	"Composite.h"
@@ -880,7 +898,7 @@
 	"../../Chemistry/Atom.h"
 	"../../../Emulation/SecondTick.h"
 
-1475295166 Emulation/SecondTick.h"
+1491627974 Emulation/SecondTick.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.h
 
@@ -908,7 +926,7 @@
 	"../../../Emulation/SecondTick.h"
 	"ComponentRating.h"
 
-1475295165 Rating.h"
+1491627974 Rating.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
 	"../../Data/CharString.h"
@@ -916,7 +934,7 @@
 	"../../Data/CharString.h"
 	"PowerValue.h"
 
-1475295167 e.h"
+1491627974 e.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
 	"IC.h"
@@ -946,13 +964,13 @@
 	"../../constants.h"
 	"../../constants.h"
 
-1475295165 stants.h"
+1491627975 stants.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.cpp
 	"FluidMechanics.h"
 	"FluidMechanics.h"
 
-1475295165 anics.h"
+1491627974 anics.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.h
 
@@ -960,7 +978,7 @@
 	"CircularMotion.h"
 	"CircularMotion.h"
 
-1475295163 otion.h"
+1491627974 otion.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.h
 
@@ -968,11 +986,13 @@
 	"Collision1D.h"
 	"Collision1D.h"
 
-1475295164 1D.h"
+1491627974 1D.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.h
 	"VectorBody.h"
 	"../../../Math/struct/vertex.h"
+
+1491627974 Math/struct/vertex.h"
 
 1475295162 y.h"
 
@@ -990,7 +1010,7 @@
 	"../../../Math/struct/vertex.h"
 	"../../../Math/Equation.h"
 
-1475295165 Math/Equation.h"
+1491627974 Math/Equation.h"
 
 1475996154 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/VectorBody.cpp
 	"VectorBody.h"
@@ -1004,7 +1024,7 @@
 	"RotationalFuncs.h"
 	"RotationalFuncs.h"
 
-1475295163 lFuncs.h"
+1491627975 lFuncs.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.h
 
@@ -1024,7 +1044,7 @@
 	"ThermalDynamics.h"
 	"ThermalDynamics.h"
 
-1475295163 namics.h"
+1491627975 namics.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.h
 
@@ -1067,7 +1087,7 @@
 	"LanguageController.h"
 	"LanguageController.h"
 
-1475295165 ontroller.h"
+1491627975 ontroller.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
 	"../Data/CharString.h"
@@ -1081,7 +1101,7 @@
 	"../struct/vertex.h"
 	"../struct/vertex.h"
 
-1475295162 /vertex.h"
+1491627975 /vertex.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.cpp
 	"Equation.h"
@@ -1121,7 +1141,7 @@
 	"VectorSpace.h"
 	"VectorSpace.h"
 
-1475295163 ce.h"
+1491627975 ce.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.cpp
 	"vertex.h"
@@ -1135,8 +1155,6 @@
 	"CharString.h"
 	"CharString.h"
 
-1475744229 g.h"
-
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/EfficiencyTimer.cpp
 	"EfficiencyTimer.h"
 	<iostream>
@@ -1148,29 +1166,27 @@
 	"SplitResult.h"
 	"SplitResult.h"
 
-1475295166 lt.h"
-
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/NetworkManager.cpp
 	"NetworkManager.h"
 
-1475295166 nager.h"
+1476753474 nager.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/NetworkManager.h
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PBoundaries.cpp
 	"P2PBoundaries.h"
 
-1475295166 ries.h"
+1476753474 ries.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PCPUServer.cpp
 	"P2PCPUServer.h"
 
-1475295164 ver.h"
+1492693947 ver.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PDataServer.cpp
 	"P2PDataServer.h"
 
-1475295164 rver.h"
+1476753474 rver.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PIRCServer.cpp
 	"P2PIRCServer.h"
@@ -1181,7 +1197,7 @@
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PLServer.cpp
 	"P2PLServer.h"
 
-1475295165 r.h"
+1476753474 r.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PManager.cpp
 	"P2PManager.h"
@@ -1195,7 +1211,7 @@
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PNodeCache.cpp
 	"P2PNodeCache.h"
 
-1475295165 che.h"
+1476753474 che.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PNodeCache.h
 	"P2PNode.h"
@@ -1207,7 +1223,7 @@
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Networking/P2P/P2PStreamServer.cpp
 	"P2PStreamServer.h"
 
-1475295166 Server.h"
+1476753474 Server.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.cpp
 	"HTMLParser.h"
@@ -1223,7 +1239,7 @@
 	"InputRedirection.h"
 	"InputRedirection.h"
 
-1475295166 rection.h"
+1491627975 rection.h"
 
 1476785443 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.cpp
 	"LoadFile.h"
@@ -1233,24 +1249,24 @@
 	"SecuredParser.h"
 	"SecuredParser.h"
 
-1475295165 rser.h"
+1491627975 rser.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.cpp
 	"SimpleParser.h"
 	"SimpleParser.h"
 
-1475295166 ser.h"
+1491627975 ser.h"
 
 1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.cpp
 	"testParsers.h"
 	"testParsers.h"
 
-1475295164 rs.h"
+1491627975 rs.h"
 
 1449288345 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Signal/CLKProvider.cpp
 	"CLKProvider.h"
 
-1475295166 er.h"
+1491627974 er.h"
 
 1449288345 /media/GStuffs/Dev/Cpp/EterniaLib/src/Signal/CLKProvider.h
 	"Signal.h"
@@ -1289,8 +1305,6 @@
 	"Algorithm/Cryptography/CryptoDefines.h"
 	"Data/Events/test/testEventHandler.hpp"
 	"Serialization/test/testSerializers.hpp"
-
-1475295166 tion/test/testSerializers.hpp"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Physics/test/tests.h
 	"testGravity.h"
@@ -1387,8 +1401,6 @@
 1458461202 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
 	<inttypes.h>
 
-1475295163 h>
-
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/test/testDataStructures.h
 	<ctime>
 	"../BitMap.h"
@@ -1420,8 +1432,6 @@
 	"../Data/CharString.h"
 	"../Algorithm/Cryptography/ExHash.h"
 
-1475295165 thm/Cryptography/ExHash.h"
-
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/Heap.h
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/IntegerList.h
@@ -1440,7 +1450,7 @@
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/test/testAbstractDB.h
 	"../AbstractDatabase/AbstractDB.h"
 
-1475295165 ctDatabase/AbstractDB.h"
+1491627974 ctDatabase/AbstractDB.h"
 
 1459342570 /home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
 	<stdio.h>
@@ -1451,7 +1461,7 @@
 	<math.h>
 	"../PriorityQueue.h"
 
-1475295165 tyQueue.h"
+1491627974 tyQueue.h"
 
 1473387791 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.h
 	"../gamelogic.h"
@@ -1493,8 +1503,6 @@
 	"../../Math/struct/vertex.h"
 	"../Crafting/CraftingStats.h"
 	"../../Serialization/SpecificSerializer.h"
-
-1475295162 ialization/SpecificSerializer.h"
 
 1473781157 /home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
 	"../../Data/LinkedList.hpp"
@@ -1648,7 +1656,7 @@
 1473776898 /home/eternialogic/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
 	"../BasicSerializer.h"
 
-1475295163 erializer.h"
+1491627975 erializer.h"
 
 1473772716 /home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
 	<stdlib.h>
@@ -2151,7 +2159,7 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBCacheMap.cpp
 	"AbstractDB.h"
 
-1475295163 B.h"
+1491627974 B.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBField.cpp
 	"AbstractDB.h"
@@ -2171,28 +2179,26 @@
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.cpp
 	"ConcurrentLinkedList.h"
 
-1475295166 tLinkedList.h"
+1476749874 tLinkedList.h"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Data/ConcurrentLinkedList.h
 	"LinkedList.hpp"
 
-1475295167 t.hpp"
+1476749874 t.hpp"
 
 1459342659 source:/home/eternialogic/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
 	"testAbstractDB.h"
 
-1475295165 actDB.h"
-
 1473780295 source:/home/eternialogic/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
 	"BasicSerializer.h"
 
-1475295165 alizer.h"
+1491627975 alizer.h"
 
 1458460063 /home/eternialogic/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.h
 	"../../Data/CharString.h"
 	"../../Data/SpecialTypes.hpp"
 
-1475295162 a/SpecialTypes.hpp"
+1491627974 a/SpecialTypes.hpp"
 
 1458462335 /home/eternialogic/Cpp/EterniaLib/src/Data/SpecialTypes.hpp
 	<inttypes.h>
@@ -2258,7 +2264,7 @@
 	<time.h>
 	"../../../Data/LinkedList.hpp"
 
-1475295162 Data/LinkedList.hpp"
+1491627974 Data/LinkedList.hpp"
 
 1457662179 /home/eternialogic/Cpp/EterniaLib/src/Engineering/Electrical/Signal/Signal.h
 
@@ -2275,7 +2281,7 @@
 1473781864 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.cpp
 	"AvatarHealth.h"
 
-1475295164 lth.h"
+1476753474 lth.h"
 
 1473771741 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.cpp
 	"SkillSet.h"
@@ -2283,7 +2289,7 @@
 1473771831 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.cpp
 	"CraftingStats.h"
 
-1475295166 tats.h"
+1476753474 tats.h"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.cpp
 	"Tax.h"
@@ -2351,7 +2357,7 @@
 1473763141 source:/home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramError.cpp
 	"ProgramError.h"
 
-1475295162 ror.h"
+1491627975 ror.h"
 
 1473763121 source:/home/eternialogic/Cpp/EterniaLib/src/Programming/ProgramVariable.cpp
 	"ProgramVariable.h"
@@ -2436,7 +2442,7 @@
 	"P2PNode.h"
 	"../../../../Data/LinkedList.hpp"
 
-1475295164 ../Data/LinkedList.hpp"
+1476753474 ../Data/LinkedList.hpp"
 
 1457662179 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/PacketServer/P2P/P2PPacket.cpp
 	"P2PPacket.h"
@@ -2459,7 +2465,7 @@
 	<thread>
 	"../../Data/CharString.h"
 
-1475295164 a/CharString.h"
+1491627975 a/CharString.h"
 
 1473767049 source:/home/eternialogic/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
 	"SocketServer.h"
@@ -2486,7 +2492,7 @@
 	<Eternia/Encoding/HtmlEncode.h>
 	<Eternia/WebFramework/Templates/Template.h>
 
-1475295162 ebFramework/Templates/Template.h>
+1491627975 ebFramework/Templates/Template.h>
 
 1473783734 source:/home/eternialogic/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
 	"SpecificSerializer.h"
@@ -3299,7 +3305,7 @@
 1475295165 g:\home\eternialogic\cpp\eternialib\src\programming\visual\vprogramerror.h
 	"../ProgramError.h"
 
-1475295165 mError.h"
+1491627975 mError.h"
 
 1475295164 g:\home\eternialogic\cpp\eternialib\src\programming\programerror.h
 
@@ -3315,12 +3321,12 @@
 1475295165 source:g:\home\eternialogic\cpp\eternialib\src\programming\visual\vprogramerror.cpp
 	"VProgramError.h"
 
-1475295165 rror.h"
+1491627975 rror.h"
 
 1475295166 source:g:\home\eternialogic\cpp\eternialib\src\programming\visual\vprogramvariable.cpp
 	"VProgramVariable.h"
 
-1475295166 ariable.h"
+1491627975 ariable.h"
 
 1475295165 source:g:\home\eternialogic\cpp\eternialib\src\serialization\basicserializer.cpp
 	"BasicSerializer.h"
@@ -3465,7 +3471,7 @@
 1475335426 g:\home\eternialogic\cpp\eternialib\src\gamelogic\buildings\power\powerplant.h
 	"../Building.h"
 
-1475335426 ng.h"
+1476753474 ng.h"
 
 1475334621 g:\home\eternialogic\cpp\eternialib\src\gamelogic\buildings\building.h
 
@@ -3511,6 +3517,8 @@
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
 	"../SpecificSerializer.h"
+
+1491627975 icSerializer.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
 	<stdlib.h>
@@ -3661,6 +3669,8 @@
 	"../Algorithm/Cryptography/md5.h"
 	"../Data/Protect/PType.hpp"
 
+1491627975 rotect/PType.hpp"
+
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarGear.h
 	"../Inventory/BaseInventory.h"
 	"../Inventory/DynamicEquip.h"
@@ -3673,6 +3683,8 @@
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.h
 	"../Math/struct/vertex.h"
 	"../Serialization/SpecificSerializer.h"
+
+1476753474 ization/SpecificSerializer.h"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.h
 	"../../Serialization/SpecificSerializer.h"
@@ -3852,6 +3864,8 @@
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.h
 	"../Protect/PType.hpp"
+
+1491627974 t/PType.hpp"
 
 1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Protect/PType.hpp
 	"../LinkedList.hpp"
@@ -4226,6 +4240,8 @@
 1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\algorithm\compression\basiccompressor.cpp
 	"BasicCompressor.h"
 
+1491627974 ressor.h"
+
 1491627974 h:\dev\cpp\eterniaengine\eternialib\src\algorithm\compression\basiccompressor.h
 	"../../Data/CharString.h"
 	"../../Data/LinkedList.hpp"
@@ -4283,6 +4299,8 @@
 	"../HashMap.hpp"
 	"../CharString.h"
 
+1491627974 ring.h"
+
 1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apipermissionsregistry.h
 	"APIPermission.h"
 	"APIUser.h"
@@ -4294,6 +4312,8 @@
 	"../Serialization/SpecificSerializer.h"
 	"APIPermission.h"
 	"../Data/HashMap.hpp"
+
+1491627974 ashMap.hpp"
 
 1491627974 h:\dev\cpp\eterniaengine\eternialib\src\api\apimod.h
 	"../Data/CharString.h"
@@ -4422,6 +4442,8 @@
 
 1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\data\timeprofiler.cpp
 	"TimeProfiler.h"
+
+1491627974 ler.h"
 
 1491627974 h:\dev\cpp\eterniaengine\eternialib\src\data\timeprofiler.h
 	"HashMap.hpp"
@@ -4616,6 +4638,8 @@
 
 1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\gamelogic\avatar\avatarappearance.cpp
 	"AvatarAppearance.h"
+
+1476753474 earance.h"
 
 1476753474 source:h:\dev\cpp\eterniaengine\eternialib\src\gamelogic\avatar\avatarhealth.cpp
 	"AvatarHealth.h"
@@ -4822,10 +4846,14 @@
 1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
 	"ChannelledServer.h"
 
+1491627975 dServer.h"
+
 1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
 	"SocketServer.h"
 	"PacketChannel.h"
 	"ChannelledClient.h"
+
+1491627975 dClient.h"
 
 1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\socketserver.h
 	<stdio.h>
@@ -4970,17 +4998,25 @@
 1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apieventregistry.cpp
 	"APIEventRegistry.h"
 
+1491627974 egistry.h"
+
 1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apipermission.cpp
 	"APIPermission.h"
 
+1491627974 sion.h"
+
 1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apipermissionsregistry.cpp
 	"APIPermissionsRegistry.h"
+
+1491627974 sionsRegistry.h"
 
 1491627974 source:h:\dev\cpp\eterniaengine\eternialib\src\api\apiuser.cpp
 	"APIUser.h"
 
 1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\packetchannel.cpp
 	"PacketChannel.h"
+
+1491627975 nnel.h"
 
 1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\test\networktest.hpp
 	"../SocketServer.h"
@@ -5004,8 +5040,12 @@
 	<newlib.h>
 	<sys/config.h>
 
+1486905344 g.h>
+
 1486905344 c:\cygwin32\usr\include\newlib.h
 	<_newlib_version.h>
+
+1486905344 ersion.h>
 
 1486905344 c:\cygwin32\usr\include\_newlib_version.h
 
@@ -5013,6 +5053,8 @@
 	<machine/ieeefp.h>
 	<sys/features.h>
 	<cygwin/config.h>
+
+1486905344 nfig.h>
 
 1486905344 c:\cygwin32\usr\include\machine\ieeefp.h
 
@@ -5022,6 +5064,8 @@
 1486905345 c:\cygwin32\usr\include\cygwin\config.h
 	"../tlsoffsets64.h"
 	"../tlsoffsets.h"
+
+1486905345 sets.h"
 
 1486905344 c:\cygwin32\usr\include\sys\cdefs.h
 	<machine/_default_types.h>
@@ -5036,9 +5080,13 @@
 	<features.h>
 	<bits/wordsize.h>
 
+1486905345 size.h>
+
 1486905344 c:\cygwin32\usr\include\features.h
 	<sys/cdefs.h>
 	<sys/features.h>
+
+1486905344 res.h>
 
 1486905345 c:\cygwin32\usr\include\bits\wordsize.h
 
@@ -5060,6 +5108,8 @@
 1486905345 c:\cygwin32\usr\include\machine\_types.h
 	<machine/_default_types.h>
 
+1486905344 default_types.h>
+
 1486905345 c:\cygwin32\usr\include\sys\lock.h
 
 1486905344 c:\cygwin32\usr\include\sys\types.h
@@ -5075,6 +5125,8 @@
 	<sys/_pthreadtypes.h>
 	<machine/types.h>
 
+1486905344 ypes.h>
+
 1486905344 c:\cygwin32\usr\include\sys\_stdint.h
 	<machine/_default_types.h>
 
@@ -5083,9 +5135,13 @@
 	<sys/_types.h>
 	<machine/_endian.h>
 
+1486905344 endian.h>
+
 1486905345 c:\cygwin32\usr\include\machine\_endian.h
 	<_ansi.h>
 	<bits/endian.h>
+
+1486905345 an.h>
 
 1486905345 c:\cygwin32\usr\include\bits\endian.h
 
@@ -5095,14 +5151,20 @@
 	<sys/_timeval.h>
 	<sys/timespec.h>
 
+1486905344 pec.h>
+
 1486905344 c:\cygwin32\usr\include\sys\_sigset.h
 
 1486905344 c:\cygwin32\usr\include\sys\_timeval.h
 	<sys/_types.h>
 
+1486905344 s.h>
+
 1486905344 c:\cygwin32\usr\include\sys\timespec.h
 	<sys/cdefs.h>
 	<sys/_timespec.h>
+
+1486905344 spec.h>
 
 1486905344 c:\cygwin32\usr\include\sys\_timespec.h
 	<sys/_types.h>
@@ -5115,15 +5177,21 @@
 	<sys/_timespec.h>
 	<sys/sysmacros.h>
 
+1486905345 cros.h>
+
 1486905344 c:\cygwin32\usr\include\endian.h
 	<sys/config.h>
 	<machine/endian.h>
 	<bits/byteswap.h>
 
+1486905344 swap.h>
+
 1486905345 c:\cygwin32\usr\include\bits\byteswap.h
 
 1486905345 c:\cygwin32\usr\include\sys\sysmacros.h
 	<sys/types.h>
+
+1486905345 .h>
 
 1486905344 c:\cygwin32\usr\include\sys\custom_file.h
 
@@ -5143,6 +5211,8 @@
 	"_ansi.h"
 	<sys/cdefs.h>
 	<sys/signal.h>
+
+1486905344 l.h>
 
 1486905344 c:\cygwin32\usr\include\sys\signal.h
 	"_ansi.h"
@@ -5172,6 +5242,8 @@
 	<cygwin/stdlib.h>
 	<sys/_locale.h>
 
+1486905344 le.h>
+
 1486905345 c:\cygwin32\usr\include\machine\stdlib.h
 
 1486905344 c:\cygwin32\usr\include\alloca.h
@@ -5182,6 +5254,8 @@
 	<sys/cdefs.h>
 	<cygwin/wait.h>
 
+1486905345 it.h>
+
 1486905345 c:\cygwin32\usr\include\cygwin\wait.h
 
 1486905344 c:\cygwin32\usr\include\malloc.h
@@ -5189,6 +5263,8 @@
 	<sys/reent.h>
 	<stddef.h>
 	<machine/malloc.h>
+
+1486905344 alloc.h>
 
 1486905344 c:\cygwin32\usr\include\machine\malloc.h
 
@@ -5208,12 +5284,16 @@
 	<sys/_intsup.h>
 	<sys/_stdint.h>
 
+1486905344 nt.h>
+
 1486905344 c:\cygwin32\usr\include\math.h
 	<sys/reent.h>
 	<sys/cdefs.h>
 	<machine/ieeefp.h>
 	"_ansi.h"
 	<machine/fastmath.h>
+
+1486905344 astmath.h>
 
 1486905344 c:\cygwin32\usr\include\machine\fastmath.h
 
@@ -5246,6 +5326,8 @@
 1486905344 c:\cygwin32\usr\include\unistd.h
 	<sys/unistd.h>
 
+1486905344 d.h>
+
 1486905344 c:\cygwin32\usr\include\sys\unistd.h
 	<_ansi.h>
 	<sys/cdefs.h>
@@ -5268,12 +5350,16 @@
 	<cygwin/sockios.h>
 	<sys/uio.h>
 
+1486905345 >
+
 1486905344 c:\cygwin32\usr\include\asm\socket.h
 	<cygwin/if.h>
 
 1486905345 c:\cygwin32\usr\include\cygwin\if.h
 	<sys/types.h>
 	<cygwin/socket.h>
+
+1486905345 cket.h>
 
 1486905345 c:\cygwin32\usr\include\cygwin\sockios.h
 
@@ -5292,12 +5378,16 @@
 	<time.h>
 	<machine/_time.h>
 
+1486905344 time.h>
+
 1486905344 c:\cygwin32\usr\include\machine\_time.h
 
 1486905344 c:\cygwin32\usr\include\netdb.h
 	<inttypes.h>
 	<sys/socket.h>
 	<netinet/in.h>
+
+1486905344 n.h>
 
 1486905345 c:\cygwin32\usr\include\netinet\in.h
 	<cygwin/in.h>
@@ -5307,9 +5397,13 @@
 	<asm/byteorder.h>
 	<cygwin/in6.h>
 
+1486905345 6.h>
+
 1486905344 c:\cygwin32\usr\include\asm\byteorder.h
 	<stdint.h>
 	<machine/endian.h>
+
+1486905344 ndian.h>
 
 1486905345 c:\cygwin32\usr\include\cygwin\in6.h
 
@@ -5319,4 +5413,1044 @@
 1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.h
 	"SockClient.h"
 	"PacketChannel.h"
+
+1490815410 source:/media/GStuffs/Dev/Cpp/EterniaLib/main.cpp
+	<time.h>
+	"src/test.h"
+	"src/Math/statistics/statistics.h"
+	"src/Parsing/InputRedirection.h"
+	"src/asm/asm1.h"
+	"version.h"
+	<iostream>
+	"src/Gamelogic/test/testGameLogic.h"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/test.h
+	<ctime>
+	"Algorithm/Cryptography/test/testExHash.hpp"
+	"Engineering/Physics/test/tests.h"
+	"Math/test/testMath.h"
+	"Parsing/test/testParsers.h"
+	"Data/test/testDataStructures.h"
+	"WebFramework/Network/test/NetworkTest.hpp"
+	"Algorithm/Cryptography/CryptoDefines.h"
+	"Data/Events/test/testEventHandler.hpp"
+	"Serialization/test/testSerializers.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/test/testExHash.hpp
+	<iostream>
+	<stdlib.h>
+	"../../../Data/CharString.h"
+	"../ExHash.h"
+
+1495102095 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.h
+	"CharString.h"
+	"SplitResult.h"
+	<iostream>
+	<malloc.h>
+	"../Math/Functions/Basic.h"
+	"SplitResult.h"
+
+1495101468 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
+	<string.h>
+	"LinkedList.hpp"
+	"CharString.h"
+
+1495102061 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
+	<iostream>
+	<malloc.h>
+	<stdlib.h>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.h
+	<malloc.h>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.h
+	"../../Data/CharString.h"
+	"../../Data/SpecialTypes.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SpecialTypes.hpp
+	<inttypes.h>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/tests.h
+	"testGravity.h"
+	"testFriction.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.h
+	"../../../Math/struct/vertex.h"
+	"../../../constants.h"
+
+1476750602 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.h
+	"../../Serialization/SpecificSerializer.h"
+	"../Functions/Basic.h"
+	"../Functions/Trig.h"
+	"../../constants.h"
+	<math.h>
+
+1495188030 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.h
+	<stdlib.h>
+	<malloc.h>
+	"../Data/CharString.h"
+	"../Data/LinkedList.hpp"
+	"../Algorithm/Cryptography/md5.h"
+	"../Data/Protect/PType.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/md5.h
+	<cstring>
+	<iostream>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Protect/PType.hpp
+	"../LinkedList.hpp"
+	"../../Math/Functions/Basic.h"
+	<malloc.h>
+	<random>
+	<stdlib.h>
+	<typeinfo>
+	<float.h>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.h
+	"Basic.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/constants.h
+	<cstring>
+	"Data/CharString.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.h
+	"../Math.h"
+	<iostream>
+	<cstring>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Math.h
+	"Functions/Basic.h"
+	"Functions/Trig.h"
+	"struct/Matrix.h"
+	"struct/VectorSpace.h"
+	"struct/vertex.h"
+	"Eval.h"
+	"Equation.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.h
+	"../../Data/CharString.h"
+	<cstdlib>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.h
+	"Matrix.h"
+	"vertex.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.h
+	"../Data/CharString.h"
+	"../Data/Stack.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.h
+	<iostream>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.h
+	"../Data/CharString.h"
+	"../Data/LinkedList.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.h
+	"../SimpleParser.h"
+	"../SecuredParser.h"
+
+1476887683 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.h
+	<iostream>
+	"LoadFile.h"
+	"../Data/LinkedList.hpp"
+	"../Data/CharString.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
+	<iostream>
+	<fstream>
+	<string>
+	"../Data/CharString.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.h
+	"SimpleParser.h"
+	"../Algorithm/Cryptography/Aes256.h"
+	"../Data/LinkedList.hpp"
+
+1495434406 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
+	<inttypes.h>
+	"../../Data/CharString.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.h
+	<ctime>
+	"../BitMap.h"
+	"../FileCache.hpp"
+	"../HashMap.hpp"
+	"../Heap.h"
+	"../IntegerList.h"
+	"../LinkedList.hpp"
+	"../PriorityQueue.h"
+	"../Queue.h"
+	"../Stack.h"
+	"../TreeList.h"
+	"testPType.h"
+	"testAbstractDB.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.h
+	"../Parsing/LoadFile.h"
+
+1478401659 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileCache.hpp
+	"LinkedList.hpp"
+	"../Data/CharString.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<stdio.h>
+	<unordered_map>
+	<string>
+
+1490719399 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashMap.hpp
+	<iostream>
+	"../Data/CharString.h"
+	"../Algorithm/Cryptography/ExHash.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.h
+
+1477816939 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.h
+	"../Data/CharString.h"
+	<iostream>
+	<fstream>
+	<cstdlib>
+	<stdio.h>
+
+1490721030 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.h
+	"../Protect/PType.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.h
+	"../AbstractDatabase/AbstractDB.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<istream>
+	<fstream>
+	<math.h>
+	"../PriorityQueue.h"
+
+1491070749 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/test/NetworkTest.hpp
+	"../SocketServer.h"
+	"../ChannelledServer.h"
+	<time.h>
+
+1491017487 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.h
+	<stdio.h>
+	<stdlib.h>
+	<string>
+	"TargetConditionals.h"
+	<windows.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netdb.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<thread>
+	"SockClient.h"
+	"../../Data/LinkedList.hpp"
+	"../../Data/CharString.h"
+
+1491070759 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.h
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<string.h>
+	<math.h>
+	<windows.h>
+	<winsock2.h>
+	<ws2tcpip.h>
+	<unistd.h>
+	<sys/types.h>
+	<sys/socket.h>
+	<netdb.h>
+	<netinet/in.h>
+	<thread>
+	"../../Data/CharString.h"
+
+1491003545 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledServer.h
+	"SocketServer.h"
+	"PacketChannel.h"
+	"ChannelledClient.h"
+
+1490834224 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketChannel.h
+	"../../Data/CharString.h"
+	"../../Data/Queue.h"
+	"SockClient.h"
+
+1490834224 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledClient.h
+	"SockClient.h"
+	"PacketChannel.h"
+
+1490815414 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefines.h
+	"CryptoDefiner_Class.hpp"
+
+1490815414 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefiner_Class.hpp
+	"Aes256.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/test/testEventHandler.hpp
+	"../EventHandler.h"
+	<iostream>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.h
+	"../PriorityQueue.h"
+	"EventHandle.h"
+	<iostream>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.h
+	<time.h>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
+	"../SpecificSerializer.h"
+
+1478398320 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/statistics/statistics.h
+	"../struct/vertex.h"
+	"../../Data/DoubleList.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.h
+	<iostream>
+	"LoadFile.h"
+	"../Data/CharString.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.h
+
+1490991447 /media/GStuffs/Dev/Cpp/EterniaLib/version.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.h
+	"../gamelogic.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/gamelogic.h
+	"AI/AI.h"
+	"AI/AIAttack.h"
+	"AI/AICommand.h"
+	"AI/AIDecide.h"
+	"AI/AIMovement.h"
+	"AI/AIUse.h"
+	"Avatar/Avatar.h"
+	"Avatar/AvatarHealth.h"
+	"Avatar/Disease.h"
+	"Inventory/BaseInventory.h"
+	"Inventory/DynamicAttribute.h"
+	"Inventory/DynamicEquip.h"
+	"Inventory/ItemBase.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AI.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIAttack.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AICommand.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIDecide.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIMovement.h
+	"../../Math/struct/vertex.h"
+	"../../Data/LinkedList.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/AI/AIUse.h
+
+1477544406 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.h
+	"AvatarHealth.h"
+	"AvatarGear.h"
+	"AvatarAppearance.h"
+	"SkillSet.h"
+	"../Location.h"
+	"../../Math/struct/vertex.h"
+	"../../Data/Protect/PType.hpp"
+	"../Crafting/CraftingStats.h"
+	"../../Serialization/SpecificSerializer.h"
+
+1484592386 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.h
+	"../../Data/LinkedList.hpp"
+	"../../Data/Protect/PType.hpp"
+	"Disease.h"
+	"Mood.h"
+	"../../Serialization/SpecificSerializer.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.h
+	"../../Data/LinkedList.hpp"
+	"../../Data/Protect/PType.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.h
+	"../../Data/Protect/PType.hpp"
+	"../../Serialization/SpecificSerializer.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarGear.h
+	"../Inventory/BaseInventory.h"
+	"../Inventory/DynamicEquip.h"
+	"../../Serialization/SpecificSerializer.h"
+
+1484590951 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/BaseInventory.h
+	"../../Data/LinkedList.hpp"
+	"ItemBase.h"
+	"../../Serialization/SpecificSerializer.h"
+
+1484590285 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/ItemBase.h
+	"../../Data/LinkedList.hpp"
+	"../../Data/CharString.h"
+	"DynamicAttribute.h"
+
+1484590290 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicAttribute.h
+
+1484590513 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Inventory/DynamicEquip.h
+	"ItemBase.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarAppearance.h
+	"../../Math/struct/vertex.h"
+	"../../Data/Protect/PType.hpp"
+	"../../Data/CharString.h"
+	"../../Serialization/SpecificSerializer.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.h
+	"../../Serialization/SpecificSerializer.h"
+	"../../Data/Protect/PType.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.h
+	"../Math/struct/vertex.h"
+	"../Serialization/SpecificSerializer.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.h
+	"../../Serialization/SpecificSerializer.h"
+	"../../Data/Protect/PType.hpp"
+
+1476895848 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Compression/BasicCompressor.cpp
+	"BasicCompressor.h"
+
+1476896084 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Compression/BasicCompressor.h
+	"../../Data/CharString.h"
+	"../../Data/LinkedList.hpp"
+	"../../Data/IntegerList.h"
+
+1490719613 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.cpp
+	"ExHash.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/md5.cpp
+	"md5.h"
+	<cstdio>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.cpp
+	"InsertionSort.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.cpp
+	"MergeSort.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.h
+	"../../Data/IntegerList.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.cpp
+	"QuickSort.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.h
+	"../../Data/IntegerList.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.cpp
+	"SelectionSort.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.h
+
+1489728596 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/API/APICore.cpp
+	"APICore.h"
+
+1489729287 /media/GStuffs/Dev/Cpp/EterniaLib/src/API/APICore.h
+	"APIEventRegistry.h"
+	"APIPermissionsRegistry.h"
+	"APIMod.h"
+	"../Data/Logger/Logger.h"
+	"../Data/LinkedList.hpp"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIEventRegistry.h
+	"../Data/Events/Event.h"
+	"../Data/Events/EventHandle.h"
+	"../Data/Events/EventHandler.h"
+	"../Data/LinkedList.hpp"
+
+1489729448 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/Event.h
+	"../HashMap.hpp"
+	"../CharString.h"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIPermissionsRegistry.h
+	"APIPermission.h"
+	"APIUser.h"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIPermission.h
+	"../Data/CharString.h"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIUser.h
+	"../Serialization/SpecificSerializer.h"
+	"APIPermission.h"
+	"../Data/HashMap.hpp"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIMod.h
+	"../Data/CharString.h"
+	"APIEventRegistry.h"
+	"APICore.h"
+
+1489729495 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Logger/Logger.h
+	"../CharString.h"
+	"../Queue.h"
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<fstream>
+	<thread>
+	<chrono>
+
+1490815411 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIEventRegistry.cpp
+	"APIEventRegistry.h"
+
+1490815411 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIMod.cpp
+	"APIMod.h"
+
+1490815411 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIPermission.cpp
+	"APIPermission.h"
+
+1490815411 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIPermissionsRegistry.cpp
+	"APIPermissionsRegistry.h"
+
+1490815411 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/API/APIUser.cpp
+	"APIUser.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/asm/asm1.cpp
+	"asm1.h"
+	<iostream>
+	<stdio.h>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/constants.cpp
+	"constants.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBCacheMap.cpp
+	"AbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBField.cpp
+	"AbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBLinkedData.cpp
+	"AbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBRow.cpp
+	"AbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
+	"AbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/BasicFixedPointerArray.cpp
+	"AbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/BitMap.cpp
+	"BitMap.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/DoubleList.cpp
+	"DoubleList.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.cpp
+	"EventHandle.h"
+	<iostream>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.cpp
+	"EventHandler.h"
+	<iostream>
+
+1476887901 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.cpp
+	"FileSystem.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
+	"../Data/CharString.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.cpp
+	"Graph.h"
+	<iostream>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Graph.h
+	"LinkedListT.h"
+	"HashMap.hpp"
+	"../Data/CharString.h"
+	"../Math/struct/vertex.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.cpp
+	"HashTable.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/HashTable.h
+	<iostream>
+	"../Data/CharString.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Heap.cpp
+	"Heap.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/IntegerList.cpp
+	"IntegerList.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedListT.cpp
+	"LinkedListT.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.cpp
+	"LinkedMap.h"
+	"iostream"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/LinkedMap.h
+
+1489729510 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Logger/Logger.cpp
+	"Logger.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.cpp
+	"PriorityQueue.h"
+
+1482849044 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Queue.cpp
+	"Queue.h"
+
+1476829306 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/SplitResult.cpp
+	"SplitResult.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/Stack.cpp
+	"Stack.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
+	"testAbstractDB.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
+	"testDataStructures.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/test/testPType.cpp
+	"testPType.h"
+
+1490719489 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TimeProfiler.cpp
+	"TimeProfiler.h"
+
+1490717884 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TimeProfiler.h
+	"HashMap.hpp"
+	"CharString.h"
+	"CyclicList.hpp"
+	<time.h>
+
+1495430483 /media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CyclicList.hpp
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/TreeList.cpp
+	"TreeList.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.cpp
+	"msp430.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.h
+	<math.h>
+	<ctime>
+	"msp430g2553.h"
+	"msp430_Opcodes.h"
+	"msp430_Registers.h"
+	"msp430_declare_consts.h"
+	"../../Data/LinkedList.hpp"
+	"../../Data/HashMap.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430g2553.h
+	"in430.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/in430.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Opcodes.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Registers.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_declare_consts.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Instructions.cpp
+	"msp430.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Interrupts.cpp
+	"msp430.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_timers.cpp
+	"msp430.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_USCI.cpp
+	"msp430.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.cpp
+	"SecondTick.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.h
+	<time.h>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
+	"Atom.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
+	"../../constants.h"
+	"../../Design/Colors.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Design/Colors.h
+	"../Math/struct/vertex.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
+	"Composite.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.h
+	"Atom.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.cpp
+	"ComponentRating.h"
+	<math.h>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.h
+	"../PowerValue.h"
+	"../../Chemistry/Atom.h"
+	"../../../Emulation/SecondTick.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.cpp
+	"IC555.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.h
+	"../IC.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.h
+	"../Components/Component.h"
+	"../../../Data/LinkedList.hpp"
+	"../Pin.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/Component.h
+	"../PowerValue.h"
+	"../../../Emulation/SecondTick.h"
+	"ComponentRating.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
+	"../../Data/CharString.h"
+	"PowerValue.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
+	"IC.h"
+
+1490815416 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.cpp
+	"RAM.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.h
+	"IC.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.cpp
+	"Pin.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.cpp
+	"PowerValue.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.cpp
+	"CLKProvider.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.h
+	"Signal.h"
+	<time.h>
+	"../../../Data/LinkedList.hpp"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/Signal.h
+
+1490815416 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.cpp
+	"PWM.h"
+
+1490815416 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/PWM.h
+	"Signal.h"
+	<time.h>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Equations.cpp
+	"Equations.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Equations.h
+	"../../constants.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.cpp
+	"FluidMechanics.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/FluidMechanics/FluidMechanics.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.cpp
+	"CircularMotion.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/CircularMotion.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.cpp
+	"Collision1D.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.h
+	"../../../Math/struct/vertex.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.cpp
+	"FreeBody.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.h
+	"../../../constants.h"
+	"../../../Data/LinkedListT.h"
+	"../../../Math/struct/vertex.h"
+	"../../../Math/Equation.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.cpp
+	"RotationalFuncs.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testFriction.cpp
+	"testFriction.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testGravity.cpp
+	"testGravity.h"
+	<iostream>
+	<ctime>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.cpp
+	"ThermalDynamics.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.cpp
+	"Work.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.h
+	"../../Data/LinkedList.hpp"
+	"../../constants.h"
+
+1477544531 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Avatar.cpp
+	"Avatar.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarAppearance.cpp
+	"AvatarAppearance.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/AvatarHealth.cpp
+	"AvatarHealth.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Disease.cpp
+	"Disease.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/Mood.cpp
+	"Mood.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Avatar/SkillSet.cpp
+	"SkillSet.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Building.cpp
+	"Building.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Building.h
+	"../../Serialization/SpecificSerializer.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Power/PowerPlant.cpp
+	"PowerPlant.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Buildings/Power/PowerPlant.h
+	"../Building.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Crafting/CraftingStats.cpp
+	"CraftingStats.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.cpp
+	"Tax.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/Tax.h
+	"TaxRefund.h"
+
+1485271564 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Economics/Tax/TaxRefund.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.cpp
+	"Ocean.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Ocean.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.cpp
+	"Planet.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet.h
+	"../../../Engineering/Chemistry/Composite.h"
+	"../../../Math/struct/vertex.h"
+	"../../../Math/Math.h"
+	"../../../Data/LinkedList.hpp"
+	"../../../Data/Graph.h"
+	"../../../constants.h"
+	"Ocean.h"
+	<random>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet_Atmosphere.cpp
+	"Planet.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Environment/Planet/Planet_Terrain.cpp
+	"Planet.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Location.cpp
+	"Location.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.cpp
+	"Citizen.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/Social/Citizen.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Gamelogic/test/testGameLogic.cpp
+	"testGameLogic.h"
+	<iomanip>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.cpp
+	"LanguageController.h"
+
+1484589253 /media/GStuffs/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
+	"../Data/CharString.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.cpp
+	"Convert.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.h
+	"../struct/vertex.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation.cpp
+	"Equation.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Equation_CALC.cpp
+	"Equation.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Eval.cpp
+	"Eval.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
+	"Basic.h"
+
+1490815414 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/FFT.cpp
+	"FFT.h"
+
+1490815414 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/FFT.h
+	"../Complex.hpp"
+	"../../Data/LinkedList.hpp"
+
+1490815411 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Complex.hpp
+	<math.h>
+
+1478398356 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.cpp
+	"Trig.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Basis.cpp
+	"Basis.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Basis.h
+	"Matrix.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
+	"Matrix.h"
+	<iostream>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.cpp
+	"VectorSpace.h"
+
+1476888976 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/struct/vertex.cpp
+	"vertex.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Math/test/testMath.cpp
+	"testMath.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.cpp
+	"HTMLParser.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLParser.h
+	"HTMLTags.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/HTMLTags.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.cpp
+	"InputRedirection.h"
+
+1476793588 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.cpp
+	"LoadFile.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.cpp
+	"SecuredParser.h"
+
+1476887711 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.cpp
+	"SimpleParser.h"
+
+1476887760 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.cpp
+	"testParsers.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.cpp
+	"EfficiencyTimer.h"
+	<iostream>
+	<ctime>
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.h
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Program.cpp
+	"Program.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Program.h
+	"../Data/CharString.h"
+	"../Data/LinkedList.hpp"
+	"Visual/VProgramNode.h"
+	"Visual/VProgramError.h"
+	"Visual/VProgramVariable.h"
+	"../Math/Math.h"
+	<cstdlib>
+	<math.h>
+
+1476992113 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramNode.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.h
+	"../ProgramError.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/ProgramError.h
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.h
+	"../../Data/CharString.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/ProgramError.cpp
+	"ProgramError.h"
+
+1482848771 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VisualProgram.cpp
+	"../Program.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.cpp
+	"VProgramError.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.cpp
+	"VProgramVariable.h"
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.cpp
+	"BasicSerializer.h"
+
+1476749874 /media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/BasicSerializer.h
+	<stdlib.h>
+	<malloc.h>
+
+1476749874 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTMLServer.cpp
+
+1482841659 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.cpp
+	"Template.h"
+
+1477544596 /media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.h
+	"../../Data/LinkedList.hpp"
+	"../../Data/CharString.h"
+	<Eternia/Encoding/HtmlEncode.h>
+	<Eternia/WebFramework/Templates/Template.h>
+
+1495102233 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Data/CharString.cpp
+	"CharString.h"
+
+1495108883 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
+	"SpecificSerializer.h"
+
+1490834224 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledClient.cpp
+	"ChannelledClient.h"
+
+1491003513 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledServer.cpp
+	"ChannelledServer.h"
+
+1490834224 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketChannel.cpp
+	"PacketChannel.h"
+
+1492727924 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.cpp
+	"SockClient.h"
+
+1492727924 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
+	"SocketServer.h"
 

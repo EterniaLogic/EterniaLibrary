@@ -132,10 +132,24 @@ int main() {
     cout << "char: " << sizeof(char) << endl;
     cout << "double: " << sizeof(double) << endl;*/
 
+    /*CharString c = CharString("abcde|+xabcde|+abcde|+abcde\0",27);
+    LinkedList<CharString> a = c.split(CharString("|+",2));
+    cout << "a: " << a.size() << endl;
+    
+    for(int i=0;i<a.size();i++){
+        CharString c = *a.get(i);
+        cout << '\t' << c.get() << endl;
+    }*/
+
     //testPType();
     //malloc_stats();
     //testSerializers();
     //malloc_stats();
+    
+    testExHash();
+    
+    
+    testHTTP();
 
     cout << "Version: " << FULLVERSION_STRING << endl;
 
