@@ -15,7 +15,7 @@
 namespace Math {
     // flips value if negative to positive
     double abs(double a) {
-        if(a < 0) a=a*-1;
+        if(a < 0) a=a*-1.f;
         return a;
     }
 

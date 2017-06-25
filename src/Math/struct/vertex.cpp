@@ -124,7 +124,7 @@ void VertexObject::tick(double second){
 }
 
 // basic physics momentum
-double VertexObject::gravitate(VertexObject body, double seconds) {
+double VertexObject::gravitate(VertexObject& body, double seconds) {
     //m3 kg-1 s-2
 
     //seconds act more like a scalar.

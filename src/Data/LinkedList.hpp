@@ -68,7 +68,7 @@ public:
     }
 
     // add item
-    void add(T* cc) {
+    T* add(T* cc) {
         //adds a Void* Object. This can be declared when using the list.
         //cout << "add item " << cc << endl;
         LinkedNode<T>* item = new LinkedNode<T>();
@@ -82,6 +82,8 @@ public:
         }
         _size++;
         changed=true;
+        
+        return cc;
     }
 
     // Add non-pointer

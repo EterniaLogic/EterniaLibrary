@@ -842,7 +842,7 @@ namespace physical {
         // proton cyclotron frequency/field
         const double E_M_P = 9.5788309e7*C/kg*(rad/(s*T));
         // gravitational constant
-        const double G = 6.67259e-11*m*m*m/(kg*s*s);
+        const double G = 6.67259e-11*m*m*m/(kg*s*s); // meters^3 / (kilogram * seconds^2)
         // Avogadro's constant
         const double N_A = 6.0221367e23;
         // Boltzmann constant

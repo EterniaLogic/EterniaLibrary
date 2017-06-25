@@ -58,11 +58,13 @@ public:
 
     double dot(vertex v2); // Dot-product
     vertex cross(vertex v2); // Cross-product
+    
     vertex unitVector(); // Directional vector
 
     void rotate(double theta, double phi); // rotate this vector around the origin. (additive)
 
     double angle(vertex  v2); // angle from v2 based on 0 deg (X-direction)
+    double magnitude(); // same as length
     double length(); // returns total distance between point and origin.
     double length2(); // returns total distance between point and origin powered by 2
     double distance(vertex  v2);
@@ -87,13 +89,13 @@ public:
 class VertexObject : public vertex{
 public:
     vertex velocity, acceleration;
-    double dimension, mass;
+    double dimension, mass, radius; // mass/radius for physics of basic center of mass
 
     VertexObject(double x,double y,double z);
     VertexObject();
     virtual ~VertexObject();
 
-    double gravitate(VertexObject body,  double time);
+    double gravitate(VertexObject& body,  double time);
     double getGravity(VertexObject body, double height);
     
     // Place this object at a stable orbit around another.

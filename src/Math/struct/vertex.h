@@ -95,7 +95,7 @@ public:
     VertexObject();
     virtual ~VertexObject();
 
-    double gravitate(VertexObject body,  double time);
+    double gravitate(VertexObject& body,  double time);
     double getGravity(VertexObject body, double height);
     
     // Place this object at a stable orbit around another.

@@ -10,7 +10,7 @@ Makefile
 .gitignore
 
 src/Gamelogic/
-AI/
+#AI/
 
 
 data.dat
