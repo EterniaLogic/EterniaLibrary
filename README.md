@@ -26,6 +26,13 @@ Documentation and Examples
 Sub-sections
 ------------
 
+**Artificial Intelligence** [/AI/]:
+ - FSM AI - Finite State machine AIs follow basic brain mechanics.
+ - Advanced Thinker - Comparable to FSM AIs, yet also allow for multiple inputs and outputs, the 'epoch' of self-learning AIs whether it be Sin functions all the way to image and video processing. Not necessarily more powerful than FSM AIs, only useful for specific applications.
+ 
+ - Self-learning controller (Research specific) - sets goals and modifies the AI to meet the demands, over time will become what the user demands from a single entity.
+ - Genetic controller (Application specific) - sets a user-specific goal and 'kills' off a set number of simulated AIs until the goal is met, randomly creating a set and cross-breeds the best solutions of AI cores.
+
 **Application Program Interface** [/API/]:
 
 - Core API system to allow multiple languages to cross-talk with shared memory
