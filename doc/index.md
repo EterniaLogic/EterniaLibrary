@@ -4,6 +4,7 @@
 #### C++ ###
 `C++ Is the original language for this library. This is also the fastest method for applying the library in your projects. Below are some examples for using the functionality of this library:`
 
+* Artificial Intelligence
 * Complete Web Framework (Templates, Scripting, HTML/RESTFul Server)
 * Encryption
 * CharString (Complete "String" replacement)
