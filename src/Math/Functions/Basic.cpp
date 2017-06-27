@@ -48,7 +48,7 @@ namespace Math {
         for(int i=0; i<abs(b); i++) {
             out *= x;
         }
-        // reverse if b is negative.
+        // reciprocate if b is negative.
         if(b < 0) out = 1/out;
 
         return out;

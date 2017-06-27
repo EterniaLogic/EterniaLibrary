@@ -6,7 +6,7 @@
 //-----------------------------------------------------------------------------
 
 #include "vertex.h"
-using namespace Math; // ../Math.h
+//using namespace Math; // ../Math.h
 
 
 #define VECOP_IMP(op) vertex vertex::operator op(vertex b) { \
@@ -116,84 +116,6 @@ VECOP_IMP_COMP(!=)
 
 
 
-// tick values
-void VertexObject::tick(double second){
-    // second is just a scalar
-    velocity += (acceleration*second);
-    *this += velocity*second;
-}
-
-// basic physics momentum
-double VertexObject::gravitate(VertexObject& body, double seconds) {
-    //m3 kg-1 s-2
-
-    //seconds act more like a scalar.
-
-    //cout << "G=" << constants::G << " thisMass=" << this->mass << " EarthMass=" << body->mass << " distance="<<this->distance(body) << endl;
-    double r = this->distance(body);
-    double gForce = physical::constant::G * (this->mass * body.mass) / (r*r);
-    double N = (gForce*1e-6)*seconds;
-    double accel = N / this->mass; // acceleration to body
-
-    //get directional VectorBody towards the body
-    //get the difference between this and the body. (disposition)
-    VertexObject disposition = body;
-    disposition -= *this;
-    vertex directionVector = disposition.unitVector();
-    //cout << accel << " " << N << endl;
-
-    *this -= directionVector*accel;
-    //cout << directionVector -> x << endl;
-
-
-    return accel*seconds;
-}
-
-double VertexObject::getGravity(VertexObject body, double distance){
-    return physical::constant::G * (this->mass * body.mass) / (distance*distance);
-}
-
-// Place this object at a stable orbit around another.
-// inclination above 90* will be counter-clockwise
-// inclination is relative to the position of this object. 
-// If the object is directly above a planet, the inclination is 90 "for that planet"
-void VertexObject::setStableOrbit(VertexObject body, double eccentricity, bool CCW_orbit){
-    // v = sqrt(gm/h)   <-- assumes eccentricity = 0
-    double distance = this->distance(body);
-    double apoapsis = distance/Math::sqrt(1-eccentricity*eccentricity); // b = a*sqrt(1-e^2)
-    double mu = getGravity(body, distance) * body.mass;
-    
-    
-    // eccentricity equation
-    // mu = GM
-    // a = distance of apoapsis
-    double v = Math::sqrt(mu*(2/distance - 1/apoapsis));
-    
-    // determine the vector for the orbit velocity
-    vertex localvector = *this - body;
-    vertex up(0,1,0); // upward vector, rotated based on local position.
-    if(!CCW_orbit) up *= -1;
-    
-    // rotate up vector
-    up.rotate(getTheta(), getPhi());
-    
-    // do final cross & unit value * velocity
-    this->velocity = localvector.cross(up).unitVector() * v;
-}
-
-void VertexObject::thrust(VertexObject thrust) {
-    *this += thrust;
-}
-
-void VertexObject::simSecond() {
-    //simulates exactly (1) second. mostly for debugging.
-    *this += acceleration / physical::unit::kilometer;
-    //cout << "Rect Velocity: (" << ax << "," << ay << "," << az << ") POS: " << x << "," << y << "," << z << endl;
-}
-
-
-
-
 // theta, phi in radians
 // rotate the vertex around the origin.
 void vertex::rotate(double theta_, double phi_){
@@ -220,7 +142,7 @@ double vertex::getTheta(){
 
 // get the Phi based on origin
 double vertex::getPhi(){
-    return Math::atan(Math::sqrt(x*x+y*y)/z);;
+    return Math::atan(sqrt(x*x+y*y)/z);;
 }
 
 
@@ -249,7 +171,7 @@ double vertex::magnitude() {
 
 // get the magnitude of the vertex
 double vertex::length() {
-    return Math::sqrt(x*x + y*y + z*z);
+    return sqrt(x*x + y*y + z*z);
 }
 
 // get the unit vertex (len = 1)
@@ -294,6 +216,102 @@ bool vertex::triangleInequality(vertex v) {
 bool vertex::pythagroreanInequality(vertex v) {
     return Math::pow((*this+v).length(),2) <= ((length(),2) + pow(v.length(),2));
 }
+
+const char* vertex::toString() {
+    string str = "";
+    char *buf;
+    size_t sz = snprintf(NULL,0,"(%.3e, %.3e, %.3e)", x, y, z);
+    buf = (char*)malloc(sz+1);
+    snprintf(buf, sz+1, "(%.3e, %.3e, %.3e)", x, y, z);
+    return (const char*)buf;
+}
+
+
+
+
+
+
+
+// tick values
+void VertexObject::tick(double second){
+    // second is just a scalar
+    velocity += (acceleration*second);
+    *this += velocity*second;
+}
+
+// basic physics momentum
+double VertexObject::gravitate(VertexObject& body, double seconds) {
+    //m3 kg-1 s-2
+
+    //seconds act more like a scalar.
+
+//    cout << "G=" << physical::constants::G << " thisMass=" << this->mass << " EarthMass=" << body.mass << " distance="<<this->distance(body) << endl;
+    double r = this->distance(body);
+    double gForce = getGravity(body, r) * seconds;
+    //double N = gForce * mass;
+
+    //get directional VectorBody towards the body
+    //get the difference between this and the body. (disposition)
+    VertexObject disposition = body;
+    disposition -= *this;
+    vertex directionVector = disposition.unitVector();
+    //cout << gForce << " " << N << endl;
+
+    /**this -= directionVector*gForce;
+    cout << directionVector.x << endl;*/
+
+    this->velocity += directionVector*gForce;
+    //cout << "v = " << velocity.x << ", " << velocity.y << ", " << velocity.z << " " << directionVector.x << "," << directionVector.y << "," << directionVector.z << endl;
+
+    return gForce*seconds;
+}
+
+double VertexObject::getGravity(VertexObject body, double distance){
+    return physical::constant::G * (body.mass) / (distance*distance);
+}
+
+// Place this object at a stable orbit around another.
+// inclination above 90* will be counter-clockwise
+// inclination is relative to the position of this object. 
+// If the object is directly above a planet, the inclination is 90 "for that planet"
+void VertexObject::setStableOrbit(VertexObject body, double eccentricity, bool CCW_orbit){
+    // v = sqrt(gm/h)   <-- assumes eccentricity = 0
+    double distance = this->distance(body);
+    double apoapsis = distance/Math::sqrt(1-eccentricity*eccentricity); // b = a*sqrt(1-e^2)
+    double mu = getGravity(body, distance) * body.mass;
+    
+    
+    // eccentricity equation
+    // mu = GM
+    // a = distance of apoapsis
+    double v = sqrt((double)(mu*(2/distance - 1/apoapsis)));
+    
+    // determine the vector for the orbit velocity
+    vertex localvector = *this - body;
+    vertex up(0,1,0); // upward vector, rotated based on local position.
+    if(!CCW_orbit) up *= -1;
+    
+    // rotate up vector
+    up.rotate(getTheta(), getPhi());
+    
+    // do final cross & unit value * velocity
+    this->velocity = localvector.cross(up).unitVector() * v;
+}
+
+void VertexObject::thrust(VertexObject thrust) {
+    *this += thrust;
+}
+
+void VertexObject::simSecond() {
+    //simulates exactly (1) second. mostly for debugging.
+    *this += acceleration / physical::unit::kilometer;
+    //cout << "Rect Velocity: (" << ax << "," << ay << "," << az << ") POS: " << x << "," << y << "," << z << endl;
+}
+
+
+
+
+
 
 
 

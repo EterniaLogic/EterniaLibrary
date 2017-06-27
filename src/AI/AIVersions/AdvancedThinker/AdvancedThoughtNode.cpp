@@ -1,7 +1,7 @@
 #include "AdvancedThoughtNode.h"
 
 AdvancedThoughtNode::AdvancedThoughtNode(){
-    next = 0x0;
+
     operation = ATN_NONE;
 }
 

@@ -146,10 +146,9 @@ int main() {
     //testSerializers();
     //malloc_stats();
     
-    testExHash();
-    
-    
-    testHTTP();
+    //testExHash();
+    //testHTTP();
+    testOrbit();
 
     cout << "Version: " << FULLVERSION_STRING << endl;
 

@@ -12,7 +12,7 @@ enum ATNOP{ATN_NONE, ATN_ADD, ATN_DIVIDE, ATN_SUB, ATN_SIN, ATN_MUL, ATN_MOD};
 class AdvancedThoughtNode : public GenericAINode{
 
 public:
-    AdvancedThoughtNode *next;
+    LinkedList<AdvancedThoughtNode> connectedNodes;
     ATNOP operation;
     
     AdvancedThoughtNode();

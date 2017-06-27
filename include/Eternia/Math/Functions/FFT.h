@@ -7,4 +7,7 @@
 
 // CooleyTukey FFT (in-place, divide-and-conquer)
 void fft(LinkedList<Complex> &complexlist);
+
+
+void ifft(LinkedList<Complex> &complexlist);
 #endif

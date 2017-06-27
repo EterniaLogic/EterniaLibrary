@@ -78,7 +78,8 @@ public:
     bool triangleInequality(vertex V); // length(u+v) <= length(u) + length(v)
     bool pythagroreanInequality(vertex v); // length(u+v)^2 = length(u)^2 + length(v)^2
 
-
+    const char* toString();
+    
     //VectorSpace* addVectorSpace( b); // gets a vertex space from addition
     //VectorSpace* scaleVectorSpace(double scalar); // gets a vertex space from scaling
     //VectorSpace* getVectorSpace(); // gets a vertex space directly

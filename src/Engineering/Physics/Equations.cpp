@@ -18,7 +18,7 @@ double PhysicsEquations::getAirPressure(double gravity, double radius, double at
 }
 
 // Gravity of an object with respect to another object (m/s**2)
-double PhysicsEquations::getGravity(double mass1, double mass2, double radius) {
+double PhysicsEquations::getGravity(double bigMass, double radius) {
     // Gravity = G * ((m1 * m2)/(r^2))
-    return physical::constant::G * (mass1 * mass2) / (radius*radius);
+    return physical::constant::G * (bigMass/* * mass2*/) / (radius*radius);
 }

@@ -23,15 +23,36 @@ void Orbit::circularize(){
     double Mu = physical::constant::G * orbitBody->mass;
     double distance = object->distance(*orbitBody);
     
-    setVelocity(sqrt(Mu / distance));
+    
+    // set y vector to 1
+    double v = sqrt(Mu / distance);
+    vertex CCWdir = vertex(0,1,0);
+    
+    
+    //cout << "V = " << v << endl;
+    //cout << "CCWdir = " << CCWdir.x << ", "<< CCWdir.y << ", "<< CCWdir.z << endl;
+    
+    vertex vdir = CCWdir*v;
+    //cout << "newV = " << vdir.x << ", "<< vdir.y << ", "<< vdir.z << endl;
+    vdir *= getLocalPosition().unitVector().cross(vertex(0,0,1)); // get velo dir relative to location.
+    //cout << "newV2 = " << vdir.x << ", "<< vdir.y << ", "<< vdir.z << endl;
+    
+    // set direction to be counter-clockwise. (normalized CCW direction X z)
+    
+    
+    object->velocity=vdir;
 }
 
 
 double Orbit::getGravity(){
 
     double distance = object->distance(*orbitBody);
-    double g = PhysicsEquations::getGravity(object->mass, orbitBody->mass, distance);
+    double g = physical::constant::G * (/*object->mass * */orbitBody->mass) / (distance*distance);
     return g;
+}
+
+double Orbit::getForce(){
+    return getGravity() * object->mass;
 }
 
 // Apoapsis relative to distance to center of orbitBody.
@@ -67,16 +88,37 @@ double Orbit::getEccentricity(){
     double Mu = physical::constant::G * orbitBody->mass;
     //  e=(|v|^2*r)/Mu - ((r dot v)v)/Mu - r/|r|
     
-    vertex r = getLocalPosition();
+//    double r = object->distance(*orbitBody);
+    vertex r = getLocalPosition(); 
     vertex v = object->velocity - orbitBody->velocity;
     
-    vertex e1 = (r * pow(getVelocity(),2));
+    /*vertex e1 = (r * pow(Math::abs(getVelocity()),2));
     vertex e2 = (v * r.dot(v)) / Mu;
-    vertex e3 = r / r.magnitude();
+    vertex e3 = r / Math::abs(r); // r.magnitude();
     
-    vertex e = e1 - e2 - e3;
+    vertex e = e1 - e2 - e3;*/
     
-    return e.magnitude();
+    vertex h = r.cross(v);
+    //cout << "h = "<< r.toString() << "x" << v.toString() << h.toString() << endl;
+    
+    /*vertex e1 = (r * v.cross(h))/Mu;
+    vertex e2 = r/r.magnitude();
+    
+    cout << "e1 = " << e1.toString() << endl;
+    cout << "e2 = " << e2.toString() << endl;
+    
+    vertex e = e1 - e2;
+    
+    cout << "e = " << e.toString() << endl;*/
+    
+    double E = -1/(2*getSemiMajorAxis());
+    //cout << "E = " << E << endl;
+    double T = 1+2*E*pow(h.magnitude(),2)/Mu;
+    T = T<0 ? 0 : T; // if T<0, then 0
+    double e = sqrt(T);
+    //cout << "e = sqrt(" << (1+2*E*pow(h.magnitude(),2)/Mu) << ")" << endl;
+    
+    return e; //e.magnitude();
 }
 
 
@@ -84,8 +126,8 @@ double Orbit::getInclination(){
     // 1/tan(h.z/|h|)
     //      https://en.wikipedia.org/wiki/Orbital_inclination#Calculation
     
-    vertex loc = *object - *orbitBody;
-    double t = 1.0f/tan(loc.z/loc.magnitude());
+    vertex loc = getLocalPosition();
+    double t = atan(loc.z/loc.magnitude());
     t *= 180;
     t /= Math::PI; // convert to degrees
     return t;
@@ -94,7 +136,7 @@ double Orbit::getInclination(){
 double Orbit::getOrbitAngle(){
     // somewhat simple spherical coordinates.
     vertex loc = *object - *orbitBody;
-    double t = 1.0f/tan(loc.y/loc.x);
+    double t = atan(loc.y/loc.x);
     t *= 180;
     t /= Math::PI; // convert to degrees
     return t;
@@ -135,7 +177,7 @@ double Orbit::getSemiMajorAxis(){
     vertex r = getLocalPosition();
     vertex v = object->velocity - orbitBody->velocity;
     
-    double E = pow(getVelocity(),2)/2.f - Mu/r.x - Mu/r.y - Mu/r.z; // energy
+    double E = pow(getVelocity(),2)/2.f - Mu/r.magnitude(); // energy
     return -Mu/(2*E); // Semi-Major Axis
 }
 
@@ -226,17 +268,27 @@ void Orbit::setEscapeVelocity(){
     setVelocity(sqrt((2.0f * physical::constant::G * orbitBody->mass * orbitBody->mass)/orbitBody->distance(*object)));
 }
 
+void Orbit::printOut(){
+    //cout << "==============================================================" << endl;
+    /*cout << "[Test Orbit]: Location (km) = " << (*object/1000.f).toString() << "   [" << getOrbitAngle() << ", " << getInclination() << "]" << endl;
+    cout << "[Test Orbit]: Velocity = " << object->velocity.toString() << " UV=" << object->velocity.unitVector().toString() << endl;
+    cout << "[Test Orbit]: Gravity = " << getGravity() << " m/s^2" << endl;*/
+    cout << "[Test Orbit]: Distance = " << object->distance(*orbitBody)/1000.f << " km" << endl;
+    /*cout << "[Test Orbit]: SMA = " << getSemiMajorAxis()/1000.f << " km" << endl;
+    cout << "[Test Orbit]: Periapsis = " << getPeriapsis() << endl;
+    cout << "[Test Orbit]: Apoapsis = " << getApoapsis() << endl;
+    cout << "[Test Orbit]: Eccentricity = " << getEccentricity() << endl;
+    //cout << endl;*/
+}
 
 
 
 // for testing purposes unless using a single-body orbit system.
 void Orbit::simulate(double seconds){
     object->gravitate(*orbitBody, seconds);
-    orbitBody->gravitate(*object, seconds);
-    
-    // calculate positions
     object->tick(seconds);
-    orbitBody->tick(seconds);
+    orbitBody->gravitate(*object, seconds); // set velocity
+    orbitBody->tick(seconds); // set position
 }
 
 

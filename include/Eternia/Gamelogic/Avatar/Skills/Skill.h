@@ -10,7 +10,7 @@
 // This is the base for all Skill types.
 
 // Base classes for skills
-enum SKCLASS {SK_UNKNOWN, SK_MAGIC, SK_SWORD, SK_RIFLE, SK_MELEE, SK_MACHINE, SK_NANO};
+enum SKCLASS {SK_UNKNOWN, SK_MAGIC, SK_SWORD, SK_RANGED, SK_MELEE, SK_MACHINE, SK_VEHICLE, SK_NANO};
 
 class Skill : public SpecificSerializer {
 private:

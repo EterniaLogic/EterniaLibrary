@@ -34,6 +34,7 @@ public:
     
     // calculated values
     double getGravity();
+    double getForce(); // Force in newtons between the two masses.
     double getApoapsis(); // Apoapsis relative to distance to center of orbitBody.
     double getPeriapsis(); // Periapsis relative to distance to center of orbitBody.
     double getVelocity(); // get relative orbital velocity.
@@ -62,6 +63,9 @@ public:
     void setInclination(double inc); // move object to inclination
     void setOrbitAngle(double angle); // move object to angle in orbit
     void setEscapeVelocity();
+    
+    
+    void printOut();
     
     // for testing purposes unless using a single-body orbit system.
     void simulate(double seconds);
