@@ -1,5 +1,5 @@
-#ifndef WindowsDriver_h
-#define WindowsDriver_h
+#ifndef LinuxDriver_h
+#define LinuxDriver_h
 
 #if defined(__linux__) || defined(__unix__)
 #include <linux/init.h>

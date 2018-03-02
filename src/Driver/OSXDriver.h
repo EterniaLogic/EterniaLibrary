@@ -1,6 +1,5 @@
-#ifndef WindowsDriver_h
-#define WindowsDriver_h
+#ifndef OSXDriver_h
+#define OSXDriver_h
 
-// the Windows driver enables this system to run under windows
 
 #endif

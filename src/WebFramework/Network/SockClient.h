@@ -7,8 +7,7 @@
 #include <string.h>
 #include <math.h>
 
-// && !defined(__CYGWIN__)
-#if defined(WIN32) || defined(_WIN32) || defined(_WIN64) || defined(__WIN32)
+#if defined(WIN32) || defined(_WIN32) || defined(_WIN64) || defined(__WIN32) && !defined(__CYGWIN__)
 #define WINDOWSXX
 #endif
 
@@ -26,7 +25,6 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>
-
 #elif defined(__APPLE__)
 
 #endif
@@ -40,7 +38,7 @@ using namespace std;
 
 enum SocketClientType {SC_TCP, SC_UDP, SC_ICMP};
 
-#ifdef LINUXXX
+#if __linux__ || __unix__
 struct sockaddr_un {
     sa_family_t sun_family;               /* AF_UNIX */
     char        sun_path[108];            /* pathname */

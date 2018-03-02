@@ -1,5 +1,6 @@
 #include "PacketChannel.h"
 
+
 PacketChannel::PacketChannel(SockClient* cli, unsigned short id){
     this->id = id;
     this->client = cli;
@@ -27,6 +28,7 @@ CharString PacketChannel::recvPacket(){
     return *(CharString*)packetQ.pop();
 }
 
+
 // wait until there is new data.
 CharString PacketChannel::recvWaitPacket(){
     while(packetQ.empty()){
@@ -35,5 +37,3 @@ CharString PacketChannel::recvWaitPacket(){
 
     return *(CharString*)packetQ.pop();
 }
-
-
