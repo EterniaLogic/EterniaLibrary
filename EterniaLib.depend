@@ -4842,6 +4842,13 @@
 
 1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\serialization\specificserializer.cpp
 	"SpecificSerializer.h"
+<<<<<<< HEAD
+
+1490817390 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
+	"ChannelledServer.h"
+
+1490817589 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
+=======
 
 1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.cpp
 	"ChannelledServer.h"
@@ -4849,6 +4856,7 @@
 1491627975 dServer.h"
 
 1491627975 h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledserver.h
+>>>>>>> 6288cac4975f9ca9f2ceb5d02aeec79e5d4c3ba1
 	"SocketServer.h"
 	"PacketChannel.h"
 	"ChannelledClient.h"
@@ -5406,6 +5414,9 @@
 1486905344 ndian.h>
 
 1486905345 c:\cygwin32\usr\include\cygwin\in6.h
+<<<<<<< HEAD
+
+=======
 
 1491627975 source:h:\dev\cpp\eterniaengine\eternialib\src\webframework\network\channelledclient.cpp
 	"ChannelledClient.h"
@@ -6454,3 +6465,4 @@
 1492727924 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
 	"SocketServer.h"
 
+>>>>>>> 6288cac4975f9ca9f2ceb5d02aeec79e5d4c3ba1
