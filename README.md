@@ -8,11 +8,11 @@
 
 **Original Creation Date**: January 13, 2012
 
-**Copyright**: Copyright 2016 Brent Clancy, GPL-3+
+**Copyright**: Copyright 2016 Brent Clancy, GPL-3+, mixed license for included files with license in header
 
 **License**: GNU v3
 
-**Language**: C/C++, ASM
+**Language**: C/C++, ASM, Javascript
 
 	This library is used for server/client back-end systems and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.a, *.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
 
@@ -45,7 +45,7 @@ Sub-sections
 - HTTP Server with multi-threading (C++2011)
 - Template Engine for use with HTML template files
 - RESTFul HTTP Server
-- JSON
+- JSON marshal parsing (0% done)
 
 **Mathematics** [/Math/]:
 
