@@ -67,6 +67,8 @@ public:
 #endif
     bool alive;
     std::thread clientthread;
+    
+    bool testAlive(); // test if the connection is alive...
 
     // handler for receiving data
     void (*_clientHandler)(CharString dataIn, CharString &dataOut, SockClient* client, void* d); 

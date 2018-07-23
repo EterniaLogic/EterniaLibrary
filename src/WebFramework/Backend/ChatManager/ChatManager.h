@@ -2,6 +2,7 @@
 #define CHATMANAGER_H_
 
 #include "../../../Math/struct/vertex.h"
+#include "../Backend.h"
 
 // The ChatServer can run either in-line with another TCP server or standalone.
 // One of the major goals for the chat server is to allow chat messages to be distributed
@@ -10,7 +11,7 @@
 // P2P features might be useful here.
 
 
-class ChatManager {
+class ChatManager : public Backend {
 public:
     ChatManager();
 

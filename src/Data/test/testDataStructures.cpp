@@ -23,6 +23,8 @@ class TestStructure {
 
 void testFileCache() {
     cout << "FileCache => ";
+    
+    /*
     long sampleSize = 1024;
     long errors = 0;
     char c[9];
@@ -57,6 +59,7 @@ void testFileCache() {
         cout << "FAIL errors:" << errors << endl;
     }
     //fileCache.clean();
+    */
 }
 
 void testBitMap() {

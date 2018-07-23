@@ -9,7 +9,7 @@ void _csClientHandler(CharString dataIn, CharString &dataOut, SockClient* client
         unsigned short channel = ((unsigned short*)val)[0];
         dataIn.shiftLeft(2);
         
-        cout << "Received packet for channel: " << channel << " data: '"<< dataIn.get() << "'" << endl;
+        cout << " Received packet for channel: " << channel << " data: '"<< dataIn.get() << "'" << endl;
         
         
         if(serv->handler != 0x0){
@@ -25,7 +25,7 @@ void _csClientHandler(CharString dataIn, CharString &dataOut, SockClient* client
     }
 }
 
-ChannelledServer::ChannelledServer(SocketServerType serverType, char* addr, int port, short buffer, void (*handler)(ChannelledClient*, PacketChannel* channel)){
+ChannelledServer::ChannelledServer(SocketServerType serverType, CharString addr, int port, short buffer, void (*handler)(ChannelledClient*, PacketChannel* channel)){
     // place a client handler
     this->bufferSize = buffer;
     this->port = port;

@@ -516,10 +516,18 @@ void CharString::set(char* stringg, int length) {
 // takes input and changes current
 void CharString::set(char* stringg) {
     // set the data into place.
-    int len=0;
-    //while(stringg[len] > 0) len++;
-    
-    this->set(stringg,SIZEOFA(stringg));
+    len=0;
+    if(stringg == 0x0) {
+        this->set((char*)malloc(1),0);
+    }else{
+        //while(stringg[len] > 0) len++;
+        
+        // assume that \0 or NULL is the end of said string.
+        std::string str(stringg);
+        
+        //this->set(stringg,SIZEOFA(stringg));
+        this->set(stringg,str.length());
+    }
 }
 
 void CharString::setPtr(char* data, int length) { // sets a raw pointer, no changes or copying.
@@ -543,6 +551,8 @@ CharString CharString::ConvertFromInt(int integer) {
 CharString CharString::ConvertFromLong(long integer) {
     const int ASCIIOffset = 48; // offset on the ASCII chart
 
+    if(integer == 0) return CharString("0\0",1);
+    
     // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
     int len = 0;
     bool neg = false;
@@ -560,8 +570,8 @@ CharString CharString::ConvertFromLong(long integer) {
 
     
 
-    const int tlen = len + (neg ? 1 : 0)+1; // constify length, if negative, add digit.
-    char* out = new char[tlen];
+    const int tlen = len + (neg ? 1 : 0); // constify length, if negative, add digit.
+    char* out = new char[tlen+1];
 
     int t=0; // temp var used to store modulus digit addifier
     int kk = neg ? 1 : 0;
@@ -577,12 +587,14 @@ CharString CharString::ConvertFromLong(long integer) {
         t *= 10; // shift all digits in t left 1
         t += digit; // enter digit into very last slot of t
         //cout << "out["<<kk<<"] =" <<  (char)(digit+ASCIIOffset) << endl;
-        out[kk-1] = (char)(digit+ASCIIOffset);
+        if(kk >= 0) out[kk] = (char)(digit+ASCIIOffset);
         kk++; // increment out digit
     }
 
-    out[tlen-1]='\0';
-    return CharString(out,tlen);
+    out[tlen]='\0';
+    CharString cx = CharString(out,tlen);
+    cx.fixZeroing(' ');
+    return cx;
 }
 
 
@@ -841,6 +853,14 @@ void CharString::removeChar(int index){
         CharString b = substr(index+1, len-(index+1));
         a.concata(b);
         set(a);
+    }
+}
+
+void CharString::fixZeroing(char replacement){
+    if(!isValidCharString()) return;
+    for(int i=0;i<len;i++){
+        if(stringx[i] == '\0')
+            stringx[i] = replacement;
     }
 }
 

@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 1.05b
+**Version**: 1.39.9
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -93,7 +93,7 @@ Sub-sections
 **Building**:
 
 Linux:
-- no direct dependencies besides "build-essential"
+- no direct dependencies besides "build-essential" and pthreads
 - cmake .
 - make -j 4
 

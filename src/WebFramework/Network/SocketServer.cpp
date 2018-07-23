@@ -11,7 +11,7 @@ SocketServer::SocketServer(){
 }
 
 SocketServer::SocketServer(SocketServerType serverType,
-                           char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
+                           CharString address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
                            int port,
                            int bufferSize, // Packet buffer size
                            bool IPv6,
@@ -121,6 +121,7 @@ void ClientHandler_(SockClient *tclient, SocketServer *server) {
 void SocketServer::tcpConnectionAcceptor() {
     SockClient *c;
     bool gotClient=true;
+    cout << "starting TCP listener" << endl;
 #ifdef LINUXXX
     listen(socketfd,5); // Listen for clients
 #elif defined(WINDOWSXX)
@@ -133,7 +134,7 @@ void SocketServer::tcpConnectionAcceptor() {
     }
 #endif
 
-    cout << "Waiting for connections on " << address << ":" <<port << endl;
+    cout << "Waiting for connections on " << address.get() << ":" <<port << endl;
     while(this->dolisten) {
         // Construct the client
         c = new SockClient();
@@ -241,7 +242,7 @@ void SocketServer::start() {
     // Resolve the server address and port
     //CharString portx = CharString::ConvertFromInt(port);
     char portx[5];
-    iResult = getaddrinfo(address, portx, &hints, &result);
+    iResult = getaddrinfo(address.get(), portx, &hints, &result);
     if ( iResult != 0 ) {
         printf("getaddrinfo failed with error: %d\n", iResult);
         WSACleanup();
@@ -317,5 +318,5 @@ void SocketServer::Close() {
 
     }
     clients.clear();
-    std::this_thread::sleep_for(std::chrono::milliseconds(20));
+    std::this_thread::sleep_for(std::chrono::milliseconds(30));
 }

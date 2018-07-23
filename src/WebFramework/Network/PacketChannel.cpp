@@ -25,9 +25,14 @@ void PacketChannel::sendPacket(CharString data){
 
 // returns null if no new data.
 CharString PacketChannel::recvPacket(){
-    return *(CharString*)packetQ.pop();
+    CharString* pack = (CharString*)packetQ.pop();
+    if(pack == 0x0) return CharString("\0",0);
+    return *pack;
 }
 
+unsigned short PacketChannel::getID(){
+    return id;
+}
 
 // wait until there is new data.
 CharString PacketChannel::recvWaitPacket(){

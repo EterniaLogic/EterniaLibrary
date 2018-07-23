@@ -27,6 +27,6 @@ void testASM() {
     for (i = 0; i < 500000; ++i) {
         cpuid(i, &eax, &ebx, &ecx, &edx);
         if(eax > 0 || ebx > 0 || ecx > 0 || edx > 0)
-            printf("[TestASM] eax=%i: %#010x %#010x %#010x %#010x\n", i, eax, ebx, ecx, edx);
+            printf("[TestASM] eax=%i: %#010x %#010x %#010x %#010x\n", i, eax, ebx, edx, ecx);
     }
 }

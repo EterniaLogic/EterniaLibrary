@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+		<script async defer type="text/javascript" src="js/main.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
+	</head>
+	<body onload="if(typeof onLoad == 'function') onLoad();">
+		<!--<table class="topbar" border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td id="toplogo"></td>
+				<td class="topspace">&nbsp;</td>
+				<td class="topsearch"></td>
+				<td id="topmenu"></td>
+			</tr>
+		</table>-->
+		
+		<div id="btnbar">
+            <input type=button id="v0" onclick="changeView(0);" value="Galaxy" />
+            <input type=button id="v1" onclick="changeView(1);" value="Solar System" />
+            <input type=button id="v2" onclick="changeView(2);" value="Planet" />
+            <input type=button id="v3" onclick="changeView(3);" value="Country" />
+            <input type=button id="v4" onclick="changeView(4);" value="State" disabled=true />
+		</div>
+		<div id="content">
+				 <div id="map"></div>
+				<!--<div id="earth_div"></div>-->
+		</div>
+		<!--<table id="sidebar" cellspacing=0>
+			<tr>
+				<td class="sidebar-headers" align=center valign=top>
+					<div id="sb0" onclick="sidebarItem(0,this);" class="sidebar-selected"><img src="img/feeds.png" height=40 width=35 /><center>Feeds</center></div>
+					<div id="sb1" onclick="sidebarItem(1,this);" class="sidebar-item"><img src="img/recent.png" height=40 width=35 /><center>Recent</center></div>
+					<div id="sb2" onclick="sidebarItem(2,this);" class="sidebar-item"><img src="img/account.png" height=40 width=35 /><center>Account</center></div>
+					
+					<br /><hr />
+					<div id="sb3" onclick="sidebarItem(3,this);" class="sidebar-item"><img src="img/feedback.png" height=40 width=35 /><center>Feedback</center></div>
+					<div id="sb4" onclick="sidebarItem(4,this);" class="sidebar-item"><img src="img/feedback.png" height=40 width=35 /><center>About</center></div>
+				</td>
+				<td id="sidebar-content" valign=top></td>
+			</tr>
+		</table>-->
+	</body>
+</html>

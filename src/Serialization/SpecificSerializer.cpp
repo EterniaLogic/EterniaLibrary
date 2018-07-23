@@ -72,7 +72,7 @@ int GetSizeOfType(PointerType* pt) {
         case SSE_CharArray:
             // include 1 int for reconstructor to make this item dynamically
             return sizeof(int) + sizeof((char*)pt->ptr) / sizeof((char) *((char*)pt->ptr));
-            break;
+            break; 
         case SSE_double:
             return sizeof(double);
             break;

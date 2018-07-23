@@ -40,14 +40,9 @@ ENDIF()
 
 # Extra options to GCC when compiling to help enforce memory security
 # -fPIC
-<<<<<<< HEAD
-#set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -m64 -fPIC -w -DDEBUG -s -pie -fPIE -fstack-protector-all -Wstack-protector --param ssp-buffer-size=4" )
-set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -m64 -w -DDEBUG -fstack-protector-all -Wstack-protector --param ssp-buffer-size=4" )
-=======
 # -fstack-protector-all
 set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack-protector -Wstack-protector --param ssp-buffer-size=4" )
 set( CMAKE_C_FLAGS "-fPIC" )
->>>>>>> 6288cac4975f9ca9f2ceb5d02aeec79e5d4c3ba1
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
@@ -67,30 +62,20 @@ set(${PROJECT_NAME}_DEFINITIONS
     CACHE INTERNAL "${PROJECT_NAME}: Definitions" FORCE)
 
 
-<<<<<<< HEAD
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-
-#INSTALL(TARGETS EterniaLibrary 
-#	DESTINATION "/usr/lib")
-#INSTALL(TARGETS Eternia
-=======
 # STATIC SHARED
 ADD_LIBRARY("Eternia" STATIC ${CC_src2})
-ADD_EXECUTABLE("EterniaLibrary" ${CC_src2})
+ADD_EXECUTABLE("EterniaExec" ${CC_src2})
 
 TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
-TARGET_LINK_LIBRARIES(EterniaLibrary ${CMAKE_THREAD_LIBS_INIT})
->>>>>>> 6288cac4975f9ca9f2ceb5d02aeec79e5d4c3ba1
+TARGET_LINK_LIBRARIES(EterniaExec ${CMAKE_THREAD_LIBS_INIT})
 
+add_custom_command(TARGET Eternia
+                PRE_BUILD
+                WORKING_DIRECTORY ./
+                COMMAND bash version.sh
+                COMMENT "version up"
+)
 
-# STATIC SHARED
-#ADD_LIBRARY("Eternia" STATIC ${CC_src2})
-ADD_EXECUTABLE("EterniaLib" ${CC_src2})
-
-#TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
-TARGET_LINK_LIBRARIES(EterniaLib ${CMAKE_THREAD_LIBS_INIT})
 
 #add_custom_command(TARGET Eternia
 #                PRE_BUILD

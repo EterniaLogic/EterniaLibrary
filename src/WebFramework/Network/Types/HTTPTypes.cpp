@@ -92,6 +92,7 @@ namespace HTTP{
         {"jpg", "image/jpeg"},
         {"jpeg", "image/jpeg"},
         {"html", "text/html"},
+        {"htm", "text/html"},
         {"xml", "text/xml"},
         {"js", "application/javascript"}
     };

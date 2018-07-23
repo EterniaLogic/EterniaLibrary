@@ -12,34 +12,106 @@ void chandler(CharString dataIn, CharString &dataOut, SockClient* client, void* 
     if(serv->_httphandle != 0x0)
         serv->_httphandle(serv, req, resp);
     
-    cout << "Response: " << resp.toString().get() << endl;
+    //cout << "file? " << resp.filestream.get() << " " << resp.streamlen << endl;
+    //cout << "body? " << resp.body.getSize() << endl;
+    
+    //cout << "Response: " << resp.toString(serv->bufferSize).get() << "\n\n" << endl;
+    cout << "Response code "<< resp.responsecode <<" size " << resp.toString(serv->bufferSize).getSize() << endl;
+    //client->sendc(resp.toString(serv->bufferSize));
+    
+    
     if(resp.filestream.getSize() > 0){
         // chunk out data
-        client->sendc(resp.toString());
+        
+        //resp.header.add(CharString("Transfer-Encoding",17),new CharString("identity",8));
+        //resp.header.add(CharString("Content-Encoding",17),new CharString("identity",8));
+        
+        char* buffer = (char*)malloc(serv->bufferSize);
+        client->sendc(resp.toString(serv->bufferSize));
         ifstream file;
         file.open(resp.filestream.get(), ifstream::binary);
         
         if(resp.streamlen > serv->bufferSize){
-            char* buffer = (char*)malloc(serv->bufferSize);
-            int esize = ceil(((float)resp.streamlen) / ((float)serv->bufferSize));
-            int tsize = resp.streamlen-esize*serv->bufferSize; // last value size
+            /*HTTPResponse respT;
+            respT.responsecode = 206;
+            CharString* bytesc = new CharString("bytes=0-4048",12);
+            CharString* blength = new CharString("4048",4);
+            respT.header.add(CharString("Content-Type",12), new CharString("image/jpeg",10));
+            respT.header.add(CharString("Content-Range",13), bytesc);
+            respT.header.add(CharString("Content-Length",14), blength);
+            //respT.header.add(CharString("Accept-Ranges",13), new CharString("bytes",5));
+            //respT.streamlen = resp.streamlen;
             
-            for(int i=0;i<esize;i++){
-                //cout << "ha " << i << endl;
-                if(i >= esize-1){
+            bytesc->set("bytes 0-4048/*",14);
+            int bytesperpacket = serv->bufferSize - respT.toString(serv->bufferSize).getSize();
+            //cout << "TEST PACKET: " << respT.toString(serv->bufferSize).get() << endl;
+            //cout << "available content length = " << bytesperpacket << endl;*/
+            
+            
+            int count=0;
+            
+            /*int size=serv->bufferSize;
+            for(uint64_t count=0;count<resp.streamlen;){
+                size = serv->bufferSize;
+                if(size+count > resp.streamlen)
+                    size = resp.streamlen - count;
+                CharString t = CharString("bytes ",6);
+                t.concata(CharString::ConvertFromLong(count));
+                t.concata(CharString("-",1));
+                t.concata(CharString::ConvertFromLong(count+size));
+                t.concata(CharString("/",1));
+                t.concata(CharString::ConvertFromLong(size));
+                bytesc->set(t);
+                CharString s = respT.toString(serv->bufferSize);
+                //client->sendc(s);
+                
+                size = size-s.getSize();
+                
+                memset(buffer,0,size);
+                file.read(buffer,size);
+                respT.body = CharString(buffer,size);
+                blength->set(CharString::ConvertFromLong(size));
+                
+                // redo size
+                t = CharString("bytes ",6);
+                t.concata(CharString::ConvertFromLong(count+1));
+                t.concata(CharString("-",1));
+                t.concata(CharString::ConvertFromLong(count+1+size));
+                t.concata(CharString("/",1));
+                t.concata(CharString::ConvertFromLong(size));
+                bytesc->set(t);
+                blength->set(CharString::ConvertFromLong(size));
+                
+                s = respT.toString(serv->bufferSize);
+                client->sendc(s);
+                count += size+1;
+                std::this_thread::sleep_for(std::chrono::microseconds(250));
+            }*/
+            
+            
+            int size = serv->bufferSize-18;
+            for(int count=0;count<resp.streamlen;){
+                size = serv->bufferSize-18;
+                if(count+size >= resp.streamlen){
                     cout << "end" << endl;
-                    memset(buffer,0,serv->bufferSize);
-                    file.read(buffer,tsize);
-                    client->sendc(CharString(buffer, tsize));
-                    cout << "end2" << endl;
-                }else{
-                    file.read(buffer,serv->bufferSize);
-                    client->sendc(CharString(buffer, serv->bufferSize));
+                    size = resp.streamlen-count;
                 }
+                memset(buffer,0,serv->bufferSize);
+                file.read(buffer,size);
+                
+                cout << size << "  Left: "<< resp.streamlen-count-size << endl;
+                
+                CharString data = CharString(buffer,size);
+                
+                client->sendc(data);
+                
+                count += size;
+                std::this_thread::sleep_for(std::chrono::microseconds(3000));
             }
+            client->sendc(CharString("\r\n",2));
         }
     }else
-        dataOut = resp.toString();
+        dataOut = resp.toString(serv->bufferSize);
 }
 
 bool fileExists(CharString loc){
@@ -87,6 +159,7 @@ CharString retrieveFile(CharString loc){
 // handle HTTP requests. Overrideable for RESTFul. (RESTFul server also implements basic wwwroot, but has overriding)
 // Basic HTTP GET-only requests
 void httphandler(HTTPServer* serv, HTTPRequest input, HTTPResponse &output){
+    cout << "standard http handler" << endl;
     if(input.method == HGET){
         output.responsecode = 200; // OK (default, unless no file retrieved)
         
@@ -98,11 +171,11 @@ void httphandler(HTTPServer* serv, HTTPRequest input, HTTPResponse &output){
 }
 
 
-HTTPServer::HTTPServer(char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
+HTTPServer::HTTPServer(CharString address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
                    int port,
                    bool IPv6,
                    CharString wwwroot){
-    this->bufferSize = 32768; // large buffer for sending images, ect.
+    this->bufferSize = 164000; // large buffer for sending images, ect.
     this->stype = SS_TCP;
     this->_clientHandler = chandler; // save the external function for handling the client
     this->_httphandle = httphandler;
@@ -115,7 +188,7 @@ HTTPServer::HTTPServer(char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eter
 }
 
 HTTPServer::HTTPServer(){
-    this->bufferSize = 32768; // large buffer for sending images, ect.
+    this->bufferSize = 164000; // large buffer for sending images, ect.
     this->stype = SS_TCP;
     this->_clientHandler = chandler; // save the external function for handling the client
     this->_httphandle = httphandler;
@@ -127,38 +200,44 @@ HTTPServer::~HTTPServer(){}
 
 void HTTPServer::handleGET(HTTPRequest input, HTTPResponse &output){
     // retrieve file!
-    if(input.URI == CharString("/",1)){
+    CharString uri = input.URI;
+    cout << "handleGET => " << uri.get() << endl;
+    
+    if(input.URI.Compare(CharString("/",1))){
         CharString l = output.wwwroot.clone();
         l.concata("/index.html", 11);
+        //cout << "rfile" << endl;
         
         if(fileExists(l)){
+            cout << "fopen " << l.get() << endl;
             output.body = retrieveFile(l);
-            output.header.add(CharString("Content-Type",12), new CharString("text/html",9));
+            //cout << "fbody: " << output.body.get() << endl;
+            CharString* s = new CharString("text/html",9);
+            //cout << "fheaderset" << endl;
+            output.header.add(CharString("Content-Type",12), s);
+            //cout << "fheader" << endl;
+            output.responsecode = 200;
         }else{
             output.responsecode = 404;
         }
     }else{
-        input.URI.concatb(output.wwwroot);
+        //input.URI.concatb(output.wwwroot);
+        CharString s = CharString("\0",0);
+        s.concata(output.wwwroot);
+        s.concata(uri);
         
-        if(fileExists(input.URI)){
-            // auto-figure out MIME type...
-            CharString* MIME = new CharString("application/octet-stream",24);
+        if(fileExists(s)){
+            //cout << "URIx: " << output.wwwroot.get() << " " << s.get() << endl;
             
-            for(const auto& n : HTTP::content_type) {
-                if(input.URI.endsWith(CharString(n.first.c_str(), n.first.length()))){
-                    *MIME = n.second;
-                    break;
-                }
-            }
-        
-            output.header.add(CharString("Content-Type",12), MIME);
+           
             
-            if(fileSize(input.URI) > bufferSize){
-                output.filestream = input.URI;
+            if(fileSize(s) > bufferSize){
+                output.filestream = s;
                 
                 //output.filestream = getFileStream(input.URI);
-                output.streamlen = fileSize(input.URI);
-            }else output.body = retrieveFile(input.URI); // set file data.
+                output.streamlen = fileSize(s);
+            }else output.body = retrieveFile(s); // set file data.
+            output.responsecode = 200;
         }else{
             output.responsecode = 404;
         }

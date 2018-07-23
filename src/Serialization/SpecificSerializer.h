@@ -59,7 +59,7 @@ public:
     // Full serialization
     CharString serialize(); // converts this class into a byte stream, enforce the use of size.
     void deserialize(CharString data); // converts a byte array into this class
-    uint32_t checksum(); // XOR. do a checksum, useful for detecting if the class needs to be updated from a server
+    uint32_t checksum(); // XOR. do a parity checksum, useful for detecting if the class needs to be updated from a server
     bool checksumCompare(uint32_t other_checksum); // compares the checksum with the current class
     int getClassSize(); // get the size of all of the combined addresses with data types
 };

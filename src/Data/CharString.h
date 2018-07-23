@@ -84,6 +84,7 @@ class CharString {
         bool endsWith(CharString ender);
         
         void removeChar(int index); // remove character at index.
+        void fixZeroing(char replacement); // removes \0 NULL characters within the size
 
         static CharString ConvertFromInt(int l);
         static CharString ConvertFromLong(long l);

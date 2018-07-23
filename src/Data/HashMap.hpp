@@ -23,37 +23,42 @@ class HTEntry {
         void setID() {
             // does a HashMap<T> implementation.
 
-            if(size < sizeof(uint8_t))
-                id = (uint8_t)exSumMap<uint8_t>(&k,(uint8_t)size,3);
-            else if(size < sizeof(uint16_t))
-                id = (uint16_t)exSumMap<uint16_t>(&k,(uint16_t)size,3);
-            else if(size < sizeof(uint32_t))
-                id = (uint32_t)exSumMap<uint32_t>(&k,(uint32_t)size,3);
-            else if(size < sizeof(uint64_t)) // That is a BIG list.. better have exabytes of memory...
-                id = (uint64_t)exSumMap<uint64_t>(&k,(uint64_t)size,3);
+            //cout << calcmaxsize(sizeof(uint8_t)) << endl;
+            if(size < calcmaxsize(sizeof(uint8_t)))
+                this->id = (uint8_t)exSumMap<uint8_t>(&k,(uint8_t)size,3);
+            else if(size < calcmaxsize(sizeof(uint16_t)))
+                this->id = (uint16_t)exSumMap<uint16_t>(&k,(uint16_t)size,3);
+            else if(size < calcmaxsize(sizeof(uint32_t)))
+                this->id = (uint32_t)exSumMap<uint32_t>(&k,(uint32_t)size,3);
+            else if(size < calcmaxsize(sizeof(uint64_t))) // That is a BIG list.. better have exabytes of memory...
+                this->id = (uint64_t)exSumMap<uint64_t>(&k,(uint64_t)size,3);
                 
-            //cout << "DBG HMID ("<< k.get() <<") " << id << " " << size << endl;
+            //cout << "DBG HMID ("<< k.get() <<") " << this->id << " " <<(uint64_t) size << endl;
             //cout.flush();
+        }
+        
+        uint64_t calcmaxsize(int wid){
+            return (2<<((8*wid)-1));
         }
 
 
     public:
         HTEntry() {
-            this->id=-1;
+            this->id=0;
             this->k=0x0;
             this->d=0x0;
-            this->size=40000;
+            this->size=65535;
             this->next=0x0;
         }
         HTEntry(CharString key, T* data,int size) {
-            this->id=-1;
+            this->id=0;
             this->k=key;
             this->d=data;
             this->next=0x0;
             this->size=size;
             setID();
         }
-        HTEntry(long id_, T* data,int size) {
+        HTEntry(uint64_t id_, T* data,int size) {
             this->id=id_;
             this->k=0x0;
             this->d=data;
@@ -108,7 +113,7 @@ class HTEntry {
             return 0x0;
         } // get using EXACT key values.
 
-        T* get(long key) {
+        T* get(uint64_t key) {
             // add to the endx.
             HTEntry<T>* current = this;
             // loop through the list.
@@ -151,7 +156,7 @@ class HTEntry {
         void reset() {
             next = 0x0;
             k = 0x0;
-            id = -1;
+            id = 0;
             d = 0x0;
         }
 
@@ -164,10 +169,11 @@ class HashMap {
     public:
         HashMap() {
             // initialize hashmap
-            entries=new HTEntry<T>[40000];
-            size=40000;
+            entries=new HTEntry<T>[65535];
+            size=65535;
+            keys.clear();
             for(int i=0; i<size; i++) {
-                entries[i].id=-1;
+                entries[i].id=0;
                 entries[i].next=0x0;
                 entries[i].k=0x0;
                 entries[i].d=0x0;
@@ -180,8 +186,9 @@ class HashMap {
             // initialize hashmap with pre-defined value
             entries = new HTEntry<T>[(const int)max];
             size=max;
+            keys.clear();
             for(int i=0; i<size; i++) {
-                entries[i].id=-1;
+                entries[i].id=0;
                 entries[i].next=0x0;
                 entries[i].k=0x0;
                 entries[i].d=0x0;
@@ -191,25 +198,31 @@ class HashMap {
 
 
         void add(CharString key, T* data) {
+            //cout << "add(key,*data)" << endl;
             HTEntry<T>* entry = new HTEntry<T>(key,data,size);
             entry->size = size;
 
             int idx = entry->getID();
 
             // prevent repetitive code
+            //cout << "addLoc("<< idx <<",*entry)" << endl;
             this->addLoc(idx,entry);
+            //cout << "keys add key" << endl;
             keys.add(new CharString(key.get(), key.getSize()));
+            //cout << "add(key,*data) END" << endl;
         };
 
-        void addL(unsigned long key, T* data) {
+        void addL(uint64_t key, T* data) {
             HTEntry<T>* entry = new HTEntry<T>(key,data,size);
             entry->size = size;
             this->addLoc(key,entry);
         };
 
-        void addLoc(unsigned long key, HTEntry<T>* entry) {
+        void addLoc(uint64_t key, HTEntry<T>* entry) {
+            //cout << "addLoc("<< key <<","<< entry <<")" << endl;
             entry->size = size; // make sure size is correct
-            if(entries[key].id > -1) {
+            //cout << "entry size = " << entry->size << endl;
+            if(entries[key].id > 0) {
                 // add to endx of linked list.
                 entries[key].add(entry);
                 collides++;
@@ -226,7 +239,7 @@ class HashMap {
             HTEntry<T>* S = new HTEntry<T>(key, 0x0, size);
             // does this key exist?
 
-            if(entries[S->getID()].id > -1) {
+            if(entries[S->getID()].id > 0) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
                 if(entries[S->getID()].getKey().Compare(key)) {
@@ -239,26 +252,26 @@ class HashMap {
             return 0x0;
         }; // get value
 
-        T* getL(unsigned long key) {
+        T* getL(uint64_t key) {
             // basic key to search with.
 
-            if(entries[key].id > -1) {
+            if(entries[key].id > 0) {
                 return entries[key].getData();
             }
             return 0x0;
         }; // get value
         
-        LinkedList<T> getKeys(){
-            return keys;
+        LinkedList<T>* getKeys(){
+            return &keys;
         }
 
 
         // get the direct item
-        T* getDirect(long id) {
+        T* getDirect(uint64_t id) {
             // does this key exist?
 
 
-            if(entries[id].getID() > -1) {
+            if(entries[id].getID() > 0) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
                 return entries[id].getData();
@@ -294,7 +307,7 @@ class HashMap {
         };
 
         // remove item based on key.
-        T* removeL(unsigned long ID) {
+        T* removeL(uint64_t ID) {
             // basic key to search with.
             // does this key exist?
             if(entries[ID].getID() > -1) {

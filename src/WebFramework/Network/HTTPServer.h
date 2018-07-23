@@ -18,7 +18,7 @@ public:
     CharString wwwroot; // site folder "./www", "/var/www"
     
     HTTPServer();
-    HTTPServer(char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
+    HTTPServer(CharString address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
                    int port,
                    bool ipv6,
                    CharString wwwroot);

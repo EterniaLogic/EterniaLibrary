@@ -21,7 +21,7 @@ public:
     
     // get fully constructed HTTP response.
     //  does not include streams (yet)
-    CharString toString(); 
+    CharString toString(int maxpacketsize); 
     
     // Response headers from server (underscores before)
 /*    CharString _HTTPver, _Pragma, _Date, _Server, _SetCookie, _CacheControl, _X_UA_Compatible, _Vary, _KeepAlive, _TransferEncoding, 

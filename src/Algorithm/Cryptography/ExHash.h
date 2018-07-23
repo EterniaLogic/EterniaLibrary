@@ -2,7 +2,6 @@
 #define ExHash_h_
 
 #include "../../Data/CharString.h"
-#include "../../Data/SpecialTypes.hpp"
 #include <random>
 
 // algorithm block solely for HashMaps

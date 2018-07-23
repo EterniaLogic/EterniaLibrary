@@ -10,7 +10,7 @@
 #include <ctime>
 
 #include "../BitMap.h"
-#include "../FileCache.hpp" // hpp files are just header files + source files combined. Useful for template classes.
+#include "../FileCache.h" // hpp files are just header files + source files combined. Useful for template classes.
 #include "../HashMap.hpp"
 #include "../Heap.h"
 #include "../IntegerList.h"
@@ -23,7 +23,7 @@
 #include "testAbstractDB.h"
 
 
-
+void testFileCache();
 void testDataStructures();
 
 #endif

@@ -60,23 +60,51 @@ void SockClient::connectc(SocketClientType ctype,
 #endif
 }
 
+bool SockClient::testAlive(){
+    
+    int error = 0;
+    socklen_t len = sizeof (error);
+    int retval = getsockopt (sockd, SOL_SOCKET, SO_ERROR, &error, &len);
+    
+    if (retval != 0) {
+        /* there was a problem getting the error code */
+        fprintf(stderr, "error getting socket error code: %s\n", strerror(retval));
+        return false;
+    }
+
+    if (error != 0) {
+        /* socket has a non zero error status */
+        fprintf(stderr, "socket error: %s\n", strerror(error));
+        return false;
+    }
+    
+    return true;
+}
+
 // if connected, send out a message
 // returns false if not connected or error.
 // auto-splits large messages larger than buffer.
 bool SockClient::sendc(CharString message){
     CharString emsg = (encryptor!=0x0) ? encryptor(message) : message; // Apply encryption
+    //cout << "Send message" << endl;
+    //cout << emsg.get() << endl;
 
     int flags=0;
     int looptimes=1;
     int i, msgret, msgsize;
     char* msg;
 #ifdef LINUXXX
+     if(!testAlive()){
+         // uh...
+     }
     
-    
-    if(ctype == SC_TCP)
+    if(ctype == SC_TCP){
         //msgret = send(sockd, message.get(), message.getSize(), flags);
-        msgret = write(sockd, emsg.get(), emsg.getSize());
-    else{
+        //cout << "Pre-write SC_TCP " << emsg.getSize() << endl;
+        if(testAlive())
+            msgret = write(sockd, emsg.get(), emsg.getSize());
+        //cout << "post-write" << endl;
+    }else{
         socklen_t addrlen = sizeof(struct sockaddr_in);
         //msgret = sendto(sockd, emsg.get(), emsg.getSize(), &cli_addr, address);
     }

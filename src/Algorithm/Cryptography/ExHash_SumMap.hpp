@@ -130,9 +130,13 @@ template<class T>
 T exHashDivValue(T sum, T maxVal) {
     sum = reverseBits<T>(sum);
 
-    while(sum > maxVal) sum /= 3;
+    //while(sum > maxVal) sum /= 3;
+    
+     int bits = countBits<T>(maxVal); // the # of bits is used here to help prevent collisions, full hash just uses 64 bits
 
-    return sum;
+    T bitmask = genBitmask<T>(bits);
+
+    return ((T)rand())&bitmask;
 }
 
 // fully shuffle the bits based on # of bits
@@ -147,6 +151,21 @@ T exHashShuffleBits(T sum) {
     return newsum;
 }
 
+
+template<class T>
+T randno0(){
+    T v = (T)rand();
+    int sp=0;
+    while((v=(T)rand()) == 0){
+        sp++;
+        if(sp > 1000000 && (sp % 1000)==0){
+            cout << "randno0 infinite loop?" << endl;
+        }
+    }
+    
+    return v;
+}
+
 // str to mix into a hash
 // maxVal for HashMaps of N size
 // steps help maximize entropy at the cost of CPU time
@@ -158,12 +177,21 @@ T exSumMap(CharString *str, T maxVal, int steps) {
     srand(maxVal+steps+str->getSize());
 
     // loop through N steps, produces entropy.
-    for(int i=0; i<steps; i++) {
+    /*for(int i=0; i<steps; i++) {
         // ID generation via bit-wise operations with constants as the base values to produce a hash
         endx ^= exHashPrime<T>(str->get(), str->getSize(), maxVal);
 
         // Shuffle bits
         //endx = exHashShuffleBits(endx);
+    }*/
+    
+    unsigned int ch,cx;
+    for(int i=0;i<str->getSize();i++){
+        ch = (unsigned int)(str->get()[i]);
+        
+        for(cx=0; cx<=ch; cx++){
+            endx ^= randno0<T>();
+        }
     }
 
     endx = exHashDivValue(endx, maxVal);

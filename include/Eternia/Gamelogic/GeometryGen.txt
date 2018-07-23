@@ -1,9 +1,0 @@
-* High-density Geometry storage hash lookup tables. (Iso-metric sphere?)
-* Sphere has a low LOD from far away, when closer, auto-generates current density from current angle/distance.
-
-* original terrain is generated automatically, but after an effect happens in a segment of area, it is re-calculated for that region.
-
-* if a player blows up a segment of ground, that segment is calculated by their client, then converted to a hash. (data/hash stored on server)
-*   by hash, md5, sha128 or whatever works within accuracy to allow it to be saved for that region.
-*   Bit events, like "Planet Crackers" (Ships/Stations that break off a large amount of a planet's surface and bring it up to mine) may have a massive performance impact. May need to be revised.
-*   Still MUCH better than changes over time, which is the easy way out of using a "History" system performance-wise.

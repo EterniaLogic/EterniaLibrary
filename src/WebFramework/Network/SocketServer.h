@@ -83,7 +83,7 @@ protected:
     struct addrinfo *result = NULL;
     struct addrinfo hints;
 #endif
-    char* address;
+    CharString address;
     bool started, async, ipv6;
     std::thread acceptorThread;
     void tcpConnectionAcceptor();
@@ -102,7 +102,7 @@ public:
 
     SocketServer();
     SocketServer(SocketServerType serverType,
-                 char* address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
+                 CharString address, // address: (i.e  0.0.0.0, 127.0.0.1, eternialogic.com)
                  int port,
                  int bufferSize, // Packet buffer size
                  bool IPv6,

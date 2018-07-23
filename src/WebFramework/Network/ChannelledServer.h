@@ -12,7 +12,7 @@ private:
 public:
     void (*handler)(ChannelledClient*, PacketChannel* channel); // channelled data
     
-    ChannelledServer(SocketServerType serverType, char* addr, int port, short buffer, void (*handler)(ChannelledClient*, PacketChannel* channel));
+    ChannelledServer(SocketServerType serverType, CharString addr, int port, short buffer, void (*handler)(ChannelledClient*, PacketChannel* channel));
     
     ChannelledClient* getChannelledClient(SockClient* cli);
     

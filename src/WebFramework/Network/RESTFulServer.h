@@ -9,17 +9,17 @@
 // Endpoint
 class RESTFulEndpoint{
 private:
-    CharString uri;
     void (*returnfunc)(HTTPRequest request, HTTPResponse &response);
 public:
+    CharString uri;
     HTTPMETHOD requestMethod;
     
     
-    RESTFulEndpoint(CharString uri, // "Overriding URI location /index/data/1/1"
-                       HTTPMETHOD requestMethod, // HPOST/HGET/HPUT, ect.
-                       void (*returnfunc)(HTTPRequest request, HTTPResponse &response));
+    RESTFulEndpoint(HTTPMETHOD requestmethod, // HPOST/HGET/HPUT, ect.
+                    CharString uri, // "Overriding URI location /index/data/1/1"
+                    void (*returnfuncx)(HTTPRequest request, HTTPResponse &response));
     
-    bool correctURI(CharString uri);
+    bool checkURI(HTTPRequest request); // URI along the path?
     bool handle(HTTPRequest request, HTTPResponse &response);
 };
 

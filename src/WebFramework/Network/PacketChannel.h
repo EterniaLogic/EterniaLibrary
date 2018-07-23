@@ -14,6 +14,8 @@ public:
     PacketChannel();
     PacketChannel(SockClient* cli, unsigned short id);
     virtual ~PacketChannel();
+    
+    unsigned short getID();
 
     // internal
     void addRecvPacketData(CharString *data); // received packet data, add to queue

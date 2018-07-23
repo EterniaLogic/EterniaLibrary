@@ -22,7 +22,7 @@
 #define DEBUG
 
 
-//#define GAME
+#define GAME
 
 #ifdef GAME
 	#include "src/Gamelogic/test/testGameLogic.h"
@@ -33,6 +33,8 @@ void InputRedirection::handleInputLine(CharString* input) {
     double ii = 0;
     double time1 = clock()/CLOCKS_PER_SEC;
     double basetime = clock()/CLOCKS_PER_SEC;
+    cout << "'" << input->get() << "'" << endl; // 'test'
+    
     if(input->Compare("exit",4)) {
         this->stop = true;
     } else if(input->Compare("help",4)) {
@@ -42,7 +44,7 @@ void InputRedirection::handleInputLine(CharString* input) {
     } else if(input->Compare("MathTest",8)) {
         testMath();
     } else if(input->Compare("AsmTest",7)) {
-        //testASM();
+        testASM();
     } else if(input->Compare("ExHashTest",10)) {
         testExHash();
     } else if(input->Compare("PhysTest",8)) {
@@ -126,6 +128,7 @@ int main() {
     //testMath();
     //testParsers();
     //testDataStructures();
+    //testASM();
 
 
     /*cout << "float: " << sizeof(float) << endl;
@@ -148,16 +151,17 @@ int main() {
     //testSerializers();
     //malloc_stats();
     
+    //testFileCache();
+    
     //testExHash();
     //testHTTP();
-    testOrbit();
+    testNetwork();
+    //testOrbit();
 
     cout << "Version: " << FULLVERSION_STRING << endl;
 
-    //b2 = new Basys2();
     InputRedirection* ir = new InputRedirection();
     ir->redirect();
-    //b2->~Basys2();*/
 
 #endif
     return 0;

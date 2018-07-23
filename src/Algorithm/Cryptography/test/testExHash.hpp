@@ -13,8 +13,8 @@ void testExHash() {
     // uint64_t exSumMap(CharString *str, uint64_t maxVal, int steps)
     CharString* str = new CharString();
 
-    const int numDigitPlaces = 2; // Number of digit values to go up to.
-    const int MapSize = numDigitPlaces*256; // Standard map size up to 64k values
+    const int numDigitPlaces = 60; // Number of digit values to go up to.
+    const int MapSize = numDigitPlaces*128; // Standard map size up to 64k values
     unsigned int calculated = 0; // calculated value on the map
     int collisions = 0; // collision counter
     int overflow = 0; // number greater than mapsize
@@ -31,10 +31,12 @@ void testExHash() {
     //
     for(int i=1; i<=numDigitPlaces; i++) {
         // Generate direct values from 0x00 to 0xFF (0 to 255)
-        for(int j=0; j<255; j++) {
+        for(int j=0; j<128; j++) {
             strc[i-1] = j;
             str->set(strc, i+1);
             calculated = exSumMap<unsigned int>(str, MapSize, 1);
+            
+            //cout << calculated << endl;
             
             if(calculated > MapSize){
                 overflow++;

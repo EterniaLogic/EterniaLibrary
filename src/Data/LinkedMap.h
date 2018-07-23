@@ -1,6 +1,9 @@
 #ifndef LINKEDMAP_H_
 #define LINKEDMAP_H_
 
+// basic linked list, which includes a key to find data
+// <char, char>
+
 class LinkedMapNode {
     public:
         void * prev;
