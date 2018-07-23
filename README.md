@@ -4,7 +4,7 @@
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
-**Email**: brent.clancy@ttu.edu, eternialogic@gmail.com (alias> dreadslicer@gmail.com)
+**Email**: eternialogic@gmail.com (alias> dreadslicer@gmail.com)
 
 **Original Creation Date**: January 13, 2012
 
