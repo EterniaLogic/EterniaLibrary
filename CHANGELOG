@@ -1,3 +1,11 @@
+2018:
+    - RESTFul API (Needs documentation and testing)
+
+2015-2017:
+    - Major reorganization
+    - Networking
+    - HTTP works
+
 May 16, 2014:
     - Added Basic simulation engine for MSP430 processor
 
