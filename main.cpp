@@ -8,25 +8,15 @@
 #include <time.h>
 
 #include "src/test.h"
-// include most sections to find include errors if any
-//#include "src/Economics/economics.h"
-//#include "src/Social/Government/Government.h"
-#include "src/Math/statistics/statistics.h"
-//#include "src/Engineering/Electrical/Interfaces/FPGA/Basys2.h"
-#include "src/Parsing/InputRedirection.h"
+#include "src/include.h"
 #include "src/asm/asm1.h"
+
 #include "version.h"
 
 #include <iostream>
 
 #define DEBUG
 
-
-#define GAME
-
-#ifdef GAME
-	#include "src/Gamelogic/test/testGameLogic.h"
-#endif
 
 // input redirection
 void InputRedirection::handleInputLine(CharString* input) {
@@ -55,8 +45,6 @@ void InputRedirection::handleInputLine(CharString* input) {
         testAbstractDB();
     } else if(input->Compare("EventHandler",12)) {
         testEventHandler();
-    } else if(input->Compare("GameTest",8)) {
-
     } else if(input->Compare("CTest",5)) {
         CharString* c = new CharString("-12038.22828282302012031929319",30);
         cout << "STRTEST Float: -" << c->get() << " = " << c->getFloat() << endl;
@@ -95,7 +83,6 @@ void InputRedirection::handleInputLine(CharString* input) {
         cout << "  ExHashTest    - tests embedded assembler" << endl;
         cout << "  MathTest      - tests basic math systems" << endl;
         cout << "  LinearTest    - tests linear algebra" << endl;
-        cout << "  GameTest      - tests backend game systems" << endl;
         cout << "  EventHandler  - tests Event Handler" << endl;
         cout << "  EngineerTest  - tests Engineering systems" << endl;
         cout << "  PhysTest      - tests Physics systems" << endl;

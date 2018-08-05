@@ -12,20 +12,30 @@
 #include <float.h>
 
 
-#define _DBG(msg) // no output
-//#define _DBG(msg) cout << msg << endl; cout.flush()
-
 // Protect Types helps prevent memory modification.
 // The goal behind these types is to protect without significant performance loss.
 // This system uses a generic CRC-like comparison with runtime keygen.
 // Approximate time: O(3*k) k is the speed of the type operations
-
 // This system may also allow a class to be protected with easy CRC detection.
 // Serialization is also enabled for this type.
-
-
 // Heavy Macro use to help make large changes and lower stack use cost.
 
+/// Common Usage:
+/*      PType<int> money = 10;
+        money.onHacked = hackettestfunc;
+
+/// Hacker changes value through scanmem or CheatEngine ***
+        
+        if(money.isViolated)
+            cout << "hacker voilated value!" << endl;
+
+        
+ */
+
+
+
+#define _DBG(msg) // no output
+//#define _DBG(msg) cout << msg << endl; cout.flush()
 
 // Casting to integer
 #define _COMPT(type) (sizeof(T) == sizeof(type))

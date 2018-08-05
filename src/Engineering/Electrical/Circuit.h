@@ -1,15 +1,10 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
+
 #ifndef Circuit_h_
 #define Circuit_h_
 
 #include "../../Data/LinkedList.hpp"
-#include "Component.h" // << includes PowerValue and SecondTick
-#include "Wire.h"
+#include "Components/Component.h" // << includes PowerValue and SecondTick
+#include "Node.h"
 
 // Defines the basic building location for EE.
 

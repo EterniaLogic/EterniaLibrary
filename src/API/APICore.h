@@ -3,7 +3,6 @@
 
 #include "APIEventRegistry.h"
 #include "APIPermissionsRegistry.h"
-
 #ifndef APIMod_H_
     #include "APIMod.h"
 #else

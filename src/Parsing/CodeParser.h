@@ -6,7 +6,7 @@
 
 class CodeParser {
         // abstract parser
-}
+};
 
 
 #endif

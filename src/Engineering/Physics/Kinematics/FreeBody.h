@@ -1,20 +1,12 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-
 #ifndef FREEBODY_H_
 #define FREEBODY_H_
 
 #include "../../../constants.h"
-#include "../../../Data/LinkedListT.h"
-#include "../../../Math/struct/vertex.h"
-#include "../../../Math/Equation.h"
+#include "../../../Data/includes.h"
+#include "../../../Math/Math.h"
 
 using namespace physical;
-using namespace physical::constant;
+using namespace physical::constant; // KItem from here
 
 // converts KItem to a string
 CharString* getVariableFromKItem(KItem item);
@@ -40,7 +32,7 @@ class Force {
 };
 
 class FreeBody : public VertexObject {
-        LinkedListT *forceList;
+        LinkedList<Force> forceList;
 
         bool hasItemType(KItem item);
     public:

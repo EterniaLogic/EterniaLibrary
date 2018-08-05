@@ -1,10 +1,3 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-
 #ifndef ATOM_H_
 #define ATOM_H_
 
@@ -25,6 +18,7 @@ enum ELEMENT_TYPE {ELEM_Alkali, ELEM_Alkaline, ELEM_Halogen, ELEM_Lanthanide, EL
 
 class Atom {
     public:
+        // 12 doubles
         Atom(const char* Name, const char* label, double Group, double Period, double Protons, double Neutrons, double Electrons, double Density, double Resistivity, double ThermConductivity, double Melting, double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENT_TYPE Type); // assign base constants
         virtual ~Atom();
 

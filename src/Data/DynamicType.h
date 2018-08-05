@@ -1,5 +1,5 @@
-#ifndef DYNATYPE_H_
-#define DYNATYPE_H_
+#ifndef DYNATYPE_H__
+#define DYNATYPE_H__
 
 #include <stdlib.h>
 
@@ -60,14 +60,14 @@ EQOPER(typex v){ \
 //  a = new RandomClassThingy();
 //  a.doThingy();
 
-// inferred type
+// inferred internal type
 enum DTType {DT_NONE, DT_INT, DT_UINT, DT_LONG, DT_ULONG, DT_SHORT, DT_USHORT, DT_CHAR, CT_UCHAR, DT_FLOAT, DT_DOUBLE, DT_STRING, DT_CLASS};
 
 class DynamicType{
 private:
     void* data;
     int tsize; // type size
-    DTType type;
+    DTType _type;
 public:
     DynamicType();
     

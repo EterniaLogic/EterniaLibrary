@@ -7,7 +7,7 @@
 
 enum DIODETYPE {DIODE, Zener_DIODE, Avalanche_DIODE, LIghtEmitting_DIODE, PNJunct_DIODE, Laser_DIODE, Schottky_DIODE, Photo_DIODE, Tunnel_DIODE, Varicap_DIODE, Gunn_DIODE, Thermal_DIODE, Stabistor_DIODE};
 
-class Diode : private component {
+class Diode : private Component {
     public:
         Diode(DIODETYPE Type); // define diode type for output
         virtual ~Diode();

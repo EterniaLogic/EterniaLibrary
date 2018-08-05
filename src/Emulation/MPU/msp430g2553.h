@@ -10,9 +10,7 @@
 *
 * Rev. 1.0, Setup
 *
-********************************************************************/
-
-#ifndef __MSP430G2553
+********************************************************************/#ifndef __MSP430G2553
 #define __MSP430G2553
 
 #ifdef __cplusplus
@@ -830,9 +828,7 @@ SFR_16BIT(WDTCTL);                            /* Watchdog Timer Control */
 
 /************************************************************
 * Calibration Data in Info Mem
-************************************************************/
-
-#ifndef __DisableCalData
+************************************************************/#ifndef __DisableCalData
 
 SFR_8BIT(CALDCO_16MHZ);                       /* DCOCTL  Calibration Data for 16MHz */
 SFR_8BIT(CALBC1_16MHZ);                       /* BCSCTL1 Calibration Data for 16MHz */

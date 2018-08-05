@@ -1,13 +1,6 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-
 #ifndef Work_h
 #define Work_h
-#include "../../Data/LinkedList.hpp"
+#include "../../Data/includes.h"
 #include "../../constants.h"
 
 using namespace physical;

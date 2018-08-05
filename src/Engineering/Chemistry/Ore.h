@@ -1,7 +1,7 @@
 #ifndef ORE_H_
 #define ORE_H_
 
-#import "elementals.h"
+#include "elements.h"
 
 // Ore is something that players/NPCs can mine
 //  Ore comes in different types, but here will be all of the "standard" earth
@@ -14,7 +14,7 @@
 class Ore {
         CharString *name, *formula, *elements; // ore name
         vertex* color; // color of this ore
-        Composite* formula; // formula used for this ore
+        Composite* formulax; // formula used for this ore
 
         double oreSize; // amount of ore in deposit, measrured in kilograms.
 

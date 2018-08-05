@@ -1,6 +1,5 @@
 #ifndef MATRIX_H_
 #define MATRIX_H_
-
 #ifndef CHARSTRING_H_
     #include "../../Data/CharString.h"
 #else

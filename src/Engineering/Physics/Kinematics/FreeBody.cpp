@@ -1,9 +1,4 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
+
 
 #include "FreeBody.h"
 
@@ -17,7 +12,6 @@ Force::Force() {
     tiedItem = 0x0;
 }
 FreeBody::FreeBody() {
-    forceList = new LinkedListT();
 }
 
 
@@ -30,12 +24,12 @@ void FreeBody::addItem(KItem item, double quantity) {
     f->force = &item;
     f->quantity = quantity;
     f->equation = new Equation(fromEq);
-    forceList->add(f);
+    forceList.add(f);
 }
 
 bool FreeBody::hasItemType(KItem item) {
-    for(int i=0; i<forceList->frozenlen ; i++) {
-        if(item == *(((Force*)forceList->frozen[i])->force)) {
+    for(int i=0; i<forceList.frozenlen ; i++) {
+        if(item == *(forceList.frozen[i]->force)) {
             return true;
         }
     }
@@ -58,7 +52,7 @@ double FreeBody::getProperty(KItem item) {
     //    hasCentripetal = false, hasFrictionCoefficient = false, hasTension = false, hasNormal = false;
 
     // capture a frozen segment of forceList.
-    forceList->freeze();
+    forceList.freeze();
 
     if(hasItemType(KTime) || item == KTime) {
         // #'s 3, 4

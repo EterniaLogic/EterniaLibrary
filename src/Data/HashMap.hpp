@@ -1,10 +1,3 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-
 #ifndef HashMap_H_
 #define HashMap_H_
 
@@ -17,7 +10,7 @@
 using namespace std;
 
 template<class T>
-class HTEntry {
+class HMEntry {
         // nodes private:
         // h(k), hashing function.
         void setID() {
@@ -43,14 +36,14 @@ class HTEntry {
 
 
     public:
-        HTEntry() {
+        HMEntry() {
             this->id=0;
             this->k=0x0;
             this->d=0x0;
             this->size=65535;
             this->next=0x0;
         }
-        HTEntry(CharString key, T* data,int size) {
+        HMEntry(CharString key, T* data,int size) {
             this->id=0;
             this->k=key;
             this->d=data;
@@ -58,7 +51,7 @@ class HTEntry {
             this->size=size;
             setID();
         }
-        HTEntry(uint64_t id_, T* data,int size) {
+        HMEntry(uint64_t id_, T* data,int size) {
             this->id=id_;
             this->k=0x0;
             this->d=data;
@@ -67,7 +60,7 @@ class HTEntry {
         }
 
         uint64_t size;
-        HTEntry<T>* next; // for over-load of collisions. (separate chaining)
+        HMEntry<T>* next; // for over-load of collisions. (separate chaining)
 
         CharString k;
         T *d;
@@ -82,15 +75,15 @@ class HTEntry {
         T* getData() {
             return d;   // returns data
         }
-        void set(HTEntry<T>* entry) {
+        void set(HMEntry<T>* entry) {
             id = entry->getID();    // set value directly.
             k = entry->getKey();
             d = entry->getData();
         }
 
         // nodes
-        void add(HTEntry<T>* entry) {
-            HTEntry<T>* current = this;
+        void add(HMEntry<T>* entry) {
+            HMEntry<T>* current = this;
             while(current->next != 0x0)
                 current = current->next;
             current->next = entry;
@@ -101,7 +94,7 @@ class HTEntry {
 
         T* get(CharString key) {
             // add to the endx.
-            HTEntry<T>* current = this;
+            HMEntry<T>* current = this;
             // loop through the list.
             while(current != 0x0) {
                 if(current->getKey().Compare(key)) {
@@ -115,7 +108,7 @@ class HTEntry {
 
         T* get(uint64_t key) {
             // add to the endx.
-            HTEntry<T>* current = this;
+            HMEntry<T>* current = this;
             // loop through the list.
             while(current != 0x0) {
                 if(current->getKey().Compare(key)) {
@@ -129,7 +122,7 @@ class HTEntry {
 
         T* remove(CharString* key) {
             // add to the endx.
-            HTEntry<T>* current = this, last = 0x0;
+            HMEntry<T>* current = this, last = 0x0;
             // loop through the list.
             while(current != 0x0) {
                 if(current->getKey().Compare(key)) {
@@ -164,12 +157,12 @@ class HTEntry {
 
 template<class T>
 class HashMap {
-        HTEntry<T>* entries;
+        HMEntry<T>* entries;
         LinkedList<CharString> keys;
     public:
         HashMap() {
             // initialize hashmap
-            entries=new HTEntry<T>[65535];
+            entries=new HMEntry<T>[65535];
             size=65535;
             keys.clear();
             for(int i=0; i<size; i++) {
@@ -184,7 +177,7 @@ class HashMap {
 
         HashMap(int max) {
             // initialize hashmap with pre-defined value
-            entries = new HTEntry<T>[(const int)max];
+            entries = new HMEntry<T>[(const int)max];
             size=max;
             keys.clear();
             for(int i=0; i<size; i++) {
@@ -199,7 +192,7 @@ class HashMap {
 
         void add(CharString key, T* data) {
             //cout << "add(key,*data)" << endl;
-            HTEntry<T>* entry = new HTEntry<T>(key,data,size);
+            HMEntry<T>* entry = new HMEntry<T>(key,data,size);
             entry->size = size;
 
             int idx = entry->getID();
@@ -213,12 +206,12 @@ class HashMap {
         };
 
         void addL(uint64_t key, T* data) {
-            HTEntry<T>* entry = new HTEntry<T>(key,data,size);
+            HMEntry<T>* entry = new HMEntry<T>(key,data,size);
             entry->size = size;
             this->addLoc(key,entry);
         };
 
-        void addLoc(uint64_t key, HTEntry<T>* entry) {
+        void addLoc(uint64_t key, HMEntry<T>* entry) {
             //cout << "addLoc("<< key <<","<< entry <<")" << endl;
             entry->size = size; // make sure size is correct
             //cout << "entry size = " << entry->size << endl;
@@ -236,7 +229,7 @@ class HashMap {
 
         T* get(CharString key) {
             // basic key to search with.
-            HTEntry<T>* S = new HTEntry<T>(key, 0x0, size);
+            HMEntry<T>* S = new HMEntry<T>(key, 0x0, size);
             // does this key exist?
 
             if(entries[S->getID()].id > 0) {
@@ -283,7 +276,7 @@ class HashMap {
         // remove item based on key.
         T* remove(CharString key) {
             // basic key to search with.
-            HTEntry<T>* S = new HTEntry<T>(key, 0x0, size);
+            HMEntry<T>* S = new HMEntry<T>(key, 0x0, size);
             // does this key exist?
             if(entries[S->getID()].getID() > -1) {
                 // if so, compare the key in the list.

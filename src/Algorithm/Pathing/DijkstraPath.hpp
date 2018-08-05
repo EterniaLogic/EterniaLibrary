@@ -1,21 +1,15 @@
 #ifndef DijkstraPATH_H_
 #define DijkstraSPATH_H_
 
-#ifndef Graph_H_
-#include "../../Data/Graph.h"
-#else
-class Graph;
-class Vertex;
-class LinkedListT;
-#endif
+#include "../../Data/includes.h"
 
-#include "../../Data/PriorityQueue.h"
-#include "../../Data/LinkedListT.h"
+// Outdated, broken code!
 
+/*
 // DESC: Dijkstra's algorithm to find shortest distance from source to destination on a graph.
 // INPUT: Graph to expand on, Vertex to represent as the source.
 // OUTPUT: Linked list of the path
-LinkedListT* DijkstraDistances(Graph* graph, Vertex* source) {
+LinkedListT* DijkstraDistances(Graph* graph, GVertex* source) {
     // form a cloud to every point.
     // Store this cloud in the PQueue.
     LinkedListT* verticies = graph->verticies();
@@ -23,11 +17,11 @@ LinkedListT* DijkstraDistances(Graph* graph, Vertex* source) {
 
     // loop through verticies
     for(int i=0; i<verticies->size(); i++) {
-        Vertex* vv = (Vertex*)verticies->get(i);
+        GVertex* vv = (GVertex*)verticies->get(i);
         if(vv == source) {
-            vv->distance = 0; // set vertex to zero if it is the source vertex.
+            vv.location.distance() = 0; // set vertex to zero if it is the source vertex.
         } else {
-            vv->distance = 999999999; // set verticies to infinity to represent an unreachable location.
+           vv.location.distance() = 999999999; // set verticies to infinity to represent an unreachable location.
         }
 
         // insert into queue.
@@ -37,13 +31,13 @@ LinkedListT* DijkstraDistances(Graph* graph, Vertex* source) {
     // empty out the set
     while(!pq->empty()) {
         // remove the minimum distance from the set. (usually source vertex on start)
-        Vertex* v = (Vertex*)pq->removeMin();
+        GVertex* v = (GVertex*)pq->removeMin();
         LinkedListT* vt = v->incidentEdges;
 
         // loop through incident Edges
         for(int i=0; i<vt->size(); i++) {
-            Edge* e = (Edge*)vt->get(i);
-            Vertex* v2 = e->opposite(v);
+            GEdge* e = (GEdge*)vt->get(i);
+            GVertex* v2 = e->opposite(v);
             int r = v->distance + e->data;
 
             // if the total range is less than v2's distance, then set it.
@@ -53,7 +47,7 @@ LinkedListT* DijkstraDistances(Graph* graph, Vertex* source) {
             }
         }
     }
-}
+}*/
 
 
 

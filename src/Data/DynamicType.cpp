@@ -3,7 +3,7 @@
 DynamicType::DynamicType(){
     data = 0x0;
     tsize=0;
-    type=DT_NONE;
+    _type=DT_NONE;
 }
     
 // get raw value (must be casted)
@@ -18,11 +18,11 @@ int DynamicType::getSize(){
 
 // get inferred type
 DTType DynamicType::getType(){
-    return type;
+    return _type;
 }
 
 DynamicType DynamicType::operator =(void* c){ 
     data = c;
     tsize = sizeof(c);
-    type = DT_CLASS;
+    _type = DT_CLASS;
 }

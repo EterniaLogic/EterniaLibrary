@@ -1,13 +1,13 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
+
 #ifndef FreqSignal_H_
 #define FreqSignal_H_
 
-#include "TimeSample.h"
+#include "Sample.h"
+#ifndef TimeSignal_H_
+#include "TimeSignal.h"
+#else
+class TimeSignal;
+#endif
 
 // Frequency domain, use ifft to get time domain...
 //  Time in this case is actually the frequency range.

@@ -1,15 +1,13 @@
 #ifndef JSON_H_
 #define JSON_H_
 
-#include "../../Data/CharString.h"
-#include "../../Data/HashMap.h"
-#include "../../Data/DynamicType.h"
+#include "../../Data/includes.h"
 // JSON is a language that helps make text human readable between the server and client.
 
 struct TFIELD{
-    string name;
+    CharString name;
     DynamicType value; // can be integer, float, string, ect.
-}
+};
 
 struct TSTRUCT{
     std::vector<TFIELD> fields;
@@ -24,13 +22,14 @@ class JSON {
         void loadFile(CharString loc); // load JSON from file
         void saveFile(CharString loc); // save JSON (overwrite) to file
 
+        
         // Convert string to map and back.
-        CharString static encodeM(HashMap<DynamicType> map);
-        HashMap<DynamicType> static decodeM(CharString data);
+        static CharString encodeM(HashMap<DynamicType> _map);
+        static HashMap<DynamicType> decodeM(CharString _data);
         
         // Static methods to convert to struct
-        CharString static encode(TSTRUCT d);
-        TSTRUCT static encode(CharString data);
+        static CharString encode(TSTRUCT _d);
+        static TSTRUCT encode(CharString _data);
 };
 
 

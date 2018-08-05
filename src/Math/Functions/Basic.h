@@ -1,12 +1,6 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
+
 
 // These basic math libraries are bound to be inaccurate. Just use <math> instead.
-
 #ifndef MATHBASIC_H_
 #define MATHBASIC_H_
 

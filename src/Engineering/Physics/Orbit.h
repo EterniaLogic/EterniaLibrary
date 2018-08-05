@@ -2,7 +2,7 @@
 #define ORBIT_H_
 
 // Sampled orbit
-#include "../../Math/struct/vertex.h"
+#include "../../Math/Math.h"
 #include "Equations.h"
 
 // This enables orbit velocity manipulations and parameters.

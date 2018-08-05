@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 1.39.9
+**Version**: 1.42.4
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -8,11 +8,11 @@
 
 **Original Creation Date**: January 13, 2012
 
-**Copyright**: Copyright 2016 Brent Clancy, GPL-3+, mixed license for included files with license in header
+**Copyright**: Copyright 2016 Brent Clancy
 
 **License**: GNU v3
 
-**Language**: C/C++, ASM, Javascript
+**Language**: C/C++2011, ASM, HTML, Javascript
 
 	This library is used for server/client back-end systems and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.a, *.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
 
@@ -22,6 +22,21 @@
 Documentation and Examples
 --------------------------
 [Documentation Index](https://github.com/EterniaLogic/EterniaLibrary/blob/master/doc/index.md "Documentation Index")
+
+
+Usage
+--------------------------
+example using namespaces
+	#include <Eternia/namespace.h>
+	#include <iostream>
+	using Eternia;
+	
+	int main(){
+        cout << Math::sin(20) << endl;
+        
+        return 0;
+	}
+
 
 Sub-sections
 ------------
@@ -44,21 +59,32 @@ Sub-sections
 
 - HTTP Server with multi-threading (C++2011)
 - Template Engine for use with HTML template files
-- RESTFul HTTP Server
+- RESTFul HTTP Server (20%-ish)
 - JSON marshal parsing (0% done)
+
+**Business** [/Business/]: (headers only, no implementations yet)
+
+- Built for simulation, but could possibly be used for real
+- Basic Accounting [Liabilities, Equities, Taxation]
+- Tracking of assets, IP, Property, and inventory
+- Tracking of employees and related transactions
+- Stock tracking
+- Payroll
+- POS parts (excluding actual processing of credit cards, etc.)
+
 
 **Mathematics** [/Math/]:
 
-  - Economics
-  - Linear Algebra
-  - Statistics
+- Economics
+- Linear Algebra
+- Statistics
 
 **Audio & Frequency manipulaiton** [/Audio/&nbsp;&nbsp;&nbsp;/Engineering/Electrical/Signal/]:
 
-  - Time to Frequency conversion using FFT (TimeSignal.h)
-  - Frequency to Time conversion using IFFT (FreqSignal.h)
-  - White Noise generator
-  - Frequency Window generation / Audio filtering *Planned*
+- Time to Frequency conversion using FFT (TimeSignal.h)
+- Frequency to Time conversion using IFFT (FreqSignal.h)
+- White Noise generator
+- Frequency Window generation / Audio filtering *Planned*
 
 
 **Base Engineering** [/Engineering/]:
@@ -69,27 +95,27 @@ Sub-sections
 
 **Computer Science** [/Algorithm/&nbsp;&nbsp;&nbsp;/Data/&nbsp;&nbsp;&nbsp;/Programming]:
 
-   - Discrete Data Structures
-   - Sorting Algorithms
-   - Cryptography&nbsp;&nbsp;&nbsp;&nbsp;*+ Imported for more security*
-   - AI Systems
+- Discrete Data Structures
+- Sorting Algorithms
+- Cryptography&nbsp;&nbsp;&nbsp;&nbsp;*+ Imported for more security*
+- AI Systems
 
 **Electrical Engineering**:
 
-   - Emulation (MSP430 processor)
-   - PWM, Clocks, Time and Frequency domain signals.
+- Emulation (MSP430 processor)
+- PWM, Clocks, Time and Frequency domain signals.
 
 **Localization**:
 
-   - Simple word translation between languages.
+- Simple word translation between languages.
 
 **Other**:
 
-   - Fully working Event Handler system, useful for threading.
-   - Extended string class "CharString", which automatically handles strings along with conversions.
-   - Wrapper for OpenGL/SDL, other frameworks to draw windows and 2D graphics.
+- Fully working Event Handler system, useful for threading.
+- Extended string class "CharString", which automatically handles strings along with conversions.
+- Wrapper for OpenGL/SDL, other frameworks to draw windows and 2D graphics.
 
-	
+
 **Building**:
 
 Linux:
@@ -99,4 +125,4 @@ Linux:
 
 Windows:
 - Use the Code::Blocks project file
-- libatomic.a and libws_32.a required.
+- libatomic.a and libws_32.a required. (usually supplied with windows)

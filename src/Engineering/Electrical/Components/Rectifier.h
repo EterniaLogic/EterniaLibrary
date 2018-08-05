@@ -5,14 +5,12 @@
 
 //
 
-class  : private Component {
+class Rectifier : private Component {
     public:
-        ();
-        virtual ~();
+        Rectifier();
+        virtual ~Rectifier();
 
         void tick(SecondTick* tickTime); // operate time
-
-    private:
 
 };
 
