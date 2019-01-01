@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 1.42.4
+**Version**: 1.90.2
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -8,7 +8,7 @@
 
 **Original Creation Date**: January 13, 2012
 
-**Copyright**: Copyright 2016 Brent Clancy
+**Copyright**: Copyright 2019 Brent Clancy
 
 **License**: GNU v3
 
@@ -27,10 +27,10 @@ Documentation and Examples
 Usage
 --------------------------
 example using namespaces
-	#include <Eternia/namespace.h>
+
+	#include <Eternia/eternia.h>
 	#include <iostream>
-	using Eternia;
-	
+		
 	int main(){
         cout << Math::sin(20) << endl;
         
@@ -62,7 +62,7 @@ Sub-sections
 - RESTFul HTTP Server (20%-ish)
 - JSON marshal parsing (0% done)
 
-**Business** [/Business/]: (headers only, no implementations yet)
+**Business** [/Simulation/Business/]: (headers only, no implementations yet)
 
 - Built for simulation, but could possibly be used for real
 - Basic Accounting [Liabilities, Equities, Taxation]
@@ -95,7 +95,7 @@ Sub-sections
 
 **Computer Science** [/Algorithm/&nbsp;&nbsp;&nbsp;/Data/&nbsp;&nbsp;&nbsp;/Programming]:
 
-- Discrete Data Structures
+- Discrete Data Structures of all varieties
 - Sorting Algorithms
 - Cryptography&nbsp;&nbsp;&nbsp;&nbsp;*+ Imported for more security*
 - AI Systems
