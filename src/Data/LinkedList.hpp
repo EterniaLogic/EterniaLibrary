@@ -4,7 +4,21 @@
 #include <iostream>
 #include <malloc.h>
 #include <stdlib.h>
+#include <vector>
+
+#include <stdio.h>
+#include <execinfo.h>
+#include <signal.h>
+#include <unistd.h>
+
 using namespace std;
+
+
+
+//#define dbgLog(strx) cout << "[LinkedList] " << strx << endl;
+#define dbgLog(strx) cout << "";
+
+#define SIZEOFA(x) (sizeof(x) / sizeof(x[0]))
 
 // Gar! I don't like writing templates because of this!
 
@@ -29,17 +43,19 @@ public:
 template<class T>
 class LinkedList {
     //Written January 25th, 2013
-    LinkedNode<T>* baseNode;
-    LinkedNode<T>* currentNode;
+    
     int _size;
     bool changed; // used with freezing to help keep better performance
 public:
+    LinkedNode<T>* baseNode;
+    LinkedNode<T>* currentNode;
     T **frozen;
     int frozenlen;
 
 
     // Initialize!
     LinkedList() {
+        dbgLog("init");
         baseNode = 0x0;
         currentNode = 0x0;
         _size = 0;
@@ -50,6 +66,19 @@ public:
 
     // Clean up!
     ~LinkedList() {
+        dbgLog("finalize");
+        
+        /*void *array[10];
+        size_t size;
+
+          // get void*'s for all entries on the stack
+        size = backtrace(array, 10);
+
+          // print out all the frames to stderr
+        fprintf(stderr, "Error: signal %d:\n", 1);
+        backtrace_symbols_fd(array, size, STDERR_FILENO);*/
+        
+        
         clear();
         /*if(frozen != 0x0){
             for(int i = 0;i<frozenlen;i++)
@@ -64,6 +93,7 @@ public:
     T* add(T* cc) {
         //adds a Void* Object. This can be declared when using the list.
         //cout << "add item " << cc << endl;
+        dbgLog("add item");
         LinkedNode<T>* item = new LinkedNode<T>();
         item->data = cc;
         if(baseNode == 0x0 || currentNode == 0x0) {
@@ -78,10 +108,36 @@ public:
         
         return cc;
     }
+    
+    T* addFirst(T* cc){
+        //adds a Void* Object. This can be declared when using the list.
+        
+        LinkedNode<T>* item = new LinkedNode<T>();
+
+        dbgLog("add item first '" << (int)cc[0] << "' @ (" << item << ")");
+
+        item->data = cc;
+        
+        if(baseNode == 0x0 || currentNode == 0x0) {
+            this->baseNode = item;
+            this->currentNode = item;
+        } else {
+            item->next = this->baseNode;
+            this->baseNode = item;
+        }
+        _size++;
+        changed=true;
+        
+        dbgLog("base = " << baseNode << " cur = " << currentNode);
+        dbgLog("value item " << (int)item->data[0] << " " << *(baseNode->data));
+        
+        return cc;
+    }
 
     // Add non-pointer
     void add(T cc) {
         //adds a Void* Object. This can be declared when using the list.
+        dbgLog("add direct");
         T* val = (T*)malloc(sizeof(T));
         *val = cc;
         add(val);
@@ -96,10 +152,13 @@ public:
 
     // insert at the specified location
     void insert(T* data, int location){
+        dbgLog("insert");
         if(location >= _size || baseNode == 0x0){
             add(data);
             return;
         }
+        
+        
 
         LinkedNode<T>* current = baseNode;
         LinkedNode<T>* cnt = 0x0;
@@ -150,7 +209,8 @@ public:
 
     T* remove(long index) {
         T* r = 0x0;
-
+        dbgLog("remove");
+        
         if(index< _size) {
             // erase element at i
 
@@ -184,6 +244,7 @@ public:
     
     T* remove(T* v) {
         T* r = 0x0;
+        dbgLog("remove");
 
         // erase element with data of v
 
@@ -215,6 +276,7 @@ public:
 
     // Clears up the list
     void clear() {
+        dbgLog("list clear");
         //while(remove(0L) != 0x0);
         LinkedNode<T>* current = baseNode;
         LinkedNode<T>* cnt;
@@ -238,13 +300,27 @@ public:
     // slice this list up into parts, output new one
     LinkedList<T> slice(int start, int count, int skip){
         LinkedList<T> newList;
-
+        dbgLog("slice");
+        
         freeze();
         for(int i=0; i<count && i<frozenlen; i++){
             newList.add(frozen[start+i*skip]);
         }
 
         return newList;
+    }
+    
+    int indexOf(T* val){
+        int i = -1;
+        dbgLog("index");
+        LinkedNode<T>* current = baseNode;
+        while(current != 0x0){
+            if(current->data == val) return i+1;
+            else i++;
+            current = current->next;
+        }
+        
+        return -1;
     }
 
     // retrieve item?
@@ -270,7 +346,7 @@ public:
         int i;
 
         if(changed || _size != frozenlen) {
-            //cout << "freeze-1 " << _size << endl;
+            dbgLog("freeze-1 " << _size);
             if(frozen != 0x0){
                 for(i = 0;i<frozenlen;i++)
                     frozen[i] = 0x0;
@@ -290,10 +366,9 @@ public:
                 this->frozen = new T*[len];
 
                 current = baseNode;
-                //cout << "FREEZE: ";
                 for(i=0; i<len; i++) {
                     if(current != 0x0) {
-                        //cout << " " << current->data;
+                        dbgLog("FREEZE: item " << current->data << " @ " << current);
                         frozen[i] = current->data;
                         current = current->next;
                     } else {
@@ -307,6 +382,26 @@ public:
             this->frozenlen = _size;
         }
     }
+    
+    
+    LinkedList<T> operator =(T* vallist){
+        int size_ = SIZEOFA(vallist);
+        clear();
+        for(int i=0;i<size_;i++){
+            add(vallist[i]);
+        }
+        
+        return this;
+    }
+    
+    void operator =(std::initializer_list<T> vallist){
+        std::vector<T> v;
+        v.insert(v.end(), vallist.begin(), vallist.end());
+        for(int i=0;i<vallist.size();i++){
+            add(v[i]);
+        }
+    }
+    
 
     void refreeze(){
         changed=true;

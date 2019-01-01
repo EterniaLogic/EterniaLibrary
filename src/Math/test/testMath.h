@@ -4,5 +4,6 @@
 #include <iostream>
 #include <cstring>
 
-void testMath();
-void testStructures(char* a);
+bool testMath();
+bool testStructures(char* a);
+bool testARB();

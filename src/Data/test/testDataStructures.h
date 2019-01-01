@@ -18,5 +18,6 @@
 
 void testFileCache();
 void testDataStructures();
+bool testDataStructureMemoryLeaks();
 
 #endif

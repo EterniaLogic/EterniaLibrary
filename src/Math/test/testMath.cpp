@@ -1,33 +1,49 @@
-
-
 #include "testMath.h"
-
+#include <time.h>
 using namespace std;
 using namespace Math;
 
-void testBasics(char* a) {
+bool testBasics(char* a) {
+    bool pass = true;
+
     if(Math::abs(-999) != 999) {
         cout << a << "abs(-999) fail." << endl;
+        pass = false;
     }
     if(Math::pow(3,19) != 1162261467) {
         cout << a << "pow(3,19) fail " << Math::pow(3,19) << endl;
+        pass = false;
     }
-    if(Math::pow(3,-5) != 0.00411523) {
-        cout << a << "pow(3,-5) fail " << Math::pow(3,-5) << endl;
+    
+    cout << a << "pow(3,-5) = " << Math::pow(3,-5);
+    if(Math::pow(3,-5) < 0.00411521 || Math::pow(3,-5) > 0.00411523){
+        pass = false;
+        cout << "        fail";
     }
-    if(Math::ln(10) != 2.30259) cout << a << "ln(10) fail " << Math::ln(10) << endl;
+    cout << endl;
+    
+    cout << a << "ln(10) = " << Math::ln(10.0);
+    if(Math::ln(10.0) != 2.30259)  { cout << "            fail"; pass = false; }
+    cout << endl;
+    
+    cout << a << "ln(0) = " << Math::ln(1) << endl;
+    cout << a << "ln(1) = " << Math::ln(1) << endl;
+    cout << a << "log(10,10) = " << Math::log(10,10) << endl;
+    
     cout << a << "factorial(70) = " << Math::factorial(70) << endl;
 
     cout << a << "sin(pi) = " << Math::sin(PI) << endl;
     cout << a << "sqrt(64) = " << Math::sqrt(64) << endl;
+    
+    return pass;
 }
 
-void testStructures(char* a) {
+bool testStructures(char* a) {
     // tests structures
     cout << "test "<< a << endl;
-
+    bool pass = true;
     // Matricies:
-    Matrix* m = new Matrix();
+    Math::Matrix* m = new Math::Matrix();
     double** vec = m->createMatrixContainer(4,4);
     // -3 5 9 4
     // -7 4 2 8
@@ -62,27 +78,60 @@ void testStructures(char* a) {
 
     if(minor != 63.0) {
         cout << a << " minor(1,1) fail! " << minor << endl;
+        pass = false;
     }
     if(determinant != 608) {
         cout << a << " determinant fail! " << determinant << endl;
+        pass = false;
     }
 
     m->lower();
 
     cout << "Done test "<< a << endl;
+    return pass;
 }
 
 
-void testEquation(char* a) {
+bool testEquation(char* a) {
+    
+    return true;
+}
 
+bool testARB(){
+    ARBInt ai=0xeFFFFFFF;/* = 0x10000eFFFFFFFL;
+    long at = 0x10000eFFFFFFFL;
+    at += 100L;
+    at += 0xFFFFFFFFFFL;
+    
+    ai += 100L;
+    ai += 0xFFFFFFFFFFL;
+    
+    cout << "AT = " << at << endl;*/
+    
+    for(long l=0xeFFFFFFF;l< (1L<<40); l++){
+        
+        // only print values that are messed up.
+        if(ai.toLong() != l || (l%10000000L == 0)){
+            double basetime = clock()/CLOCKS_PER_SEC;
+            ai++;
+        
+            double totalTime = ((double)clock()/CLOCKS_PER_SEC) - basetime;
+            
+            cout << ai.getHex().get() << " (" << ai.getBits() << "bits)   " << ai.toLong() << "   from " << (l+1) << "     " << totalTime*1000 << " nanoseconds per single" << endl;
+        }else{
+            ai++;
+        }
+    }
+
+    return true;
 }
 
 
-void testMath() {
+bool testMath() {
     char* a = new char();
     strcpy(a,"[TestMath] ");
-    testBasics(a);
+    bool x = testBasics(a);
     //testStructures(a);
-    testEquation(a);
+    bool y = testEquation(a);
     cout << "done Math" << endl;
 }

@@ -2,7 +2,7 @@
 #define Colors_h_1
 
 #include "../Math/Math.h"
-
+using namespace Math;
 // Colors are used in all sorts of things. They normally represent a hex code.
 
 namespace Color{

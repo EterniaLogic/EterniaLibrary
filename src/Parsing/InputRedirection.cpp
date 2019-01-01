@@ -17,7 +17,7 @@ bool InputRedirection::process() {
     for(int i=0; i<readlen; i++) readt[i] = 0x0;
 
     cin.getline(readt,readlen);
-    CharString* Line = new CharString(readt,readlen);
+    CharString* Line = new CharString(readt);
 
     //if(!(Line->isEmpty()) && Line->getSize() > 1){ // is the line not empty? Is it longer then 1?
     handleInputLine(Line); // EXECUTE the line.

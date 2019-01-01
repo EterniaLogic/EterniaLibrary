@@ -598,6 +598,11 @@ CharString CharString::ConvertFromLong(long integer) {
 *  Output: boolean
 */
 bool CharString::Compare(char* b,int lenx) {
+    return Compare((const char*)b, lenx);
+}
+
+
+bool CharString::Compare(const char* b,int lenx) {
     if(!isValidCharString()) return false;
     if(b == 0x0) return false;
     if(lenx != getSize()) return false;
@@ -611,11 +616,6 @@ bool CharString::Compare(char* b,int lenx) {
     }
 
     return r;
-}
-
-
-bool CharString::Compare(const char* b,int lenx) {
-    return Compare((char*)b, lenx);
 }
 
 // compare where case is useless
@@ -741,6 +741,7 @@ void CharString::concata(char* str, int lenx) {
 
     // imprint changes
     //cout << "CONCAT(" << len+lenx << "): " << tmp << endl;
+    //if(stringx != 0x0 && len>0) delete [] stringx;
     this->stringx = tmp;
     this->len = len+lenx;
 }
@@ -858,4 +859,41 @@ void CharString::fixZeroing(char replacement){
             stringx[i] = replacement;
     }
 }
+
+
+template<std::size_t N>
+CharString CharString::operator +=(const char(&val)[N]){
+    concata(val, N);
+    return *this;
+}
+
+CharString CharString::operator +=(const char *val){
+    concata(CharString(val));
+    return *this;
+}
+
+CharString CharString::operator +(const char *val){
+    CharString s(val);
+    s.concatb(*this);
+    return s;
+}
+
+CharString CharString::operator +=(long val){
+    CharString a = ConvertFromLong(val);
+    concata(a);
+    return *this;
+}
+
+CharString CharString::operator +=(int val){
+    CharString a = ConvertFromInt(val);
+    concata(a);
+    return *this;
+}
+
+CharString CharString::operator +=(double val){
+    CharString a = std::to_string(val);
+    concata(a);
+    return *this;
+}
+
 

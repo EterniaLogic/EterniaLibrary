@@ -113,12 +113,14 @@ namespace Math {
 
 
     // natural log function
+    // https://en.wikipedia.org/wiki/Natural_logarithm#Series
     double ln(double x) {
-        double out=0;
+        double out=0.0;
 
 
-        for(int n=1; n<=MAX_RUNS; n++) {
-            out += (powb(-1, n+1)/n) * powb(x-1, n);
+        for(int k=1; k<=MAX_RUNS; k++) {
+            //out += 1.0/((pow(-1, n+1)/n) * pow(x-1, n));
+            out -= (powb(-1, k)*powb(x-1, k))/k;
         }
 
         return out;
@@ -127,6 +129,10 @@ namespace Math {
     // direct base log
     double log(double base, double x) {
         return ln(x) / ln(base);
+    }
+    
+    double log10(double x){
+        return log(10,x);
     }
 
     // finds the factorial of the number

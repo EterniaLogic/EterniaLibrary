@@ -2,6 +2,7 @@
 #define CYCLICLIST_H_
 
 // Cyclic lists are normally used to do averages.
+// used with TimeProfiler
 template<class T>
 class CyclicList{
 private:

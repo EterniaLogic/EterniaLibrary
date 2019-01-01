@@ -4,6 +4,7 @@
 // Sampled orbit
 #include "../../Math/Math.h"
 #include "Equations.h"
+using namespace Math;
 
 // This enables orbit velocity manipulations and parameters.
 //   - Not to be confused with N-body orbital simulations.

@@ -5,6 +5,7 @@
 #include "HashMap.hpp"
 #include "../Data/CharString.h"
 #include "../Math/struct/vertex.h"
+using namespace Math;
 
 // pre-load library types:
 class GVertex;

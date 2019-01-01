@@ -1,6 +1,7 @@
 #ifndef COLLISION_H_
 #define COLLISION_H_
 #include "../../../Math/struct/vertex.h"
+using namespace Math;
 
 class Collision1D {
     public:

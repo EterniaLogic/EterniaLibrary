@@ -1,6 +1,8 @@
 #include "TimeProfiler.h"
 
-TimeProfiler::TimeProfiler(){}
+TimeProfiler::TimeProfiler(){
+    averagelistsize = 60;
+}
 
 TimeProfiler::~TimeProfiler(){}
 
@@ -29,12 +31,12 @@ void TimeProfiler::profileItem(CharString name){
         chartmp->set(name);
         items.add(chartmp);
         
-        CyclicList<long> *list = new CyclicList<long>(60);
-        list->add(clock()-startTime);
+        CyclicList<double> *list = new CyclicList<double>(averagelistsize);
+        list->add((double)clock()-startTime);
         
         profilemap.add(name, list);
     }else{
-        profilemap.get(name)->add(clock()-startTime);
+        profilemap.get(name)->add((double)clock()-startTime);
     }
     //beginProfile();
 }
@@ -45,8 +47,13 @@ void TimeProfiler::printProfiles(){
     cout << "---Printing Timed Profiles:" << endl;
     for(int i=0;i<items.frozenlen;i++){
         CharString name = *(items.frozen[i]);
-        CyclicList<long> *averager = profilemap.get(name);
+        CyclicList<double> *averager = profilemap.get(name);
         cout << name.get() << " averaged at: " << averager->getAverage() << " microseconds." << endl;
     }
     cout << "---------------------------" << endl;
+}
+
+double TimeProfiler::getProfileAvg(CharString profile){
+    CyclicList<double> *averager = profilemap.get(profile);
+    return averager->getAverage();
 }

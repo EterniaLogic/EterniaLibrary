@@ -1,5 +1,5 @@
 #include "Orbit.h"
-
+using namespace Math;
 
 Orbit::Orbit(VertexObject *object, VertexObject *orbitBody){
     this->object = object;
@@ -25,7 +25,7 @@ void Orbit::circularize(){
     
     
     // set y vector to 1
-    double v = sqrt(Mu / distance);
+    double v = Math::sqrt(Mu / distance);
     vertex CCWdir = vertex(0,1,0);
     
     
@@ -115,7 +115,7 @@ double Orbit::getEccentricity(){
     //cout << "E = " << E << endl;
     double T = 1+2*E*pow(h.magnitude(),2)/Mu;
     T = T<0 ? 0 : T; // if T<0, then 0
-    double e = sqrt(T);
+    double e = Math::sqrt(T);
     //cout << "e = sqrt(" << (1+2*E*pow(h.magnitude(),2)/Mu) << ")" << endl;
     
     return e; //e.magnitude();
@@ -127,7 +127,7 @@ double Orbit::getInclination(){
     //      https://en.wikipedia.org/wiki/Orbital_inclination#Calculation
     
     vertex loc = getLocalPosition();
-    double t = atan(loc.z/loc.magnitude());
+    double t = Math::atan(loc.z/loc.magnitude());
     t *= 180;
     t /= Math::PI; // convert to degrees
     return t;
@@ -136,7 +136,7 @@ double Orbit::getInclination(){
 double Orbit::getOrbitAngle(){
     // somewhat simple spherical coordinates.
     vertex loc = *object - *orbitBody;
-    double t = atan(loc.y/loc.x);
+    double t = Math::atan(loc.y/loc.x);
     t *= 180;
     t /= Math::PI; // convert to degrees
     return t;
@@ -155,7 +155,7 @@ double Orbit::getOrbitPeriod(){
     
     double Mu = physical::constant::G * orbitBody->mass;
     double x = 4*pow(Math::PI,2) * pow(getSemiMajorAxis(),3);
-    double T = sqrt(x / Mu);
+    double T =Math::sqrt(x / Mu);
     return T;
 }
 
@@ -202,7 +202,7 @@ vertex Orbit::getApoapsisNode(){
 }
 
 double Orbit::getEscapeVelocity(){
-    return sqrt((2 * physical::constant::G * orbitBody->mass * orbitBody->mass)/orbitBody->distance(*object));
+    return Math::sqrt((2 * physical::constant::G * orbitBody->mass * orbitBody->mass)/orbitBody->distance(*object));
 }
 
 // draw location for orbit line if applicable. Angle relative to perpendicular of the orbit.
@@ -265,7 +265,7 @@ void Orbit::setOrbitAngle(double angle){
 }
 
 void Orbit::setEscapeVelocity(){
-    setVelocity(sqrt((2.0f * physical::constant::G * orbitBody->mass * orbitBody->mass)/orbitBody->distance(*object)));
+    setVelocity(Math::sqrt((2.0f * physical::constant::G * orbitBody->mass * orbitBody->mass)/orbitBody->distance(*object)));
 }
 
 void Orbit::printOut(){

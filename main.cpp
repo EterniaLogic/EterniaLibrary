@@ -12,6 +12,7 @@
 #include "src/asm/asm1.h"
 
 #include "version.h"
+#include "src/Engineering/Chemistry/Composite.h"
 
 #include <iostream>
 
@@ -88,7 +89,7 @@ void InputRedirection::handleInputLine(CharString* input) {
         cout << "  PhysTest      - tests Physics systems" << endl;
         cout << "  DataStruTest  - tests Data structures" << endl;
         cout << "  NetworkTest   - tests Networking systems (P2p, Server, Client, ect)" << endl;
-        cout << "  RenderTest    - tests rendering systems" << endl;
+        ///cout << "  RenderTest    - tests rendering systems" << endl;
         cout << "  SerializerTest- tests rendering systems" << endl;
         cout << "  TestALL       - tests all the above" << endl;
     } else {
@@ -110,6 +111,7 @@ void sleep( time_t delay ) {
 
 
 int main() {
+    cout << "Version: " << FULLVERSION_STRING << endl;
 #ifdef DEBUG
     //testGravity(); // tests Gravity calculation
     //testMath();
@@ -142,14 +144,17 @@ int main() {
     
     //testExHash();
     //testHTTP();
-    testNetwork();
+    //testNetwork();
     //testOrbit();
-
-    cout << "Version: " << FULLVERSION_STRING << endl;
+    
+    //CompositeGas::printCompositeGasses();
+    
+    testARB();
+    malloc_stats();
+    
+#endif
 
     InputRedirection* ir = new InputRedirection();
     ir->redirect();
-
-#endif
     return 0;
 }

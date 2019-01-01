@@ -22,4 +22,6 @@
 #include "Eval.h" // direct evalutation with no variables.
 #include "Equation.h" // equation with variables and equal signs.
 
+#include "Arbitrary.h"
+
 #endif /*MATH_H_*/

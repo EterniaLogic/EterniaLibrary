@@ -13,13 +13,14 @@ namespace Math {
     // basic functions
     double abs(double a); // flips value if negative to positive
     double pow(double a, double b); // power of function, gets the exponent a^b
-    double powb(double x, double b); // Cheap and easy power for integers of b
+    double powb(double x, double b); // Cheap and easy power for integers of b O(N)
 
     int* decToFrac(double dec);
     int floor(double val);
 
     double ln(double x); // natural log function
     double log(double base, double x); // log_b(x)
+    double log10(double x); // log10(x)
 
     double factorial(double a); // finds the factorial of the numberex−e−x2
 

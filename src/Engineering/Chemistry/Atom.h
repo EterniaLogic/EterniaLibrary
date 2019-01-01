@@ -8,9 +8,22 @@
 #include "../../Design/Colors.h"
 
 // This class helps determine resistivity, number of atoms, hall effect, ect.
+class Atom;
 
-// Phase of matter
-enum CHEMPHASE {PHASE_Solid, PHASE_Liquid, PHASE_Gas, PHASE_Plasma};
+namespace MatterPhase{
+enum PHASE {solid, liquid, gas, plasma};
+};
+
+// Bond between atoms
+typedef struct AtomBond {
+    // https://labs.chem.ucsb.edu/zakarian/armen/11---bonddissociationenergy.pdf
+    
+	float strength; // strength, in kJ/mol
+	float length; // distance, normal in pico-meters
+	
+	Atom *a; // current element
+	Atom *b; // connected to other element
+};
 
 // Types of elements
 // Alkali Earth Metals, Alkaline Earth Metals, Halogen, Lanthanide, Metalloid, Non-Metal, Nobal Gas, Poor Metal, Actinide, Transition Metal
@@ -30,22 +43,26 @@ class Atom {
         // Chemical Properties
         double getAtomicNumber(); // N = p
         double getAtomicWeight(); // W = (p+n+e)
-        CHEMPHASE getPhase(double temp, double pressure); // get the phase of the material
+        MatterPhase::PHASE getPhase(double temp, double pressure); // get the phase of the material
 
         // Thermal Properties
 
 
         // Operations for bondings and ions
         bool isBondPossible(Atom* atom); // checks valence and ions
-
-    private:
+        
+        Atom* clone() const; // clone, useful for Element copying
+        
+        
+        LinkedList<AtomBond> bonds;
+        
         char* name;
         char* symbol;
 
         char group;
         char period;
 
-        int protons;
+        int protons; // also used as ID
         int neutrons;
         int electrons;
         char valence; // "bond-slots"

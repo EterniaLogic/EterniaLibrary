@@ -4,6 +4,6 @@ cmake .
 
 while true 
 do
-	make
+	make -j 30
 	sleep 10
 done

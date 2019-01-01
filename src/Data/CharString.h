@@ -81,6 +81,13 @@ class CharString {
         static CharString ConvertFromInt(int l);
         static CharString ConvertFromLong(long l);
 
+        template<std::size_t N>
+        CharString operator +=(const char(&val)[N]); // handle const char [n] (const char [2])
+        CharString operator +=(const char*);
+        CharString operator +(const char*);
+        CharString operator +=(long);
+        CharString operator +=(int val);
+        CharString operator +=(double);
 
     private:
         char* stringx;

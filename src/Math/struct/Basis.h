@@ -2,10 +2,11 @@
 #define BASIS_H_
 
 #include "Matrix.h"
-
-class Basis : public Matrix {
-    public:
-        Basis();
-};
+namespace Math {
+    class Basis : public Matrix {
+        public:
+            Basis();
+    };
+}
 
 #endif

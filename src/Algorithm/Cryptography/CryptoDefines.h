@@ -22,11 +22,11 @@
 #define D_LONG(DVAR) CryptoDefiner<long>   DVAR(PLONG_);
 #define D_BOOL(DVAR) CryptoDefiner<bool>   DVAR(PBOOL_);
 
-void testfunc() {
+/*void testfunc() {
     D_INT( testVar );
     CryptoDefiner<int> testVar2(PINT_);
 
     testVar2 = 20;
-}
+}*/
 
 #endif

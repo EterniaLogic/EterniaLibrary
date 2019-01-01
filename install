@@ -1,24 +1,16 @@
 #!/bin/bash
 
 sudo rm /usr/include/Eternia* -R 2>/dev/null
+sudo rm /usr/lib/libEternia.a -R 2>/dev/null
 sudo rm /usr/lib/libEternia.so -R 2>/dev/null
 sudo mkdir /usr/include/Eternia
 
-# cp EterniaLibrary libEternia.a
-
-rm include -R
-mkdir include
-cp src/* include/ -R
-
-# filter out tests and cpp files
-rm $(find include -name "*.cpp") $(find include -name "*.c")
-rm $(find include -name "test") -R
+bash copyincludes.sh
 
 # copy into system
-sudo cp include/* /usr/include/Eternia/ -R
-sudo cp libEternia.a libEternia.so
-sudo cp libEternia.so /usr/lib/
+sudo cp include/* /usr/include/ -R
+sudo cp lib/libEternia.a /usr/lib/
+sudo cp lib/libEternia.so /usr/lib/
 
-sudo rm include -R
-sudo rm libEternia.a
-sudo rm libEternia.so
+#sudo rm libEternia.a 2>/dev/null
+#sudo rm libEternia.so 2>/dev/null

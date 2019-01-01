@@ -46,7 +46,6 @@ set( CMAKE_C_FLAGS "-fPIC" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
-    "main.cpp"
     "src/*.h"
     "src/*.c"
     "src/*.cpp"
@@ -61,20 +60,56 @@ FIND_PACKAGE(Threads REQUIRED)
 set(${PROJECT_NAME}_DEFINITIONS
     CACHE INTERNAL "${PROJECT_NAME}: Definitions" FORCE)
 
+    
+SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 # STATIC SHARED
-ADD_LIBRARY("Eternia" STATIC ${CC_src2})
-ADD_EXECUTABLE("EterniaExec" ${CC_src2})
-
+ADD_LIBRARY("Eternia" STATIC ${CC_src2} "Eternia.h")
 TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
-TARGET_LINK_LIBRARIES(EterniaExec ${CMAKE_THREAD_LIBS_INIT})
+
+
+ADD_LIBRARY("EterniaS" SHARED "Eternia.h") # ${CC_src2}
+TARGET_LINK_LIBRARIES(EterniaS "Eternia")
+ADD_EXECUTABLE("EterniaExec" "main.cpp")
+TARGET_LINK_LIBRARIES(EterniaExec "Eternia")
+
+ADD_EXECUTABLE("EterniaTest" "test.cpp")
+TARGET_LINK_LIBRARIES(EterniaTest "Eternia")
+
+add_custom_command(TARGET Eternia
+                POST_BUILD
+                WORKING_DIRECTORY ./
+                COMMAND bash version.sh
+                COMMENT "{EterniaLib} version up"
+)
 
 add_custom_command(TARGET Eternia
                 PRE_BUILD
                 WORKING_DIRECTORY ./
-                COMMAND bash version.sh
-                COMMENT "version up"
+                COMMAND bash copyincludes.sh
+                COMMENT "{EterniaLib} copy headers to includes"
 )
+
+add_custom_command(TARGET EterniaS
+                POST_BUILD
+                WORKING_DIRECTORY ./
+                COMMAND cp lib/libEterniaS.so lib/libEternia.so
+                COMMENT "{EterniaLib} copy shared libEterniaS.so to libEternia.so"
+)
+
+add_custom_target(run
+                COMMAND EterniaExec
+                DEPENDS Eternia
+                DEPENDS EterniaExec
+                WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+)
+
+enable_testing()
+set(CTEST_OUTPUT_ON_FAILURE 1)
+add_test(Math bin/EterniaTest "Math")
+add_test(DataStructureMemoryLeaks bin/EterniaTest "DataStruMemLeaks")
+
 
 
 #add_custom_command(TARGET Eternia

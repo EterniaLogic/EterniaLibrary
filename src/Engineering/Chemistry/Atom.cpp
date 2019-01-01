@@ -53,9 +53,13 @@ double Atom::getAtomicWeight() {
 }
 
 // get the phase of the material (Temp in Celcius)
-CHEMPHASE Atom::getPhase(double temp, double Pressure) {
+MatterPhase::PHASE Atom::getPhase(double temp, double Pressure) {
     double T = temp+273.15;
     // Ideal Gas Law PV = nRT
     // R = 8.31  =>  Gas Constant
     // T  =>  Temp in Kelvin
+}
+
+Atom* Atom::clone() const {
+    return new Atom(name, symbol,group,period,protons,neutrons,electrons,valence,density,resistivity,thermal_conductivity,melting_point,boiling_point,specific_heat,color,type);
 }

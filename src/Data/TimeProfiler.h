@@ -10,10 +10,12 @@
 
 class TimeProfiler{
 private:
-    HashMap<CyclicList<long>> profilemap;
+    HashMap<CyclicList<double>> profilemap;
     LinkedList<CharString> items;
-    long startTime; // time used when taking a delta
+    double startTime; // time used when taking a delta
 public:
+    int averagelistsize; // default is 60
+
     TimeProfiler();
     virtual ~TimeProfiler();
     
@@ -22,6 +24,7 @@ public:
     
     void profileItem(CharString name);
     
+    double getProfileAvg(CharString name);
     void printProfiles(); // prints out all profiles onto console.
 };
 
