@@ -201,7 +201,7 @@ HTTPServer::~HTTPServer(){}
 void HTTPServer::handleGET(HTTPRequest input, HTTPResponse &output){
     // retrieve file!
     CharString uri = input.URI;
-    cout << "handleGET => " << uri.get() << endl;
+    cout << "handleGET => " << uri << endl;
     
     if(input.URI.Compare(CharString("/",1))){
         CharString l = output.wwwroot.clone();
@@ -209,12 +209,11 @@ void HTTPServer::handleGET(HTTPRequest input, HTTPResponse &output){
         //cout << "rfile" << endl;
         
         if(fileExists(l)){
-            cout << "fopen " << l.get() << endl;
+            cout << "fopen " << l << endl;
             output.body = retrieveFile(l);
             //cout << "fbody: " << output.body.get() << endl;
-            CharString* s = new CharString("text/html",9);
             //cout << "fheaderset" << endl;
-            output.header.add(CharString("Content-Type",12), s);
+            output.header.add(CharString("Content-Type",12), CharString("text/html",9));
             //cout << "fheader" << endl;
             output.responsecode = 200;
         }else{

@@ -9,28 +9,29 @@
 #define AMPS unsigned char
 
 class PowerValue {
-    public:
-        PowerValue(double Voltage, double Amperes); // set wattage knowning the voltage and amps
-        PowerValue(double Voltage, double Watts, VOLTS); // Set wattage knowning the watts and voltage
-        PowerValue(double Amperes, double Watts, AMPS); // Set wattage knowning the watts and amps
-        virtual ~PowerValue();
+public:
+	PowerValue();
+	PowerValue(double Voltage, double Amperes); // set wattage knowning the voltage and amps
+	PowerValue(double Voltage, double Watts, VOLTS); // Set wattage knowning the watts and voltage
+	PowerValue(double Amperes, double Watts, AMPS); // Set wattage knowning the watts and amps
+	virtual ~PowerValue();
 
 
-        // Get/set functions for private variables
-        // Automatically applies power law
-        void setVoltage(double Voltage);
-        void setAmperage(double Amperes);
-        double getVoltage();
-        double getAmperage();
-        double getWatts();
-        double getResistance(); // gets the known resistance
+	// Get/set functions for private variables
+	// Automatically applies power law
+	void setVoltage(double Voltage);
+	void setAmperage(double Amperes);
+	double getVoltage();
+	double getAmperage();
+	double getWatts();
+	double getResistance(); // gets the known resistance
 
-    private:
-        double voltage; // Applied voltage
-        double amperage; // Applied amperes
-        double wattage; // Raw wattage in this point on the curcuit. (Auto-assigned)
+private:
+	double voltage; // Applied voltage
+	double amperage; // Applied amperes
+	double wattage; // Raw wattage in this point on the curcuit. (Auto-assigned)
 
-        void setPower(); // Power Law
+	void setPower(); // Power Law
 };
 
 #endif

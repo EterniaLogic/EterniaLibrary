@@ -23,7 +23,7 @@ PacketChannel* ChannelledClient::getFreeChannel(){
         bool t = true;
         // filter through used list to see if it contains the value
         for(int j=0;j<used.frozenlen;j++){
-            if(i == *used.frozen[j]){
+            if(i == used.frozen[j]){
                 t = false;
             }
         }
@@ -37,7 +37,5 @@ PacketChannel* ChannelledClient::getFreeChannel(){
  
   // claim a channel for this sub-program (to be used with getFreeChannel)
 bool ChannelledClient::claimChannel(unsigned short id){
-    unsigned short *ii = (unsigned short*)malloc(sizeof(unsigned short));
-    *ii = id;
-    used.add(ii);
+    used.add(id);
 }

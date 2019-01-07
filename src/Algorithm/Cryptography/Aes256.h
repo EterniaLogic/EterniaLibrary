@@ -16,36 +16,20 @@
 *   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 *   ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 *   OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/#ifndef AES256_h_
+*/
+
+#ifndef AES256_h_
 #define AES256_h_
 
 
 #include <inttypes.h>
+#include <math.h>
+
+#include "Aes256r.h"
 
 
-#ifdef __cplusplus
 #include "../../Data/CharString.h"
-extern "C" {
-#endif
 
-typedef struct {
-    uint8_t key[32];
-    uint8_t enckey[32];
-    uint8_t deckey[32];
-} aes256_context;
-
-
-void aes256_init(aes256_context *, uint8_t * /* key */);
-void aes256_done(aes256_context *);
-void aes256_encrypt_ecb(aes256_context *, uint8_t * /* plaintext */);
-void aes256_decrypt_ecb(aes256_context *, uint8_t * /* cipertext */);
-
-#ifdef __cplusplus
-}
-#endif
-
-
-#ifdef __cplusplus
 // C++ converter
 class AES256{
 private:
@@ -56,17 +40,16 @@ public:
     AES256(uint8_t keyv[16]);
     AES256(); // auto-generates key
     virtual ~AES256();
-    
+
     CharString genKey(); // auto-generate 256-bit key
     uint8_t* getKey(); // get a 256-bit key
-    
+
     CharString encrypt(CharString plaintext);
     CharString decrypt(CharString encrypttext);
-    
+
     // native algorithm types
     uint8_t* encrypt(uint8_t plaintext[16]);
     uint8_t* decrypt(uint8_t encrypttext[16]);
 };
-#endif
 
 #endif

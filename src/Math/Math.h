@@ -3,6 +3,11 @@
 
 // includes all functions and mathematical constants.
 
+namespace Math{
+    //const double PI = 3.14159265358979323846;
+    // PI defined in Functions/Basic.h
+}
+
 // namespace Math
 #include "Functions/Basic.h" // Basic functions such as abs, root, exponent, ect. NAMESPACE Basic
 #include "Functions/Trig.h" // sin, cos, tan, (asin, sinh, ...) NAMESPACE Math::Trig

@@ -20,7 +20,7 @@ public:
     
     TiledBlock(uint32_t id, int _x, int _y, int _z){
         // id
-        addSerial(&layeredBlocks, SSE_LinkedList);
+        addSerial(&layeredBlocks, "LayeredBlocks", SSE_LinkedList);
         x=_x;
         y=_y;
         z=_z;

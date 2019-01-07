@@ -8,8 +8,7 @@ using namespace std;
 
 // pre-initialize
 CharString::CharString() {
-    stringx = "\0";
-    len = 0;
+    set("\0");
 }
 
 CharString::~CharString(){
@@ -18,9 +17,16 @@ CharString::~CharString(){
     stringx = 0x0;
 }
 
+template<std::size_t N>
+CharString::CharString(const char (&stringg)[N]){
+	stringx=0x0;
+	len=0;
+	this->set(stringg);
+}
+
 CharString::CharString(const char* stringg, const int length) {
-    //const int lenc = length+1;
-    //char cc[lenc];
+	stringx=0x0;
+	len=0;
     
     this->set((char*)stringg,length);
 }
@@ -31,12 +37,16 @@ CharString::CharString(const char* stringg) {
 
 // populate charString and initialize it with data.
 CharString::CharString(char* stringg, int length) {
+	stringx=0x0;
+	len=0;
     this->set((char*)stringg, length);
 }
 
 // populate charString and initialize it.
 // pre-determine what the length is.
 CharString::CharString(char* stringg) {
+	stringx=0x0;
+	len=0;
     this->set(stringg);
 }
 
@@ -101,8 +111,8 @@ bool CharString::isValidScientific(){
 * Input: String str, it's length, single-character splitter
 * Output: SplitResult from the splitting
 */
-LinkedList<CharString>* CharString::split(char splitter,char stopper) {
-    LinkedList<CharString>* sr = new LinkedList<CharString>();
+LinkedList<CharString> CharString::split(char splitter,char stopper) {
+    LinkedList<CharString> sr;
     int i=0,j=0,carrot1=0,carrot2=0,commaplace=0; // positions for exclusive selection
     char* cc;
     int temp = 0;
@@ -123,7 +133,7 @@ LinkedList<CharString>* CharString::split(char splitter,char stopper) {
             for(j=carrot1; j<carrot2; j++) cc[j-carrot1] = stringx[j]; // populate charString
 
             cc[carrot2-carrot1] = '\0';
-            sr->add(new CharString(cc,carrot2-carrot1)); // add data!
+            sr.add(CharString(cc,carrot2-carrot1)); // add data!
             carrot1 = i+1;
             carrot2 = i+1;
 
@@ -139,7 +149,7 @@ LinkedList<CharString>* CharString::split(char splitter,char stopper) {
         for(j=carrot1; j<carrot2; j++) cc[j-carrot1] = stringx[j]; // populate charString
         cc[carrot2-carrot1] = '\0';
         //cout << "splitcarrot " << carrot1 << "->" << carrot2 << " =" << cc << endl;
-        sr->add(new CharString(cc,carrot2-carrot1)); // Add to split result
+        sr.add(CharString(cc,carrot2-carrot1)); // Add to split result
     }
 
     return sr;
@@ -396,6 +406,7 @@ int CharString::getInt() {
 }
 
 // returns a scientific float value
+// string must contain "e" or "E" between two numbers
 float CharString::getScientific(float val){
     // get location of E
     int eloc = -1;
@@ -485,6 +496,15 @@ float CharString::getFloat() {
     return out;
 }
 
+std::string CharString::getString(){
+	return string(get());
+}
+
+template<std::size_t N>
+void CharString::set_(const char(&val)[N]){
+	stringx = val;
+	len = N;
+}
 
 // takes input and changes current
 void CharString::set_(const char* stringg, const int length) {
@@ -508,6 +528,12 @@ void CharString::set(char* stringg, int length) {
     len = length;
 }
 
+template<std::size_t N>
+void CharString::set(const char(&val)[N]){
+	stringx = (char*)val;
+	len = N;
+}
+
 // takes input and changes current
 void CharString::set(char* stringg) {
     // set the data into place.
@@ -523,6 +549,13 @@ void CharString::set(char* stringg) {
         //this->set(stringg,SIZEOFA(stringg));
         this->set(stringg,str.length());
     }
+}
+
+
+template<std::size_t N>
+void CharString::setPtr(const char(&val)[N]){
+	stringx = val;
+	len = N;
 }
 
 void CharString::setPtr(char* data, int length) { // sets a raw pointer, no changes or copying.
@@ -592,6 +625,11 @@ CharString CharString::ConvertFromLong(long integer) {
     return cx;
 }
 
+
+template<std::size_t N>
+bool CharString::Compare(const char(&val)[N]){
+	return Compare(val, N);
+}
 
 /* Desc: direct compare with a char string
 *  Input: char* and it's length
@@ -712,6 +750,11 @@ void CharString::concata_(const char* str, const int lenx) {
     concata(cc, lenx);
 }
 
+template<std::size_t N>
+void CharString::concata(const char(&val)[N]){
+	concata(val,N);
+}
+
 // Combine CharStrings after the current charString.=
 void CharString::concata(char* str, int lenx) {
     // initialize variables
@@ -750,6 +793,11 @@ void CharString::concata(char* str, int lenx) {
 */
 void CharString::concata(CharString str) {
     concata(str.get(),str.getSize());
+}
+
+template<std::size_t N>
+void CharString::concatb(const char(&val)[N]){
+	concatb(val,N);
 }
 
 // Combine CharStrings before the current charString.=
@@ -861,6 +909,17 @@ void CharString::fixZeroing(char replacement){
 }
 
 
+
+ostream& operator << (ostream &out, const CharString &c){
+	out << c.stringx;
+	return out;
+}
+
+istream& operator >> (istream &in,  CharString &c){
+	in >> c.stringx;
+	return in;
+}
+
 template<std::size_t N>
 CharString CharString::operator +=(const char(&val)[N]){
     concata(val, N);
@@ -896,4 +955,8 @@ CharString CharString::operator +=(double val){
     return *this;
 }
 
+template<std::size_t N>
+bool CharString::operator ==(const char(&val)[N]){
+	return Compare(val,N);
+}
 

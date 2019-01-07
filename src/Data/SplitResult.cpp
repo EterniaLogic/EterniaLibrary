@@ -20,18 +20,18 @@ int SplitResult::getSize() {
 
 // get a splitresult
 char* SplitResult::get(int i) {
-    if(listStr.get(i) == 0x0) return "";
-    return listStr.get(i)->get();
+    return listStr.get(i).get(); // @suppress("Invalid arguments")
 }
 
 CharString SplitResult::getCS(int i) {
-    if(listStr.get(i) == 0x0) return CharString();
-    return *listStr.get(i);
+    if(listStr.get(i) == "") return CharString();
+    return listStr.get(i);
 }
 
 // get Length of a particular splitResult
 const int SplitResult::getLen(int i) {
-    return listStr.get(i)->getSize();
+	CharString s = listStr.get(i);
+    return s.getSize(); // @suppress("Invalid arguments")
 }
 
 // add a splitresult to the list.

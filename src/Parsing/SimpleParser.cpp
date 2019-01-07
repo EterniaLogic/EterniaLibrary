@@ -13,15 +13,15 @@
 
 // parse input and split it by separator.
 // output: LinkedListT of (CharString *)
-LinkedList<CharString>* SimpleParseLine(CharString input, char separator) {
+LinkedList<CharString> SimpleParseLine(CharString input, char separator) {
     // do the splitting!!!
     return input.split(separator, '`');
 }
 
 // take data in line-by-line and parse it
 // output: LinkedListT of LinkedListT of (CharString *)
-LinkedList<LinkedList<CharString>>* SimpleParseFile(CharString filename, char separator) {
-    LinkedList<LinkedList<CharString>>* list = new LinkedList<LinkedList<CharString>>();
+LinkedList<LinkedList<CharString>> SimpleParseFile(CharString filename, char separator) {
+    LinkedList<LinkedList<CharString>> list;
     //cout << "parse-01" << endl;
 
     ifstream file;
@@ -33,9 +33,9 @@ LinkedList<LinkedList<CharString>>* SimpleParseFile(CharString filename, char se
     CharString read;
     while((read = fileGetLine(file)).getSize() > -1) {
         if(!read.startsWith("#") && !read.startsWith("//") && !read.startsWith("[")) {
-            LinkedList<CharString>* list2 = SimpleParseLine(read, separator);
-            if(list2->size() > 0) {
-                list->add(list2);
+            LinkedList<CharString> list2 = SimpleParseLine(read, separator);
+            if(list2.size() > 0) {
+                list.add(list2);
             }
         }
     }

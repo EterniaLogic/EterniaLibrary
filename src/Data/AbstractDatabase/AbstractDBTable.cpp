@@ -58,7 +58,7 @@ void AbstractDBTable::readHeader() {
     // pupulate fields container
     fields.clear();
     for (int i = 0; i < headersize; i++) {
-        fields.add(NULL);
+        fields.add(AbstractDBField());
     }
 
     // read in file base
@@ -137,7 +137,7 @@ void AbstractDBTable::readHeader() {
 
     // read in field formats
     int header_field = 0;
-    AbstractDBField* field;
+    AbstractDBField field;
     bool iskey = false;
     seekfirst = 2;
     for (int i = 0; i < headersize; i++) {
@@ -151,8 +151,8 @@ void AbstractDBTable::readHeader() {
             iskey = true;
         } else iskey = false;
 
-        field = new AbstractDBField(static_cast<ADBF_TYPE>(header_field), iskey);
-        seeksize += field->getSize();
+        field = AbstractDBField(static_cast<ADBF_TYPE>(header_field), iskey);
+        seeksize += field.getSize();
         seekfirst++;
 
         fields.freeze();
@@ -166,7 +166,7 @@ AbstractDBTable::~AbstractDBTable() {
     cache.clearCache();
 }
 
-void AbstractDBTable::addField(AbstractDBField* field) {
+void AbstractDBTable::addField(AbstractDBField field) {
     LinkedList<AbstractDBRow> rowList = cache.getAllRows();
     // increment the header size by 1
     file.seekp(0, std::fstream::beg);
@@ -182,7 +182,7 @@ void AbstractDBTable::addField(AbstractDBField* field) {
     filetmp.put(c2);
 
     // write to the fields list
-    char c3 = (field->getType() + field->getIsKey() * 64);
+    char c3 = (field.getType() + field.getIsKey() * 64);
     filetmp.put(c3);
 
     filetmp.flush();
@@ -191,8 +191,8 @@ void AbstractDBTable::addField(AbstractDBField* field) {
 
     // loop through cache rows and add the field
     for (int i = 0; i < rowList.frozenlen; i++) {
-        AbstractDBRow* row = rowList.frozen[i];
-        row->addField(field);
+        AbstractDBRow row = rowList.frozen[i];
+        row.addField(field);
 
         for (int i = 0; i < seeksize; i++)
             filetmp.put(file.get());
@@ -211,7 +211,7 @@ void AbstractDBTable::addField(AbstractDBField* field) {
         filetmp.put(file.get());
 
     // add field to the list.
-    seeksize += field->getSize();
+    seeksize += field.getSize();
     seekfirst++;
     fields.add(field); // push field to end of list
 }

@@ -69,7 +69,7 @@ void Logger::Log(CharString data){
 
 void Logger::processLog(CharString data){
     if(console){
-        cout << data.get() << endl;
+        cout << data << endl;
         cout.flush();
     }
     

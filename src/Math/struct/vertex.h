@@ -1,5 +1,5 @@
-#ifndef VECTOR_H_
-#define VECTOR_H_
+#ifndef VERTEX_H_
+#define VERTEX_H_
 
 #include "../../Serialization/SpecificSerializer.h"
 #include "../Functions/Basic.h"
@@ -8,14 +8,15 @@
 #include <math.h>
 
 
-#define NULL_VERTEX vertex(NAN,NAN,NAN)
+#define NULL_VERTEX Math::vertex(NAN,NAN,NAN)
+#define NULL_VERTEX1 Math::vertex(9.0e99,9.0e99,9.0e99)
 
 #define VECOP_DEC(op) vertex operator op(vertex b); \
     vertex operator op(double b)
 
 #define VECOP_DEC_EQ(op) void operator op(vertex b); \
     void operator op(double b)
-  
+
 #define VECOP_DEC_COMP(op) bool operator op(vertex b); \
     bool operator op(double b)
 
@@ -41,7 +42,7 @@
         VECOP_DEC_EQ(-=);
         VECOP_DEC_EQ(*=);
         VECOP_DEC_EQ(/=);
-        
+
         VECOP_DEC_COMP(==);
         VECOP_DEC_COMP(!=);
 
@@ -51,7 +52,7 @@
 
         double dot(vertex v2); // Dot-product
         vertex cross(vertex v2); // Cross-product
-        
+
         vertex unitVector(); // Directional vector
 
         void rotate(double theta, double phi); // rotate this vector around the origin. (additive)
@@ -72,7 +73,7 @@
         bool pythagroreanInequality(vertex v); // length(u+v)^2 = length(u)^2 + length(v)^2
 
         const char* toString();
-        
+
         //VectorSpace* addVectorSpace( b); // gets a vertex space from addition
         //VectorSpace* scaleVectorSpace(double scalar); // gets a vertex space from scaling
         //VectorSpace* getVectorSpace(); // gets a vertex space directly
@@ -91,10 +92,10 @@
 
         double gravitate(VertexObject& body,  double time);
         double getGravity(VertexObject body, double height);
-        
+
         // Place this object at a stable orbit around another.
         void setStableOrbit(VertexObject body, double eccentricity, bool CCW_orbit);
-        
+
         void thrust(VertexObject thrust); // applies force
 
         void tick(double second); // tick for acceleration and velocity

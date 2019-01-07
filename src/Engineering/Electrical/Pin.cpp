@@ -1,7 +1,6 @@
-
 #include "Pin.h"
 
-Pin::Pin(CharString* PinName, PowerValue* value) {
+Pin::Pin(CharString PinName, PowerValue value) {
     name = PinName;
     val = value;
 }

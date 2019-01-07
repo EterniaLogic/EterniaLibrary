@@ -23,7 +23,9 @@ namespace Math{
         //cout << "AI Finalize" << endl;
     }
 
-    // increment
+    // Placeholder algorithm, needs faster algorithm to take it's place.
+    // On 4 GHz, between 5 and 900 microseconds per increment. (Where a normal increment would be ~252 nS)
+    // O(20* N) to O(3571* N)
     ArbitraryInteger ArbitraryInteger::operator ++(int v){
         //cout << "++ 0 " << endl;
         data->freeze();
@@ -31,12 +33,11 @@ namespace Math{
         bool c = true; // carry (initially true for adding 1)
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
             if(c){
-                TYPET* d = data->frozen[k];
-                long v = *d;
+            	unsigned long d = (unsigned long)data->frozen[k];
                 if(v >= __MAXSIZET){ // carry
-                    *d=0;
+                    d=0;
                 }else{ // consume the carry
-                    *d = v+1;
+                    d = v+1;
                     //cout << v << endl;
                     c=false;
                 }
@@ -47,9 +48,7 @@ namespace Math{
         
         if(c) {
             cout << "carry addsize" << endl;
-            TYPET* m = (TYPET*)malloc(sizeof(TYPET));
-            m[0]=1;
-            data->add(m); // carry-add '1' to beginning of the list
+            data->add(1); // carry-add '1' to beginning of the list
         }
         
         //cout << "++ d " << endl;
@@ -63,6 +62,7 @@ namespace Math{
         cout << toLong() << endl;
     }
     
+    // Placeholder algorithm, needs faster algorithm to take it's place.
     ArbitraryInteger ArbitraryInteger::operator +=(long v){
         //cout << "+= long value " << toLong() << " same as ";
         resize(sizeof(long));
@@ -86,20 +86,19 @@ namespace Math{
         //cout << "+= a " << endl;
         unsigned long c = 0; // carry (initially true for adding 1)
         for(int k=0; k<partsV.frozenlen; k++){ // loop through bytes
-            TYPET* d = data->frozen[k];
-            unsigned long da = *d;
-            unsigned long va = *partsV.frozen[k]; // still use ulong
+        	unsigned long d = (unsigned long)data->frozen[k];
+            unsigned long va = partsV.frozen[k]; // still use ulong
             //cout << "+= b   " << (da/* << (k*__TYPETBits)*/) << " + " << (va/* << (k*__TYPETBits)*/) << "  =  " << ((da+va)/* << (k*__TYPETBits)*/) << endl;
             
-            unsigned long v2 = da + va + c;
+            unsigned long v2 = d + va + c;
             /*unsigned long v2m = v2 & __TYPETMASK;
             unsigned long v2s = (v2 ^ __TYPETMASK) >> __TYPETBits;
             cout << "+= b  est: " << v2 << " masked: " << (v2m) << "   shifted: " << v2s << endl;*/
             if(v2 >= __MAXSIZET){ // carry
-                *data->frozen[k] = v2 & __TYPETMASK;
+                data->frozen[k] = v2 & __TYPETMASK;
                 c = (v2 ^ __TYPETMASK) >> __TYPETBits; // get other bits for carry, then shift right
             }else{ // consume the carry
-                *data->frozen[k] = v2;
+                data->frozen[k] = v2;
                 c=0;
             }
         }
@@ -138,19 +137,19 @@ namespace Math{
         data->freeze();
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
             cout << "set b " << k << endl;
-            TYPET* d = data->frozen[k];
+            unsigned long d = (unsigned long)data->frozen[k];
             for(int j=0;j<__TYPETBits;j++){ // loop through bits
                 unsigned long x = val & 1UL<<(j+t);
-                cout << "x & " << (1UL<<(j+t)) << "   => " << x   <<   "      " << getBinary().get() << endl;
+                cout << "x & " << (1UL<<(j+t)) << "   => " << x   <<   "      " << getBinary() << endl;
                 
                 if(x > 0)
-                    *d ^= 1UL<<j;
+                    d ^= 1UL<<j;
             }
             t += __TYPETBits;
         }
         
         cout << "d" << endl;
-        cout << getBinary().get() << "   " << (unsigned long)toLong() << endl;
+        cout << getBinary() << "   " << (unsigned long)toLong() << endl;
     }
 
 
@@ -165,9 +164,7 @@ namespace Math{
             cout << "resize +" << r << " of typeT" << endl;
             
             for(int i=0;i<r;i++){
-                TYPET* m = (TYPET*)malloc(sizeof(TYPET));
-                m[0]=0;
-                data->add(m); // carry-add '1' to beginning of the list
+                data->add(0); // carry-add '1' to beginning of the list
             }
             
             //cout << "new size " << ((data->size())*__TYPETBytes*8) << " bits" << endl;
@@ -210,10 +207,10 @@ namespace Math{
         //for(int k=data->frozenlen-1; k>=0; k--){ // loop through bytes
         for(int k=data->frozenlen-1; k>=0; k--){ // loop through bytes
             //cout << "tostr b " << k << endl;
-            TYPET* d = data->frozen[k];
+        	unsigned long d = (unsigned long)data->frozen[k];
             //cout << "tostr b = " << data.baseNode->data << endl;
             for(int j=__TYPETBits/4-1;j>=0;j--){ // loop through bits
-                int x = (*d & 0xF<<(j*4)) >> (j*4);
+                int x = (d & 0xF<<(j*4)) >> (j*4);
                 //cout << "tohex c2 bit(" << j << ") = " << x << endl;
                 
                 switch(x){
@@ -251,10 +248,10 @@ namespace Math{
         //for(int k=data->frozenlen-1; k>=0; k--){ // loop through bytes
         for(int k=data->frozenlen-1; k>=0; k--){ // loop through bytes
             //cout << "tostr b " << k << endl;
-            TYPET* d = data->frozen[k];
+        	unsigned long d = (unsigned long)data->frozen[k];
             //cout << "tostr b = " << data.baseNode->data << endl;
             for(int j=__TYPETBits-1;j>=0;j--){ // loop through bits
-                int x = *d & 1<<(j);
+                int x = d & 1<<(j);
                 //cout << "tostr c2 bit(" << j << ") = " << x << "   " << (int)*d << " & " << (1<<(j)) << endl;
                 if(x>0) str.concata("1", 1);
                 else str.concata("0", 1);
@@ -270,9 +267,9 @@ namespace Math{
          // 00000100 11000100 10110100 00000001 => 29
         int t=0;
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
-            TYPET* d = data->frozen[k];
+        	unsigned long d = (unsigned long)data->frozen[k];
             for(int j=0;j<__TYPETBits;j++){ // loop through bits
-                int x = *d & 1<<j;
+                int x = d & 1<<j;
                 if(x>0) 
                     bits = t+((j+1));
             }
@@ -290,9 +287,9 @@ namespace Math{
         
         int t=0;
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
-            TYPET* d = data->frozen[k];
+        	unsigned long d = (unsigned long)data->frozen[k];
             for(int j=0;j<__TYPETBits;j++){ // loop through bits
-                int x = *d & 1<<j;
+                int x = d & 1<<j;
                 if(x>0) 
                     v ^= 1<<(j+t);
             }
@@ -320,11 +317,9 @@ namespace Math{
         unsigned long t=0;
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
             //cout << "toLong b " << k << endl;
-            TYPET* d = data->frozen[k];
-            //cout << "toLong b " << *d << endl;
-            long dl = *d;
+            unsigned long d = (unsigned long)data->frozen[k];
             
-            v ^= dl << t;
+            v ^= d << t;
             //cout << "toLong b2 " << *d << endl;
             
             t+=__TYPETBits;

@@ -1,16 +1,14 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-
 #ifndef PLANET_H_
 #define PLANET_H_
 
+
 #include "../../../Data/includes.h"
+#include "../../../constants.h"
+#include "../../../Math/Random.hpp"
+
+#include "../Space/SolarObject.h"
 #include "Ocean.h"
-#include <random>
+#include "Moon.h"
 
 // SURFACE is the maximum possible closeness (i.e: <1000m)
 // 1000 > x > 5000      MIP_NEAR
@@ -19,6 +17,15 @@
 // 300k > 30Mil         MIP_DOT (too small to see, just a dot)
 //
 enum MIPP {MIP_SURFACE,MIP_NEAR,MIP_AIR,MIP_ORBIT,MIP_FAR,MIP_DOT};
+
+namespace PlType {
+    enum ss {Barren=1, Ice=2, Earth=3, Gas=4, Lava=5, Ocean=6, ANY=-1};
+};
+
+namespace PlSize{
+    enum sss {Dwarf=1, Normal=2, Super=3, Giant=4, ANY=-1};
+};
+
 
 /*
  * Seed = single-template system that gets changes and converts it to a 3D Map. can only be
@@ -68,14 +75,41 @@ public:
     double getDensity(double relativeHeight); // returns current air density at location, relative to ground
 };
 
-class Planet : public VertexObject {
+
+
+class Planet : public SolarObject {
 private:
     
+    Math::Random r;
+    
+    const double earthmass = 5.97237e24; // kg
+	const double plutomass = 1.303e22; // kg
+	const double uranusmass = 8.6810e25; // kg
+	const double jupitermass = 1.8982e27; // kg
+	const double km = 1e3; // kilometer
 public:
-    Planet(long long seed, long long seed2);
+    // two seeds of supposedly 64-bit length numbers should make for a good variation in the number of available planets.
+    // note that this only works with 64-bit and a 32-bit system would lose it's advantages.
+    Planet(long long seed, long long seed2, double luminosity);
     virtual ~Planet();
-
-    Atmosphere atmosphere; // defines planetary atmosphere
+    
+    void classifyPlanet();
+    bool canTerraform();
+    bool canLive();
+    
+    
+    bool haswater, hasoxygen, hasice;
+    double solarIrradiance, waterheight;
+    double luminosity;
+	double atmosphere; // percentage relevant to earth (Simplified, does not include elemental compositions)
+	
+	
+    
+	int type;
+	int size;
+    long long seed, seed2;
+    
+    //Atmosphere atmosphere; // defines planetary atmosphere
     Terrain terrain; // defines terrain and oceans, ect.
 };
 

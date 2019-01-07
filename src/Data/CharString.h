@@ -18,6 +18,8 @@ enum SortType {SBefore, SSame, SAfter};
 class CharString {
     public:
         CharString();
+        template<std::size_t N>
+        CharString(const char (&stringg)[N]);
         CharString(char* stringg, int length); // initialize & populate
         CharString(char* stringg); // initialize & populate
         CharString(const char* stringg, const int length);
@@ -34,20 +36,27 @@ class CharString {
         bool isValidScientific(); // checks for a valid scientific number (or infinity / NaN)
 
         char* shiftLeft(const int len);
-        LinkedList<CharString>* split(char splitter,char stopper);
+        LinkedList<CharString> split(char splitter,char stopper);
         LinkedList<CharString> split(CharString splitter);
         void replace(char* toFind,char* replaceWith);
 
 
         bool Compare(CharString b); // compare exactly with another CharString
         bool Compare(CharString b,bool useCase); // compare exactly or without case with another CharString
+        template<std::size_t N>
+        bool Compare(const char(&val)[N]);
         bool Compare(char* b, int c); // compare exactly with another char
         bool Compare(const char* b, int c); // compare exactly with another char
         bool CompareNoCase(char* b, int c); // compare with a char* of length c if it contains the same letters with same case.
         bool contains(char* c); // does this string contain the single character 'c'?
         CharString clone(); // creates a clone!
         void concata_(const char* str, const int lenx);
+
+        template<std::size_t N>
+        void concata(const char(&val)[N]);
         void concata(char* str, int len);
+        template<std::size_t N>
+		void concatb(const char(&val)[N]);
         void concatb(char* str, int len);
         void concata(CharString str); //Combine CharStrings after the current charString.
         void concatb(CharString str);  //Combine CharStrings before the current charString.
@@ -61,14 +70,23 @@ class CharString {
         long getLong(); // automatically converts char variable into an integer
         float getFloat(); // automatically converts char variable into an float
         float getScientific(float val);
+        std::string getString();
 
         int getSize(); // returns the size of the CharString
         void setSize(int size); // sets the size of the CharString
+
+        template<std::size_t N>
+		void set_(const char(&val)[N]);
         void set_(const char* stringg, const int length);
+
+        template<std::size_t N>
+        void set(const char(&val)[N]);
         void set(char* stringg, int length); // sets both the size and pointer for charString
         void set(char* stringg); // sets pointer for CharString, auto-finds length.
         void set(CharString stringg);
 
+        template<std::size_t N>
+        void setPtr(const char(&val)[N]);
         void setPtr(char* data, int length); // sets a raw pointer, no changes or copying
 
         bool isEmpty();
@@ -81,6 +99,9 @@ class CharString {
         static CharString ConvertFromInt(int l);
         static CharString ConvertFromLong(long l);
 
+        friend ostream & operator << (ostream &out, const CharString &c);
+		friend istream & operator >> (istream &in,  CharString &c);
+
         template<std::size_t N>
         CharString operator +=(const char(&val)[N]); // handle const char [n] (const char [2])
         CharString operator +=(const char*);
@@ -88,6 +109,9 @@ class CharString {
         CharString operator +=(long);
         CharString operator +=(int val);
         CharString operator +=(double);
+
+        template<std::size_t N>
+        bool operator ==(const char(&val)[N]); // direct compare
 
     private:
         char* stringx;

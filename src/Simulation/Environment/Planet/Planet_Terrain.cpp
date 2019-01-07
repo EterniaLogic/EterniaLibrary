@@ -1,6 +1,6 @@
 #include "Planet.h"
 
- Terrain::Terrain(long long seed, long long seed2) {
+Terrain::Terrain(long long seed, long long seed2) {
     this->seed = seed;
     this->seed2 = seed2;
     
@@ -35,22 +35,22 @@ void Terrain::generateFace(double rho, double phi, double theta, double delta, i
     phi2 = phi-delta;
     
     rho2 = rho+genRand(phi, theta) / suppress;
-    verticies.add(new vertex(rho2*Math::sin(phi)*Math::cos(theta), 
+    verticies.add(vertex(rho2*Math::sin(phi)*Math::cos(theta),
                             rho2*Math::sin(phi)*Math::sin(theta), 
                             rho2*Math::cos(phi)));
     
     rho2 = rho+genRand(phi, theta2) / suppress;
-    verticies.add(new vertex(rho2*Math::sin(phi)*Math::cos(theta2), 
+    verticies.add(vertex(rho2*Math::sin(phi)*Math::cos(theta2),
                             rho2*Math::sin(phi)*Math::sin(theta2), 
                             rho2*Math::cos(phi)));
     
     rho2 = rho+genRand(phi2, theta2) / suppress;
-    verticies.add(new vertex(rho2*Math::sin(phi2)*Math::cos(theta2), 
+    verticies.add(vertex(rho2*Math::sin(phi2)*Math::cos(theta2),
                             rho2*Math::sin(phi2)*Math::sin(theta2), 
                             rho2*Math::cos(phi2)));
     
     rho2 = rho+genRand(phi2, theta) / suppress;
-    verticies.add(new vertex(rho2*Math::sin(phi2)*Math::cos(theta), 
+    verticies.add(vertex(rho2*Math::sin(phi2)*Math::cos(theta),
                             rho2*Math::sin(phi2)*Math::sin(theta), 
                             rho2*Math::cos(phi2)));
 }

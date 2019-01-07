@@ -10,7 +10,7 @@
 
 class TimeProfiler{
 private:
-    HashMap<CyclicList<double>> profilemap;
+    HashMap<CyclicList<double>*> profilemap;
     LinkedList<CharString> items;
     double startTime; // time used when taking a delta
 public:

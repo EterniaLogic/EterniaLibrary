@@ -294,7 +294,7 @@ void Orbit::simulate(double seconds){
 
 // N-Body orbit simulation!
 // Convolution
-void Orbit::simulateNBody(LinkedList<VertexObject> objects, double time){
+void Orbit::simulateNBody(LinkedList<VertexObject*> objects, double time){
     objects.freeze();
     
     // set new velocity direction vector for objects, simulate gravity
@@ -302,14 +302,14 @@ void Orbit::simulateNBody(LinkedList<VertexObject> objects, double time){
         for(int j=0; j<objects.frozenlen;j++){
             if(i != j){
                 VertexObject* body = objects.frozen[j];
-                objects[i].gravitate(*body, time);
+                objects[i]->gravitate(*body, time);
             }
         }
     }
     
     // calculate new position of objects
     for(int i=0; i<objects.frozenlen;i++){
-        objects[i].tick(time);
+        objects[i]->tick(time);
     }
 }
 

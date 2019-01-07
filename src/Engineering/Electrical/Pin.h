@@ -1,4 +1,3 @@
-
 #ifndef PIN_H
 #define PIN_H
 
@@ -7,16 +6,16 @@
 #include "PowerValue.h"
 
 class Pin {
-        CharString* name;
-        PowerValue* val;
+        CharString name;
+        PowerValue val;
     public:
-        Pin(CharString* PinName, PowerValue* value);
+        Pin(CharString PinName, PowerValue value);
         virtual ~Pin();
 
-        void setValue(PowerValue* value);
-        PowerValue* getValue();
+        void setValue(PowerValue value);
+        PowerValue getValue();
 
-        CharString* getName();
+        CharString getName();
 };
 
 #endif

@@ -73,7 +73,7 @@ public:
     
     
     // N-Body orbit simulation!
-    static void simulateNBody(LinkedList<VertexObject> object, double time);
+    static void simulateNBody(LinkedList<VertexObject*> object, double time);
 };
 
 #endif

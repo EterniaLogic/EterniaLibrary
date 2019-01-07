@@ -89,7 +89,7 @@ void testQueue() {
     if(qq == cc) {
         cout << "Pass" << endl;
     } else {
-        cout << "Fail" << "(" << qq->get() << ")" << endl;
+        cout << "Fail" << "(" << qq << ")" << endl;
     }
 }
 
@@ -102,7 +102,7 @@ void testPriorityQueue() {
     if(qq == cc) {
         cout << "Pass" << endl;
     } else {
-        cout << "Fail" << "(" << qq->get() << ")" << endl;
+        cout << "Fail" << "(" << qq << ")" << endl;
     }
 }
 
@@ -110,16 +110,16 @@ void testHashMap() {
     cout << "HashMap => ";
     HashMap<CharString> hm = HashMap<CharString>(40000);
     CharString t1 = CharString("test1");
-    CharString* t1v = new CharString("asdlkfjhlaksgh;\"'x';\30\1");
+    CharString t1v = CharString("asdlkfjhlaksgh;\"'x';\30\1");
     CharString t2 = CharString("test2");
-    CharString* t2v = new CharString("data2");
+    CharString t2v = CharString("data2");
     hm.add(t1,t1v);
     hm.add(t2,t2v);
 
-    CharString str1 = *hm.get(t1);
-    bool test1 = str1.Compare(*t1v);
-    CharString str2 = *hm.get(t2);
-    bool test2 = str2.Compare(*t2v);
+    CharString str1 = hm.get(t1);
+    bool test1 = str1.Compare(t1v);
+    CharString str2 = hm.get(t2);
+    bool test2 = str2.Compare(t2v);
     if(test1 && test2) {
         cout << "Pass" << endl;
     } else {
@@ -133,6 +133,17 @@ void testDataStructures() {
     testQueue();
     testPriorityQueue();
     testHashMap();
+
+    ConcurrentLinkedList<int> cll;
+    ConcurrentLinkedList<CharString> cll2;
+    ConcurrentLinkedList<CharString*> cll3;
+    ConcurrentLinkedList<CharString**> cll4;
+    CharString** p = (CharString**)malloc(sizeof(CharString));
+    p[0] = new CharString("blah");
+    cll.add(1);
+    cll2.add(CharString("blah"));
+    cll3.add(new CharString("blah"));
+    cll4.add(p);
 
     cout << "Datastructures test Done" << endl;
 }

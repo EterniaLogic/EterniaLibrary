@@ -16,7 +16,7 @@ private:
 public:
     Block(){ 
         id = -1;  // set air
-        addSerial(&id, SSE_Int); // automated serialization
+        addSerial(&id, "id", SSE_Int); // automated serialization
     }
     Block(int32_t id){
         this->id = id;

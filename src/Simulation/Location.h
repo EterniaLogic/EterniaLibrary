@@ -6,14 +6,15 @@
 
 class Location : public SpecificSerializer {
     public:
-        Location(vertex sector, VertexObject local);
+        Location(double x, double y, double z, double dimension);
+        Location(double x, double y, double z);
         Location();
-
-        // Location (two values to allow for 32-bit)
-        vertex sector; // sector quadrant
+        void setupSerialization();
         
-        // Local location enables XYZ, velocity and acceleration
-        VertexObject local; // local area (by local, solar-system wide)
+        CharString name; // for locations such as addresses or a hazy definition of a world
+        
+        // xyz are standard location identifiers, dimension used for phasing in-between. (wxyz for short)
+        double x,y,z,dim;
 };
 
 #endif

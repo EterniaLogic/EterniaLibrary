@@ -15,7 +15,7 @@
 
 class APIUser : public SpecificSerializer{
 protected:
-    LinkedList<APIPermission> permissions;
+    LinkedList<APIPermission*> permissions;
     HashMap<bool> pGLOBAL,pUSER,pMOD,pDB,pAPI; // primary speed increases
 
     CharString name;

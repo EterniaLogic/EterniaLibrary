@@ -33,7 +33,7 @@ CharString Composite::getString(){
         
         s += "{";
         atoms.freeze();
-        LinkedList<AtomBond> bondlist;
+        LinkedList<AtomBond*> bondlist;
         for(long i=0;i<atoms.frozenlen;i++){
             Atom *a = atoms.frozen[i];
             s += i;
@@ -120,8 +120,8 @@ namespace CompositeGas{
         Composite* co2 = new Composite(MatterPhase::gas, 1.98, 44.01, co2_alist);
         Composite* o2 = new Composite(MatterPhase::gas, 1.429, 31.999, o2_alist);
         
-        cout << co2->getString().get() << endl;
-        cout << o2->getString().get() << endl;        
+        cout << co2->getString() << endl;
+        cout << o2->getString() << endl;
         
 //        _initcbonds = true;
     }

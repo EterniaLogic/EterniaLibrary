@@ -27,8 +27,8 @@ EventHandler* APIEventRegistry::getHandler(CharString name){
 }
 
 // get list of all handlers
-LinkedList<EventHandler> APIEventRegistry::getHandlers(){
-
+LinkedList<EventHandler*> APIEventRegistry::getHandlers(){
+	//return handlers;
 }
 
 // register a handle with a specific handler

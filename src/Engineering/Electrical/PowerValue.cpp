@@ -1,6 +1,12 @@
 
 #include "PowerValue.h"
 
+PowerValue::PowerValue(){
+	voltage = 0;
+	amperage = 0;
+	setPower();
+}
+
 // set wattage knowning the voltage and amps
 PowerValue::PowerValue(double Voltage, double Amperes) {
     voltage = Voltage;

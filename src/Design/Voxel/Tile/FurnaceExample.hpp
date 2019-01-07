@@ -34,7 +34,7 @@ public:
     bool on;
     
     FurnaceExample(int _x, int _y, int _z){
-        addSerial(&layeredBlocks, SSE_LinkedList);
+        addSerial(&layeredBlocks, "LayeredBlocks", SSE_LinkedList);
         id = 15;
         x=_x;
         y=_y;

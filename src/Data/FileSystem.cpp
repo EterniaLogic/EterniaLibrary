@@ -156,10 +156,10 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString location) {
     // get the Node from the location... trying to get as accurate as possible.
     //cout << "nodeFromString" << endl;
     if(location.contains("/")) {
-        LinkedList<CharString>* sresult = location.split('/','`');
+        LinkedList<CharString> sresult = location.split('/','`');
         FileStructureNode* current = this->Root;
         //cout << "/" << endl;
-        for(int i=1; i<sresult->size(); i++) {
+        for(int i=1; i<sresult.size(); i++) {
             // search this node if it is a directory.
             
 
@@ -169,7 +169,7 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString location) {
                 // quickie loop through this dirs siblings
                 while(tmp != 0x0) {
                     // compare the tmp node with the item we are seeking.
-                    if(tmp->name.Compare(*sresult->get(i))) {
+                    if(tmp->name.Compare(sresult.get(i))) {
                         current = tmp;
                         break;
                     }
@@ -214,11 +214,11 @@ FileStructureNode* FileSystem::getNodeFromString(CharString location) {
     // get the Node from the location... trying to get as accurate as possible.
     //cout << "nodeFromString" << endl;
     if(location.contains("/")) {
-        LinkedList<CharString>* sresult = location.split('/','`');
+        LinkedList<CharString> sresult = location.split('/','`');
         FileStructureNode* current = this->Root;
 
         // loop through the result set
-        for(int i=1; i<sresult->size(); i++) {
+        for(int i=1; i<sresult.size(); i++) {
             // search this node if it is a directory.
             
 
@@ -228,7 +228,7 @@ FileStructureNode* FileSystem::getNodeFromString(CharString location) {
                 bool exists = false;
                 while(tmp != 0x0) {
                     // compare items
-                    if(tmp->name.Compare(*sresult->get(i))) {
+                    if(tmp->name.Compare(sresult.get(i))) {
                         current = tmp;
                         exists=true;
                         break;
@@ -291,8 +291,8 @@ CharString FileSystem::getNameFromString(CharString location) {
     // split all by "/".
     if(location.contains("/")) {
         // get the very last result of the split.
-        LinkedList<CharString>* sresult = location.split('/','`');
-        result = *sresult->get(sresult->size()-1);
+        LinkedList<CharString> sresult = location.split('/','`');
+        result = sresult.get(sresult.size()-1);
     } else {
         result = location;
     }
@@ -454,7 +454,7 @@ void FileSystem::listDirs() {
         FileStructureNode* cc = Current->Child;
         // loop through all of the siblings
         while(cc != 0x0) {
-            cout << this->getStringFromNode(cc).get() << endl;
+            cout << this->getStringFromNode(cc) << endl;
             cc = cc->Sibling;
         }
     } else {

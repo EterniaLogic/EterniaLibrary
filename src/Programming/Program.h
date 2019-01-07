@@ -43,7 +43,7 @@ class Program {
         void (*outputs)(VProgramVariable*);
         int inslots, actionslots, outslots;
 
-        LinkedList<VProgramVariable> locals; // Local variables for the program.
+        LinkedList<VProgramVariable*> locals; // Local variables for the program.
         void (*display)(VProgramVariable*); // display to show info. (Either debugger or something else)
         int runs; // number of times this was executed.
         VProgramNode* head; // First graphical node

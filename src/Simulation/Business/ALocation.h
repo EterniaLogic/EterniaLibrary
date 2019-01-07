@@ -17,7 +17,7 @@ class ALocation : public Location{
     CharString GPS; // GPS coordinates if a specific location on earth
     
     // inventory
-    char row, shelf;
+    int row, shelf;
 };
 
 #endif

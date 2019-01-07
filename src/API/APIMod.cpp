@@ -26,6 +26,10 @@ void APIMod::init(CharString file, CharString name, CharString language, CharStr
 
 
 
+
+// NOT IMPLEMENTED HERE, use inheritance and declare there
+
+
 // API language implementation functions.
 void APIMod::onLoad(){
 

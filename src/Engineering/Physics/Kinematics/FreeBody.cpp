@@ -4,10 +4,7 @@
 
 
 Force::Force() {
-    force=0x0;
     quantity=0;
-    direction = 0x0;
-    equation=0x0;
     directionNegative=false;
     tiedItem = 0x0;
 }
@@ -19,17 +16,17 @@ FreeBody::FreeBody() {
 void FreeBody::addItem(KItem item, double quantity) {
     // Forces can be anything, albiet Gravity all the way to direct Newton force.
     // for now, we will only add it to the list to be calculated later.
-    CharString* fromEq = getVariableFromKItem(&item);
-    Force* f = new Force();
-    f->force = &item;
-    f->quantity = quantity;
-    f->equation = new Equation(fromEq);
+    CharString fromEq = getVariableFromKItem(item);
+    Force f;
+    f.force = item;
+    f.quantity = quantity;
+    f.equation = Equation(fromEq);
     forceList.add(f);
 }
 
 bool FreeBody::hasItemType(KItem item) {
     for(int i=0; i<forceList.frozenlen ; i++) {
-        if(item == *(forceList.frozen[i]->force)) {
+        if(item == (forceList.frozen[i].force)) {
             return true;
         }
     }
@@ -79,7 +76,7 @@ double FreeBody::getProperty(KItem item) {
 //  #1  d=vi*t + 0.5*a*t^2    << Projectile
 double getProjectileProperty(KItem& item) {
     // solve for each form.
-    Equation* e1 = new Equation(new CharString("xf-xi = vi*t + 0.5*a*t^2",24));
+    Equation e1 = Equation(CharString("xf-xi = vi*t + 0.5*a*t^2",24));
     // KDistance = xf-xi
 
 

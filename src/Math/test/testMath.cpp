@@ -108,7 +108,7 @@ bool testARB(){
     
     cout << "AT = " << at << endl;*/
     
-    for(long l=0xeFFFFFFF;l< (1L<<40); l++){
+    for(long l=0xeFFFFFFF;l< (1L<<32); l++){
         
         // only print values that are messed up.
         if(ai.toLong() != l || (l%10000000L == 0)){

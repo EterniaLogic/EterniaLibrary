@@ -5,15 +5,16 @@
 #include <malloc.h>
 #include <stdlib.h>
 #include <vector>
+#include <iterator>
 
 #include <stdio.h>
 #include <execinfo.h>
 #include <signal.h>
 #include <unistd.h>
 
+#include "LinkedListIterator.hpp" // Iteration, FOR_LIST
+
 using namespace std;
-
-
 
 //#define dbgLog(strx) cout << "[LinkedList] " << strx << endl;
 #define dbgLog(strx) cout << "";
@@ -27,12 +28,11 @@ class LinkedNode {
 public:
     //LinkedNode<T> * prev;
     LinkedNode<T> * next;
-    T* data;
+    T data;
     //int id;
     LinkedNode() {
         //prev =
         next = 0x0;
-        data = 0x0;
     }
     ~LinkedNode() {
         //prev = next = 0x0;
@@ -49,7 +49,7 @@ class LinkedList {
 public:
     LinkedNode<T>* baseNode;
     LinkedNode<T>* currentNode;
-    T **frozen;
+    T *frozen;
     int frozenlen;
 
 
@@ -88,9 +88,13 @@ public:
         }
         frozenlen=0;*/
     }
+    
+    
+    
+    
 
     // add item
-    T* add(T* cc) {
+    T add(T cc) {
         //adds a Void* Object. This can be declared when using the list.
         //cout << "add item " << cc << endl;
         dbgLog("add item");
@@ -109,7 +113,7 @@ public:
         return cc;
     }
     
-    T* addFirst(T* cc){
+    T addFirst(T cc){
         //adds a Void* Object. This can be declared when using the list.
         
         LinkedNode<T>* item = new LinkedNode<T>();
@@ -134,24 +138,16 @@ public:
         return cc;
     }
 
-    // Add non-pointer
-    void add(T cc) {
-        //adds a Void* Object. This can be declared when using the list.
-        dbgLog("add direct");
-        T* val = (T*)malloc(sizeof(T));
-        *val = cc;
-        add(val);
-    }
 
     // return item
-    T* get(int index) {
+    T get(int index) {
         freeze();
-        if(index > _size-1) return 0x0;
+        //if(index > _size-1) return 0x0;
         return frozen[index];
     }
 
     // insert at the specified location
-    void insert(T* data, int location){
+    void insert(T data, int location){
         dbgLog("insert");
         if(location >= _size || baseNode == 0x0){
             add(data);
@@ -207,8 +203,8 @@ public:
         return baseNode;
     }
 
-    T* remove(long index) {
-        T* r = 0x0;
+    T remove(long index) {
+        T r;
         dbgLog("remove");
         
         if(index< _size) {
@@ -242,8 +238,8 @@ public:
         return r;
     }
     
-    T* remove(T* v) {
-        T* r = 0x0;
+    T remove(T v) {
+        T r = 0x0;
         dbgLog("remove");
 
         // erase element with data of v
@@ -281,9 +277,6 @@ public:
         LinkedNode<T>* current = baseNode;
         LinkedNode<T>* cnt;
         while(current != 0x0){
-            current->data = 0x0;
-            //current->prev = 0x0;
-
             cnt = current->next;
             current->next = 0x0;
             current = cnt;
@@ -310,10 +303,10 @@ public:
         return newList;
     }
     
-    int indexOf(T* val){
+    int indexOf(T val){
         int i = -1;
         dbgLog("index");
-        LinkedNode<T>* current = baseNode;
+        LinkedNode<T> *current = baseNode;
         while(current != 0x0){
             if(current->data == val) return i+1;
             else i++;
@@ -325,13 +318,13 @@ public:
 
     // retrieve item?
     T operator [](int i) const {
-        freeze();
+        freeze(); // @suppress("Invalid arguments")
         return frozen[i];
     }
 
     T& operator [](int i){
         freeze();
-        return *frozen[i];
+        return frozen[i];
     }
 
     // Returns the type-size of the data
@@ -349,7 +342,7 @@ public:
             dbgLog("freeze-1 " << _size);
             if(frozen != 0x0){
                 for(i = 0;i<frozenlen;i++)
-                    frozen[i] = 0x0;
+                    frozen[i] = T();
                 delete [] frozen;
                 frozen = 0x0;
             }
@@ -363,7 +356,7 @@ public:
             if(baseNode != 0x0) {
 
                 this->frozenlen = _size;
-                this->frozen = new T*[len];
+                this->frozen = new T[len];
 
                 current = baseNode;
                 for(i=0; i<len; i++) {
@@ -384,7 +377,7 @@ public:
     }
     
     
-    LinkedList<T> operator =(T* vallist){
+    LinkedList<T> operator =(T vallist){
         int size_ = SIZEOFA(vallist);
         clear();
         for(int i=0;i<size_;i++){
@@ -418,11 +411,20 @@ public:
         T* thislist = (T*)list;
 
         for(int i=0; i<_size; i++) {
-            add(&thislist[i]);
+            add(thislist[i]);
         }
 
         changed=true;
     }
+    
+    
+    LinkedListIterator<T> getIterator(){
+        return LinkedListIterator<T>(*this);
+    }
+    
 };
 
+#else
+template<class T>
+class LinkedList;
 #endif

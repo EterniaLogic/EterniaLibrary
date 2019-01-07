@@ -16,7 +16,7 @@ class Composite {
         Composite(CharString c); // CompositeTypeString {phase, density, mass, {atoms}}
         virtual ~Composite();
         
-        LinkedList<Atom> atoms; // first atom in the Composite
+        LinkedList<Atom*> atoms; // first atom in the Composite
 
         MatterPhase::PHASE phase;
         double density; // used for stuff like atmospheres, ect, kg/m^3

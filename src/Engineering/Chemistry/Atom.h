@@ -54,7 +54,7 @@ class Atom {
         Atom* clone() const; // clone, useful for Element copying
         
         
-        LinkedList<AtomBond> bonds;
+        LinkedList<AtomBond*> bonds;
         
         char* name;
         char* symbol;

@@ -23,6 +23,7 @@ class FileStructureNode {
         // Node's familial relationships
         FileStructureNode *Child,*Parent;
         FileStructureNode *Sibling,*PrevSibling;
+
 };
 
 

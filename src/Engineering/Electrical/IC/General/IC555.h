@@ -1,4 +1,3 @@
-
 #ifndef IC555_h_
 #define IC555_h_
 

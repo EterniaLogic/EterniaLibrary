@@ -98,6 +98,7 @@ class AbstractDBField {
     public:
         AbstractDBField(ADBF_TYPE type, bool isKey);
         AbstractDBField(ADBF_TYPE type);
+        AbstractDBField(){}
         ~AbstractDBField();
 
         int getSize();
@@ -114,7 +115,7 @@ class AbstractDBRow {
     public:
         AbstractDBRow();
         LinkedList<AbstractDBField> getFieldValues();
-        void addField(AbstractDBField *field);
+        void addField(AbstractDBField field);
         void clearRow();
         
         int getIntValue();
@@ -138,7 +139,7 @@ class AbstractDBCacheMap {
 
         void clearCache();
         int getKey(double index);
-        AbstractDBRow* getRow(double index);
+        AbstractDBRow getRow(double index);
 
         LinkedList<AbstractDBRow> getAllRows();
 };
@@ -162,6 +163,7 @@ class AbstractDBTable {
         // Base 2 goes from 0 to 4,294,967,296 (DEFAULT)
         // Base 3 goes from 0 to 1,853,020,188,851,841
         // Base 5 goes from 0 to 23,283,064,365,386,962,890,625
+        AbstractDBTable(){}
         AbstractDBTable(CharString file, ADB_STOREBASE Base, ADBT_SECURITY Security);
         AbstractDBTable(CharString file); // no security, Default Base 2
         ~AbstractDBTable();
@@ -169,9 +171,9 @@ class AbstractDBTable {
         LinkedList<AbstractDBField> getFields(); // returns header that was read from file on init
         LinkedList<AbstractDBRow> getAllRows(); // SLOW: reads all data from DB file
 
-        void addField(AbstractDBField* field); // add a field (insert data into file and change all rows)
-        void deleteField(AbstractDBField* field); // remove a field
-        void insertRow(int index, AbstractDBRow* row);
+        void addField(AbstractDBField field); // add a field (insert data into file and change all rows)
+        void deleteField(AbstractDBField field); // remove a field
+        void insertRow(int index, AbstractDBRow row);
         void removeIndex(int index); // remove row from index
 
         void flushTable(); // writes all data in cache to file
@@ -184,6 +186,7 @@ private:
     LinkedList<AbstractDBTable> tables;
 public:
     AbstractDB(CharString folder, ADB_STOREBASE Base, ADBT_SECURITY Security);
+    AbstractDB(){}
     
     
 };

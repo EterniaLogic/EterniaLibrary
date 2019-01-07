@@ -63,11 +63,11 @@ CharString HTTPResponse::toString(int maxpacketsize){
     headerkeys->freeze();
     //cout << "Response headers = #" << headerkeys->frozenlen << endl;
     for(int i=0;i<headerkeys->frozenlen;i++){
-        if(headerkeys->frozen[i] == 0x0) continue;
+        if(headerkeys->frozen[i].getSize() == 0) continue;
        // cout << "HEADER == " << headerkeys->frozen[i]->get() << ": " << header.get(*(headerkeys->frozen[i]))->get() << endl;
-        data.concata(*headerkeys->frozen[i]);
+        data.concata(headerkeys->frozen[i]);
         data.concata(": ",2);
-        data.concata(*header.get(*(headerkeys->frozen[i])));
+        data.concata(header.get(headerkeys->frozen[i]));
         data.concata("\r\n",2);
     }
     //data.concata("Content-Type: image/jpeg\r\n",27);

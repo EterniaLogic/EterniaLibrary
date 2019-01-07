@@ -46,19 +46,19 @@ namespace Math {
         this->z = _z;
         
         //cout << "Add vertex" << endl; cout.flush();
-        /*clearSerial();
-        addSerial(&x,SSE_double);
-        addSerial(&y,SSE_double);
-        addSerial(&z,SSE_double);*/
+        clearSerial();
+        addSerial(&x,"x",SSE_double);
+        addSerial(&y,"y",SSE_double);
+        addSerial(&z,"z",SSE_double);
     }
     vertex::vertex() {
         x=y=z=0;
         
         //cout << "Add vertex 0" << endl; cout.flush();
         clearSerial();
-        addSerial(&x,SSE_double);
-        addSerial(&y,SSE_double);
-        addSerial(&z,SSE_double);
+        addSerial(&x,"x",SSE_double);
+        addSerial(&y,"y",SSE_double);
+        addSerial(&z,"z",SSE_double);
     }
 
     vertex::~vertex() { 
@@ -72,19 +72,19 @@ namespace Math {
         this->z = _z;
         dimension = 0;
         
-        addSerial(&velocity,SSE_SSerializer);
-        addSerial(&acceleration,SSE_SSerializer);
-        addSerial(&mass,SSE_double);
-        addSerial(&dimension,SSE_double);
+        addSerial(&velocity,"velocity",SSE_SSerializer);
+        addSerial(&acceleration,"acceleration",SSE_SSerializer);
+        addSerial(&mass,"mass",SSE_double);
+        addSerial(&dimension,"dimension",SSE_double);
     }
     VertexObject::VertexObject() {
         x=y=z=0;
         dimension = 0;
         
-        addSerial(&velocity,SSE_SSerializer);
-        addSerial(&acceleration,SSE_SSerializer);
-        addSerial(&mass,SSE_double);
-        addSerial(&dimension,SSE_double);
+        addSerial(&velocity,"velocity",SSE_SSerializer);
+        addSerial(&acceleration,"acceleration",SSE_SSerializer);
+        addSerial(&mass,"mass",SSE_double);
+        addSerial(&dimension,"dimension",SSE_double);
     }
     VertexObject::~VertexObject() {  }
 

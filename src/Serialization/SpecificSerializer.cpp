@@ -19,9 +19,10 @@
 
 // Switch/case is going to be used a LOT here.
 PointerType::PointerType() {}
-PointerType::PointerType(void* ptr, SSEType type) {
+PointerType::PointerType(void* ptr, CharString namex, SSEType type) {
     this->ptr = ptr;
     this->type = type;
+    this->name = namex;
 }
 
 
@@ -36,7 +37,7 @@ SpecificSerializer::~SpecificSerializer(){
 }
 
 // Use on the class creation
-void  SpecificSerializer::addSerial(void* ptr, SSEType type) {
+void  SpecificSerializer::addSerial(void* ptr, CharString namex, SSEType type) {
     if(type == SSE_SSerializer){
         // loop through ptr's variables
         SpecificSerializer* ser = (SpecificSerializer*)ptr;
@@ -46,13 +47,13 @@ void  SpecificSerializer::addSerial(void* ptr, SSEType type) {
             this->addresses.add(ser->addresses.frozen[i]);
         }
     }else
-        addresses.add(new PointerType(ptr, type));
+        addresses.add(PointerType(ptr, namex, type));
 
 }
 
-void  SpecificSerializer::addSerialClass(void* ptr, SSEType type, int classSize) {
-    PointerType* t = new PointerType(ptr, type);
-    t->classSize = classSize;
+void  SpecificSerializer::addSerialClass(void* ptr, CharString namex, SSEType type, int classSize) {
+    PointerType t = PointerType(ptr, namex, type);
+    t.classSize = classSize;
     addresses.add(t);
 }
 
@@ -60,18 +61,18 @@ void SpecificSerializer::clearSerial(){
     addresses.clear();
 }
 
-int GetSizeOfType(PointerType* pt) {
+int GetSizeOfType(PointerType pt) {
     _DBGSSE("[Specific Serializer] Get type SIZE");
-    switch(pt->type) {
+    switch(pt.type) {
         case SSE_Int:
             return sizeof(int);
             break;
         case SSE_CharString:
-            return sizeof(int)+sizeof(char) * ((CharString*)pt->ptr)->getSize();
+            return sizeof(int)+sizeof(char) * ((CharString*)pt.ptr)->getSize();
             break;
         case SSE_CharArray:
             // include 1 int for reconstructor to make this item dynamically
-            return sizeof(int) + sizeof((char*)pt->ptr) / sizeof((char) *((char*)pt->ptr));
+            return sizeof(int) + sizeof((char*)pt.ptr) / sizeof((char) *((char*)pt.ptr));
             break; 
         case SSE_double:
             return sizeof(double);
@@ -86,16 +87,16 @@ int GetSizeOfType(PointerType* pt) {
             return sizeof(long);
             break;
         case SSE_PType:
-            return ((PType<int>*)pt)->getByteSize()+sizeof(char);
+            return ((PType<int>*)pt.ptr)->getByteSize()+sizeof(char);
             break;
         case SSE_SUBClass:
-            return pt->classSize;
+            return pt.classSize;
             break;
         case SSE_SSerializer: // Sub-class serializer
 
             break;
         case SSE_LinkedList:
-            LinkedList<char>* t = (LinkedList<char>*)pt->ptr;
+            LinkedList<char>* t = (LinkedList<char>*)pt.ptr;
             // include 1 int for reconstructor to make this item dynamically
             return sizeof(int) + t->typeSize() * t->size();
             break;
@@ -120,8 +121,8 @@ CharString SpecificSerializer::serializeId(int id){
     int j = 0;
     char* vi;
     addresses.freeze();
-    PointerType* pt = addresses.frozen[id];
-    void* ptr = pt->ptr;
+    PointerType pt = addresses.frozen[id];
+    void* ptr = pt.ptr;
 
     int xsize = GetSizeOfType(pt);
 
@@ -131,7 +132,7 @@ CharString SpecificSerializer::serializeId(int id){
 
     _DBGSSE("       [Specific Serializer] SerializeId testing");
     // Test for subclass, LinkedList, ect.
-    if(pt->type == SSE_SUBClass) { // Serialize a subclass
+    if(pt.type == SSE_SUBClass) { // Serialize a subclass
 
         // write the dynamic size of the type
         data = (char*)calloc(xsize+sizeof(int), sizeof(char));
@@ -140,10 +141,10 @@ CharString SpecificSerializer::serializeId(int id){
         byteloc += sizeof(int);
 
         vi = (((SpecificSerializer*)ptr)->serialize()).get();
-        rawCpy(vi, data, pt->classSize, 0, byteloc);
-        byteloc += pt->classSize;
+        rawCpy(vi, data, pt.classSize, 0, byteloc);
+        byteloc += pt.classSize;
 
-    } else if(pt->type == SSE_LinkedList) { // Serialize a linkedlist
+    } else if(pt.type == SSE_LinkedList) { // Serialize a linkedlist
         LinkedList<char>* list = (LinkedList<char>*)ptr;
         list->freeze(); // freeze the list
         vi = (char*)list->frozen;
@@ -157,7 +158,7 @@ CharString SpecificSerializer::serializeId(int id){
         rawCpy(vi, data, xsize, 0, byteloc);
         byteloc += xsize;
 
-    } else if(pt->type == SSE_CharString) {
+    } else if(pt.type == SSE_CharString) {
         // Serialize a CharString
         vi = ((CharString*)ptr)->get();
 
@@ -171,8 +172,8 @@ CharString SpecificSerializer::serializeId(int id){
         rawCpy(vi, data, xsize, 0, byteloc);
         byteloc += xsize;
 
-    } else if(pt->type == SSE_SSerializer){
-    } else if(pt->type == SSE_PType){ // Memory-protected type
+    } else if(pt.type == SSE_SSerializer){
+    } else if(pt.type == SSE_PType){ // Memory-protected type
         xsize = ((int*)ptr)[0];
         //type_info tinfo = ((type_info*)(ptr+sizeof(int))[0];
         char* vi=0;
@@ -215,11 +216,11 @@ void SpecificSerializer::deserializeId(int id, CharString datax){
     int xsize;
 
     addresses.freeze();
-    PointerType* pt = addresses.frozen[id];
-    void* ptr = pt->ptr;
+    PointerType pt = addresses.frozen[id];
+    void* ptr = pt.ptr;
 
     // Test for subclass, LinkedList, ect.
-    if(pt->type == SSE_SUBClass) { // Serialize a subclass
+    if(pt.type == SSE_SUBClass) { // Serialize a subclass
 
         // Retrieve the SUBClass string size
         const int len = (const int)data[byteloc];
@@ -234,7 +235,7 @@ void SpecificSerializer::deserializeId(int id, CharString datax){
         rawdata.setPtr(vi, len);
         ((SpecificSerializer*)ptr)->deserialize(rawdata); // continue down the line
 
-    } else if(pt->type == SSE_LinkedList) { // Serialize a linkedlist
+    } else if(pt.type == SSE_LinkedList) { // Serialize a linkedlist
         LinkedList<char>* list = (LinkedList<char>*)ptr;
 
         // Retrieve the dynamic size of the LinkedList
@@ -248,7 +249,7 @@ void SpecificSerializer::deserializeId(int id, CharString datax){
 
         list->unfreeze(vi,len); // reload the list
 
-    } else if(pt->type == SSE_CharString) {
+    } else if(pt.type == SSE_CharString) {
         // Serialize a CharString
         CharString* str = ((CharString*)ptr);
 
@@ -263,9 +264,9 @@ void SpecificSerializer::deserializeId(int id, CharString datax){
 
         str->setPtr(vi, len); // final set
 
-    } else if(pt->type == SSE_SSerializer){
+    } else if(pt.type == SSE_SSerializer){
         // SSerializers already have their content controlled by this.
-    } else if(pt->type == SSE_PType){ // Memory-protected type
+    } else if(pt.type == SSE_PType){ // Memory-protected type
         xsize = ((char*)ptr)[0];
         //type_info tinfo = ((type_info*)(ptr+sizeof(int))[0];
         char* vi=0;

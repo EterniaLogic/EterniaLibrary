@@ -16,7 +16,7 @@ public:
     
     ChannelledClient* getChannelledClient(SockClient* cli);
     
-    LinkedList<ChannelledClient> cclients;
+    LinkedList<ChannelledClient*> cclients;
 };
 
 #endif

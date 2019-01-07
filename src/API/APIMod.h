@@ -41,7 +41,10 @@ private:
     LinkedList<APIMod> dependencies;
     APIModType type;
 public:
-    APIMod(CharString file, CharString name, CharString language, CharString version);
+    CharString modcwdloc; // CWD directory for mod
+
+    // location for scripts, mod name, language, version
+    APIMod(CharString loc, CharString name, CharString language, CharString version);
     APIMod();
 
     virtual ~APIMod();

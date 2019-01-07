@@ -134,7 +134,7 @@ void SocketServer::tcpConnectionAcceptor() {
     }
 #endif
 
-    cout << "Waiting for connections on " << address.get() << ":" <<port << endl;
+    cout << "Waiting for connections on " << address << ":" <<port << endl;
     while(this->dolisten) {
         // Construct the client
         c = new SockClient();

@@ -19,10 +19,6 @@
 #include "TimeProfiler.h"
 #include "Timer.h"
 
-
-
-
-
 // Data/Arrays (Closely related to lists)
 #include "BitMap.h"
 
@@ -43,6 +39,12 @@
 #include "TreeList.h"
 #include "PriorityQueue.h"
 
+
+#include "Events/EventHandler.h"
+#include "Events/EventHandle.h"
+#include "Events/Event.h"
+#include "Logger/Logger.h"
+#include "TimeProfiler.h"
 
 
 // MISC

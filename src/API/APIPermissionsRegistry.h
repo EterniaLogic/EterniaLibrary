@@ -12,7 +12,7 @@
 
 class APIPermissionsRegistry{
 private:
-    LinkedList<APIUser> users;
+    LinkedList<APIUser*> users;
 public:
     APIPermissionsRegistry();
     virtual ~APIPermissionsRegistry();

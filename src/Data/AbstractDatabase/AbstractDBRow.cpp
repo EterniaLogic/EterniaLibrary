@@ -4,7 +4,7 @@ AbstractDBRow::AbstractDBRow() {
     mapindex = 0;
 }
 
-void AbstractDBRow::addField(AbstractDBField* field) {
+void AbstractDBRow::addField(AbstractDBField field) {
     fieldList.add(field);
 }
 

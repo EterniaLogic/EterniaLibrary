@@ -1,18 +1,18 @@
 #include "Aes256.h"
-#include <math.h>
+
 
 AES256::AES256(CharString keyv){
     // convert key to uint8_t
     for(int i=0;i<keyv.getSize();i++){
         ((char*)key)[i] = keyv.get()[i];
     }
-    
+
     aes256_init(&ctx,key);
 }
 
 AES256::AES256(uint8_t keyv[16]){
     for(int i=0;i<16;i++) key[i] = keyv[i];
-    
+
     aes256_init(&ctx,key);
 }
 
@@ -20,7 +20,7 @@ AES256::AES256(){
     // auto-generates key
     genKey();
     aes256_init(&ctx,key);
-} 
+}
 
 AES256::~AES256(){
     aes256_done(&ctx);
@@ -37,12 +37,12 @@ CharString AES256::genKey(){
 // get a 256-bit key
 uint8_t* AES256::getKey(){
     /*CharString ret = CharString((char*)calloc(4,32),32);
-    
+
     for(int i=0;i<32;i++){
         ret.get()[i] = ((char*)key)[i];
     }*/
-    
-    
+
+
     return key;
 }
 
@@ -52,7 +52,7 @@ CharString AES256::encrypt(CharString plaintext){
     bool odd = plaintext.getSize() % 16 != 0;
     int nlen = odd ? floor(plaintext.getSize()/16.f)*16+16 : plaintext.getSize();
     char* c = (char*)malloc(nlen);
-    
+
     for(int i=0;i<nlen;i+=16){
         for(int j=0;j<16;j++){
             if(i+j+1 <= plaintext.getSize()) nbuf[j] = (uint8_t)plaintext.get()[i+j];
@@ -60,11 +60,11 @@ CharString AES256::encrypt(CharString plaintext){
         }
         // encrypt
         aes256_encrypt_ecb(&ctx, nbuf);
-        
+
         for(int j=0;j<16;j++)
             c[i+j] = (char)nbuf[j];
     }
-    
+
     return CharString(c,nlen);
 }
 CharString AES256::decrypt(CharString encrypttext){
@@ -72,7 +72,7 @@ CharString AES256::decrypt(CharString encrypttext){
     bool odd = encrypttext.getSize() % 16 != 0;
     int nlen = odd ? floor(encrypttext.getSize()/16.f)*16+16 : encrypttext.getSize();
     char* c = (char*)malloc(nlen);
-    
+
     for(int i=0;i<nlen;i+=16){
         for(int j=0;j<16;j++){
             if(i+j+1 <= encrypttext.getSize()) nbuf[j] = (uint8_t)encrypttext.get()[i+j];
@@ -80,7 +80,7 @@ CharString AES256::decrypt(CharString encrypttext){
         }
         // decrypt
         aes256_decrypt_ecb(&ctx, nbuf);
-        
+
         for(int j=0;j<16;j++)
             c[i+j] = (char)nbuf[j];
     }

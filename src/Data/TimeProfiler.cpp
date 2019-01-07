@@ -20,15 +20,14 @@ void TimeProfiler::profileItem(CharString name){
     items.freeze();
     bool hasItem = false;
     for(int i=0;i<items.frozenlen;i++){
-        if(items.frozen[i]->Compare(name)){
+        if(items.frozen[i].Compare(name)){
             hasItem = true;
             break;
         }
     }
     
     if(!hasItem){
-        CharString *chartmp = new CharString();
-        chartmp->set(name);
+        CharString chartmp = name;
         items.add(chartmp);
         
         CyclicList<double> *list = new CyclicList<double>(averagelistsize);
@@ -46,9 +45,9 @@ void TimeProfiler::printProfiles(){
     items.freeze();
     cout << "---Printing Timed Profiles:" << endl;
     for(int i=0;i<items.frozenlen;i++){
-        CharString name = *(items.frozen[i]);
+        CharString name = items.frozen[i];
         CyclicList<double> *averager = profilemap.get(name);
-        cout << name.get() << " averaged at: " << averager->getAverage() << " microseconds." << endl;
+        cout << name << " averaged at: " << averager->getAverage() << " microseconds." << endl;
     }
     cout << "---------------------------" << endl;
 }

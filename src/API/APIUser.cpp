@@ -4,9 +4,8 @@ APIUser::APIUser(){
 }
 APIUser::~APIUser(){}
 
-bool testHashedPerm(bool* val){
-    if(val == 0x0) return false;
-    return *val;
+bool testHashedPerm(bool val){
+    return val;
 }
 
 bool APIUser::hasPermission(APIPermission perm){

@@ -1,40 +1,51 @@
 #ifndef ConcurrentLinkedList_H_
 #define ConcurrentLinkedList_H_
 
-#include "LinkedList.hpp"
+#include "../LinkedList.hpp"
+#include "Locker.hpp"
 // The ConcurrentLinkedList performs ~like~ a LinkedList, but it takes into account the fact that it
 //      may be changed from several threads at the same time.
+
+
+template<class T>
+class LockedNode{
+public:
+	Locker<LockedNode<T>*> next;
+	Locker<T> data;
+	LockedNode(){}
+	Locker<LockedNode<T>*> getLocker(){
+		Locker<LockedNode<T>*> lockx;
+		lockx._val = this;
+		return lockx;
+	}
+};
 
 template<class T>
 class ConcurrentLinkedList{
 private:
-    bool inuse;
     int _size;
-    LinkedNode<T> *head, *currentNode;
+    //Locker<LinkedNode<T>> head, currentNode;
+    LockedNode<T> *head, *currentNode; // use a list for each node instead of just a node
     
 public:
-    ConcurrentLinkedList(){
-        _size=0;
-        inuse=false;
-        head = 0x0;
-    }
+    ConcurrentLinkedList(){head=0x0;currentNode=0x0;}
     
-    void add(T*){
+    void add(T cc){
         // 
-        LinkedNode<T>* item = new LinkedNode<T>();
+    	LockedNode<T>* item = new LockedNode<T>();
         item->data = cc;
         if(head == 0x0 || currentNode == 0x0) {
             head = item;
             currentNode = item;
         } else {
-            currentNode->next = item;
+            currentNode->next = item->getLocker();
             currentNode = item;
         }
         _size++;
     }
     
     
-    T* get(int i){
+    T get(int i){
         //    
     }
     
@@ -44,7 +55,7 @@ public:
     }
     
     
-    void remove(T*){
+    void remove(T){
         //
     }
     
@@ -52,6 +63,9 @@ public:
     void clear(){
         //
     }
+
+
+
 };
 
 

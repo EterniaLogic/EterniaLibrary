@@ -24,6 +24,8 @@
 // Multi-substitution
 #define OP1(OP, TP) Arbitrary operator OP(TP value);
 
+#define OPC(_TP) Arbitrary(_TP val);
+
 #define OPALL(TP) \
 OP1(+, TP); \
 OP1(-, TP); \
@@ -36,9 +38,10 @@ OP1(*=, TP); \
 OP1(/=, TP);
 
 
-// https://en.wikipedia.org/wiki/Karatsuba_algorithm
+// FastMultiplication Algorithm:    https://en.wikipedia.org/wiki/Karatsuba_algorithm
 
 #define ARB Math::Arbitrary // Fast Alias
+#define Number Math::Arbitrary // Fast Alias
 
 namespace Math {
     class Arbitrary{

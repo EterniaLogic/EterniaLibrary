@@ -8,9 +8,9 @@ MSP430::MSP430() {
     init();
     paused = 0;
     // initialize interrupt handle lists using a hashmap
-    interruptHandles = new HashMap<LinkedList<InterruptHandle> >(20);
+    interruptHandles = HashMap<LinkedList<InterruptHandle> >(20);
     for(int i=0; i<20; i++) {
-        interruptHandles->addL(0UL, new LinkedList<InterruptHandle>());
+        interruptHandles.addL(0UL, LinkedList<InterruptHandle>());
     }
 }
 

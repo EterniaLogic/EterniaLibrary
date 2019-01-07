@@ -26,7 +26,7 @@ public:
 // Server
 class RESTFulServer : public HTTPServer {
     private:
-        LinkedList<RESTFulEndpoint> _get, _trace, _post, _put, _delete, _options, _head, _patch, _connect;
+        LinkedList<RESTFulEndpoint*> _get, _trace, _post, _put, _delete, _options, _head, _patch, _connect;
 
     public:
         RESTFulServer(CharString addr, int port, CharString wwwroot);

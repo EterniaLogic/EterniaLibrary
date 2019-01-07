@@ -32,20 +32,20 @@ namespace Math {
     };
 
     class Equation {
-            CharString* eq;
-            LinkedList<EquationNode>* baseNodes; // nodes on the "Bottom Step".
+            CharString eq;
+            LinkedList<EquationNode> baseNodes; // nodes on the "Bottom Step".
 
 
         public:
             Equation();
-            Equation(CharString* equation);
+            Equation(CharString equation);
 
-            void set(CharString* equation);
-            void setVariableValue(CharString* variable, CharString* value); // replaces variable with variable value.
+            void set(CharString equation);
+            void setVariableValue(CharString variable, CharString value); // replaces variable with variable value.
 
-            Equation* solveForVariable(CharString* variable); // algeraeically solve the equation for variable.
+            Equation* solveForVariable(CharString variable); // algeraeically solve the equation for variable.
 
-            double solve(CharString* variable); // calls solveForVariable() and determines if it can be solved directly for an answer.
+            double solve(CharString variable); // calls solveForVariable() and determines if it can be solved directly for an answer.
             Equation derive(char* wrt); // derive this equation.
             Equation integrate(char* wrt); // integrate this equation.
             double evaluate(double a, double b); // evaluate equation with a TO b. only works with one variable.

@@ -10,7 +10,7 @@
 
 class IC : private virtual Component {
     public:
-        void setPins(LinkedList<Pin>* list); // set the initial pins list
+        void setPins(LinkedList<Pin*> list); // set the initial pins list
         int getMaxPins();
 
         Pin* getPin(int pin); // return the value on a specific pin
@@ -21,7 +21,7 @@ class IC : private virtual Component {
 
         void tick(SecondTick* tickTime); // operate the component
 //protected:
-        LinkedList<Pin>* pins;
+        LinkedList<Pin*> pins;
         int maxPins;
 };
 

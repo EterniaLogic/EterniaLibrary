@@ -32,7 +32,7 @@ class APICore{
 private:
     APIEventRegistry events; // registry for event listeners
     APIPermissionsRegistry perms; // permissions registry
-    LinkedList<APIMod> mods; // loaded mods
+    LinkedList<APIMod*> mods; // loaded mods
     Logger logs;
     
     

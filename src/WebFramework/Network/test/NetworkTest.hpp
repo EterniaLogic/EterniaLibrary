@@ -14,7 +14,7 @@ CharString wwwroot = CharString("./www\0",5);//5
 
 // echo out data, send "TEST!" to the client
 void testClientHandler(CharString dataIn, CharString &dataOut, SockClient* client, void* d){
-    cout << dataIn.get() << endl;
+    cout << dataIn << endl;
     dataOut.set("TEST!\r\n",7);
 }
 

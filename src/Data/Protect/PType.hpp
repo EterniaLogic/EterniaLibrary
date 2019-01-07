@@ -14,8 +14,8 @@
 
 // Protect Types helps prevent memory modification.
 // The goal behind these types is to protect without significant performance loss.
-// This system uses a generic CRC-like comparison with runtime keygen.
-// Approximate time: O(3*k) k is the speed of the type operations
+// This system uses a generic CRC-like comparison with a runtime keygen.
+// Approximate time: O(3*k), k is the speed of the type operations
 // This system may also allow a class to be protected with easy CRC detection.
 // Serialization is also enabled for this type.
 // Heavy Macro use to help make large changes and lower stack use cost.
@@ -26,11 +26,9 @@
 
 /// Hacker changes value through scanmem or CheatEngine ***
         
-        if(money.isViolated)
+        if(money.isViolated())
             cout << "hacker voilated value!" << endl;
-
-        
- */
+*/
 
 
 
@@ -68,7 +66,7 @@
 
 // store the value, store in temporary buffer x
 #define _storeV(x)  \
-    tmp = x; \
+    T tmp = x; \
     this->honeypot = tmp; \
     long long xortmp = _XORp(tmp, vec1); \
     this->value = * _TCAST(xortmp); \
@@ -95,15 +93,15 @@
 
 //// ptype += T => ptype
 #define OP_PTP_DO_EQ(op,opeq) PType<T> operator opeq(T v){ \
-    T tmp = get() op v; \
-    _storeV(tmp); \
+    T tmp2 = get() op v; \
+    _storeV(tmp2); \
     return *this; \
 }
 
 //// ptype += ptype => ptype
 #define OP_PPP_DO_EQ(op,opeq) PType<T> operator opeq(PType<T> v){ \
-    T tmp = get() op v.get(); \
-    _storeV(tmp); \
+    T tmp2 = get() op v.get(); \
+    _storeV(tmp2); \
     return *this; \
 }
 
@@ -188,7 +186,6 @@ public:
         *vec2 = uni(rng);
 
         T vx= (T)0; // should be 0
-        T tmp;
         _storeV(vx);
 
         // values->add((int*)this);
@@ -203,6 +200,12 @@ public:
 
     PType(){
         init();
+    }
+    
+    PType(T val){
+        init(); 
+        
+        _storeV(val); // store value
     }
 
 
@@ -238,13 +241,11 @@ public:
 /////////////// BASIC OPERATIONS ///////////////
     // set this
     PType<T> operator =(T v){
-        T tmp;
         _storeV(v); // store value
         return *this;
     }
 
     PType<T> operator =(PType<T> v){
-        T tmp;
         _storeV(v.get()); // store value
         return *this;
     }

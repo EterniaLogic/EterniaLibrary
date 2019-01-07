@@ -12,7 +12,7 @@ bool RESTFulEndpoint::checkURI(HTTPRequest request){
     CharString urit = CharString("/",1);
     urit.concata(uri);
     
-    cout << request.URI.get() << " starts with /" << uri.get() << "? " << request.URI.startsWith(urit) << endl;
+    cout << request.URI.get() << " starts with /" << uri << "? " << request.URI.startsWith(urit) << endl;
     if(request.URI.startsWith(urit))
         return true;
     

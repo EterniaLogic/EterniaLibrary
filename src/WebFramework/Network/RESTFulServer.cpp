@@ -32,7 +32,7 @@ RESTFulServer::RESTFulServer(CharString addr, int port, CharString wwwroot){
     this->address = addr; // listen address
 }
 
-RESTFulServer* RESTFulServer::addEndpoint(RESTFulEndpoint *endpoint){                      
+RESTFulServer* RESTFulServer::addEndpoint(RESTFulEndpoint* endpoint){
      switch(endpoint->requestMethod){
         case HGET:
                 _get.add(endpoint);
@@ -66,13 +66,13 @@ RESTFulServer* RESTFulServer::addEndpoint(RESTFulEndpoint *endpoint){
      return this;
 }
 
-bool runendpoint(LinkedList<RESTFulEndpoint> list, HTTPRequest request, HTTPResponse &response){
+bool runendpoint(LinkedList<RESTFulEndpoint*> list, HTTPRequest request, HTTPResponse &response){
     list.freeze();
     for(int i=0;i<list.frozenlen;i++){
         RESTFulEndpoint *e = list.frozen[i];
         if(e != 0x0){
             if(e->checkURI(request)){
-                cout << e->uri.get() << endl;
+                cout << e->uri << endl;
                 e->handle(request, response);
                 return true;
             }

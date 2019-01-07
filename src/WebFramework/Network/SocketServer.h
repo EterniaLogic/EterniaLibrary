@@ -92,7 +92,7 @@ public:
     bool dolisten;
     int bufferSize;
     void* exVAL;
-    LinkedList<SockClient> clients;
+    LinkedList<SockClient*> clients;
     void (*connected)(SockClient*);
     void (*disconnected)(SockClient*);
     CharString (*encryptor)(CharString); // encrypting function pre-send

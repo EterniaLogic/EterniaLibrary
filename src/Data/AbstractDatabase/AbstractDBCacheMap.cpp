@@ -169,8 +169,8 @@ int AbstractDBCacheMap::getKey(double index) {
     }
 }
 
-AbstractDBRow* AbstractDBCacheMap::getRow(double index) {
-    return (AbstractDBRow*)rowList.get((int)index);
+AbstractDBRow AbstractDBCacheMap::getRow(double index) {
+    return (AbstractDBRow)rowList.get((int)index);
 }
 
 LinkedList<AbstractDBRow> AbstractDBCacheMap::getAllRows() {

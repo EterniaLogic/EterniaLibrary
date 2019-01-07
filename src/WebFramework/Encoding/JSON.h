@@ -2,6 +2,9 @@
 #define JSON_H_
 
 #include "../../Data/includes.h"
+
+// src/Serialization/SpecificSerializer.h has JSON to/from methods for classes, it is recommended.
+
 // JSON is a language that helps make text human readable between the server and client.
 
 struct TFIELD{
@@ -21,7 +24,11 @@ class JSON {
 
         void loadFile(CharString loc); // load JSON from file
         void saveFile(CharString loc); // save JSON (overwrite) to file
-
+        
+        
+        // SpecificSerializer
+        
+        
         
         // Convert string to map and back.
         static CharString encodeM(HashMap<DynamicType> _map);

@@ -24,7 +24,7 @@ void InputRedirection::handleInputLine(CharString* input) {
     double ii = 0;
     double time1 = clock()/CLOCKS_PER_SEC;
     double basetime = clock()/CLOCKS_PER_SEC;
-    cout << "'" << input->get() << "'" << endl; // 'test'
+    cout << "'" << input << "'" << endl; // 'test'
     
     if(input->Compare("exit",4)) {
         this->stop = true;
@@ -48,15 +48,15 @@ void InputRedirection::handleInputLine(CharString* input) {
         testEventHandler();
     } else if(input->Compare("CTest",5)) {
         CharString* c = new CharString("-12038.22828282302012031929319",30);
-        cout << "STRTEST Float: -" << c->get() << " = " << c->getFloat() << endl;
+        cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
         c = new CharString("0.0000000000000000000000000123",30);
-        cout << "STRTEST Float: " << c->get() << " = " << c->getFloat() << endl;
+        cout << "STRTEST Float: " << c << " = " << c->getFloat() << endl;
         c = new CharString("-120382282828230201203.1929319",30);
-        cout << "STRTEST Float: -" << c->get() << " = " << c->getFloat() << endl;
+        cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
         c = new CharString("-1.2345e+9",10);
-        cout << "STRTEST Float: -" << c->get() << " = " << c->getFloat() << endl;
+        cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
         c = new CharString("1.2345e+120",11);
-        cout << "STRTEST Float: -" << c->get() << " = " << c->getFloat() << endl;
+        cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
     } else if(input->Compare("LinearTest",10)) {
         char* a = new char();
         strcpy(a,"[LinearTest] ");
@@ -113,6 +113,10 @@ void sleep( time_t delay ) {
 int main() {
     cout << "Version: " << FULLVERSION_STRING << endl;
 #ifdef DEBUG
+    CharString c = "test";
+    cout << c << endl;
+
+
     //testGravity(); // tests Gravity calculation
     //testMath();
     //testParsers();
@@ -149,8 +153,8 @@ int main() {
     
     //CompositeGas::printCompositeGasses();
     
-    testARB();
-    malloc_stats();
+    //testARB();
+    //malloc_stats();
     
 #endif
 

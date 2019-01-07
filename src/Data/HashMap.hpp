@@ -39,11 +39,10 @@ class HMEntry {
         HMEntry() {
             this->id=0;
             this->k=0x0;
-            this->d=0x0;
             this->size=65535;
             this->next=0x0;
         }
-        HMEntry(CharString key, T* data,int size) {
+        HMEntry(CharString key, T data,int size) {
             this->id=0;
             this->k=key;
             this->d=data;
@@ -51,7 +50,7 @@ class HMEntry {
             this->size=size;
             setID();
         }
-        HMEntry(uint64_t id_, T* data,int size) {
+        HMEntry(uint64_t id_, T data,int size) {
             this->id=id_;
             this->k=0x0;
             this->d=data;
@@ -63,7 +62,7 @@ class HMEntry {
         HMEntry<T>* next; // for over-load of collisions. (separate chaining)
 
         CharString k;
-        T *d;
+        T d;
         uint64_t id;
 
         uint64_t getID() {
@@ -72,7 +71,7 @@ class HMEntry {
         CharString getKey() {
             return k;    // returns key
         }
-        T* getData() {
+        T getData() {
             return d;   // returns data
         }
         void set(HMEntry<T>* entry) {
@@ -92,7 +91,7 @@ class HMEntry {
 
 
 
-        T* get(CharString key) {
+        T get(CharString key) {
             // add to the endx.
             HMEntry<T>* current = this;
             // loop through the list.
@@ -103,10 +102,10 @@ class HMEntry {
                 current = current->next;
             }
 
-            return 0x0;
+            return T();
         } // get using EXACT key values.
 
-        T* get(uint64_t key) {
+        T get(uint64_t key) {
             // add to the endx.
             HMEntry<T>* current = this;
             // loop through the list.
@@ -117,10 +116,10 @@ class HMEntry {
                 current = current->next;
             }
 
-            return 0x0;
+            return T();
         } // get using EXACT key values.
 
-        T* remove(CharString* key) {
+        T remove(CharString* key) {
             // add to the endx.
             HMEntry<T>* current = this, last = 0x0;
             // loop through the list.
@@ -142,7 +141,7 @@ class HMEntry {
                 current = current->next;
             }
 
-            return 0x0;
+            return T();
         } // get using EXACT key values.
 
         // reset this item
@@ -169,7 +168,6 @@ class HashMap {
                 entries[i].id=0;
                 entries[i].next=0x0;
                 entries[i].k=0x0;
-                entries[i].d=0x0;
                 entries[i].size = size;
             }
         };
@@ -184,13 +182,12 @@ class HashMap {
                 entries[i].id=0;
                 entries[i].next=0x0;
                 entries[i].k=0x0;
-                entries[i].d=0x0;
                 entries[i].size = size;
             }
         };
 
 
-        void add(CharString key, T* data) {
+        void add(CharString key, T data) {
             //cout << "add(key,*data)" << endl;
             HMEntry<T>* entry = new HMEntry<T>(key,data,size);
             entry->size = size;
@@ -201,11 +198,11 @@ class HashMap {
             //cout << "addLoc("<< idx <<",*entry)" << endl;
             this->addLoc(idx,entry);
             //cout << "keys add key" << endl;
-            keys.add(new CharString(key.get(), key.getSize()));
+            keys.add(key);
             //cout << "add(key,*data) END" << endl;
         };
 
-        void addL(uint64_t key, T* data) {
+        void addL(uint64_t key, T data) {
             HMEntry<T>* entry = new HMEntry<T>(key,data,size);
             entry->size = size;
             this->addLoc(key,entry);
@@ -227,9 +224,9 @@ class HashMap {
         }
 
 
-        T* get(CharString key) {
+        T get(CharString key) {
             // basic key to search with.
-            HMEntry<T>* S = new HMEntry<T>(key, 0x0, size);
+            HMEntry<T>* S = new HMEntry<T>(key, T(), size);
             // does this key exist?
 
             if(entries[S->getID()].id > 0) {
@@ -242,16 +239,16 @@ class HashMap {
                     return entries[S->getID()].get(key);
                 }
             }
-            return 0x0;
+            return T();
         }; // get value
 
-        T* getL(uint64_t key) {
+        T getL(uint64_t key) {
             // basic key to search with.
 
             if(entries[key].id > 0) {
                 return entries[key].getData();
             }
-            return 0x0;
+            return T();
         }; // get value
         
         LinkedList<T>* getKeys(){
@@ -260,7 +257,7 @@ class HashMap {
 
 
         // get the direct item
-        T* getDirect(uint64_t id) {
+        T getDirect(uint64_t id) {
             // does this key exist?
 
 
@@ -269,12 +266,12 @@ class HashMap {
                 // determine if item on this list is within bounds.
                 return entries[id].getData();
             }
-            return 0x0;
+            return T();
         }; // get value
 
 
         // remove item based on key.
-        T* remove(CharString key) {
+        T remove(CharString key) {
             // basic key to search with.
             HMEntry<T>* S = new HMEntry<T>(key, 0x0, size);
             // does this key exist?
@@ -285,33 +282,33 @@ class HashMap {
                 //cout << "a1" << key->get() << endxl;
                 if(entries[S->getID()].getKey().Compare(key)) {
                     //cout << "a2" << endxl;
-                    T* item = entries[S->getID()].getData();
+                    T item = entries[S->getID()].getData();
                     entries[S->getID()].reset();
                     return item;
                 } else {
                     // if not, then we need to loop through the linked list for it.
                     //cout << "a3" << key->get() << endxl;
-                    T* item = entries[S->getID()].get(key);
+                    T item = entries[S->getID()].get(key);
                     entries[S->getID()].remove(key);
                     return item;
                 }
             }
-            return 0x0;
+            return T();
         };
 
         // remove item based on key.
-        T* removeL(uint64_t ID) {
+        T removeL(uint64_t ID) {
             // basic key to search with.
             // does this key exist?
             if(entries[ID].getID() > -1) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
 
-                T* item = entries[ID].getData();
+                T item = entries[ID].getData();
                 entries[ID].reset();
                 return item;
             }
-            return 0x0;
+            return T();
         };
 
         int collides,size; // for use with hashmap debugging.
