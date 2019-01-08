@@ -28,8 +28,9 @@ Linux:
 - no direct dependencies besides "build-essential" and pthreads
 
 
-	cmake .
-	make -j 4
+		cmake .
+		make -j 4
+
 
 Windows:
 - Use the Code::Blocks project file or eclipse
