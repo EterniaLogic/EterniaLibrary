@@ -95,9 +95,10 @@ namespace Math{
             unsigned long v2s = (v2 ^ __TYPETMASK) >> __TYPETBits;
             cout << "+= b  est: " << v2 << " masked: " << (v2m) << "   shifted: " << v2s << endl;*/
             if(v2 >= __MAXSIZET){ // carry
-                data->frozen[k] = v2 & __TYPETMASK;
+                (*data)[k] = (TYPET)(v2 & __TYPETMASK);
                 c = (v2 ^ __TYPETMASK) >> __TYPETBits; // get other bits for carry, then shift right
             }else{ // consume the carry
+                (*data)[k] = (TYPET)v2;
                 data->frozen[k] = v2;
                 c=0;
             }
@@ -110,10 +111,9 @@ namespace Math{
     }
 
     ArbitraryInteger ArbitraryInteger::operator =(unsigned int v){
-        ArbitraryInteger ret;
+        set<unsigned int>(v);
         
-        
-        return ret;
+        return *this;
     }
 
 
@@ -142,13 +142,15 @@ namespace Math{
                 unsigned long x = val & 1UL<<(j+t);
                 cout << "x & " << (1UL<<(j+t)) << "   => " << x   <<   "      " << getBinary() << endl;
                 
-                if(x > 0)
+                if(x > 0){
                     d ^= 1UL<<j;
+                    (*data)[k] = (TYPET)d;
+                }
             }
             t += __TYPETBits;
         }
         
-        cout << "d" << endl;
+        cout << "d" << data->size() << endl;
         cout << getBinary() << "   " << (unsigned long)toLong() << endl;
     }
 
@@ -239,7 +241,7 @@ namespace Math{
     
     
     CharString ArbitraryInteger::getBinary(){
-        CharString str;
+        CharString str="";
         data->freeze();
         //cout << "tostr a " << data->frozenlen << endl;
         

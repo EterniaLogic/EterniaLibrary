@@ -376,7 +376,7 @@ public:
         }
     }
     
-    
+    // list[k] = val
     LinkedList<T> operator =(T vallist){
         int size_ = SIZEOFA(vallist);
         clear();

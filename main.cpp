@@ -153,7 +153,7 @@ int main() {
     
     //CompositeGas::printCompositeGasses();
     
-    //testARB();
+    testARB();
     //malloc_stats();
     
 #endif

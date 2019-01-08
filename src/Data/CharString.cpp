@@ -751,9 +751,11 @@ void CharString::concata_(const char* str, const int lenx) {
 }
 
 template<std::size_t N>
-void CharString::concata(const char(&val)[N]){
-	concata(val,N);
+void CharString::concata(char const (val)[N]){
+    char* v = (char*)val;
+	concata(v,(int)N);
 }
+
 
 // Combine CharStrings after the current charString.=
 void CharString::concata(char* str, int lenx) {

@@ -51,9 +51,9 @@ class CharString {
         bool contains(char* c); // does this string contain the single character 'c'?
         CharString clone(); // creates a clone!
         void concata_(const char* str, const int lenx);
-
+        
         template<std::size_t N>
-        void concata(const char(&val)[N]);
+        void concata(const char(val)[N]);
         void concata(char* str, int len);
         template<std::size_t N>
 		void concatb(const char(&val)[N]);
