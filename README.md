@@ -18,6 +18,24 @@
 
 
 	Anybody willing to help in this project may contribute!
+	
+
+**Building**:
+
+cmake, eclipse or code-blocks (project files may not be fully up-to-date)
+
+Linux:
+- no direct dependencies besides "build-essential" and pthreads
+
+
+	cmake .
+	make -j 4
+
+Windows:
+- Use the Code::Blocks project file or eclipse
+- libatomic.a and libws_32.a required. (usually supplied with windows)
+
+
 
 Documentation and Examples
 --------------------------
@@ -32,9 +50,9 @@ example using namespaces
 	#include <iostream>
 		
 	int main(){
-        cout << Math::sin(20) << endl;
+        	cout << Math::sin(20) << endl;
         
-        return 0;
+        	return 0;
 	}
 
 
@@ -114,15 +132,3 @@ Sub-sections
 - Fully working Event Handler system, useful for threading.
 - Extended string class "CharString", which automatically handles strings along with conversions.
 - Wrapper for OpenGL/SDL, other frameworks to draw windows and 2D graphics.
-
-
-**Building**:
-
-Linux:
-- no direct dependencies besides "build-essential" and pthreads
-- cmake .
-- make -j 4
-
-Windows:
-- Use the Code::Blocks project file
-- libatomic.a and libws_32.a required. (usually supplied with windows)
