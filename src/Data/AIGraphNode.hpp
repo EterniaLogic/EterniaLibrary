@@ -119,7 +119,6 @@ public:
             double nweight = weights[i] + value;
             setWeight(i, nweight);
         }
-        
     }
 };
 

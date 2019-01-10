@@ -135,25 +135,9 @@ public:
     ~LinkedList() {
         dbgLog("finalize");
         
-        /*void *array[10];
-        size_t size;
-
-          // get void*'s for all entries on the stack
-        size = backtrace(array, 10);
-
-          // print out all the frames to stderr
-        fprintf(stderr, "Error: signal %d:\n", 1);
-        backtrace_symbols_fd(array, size, STDERR_FILENO);*/
-        
-        
-        clear();
-        /*if(frozen != 0x0){
-            for(int i = 0;i<frozenlen;i++)
-                frozen[i] = 0x0;
-            delete [] frozen;
-            frozen = 0x0;
-        }
-        frozenlen=0;*/
+        // do not use due to clearing Real datasets between functions
+        //  when using non-pointer referencing.
+        //clear(); 
     }
     
     

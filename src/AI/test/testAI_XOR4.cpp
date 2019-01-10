@@ -9,7 +9,8 @@ void testAI_XOR4(){
     ai.addLayer(1);
     
     for(int k=0;k<1;k++){
-        for(int i=0;i<16;i++){
+        //for(int i=0;i<16;i++){
+        for(int i=0;i<2;i++){
             LinkedList<double> inputs = {(i&1), (i&2)>>1, (i&4)>>2, (i&8)>>3};
             LinkedList<double> outputs = {(i&1) ^ ((i&2)>>1) ^ ((i&4)>>2) ^ ((i&8)>>3)};
             cout << "train " << i << endl;

@@ -65,7 +65,7 @@ void AIGraph::randomize(double min, double max){
 }
 
 void AIGraph::printLayers(){
-    for(int k=0;k<layers.size();k++){
+    /*for(int k=0;k<layers.size();k++){
         cout << "l";
         LinkedList<LinkedList<double>> w = layers[k]->getWeights();
         cout << "ayer_widths ";
@@ -74,7 +74,7 @@ void AIGraph::printLayers(){
             cout << "[" << w2.size() << "]";
         }
         cout << endl;
-    }
+    }*/
     
     for(int k=0;k<layers.size();k++){
         cout << "l";
@@ -82,16 +82,16 @@ void AIGraph::printLayers(){
         cout << "ayer ";
         for(int i=0;i<w.size();i++){
             LinkedList<double> w2 = w[i];
-            cout << "[";
+            cout << "       [";
             cout.flush();
             for(int j=0;j<w2.size();j++){
-                cout << "["; cout.flush();
+                cout << " ["; cout.flush();
                 double w3 = w2[j];
                 
                 cout << w3; cout.flush();
                 cout << "]"; cout.flush();
             }
-            cout << "]";cout.flush();
+            cout << " ]\n";cout.flush();
         }
         cout << endl;
     }
