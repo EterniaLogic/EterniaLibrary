@@ -1,38 +1,35 @@
 #include "QuickSort.h"
 
 // partition a segment.
-int partition(IntegerList *a, int low, int high) {
+int partition(LinkedList<int> a, int low, int high) {
     int left = low, right=high;
     // value for pivot is x
-    int x = a->get(left);
+    int x = a[left];
 
     // fast swap
     while ( right > left ) {
         // fast incrementing.
-        while(  x < a->get(right) ) right--;
-        while(  x >= a->get(left) ) left++;
+        while(  x < a[right] ) right--;
+        while(  x >= a[left] ) left++;
 
         // fast swapping when right > left.
         if ( right > left ) {
             // swap low with high
-            int tmp = a->get(left);
-            a->set(left,a->get(right));
-            a->set(right,tmp);
+            int tmp = a[left];
+            a[left] = a[right];
+            a[right] = tmp;
         }
     }
 
     // finish this segment.
-    a->set(low,a->get(right));
-    a->set(right,x);
-
-
-    //cout << "partion-4" << endl;
+    a[low] = a[right];
+    a[right] = x;
 
     return right;
 }
 
 // fast sort!
-void QuickSort(IntegerList* list, int left, int right) {
+void QuickSort(LinkedList<int> list, int left, int right) {
     if(left >= right) return;
 
     // partition and select the right as the pivot

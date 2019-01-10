@@ -6,11 +6,11 @@
 #include "../FileCache.h" // hpp files are just header files + source files combined. Useful for template classes.
 #include "../HashMap.hpp"
 #include "../Heap.h"
-#include "../IntegerList.h"
+//#include "../IntegerList.h"
 #include "../LinkedList.hpp"
 #include "../PriorityQueue.h"
 #include "../Queue.h"
-#include "../Stack.h"
+#include "../Stack.hpp"
 #include "../TreeList.h"
 #include "testPType.h"
 #include "testAbstractDB.h"

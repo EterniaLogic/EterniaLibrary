@@ -3,7 +3,6 @@
 
 #include "../../Data/CharString.h"
 #include "../../Data/LinkedList.hpp"
-#include "../../Data/IntegerList.h"
 
 // The BasicCompressor works with a sliding window compression approach.
 

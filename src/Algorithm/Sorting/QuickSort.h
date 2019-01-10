@@ -1,8 +1,8 @@
 #ifndef QUICKSORT_H_
 #define QUICKSORT_H_
 
-#include "../../Data/IntegerList.h"
+#include "../../Data/LinkedList.hpp"
 
-void QuickSort(IntegerList* list, int left, int right);
+void QuickSort(LinkedList<int> list, int left, int right);
 
 #endif /*QUICKSORT_H_*/

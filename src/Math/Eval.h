@@ -2,7 +2,7 @@
 #define EVAL_H_
 
 #include "../Data/CharString.h"
-#include "../Data/Stack.h"
+#include "../Data/Stack.hpp"
 
 namespace Math {
     // Pre-initialization Enumerators, enables labels and such within the source.

@@ -2,29 +2,18 @@
 
 #include "MergeSort.h"
 
-IntegerList* partition(IntegerList *a, int partby) {
+LinkedList<LinkedList<int>> partition(LinkedList<int> a, int partby) {
     // copy over the values.
     //cout << "Partition-1" << endl;
-    IntegerList* A = new IntegerList[2];
-    //cout << "Partition-2" << endl;
-    a->resetNext();
-    //int klk=0;
-    for(int i=0; i<partby; i++) {
-        int cc =  a->getNext();
-        if(cc != -9999999) {
-            A[0].addFront(cc);
-            //klk++;
-        }
-    }
-    ///cout << "Partition-3" << endl;
-    int cc;
-    while((cc =  a->getNext()) != -9999999) {
-        A[1].addFront(cc);
-        //klk++;
-    }
+    LinkedList<LinkedList<int>> A;
+    A.add(LinkedList<int>());
+    A.add(LinkedList<int>());
+    
+    for(int i=0; i<partby; i++)
+        A[0].addFirst(a[i]);
 
-    //cout << a->size() << " = " << A[0].size() << "+" << A[1].size() << " = " << klk << endl;
-    //cout << "Partition-4" << endl;
+    for(int i=partby;i<a.size();i++)
+        A[1].addFirst(a[i]);
 
     return A;
 }
@@ -50,36 +39,15 @@ while¬B.empty()
 return S
 */
 
-IntegerList* merge(IntegerList *a, IntegerList *b) {
-    IntegerList* S = new IntegerList();
-    //cout << "Merge-1" << endl;
-    while(!a->empty() && !b->empty()) {
-        //cout << a->front() << " < " << b->front() << endl;
-        if(a->front() < b->front()) {
-            S->addBack(a->pop());
-        } else {
-            S->addBack(b->pop());
-        }
-    }
-    //cout << "Merge-2" << endl;
-    while(!a->empty()) {
-        S->addBack(a->pop());
-    }
-    //cout << "Merge-3" << endl;
-    while(!b->empty()) {
-        S->addBack(b->pop());
-    }
-    return S;
-}
 
-IntegerList* MergeSort(IntegerList* list) {
-    if(list->size() > 1) {
-        IntegerList* S = partition(list,list->size()/2);
-        IntegerList S1 = S[0];
-        IntegerList S2 = S[1];
-        IntegerList* slist1 = MergeSort(&S1);
-        IntegerList* slist2 = MergeSort(&S2);
-        IntegerList* retlist = merge(slist1,slist2);
+
+LinkedList<int> MergeSort(LinkedList<int> list){
+    if(list.size() > 1) {
+        LinkedList<LinkedList<int>> S = partition(list,list.size()/2);
+        LinkedList<int> retlist;
+        
+        retlist.addFrom(MergeSort(S[0]));
+        retlist.addFrom(MergeSort(S[1]));
         return retlist;
     } else {
         return list;

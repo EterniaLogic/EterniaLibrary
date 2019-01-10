@@ -11,6 +11,7 @@ namespace Math{
 // namespace Math
 #include "Functions/Basic.h" // Basic functions such as abs, root, exponent, ect. NAMESPACE Basic
 #include "Functions/Trig.h" // sin, cos, tan, (asin, sinh, ...) NAMESPACE Math::Trig
+#include "Functions/Sigmoid.h" // sin, cos, tan, (asin, sinh, ...) NAMESPACE Math::Trig
 
 
 // no namespace
@@ -26,6 +27,8 @@ namespace Math{
 // algebra and evaluations
 #include "Eval.h" // direct evalutation with no variables.
 #include "Equation.h" // equation with variables and equal signs.
+
+#include "Random.hpp"
 
 #include "Arbitrary.h"
 

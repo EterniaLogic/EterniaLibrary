@@ -1,7 +1,7 @@
 #ifndef Graph_H_
 #define Graph_H_
 
-#include "LinkedListT.h"
+#include "LinkedList.hpp"
 #include "HashMap.hpp"
 #include "../Data/CharString.h"
 #include "../Math/struct/vertex.h"
@@ -22,8 +22,8 @@ class Graph {
         HashMap<GEdge>* lookupEdges;
 
         // LinkedListT to store verticies in linear order.
-        LinkedListT* verticiesList;
-        LinkedListT* edgesList;
+        LinkedList<GVertex*> verticiesList;
+        LinkedList<GEdge*> edgesList;
 
     public:
         Graph();
@@ -37,8 +37,8 @@ class Graph {
         void insertEdge(GEdge* e); // inserts an edge if it doesn't exist.
         void eraseVertex(GVertex* v); // remove all related edges
         void eraseEdge(GEdge* e); // erase an edge
-        LinkedListT* verticies(); // returns the full list of verticies
-        LinkedListT* edges(); // returns the full list of edges
+        LinkedList<GVertex*> verticies(); // returns the full list of verticies
+        LinkedList<GEdge*> edges(); // returns the full list of edges
 };
 
 
@@ -49,11 +49,11 @@ class GVertex {
 
         // involved edge types, static list of len Elen.
         // note: on a directed graph, only E edges that are beginning with this node will be available.
-        LinkedListT* incidentEdges;
+        LinkedList<GEdge*> incidentEdges;
 
         int label;
 
-        LinkedListT* vertexList; // structure that stores this.
+        LinkedList<GVertex*> vertexList; // structure that stores this.
 
         vertex location;
 };
@@ -76,7 +76,7 @@ class GEdge {
         GVertex* opposite(GVertex* v);
 
 
-        LinkedListT* edgeList; // structure that stores this.
+        LinkedList<GEdge*> edgeList; // structure that stores this.
 };
 
 

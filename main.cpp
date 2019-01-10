@@ -15,6 +15,11 @@
 #include "src/Engineering/Chemistry/Composite.h"
 
 #include <iostream>
+#include <stdio.h>
+#include <execinfo.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 #define DEBUG
 
@@ -108,10 +113,22 @@ void sleep( time_t delay ) {
     } while (( timer1 - timer0 ) < delay );
 }
 
+void handler(int sig) {
+  void *array[10];
+  size_t size;
 
+  // get void*'s for all entries on the stack
+  size = backtrace(array, 10);
+
+  // print out all the frames to stderr
+  fprintf(stderr, "\n\nError: signal %d:   (11 = SEGV)\n", sig);
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+  exit(1);
+}
 
 int main() {
     cout << "Version: " << FULLVERSION_STRING << endl;
+    signal(SIGSEGV, handler);   // install a handler
 #ifdef DEBUG
     CharString c = "test";
     cout << c << endl;
@@ -153,7 +170,9 @@ int main() {
     
     //CompositeGas::printCompositeGasses();
     
-    testARB();
+    
+    testAI_XOR4();
+    //testARB();
     //malloc_stats();
     
 #endif

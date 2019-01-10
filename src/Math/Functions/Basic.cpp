@@ -164,4 +164,27 @@ namespace Math {
         }
         return (lower + upper)/2;
     }
+    
+    double min(double a, double b){
+        if(a > b) return b;
+        else if(a < b) return a;
+        else return a; // equals
+    }
+    double max(double a, double b){
+        if(a > b) return a;
+        else if(a < b) return b;
+        else return a; // equals
+    }
+    
+    LLMATH(abs, double);
+    LLMATH_B(pow, double, double); //b
+    LLMATH_B(powb, double, double); // b
+    LLMATH(floor, double);
+    LLMATH(ln, double);
+    LLMATH_A(log, double, double); // base
+    LLMATH(log10, double);
+    LLMATH(factorial, double);
+    LLMATH(sqrt, double);
+    LLMATH_B(min, double, double);
+    LLMATH_B(max, double, double);
 }

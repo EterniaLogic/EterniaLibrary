@@ -12,6 +12,8 @@ class FileStructureNode {
     public:
         CharString name;
         DType type;
+        
+        CharString data; // not used, since the FS is not actually connected to anything yet
 
         bool nameEquals(CharString AName); // quick compare of names
 

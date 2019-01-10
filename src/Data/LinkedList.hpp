@@ -6,22 +6,40 @@
 #include <stdlib.h>
 #include <vector>
 #include <iterator>
-
 #include <stdio.h>
 #include <execinfo.h>
 #include <signal.h>
 #include <unistd.h>
 
-#include "LinkedListIterator.hpp" // Iteration, FOR_LIST
+#include "List.h"
 
+#include "../Math/Functions/Basic.h"
 using namespace std;
+namespace Math{
+    extern double max(double a, double b);
+}
 
-//#define dbgLog(strx) cout << "[LinkedList] " << strx << endl;
-#define dbgLog(strx) cout << "";
+
+
+//#define dbgLog(STRX) cout << "[LinkedList] " << STRX << endl; cout.flush();
+#define dbgLog(STRX) //
 
 #define SIZEOFA(x) (sizeof(x) / sizeof(x[0]))
 
-// Gar! I don't like writing templates because of this!
+
+#define LLOPERATOR(OP) \
+LinkedList<double> operator OP(LinkedList<double> v){ \
+    LinkedList<double> out; \
+    /*cout << "[LinkedList] operator OP   sizes: " << size() << " " << v.size() << endl;*/ \
+    int msize = Math::max(size(), v.size());\
+    for(int i=0;i<msize;i++){ \
+        double a = 0, b=0; \
+        if(i <= size()-1) a=get(i); \
+        if(i <= v.size()-1) b=v.get(i); \
+        out.add(a OP b); \
+    } \
+    return out; \
+}
 
 template<class T>
 class LinkedNode {
@@ -41,7 +59,39 @@ public:
 };
 
 template<class T>
-class LinkedList {
+class LinkedList;
+
+template<class T>
+class LinkedListIterator{
+public:
+    LinkedNode<T> *curnode;
+    
+    LinkedListIterator(){curnode=0x0;}
+    LinkedListIterator(LinkedList<T> list){
+        curnode = list.baseNode;
+    }
+    
+    T next(){
+        T outdata = curnode->data;
+        curnode = curnode->next;
+        return outdata;
+    }
+    
+    bool hasNext(){
+        return (curnode != 0x0);
+    }
+} ;
+
+// ALIAs
+#define LLIterator LinkedListIterator
+
+
+
+
+
+
+template<class T>
+class LinkedList : public List<T> {
     //Written January 25th, 2013
     
     int _size;
@@ -51,6 +101,7 @@ public:
     LinkedNode<T>* currentNode;
     T *frozen;
     int frozenlen;
+    
 
 
     // Initialize!
@@ -62,6 +113,22 @@ public:
         changed=true;
         frozen=0x0;
         frozenlen=0;
+    }
+    
+    // initializer for LinkedList<int> = {1,2,354,9};
+    LinkedList(std::initializer_list<T> vallist){
+        baseNode = 0x0;
+        currentNode = 0x0;
+        _size = 0;
+        changed=true;
+        frozen=0x0;
+        frozenlen=0;
+    
+        std::vector<T> v;
+        v.insert(v.end(), vallist.begin(), vallist.end());
+        for(int i=0;i<vallist.size();i++){
+            add(v[i]);
+        }
     }
 
     // Clean up!
@@ -118,7 +185,7 @@ public:
         
         LinkedNode<T>* item = new LinkedNode<T>();
 
-        dbgLog("add item first '" << (int)cc[0] << "' @ (" << item << ")");
+        dbgLog("add item first '" << cc << "' @ (" << item << ")");
 
         item->data = cc;
         
@@ -133,21 +200,28 @@ public:
         changed=true;
         
         dbgLog("base = " << baseNode << " cur = " << currentNode);
-        dbgLog("value item " << (int)item->data[0] << " " << *(baseNode->data));
+        dbgLog("value item " << item->data << " " << baseNode->data);
         
         return cc;
+    }
+    
+    // add items from another list
+    void addFrom(LinkedList<T> cc) {
+        LinkedListIterator<T> it = cc.getIterator();
+        while(it.hasNext())
+            add(it.next());
     }
 
 
     // return item
-    T get(int index) {
+    T get(long index) {
         freeze();
         //if(index > _size-1) return 0x0;
         return frozen[index];
     }
 
     // insert at the specified location
-    void insert(T data, int location){
+    void insert(T data, long location){
         dbgLog("insert");
         if(location >= _size || baseNode == 0x0){
             add(data);
@@ -269,6 +343,42 @@ public:
         }
         return r;
     }
+    
+    
+    
+    // Queue-like functions
+    T pop(){
+        if(baseNode != 0x0) {
+            T dat = baseNode->data;
+            baseNode = baseNode->next;
+            delete baseNode;
+            return dat;
+        }else{
+            return T();
+        }
+    }
+    
+    void pop(T data){
+        add(data); // same thing
+    }
+    
+    T front(){
+        if(baseNode != 0x0) {
+            return baseNode->data;
+        }else{
+            return T();
+        }
+    }
+    
+    bool empty(){
+        return baseNode != 0x0;
+    }
+    
+    
+    
+    
+    
+    
 
     // Clears up the list
     void clear() {
@@ -291,6 +401,7 @@ public:
     }
 
     // slice this list up into parts, output new one
+    // start to count, skipping every N
     LinkedList<T> slice(int start, int count, int skip){
         LinkedList<T> newList;
         dbgLog("slice");
@@ -305,7 +416,7 @@ public:
     
     int indexOf(T val){
         int i = -1;
-        dbgLog("index");
+        dbgLog("indexof");
         LinkedNode<T> *current = baseNode;
         while(current != 0x0){
             if(current->data == val) return i+1;
@@ -318,13 +429,27 @@ public:
 
     // retrieve item?
     T operator [](int i) const {
+        dbgLog(" ["<<i<<"]");
         freeze(); // @suppress("Invalid arguments")
         return frozen[i];
     }
 
-    T& operator [](int i){
-        freeze();
-        return frozen[i];
+    T& operator [](int index){
+        dbgLog(" list["<<index<<"] = ?");
+        LinkedNode<T>* current = baseNode;
+        for(long i=0; i<=index; i++) {
+            if(current != 0x0) {
+                //dbgLog(current << " " << i);
+                if (i == index) {
+                    return current->data;
+                }else{
+                    current = current->next;
+                }
+            }else{
+                dbgLog(" list["<<i<<"] doesn't exist.");
+            }
+        }
+        //return frozen[i];
     }
 
     // Returns the type-size of the data
@@ -361,7 +486,7 @@ public:
                 current = baseNode;
                 for(i=0; i<len; i++) {
                     if(current != 0x0) {
-                        dbgLog("FREEZE: item " << current->data << " @ " << current);
+                        //dbgLog("FREEZE: item " << current->data << " @ " << current);
                         frozen[i] = current->data;
                         current = current->next;
                     } else {
@@ -376,7 +501,7 @@ public:
         }
     }
     
-    // list[k] = val
+    // list = char{'a','b'};
     LinkedList<T> operator =(T vallist){
         int size_ = SIZEOFA(vallist);
         clear();
@@ -393,6 +518,25 @@ public:
         for(int i=0;i<vallist.size();i++){
             add(v[i]);
         }
+    }
+    
+    // math operations between two lists of same length
+    LLOPERATOR(-);
+    LLOPERATOR(+);
+    LLOPERATOR(/); // might divide by zero if second list is shorter
+    LLOPERATOR(*);
+    
+    // assuming that this list is a double!
+    double dot(LinkedList<double> v){
+        double out=0;
+        int msize = Math::max(size(), v.size());
+        for(int i=0;i<msize;i++){
+            double a = 0, b=0; \
+            if(i <= size()-1) a=get(i);
+            if(i <= v.size()-1) b=v.get(i);
+            out += a*b;
+        }
+        return out;
     }
     
 
@@ -427,4 +571,7 @@ public:
 #else
 template<class T>
 class LinkedList;
+
+template<class T>
+class LinkedListIterator;
 #endif

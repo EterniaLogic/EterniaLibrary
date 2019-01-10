@@ -6,8 +6,8 @@ using namespace std;
 
 namespace Math {
     // initialize stacks! :D
-    Stack* NumStack = new Stack();
-    Stack* OpStack = new Stack();
+    Stack<int> NumStack;
+    Stack<MOperator> OpStack;
 
     // returns a MOperator from a certain character type
     MOperator getOperatorFromChar(char character) {
@@ -44,9 +44,9 @@ namespace Math {
     // do the operation! :D
     int doOp() {
         int item, item2;
-        item2 = NumStack->pop();
-        item = NumStack->pop();
-        MOperator op = ((MOperator)OpStack->pop());
+        item2 = NumStack.pop();
+        item = NumStack.pop();
+        MOperator op = ((MOperator)OpStack.pop());
         // pop first 2 numbers and first operator
 
         // massive list, process input:
@@ -93,20 +93,19 @@ namespace Math {
             doOp()
         }*/
 
-        while(NumStack->size > 1 && (prec(op) <= prec((MOperator)OpStack->poll()) ) ) {
+        while(NumStack.size > 1 && 
+            (prec(op) <= prec((MOperator)OpStack.poll()))) {
             int res = doOp();
-            NumStack->push(res);
+            NumStack.push(res);
         }
     }
 
     // assigns Number from Temp String. Posts number to NumStack.
     void dumpNum(char* numString, int strlen) {
         if(strlen > 0) {
-            CharString* NTemp = new CharString(numString,strlen);
+            CharString NTemp = CharString(numString,strlen);
             numString[strlen] = 0x0;
-            NumStack->push(NTemp->getInt());
-
-            delete NTemp;
+            NumStack.push(NTemp.getInt());
         }
     }
 
@@ -114,7 +113,7 @@ namespace Math {
     void dumpOp(MOperator op) {
         if(op != none) {
             repeatOps(op);
-            OpStack->push(op);
+            OpStack.push(op);
         }
     }
 
@@ -154,8 +153,8 @@ namespace Math {
         // Parse method:
         //  1.) loop-through n times to get full stack.
 
-        NumStack = new Stack(); // NumStack is used to store the initial numbers
-        OpStack = new Stack(); // OpStack is used to store the initial operators
+        NumStack.clear(); // NumStack is used to store the initial numbers
+        OpStack.clear(); // OpStack is used to store the initial operators
 
         // note that both stacks store information through the same MathOperationNode Type.
         //  This will be solved later when we interlace the operators with the variables.
@@ -203,12 +202,12 @@ namespace Math {
         dumpOp(OpTemp);
         OpTemp = none;
 
-        while(OpStack->size > 0) {
+        while(OpStack.size > 0) {
             int res = doOp();
             //cout << "=" << res << endl;
-            NumStack->push(res);
+            NumStack.push(res);
         }
-        int c = NumStack->pop();
+        int c = NumStack.pop();
         if(c == -98) cout << "F";
         else if(c == -99) cout << "T";
         else cout << c;

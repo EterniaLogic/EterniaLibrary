@@ -1,4 +1,4 @@
-#ifndef CONVERT_H_
+ifndef CONVERT_H_
 #define CONVERT_H_
 
 #include "../struct/vertex.h"

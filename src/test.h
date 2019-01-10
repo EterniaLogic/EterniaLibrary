@@ -2,6 +2,7 @@
 
 #include <ctime>
 
+#include "AI/test/testAI.h"
 #include "Algorithm/Cryptography/test/testExHash.hpp"
 
 #include "Engineering/Physics/test/tests.h"
