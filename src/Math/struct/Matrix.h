@@ -1,10 +1,6 @@
 #ifndef MATRIX_H_
 #define MATRIX_H_
-#ifndef CHARSTRING_H_
-    #include "../../Data/CharString.h"
-#else
-    class CharString;
-#endif
+
 
 
 #include <cstdlib>
@@ -14,6 +10,7 @@ namespace Math {
     public:
         Matrix();
         Matrix(double **values, int columns, int rows);
+        Matrix(int columns, int rows);
         virtual ~Matrix();
 
         virtual Matrix* clone();
@@ -23,10 +20,16 @@ namespace Math {
         void add(Matrix* matrix); // add another matrix to this one.
         void scale(double scalar); // multiply all values in matrix by value.
 
+        Matrix* dot(Matrix* m); // dot product of another matrix (see https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.dot.html)
+
+
         double solveSquareDeterminant(double a, double b, double c, double d); // solve a 2x2 determinant
         double getDeterminant(int n, int m); // do inter-sequential determinants at location m,n.
         int rank(); // number of non-zero rows after echeolon form.
-    public:
+    
+    
+    
+    
         void transpose(); // transpose the matrix A T
         double adjMinor(int x, int y); // find the minor (find inner keys)
         Matrix* adjutant(); // find the adjutant (obtained from minor of all values)
@@ -50,7 +53,7 @@ namespace Math {
         bool isSquare(); // _m == _n
 
         // output
-        CharString* toOutput(); // converts to a string for output into console. (or w/e)
+        char* toOutput(); // converts to a string for output into console. (or w/e)
         //VectorSpace* toVectorSpace(); // vertex spaces are based off of matricies.
 
 
@@ -59,8 +62,14 @@ namespace Math {
         double **values;
         int columns, rows; // columns, rows
 
-        static double** createMatrixContainer(const int x, const int y);
+        // rows, columns swapped from initializer
+        static double** createMatrixContainer(const int rows, const int columns);
+        static void testErrCorr(Matrix* matrix);
     };
 }
 
+#else
+namespace Math{
+    class Matrix;
+}
 #endif /*MATRIX_H_*/

@@ -9,6 +9,9 @@
 #include "AIGraphLayer.hpp"
 #include "../Math/Math.h"
 
+#define debugLog(val) cout << val; cout.flush();
+//#define debugLog(val) //
+
 class AIGraph{
 private:
     LinkedList<AIGraphLayer*> layers; // list of columns of nodes

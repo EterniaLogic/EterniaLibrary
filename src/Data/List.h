@@ -37,6 +37,6 @@ public:
 }; 
 
 #else
-//template<class T>
+template<class T>
 class List;
 #endif

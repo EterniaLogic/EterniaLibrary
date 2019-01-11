@@ -5,8 +5,8 @@
 #include "AIGraphNode.hpp"
 #include "../Math/Math.h"
 
-//#define debugLog(val) cout << val
-#define debugLog(val) //
+#define debugLog(val) cout << val; cout.flush();
+//#define debugLog(val) //
 #define Logx(val) cout << val
 
 
@@ -16,7 +16,7 @@ private:
 public:
     LinkedList<AIGraphNode*> nodes;
     
-    LinkedList<double> error, adjustment;
+    Math::Matrix* adjusted;
     
     AIGraphLayer(double size){
         for(int i=0;i<size;i++)
@@ -27,7 +27,7 @@ public:
         LinkedList<double> outs;
         
         for(int i=0;i<nodes.size();i++){
-            debugLog("[ailayer] getoutputs " << i << endl);
+            //debugLog("[ailayer] getoutputs " << i << endl);
             outs.add(nodes.get(i)->getValue());
         }
         
@@ -43,6 +43,24 @@ public:
         
         return outs;
     }
+    
+    /*LinkedList<LinkedList<double>> getWeightsTransposed(){
+        LinkedList<LinkedList<double>> weights = getWeights();
+        LinkedList<LinkedList<double>> out;
+        
+        for(int i=0;i<weights.size();i++){
+            LinkedList<double> weights1 = weights[i];
+            for(int j=0;j<weights1.size();j++){
+                double weights2 = weights1[j];
+                
+                if(j > out.size()-1) out.add(LinkedList<double>());
+                out[j].add(weights2);
+            }
+        }
+        
+        
+        return out;
+    }*/
     
     void setWeights(LinkedList<LinkedList<double>> weights){
         for(int i=0;i<nodes.size();i++){
@@ -67,6 +85,12 @@ public:
     }
     
     void setupLinks(AIGraphLayer* prevlayer){
+        // clear out the links in case resetting links
+        for(int i=0;i<nodes.size();i++){
+            AIGraphNode* node = nodes[i];
+            node->links->clear(); // weight acts like an input for the entire AIGraph
+        }
+    
         if(prevlayer == 0x0){
             Logx("firstlayer set inputlinks: ");
             for(int i=0;i<nodes.size();i++){
@@ -78,9 +102,6 @@ public:
         }else{ // layers after first layer
             Logx("layer setuplinks: ");
             
-            
-            // TODO: not setting the links correctly.
-            // only setting 1, then moving away.
             for(int i=0;i<nodes.size();i++){
                 AIGraphNode* node = nodes[i];
                 Logx(i);
@@ -93,6 +114,8 @@ public:
             }
             Logx("\n");
         }
+        
+        unsetCalculated();
     }
     
     
@@ -112,35 +135,92 @@ public:
     // lastlayer.adjust(prevlayer.output)
     void determineAdjustment(LinkedList<double> errordelta){
         debugLog("[ailayer] first determineadj" << endl);
-        error = errordelta;
-        adjustment = error*Math::sigmoid_derivative(getOutputs());
+        
+        cout << "FIRST ADJP List delta" << endl;
+        errordelta.printlist();
+        getOutputs().printlist();
+        Math::sigmoid_derivative(getOutputs()).printlist();
+        LinkedList<double> adjp = errordelta*Math::sigmoid_derivative(getOutputs());
+        
+        cout << "FIRST ADJP List (delta*sigmoid(output)), size=" << adjp.size() << endl;
+        adjp.printlist();
+        
+        LinkedList<LinkedList<double>> adjl;
+        adjl.add(adjp);
+        adjusted = LinkedList<double>::toMatrix(adjl);
+        adjusted->transpose();
+        
+        cout << "FIRST adjusted:::::::::::::::::::::::: " << endl;
+        adjusted->toOutput();
     }
     
-    void determineAdjustment(AIGraphLayer* prevlayer){
+    void determineAdjustmentL(AIGraphLayer* prevlayer){
         debugLog("[ailayer] determineadj" << endl);
-        LinkedList<LinkedList<double>> weights = prevlayer->getWeights();
-        LinkedList<double> weighteddelta;
-        //prev->adjustment.dot(prev.getWeights()
+        //layer1.determineError(layer2.delta.dot(layer2.synaptic_weights.T))
+        
+        Math::Matrix* prevweights = 
+            LinkedList<double>::toMatrix(prevlayer->getWeights());
+        prevweights->transpose();
         
         debugLog("[ailayer] determineadj b" << endl);
-        for(int i=0;i<weights.size();i++){
-            weighteddelta.add(weights[i].dot(prevlayer->adjustment));
-        }
+        cout << "a" << endl;
+        Math::Matrix* weighteddelta = 
+            prevlayer->adjusted->dot(prevweights);
+        cout << "b" << endl;
         
         debugLog("[ailayer] determineadj c" << endl);
-        error = weighteddelta;
-        adjustment = error*Math::sigmoid_derivative(getOutputs());
+        //error = weighteddelta;
+        //adjustment = error*Math::sigmoid_derivative(getOutputs());
+        
+        /*adjustment.clear();
+        for(int i=0;i<weighteddelta.size();i++){
+            LinkedList<double> wd = weighteddelta[i];
+            adjustment.add(wd * Math::sigmoid_derivative(getOutputs()));
+        }*/
+        
+        LinkedList<LinkedList<double>> adjl;
+        for(int i=0;i<weighteddelta->columns;i++){
+            LinkedList<double> wcol = 
+                LinkedList<double>(weighteddelta->values[i], weighteddelta->rows);
+            LinkedList<double> d = wcol * Math::sigmoid_derivative(getOutputs());
+            adjl.add(d);
+        }
+        adjusted = LinkedList<double>::toMatrix(adjl);
+        adjusted->transpose();
+        
+        cout << "adjusted:::::::::::::::::::::::: " << endl;
+        adjusted->toOutput();
+        
         debugLog("[ailayer] determineadj d" << endl);
     }
     
     void adjust(LinkedList<double> expectedinputs){
         // assuming that each node has a single weight instead of many
         // weights += expectedinputs dot adj;
-        double weightadj = expectedinputs.dot(adjustment);
+        unsetCalculated();
+        
+        expectedinputs.printlist();
+        
+        LinkedList<LinkedList<double>> inputw;
+        inputw.add(expectedinputs);
+        Math::Matrix* inputm = LinkedList<double>::toMatrix(inputw);
+        //inputm->transpose(); // transpose!
+        cout << "adjc" << endl;
+        //adjusted->transpose();
+        Math::Matrix* weightadj = inputm->dot(adjusted);
+        //weightadj->transpose();
+        cout << "adjd" << endl;
+        
+        weightadj->toOutput();
         
         // However, in this implementation, each node has multiple weights for each prev node
-        for(int i=0;i<nodes.size();i++)
-            nodes[i]->adjust(weightadj); // 1 into many?
+        // use by columns
+        for(int i=0;i<weightadj->rows;i++){
+            debugLog("[ailayer] adjust d " << weightadj->rows << endl);
+            double* col = weightadj->values[i];
+            LinkedList<double> adj = LinkedList<double>(col, weightadj->rows);
+            nodes[i]->adjust(adj); // 1 into many?
+        }
     }
 };
 

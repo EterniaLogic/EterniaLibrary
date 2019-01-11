@@ -2,12 +2,13 @@
 #define SPLITRESULT_H_
 
 #include <string.h>
-#include "LinkedList.hpp"
-#ifndef CHARSTRING_H_
-#include "CharString.h"
-#else
+
+template<class T>
+class LinkedList;
 class CharString;
-#endif
+
+#include "CharString.h"
+#include "LinkedList.hpp"
 
 //Split result is used to take in data from a char* string split.
 class SplitResult {
@@ -35,4 +36,7 @@ class SplitResult {
         LinkedList<CharString> listStr;
 };
 
+
+#else // for cyclic includes
+class SplitResult;
 #endif /*SPLITRESULT_H_*/

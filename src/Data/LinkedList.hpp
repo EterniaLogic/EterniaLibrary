@@ -10,15 +10,12 @@
 #include <execinfo.h>
 #include <signal.h>
 #include <unistd.h>
+using namespace std;
 
 #include "List.h"
 
-#include "../Math/Functions/Basic.h"
-using namespace std;
-namespace Math{
-    extern double max(double a, double b);
-}
-
+//#include "../Math/Functions/Basic.h"
+#include "../Math/struct/Matrix.h"
 
 
 //#define dbgLog(STRX) cout << "[LinkedList] " << STRX << endl; cout.flush();
@@ -30,16 +27,25 @@ namespace Math{
 #define LLOPERATOR(OP) \
 LinkedList<double> operator OP(LinkedList<double> v){ \
     LinkedList<double> out; \
-    /*cout << "[LinkedList] operator OP   sizes: " << size() << " " << v.size() << endl;*/ \
-    int msize = Math::max(size(), v.size());\
-    for(int i=0;i<msize;i++){ \
-        double a = 0, b=0; \
+    const char* cs = #OP; \
+    cout << "[LinkedList] operator " << cs << "   sizes: " << size() << " " << v.size() << endl; \
+    /*int msize = Math::max(size(), v.size());*/\
+    double a=0, b=0; \
+    for(int i=0;i<size();i++){ \
         if(i <= size()-1) a=get(i); \
         if(i <= v.size()-1) b=v.get(i); \
         out.add(a OP b); \
     } \
     return out; \
-}
+} \
+\
+LinkedList<double> operator OP(double v){ \
+    LinkedList<double> out; \
+    for(int i=0;i<size();i++){ \
+        out.add(get(i) OP v); \
+    } \
+    return out; \
+} 
 
 template<class T>
 class LinkedNode {
@@ -128,6 +134,19 @@ public:
         v.insert(v.end(), vallist.begin(), vallist.end());
         for(int i=0;i<vallist.size();i++){
             add(v[i]);
+        }
+    }
+    
+    LinkedList(T* vallist, int len){
+        baseNode = 0x0;
+        currentNode = 0x0;
+        _size = 0;
+        changed=true;
+        frozen=0x0;
+        frozenlen=0;
+    
+        for(int i=0;i<len;i++){
+            add(vallist[i]);
         }
     }
 
@@ -510,18 +529,87 @@ public:
     LLOPERATOR(/); // might divide by zero if second list is shorter
     LLOPERATOR(*);
     
+    
+    
     // assuming that this list is a double!
-    double dot(LinkedList<double> v){
+    // template<double D, LinkedList<D> v);
+    /*double dot(LinkedList<double> v){
         double out=0;
+        cout << "[LinkedList] dot  sizes: " << size() <<" " << v.size() << endl;
         int msize = Math::max(size(), v.size());
         for(int i=0;i<msize;i++){
-            double a = 0, b=0; \
+            double a = 0, b=0;
             if(i <= size()-1) a=get(i);
             if(i <= v.size()-1) b=v.get(i);
             out += a*b;
         }
         return out;
     }
+    
+    LinkedList<double> dot(LinkedList<LinkedList<double>> v){
+        LinkedList<double> out;
+        cout << "[LinkedList] dot<<double>>  sizes: " << size() <<" " << v.size() << " " <<
+            v[0].size() << endl;
+        
+        
+        for(int i=0;i<v.size();i++){
+            LinkedList<double> v1 = v[i];
+            int msize = Math::max(size(), v1.size());
+            double x=0;
+            for(int j=0;j<msize;j++){
+                double a=0, b=0;
+                if(i <= size()-1) a=get(i);
+                if(i <= v1.size()-1) b=v1[i];
+                x += a*b;
+            }
+            out.add(x);
+        }
+        
+        
+        return out;
+    }
+    
+    // dot product, actually just a scalar
+    // this list or the other only has 1
+    LinkedList<LinkedList<double>> dotT(LinkedList<LinkedList<double>> v){
+        LinkedList<LinkedList<double>> out;
+        int s = size(), s_ = v.size();
+        int s1 = get(0).size(), s2 = v[0].size();
+        
+        int nsize = s*s_;
+        int nsize1 = s1*s2;
+        
+        int nsizex = Math::max(nsize, nsize1); // 17 by 17 output size
+        
+        cout << "[LinkedList] <<>>dot<<>>  sizes: " << s <<"x"<< s1 << " " << s_ << "x" << s2 << " => " << nsize << "x" << nsize1 << endl;
+        cout.flush();
+        // comments assume two-dim lists, 1x17 and 17x1 OR 17x17
+        
+        if(size() == 1 || v.size() == 1){ // scalar
+            // dimsize 1 dot 17 or 17 dot 1
+            
+            if(size() == 1){
+                for(int i=0;i<nsizex;i++){
+                    out.add(v[i]*get(0));
+                }
+            }else{ // v.size() is 1
+                for(int i=0;i<nsizex;i++){
+                    out.add(get(i)*v[0]); // LinkedList<double> * double
+                }
+            }
+        }else if(size() == v.size()){ // dot each, 1x17 out
+            // dimsize 17 dot 17 (just do dot for each)
+            LinkedList<double> out1;
+            for(int i=0;i<size();i++)
+                for(int j=0;j<v.size();j++)
+                    out1.add(get(i).dot(v[j]));
+            out.add(out1); 
+        }else{
+            // error, not same size
+            cout << "dotT<<>> error not 1xN or NxN" << endl;
+        }
+        return out;
+    }*/
     
 
     void refreeze(){
@@ -550,11 +638,59 @@ public:
         return LinkedListIterator<T>(*this);
     }
     
+    
+    
+    //template<class T>
+    static Math::Matrix* toMatrix(LinkedList<LinkedList<double>> dlist){
+        // convert a doubley-list to a matrix
+        if(dlist.size() == 0 || dlist[0].size() == 0) return 0x0;
+        int s = dlist.size(), s1 = dlist[0].size();
+        
+        Math::Matrix* m = new Math::Matrix(s, s1);
+        
+        for(int i=0;i<s;i++){
+            for(int j=0;j<s1;j++){
+                m->values[j][i] = dlist[i][j];
+            }
+        }
+        
+        return m;
+    }
+    
+    
+    static LinkedList<LinkedList<double>> fromMatrix(Math::Matrix* matrix){
+        // convert a doubley-list to a matrix
+        LinkedList<LinkedList<double>> l;
+        if(matrix == 0x0 || matrix->values == 0x0) return l;
+        
+        for(int i=0;i<matrix->columns;i++){
+            LinkedList<double> l2;
+            for(int j=0;j<matrix->rows;j++){
+                l2.add(matrix->values[j][i]);
+            }
+            l.add(l2);
+        }
+        
+        return l;
+    }
+    
+    void printlist(){
+        cout << "linkedlist["<<this<<", "<< sizeof(T) <<"]: ";
+        for(long i=0;i<size();i++){
+            cout << (T)get(i);
+            if(i<size()-1)
+                cout << ",";
+        }
+        cout << endl;
+    }
+    
 };
+
+
 
 #else
 template<class T>
-class LinkedList;
+class LinkedList;// : public List<T>;
 
 template<class T>
 class LinkedListIterator;

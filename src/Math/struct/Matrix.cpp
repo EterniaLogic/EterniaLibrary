@@ -3,8 +3,21 @@
 #include "Matrix.h"
 
 #include <iostream>
+#include <stdio.h>
+#include <execinfo.h>
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 using namespace std;
+
+
+void backtracex(const int times) {
+  void *array[times];
+  size_t size;
+  size = backtrace(array, times);
+  backtrace_symbols_fd(array, size, STDERR_FILENO);
+}
 
 namespace Math {
     Matrix::Matrix() {
@@ -12,8 +25,14 @@ namespace Math {
         columns=0;
         rows=0;
     }
-    Matrix::Matrix(double **values_, int _m, int _n) {
-        set(values_,_m,_n);
+    Matrix::Matrix(double **values_, int columns, int rows) {
+        set(values_,columns,rows);
+    }
+    
+    Matrix::Matrix(int columns_, int rows_) {
+        values = createMatrixContainer(rows_,columns_);
+        columns=columns_;
+        rows=rows_;
     }
 
     Matrix::~Matrix() {
@@ -25,30 +44,23 @@ namespace Math {
 
     // clone the matrix so we can use it again without modifying this matrix.
     Matrix* Matrix::clone() {
-        Matrix* two = new Matrix();
-
-
-        // re-create vertex set.
-        const int x = columns;
-        const int y = rows;
-        double** vset = new double*[y];
-        for(int i=0; i<y; i++) {
-            double* vset2 = new double[x];
-            vset[i] = vset2;
-
-            // fill in.
-            for(int k=0; k<x; k++) {
-                vset2[k] = values[k][i];
+        Matrix* two = new Matrix(columns,rows);
+        //cout << "clone "<<columns<<","<<rows << endl;
+        
+        // copy values over
+        for(int i=0; i<columns; i++) {
+            for(int k=0; k<rows; k++) {
+                //cout << i<<","<<k<<endl;
+                two->values[k][i] = values[k][i];
             }
         }
-
-        two->set(vset,columns,rows);
+        
         return two;
     }
 
     double** Matrix::createMatrixContainer(const int x, const int y) {
         // initialize x-wide container.
-        double** newset =  (double**)calloc(x+1,sizeof(double*));
+        double** newset = (double**)calloc(x+1,sizeof(double*));
         // initialize all of the arrays.
         for(int i=0; i<x; i++) {
             newset[i] = (double*)calloc(y+1,sizeof(double));
@@ -67,35 +79,95 @@ namespace Math {
     /////////////////////////////////////////
     ////////// BASIC OPERATIONS /////////////
     /////////////////////////////////////////
-
+    
+    // tests matrix for correct column/row orientation
+    //  will probably throw a SEGV upon incorrect orientation
+    void Matrix::testErrCorr(Matrix* matrix){
+        for(int i=0; i<matrix->rows; i++) {
+            for(int j=0; j<matrix->columns; j++) {
+                double v = matrix->values[i][j];
+            }
+        }
+    }
 
     // multiplies with another matrix
     void Matrix::multiply(Matrix* matrix) {
+        double result = 0;
+        int i=0,j=0,k=0;
+        double** dcont;
+        Matrix* mm;
+        
+        //cout << "[matrix MPY] test this" << endl;
+        Matrix::testErrCorr(this);
+        
         // values and matrix->values
         // do initial length and height tests:
         if(columns == matrix->rows) { // n m x n m => mxn w/ size nxm
-            double** newMatrix = createMatrixContainer(rows, matrix->columns);
-            Matrix* mm = new Matrix(newMatrix,rows, matrix->columns);
+            // row x col => output size
+            
+            cout << "[matrix multiply] " << rows << "x"<<columns <<" * "<<matrix->rows<<"x"<<matrix->columns << " = " <<rows <<"x"<<matrix->columns << endl;
+            cout.flush();
+            
+            //dcont = createMatrixContainer(rows, matrix->columns);
+            //mm = new Matrix(dcont, rows, matrix->columns);
+            dcont = createMatrixContainer(matrix->columns,rows);
+            mm = new Matrix(dcont, rows, matrix->columns);
+            
+            //cout << "[matrix MPY] test mm" << endl;
+            Matrix::testErrCorr(mm);
+            //cout << "[matrix MPY] test mm pass" << endl;
+            
             // multiply
             // select row i and dot-product it with column j @ matrix->m
-            for(int i=0; i<rows; i++) {
-                for(int j=0; j<matrix->columns; j++) {
-                    int result = 0;
+            for(i=0; i<rows; i++) {
+                //cout << "s "<< i << endl; cout.flush();
+                for(j=0; j<matrix->columns; j++) {
+                    //cout << "s1 "<<i<<" "<< j << endl; cout.flush();
+                    result = 0;
+                    //cout << "s1_ " << endl; cout.flush();
                     // cross-product this row with this column.
                     // loop through this row. (value should be the same with the column on matrix)
-                    for(int k=0; k<columns; k++) {
-                        result += values[i][k] * matrix->values[j][k];
+                    for(k=0; k < columns; k++) {
+                        //cout << "s2 "<<i<<" "<< j << " " << k << endl; cout.flush();
+                        //cout << (values[i][k]) << endl; cout.flush();
+                        //cout << (matrix->values[k][j]) << endl; cout.flush();
+                        //cout << "result += "<<(values[i][k])<<"*"<< (matrix->values[k][j]) <<endl; cout.flush();
+                        result += values[i][k] * matrix->values[k][j];
+                        //cout << "resulte"<<endl; cout.flush();
                     }
 
                     // store result into new matrix at row i, column j
-                    newMatrix[i][j] = result;
+                    //cout << "store "<< result << " @ "<<i<<","<<j<<endl; cout.flush();
+                    dcont[j][i] = result;
+                    //cout << "estore "<<endl; cout.flush();
                 }
             }
-
-            values = newMatrix;
+            
+            cout << "mdone "<<endl; cout.flush();
+            values = dcont;
             columns = rows;
             rows = matrix->columns;
-            mm->~Matrix();
+            mm->values=0x0;
+            //mm->~Matrix();
+        }else if(columns==rows==1){
+            // scalar on second
+            double scalar = values[0][0];
+            mm = matrix->clone();
+            mm->scale(scalar);
+            
+            values = dcont;
+            columns = rows;
+            rows = matrix->columns;
+            mm->values=0x0;
+        }else if(matrix->columns==matrix->rows==1){
+            double scalar = matrix->values[0][0];
+            scale(scalar);
+        }else{
+            toOutput();
+            matrix->toOutput();
+            char* trans="";
+            cout << "matrix multiply mismatched sizes " << rows << "x"<<columns <<" * "<<matrix->rows<<"x"<<matrix->columns << " = " <<rows <<"x"<<matrix->columns << endl;
+            backtracex(10);
         }
     }
 
@@ -122,6 +194,65 @@ namespace Math {
         }
     }
 
+    // dot product of another matrix
+    //  see https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.dot.html
+    Matrix* Matrix::dot(Matrix* m){
+        Matrix* m2 = 0x0;
+        /*int s1a = columns, s1b = rows;
+        int s2a = m->columns, s2b = m->rows;
+        // XxY
+        
+        // new size
+        int na = s1a * s2a;
+        int nb = s1b * s2b;
+        
+        
+        
+        // 1xN dot 1xN (is normal dot product?)
+        bool isD =  (((s1a==s2a)==1) && s1b==s2b);
+        bool isD1 = (s1a==s2a && ((s1b==s2b)==1));
+        bool scale1 = (s1a==s1b==1); // 1x1
+        bool scale2 = (s2a==s2b==1); // 1x1*/
+        
+        //cout << "Matrix::dot(" << s1a << "x" << s1b << " . "<<s2a<<"x"<<s2b<<")" << endl;
+        
+        //toOutput();
+        //m->toOutput();
+        
+        m2 = clone();
+        m2->multiply(m);
+        
+        // if both have inverted sizes of len 1, just scale all (1x17 => 17x17)
+        /*if(isD || isD1){
+            // full [normal] dot product, results in single value
+            double **vcont = createMatrixContainer(1,1);
+            m2 = new Matrix(vcont,1,1);
+            if(isD){ // single column, multi-row
+                for(int i=0;i<s1b;i++){
+                    vcont[0][0] +=  values[0][i] * m->values[0][i];
+                }
+            }else{ // single row, multi-column
+                for(int i=0;i<s1b;i++){
+                    vcont[0][0] +=  values[i][0] * m->values[i][0];
+                }
+            }
+        }else if (na==nb || (s1a==s2b && s1b==s2a)){ 
+            // matrix multiply
+            m2 = clone();
+            m2->multiply(m);
+        }else if(scale1 || scale2){
+            // 1x1 dot MxN (scalar)
+            m2 = clone();
+            m2->multiply(m);
+        }else{
+            // ???
+            cout << "Matrix::dot(m) N is not the same. Must be like: 1xN.1xN/Nx1.Nx1 or NxN.NxN (" << s1a << "x" << s1b << " . "<<s2a<<"x"<<s2b<<")" << endl;
+        }*/
+        
+        // if
+        
+        return m2;
+    }
 
     /////////////////////////////////////////
     ////////// ADVANCED OPERATIONS //////////
@@ -142,23 +273,27 @@ namespace Math {
         // 0 0 1    0 1 1
         // flips diagonal
         //cout << "transposed-1" << endl;
-        Matrix* copy = clone(); // use to reference to.
-        double** m2 = createMatrixContainer(rows, columns);
-
+        //Matrix* copy = clone(); // use to reference to.
+        Matrix* n = new Matrix(rows,columns);
+        
+        cout << "transpose " << columns << "x"<<rows << " => " << rows << "x" << columns << endl; cout.flush();
+        
         // all we have to do is flip x and y during express copy.
         for(int i=0; i<columns; i++) {
             for(int j=0; j<rows; j++) {
                 //?
-                m2[j][i] = copy->values[j][i];
+                //cout << "t " <<i << j << " "; cout.flush();
+                //cout <<values[j][i] << " ";
+                //cout <<n->values[i][j] << endl;
+                //n->values[i][j] = values[j][i];
+                n->values[i][j] = values[j][i];
             }
         }
-
-        // clean up!
-        for(int i=0; i<rows; i++) {
-            delete values[i];
-        }
-        values = m2;
-        //cout << "transposed-2" << endl;
+        
+        values = n->values;
+        columns = n->columns;
+        rows = n->rows;
+        Matrix::testErrCorr(this);
     };
 
 
@@ -416,20 +551,23 @@ namespace Math {
     }
 
     // output literally places the entire matrix into a charstring so that you can see what is happening.
-    CharString* Matrix::toOutput() {
-        CharString* ccc = new CharString();
+    char* Matrix::toOutput() {
+        //char* ccc = new char[1000];
+        cout << "matrix("<<rows<<","<<columns<<")" << endl;
         for(int i=0; i<rows; i++) {
             for(int j=0; j<columns; j++) {
-                double a1 = values[i][j];
-                ccc->concata(CharString::ConvertFromInt(a1));
+                double a1 = values[i][j]; // [r][c]
+                /*ccc->concata(CharString::ConvertFromInt(a1));
 
-                ccc->concata_(" ",1);
+                ccc->concata_(" ",1);*/
+                cout << a1 << " ";
             }
 
-            ccc->concata_("\n",1);
+            //ccc->concata_("\n",1);
+            cout << endl;
         }
 
-        return ccc;
+        return "";
     }
 }
 

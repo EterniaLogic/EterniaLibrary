@@ -7,6 +7,7 @@ LinkedList<double> getadjustment(LinkedList<double> input, LinkedList<double> ad
     return adj;
 }
 
+
 void AIGraph::train(LinkedList<double> input, LinkedList<double> expectedresults, double weightstrength){
     // use Math::sigmoid(double); and Math::sigmoid_derivative(double);
     // for the difference between sameness
@@ -38,7 +39,7 @@ void AIGraph::train(LinkedList<double> input, LinkedList<double> expectedresults
     AIGraphLayer *prev = last;
     for(int i=layers.size()-2;i>=0;i--){
         debugLog("train b2 " << i << " " << prev << endl);
-        layers[i]->determineAdjustment(prev);
+        layers[i]->determineAdjustmentL(prev);
         prev = layers[i];
         debugLog("train b3" << endl);
     }
@@ -47,14 +48,16 @@ void AIGraph::train(LinkedList<double> input, LinkedList<double> expectedresults
     
     // do adjustments
     first->adjust(input);
+    debugLog("train d" << endl);
     prev = first;
     for(int i=1;i<layers.size();i++){
         // determine dot product
         // LinkedList<double> adjw = getAdjustedWeights();
+        debugLog("train e" << endl);
         layers[i]->adjust(prev->getOutputs());
         prev = layers[i];
     }
-    
+    debugLog("train f" << endl);
     printLayers();
     
     

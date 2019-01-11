@@ -1,15 +1,10 @@
-
-
 #include "SplitResult.h"
 
 
 //SplitResult is used when calling the ::split function on a CharString.
 
 // init with max sizeof
-SplitResult::SplitResult() {
-    // clean out listStr
-
-}
+SplitResult::SplitResult() {}
 
 SplitResult::~SplitResult() {}
 

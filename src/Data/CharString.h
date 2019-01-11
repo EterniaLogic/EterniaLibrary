@@ -1,16 +1,14 @@
 #ifndef CHARSTRING_H_
 #define CHARSTRING_H_
 
-#include "CharString.h"
-#include "SplitResult.h"
 #include <iostream>
 #include <malloc.h>
+#include <strings.h>
+#include "SplitResult.h"
+#include "LinkedList.hpp"
 #include "../Math/Functions/Basic.h"
-#ifndef SPLITRESULT_H_
-    #include "SplitResult.h"
-#else
-    class SplitResult;
-#endif
+
+
 
 enum SortType {SBefore, SSame, SAfter};
 
@@ -119,4 +117,6 @@ class CharString {
 };
 
 
+#else // for cyclic includes
+class CharString;
 #endif /*CHARSTRING_H_*/
