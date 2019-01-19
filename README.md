@@ -6,7 +6,7 @@
 
 **Email**: eternialogic@gmail.com (alias> dreadslicer@gmail.com)
 
-**Users**: https://github.com/EterniaLogic/EterniaEngine
+**Subprojects**: https://github.com/EterniaLogic/EterniaEngine
 
 **Original Creation Date**: January 13, 2012
 
