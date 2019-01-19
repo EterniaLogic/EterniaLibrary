@@ -9,6 +9,14 @@
 #include "AIGraphLayer.hpp"
 #include "../Math/Math.h"
 
+
+
+// TODO: make it work, matricies are flipped when they shouldn't be.
+//       output values are always the same. (same comment in testAI_XOR4.cpp)
+
+
+
+
 #define debugLog(val) cout << val; cout.flush();
 //#define debugLog(val) //
 
