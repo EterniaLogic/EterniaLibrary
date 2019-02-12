@@ -6,6 +6,8 @@
 
 **Email**: eternialogic@gmail.com (alias> dreadslicer@gmail.com)
 
+**Subprojects**: https://github.com/EterniaLogic/EterniaEngine
+
 **Original Creation Date**: January 13, 2012
 
 **Copyright**: Copyright 2019 Brent Clancy
@@ -30,6 +32,8 @@ Linux:
 
 		cmake .
 		make -j 4
+
+
 
 
 Windows:

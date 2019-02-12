@@ -1,6 +1,8 @@
 #include "AIGraph.h"
 
 
+
+
 // adds a layer to this graph
 void AIGraph::addLayer(int layersize){
     AIGraphLayer *layer = new AIGraphLayer(layersize);
