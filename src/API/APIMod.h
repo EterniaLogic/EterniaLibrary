@@ -33,14 +33,13 @@ enum APIModType {APIMT_Server, APIMT_Client, APIMT_Shared, APIMT_Node};
 // A database mod shouldnt be accessed by a logging mod.
 
 class APIMod : public APIUser{
-private:
+public:
     // private data stored for this module.
     APICore* core; // Linked core
     CharString file, language, version;
     //CharString name; // inherited from APIUser
     LinkedList<APIMod> dependencies;
     APIModType type;
-public:
     CharString modcwdloc; // CWD directory for mod
 
     // location for scripts, mod name, language, version
