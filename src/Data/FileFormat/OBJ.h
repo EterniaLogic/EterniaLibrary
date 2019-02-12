@@ -21,10 +21,9 @@
 #define debugLogm(s)  //nothing
 #endif
 
+namespace OBJ{
+IModel* loadFromFile(CharString fileloc);
+}
 
-class OBJ{
-public:
-    IModel* loadFromFile(CharString fileloc);
-};
 
 #endif

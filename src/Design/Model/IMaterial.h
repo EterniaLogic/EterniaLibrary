@@ -13,7 +13,6 @@ public:
     CharString name;
 
     // direct values
-
     Math::vertex AmbientColor, DiffuseColor, SpecularColor, EmitColor, ModelColor;
 
     double Shininess, Alpha;
@@ -22,8 +21,6 @@ public:
     // 2D cubic Maps, not the job of this library to load them.
     CharString ColorMap_loc, DiffuseMap_loc, SpecularMap_loc, EmitMap_loc, AlphaMap_loc, BumpMap_loc, ShinyMap_loc, MirrorMap_loc;
     IAnimated *ColorMap, *DiffuseMap, *SpecularMap, *EmitMap, *AlphaMap, *BumpMap, *ShinyMap, *MirrorMap;
-    
-    void animateTick(long timeMillis);
 };
 
 #endif

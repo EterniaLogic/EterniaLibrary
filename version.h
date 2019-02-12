@@ -1,4 +1,4 @@
 #ifndef VER_H
 #define VER_H
-#define FULLVERSION_STRING "1.121.5"
+#define FULLVERSION_STRING "1.121.7"
 #endif
