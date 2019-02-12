@@ -3,6 +3,7 @@
 
 #include "../../Math/struct/vertex.h"
 #include "../../Data/CharString.h"
+#include "../IAnimated.h"
 
 class IMaterial{
 public:
@@ -20,7 +21,9 @@ public:
 
     // 2D cubic Maps, not the job of this library to load them.
     CharString ColorMap_loc, DiffuseMap_loc, SpecularMap_loc, EmitMap_loc, AlphaMap_loc, BumpMap_loc, ShinyMap_loc, MirrorMap_loc;
-    //Sprite2D ColorMap, DiffuseMap, SpecularMap, EmitMap, AlphaMap, BumpMap, ShinyMap, MirrorMap;
+    IAnimated *ColorMap, *DiffuseMap, *SpecularMap, *EmitMap, *AlphaMap, *BumpMap, *ShinyMap, *MirrorMap;
+    
+    void animateTick(long timeMillis);
 };
 
 #endif

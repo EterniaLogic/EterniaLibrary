@@ -7,7 +7,7 @@
 // Tau neutrino / antineutrino
 
 class Neutrino {
-        Neutrino();
+        Neutrino(){spin=0.5;charge=0;}
         virtual ~Neutrino();
 };
 

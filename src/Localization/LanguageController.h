@@ -5,6 +5,7 @@
 
 // Languages are incredibly unique...
 // english, spanish, french, german, chinese, Bulgarian, Russian, Swedish, Italian, Japanese
+// Standard language codes for google
 enum LANG {
     LANG_ARABIC = 0x00,
     LANG_BULGARIAN = 0x01,
