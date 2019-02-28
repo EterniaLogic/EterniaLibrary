@@ -1,3 +1,3 @@
-#include "../../Data/AIGraph.h"
+#include "../NeuralNetwork/LSTM.h"
 
-void testAI_XOR4();
+void testLSTM_XOR4();

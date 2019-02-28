@@ -4,7 +4,7 @@
 #define INCMAIN_H_
  
 #include "Data/includes.h"
-#include "AI/ai.h"
+#include "AI/AI.h"
 #include "Algorithm/includes.h"
 #include "Engineering/includes.h"
 #include "Math/Math.h"

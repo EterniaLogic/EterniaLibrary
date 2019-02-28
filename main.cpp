@@ -171,7 +171,7 @@ int main() {
     //CompositeGas::printCompositeGasses();
     
     
-    testAI_XOR4();
+    testLSTM_XOR4();
     //testARB();
     //malloc_stats();
     
