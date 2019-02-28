@@ -5,16 +5,20 @@
 #include <math.h>
 #include <ctime>
 
+#include "../../Data/LinkedList.hpp"
+#include "../../Data/HashMap.hpp"
+
+
 #include "msp430g2553.h"
 #include "msp430_Opcodes.h"
 #include "msp430_Registers.h"
 #include "msp430_declare_consts.h"
-#include "../../Data/LinkedList.hpp"
-#include "../../Data/HashMap.hpp"
+
+namespace MSP430{
 
 #define MEM_SIZE 65535
-#define RAM_REGION 0x200
-#define RAM_SIZE 512
+#define RAM_REGION 0x200 // Start of RAM
+#define RAM_SIZE 512 // bytes for RAM
 
 
 // Memory manipulation preprocessor methods
@@ -115,4 +119,5 @@ class MSP430 {
         void jmp(unsigned int location);
 };
 
+}
 #endif

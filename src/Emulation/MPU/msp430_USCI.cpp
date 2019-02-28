@@ -1,10 +1,12 @@
 
 #include "msp430.h"
 
-void MSP430::handleUSCIA() {
+namespace MSP430{
+    void MSP430::handleUSCIA() {
 
-}
+    }
 
-void MSP430::handleUSCIB() {
+    void MSP430::handleUSCIB() {
 
+    }
 }
