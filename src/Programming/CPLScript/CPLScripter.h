@@ -2,7 +2,7 @@
 #define CPLSCRIPTER_H_
 
 //#include "../Network/Client.h"
-#include "CPLVariable.h"
+#include "../../Data/DynamicType.h"
 
 
 // This is the backend scripter for the WebFramework.
@@ -19,7 +19,7 @@
 
 class CPLScripter {
         // built-in memory
-        HashMap<CPLVariable> globalvars; // Global variables. Used everywhere in text, for this specific script.
+        HashMap<DynamicType> globalvars; // Global variables. Used everywhere in text, for this specific script.
         LinkedList<Instruction> instructions; // general list of compiled instructions.
         //HashMap<CPLVariable> localvars; // Local variables used in the current scope (clears data at end of scope)
 

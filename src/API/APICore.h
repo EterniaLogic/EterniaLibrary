@@ -1,6 +1,11 @@
 #ifndef APICore_H_
 #define APICore_H_
 
+#include <iostream>
+#include <dirent.h>
+#include <sys/types.h>
+
+
 #include "APIEventRegistry.h"
 #include "APIPermissionsRegistry.h"
 #ifndef APIMod_H_
@@ -34,28 +39,35 @@ private:
     APIPermissionsRegistry perms; // permissions registry
     LinkedList<APIMod*> mods; // loaded mods
     Logger logs;
+    CharString modfolder;
     
     
 //    LinkedList<APIObjectList> objects; // object registry
-public:
-    APICore(CharString modfolder, CharString logfile);
-    APICore();
-    
-    // Module management
-    void preloadMods(); // pre-loads mod files and dependencies chains
-    void loadMods(); // begins the process to load all of the mods
-    
-    
+
     APIMod* preloadModule(CharString file); // preloads the module, reads "mod.properties" file.
-    
     bool loadModule(CharString file); // load a module from a file or folder. false if not loaded.
     bool unloadModule(APIMod* mod); // unload a module. false if kept loaded.
     
     // Master module functions (Sent to actual implementation via APIMod)
-    void onInit(); // runs after a module is loaded.
-    void onEnable(); // runs to tell the module to turn "on" and start processing.
-    void onDisable(); // runs to tell the module to turn "off". (Does not actually stop, mod dev has to do it)
-    void onUnload(); // runs when module is stopping.
+    void _onInit(); // runs after a module is loaded.
+    void _onEnable(); // runs to tell the module to turn "on" and start processing.
+    void _onDisable(); // runs to tell the module to turn "off". (Does not actually stop, mod dev has to do it)
+    void _onUnload(); // runs when module is stopping.
+    
+    // Module management
+    LinkedList<APIMod*> preloadMods(); // pre-loads mod files and dependencies chains
+    void loadMods(LinkedList<APIMod*> mods); // begins the process to load all of the mods
+    void unloadMods();
+    
+public:
+    APICore(CharString modfolder, CharString logfile);
+    APICore();
+    
+    // inherritance
+    virtual void onInit(){}
+    virtual void onEnable(){}
+    virtual void onDisable(){}
+    virtual void onUnload(){}
     
     // Getters
     APIEventRegistry* getEvents();

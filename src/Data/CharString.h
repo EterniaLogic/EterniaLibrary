@@ -8,7 +8,7 @@
 #include "LinkedList.hpp"
 #include "../Math/Functions/Basic.h"
 
-
+#define Compare compare
 
 enum SortType {SBefore, SSame, SAfter};
 
@@ -39,13 +39,13 @@ class CharString {
         void replace(char* toFind,char* replaceWith);
 
 
-        bool Compare(CharString b); // compare exactly with another CharString
-        bool Compare(CharString b,bool useCase); // compare exactly or without case with another CharString
+        bool compare(CharString b); // compare exactly with another CharString
+        bool compare(CharString b,bool useCase); // compare exactly or without case with another CharString
         template<std::size_t N>
-        bool Compare(const char(&val)[N]);
-        bool Compare(char* b, int c); // compare exactly with another char
-        bool Compare(const char* b, int c); // compare exactly with another char
-        bool CompareNoCase(char* b, int c); // compare with a char* of length c if it contains the same letters with same case.
+        bool compare(const char(&val)[N]);
+        bool compare(char* b, int c); // compare exactly with another char
+        bool compare(const char* b, int c); // compare exactly with another char
+        bool compareNoCase(char* b, int c); // compare with a char* of length c if it contains the same letters with same case.
         bool contains(char* c); // does this string contain the single character 'c'?
         CharString clone(); // creates a clone!
         void concata_(const char* str, const int lenx);

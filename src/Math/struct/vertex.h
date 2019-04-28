@@ -20,7 +20,7 @@
 #define VECOP_DEC_COMP(op) bool operator op(vertex b); \
     bool operator op(double b)
 
-    namespace Math {
+namespace Math {
     class vertex : public SpecificSerializer{
     public:
         double x;
@@ -61,7 +61,7 @@
         double magnitude(); // same as length
         double length(); // returns total distance between point and origin.
         double length2(); // returns total distance between point and origin powered by 2
-        double distance(vertex  v2);
+        double distance(vertex v2);
 
         // boolean functions to determine type.
         bool isOrthagonal(vertex v); // returns whether this is orthagonal.

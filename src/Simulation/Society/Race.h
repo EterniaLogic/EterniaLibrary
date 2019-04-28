@@ -25,6 +25,7 @@ typedef struct diff_t{
     float max;
 };
 
+diff_t infinitelifespan = {10.e100, 10.e100, 10.e100};
 
 namespace RaceDiet{
     // list of diets
@@ -55,11 +56,11 @@ namespace RaceLimb{
     };
 }
 
-typedef struct Limb{
+/*typedef struct Limb{
     RaceLimb::LimbType type;
     int qty; // number of limbs
     double mass; // each limb has a mass in Kilograms, Kg. (Mass factors into how much damage this race would take from a hit)
-};
+};*/
 
 namespace RaceCaste{
     enum Caste_Type {asexual, male, female};
@@ -68,10 +69,10 @@ namespace RaceCaste{
 class Caste{
 public:
     RaceCaste::Caste_Type type;
-    CharString castname;
+    CharString castename;
     
     RaceDiet::Diet diet;
-    LinkedList<Limb> limbs;
+//    LinkedList<Limb> limbs;
     
     // mental
     float intelligence; // Base intelligence level, rated in IQ. Higher IQ = faster research.
@@ -87,7 +88,7 @@ public:
     Composite breathing; // molecule normally used for breathing, humans like o2
     
     
-    diff_t lifespan; //   = {30, 50, 120}; // differential float
+    diff_t lifespan; //   = {30, 50, 120}; // differential float {min,avg,max}
     diff_t weight_adult;
     diff_t size_adult;
     diff_t weight_baby;
@@ -109,7 +110,7 @@ public:
     LinkedList<Caste> castes; // males/females, variations of species
     
     
-    CharString name, desription;
+    CharString name, description;
 };
 
 #endif

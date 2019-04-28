@@ -210,6 +210,11 @@ public:
     
     // add items from another list
     void addFrom(LinkedList<T> cc) {
+        addAll(cc);
+    }
+    
+    // add items from another list
+    void addAll(LinkedList<T> cc) {
         LinkedListIterator<T> it = cc.getIterator();
         while(it.hasNext())
             add(it.next());

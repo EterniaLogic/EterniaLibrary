@@ -20,6 +20,7 @@ namespace Math{
 #include "struct/Matrix.h" // supports Matrix operations
 #include "struct/VectorSpace.h" // supports VectorSpaces
 #include "struct/vertex.h" // supports Vectors and their inner functions
+#include "struct/vertex4d.h" // 4-Space vectors
 
 // Trig.h requires Basic.h, so Basic.h is only referenced here to be used as a path finder.
 

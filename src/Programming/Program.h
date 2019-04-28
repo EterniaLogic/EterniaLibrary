@@ -1,11 +1,10 @@
 #ifndef PROGRAM_H_
 #define PROGRAM_H_
 
-#include "../Data/CharString.h"
-#include "../Data/LinkedList.hpp"
+#include "../Data/includes.h"
 #include "Visual/VProgramNode.h"
 #include "Visual/VProgramError.h"
-#include "Visual/VProgramVariable.h"
+//#include "Visual/VProgramVariable.h"
 #include "../Math/Math.h"
 #include <cstdlib>
 #include <math.h>
@@ -39,22 +38,22 @@ class Program {
 
 
         // Visual parts
-        VProgramVariable *inputs, *actions;
-        void (*outputs)(VProgramVariable*);
+        DynamicType *inputs, *actions;
+        void (*outputs)(DynamicType*);
         int inslots, actionslots, outslots;
 
-        LinkedList<VProgramVariable*> locals; // Local variables for the program.
-        void (*display)(VProgramVariable*); // display to show info. (Either debugger or something else)
+        LinkedList<DynamicType*> locals; // Local variables for the program.
+        void (*display)(DynamicType*); // display to show info. (Either debugger or something else)
         int runs; // number of times this was executed.
         VProgramNode* head; // First graphical node
         int nodeidinc; // increments every time a node is added
 
         VProgramError* tickGNode(VProgramNode*,VProgramError*);
         void loadNodes(CharString* nodelist); // Load program nodes
-        void input(int slot, VProgramVariable* value); // sets the value of a variable
+        void input(int slot, DynamicType* value); // sets the value of a variable
         void resetInput(int slot); // Reset an input slot
-        VProgramVariable* getVariable(int slot, VarTYPE typex);
-        VProgramVariable* setVariable(int slot, VarTYPE typex, VProgramVariable* var);
+        DynamicType* getVariable(int slot, VarTYPE typex);
+        DynamicType* setVariable(int slot, VarTYPE typex, DynamicType* var);
         bool compareVars(VProgramNode* node);
 };
 

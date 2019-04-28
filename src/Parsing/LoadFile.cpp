@@ -48,5 +48,12 @@ void fileClose(ifstream &file) {
     file.close();
 }
 
+CharString fileReadAll(CharString file){
+    std::ifstream ifs(file.get());
+    std::string content( (std::istreambuf_iterator<char>(ifs) ),
+                       (std::istreambuf_iterator<char>()    ) );
+    return CharString(content);
+}
+
 
 // size_t fread ( void * ptr, size_t size, size_t count, FILE * stream );

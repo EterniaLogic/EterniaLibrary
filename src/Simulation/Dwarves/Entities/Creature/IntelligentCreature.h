@@ -10,6 +10,9 @@ public:
     // Current Action
     Action current_action;
     
+    bool tamable; // since this creature is intelligent, tamable?
+    bool disguised;
+    
     // NEEDED actions
     LinkedList<Action> biological_actions; // actions needed to stay healthy
     LinkedList<Action> existential_actions; // higher priority actions needed to survive, AKA: going to be wiped out

@@ -90,3 +90,20 @@ bool Logger::handleLogs(){
     
     return (!ending);
 }
+
+Logger& Logger::operator=(const Logger& l){
+    this->logfileloc = l.logfileloc;
+    this->prefix = l.prefix;
+    this->async = l.async;
+    this->console = l.console;
+    
+    l.~Logger();
+    
+    // open file
+    //if(clearfile) file.open (logfileloc.get(), ios::out | ios::app);
+    //else 
+    file.open (logfileloc.get(), ios::out | ios::app | ios::trunc);
+    file.seekp(0, ios::end);
+    
+    asyncthread = std::thread(loggerThread, this);
+}

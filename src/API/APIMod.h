@@ -2,6 +2,8 @@
 #define APIMod_H_
 
 #include "../Data/CharString.h"
+#include "../Parsing/LoadFile.h"
+#include "../Parsing/SimpleParser.h"
 #include "APIEventRegistry.h"
 #ifndef APICore_H_
     #include "APICore.h"
@@ -33,25 +35,37 @@ enum APIModType {APIMT_Server, APIMT_Client, APIMT_Shared, APIMT_Node};
 // A database mod shouldnt be accessed by a logging mod.
 
 class APIMod : public APIUser{
+private:
+    bool loaded, inited, propertiesloaded;
+    
 public:
     // private data stored for this module.
     APICore* core; // Linked core
-    CharString file, language, version;
+    CharString file, language, version; // version string does not include unixname
     //CharString name; // inherited from APIUser
-    LinkedList<APIMod> dependencies;
+    CharString unixname; // simple name that doesn't include special characters
+    LinkedList<APIMod*> dependencies;
+    LinkedList<CharString> dependencyversions; // "mod1:v1.002.1, mod2:v01283092"
     APIModType type;
     CharString modcwdloc; // CWD directory for mod
+    bool isfolder, iszip;
+    
 
     // location for scripts, mod name, language, version
-    APIMod(CharString loc, CharString name, CharString language, CharString version);
+    APIMod(CharString loc); //, CharString name, CharString language, CharString version);
     APIMod();
 
     virtual ~APIMod();
 
     // Same as the initializer, used if main initializer isn't used.
-    void init(CharString file, CharString name, CharString language, CharString version);
+    void init(CharString file);
+    void initdependencies(CharString file);
+    void loadProperties(); // loads from mod.properties
+    
+    virtual CharString getModFileData(CharString modfile); // within zip file?
 
     // API language implementation functions.
+    virtual void onInit(); // initializes dependencies?
     virtual void onLoad();
     virtual void onEnable();
     virtual void onDisable();

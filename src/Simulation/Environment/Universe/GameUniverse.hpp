@@ -14,6 +14,9 @@ public:
         // Lowest level
         laws.add(new ULaw(UL_ENERGY, "Particles")); // Raw ... whatever becomes particles
         laws.add(new ULaw(UL_MATTER, "Atoms")); // Particles become Atoms
+        laws.add(new ULaw(UL_MATTER, "Protons"));
+        laws.add(new ULaw(UL_MATTER, "Neutrons"));
+        laws.add(new ULaw(UL_MATTER, "Electrons"));
         
         laws.add(new ULaw(UL_MATTER, "Compounds")); // Atoms come together and bond
         

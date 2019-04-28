@@ -3,15 +3,16 @@
 // Run program
 VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
     // loop through program
-    VProgramVariable* v1;
-    VProgramVariable* v2;
+    DynamicType* v1;
+    DynamicType* v2;
     int var1;
     int var2;
     int var3;
     VarTYPE var1slot;
     VarTYPE var2slot;
     VarTYPE var3slot;
-    VProgramVariable* p = new VProgramVariable();
+    DynamicType* p = new DynamicType();
+    *p = 0.0;
 
     VProgramNode* current = node;
     // Loop through programming nodes
@@ -27,7 +28,7 @@ VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
 
         switch(current->type) {
             case NT_Input: // Test input
-                if(getVariable(var1, var1slot)->type == PV_None) {
+                if(getVariable(var1, var1slot)->getType() == DT_NONE) {
                     error->type = PE_TypeError1;
                     error->nodeid = current->nodeid;
                     return error;
@@ -41,7 +42,7 @@ VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
                     int repeatval = 0;
                     if(current->const_loops > 0) {
                         repeatval = current->const_loops;
-                    } else repeatval = (int)getVariable(var1, var1slot)->number;
+                    } else repeatval = (int)getVariable(var1, var1slot)->getDouble();
 
                     for(int i=0; i<repeatval; i++) {
                         return tickGNode(current->ifnode, error); // play the following loops!
@@ -56,38 +57,38 @@ VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
                 }
                 break;
             case NT_Math: // Add, Sub, Mul, Div, Mod, Exponential
-                if(v1->type != PV_Number) {
+                if(!v1->isNumber()) {
                     error->type = PE_TypeError1;
                     error->nodeid = current->nodeid;
                     return error;
                 }
-                if(v2->type != PV_Number) {
+                if(!v2->isNumber()) {
                     error->type = PE_TypeError2;
                     error->nodeid = current->nodeid;
                     return error;
                 }
 
 
-                p->type = PV_Number;
+                p->setZero();
 
                 switch(current->mtype) {
                     case MT_Sub: // var3 = var1 - var2
-                        p->number = v1->number - v2->number;
+                        *p = (*v1)-(*v2);
                         break;
                     case MT_Add: // var3 = var1 + var2
-                        p->number = v1->number + v2->number;
+                        *p = (*v1)+(*v2);
                         break;
                     case MT_Mul: // var3 = var1 * var2
-                        p->number = v1->number * v2->number;
+                        *p = (*v1)*(*v2);
                         break;
                     case MT_Div: // var3 = var1 / var2
-                        p->number = v1->number / v2->number;
+                        *p = (*v1)/(*v2);
                         break;
                     case MT_Mod: // var3 = var1 & var2
-                        p->number = fmod(v1->number, v2->number);
+                        *p = fmod(v1->getDouble(), v2->getDouble());
                         break;
                     case MT_Exponent: // var3 = var1 ^ var2
-                        p->number = Math::pow(v1->number, v2->number);
+                        *p = Math::pow(v1->getDouble(), v2->getDouble());
                         break;
                 }
 
@@ -98,7 +99,7 @@ VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
                 setVariable(var2, var2slot, v1);
                 break;
             case NT_Output: // Output value function
-                void (*func1)(VProgramVariable*) = outputs[var1];
+                void (*func1)(DynamicType*) = outputs[var1];
 
                 if(func1 != 0x0) {
                     func1(getVariable(var2, var2slot));
@@ -113,7 +114,7 @@ VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
 }
 
 // get a specific variable from inputs or locals
-VProgramVariable* Program::getVariable(int slot, VarTYPE typex) {
+DynamicType* Program::getVariable(int slot, VarTYPE typex) {
     switch(typex) {
         case VAT_IN:
             return &(inputs[slot]);
@@ -125,55 +126,51 @@ VProgramVariable* Program::getVariable(int slot, VarTYPE typex) {
 }
 
 // set a specific variable from inputs or locals
-VProgramVariable* Program::setVariable(int slot, VarTYPE typex, VProgramVariable* var) {
-    VProgramVariable* vx = locals.get(slot);
+DynamicType* Program::setVariable(int slot, VarTYPE typex, DynamicType* var) {
+    DynamicType* vx = locals.get(slot);
     switch(typex) {
         case VAT_IN:
-            inputs[slot].type = var->type;
-            inputs[slot].number = var->number;
-            inputs[slot].object = var->object;
-            inputs[slot].string = var->string;
+            inputs[slot] = *var;
             break;
         case VAT_LOCAL:
-            vx->type = var->type;
-            vx->number = var->number;
-            vx->object = var->object;
-            vx->string = var->string;
+            *vx = *var;
             break;
     }
 }
 
 // compare these values for a conditional
 bool Program::compareVars(VProgramNode* node) {
-    VProgramVariable* v1 = getVariable(node->var1, node->var1slot);
-    VProgramVariable* v2 = getVariable(node->var2, node->var2slot);
+    DynamicType* v1 = getVariable(node->var1, node->var1slot);
+    DynamicType* v2 = getVariable(node->var2, node->var2slot);
 
     // both types do not match?
-    if(v1->type != v2->type) return false;
+    if(v1->getType() != v2->getType()) return false;
 
 
-    if(v1->type == PV_Number) {
+    if(v1->isNumber()) {
+        double v1d = v1->getDouble();
+        double v2d = v2->getDouble();
         switch(node->ctype) {
             case PCC_Equals:
-                if(v1->number == v2->number) return true;
+                if(v1d == v2d) return true;
                 break;
             case PCC_Greater:
-                if(v1->number > v2->number) return true;
+                if(v1d > v2d) return true;
                 break;
             case PCC_GreaterEq:
-                if(v1->number >= v2->number) return true;
+                if(v1d >= v2d) return true;
                 break;
             case PCC_Less:
-                if(v1->number < v2->number) return true;
+                if(v1d < v2d) return true;
                 break;
             case PCC_LessEq:
-                if(v1->number <= v2->number) return true;
+                if(v1d <= v2d) return true;
                 break;
         }
-    } else if(v1->type == PV_String && node->ctype == PCC_Equals) {
-        if(v1->string.Compare(v2->string)) return true;
-    } else if(v1->type == PV_Object && node->ctype == PCC_Equals) {
-        if(v1->object == v2->object) return true;
+    } else if(v1->getType() == DT_STRING && node->ctype == PCC_Equals) {
+        if(v1->getString().Compare(v2->getString())) return true;
+    } else if(v1->getType() == DT_CLASS && node->ctype == PCC_Equals) {
+        if(v1->get() == v2->get()) return true;
     }
 
     return false;
@@ -185,14 +182,11 @@ void Program::loadNodes(CharString* nodelist) {
 }
 
 // sets the value of a variable
-void Program::input(int slot, VProgramVariable* var) {
-    inputs[slot].type = var->type;
-    inputs[slot].number = var->number;
-    inputs[slot].object = var->object;
-    inputs[slot].string = var->string;
+void Program::input(int slot, DynamicType* var) {
+    inputs[slot] = *var;
 }
 
 // Reset an input slot
 void Program::resetInput(int slot) {
-    inputs[slot].type = PV_None;
+    inputs[slot].setZero();
 }

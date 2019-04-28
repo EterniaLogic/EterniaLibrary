@@ -627,20 +627,20 @@ CharString CharString::ConvertFromLong(long integer) {
 
 
 template<std::size_t N>
-bool CharString::Compare(const char(&val)[N]){
-	return Compare(val, N);
+bool CharString::compare(const char(&val)[N]){
+	return compare(val, N);
 }
 
 /* Desc: direct compare with a char string
 *  Input: char* and it's length
 *  Output: boolean
 */
-bool CharString::Compare(char* b,int lenx) {
-    return Compare((const char*)b, lenx);
+bool CharString::compare(char* b,int lenx) {
+    return compare((const char*)b, lenx);
 }
 
 
-bool CharString::Compare(const char* b,int lenx) {
+bool CharString::compare(const char* b,int lenx) {
     if(!isValidCharString()) return false;
     if(b == 0x0) return false;
     if(lenx != getSize()) return false;
@@ -657,7 +657,7 @@ bool CharString::Compare(const char* b,int lenx) {
 }
 
 // compare where case is useless
-bool CharString::CompareNoCase(char* b,int lenx) {
+bool CharString::compareNoCase(char* b,int lenx) {
     if(!isValidCharString()) return false;
     bool r = true;
 
@@ -675,16 +675,16 @@ bool CharString::CompareNoCase(char* b,int lenx) {
 }
 
 // high-speed string comparison
-bool CharString::Compare(CharString b) {
-    return Compare(b.get(),b.getSize());
+bool CharString::compare(CharString b) {
+    return compare(b.get(),b.getSize());
 }
 
 // high-speed string comparison
-bool CharString::Compare(CharString b, bool useCase) {
+bool CharString::compare(CharString b, bool useCase) {
     if(useCase) {
-        return Compare(b.get(),b.getSize());
+        return compare(b.get(),b.getSize());
     } else {
-        return CompareNoCase(b.get(),b.getSize());
+        return compareNoCase(b.get(),b.getSize());
     }
 }
 
@@ -838,7 +838,7 @@ void CharString::concatb(CharString str) {
 
 //shortcut for Compare command, must use * before each to use :/
 bool CharString::operator==(CharString ins) {
-    return Compare(ins);
+    return compare(ins);
 }
 
 // determines if the CharString is Empty
@@ -959,6 +959,6 @@ CharString CharString::operator +=(double val){
 
 template<std::size_t N>
 bool CharString::operator ==(const char(&val)[N]){
-	return Compare(val,N);
+	return compare(val,N);
 }
 

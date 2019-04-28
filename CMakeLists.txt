@@ -86,6 +86,12 @@ add_custom_command(TARGET Eternia
                 COMMENT "{EterniaLib} version up"
 )
 
+add_custom_command(TARGET EterniaExec
+                POST_BUILD
+                WORKING_DIRECTORY ./
+                COMMENT "{EterniaLib} use ./bin/EterniaExec to run basic tests"
+)
+
 add_custom_command(TARGET Eternia
                 PRE_BUILD
                 WORKING_DIRECTORY ./

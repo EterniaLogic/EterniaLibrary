@@ -2,5 +2,9 @@
 #define MAPREGION_H_
 
 
+class MapRegion{
+
+};
+
 
 #endif

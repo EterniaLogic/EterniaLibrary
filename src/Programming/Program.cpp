@@ -2,10 +2,10 @@
 
 Program::Program(int inslots, int actionslots, int outslots) {
     head = 0x0;
-    inputs = (VProgramVariable*) calloc(inslots,sizeof(VProgramVariable));
-    actions = (VProgramVariable*) calloc(outslots,sizeof(VProgramVariable));
+    inputs = (DynamicType*) calloc(inslots,sizeof(DynamicType));
+    actions = (DynamicType*) calloc(outslots,sizeof(DynamicType));
 
-    outputs = (void(*)(VProgramVariable *)) calloc(actionslots, sizeof(void(*)(VProgramVariable*)));
+    outputs = (void(*)(DynamicType *)) calloc(actionslots, sizeof(void(*)(DynamicType*)));
 
     this->inslots = inslots;
     this->actionslots = actionslots;

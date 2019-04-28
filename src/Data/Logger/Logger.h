@@ -13,13 +13,8 @@
 
 class Logger{
 private:
-    CharString logfileloc, prefix;
-    bool async, console, ending;
-    Queue asyncLog;
     std::thread asyncthread;
-    
     std::ofstream file;
-
 public:
     Logger(CharString logfileloc, CharString prefix, bool async, bool console, bool clearfile); // if ASYNC, start thread
     Logger(); // Runs basic properties, unknown values?
@@ -30,6 +25,13 @@ public:
     
     void processLog(CharString data);
     bool handleLogs(); // internal Async command, writes to file
+    
+    Logger& operator=(const Logger&);
+    
+    
+    CharString logfileloc, prefix;
+    bool async, console, ending;
+    Queue asyncLog;
 };
 
 #endif

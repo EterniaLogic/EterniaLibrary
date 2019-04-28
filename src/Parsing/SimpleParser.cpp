@@ -45,3 +45,23 @@ LinkedList<LinkedList<CharString>> SimpleParseFile(CharString filename, char sep
 
     return list;
 }
+
+
+// take data in line-by-line and parse it
+// output: LinkedListT of LinkedListT of (CharString *)
+LinkedList<LinkedList<CharString>> SimpleParseString(CharString data, char separator) {
+    LinkedList<LinkedList<CharString>> list;
+    LinkedList<CharString> lines = SimpleParseLine(data, '\n');
+    lines.freeze();
+    for(int i=0;i<lines.frozenlen;i++){
+        CharString read = lines.frozen[i];
+        if(!read.startsWith("#") && !read.startsWith("//") && !read.startsWith("[")) {
+            LinkedList<CharString> list2 = SimpleParseLine(read, separator);
+            if(list2.size() > 0) {
+                list.add(list2);
+            }
+        }
+    }
+
+    return list;
+}
