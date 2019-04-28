@@ -8,11 +8,13 @@ Release:        1
 License:        GPL-3.0 
 Group:          Library 
 Summary:        Bare-Bones C++11 Library for cross-platform use.
-Url:            https://github.com/EterniaLogic/EterniaLibrary.git
-Source:         eternialibrary-%{version}.tar.gz 
+Url:            https://github.com/EterniaLogic/EterniaLibrary
+Source:         https://github.com/EterniaLogic/EterniaLibrary/release/%{name}-%{version}.tar.gz
 BuildRequires:  gcc 
+BuildRequires:  gcc-c++
 BuildRequires:  cmake 
-BuildRoot:      .
+Requires:  glibc
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description 
 Bare-Bones C++11 Library for cross-platform use, commonly using libEternia.so, libEternia.dll.
