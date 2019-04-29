@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 cmake .
 
 while true 

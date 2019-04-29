@@ -19,6 +19,14 @@ data.txt
 gmon.out
 AerisAvatar.dat
 
+
+#archives
+*.tar.gz
+*.deb
+*.rpm
+_CPack_Packages
+install_manifest.txt
+
 # Compiled Object files
 *.slo
 *.lo
@@ -41,6 +49,7 @@ AerisAvatar.dat
 *.out
 *.app
 
+install_manifest.txt
 test/testParsers.txt
 test/testSecureParser.txt
 test/test.txt

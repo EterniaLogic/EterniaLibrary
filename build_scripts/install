@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ..
+
 sudo rm /usr/include/Eternia* -R 2>/dev/null
 sudo rm /usr/lib/libEternia.a -R 2>/dev/null
 sudo rm /usr/lib/libEternia.so -R 2>/dev/null

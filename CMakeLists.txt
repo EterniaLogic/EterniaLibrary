@@ -95,7 +95,7 @@ add_custom_command(TARGET EterniaExec
 add_custom_command(TARGET Eternia
                 PRE_BUILD
                 WORKING_DIRECTORY ./
-                COMMAND bash copyincludes.sh
+                COMMAND bash build_scripts/copyincludes.sh
                 COMMENT "{EterniaLib} copy headers to includes"
 )
 
@@ -120,10 +120,31 @@ add_test(DataStructureMemoryLeaks bin/EterniaTest "DataStruMemLeaks")
 
 
 
-#add_custom_command(TARGET Eternia
-#                PRE_BUILD
-#                WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-#                COMMAND bash copyincludes.sh
-#                COMMENT "EterniaLibrary - Copying includes over"
-#)
+#installing headers/source and binaries
+
+install (TARGETS EterniaExec DESTINATION bin)
+install (TARGETS EterniaTest DESTINATION bin)
+install (TARGETS Eternia Eternia32 DESTINATION lib)
+
+install (DIRECTORY include/ DESTINATION include)
+install (DIRECTORY doc/man DESTINATION share/doc/man)
+
+
+# for EterniaS
+install (FILES lib/libEternia.so DESTINATION lib)
+
+
+
+# Packaging
+if(WIN32) 
+    set(CPACK_GENERATOR "NSIS;ZIP") 
+else() 
+    set(CPACK_GENERATOR "TGZ;RPM;DEB") 
+endif() 
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "EterniaLogic") #required
+set(CPACK_DEBIAN_PACKAGE_NAME "libEternia")
+set(CPACK_ROM_PACKAGE_NAME "libEternia")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Low-end support library, which includes basic algorithms and data structures.")
+set(CPACK_RPM_PACKAGE_DESCRIPTION "Low-end support library, which includes basic algorithms and data structures.")
+INCLUDE(CPack)
 

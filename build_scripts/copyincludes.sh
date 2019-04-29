@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# cd ../   # isn't needed here
 
 rm include -R
 mkdir include

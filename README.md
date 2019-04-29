@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 1.90.2
+**Version**: 1.123.2
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -32,6 +32,9 @@ Linux:
 
 		cmake .
 		make -j 4
+		make package  
+		
+- 'make package' generates .deb, .rpm, and .tar.gz files.
 
 
 
