@@ -11,19 +11,41 @@
 #include "src/include.h"
 #include "src/asm/asm1.h"
 
-#include "version.h"
+
 #include "src/Engineering/Chemistry/Composite.h"
 
 #include <iostream>
 #include <stdio.h>
-#include <execinfo.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+#ifdef _WIN64
+   #define WINDOWSXX
+   #define FULLVERSION_STRING "1.123.3"
+#elif _WIN32
+   #define WINDOWSXX
+   #define FULLVERSION_STRING "1.123.3"
+#else
+   #define LINUXX
+   #include <execinfo.h>
+   void handler(int sig) {
+        void *array[10];
+        size_t size;
+
+        // get void*'s for all entries on the stack
+        size = backtrace(array, 10);
+
+        // print out all the frames to stderr
+        fprintf(stderr, "\n\nError: signal %d:   (11 = SEGV)\n", sig);
+        backtrace_symbols_fd(array, size, STDERR_FILENO);
+        exit(1);
+   }
+#endif
+
+#include "version.h"
+
 #define DEBUG
-
-
 // input redirection
 void InputRedirection::handleInputLine(CharString* input) {
     double ii = 0;
@@ -113,22 +135,15 @@ void sleep( time_t delay ) {
     } while (( timer1 - timer0 ) < delay );
 }
 
-void handler(int sig) {
-  void *array[10];
-  size_t size;
 
-  // get void*'s for all entries on the stack
-  size = backtrace(array, 10);
-
-  // print out all the frames to stderr
-  fprintf(stderr, "\n\nError: signal %d:   (11 = SEGV)\n", sig);
-  backtrace_symbols_fd(array, size, STDERR_FILENO);
-  exit(1);
-}
 
 int main() {
     cout << "Version: " << FULLVERSION_STRING << endl;
+    
+#ifdef LINUXX
     signal(SIGSEGV, handler);   // install a handler
+#endif
+
 #ifdef DEBUG
     CharString c = "test";
     cout << c << endl;

@@ -3,7 +3,7 @@
 
 template<class T>
 WhiteNoise<T>::WhiteNoise(){
-    srand(time(NULL)); // make sure random is seeded.
+    srand(time(0x0)); // make sure random is seeded.
     srand(rand()); // double-seed
 }
 

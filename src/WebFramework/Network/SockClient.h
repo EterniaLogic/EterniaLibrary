@@ -19,12 +19,14 @@
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include "../../../Mingw/mingw.thread.h"
 #elif defined(LINUXXX)
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <thread>
 #elif defined(__APPLE__)
 
 #endif
@@ -32,7 +34,7 @@
 
 
 
-#include <thread>
+
 #include "../../Data/CharString.h"
 using namespace std;
 

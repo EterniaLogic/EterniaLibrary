@@ -27,12 +27,12 @@ typedef struct AtomBond {
 
 // Types of elements
 // Alkali Earth Metals, Alkaline Earth Metals, Halogen, Lanthanide, Metalloid, Non-Metal, Nobal Gas, Poor Metal, Actinide, Transition Metal
-enum ELEMENT_TYPE {ELEM_Alkali, ELEM_Alkaline, ELEM_Halogen, ELEM_Lanthanide, ELEM_Metalloid, ELEM_NonMetal, ELEM_Noble, ELEM_Poor, ELEM_Actinide, ELEM_Transition};
+enum ELEMENTTYPE {ELEM_Alkali, ELEM_Alkaline, ELEM_Halogen, ELEM_Lanthanide, ELEM_Metalloid, ELEM_NonMetal, ELEM_Noble, ELEM_Poor, ELEM_Actinide, ELEM_Transition};
 
 class Atom {
     public:
         // 12 doubles
-        Atom(const char* Name, const char* label, double Group, double Period, double Protons, double Neutrons, double Electrons, double Density, double Resistivity, double ThermConductivity, double Melting, double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENT_TYPE Type); // assign base constants
+        Atom(const char* Name, const char* label, double Group, double Period, double Protons, double Neutrons, double Electrons, double Density, double Resistivity, double ThermConductivity, double Melting, double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENTTYPE Type); // assign base constants
         virtual ~Atom();
 
         Atom* getAtom(); // get this material's atom.
@@ -75,7 +75,7 @@ class Atom {
         double specific_heat;
 
         vertex color;
-        ELEMENT_TYPE type;
+        ELEMENTTYPE type;
 };
 
 #endif /*ATOM_H_*/

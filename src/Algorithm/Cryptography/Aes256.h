@@ -24,6 +24,7 @@
 
 #include <inttypes.h>
 #include <math.h>
+#include <time.h>
 
 #include "Aes256r.h"
 

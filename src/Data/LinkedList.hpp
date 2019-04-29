@@ -7,9 +7,20 @@
 #include <vector>
 #include <iterator>
 #include <stdio.h>
-#include <execinfo.h>
+
 #include <signal.h>
 #include <unistd.h>
+
+
+#ifdef _WIN64
+   #define WINDOWSXX
+#elif _WIN32
+   #define WINDOWSXX
+#else
+   #define LINUXX
+   #include <execinfo.h>
+#endif
+
 using namespace std;
 
 #include "List.h"

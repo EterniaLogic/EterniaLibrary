@@ -4,20 +4,31 @@
 
 #include <iostream>
 #include <stdio.h>
-#include <execinfo.h>
+
 #include <signal.h>
 #include <stdlib.h>
 #include <unistd.h>
 
+
+#ifdef _WIN64
+   #define WINDOWSXX
+#elif _WIN32
+   #define WINDOWSXX
+#else
+   #define LINUXX
+   #include <execinfo.h>
+   void backtracex(const int times) {
+      void *array[times];
+      size_t size;
+      size = backtrace(array, times);
+      backtrace_symbols_fd(array, size, STDERR_FILENO);
+   }
+#endif
+
 using namespace std;
 
 
-void backtracex(const int times) {
-  void *array[times];
-  size_t size;
-  size = backtrace(array, times);
-  backtrace_symbols_fd(array, size, STDERR_FILENO);
-}
+
 
 namespace Math {
     Matrix::Matrix() {
@@ -167,7 +178,9 @@ namespace Math {
             matrix->toOutput();
             char* trans="";
             cout << "matrix multiply mismatched sizes " << rows << "x"<<columns <<" * "<<matrix->rows<<"x"<<matrix->columns << " = " <<rows <<"x"<<matrix->columns << endl;
+#ifdef LINUXX
             backtracex(10);
+#endif
         }
     }
 

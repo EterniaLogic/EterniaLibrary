@@ -29,12 +29,12 @@ enum CREATURETYPE {
     CT_Devourer
 };
 
-enum CREATURECLASS{
-    CC_NONE, // trees probably don't have a class.
-    CC_WARRIOR,
-    CC_RANGED, // guns/bows
-    CC_MAGE,
-    CC_CRAFT
+enum CREATURECLASS {
+    CCL_NONE, // trees probably don't have a class.
+    CCL_WARRIOR,
+    CCL_RANGED, // guns/bows
+    CCL_MAGE,
+    CCL_CRAFT
 };
 
 

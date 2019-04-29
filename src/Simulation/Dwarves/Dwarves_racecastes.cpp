@@ -123,7 +123,7 @@ Race* initelemental(){
     fire.xenophilia = 0.1; // don't like other races
     fire.temperature = 3000; // freaking hot to the touch, prefers lava
     fire.sleep = 0; // percent of day asleep
-    fire.lifespan = infinitelifespan;
+    fire.lifespan = {10.e60, 10.e60, 10.e60};
     
     fire.weight_adult = {0, 0, 0}; // kg (Fire elementals are weightless
     fire.size_adult = {1.4, 1.61, 1.8}; // sizes based off of 2x humans

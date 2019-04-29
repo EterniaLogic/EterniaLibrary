@@ -8,7 +8,7 @@ Creature::Creature(){
     health.energy = &energy;
     
     _type=CT_Unknown;
-    _class=CC_NONE;
+    _class=CCL_NONE;
     
     weight_kg = 81; // average human male
     

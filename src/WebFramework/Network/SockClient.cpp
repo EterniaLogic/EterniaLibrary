@@ -61,7 +61,7 @@ void SockClient::connectc(SocketClientType ctype,
 }
 
 bool SockClient::testAlive(){
-    
+#ifdef LINUXXX
     int error = 0;
     socklen_t len = sizeof (error);
     int retval = getsockopt (sockd, SOL_SOCKET, SO_ERROR, &error, &len);
@@ -77,7 +77,7 @@ bool SockClient::testAlive(){
         fprintf(stderr, "socket error: %s\n", strerror(error));
         return false;
     }
-    
+#endif    
     return true;
 }
 

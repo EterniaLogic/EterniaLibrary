@@ -8,8 +8,22 @@
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
-#include <thread>
+
 #include <chrono>
+
+
+
+
+#ifdef _WIN64
+   #define WINDOWSXX
+   #include "../../../Mingw/mingw.thread.h"
+#elif _WIN32
+   #define WINDOWSXX
+   #include "../../../Mingw/mingw.thread.h"
+#else
+   #define LINUXX
+   #include <thread>
+#endif
 
 class Logger{
 private:

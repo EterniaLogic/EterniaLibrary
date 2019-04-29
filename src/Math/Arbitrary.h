@@ -41,7 +41,7 @@ OP1(/=, TP);
 // FastMultiplication Algorithm:    https://en.wikipedia.org/wiki/Karatsuba_algorithm
 
 #define ARB Math::Arbitrary // Fast Alias
-#define Number Math::Arbitrary // Fast Alias
+#define NumberARB Math::Arbitrary // Fast Alias
 
 namespace Math {
     class Arbitrary{

@@ -8,7 +8,7 @@ using namespace physical::constant; // from constants.h
 Atom::Atom(const char* Name, const char* label, double Group, double Period,
            double Protons, double Neutrons, double Electrons, double Density,
            double Resistivity, double ThermConductivity, double Melting,
-           double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENT_TYPE Type) {
+           double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENTTYPE Type) {
     name = (char*)Name;
     symbol = (char*)label;
 

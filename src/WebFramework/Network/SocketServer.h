@@ -37,6 +37,7 @@
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include "../../../Mingw/mingw.thread.h"
 #pragma comment (lib, "Ws2_32.lib")
 
 #elif defined(LINUXXX)
@@ -47,12 +48,13 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <fcntl.h>
+#include <thread>
 
 #elif defined(__APPLE__)
 
 #endif
 
-#include <thread>
+
 #include "SockClient.h"
 #include "../../Data/LinkedList.hpp"
 #include "../../Data/CharString.h"

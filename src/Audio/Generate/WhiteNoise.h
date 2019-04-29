@@ -4,6 +4,7 @@
 // White noise is generated
 #include <random>
 #include <malloc.h>
+#include <time.h>
 #include "../../Data/LinkedList.hpp"
 
 template<class T>

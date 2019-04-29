@@ -113,6 +113,13 @@ add_custom_target(run
                 WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 )
 
+add_custom_target(windows
+                COMMAND cmake -c ./Windows.cmake
+                DEPENDS Eternia
+                DEPENDS EterniaExec
+                WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
+)
+
 enable_testing()
 set(CTEST_OUTPUT_ON_FAILURE 1)
 add_test(Math bin/EterniaTest "Math")

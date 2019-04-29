@@ -49,6 +49,14 @@ install_manifest.txt
 *.out
 *.app
 
+# Windows build
+Windows/CMakeCache.txt
+Windows/CMakeFiles
+Windows/Makefile
+Windows/*.dll
+Windows/*.exe
+Windows/*.a
+
 install_manifest.txt
 test/testParsers.txt
 test/testSecureParser.txt

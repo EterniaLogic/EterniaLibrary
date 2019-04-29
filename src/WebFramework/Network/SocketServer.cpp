@@ -43,10 +43,11 @@ void ClientHandler_(SockClient *tclient, SocketServer *server) {
     //cout << "Client start! " << tclient << endl;
     
     // prevent blocking
+#ifdef LINUXXX
     int x;
     x=fcntl(tclient->sockd, F_GETFL, 0);
     fcntl(tclient->sockd, F_SETFL, x | O_NONBLOCK);
-    
+#endif
     
     while(tclient->alive) {
 #ifdef LINUXXX

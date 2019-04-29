@@ -20,12 +20,11 @@ class Relations;
 //	They are ordered to start a new colony.
 
 typedef struct diff_t{
-    float min;
-    float avg;
-    float max;
+    double min;
+    double avg;
+    double max;
 };
 
-diff_t infinitelifespan = {10.e100, 10.e100, 10.e100};
 
 namespace RaceDiet{
     // list of diets

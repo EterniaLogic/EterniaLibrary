@@ -2,7 +2,19 @@
 #define LOCKER_H
 
 #include <time.h>
-#include <thread>
+
+
+#ifdef _WIN64
+   #define WINDOWSXX
+   #include "../../../Mingw/mingw.thread.h"
+#elif _WIN32
+   #define WINDOWSXX
+   #include "../../../Mingw/mingw.thread.h"
+#else
+   #define LINUXX
+   #include <thread>
+#endif
+
 
 template<class T>
 class Locker{
