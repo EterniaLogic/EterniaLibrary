@@ -1,5 +1,12 @@
 #include "LayoutObject.h"
 
+// STATIC inits
+LinkedList<LayoutObject*> LayoutObject::mouseListenerOwners = LinkedList<LayoutObject*>();
+LinkedList<LayoutObject*> LayoutObject::keyListenerOwners = LinkedList<LayoutObject*>();
+LinkedList<LayoutObject*> LayoutObject::drawListenerOwners = LinkedList<LayoutObject*>();
+LinkedList<LayoutObject*> LayoutObject::updateListenerOwners = LinkedList<LayoutObject*>();
+bool LayoutObject::cursorReq = false;
+int LayoutObject::cursorSet = 0;
 
 
 LayoutObject::LayoutObject(){
@@ -207,11 +214,6 @@ void LayoutObject::setPosition(int x_, int y_) {
 
 
 
-
-
-
-
-// Static globals
 
 void LayoutObject::mouseHandler(MouseHandleEvent* event) {
     LayoutObject::mouseListenerOwners.freeze();

@@ -41,9 +41,7 @@ public:
     vertex foreColor, backColor; // colors from 0 to 255
 
 
-    // Not used in _draw due to no GLUT
-    static bool cursorReq; // request a cursor?
-    static int cursorSet; // GLUT cursor type GLUT_CURSOR_INHERIT
+    
 
 
 
@@ -63,9 +61,9 @@ public:
     virtual void handleKeyboard(KeyHandleEvent*); // Handles a keyboard operation for ordinary windows (Window must be selected)
 
     // Positioning
-    void setPosition(int x, int y);
-    int getGlobalX();
-    int getGlobalY();
+    void setPosition(int x, int y); // local x/y
+    int getGlobalX(); // get position by adding parental X
+    int getGlobalY(); // get position by adding parental Y
 
     // Child methods
     void addChild(LayoutObject* child);      // add a child
@@ -83,15 +81,22 @@ public:
     bool childSelectedMouseOver(LayoutObject*);
 
 
-    // Relative handlers
+
+    // STATIC HANDLERS / VARIABLES
     static void mouseHandler(MouseHandleEvent*);
     static void keyHandler(KeyHandleEvent*);
     static void drawHandler();
     static void updateHandler();
+    
+    static bool cursorReq; // request a cursor? // Not used in _draw due to no GLUT
+    static int cursorSet; // GLUT cursor type GLUT_CURSOR_INHERIT
     static LinkedList<LayoutObject*> mouseListenerOwners;
     static LinkedList<LayoutObject*> keyListenerOwners;
     static LinkedList<LayoutObject*> drawListenerOwners;
     static LinkedList<LayoutObject*> updateListenerOwners;
 };
+
+
+
 
 #endif
