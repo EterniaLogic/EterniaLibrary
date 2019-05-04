@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <string>
 #include "../../../Data/CharString.h"
+using namespace std;
 
 enum HTTPMETHOD {HNONE, HGET, HPOST, HDELETE, HCONNECT, HPUT, HPATCH, HHEAD, HOPTIONS, HTRACE};
 

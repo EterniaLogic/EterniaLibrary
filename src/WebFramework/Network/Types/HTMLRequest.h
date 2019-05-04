@@ -4,7 +4,7 @@
 #include "../../../Data/includes.h"
 #include "HTTPTypes.h"
 #include <iostream>
-
+using namespace std;
 // The original HTML Server request
 // Read-only permissions
 

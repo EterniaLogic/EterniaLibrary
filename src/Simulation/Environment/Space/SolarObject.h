@@ -1,10 +1,10 @@
 #ifndef SOLAROBJECT_H
 #define SOLAROBJECT_H
 
-#include "../../Entity.h"
+#include "../../CEntity.h"
 #include "../../../Math/Math.h"
 
-class SolarObject : public Entity{
+class SolarObject : public CEntity{
 public:
     const double G = 6.67407e-11;
     

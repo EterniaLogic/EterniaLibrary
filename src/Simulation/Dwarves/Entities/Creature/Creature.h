@@ -12,7 +12,7 @@
 #include "CreatureEnergy.h"
 #include "CreatureHealth.h"
 #include "../../../Object.h"
-#include "../../../Entity.h"
+#include "../../../CEntity.h"
 #include "../../../Location.h"
 #include "../../../Society/Race.h"
 #include "Soul.h"
@@ -43,7 +43,7 @@ enum CREATURECLASS {
 //  they may start with usefood=true, but eventually they will just exist as long as they have mana.
 
 
-class Creature : public Entity{
+class Creature : public CEntity{
 public:
     CREATURETYPE _type;
     CREATURECLASS _class;

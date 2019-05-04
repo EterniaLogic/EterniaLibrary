@@ -1,5 +1,5 @@
 
 // include includes
-namespace Eternia{
+using namespace std;
 #include "Eternia/include.h"
-}
+

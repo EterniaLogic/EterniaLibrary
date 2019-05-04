@@ -3,6 +3,7 @@ set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_LEGACY_CYGWIN_WIN32 0)
 PROJECT(EterniaLibrary)
 
+set(CMAKE_VERBOSE_MAKEFILE:BOOL OFF)
 
 # determine "Bitness" for 32-bit or 64-bit compiling.
 #get_property(LIB64 GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS)
@@ -106,7 +107,7 @@ add_custom_command(TARGET EterniaS
                 COMMENT "{EterniaLib} copy shared libEterniaS.so to libEternia.so"
 )
 
-add_custom_target(run
+add_custom_target(runtest
                 COMMAND EterniaExec
                 DEPENDS Eternia
                 DEPENDS EterniaExec
