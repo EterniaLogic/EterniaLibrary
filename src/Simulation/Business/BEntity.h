@@ -2,10 +2,10 @@
 #define BEntity_H_
 
 #include "../../Data/includes.h"
-#include "../Entity.h"
+#include "../CEntity.h"
 
 // Entity that may or may not hold assets
-class BEntity : public Entity{
+class BEntity : public CEntity{
     
 };
 

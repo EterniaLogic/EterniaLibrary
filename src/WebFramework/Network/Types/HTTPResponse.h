@@ -3,7 +3,7 @@
 #include "HTTPTypes.h"
 #include "../../../Data/HashMap.hpp"
 #include <iostream>
-
+using namespace std;
 // The response of an HTML server request
 // R/W permissions
 
