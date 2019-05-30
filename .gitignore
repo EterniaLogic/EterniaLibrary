@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-buildErrors.txt
+builderrors.txt
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
@@ -7,6 +6,9 @@ libEternia.a
 EterniaLibrary
 Makefile
 Testing
+
+CPackConfig.cmake
+CPackSourceConfig.cmake
 
 .gitignore
 
