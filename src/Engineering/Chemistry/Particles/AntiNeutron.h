@@ -4,10 +4,11 @@
 // An AntiNeutron has antimatter elementary particles
 //    !u   !d
 //      !d
-
+namespace Chemistry{
 class AntiNeutron {
         AntiNeutron();
         virtual ~AntiNeutron();
 };
+}
 
 #endif

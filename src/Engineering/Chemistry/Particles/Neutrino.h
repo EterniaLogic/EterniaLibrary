@@ -5,10 +5,10 @@
 // Electron neutrino / antineutrino
 // Muon neutrino / antineutrino
 // Tau neutrino / antineutrino
-
+namespace Chemistry{
 class Neutrino {
         Neutrino(){spin=0.5;charge=0;}
         virtual ~Neutrino();
 };
-
+}
 #endif

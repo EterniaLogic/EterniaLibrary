@@ -1,8 +1,9 @@
 #ifndef COMPONENTRATING_h_
 #define COMPONENTRATING_h_
 
-
+namespace Chemistry{
 class Atom;
+}
 
 #include "../../Chemistry/Atom.h"
 #include "../../../Emulation/SecondTick.h"
@@ -18,7 +19,7 @@ enum CR_DEATHCAUSE {CR_None, CR_OverVoltage, CR_OverCurrent, CR_OverHeat};
 
 class ComponentRating {
 public:
-    ComponentRating(Atom* material, PowerValue* MaxPower, double MaxTemp, double Impedance); // assign base variables
+    ComponentRating(Chemistry::Atom* material, PowerValue* MaxPower, double MaxTemp, double Impedance); // assign base variables
     virtual ~ComponentRating();
 
     void tick(SecondTick* tickTime); // calculate temperature, or death due to overpower
@@ -41,7 +42,7 @@ private:
     PowerValue* powerMax; // defines max power of a component.
     double temperatureMax; // defines max temperature of a component in Celsius.
     double impedance; // resistance creates temperature when current flows through it
-    Atom* conductorMaterial; // material that this is made of
+    Chemistry::Atom* conductorMaterial; // material that this is made of
 
     bool dead; // is this component dead?
     CR_DEATHCAUSE deathCause; // reason for death

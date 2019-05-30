@@ -1,5 +1,6 @@
 #include "Composite.h"
 
+namespace Chemistry{
 Composite::Composite() {
 }
 
@@ -125,4 +126,5 @@ namespace CompositeGas{
         
 //        _initcbonds = true;
     }
+}
 }

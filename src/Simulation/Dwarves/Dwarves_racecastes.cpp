@@ -21,7 +21,7 @@ Race* initdwarf(){
     dw_male.xenophilia = 0;
     dw_male.temperature = 291.483; // ~65 fahreneheit, 18.3 celcius
     dw_male.sleep = 0.25; // percent of day asleep
-    dw_male.breathing = CompositeGas::o2;
+    dw_male.breathing = Chemistry::CompositeGas::o2;
     dw_male.lifespan = {65, 100, 200};
     dw_male.weight_adult = {45, 77, 100}; // kg
     dw_male.size_adult = {0.5, 1.1, 1.47};
@@ -42,7 +42,7 @@ Race* initdwarf(){
     dw_female.xenophilia = 0.2;
     dw_female.temperature = 300;
     dw_female.sleep = 0.25; // percent of day asleep
-    dw_female.breathing = CompositeGas::o2;
+    dw_female.breathing = Chemistry::CompositeGas::o2;
     dw_female.lifespan = {70, 120, 250};
     dw_female.weight_adult = {40, 70, 95}; // kg
     dw_female.size_adult = {0.5, 1.1, 1.45};
@@ -72,7 +72,7 @@ Race* inithuman(){
     male.xenophilia = 0;
     male.temperature = 291.483; // ~65 fahreneheit, 18.3 celcius
     male.sleep = 0.25; // percent of day asleep
-    male.breathing = CompositeGas::o2;
+    male.breathing = Chemistry::CompositeGas::o2;
     male.lifespan = {65, 100, 120};
     male.weight_adult = {50, 81, 200}; // kg
     male.size_adult = {1.45, 1.77, 2};
@@ -93,7 +93,7 @@ Race* inithuman(){
     female.xenophilia = 0.2;
     female.temperature = 300;
     female.sleep = 0.25; // percent of day asleep
-    female.breathing = CompositeGas::o2;
+    female.breathing = Chemistry::CompositeGas::o2;
     female.lifespan = {40, 60, 120};
     female.weight_adult = {50, 66, 200}; // kg
     female.size_adult = {1.4, 1.61, 1.8};

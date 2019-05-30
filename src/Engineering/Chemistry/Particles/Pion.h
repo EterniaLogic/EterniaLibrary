@@ -9,12 +9,12 @@
 // Charged properties:
 //   Pion+ => Antimuon + Muon-Netrino
 //   Pion- => muon + Muon-Netrino
-
+namespace Chemistry{
 class Pion {
     public:
         Pion();
         virtual ~Pion();
     private:
 };
-
+}
 #endif

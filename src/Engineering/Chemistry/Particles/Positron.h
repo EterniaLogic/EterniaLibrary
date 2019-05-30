@@ -3,10 +3,10 @@
 
 // A positron is an Anti-Electron
 // +1e
-
+namespace Chemistry{
 class Positron {
         Positron();
         virtual ~Positron();
 };
-
+}
 #endif

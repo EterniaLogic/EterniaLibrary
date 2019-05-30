@@ -8,7 +8,7 @@
 #include <vector>
 
 
-
+namespace Chemistry{
 class Composite {
     public:
         Composite();
@@ -33,5 +33,6 @@ namespace CompositeGas{
 
     void printCompositeGasses();
 };
+}
 
 #endif /*COMPOSITE_H_*/

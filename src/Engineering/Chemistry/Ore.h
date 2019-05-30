@@ -9,7 +9,7 @@
 
 // Using the chemistry library, ores can be specified by the elements along with chemicals.
 
-
+namespace Chemistry{
 
 class Ore {
         CharString *name, *formula, *elements; // ore name
@@ -29,6 +29,6 @@ class Ore {
 
 
 // IMA approved mineral types: (Pretty much most games use these, but some are made up)
-
+}
 
 #endif

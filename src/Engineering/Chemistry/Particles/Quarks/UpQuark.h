@@ -2,9 +2,9 @@
 #define UpQuark_h_
 
 // combined to form Hadrons
-
+namespace Chemistry{
 class UpQuark {
 
 };
-
+}
 #endif

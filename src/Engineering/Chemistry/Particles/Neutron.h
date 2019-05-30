@@ -5,10 +5,11 @@
 // Configuration:
 //    u   d
 //      d
-
+namespace Chemistry{
 class Neutron : protected Baryon {
         Neutron();
         virtual ~Neutron();
 };
+}
 
 #endif

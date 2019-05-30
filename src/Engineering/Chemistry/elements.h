@@ -5,6 +5,7 @@
 #include "../../Design/Colors.h"
 
 // density in g/cm3
+namespace Chemistry{
 namespace elements{
 // This is a list of constants for each Atom.
 //                         Group  Protons  Neutrons  Electrons  Density  Resistivity, ThermalConduct, Melting, Boiling, Valence, COLOR, Elemental_Group
@@ -137,5 +138,6 @@ const Atom atomList[118] = {Hydrogen, Helium, Lithium, Beryllium, Boron, Carbon,
     Fermium, Mendelevium, Nobelium, Lawrencium, Rutherfordium, Dubnium, Seaborgium, Bohrium, Hassium, Meitnerium, Darmstadtium, Roentgenium, Copernicium, Nihonium, 
     Flerovium, Moscovium, Livermorium, Tennessine, Oganesson};
 
+}
 }
 #endif

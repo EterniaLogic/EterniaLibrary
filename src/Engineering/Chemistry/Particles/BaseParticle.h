@@ -1,6 +1,6 @@
 #ifndef BASEPART_H_
 #define BASEPART_H_
-
+namespace Chemistry{
 class BaseParticle{
 public:
     BaseParticle(){}
@@ -9,5 +9,6 @@ public:
     double spin; // 
     double charge; // e
 };
+}
 
 #endif

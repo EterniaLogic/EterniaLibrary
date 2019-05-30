@@ -3,7 +3,7 @@
 #include "Atom.h"
 
 using namespace physical::constant; // from constants.h
-
+namespace Chemistry{
 // assign base constants
 Atom::Atom(const char* Name, const char* label, double Group, double Period,
            double Protons, double Neutrons, double Electrons, double Density,
@@ -62,4 +62,5 @@ MatterPhase::PHASE Atom::getPhase(double temp, double Pressure) {
 
 Atom* Atom::clone() const {
     return new Atom(name, symbol,group,period,protons,neutrons,electrons,valence,density,resistivity,thermal_conductivity,melting_point,boiling_point,specific_heat,color,type);
+}
 }

@@ -84,7 +84,7 @@ public:
     // Basic Biological requirements
     float temperature; // living temperature, in kelvin (Humans like 294.817 kelvin, 71 fahrenheit)
     float sleep; // Ratio to sleep of the day. Humans normally have a 29.1% time sleep for each day. (0.291)
-    Composite breathing; // molecule normally used for breathing, humans like o2
+    Chemistry::Composite breathing; // molecule normally used for breathing, humans like o2
 
 
     diff_t lifespan; //   = {30, 50, 120}; // differential float {min,avg,max}

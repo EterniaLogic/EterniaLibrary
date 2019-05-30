@@ -7,6 +7,7 @@
 #include "../../constants.h"
 #include "../../Design/Colors.h"
 
+namespace Chemistry{
 // This class helps determine resistivity, number of atoms, hall effect, ect.
 class Atom;
 
@@ -77,5 +78,6 @@ class Atom {
         vertex color;
         ELEMENTTYPE type;
 };
+}
 
 #endif /*ATOM_H_*/

@@ -1,7 +1,7 @@
 #include "ComponentRating.h"
 #include <math.h>
 
-ComponentRating::ComponentRating(Atom* material, PowerValue* MaxPower, double MaxTemp, double Impedance) {
+ComponentRating::ComponentRating(Chemistry::Atom* material, PowerValue* MaxPower, double MaxTemp, double Impedance) {
     temperatureMax = MaxTemp;
     powerMax = MaxPower;
     impedance = Impedance;
