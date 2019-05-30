@@ -174,6 +174,7 @@ void APICore::_onEnable(){ // runs to tell the module to turn "on" and start pro
     onEnable();
 }
 
+// same as inInit
 void APICore::_onLoadMods(){
     // loads all mods
     CharString logtext = "";
@@ -189,6 +190,17 @@ void APICore::_onLoadMods(){
 
     // full loadup
     loadMods(mods);
+}
+
+void APICore::_onTick(double seconds){
+    // tick all mods
+    LinkedListIterator<APIMod*> modit = mods.getIterator();
+    while(modit.hasNext()){
+        APIMod* mod = modit.next();
+        mod->onTick(seconds);
+    }
+
+    onTick(seconds);
 }
 
 void APICore::_onDisable(){ // runs to tell the module to turn "off". (Does not actually stop, mod dev has to do it)
@@ -211,6 +223,8 @@ void APICore::Init(){
     _onInit();
     _onEnable();
 }
+
+
 
 
 // Start ticking time (calls _onEnable())

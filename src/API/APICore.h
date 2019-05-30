@@ -52,18 +52,6 @@ private:
 
 
 //    LinkedList<APIObject*> objects; // object registry
-
-
-
-    // Master module functions (Sent to actual implementation via APIMod)
-    void _onInit(); // runs after a module is loaded.
-    void _onEnable(); // runs to tell the module to turn "on" and start processing.
-    void _onLoadMods(); // loads all mods
-    void _onDisable(); // runs to tell the module to turn "off". (Does not actually stop, mod dev has to do it)
-    void _onUnload(); // runs when module is stopping.
-    void _onTick(); // runs a tick command on all mods. calls onTick(seconds);
-
-
     void startOnTick(double tickrate); // starts a thread for _onTick(); based on ticks-per-second.
 
     // Module management
@@ -77,6 +65,16 @@ private:
     APIMod* preloadModule(CharString file); // preloads the module, reads "mod.properties" file.
     bool loadModule(CharString file); // load a module from a file or folder. false if not loaded.
     bool unloadModule(APIMod* mod); // unload a module. false if kept loaded.
+
+protected:
+    // Master module functions (Sent to actual implementation via APIMod)
+    void _onInit(); // runs after a module is loaded.
+    void _onEnable(); // runs to tell the module to turn "on" and start processing.
+    void _onLoadMods(); // loads all mods
+    void _onDisable(); // runs to tell the module to turn "off". (Does not actually stop, mod dev has to do it)
+    void _onUnload(); // runs when module is stopping.
+    void _onTick(double seconds); // runs a tick command on all mods. calls onTick(seconds);
+    
 public:
     APICore(CharString name, CharString modfolder, CharString logfile);
     APICore();

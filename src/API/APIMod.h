@@ -104,7 +104,7 @@ public:
     // Shared
     virtual void onNetworkTick();
 
-    // Server-side (or cross tracking)
+    // Shared Script ticking
     virtual void onTick(double time); // time between ticks given to script engines
     virtual Event onEvent(Event event); // send an event to the scripts
 
