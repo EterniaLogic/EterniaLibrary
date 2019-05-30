@@ -165,12 +165,12 @@ namespace Math {
         return (lower + upper)/2;
     }
     
-    double min(double a, double b){
+    double minv(double a, double b){
         if(a > b) return b;
         else if(a < b) return a;
         else return a; // equals
     }
-    double max(double a, double b){
+    double maxv(double a, double b){
         if(a > b) return a;
         else if(a < b) return b;
         else return a; // equals
@@ -185,6 +185,6 @@ namespace Math {
     LLMATH(log10, double);
     LLMATH(factorial, double);
     LLMATH(sqrt, double);
-    LLMATH_B(min, double, double);
-    LLMATH_B(max, double, double);
+    LLMATH_B(minv, double, double);
+    LLMATH_B(maxv, double, double);
 }

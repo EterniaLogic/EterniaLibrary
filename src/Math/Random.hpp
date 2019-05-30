@@ -44,28 +44,28 @@ namespace Math{
         }
         
         // lower assumed is 0
-        double nextInt(int upper){
+        unsigned int nextInt(unsigned int upper){
             std::uniform_int_distribution<int> unif(0,upper);
             
             return unif(generator);
         }
         
         // Wild integer, any number
-        double nextInt(){
+        int nextInt(){
             std::uniform_int_distribution<int> unif(INT_MIN,INT_MAX);
             
             return unif(generator);
         }
         
         
-        double nextLong(long lower, long upper){
+        long nextLong(long lower, long upper){
             std::uniform_int_distribution<long> unif(lower,upper);
             
             return unif(generator);
         }
         
         // Wild Long
-        double nextLong(){
+        long nextLong(){
             std::uniform_int_distribution<long> unif(LONG_MIN,LONG_MAX);
             
             return unif(generator);

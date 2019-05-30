@@ -12,18 +12,8 @@
 #include <chrono>
 
 
+#include <thread>
 
-
-#ifdef _WIN64
-   #define WINDOWSXX
-   #include "../../../Mingw/mingw.thread.h"
-#elif _WIN32
-   #define WINDOWSXX
-   #include "../../../Mingw/mingw.thread.h"
-#else
-   #define LINUXX
-   #include <thread>
-#endif
 
 class Logger{
 private:
@@ -36,6 +26,7 @@ public:
     virtual ~Logger(); // if ASYNC, stop thread
     
     void Log(CharString data);
+    void log(CharString data); // same
     
     void processLog(CharString data);
     bool handleLogs(); // internal Async command, writes to file
@@ -46,6 +37,8 @@ public:
     CharString logfileloc, prefix;
     bool async, console, ending;
     Queue asyncLog;
+    
+    static Logger GLOBAL, ERROR;
 };
 
 #endif

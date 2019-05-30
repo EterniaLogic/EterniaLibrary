@@ -1,7 +1,6 @@
 #ifndef INV_H_
 #define INV_H_
 
-#include "../../Object.h"
 #include "../../../Data/includes.h"
 
 class Inventory : public Object {

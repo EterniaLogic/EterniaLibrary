@@ -3,6 +3,8 @@
 
 #include "../../Data/CharString.h"
 
+// URL encoding replaces special characters and spaces with %20, etc.
+
 class UrlEncoding {
     public:
         UrlEncoding();

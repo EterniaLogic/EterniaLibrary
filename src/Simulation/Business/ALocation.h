@@ -3,8 +3,6 @@
 
 #include "../../Data/includes.h"
 
-#include "../Location.h"
-
 // ALocation helps identify the location of an object
 class ALocation : public Location{
     

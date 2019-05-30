@@ -1,7 +1,7 @@
 #ifndef SLOCATION_H_
 #define SLOCATION_H_
 
-#include "Location.h"
+#include "../Data/Location.h"
 
 
 class SLocation : public Location {

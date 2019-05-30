@@ -3,12 +3,21 @@
 
 #include <iostream>
 #include <malloc.h>
-#include <strings.h>
-#include "SplitResult.h"
+
 #include "LinkedList.hpp"
 #include "../Math/Functions/Basic.h"
 
+#include <string.h>
+
+#ifdef _WIN64 || _WIN32
+#define WINDOWSXX
+
+#else
+#include <strings.h>
+#endif
+
 #define Compare compare
+#define _CS(CHARS) CharString(CHARS) // fast-hand declare
 
 enum SortType {SBefore, SSame, SAfter};
 
@@ -33,12 +42,12 @@ class CharString {
         bool isValidNumber(); // checks for "0-9, -, ."
         bool isValidScientific(); // checks for a valid scientific number (or infinity / NaN)
 
-        char* shiftLeft(const int len);
+        char* shiftLeft(const int len); // move entire list left N times, removing characters
         LinkedList<CharString> split(char splitter,char stopper);
         LinkedList<CharString> split(CharString splitter);
         void replace(char* toFind,char* replaceWith);
 
-
+        bool equals(CharString b); // same as compare
         bool compare(CharString b); // compare exactly with another CharString
         bool compare(CharString b,bool useCase); // compare exactly or without case with another CharString
         template<std::size_t N>
@@ -94,8 +103,7 @@ class CharString {
         void removeChar(int index); // remove character at index.
         void fixZeroing(char replacement); // removes \0 NULL characters within the size
 
-        static CharString ConvertFromInt(int l);
-        static CharString ConvertFromLong(long l);
+        
 
         friend ostream & operator << (ostream &out, const CharString &c);
 		friend istream & operator >> (istream &in,  CharString &c);
@@ -103,7 +111,11 @@ class CharString {
         template<std::size_t N>
         CharString operator +=(const char(&val)[N]); // handle const char [n] (const char [2])
         CharString operator +=(const char*);
+        CharString operator +=(CharString);
+        CharString operator +(CharString);
         CharString operator +(const char*);
+        template<std::size_t N>
+        CharString operator +(const char(&val)[N]);
         CharString operator +=(long);
         CharString operator +=(int val);
         CharString operator +=(double);
@@ -111,12 +123,20 @@ class CharString {
         template<std::size_t N>
         bool operator ==(const char(&val)[N]); // direct compare
 
+        // static functions
+        static CharString ConvertFromInt(int l);
+        static CharString ConvertFromLong(long l);
+        static CharString ConvertFromDouble(double d); // digits represent precision below the 0th place.
+
     private:
         char* stringx;
         int len;
 };
 
-
 #else // for cyclic includes
 class CharString;
 #endif /*CHARSTRING_H_*/
+
+// external constants
+extern CharString CS_TAB;
+extern CharString CS_NL;

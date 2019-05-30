@@ -1,30 +1,46 @@
 #ifndef LINKEDMAP_H_
 #define LINKEDMAP_H_
 
-// basic linked list, which includes a key to find data
-// <char, char>
+#include "CharString.h"
+#include "LinkedList.hpp"
 
+// basic linked list, which includes a key to find data
+//  Less bloated than the HashMap, but at the cost of CPU time when retrieving information.
+
+// unoptimized, O(N) for get(i)/get("")
+//  adding an item is only O(k)
+
+template<class keyT, class dataT>
 class LinkedMapNode {
-    public:
-        void * prev;
-        void * next;
-        void * data;
-        char * key; // <-- primary key
-        LinkedMapNode();
-        virtual ~LinkedMapNode();
-        LinkedMapNode* const self();
+public:
+    LinkedMapNode();
+    virtual ~LinkedMapNode();
+    
+    LinkedMapNode<keyT, dataT> *prev, *next;
+    keyT key;
+    dataT data;
+    
+    
+    LinkedMapNode<keyT, dataT>* const self();
 };
 
 
+template<class keyT, class dataT>
 class LinkedMap {
-        LinkedMapNode * baseNode;
-        LinkedMapNode * currentNode;
+        LinkedMapNode<keyT, dataT> * baseNode;
+        LinkedMapNode<keyT, dataT> * currentNode;
     public:
         LinkedMap();
         virtual ~LinkedMap();
-        void add(char* key, char* data);
-        char* get(int index);
-        char* get(char* key);
+        
+        void add(keyT key, dataT data);
+        dataT get(int index);
+        dataT get(keyT key);
+        
+        
+        LinkedList<keyT> getKeys();
+        LinkedList<dataT> getData();
+        
         void clear();
 };
 

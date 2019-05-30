@@ -58,7 +58,7 @@ void FileCache<T>::clear(){
     flush();
     
     // copy data file to backup
-    CharString c = store_file.concata(".bak",4);
+    CharString c = store_file+".bak";
     //std::filesystem::copy(store_file, c); // C++17
     
     // pre-close current file

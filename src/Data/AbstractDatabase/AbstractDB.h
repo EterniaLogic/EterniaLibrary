@@ -14,6 +14,8 @@
 #include "../PriorityQueue.h"
 #include "../CharString.h"
 
+#include "AbstractDBDate.hpp"
+
 using namespace std;
 
 // all definitions in bytes (8 bits)
@@ -29,13 +31,7 @@ using namespace std;
 #define DB_DOUBLE_SIZE  8
 #define DB_QUAD_SIZE    16 // 128-bit Mantissa precision 64
 
-// Unix timestamp info (may not be used, but is useful here...)
-#define EPOCH_MIN 60
-#define EPOCH_HR 3600
-#define EPOCH_DAY 86400
-#define EPOCH_WEEK 604800
-#define EPOCH_MONTH 2629743
-#define EPOCH_YEAR 31556926
+
 
 // number of bits corresponding to type
 // DB_STRING data type is a pointer to a string file
@@ -69,26 +65,6 @@ enum ADB_STOREBASE {                                  // MapSize: Normal = 32, E
 //      filesize and memory based on base number
 
 std::ifstream::pos_type filesize(fstream &in);
-
-
-class AbstractDBDate {
-public:
-        // 2038... cannot wait!
-        uint64_t unixtimestamp; // 32-bit timestamp = time(NULL);
-        
-        int getDayOfYear();
-        int getDayOfMonth();
-        uint8_t getDayOfWeek(); // 0 = sunday, 6 = saturday
-        int getMonth();
-        int getYear();
-        int getSecond();
-        int getWeek(); // Week of month
-        int getMinute();
-        int getHour();
-        
-        void setTimestamp();
-        unsigned int getTimestamp();
-};
 
 
 class AbstractDBField {
@@ -151,6 +127,9 @@ class AbstractDBTable {
         ADB_STOREBASE base;
         AbstractDBCacheMap cache;
         fstream file, filetmp;
+        
+        AbstractDBDate created, modified; // create/modified date timestamp
+        
         int headersize;
         int seekfirst; // seek to go to get to first row
         int seeksize; // size total of each row

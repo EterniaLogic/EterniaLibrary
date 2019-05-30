@@ -61,7 +61,7 @@ void SpecificSerializer::clearSerial(){
     addresses.clear();
 }
 
-int GetSizeOfType(PointerType pt) {
+int SpecificSerializer::GetSizeOfType(PointerType pt) {
     _DBGSSE("[Specific Serializer] Get type SIZE");
     switch(pt.type) {
         case SSE_Int:
@@ -104,7 +104,7 @@ int GetSizeOfType(PointerType pt) {
 }
 
 // Copy a into b
-void rawCpy(char* a, char* b, int len, int aoff, int boff){
+void SpecificSerializer::rawCpy(char* a, char* b, int len, int aoff, int boff){
     for(int i=0;i<len;i++)
         b[boff+i] = a[aoff+i];
 }

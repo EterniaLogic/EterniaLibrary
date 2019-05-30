@@ -173,20 +173,22 @@ int main() {
 
     //testPType();
     //malloc_stats();
-    //testSerializers();
     //malloc_stats();
     
     //testFileCache();
     
     //testExHash();
-    //testHTTP();
+    testHTTP();
     //testNetwork();
     //testOrbit();
     
     //CompositeGas::printCompositeGasses();
     
+    //testMSGServer();
     
-    testLSTM_XOR4();
+    //testLSTM_XOR4();
+    //testSerializers();
+    //testAPICore();
     //testARB();
     //malloc_stats();
     

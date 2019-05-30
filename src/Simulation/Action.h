@@ -1,7 +1,7 @@
 #ifndef ACTION_H_
 #define ACTION_H_
 
-#include "Object.h"
+#include "../Data/Object.h"
 
 enum ACTION_TYPE {AT_NONE, AT_SLEEP, AT_BATHROOM, AT_USESKILL, AT_CRAFT, 
     AT_MINE, AT_BUILD, AT_FILL,

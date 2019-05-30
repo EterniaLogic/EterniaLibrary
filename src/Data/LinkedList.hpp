@@ -7,9 +7,17 @@
 #include <vector>
 #include <iterator>
 #include <stdio.h>
+using namespace std;
 
-#include <signal.h>
+
+
+#ifdef _WIN64 || _WIN32
+
+#else
 #include <unistd.h>
+#include <signal.h>
+#include <execinfo.h>
+#endif
 
 
 #ifdef _WIN64
@@ -18,15 +26,26 @@
    #define WINDOWSXX
 #else
    #define LINUXX
-   #include <execinfo.h>
+
 #endif
 
-using namespace std;
 
-#include "List.h"
+
+
+template<class T>
+class LinkedListIterator;
+#include "LinkedListIterator.hpp"
+#include "ArrayList.hpp"
 
 //#include "../Math/Functions/Basic.h"
 #include "../Math/struct/Matrix.h"
+
+
+template<class T>
+class LinkedList;
+template<class T>
+void QuickSortT(LinkedList<T> *listx, int (*valuefunc)(T item), int left, int right);
+#include "../Algorithm/Sorting/QuickSort.h"
 
 
 //#define dbgLog(STRX) cout << "[LinkedList] " << STRX << endl; cout.flush();
@@ -61,54 +80,20 @@ LinkedList<double> operator OP(double v){ \
 template<class T>
 class LinkedNode {
 public:
-    //LinkedNode<T> * prev;
     LinkedNode<T> * next;
     T data;
-    //int id;
     LinkedNode() {
-        //prev =
         next = 0x0;
     }
-    ~LinkedNode() {
-        //prev = next = 0x0;
-        //data = 0x0;
-    }
+    ~LinkedNode() {}
 };
 
-template<class T>
-class LinkedList;
-
-template<class T>
-class LinkedListIterator{
-public:
-    LinkedNode<T> *curnode;
-    
-    LinkedListIterator(){curnode=0x0;}
-    LinkedListIterator(LinkedList<T> list){
-        curnode = list.baseNode;
-    }
-    
-    T next(){
-        T outdata = curnode->data;
-        curnode = curnode->next;
-        return outdata;
-    }
-    
-    bool hasNext(){
-        return (curnode != 0x0);
-    }
-} ;
-
-// ALIAs
-#define LLIterator LinkedListIterator
-
-
 
 
 
 
 template<class T>
-class LinkedList : public List<T> {
+class LinkedList {
     //Written January 25th, 2013
     
     int _size;
@@ -166,8 +151,10 @@ public:
         dbgLog("finalize");
         
         // do not use due to clearing Real datasets between functions
-        //  when using non-pointer referencing.
-        //clear(); 
+        //  when using non-pointer referencing. (kind of annoying)
+        //clear();
+        
+        // This also means that memory leaks are a big thing here.
     }
     
     
@@ -331,7 +318,7 @@ public:
         return r;
     }
     
-    T remove(T v) {
+    T remove(T vd) {
         T r = 0x0;
         dbgLog("remove");
 
@@ -341,7 +328,7 @@ public:
         LinkedNode<T>* prev = 0x0;
         for(long i=0; i<_size; i++) {
             if(current != 0x0) {
-                if (v == current->data) {
+                if (vd == current->data) {
 
                     if(prev != 0x0) prev->next = current->next;
                     else baseNode = current->next;
@@ -445,15 +432,26 @@ public:
         
         return -1;
     }
-
-    // retrieve item?
-    T operator [](int i) const {
-        dbgLog(" ["<<i<<"]");
-        freeze(); // @suppress("Invalid arguments")
-        return frozen[i];
+    
+    bool contains(T val){
+        dbgLog("contains");
+        LinkedNode<T> *current = baseNode;
+        while(current != 0x0){
+            if(current->data == val) return true;
+            current = current->next;
+        }
+        
+        return false;
     }
 
-    T& operator [](int index){
+    // retrieve item value?
+    T operator [](long i) const {
+        //freeze(); // @suppress("Invalid arguments")
+//        ArrayList<T> alist = getArrayList();
+        return this->get(i);//alist[i];
+    }
+
+    T& operator [](long index){
         dbgLog(" list["<<index<<"] = ?");
         LinkedNode<T>* current = baseNode;
         for(long i=0; i<=index; i++) {
@@ -520,6 +518,18 @@ public:
         }
     }
     
+    // returns an array list with data
+    ArrayList<T> getArrayList(){
+        const int len = _size;
+        ArrayList<T> alist = ArrayList<T>(len);
+        
+        for(int i = 0;i<len;i++){
+            alist[i] = get(i);
+        }
+        
+        return alist;
+    }
+    
     // list = char{'a','b'};
     LinkedList<T> operator =(T vallist){
         int size_ = SIZEOFA(vallist);
@@ -531,13 +541,6 @@ public:
         return this;
     }
     
-    void operator =(std::initializer_list<T> vallist){
-        std::vector<T> v;
-        v.insert(v.end(), vallist.begin(), vallist.end());
-        for(int i=0;i<vallist.size();i++){
-            add(v[i]);
-        }
-    }
     
     // math operations between two lists of same length
     LLOPERATOR(-);
@@ -637,23 +640,42 @@ public:
 
     // unfreeze will determine if there are any new addresses added
     // First, clears the list, then goes through a brand new list
-    void unfreeze(void* list, int bytes) {
+    void unfreeze(ArrayList<T> listx) {
         clear();
-        _size = bytes/sizeof(T);
-        T* thislist = (T*)list;
+        _size = listx.size();
 
         for(int i=0; i<_size; i++) {
-            add(thislist[i]);
+            add(listx[i]);
+        }
+
+        changed=true;
+    }
+    
+    void unfreeze(T* dat, int len) {
+        clear();
+        _size = len;
+
+        for(int i=0; i<len; i++) {
+            add(dat[i]);
         }
 
         changed=true;
     }
     
     
+    // Special iterator
     LinkedListIterator<T> getIterator(){
-        return LinkedListIterator<T>(*this);
+        return LinkedListIterator<T>(this);
     }
     
+    
+    // Sorting algorithm, uses QuickSort for efficiency
+    //  Valuefunc is a function used to sort list items from low to high
+    void sort(int (*valuefunc)(T item)){
+        // sorting valuefunction is passed here
+        LinkedList<T>* listx = this;
+        QuickSortT<T>(listx, valuefunc, 0, size()-1);
+    }
     
     
     //template<class T>
@@ -710,4 +732,5 @@ class LinkedList;// : public List<T>;
 
 template<class T>
 class LinkedListIterator;
+#include "LinkedListIterator.hpp"
 #endif

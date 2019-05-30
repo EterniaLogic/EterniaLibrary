@@ -1,6 +1,6 @@
 #ifndef BACKEND_H_
 #define BACKEND_H_
-#include "../Network/network.h"
+#include "../../Network/network.h"
 
 // common class for backends to work with polymorphism
 

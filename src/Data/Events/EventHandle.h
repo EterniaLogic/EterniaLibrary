@@ -5,6 +5,7 @@
 // The Event Handler is an API that allows use and execution of set events
 //      These events can include window draws, physics, mouse clicks, ect.
 
+
 class EventHandle {
     private:
         void (*method)(); // variable method
@@ -19,7 +20,7 @@ class EventHandle {
         EventHandle(void (*func)(void* arg, void* arg2)); // event to handle
         ~EventHandle();
 
-        void init();
+        void init(); // called in constructor
 
         // void (*func)() = (void (*)())current->data;
         bool handle(); // handle this event

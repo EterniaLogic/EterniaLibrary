@@ -51,7 +51,7 @@ public:
 
 
 
-
+#define addSerial_N(variablex, typex) this->addSerial(&variablex, typeid(variablex).name(), typex)
 
 
 
@@ -72,6 +72,9 @@ class PointerType {
 class SpecificSerializer {
 private:
     LinkedList<PointerType> addresses; // local addresses for this class
+    
+    int GetSizeOfType(PointerType pt);
+    void rawCpy(char* a, char* b, int len, int aoff, int boff);
 public:
     SpecificSerializer();
     virtual ~SpecificSerializer();
@@ -87,7 +90,9 @@ public:
 
     // ID-specific serialization (Serialize a specific variable, not the entire class)
     CharString serializeId(int id);
+    CharString serializeId_JSON(int id); // converts numbers into text for JSON
     void deserializeId(int id, CharString data);
+    void deserializeId_JSON(int id, CharString data); // converts numbers into text for JSON
     uint32_t checksumId(int id);
     bool checksumCompareId(int id, uint32_t otherid);
 

@@ -2,16 +2,21 @@
 
 using namespace std;
 
+Logger Logger::GLOBAL("global.log", "[GLOBAL]", true, true, true);
+//Logger Logger::SERVER("server.log", "[SERVER]", true, true, true);
+//Logger Logger::CLIENT("client.log", "[CLIENT]", true, true, true);
+Logger Logger::ERROR("error.log", "[ERROR]", true, true, true);
+
 void loggerThread(Logger* logger){
     long ticks_per_sec, time, last;
     
-    while(true){
+    while(!logger->ending){
         last = clock();
         
         // handle logs
-        if(!logger->handleLogs()) break;
+        logger->handleLogs();
         
-        ticks_per_sec = 5.0;
+        ticks_per_sec = 50.0;
         time = (1000000.0/ticks_per_sec) - (((clock()-last)*1000000.0)/CLOCKS_PER_SEC);
         if(time > 0) std::this_thread::sleep_for(std::chrono::microseconds(time));
     }
@@ -24,19 +29,25 @@ Logger::Logger(CharString logfileloc, CharString prefix, bool async, bool consol
     this->prefix = prefix;
     this->async = async;
     this->console = console;
+    this->ending = false;
     
+    //cout << "Logger 1" << endl;
     // open file
     if(clearfile) file.open (logfileloc.get(), ios::out | ios::app);
     else file.open (logfileloc.get(), ios::out | ios::app | ios::trunc);
     file.seekp(0, ios::end);
     
+    //cout << "Logger 2" << endl;
+    
     if(async){
         asyncthread = std::thread(loggerThread, this);
+        cout << "Logger 3thrstart" << endl;
     }
+    //cout << "Logger 3" << endl;
 }
 
 Logger::Logger(){
-
+ //???
 }
 
 
@@ -55,6 +66,7 @@ Logger::~Logger(){
 void Logger::Log(CharString data){
     // combine data with prefix, timestamp.
     data.concatb(prefix);
+    data.concatb(CS_NL);
     
     // async
     if(async){
@@ -67,26 +79,34 @@ void Logger::Log(CharString data){
     }
 }
 
+void Logger::log(CharString data){
+    Log(data);
+}
+
 void Logger::processLog(CharString data){
     if(console){
-        cout << data << endl;
+        cout << data;// << endl;
         cout.flush();
     }
     
     // push data to file
     if(file.is_open()){
         file.write(data.get(), data.getSize());
-        file.write((char*)"\r\n", 2);
+        file.write((char*)"\n", 1);
     }
 }
 
 bool Logger::handleLogs(){
     // asyncLog
     CharString* str;
+    //cout << "handleLogs 1" << endl;
     
     while((str = (CharString*)asyncLog.pop()) != 0x0){
+        //cout << "handleLogs 2" << endl;
         processLog(*str);
     }
+    
+    //cout << "handleLogs 3" << endl;
     
     return (!ending);
 }
@@ -96,6 +116,7 @@ Logger& Logger::operator=(const Logger& l){
     this->prefix = l.prefix;
     this->async = l.async;
     this->console = l.console;
+    this->ending = false;
     
     l.~Logger();
     
@@ -105,5 +126,6 @@ Logger& Logger::operator=(const Logger& l){
     file.open (logfileloc.get(), ios::out | ios::app | ios::trunc);
     file.seekp(0, ios::end);
     
+    this->ending = false; // reset ending
     asyncthread = std::thread(loggerThread, this);
 }

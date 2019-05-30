@@ -44,6 +44,10 @@ Windows:
 - libatomic.a and libws_32.a required. (usually supplied with windows)
 
 
+Code Testing
+--------------------------
+Although EterniaLibrary is slowly becoming larger and relatively more stable with each iteration, it does not have testing for any test library.
+
 
 Documentation and Examples
 --------------------------
@@ -56,6 +60,7 @@ example using namespaces
 
 	#include <Eternia/eternia.h>
 	#include <iostream>
+	using namespace std;
 		
 	int main(){
         	cout << Math::sin(20) << endl;
@@ -85,7 +90,7 @@ Sub-sections
 
 - HTTP Server with multi-threading (C++2011)
 - Template Engine for use with HTML template files
-- RESTFul HTTP Server (20%-ish)
+- RESTFul HTTP Server (30%-ish)
 - JSON marshal parsing (0% done)
 
 **Business** [/Simulation/Business/]: (headers only, no implementations yet)

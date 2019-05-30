@@ -6459,17 +6459,24 @@
 1492727924 source:/media/GStuffs/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
 	"SocketServer.h"
 
-1546383495 source:/media/NBackups/Dev/Cpp/EterniaLib/main.cpp
+1556505999 source:/media/NBackups/Dev/Cpp/EterniaLib/main.cpp
 	<time.h>
 	"src/test.h"
 	"src/include.h"
 	"src/asm/asm1.h"
-	"version.h"
 	"src/Engineering/Chemistry/Composite.h"
 	<iostream>
+	<stdio.h>
+	<signal.h>
+	<stdlib.h>
+	<unistd.h>
+	<execinfo.h>
+	"version.h"
 
-1533467413 /media/NBackups/Dev/Cpp/EterniaLib/src/test.h
+1557308623 /media/NBackups/Dev/Cpp/EterniaLib/src/test.h
 	<ctime>
+	"AI/test/testAI.h"
+	"API/test/testAPI.h"
 	"Algorithm/Cryptography/test/testExHash.hpp"
 	"Engineering/Physics/test/tests.h"
 	"Math/test/testMath.h"
@@ -6486,36 +6493,40 @@
 	"../../../Data/CharString.h"
 	"../ExHash.h"
 
-1546184063 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/CharString.h
-	"CharString.h"
-	"SplitResult.h"
+1557012440 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/CharString.h
 	<iostream>
 	<malloc.h>
-	"../Math/Functions/Basic.h"
 	"SplitResult.h"
-
-1533467492 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
-	<string.h>
 	"LinkedList.hpp"
-	"CharString.h"
+	"../Math/Functions/Basic.h"
+	<string.h>
+	<strings.h>
 
-1546811887 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
+1547180793 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/SplitResult.h
+	<string.h>
+	"CharString.h"
+	"LinkedList.hpp"
+
+1557337001 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/LinkedList.hpp
 	<iostream>
 	<malloc.h>
 	<stdlib.h>
 	<vector>
 	<iterator>
 	<stdio.h>
-	<execinfo.h>
-	<signal.h>
 	<unistd.h>
-	"LinkedListIterator.hpp"
+	<signal.h>
+	<execinfo.h>
+	"List.h"
+	"../Math/struct/Matrix.h"
 
 1546811991 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/LinkedListIterator.hpp
 	"LinkedList.hpp"
 
-1534445129 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.h
+1557014242 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.h
 	<malloc.h>
+	"../LinkedListMath.def.h"
+	"../../Data/LinkedList.hpp"
 
 1521299623 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/ExHash.h
 	"../../Data/CharString.h"
@@ -6530,14 +6541,14 @@
 	"../../../Math/struct/vertex.h"
 	"../../../constants.h"
 
-1546816095 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/vertex.h
+1556042313 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/vertex.h
 	"../../Serialization/SpecificSerializer.h"
 	"../Functions/Basic.h"
 	"../Functions/Trig.h"
 	"../../constants.h"
 	<math.h>
 
-1546812385 /media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.h
+1557316404 /media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.h
 	<stdlib.h>
 	<malloc.h>
 	"../Data/CharString.h"
@@ -6570,40 +6581,42 @@
 1520011741 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testOrbit.h
 	"../Orbit.h"
 
-1534445552 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Orbit.h
+1546852687 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Orbit.h
 	"../../Math/Math.h"
 	"Equations.h"
 
-1546632858 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Math.h
+1556045143 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Math.h
 	"Functions/Basic.h"
 	"Functions/Trig.h"
+	"Functions/Sigmoid.h"
 	"struct/Matrix.h"
 	"struct/VectorSpace.h"
 	"struct/vertex.h"
+	"struct/vertex4d.h"
 	"Eval.h"
 	"Equation.h"
+	"Random.hpp"
 	"Arbitrary.h"
 
-1534445420 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.h
-	"../../Data/CharString.h"
+1547192739 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.h
 	<cstdlib>
 
 1534445479 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.h
 	"Matrix.h"
 	"vertex.h"
 
-1534445355 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Eval.h
+1547001427 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Eval.h
 	"../Data/CharString.h"
-	"../Data/Stack.h"
+	"../Data/Stack.hpp"
 
 1533467415 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Stack.h
 	<iostream>
 
-1534445313 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Equation.h
+1546852837 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Equation.h
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
 
-1546458637 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Arbitrary.h
+1556505312 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Arbitrary.h
 	<inttypes.h>
 	"../Data/CharString.h"
 	"../Data/LinkedList.hpp"
@@ -6626,16 +6639,17 @@
 	"../SimpleParser.h"
 	"../SecuredParser.h"
 
-1533467417 /media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.h
+1556428666 /media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.h
 	<iostream>
 	"LoadFile.h"
 	"../Data/LinkedList.hpp"
 	"../Data/CharString.h"
 
-1533467417 /media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
+1556428416 /media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.h
 	<iostream>
 	<fstream>
 	<string>
+	<streambuf>
 	"../Data/CharString.h"
 
 1533467417 /media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.h
@@ -6643,28 +6657,29 @@
 	"../Algorithm/Cryptography/Aes256.h"
 	"../Data/LinkedList.hpp"
 
-1546823425 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
+1556505163 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.h
 	<inttypes.h>
 	<math.h>
+	<time.h>
 	"Aes256r.h"
 	"../../Data/CharString.h"
 
-1546222725 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.h
+1547001498 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.h
 	<ctime>
 	"../BitMap.h"
 	"../FileCache.h"
 	"../HashMap.hpp"
 	"../Heap.h"
-	"../IntegerList.h"
 	"../LinkedList.hpp"
 	"../PriorityQueue.h"
 	"../Queue.h"
-	"../Stack.h"
+	"../Stack.hpp"
 	"../TreeList.h"
 	"testPType.h"
 	"testAbstractDB.h"
+	"../Concurrent/ConcurrentLinkedList.hpp"
 
-1533467413 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/BitMap.h
+1546841981 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/BitMap.h
 	"../Parsing/LoadFile.h"
 
 1521297275 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileCache.h
@@ -6695,7 +6710,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1533467414 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/HashMap.hpp
+1546853894 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/HashMap.hpp
 	<iostream>
 	"../Data/CharString.h"
 	"LinkedList.hpp"
@@ -6725,7 +6740,7 @@
 1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.h
 	"../AbstractDatabase/AbstractDB.h"
 
-1520013321 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
+1546855560 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDB.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -6736,18 +6751,19 @@
 	"../PriorityQueue.h"
 	"../CharString.h"
 
-1532312210 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/test/NetworkTest.hpp
+1546844782 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/test/NetworkTest.hpp
 	"../SocketServer.h"
 	"../ChannelledServer.h"
 	"../HTTPServer.h"
 	"../RESTFulServer.h"
 	<time.h>
 
-1532306814 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.h
+1557012620 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.h
 	<stdio.h>
 	<stdlib.h>
 	<string>
 	<math.h>
+	<thread>
 	"TargetConditionals.h"
 	<windows.h>
 	<winsock2.h>
@@ -6759,17 +6775,16 @@
 	<netinet/in.h>
 	<arpa/inet.h>
 	<fcntl.h>
-	<thread>
 	"SockClient.h"
 	"../../Data/LinkedList.hpp"
 	"../../Data/CharString.h"
 
-1532308884 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.h
+1557012658 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.h
 	<stdio.h>
 	<stdlib.h>
-	<unistd.h>
 	<string.h>
 	<math.h>
+	<thread>
 	<windows.h>
 	<winsock2.h>
 	<ws2tcpip.h>
@@ -6778,10 +6793,10 @@
 	<sys/socket.h>
 	<netdb.h>
 	<netinet/in.h>
-	<thread>
+	<unistd.h>
 	"../../Data/CharString.h"
 
-1532306987 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledServer.h
+1546851481 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledServer.h
 	"SocketServer.h"
 	"PacketChannel.h"
 	"ChannelledClient.h"
@@ -6801,21 +6816,21 @@
 	"Types/HTTPResponse.h"
 	"../../Parsing/LoadFile.h"
 
-1520011741 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPRequest.h
+1556573248 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPRequest.h
 	"HTTPTypes.h"
 	"../../../Data/HashMap.hpp"
 
-1520011741 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPTypes.h
+1556573236 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPTypes.h
 	<unordered_map>
 	<string>
 	"../../../Data/CharString.h"
 
-1532290086 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPResponse.h
+1556573241 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPResponse.h
 	"HTTPTypes.h"
 	"../../../Data/HashMap.hpp"
 	<iostream>
 
-1532306956 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/RESTFulServer.h
+1546850838 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/RESTFulServer.h
 	"HTTPServer.h"
 
 1534551329 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/CryptoDefines.h
@@ -6828,20 +6843,21 @@
 	"../EventHandler.h"
 	<iostream>
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.h
+1557337812 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.h
 	"../PriorityQueue.h"
 	"EventHandle.h"
+	"../Concurrent/ThreadPool.h"
 	<iostream>
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.h
+1557305104 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.h
 	<time.h>
 
 1546635437 /media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/test/testSerializers.hpp
 	"../SpecificSerializer.h"
 
-1534634063 /media/NBackups/Dev/Cpp/EterniaLib/src/include.h
+1551363068 /media/NBackups/Dev/Cpp/EterniaLib/src/include.h
 	"Data/includes.h"
-	"AI/ai.h"
+	"AI/AI.h"
 	"Algorithm/includes.h"
 	"Engineering/includes.h"
 	"Math/Math.h"
@@ -6853,9 +6869,7 @@
 	"Emulation/includes.h"
 	"Simulation/include.h"
 
-1546814400 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/includes.h
-	"CharString.h"
-	"SplitResult.h"
+1557337360 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/includes.h
 	"CRCData.hpp"
 	"DynamicType.h"
 	"FileCache.h"
@@ -6863,16 +6877,14 @@
 	"Graph.h"
 	"HashTable.h"
 	"Heap.h"
-	"Stack.h"
 	"TimeProfiler.h"
 	"Timer.h"
 	"BitMap.h"
 	"LinkedList.hpp"
-	"IntegerList.h"
-	"LinkedListT.h"
 	"CyclicList.hpp"
 	"DoubleList.h"
 	"Queue.h"
+	"Stack.hpp"
 	"HashMap.hpp"
 	"LinkedMap.h"
 	"TreeList.h"
@@ -6882,16 +6894,21 @@
 	"Events/Event.h"
 	"Logger/Logger.h"
 	"TimeProfiler.h"
+	"CharString.h"
+	"SplitResult.h"
+	"Object.h"
+	"Location.h"
 	"UInt512.hpp"
 
-1533460472 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/DynamicType.h
+1556433554 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/DynamicType.h
 	<stdlib.h>
+	"CharString.h"
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
+1547000913 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileSystem.h
 	"../Data/CharString.h"
 
-1534445537 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Graph.h
-	"LinkedListT.h"
+1547000670 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Graph.h
+	"LinkedList.hpp"
 	"HashMap.hpp"
 	"../Data/CharString.h"
 	"../Math/struct/vertex.h"
@@ -6902,7 +6919,7 @@
 	<iostream>
 	"../Data/CharString.h"
 
-1546369980 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/TimeProfiler.h
+1546855366 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/TimeProfiler.h
 	"HashMap.hpp"
 	"CharString.h"
 	"CyclicList.hpp"
@@ -6916,19 +6933,19 @@
 
 1521296638 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/LinkedMap.h
 
-1520013321 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/Event.h
-	"../HashMap.hpp"
+1557336928 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/Event.h
 	"../CharString.h"
+	"../HashMap.hpp"
 
-1520013321 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Logger/Logger.h
+1557303051 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Logger/Logger.h
 	"../CharString.h"
 	"../Queue.h"
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
 	<fstream>
-	<thread>
 	<chrono>
+	<thread>
 
 1521299174 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/UInt512.hpp
 	<inttypes.h>
@@ -6967,21 +6984,20 @@
 	"Sorting/QuickSort.h"
 	"Sorting/SelectionSort.h"
 
-1520013321 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Compression/BasicCompressor.h
+1547000022 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Compression/BasicCompressor.h
 	"../../Data/CharString.h"
 	"../../Data/LinkedList.hpp"
-	"../../Data/IntegerList.h"
 
 1533457252 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Pathing/DijkstraPath.hpp
 	"../../Data/includes.h"
 
 1533467417 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.h
 
-1533467418 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.h
-	"../../Data/IntegerList.h"
+1546994002 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.h
+	"../../Data/LinkedList.hpp"
 
-1533014389 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.h
-	"../../Data/IntegerList.h"
+1547000387 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.h
+	"../../Data/LinkedList.hpp"
 
 1533456220 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.h
 
@@ -7010,7 +7026,7 @@
 	"Composite.h"
 	"Ore.h"
 
-1546183933 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
+1556505397 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.h
 	"../../constants.h"
 	"../../Design/Colors.h"
 
@@ -7021,13 +7037,13 @@
 	"Atom.h"
 	"../../Design/Colors.h"
 
-1546186950 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.h
+1546852576 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.h
 	"Atom.h"
 	"elements.h"
 	"../../Data/includes.h"
 	<vector>
 
-1533462080 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Ore.h
+1549672737 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Ore.h
 	"elements.h"
 
 1520013321 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Civil/Building.h
@@ -7040,12 +7056,12 @@
 
 1520011741 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Civil/Utility.h
 
-1533467419 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.h
+1546853299 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.h
 
-1533467419 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Circuit.h
+1556573741 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Circuit.h
 	"../../Data/LinkedList.hpp"
 	"Components/Component.h"
-	"Node.h"
+	"VNode.h"
 
 1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/Component.h
 	"../PowerValue.h"
@@ -7117,12 +7133,12 @@
 	"RAM.h"
 	"General/IC555.h"
 
-1533467421 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.h
+1546852992 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.h
 	"../Components/Component.h"
 	"../../../Data/LinkedList.hpp"
 	"../Pin.h"
 
-1533467419 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
+1546853244 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.h
 	"../../Data/CharString.h"
 	"PowerValue.h"
 
@@ -7133,7 +7149,7 @@
 1533467421 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.h
 	"IC.h"
 
-1533467423 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.h
+1546853205 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.h
 	"../IC.h"
 
 1533015879 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/includes.h
@@ -7169,7 +7185,7 @@
 	"../../Data/includes.h"
 	"../../constants.h"
 
-1533467422 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.h
+1546852868 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.h
 	"../../../constants.h"
 	"../../../Data/includes.h"
 	"../../../Math/Math.h"
@@ -7230,7 +7246,7 @@
 1533462461 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTMLServer.h
 	"Types/HTTPTypes.h"
 
-1533461164 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTMLRequest.h
+1556573256 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTMLRequest.h
 	"../../../Data/includes.h"
 	"HTTPTypes.h"
 	<iostream>
@@ -7240,8 +7256,9 @@
 	"HTTPTypes.h"
 	<iostream>
 
-1546637885 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Encoding/JSON.h
+1556573406 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Encoding/JSON.h
 	"../../Data/includes.h"
+	<vector>
 
 1491624375 /media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.h
 	"../../Data/LinkedList.hpp"
@@ -7263,10 +7280,10 @@
 	"../Colors.h"
 	"Layout.h"
 
-1533465038 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/GUI/Layout.h
+1546827130 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/GUI/Layout.h
 	"LayoutObject.h"
 
-1546821630 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/GUI/LayoutObject.h
+1557004659 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/GUI/LayoutObject.h
 	"../../Data/includes.h"
 	"../../Design/Events/MouseHandleEvent.h"
 	"../../Design/Events/KeyHandleEvent.h"
@@ -7298,15 +7315,15 @@
 	"SecondTick.h"
 	"MPU/msp430.h"
 
-1533467418 /media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.h
+1551368047 /media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.h
 	<math.h>
 	<ctime>
+	"../../Data/LinkedList.hpp"
+	"../../Data/HashMap.hpp"
 	"msp430g2553.h"
 	"msp430_Opcodes.h"
 	"msp430_Registers.h"
 	"msp430_declare_consts.h"
-	"../../Data/LinkedList.hpp"
-	"../../Data/HashMap.hpp"
 
 1533467424 /media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430g2553.h
 	"in430.h"
@@ -7319,8 +7336,7 @@
 
 1533467418 /media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_declare_consts.h
 
-1534625634 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/include.h
-	"Location.h"
+1557307606 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/include.h
 	"Society/include.h"
 	"Environment/include.h"
 	"Business/include.h"
@@ -7338,7 +7354,7 @@
 	"War/War.h"
 	"War/WarParty.h"
 
-1546178423 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Race.h
+1557338037 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Race.h
 	"../../Data/includes.h"
 	"../../Engineering/Chemistry/Composite.h"
 	"Relations.h"
@@ -7346,9 +7362,8 @@
 1534625353 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Relations.h
 	"Race.h"
 
-1546178082 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Citizen.h
+1557307160 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Citizen.h
 	"../../Data/includes.h"
-	"../Location.h"
 	"../Business/AssetHolder.h"
 	"Race.h"
 	"Government/Government.h"
@@ -7362,9 +7377,9 @@
 	"Accounting/Budget.h"
 	"Person.h"
 
-1546459829 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Business/BEntity.h
+1556573626 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Business/BEntity.h
 	"../../Data/includes.h"
-	"../Entity.h"
+	"../CEntity.h"
 
 1546460057 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Entity.h
 	"../Data/includes.h"
@@ -7389,9 +7404,8 @@
 	"../../Data/includes.h"
 	"ALocation.h"
 
-1546460522 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Business/ALocation.h
+1557307175 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Business/ALocation.h
 	"../../Data/includes.h"
-	"../Location.h"
 
 1546177793 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Government/Government.h
 	"../../../Data/includes.h"
@@ -7421,8 +7435,8 @@
 	<time.h>
 	<limits.h>
 
-1546632974 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Space/SolarObject.h
-	"../../Entity.h"
+1556573679 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Space/SolarObject.h
+	"../../CEntity.h"
 	"../../../Math/Math.h"
 
 1546462566 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Planet/Ocean.h
@@ -7476,13 +7490,19 @@
 
 1533463686 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Business/Accounting/Equity.h
 
-1534625591 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/include.h
+1557313856 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/include.h
 	"Dwarves.h"
+	"Entities/Inventory.h"
+	"Entities/Religion.h"
+	"Entities/Items/Item.h"
+	"Entities/Workshops/Workshop.h"
 
-1542423795 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Dwarves.h
+1556436138 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Dwarves.h
 	"../Society/include.h"
 	"../../Data/LinkedList.hpp"
-	"Entities/Dwarf.h"
+	"../../API/APICore.h"
+	"../../API/APIMod.h"
+	"Entities/Creature/Mortal/Dwarf.h"
 
 1546177189 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Dwarf.h
 	"IntelligentCreature.h"
@@ -7499,15 +7519,17 @@
 
 1533473642 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Injury.h
 
-1533473837 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Skill/Spell.h
+1557307232 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Skill/Spell.h
+	"../../../../Data/Object.h"
 
-1533473854 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Skill/Skill.h
+1557307288 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Skill/Skill.h
+	"../../../../Data/includes.h"
 
 1546177327 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Action.h
 
 1533467413 /media/NBackups/Dev/Cpp/EterniaLib/src/asm/asm1.h
 
-1546812461 /media/NBackups/Dev/Cpp/EterniaLib/version.h
+1557333887 /media/NBackups/Dev/Cpp/EterniaLib/version.h
 
 1520013321 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Compression/BasicCompressor.cpp
 	"BasicCompressor.h"
@@ -7515,7 +7537,7 @@
 1546822720 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.c
 	<inttypes.h>
 
-1546822475 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.cpp
+1556505191 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.cpp
 	"Aes256.h"
 
 1521295299 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/crc32.cpp
@@ -7528,61 +7550,69 @@
 1533467417 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/InsertionSort.cpp
 	"InsertionSort.h"
 
-1533467417 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.cpp
+1547000257 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/MergeSort.cpp
 	"MergeSort.h"
 
-1533014394 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.cpp
+1547000374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/QuickSort.cpp
 	"QuickSort.h"
 
 1533456200 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Sorting/SelectionSort.cpp
 	"SelectionSort.h"
 
-1520013321 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APICore.cpp
+1557338140 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APICore.cpp
 	"APICore.h"
 
-1546383065 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APICore.h
+1557337769 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APICore.h
+	<iostream>
+	<sys/types.h>
+	<Windows.h>
+	<dirent.h>
+	"../Data/LinkedList.hpp"
+	"../Data/Logger/Logger.h"
 	"APIEventRegistry.h"
 	"APIPermissionsRegistry.h"
 	"APIMod.h"
-	"../Data/Logger/Logger.h"
-	"../Data/LinkedList.hpp"
+	"APIUser.h"
 
-1546382981 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIEventRegistry.h
+1557337220 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIEventRegistry.h
+	"../Data/LinkedList.hpp"
 	"../Data/Events/Event.h"
 	"../Data/Events/EventHandle.h"
 	"../Data/Events/EventHandler.h"
-	"../Data/LinkedList.hpp"
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermissionsRegistry.h
+1546855179 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermissionsRegistry.h
 	"APIPermission.h"
 	"APIUser.h"
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermission.h
+1557288793 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermission.h
 	"../Data/CharString.h"
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIUser.h
+1557289389 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIUser.h
 	"../Serialization/SpecificSerializer.h"
 	"APIPermission.h"
-	"../Data/HashMap.hpp"
+	"../Data/includes.h"
+	"APIGroup.h"
 
-1491624374 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIMod.h
+1557338300 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIMod.h
 	"../Data/CharString.h"
+	"../Parsing/LoadFile.h"
+	"../Parsing/SimpleParser.h"
 	"APIEventRegistry.h"
 	"APICore.h"
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIEventRegistry.cpp
+1546855065 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIEventRegistry.cpp
 	"APIEventRegistry.h"
 
-1546383048 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIMod.cpp
+1557338319 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIMod.cpp
 	"APIMod.h"
 
 1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermission.cpp
 	"APIPermission.h"
 
-1546382848 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermissionsRegistry.cpp
+1546855198 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIPermissionsRegistry.cpp
 	"APIPermissionsRegistry.h"
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIUser.cpp
+1546855149 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/APIUser.cpp
 	"APIUser.h"
 
 1533467413 source:/media/NBackups/Dev/Cpp/EterniaLib/src/asm/asm1.cpp
@@ -7590,46 +7620,47 @@
 	<iostream>
 	<stdio.h>
 
-1520011741 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Audio/Generate/WhiteNoice.cpp
+1556505209 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Audio/Generate/WhiteNoice.cpp
 	"WhiteNoise.h"
 
-1520013321 /media/NBackups/Dev/Cpp/EterniaLib/src/Audio/Generate/WhiteNoise.h
+1556505221 /media/NBackups/Dev/Cpp/EterniaLib/src/Audio/Generate/WhiteNoise.h
 	<random>
 	<malloc.h>
+	<time.h>
 	"../../Data/LinkedList.hpp"
 
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/constants.cpp
 	"constants.h"
 
-1520013321 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBCacheMap.cpp
+1546854839 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBCacheMap.cpp
 	"AbstractDB.h"
 
 1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBField.cpp
 	"AbstractDB.h"
 
-1520013321 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBRow.cpp
+1546854774 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBRow.cpp
 	"AbstractDB.h"
 
-1520013321 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
+1546854964 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/AbstractDatabase/AbstractDBTable.cpp
 	"AbstractDB.h"
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/BitMap.cpp
+1546841981 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/BitMap.cpp
 	"BitMap.h"
 
-1546381225 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/CharString.cpp
+1556430596 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/CharString.cpp
 	"CharString.h"
 
 1533467414 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/DoubleList.cpp
 	"DoubleList.h"
 
-1533460955 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/DynamicType.cpp
+1556431239 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/DynamicType.cpp
 	"DynamicType.h"
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.cpp
+1557305237 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandle.cpp
 	"EventHandle.h"
 	<iostream>
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.cpp
+1557336875 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Events/EventHandler.cpp
 	"EventHandler.h"
 	<iostream>
 
@@ -7643,26 +7674,31 @@
 1521297487 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileCache_Policy.cpp
 	"FileCache_Policy.h"
 
-1546816563 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/MTL.cpp
+1546854092 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/MTL.cpp
 	"MTL.h"
 
-1546816572 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/MTL.h
+1546854097 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/MTL.h
 	"../../Math/struct/vertex.h"
 	"../CharString.h"
 	"../LinkedList.hpp"
 	"../../Parsing/SimpleParser.h"
+	"../../Design/Model/IMaterial.h"
 	<stdlib.h>
 
-1546822366 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/OBJ.cpp
+1550013042 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/OBJ.cpp
 	"OBJ.h"
 
-1546822322 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/OBJ.h
+1550013042 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileFormat/OBJ.h
 	"../../Math/Math.h"
 	"../CharString.h"
 	"../LinkedList.hpp"
+	"../../Parsing/SimpleParser.h"
+	"../../Design/Model/IModel.h"
+	"../../Design/Model/IModelPart.h"
+	"../../Design/Model/IMaterial.h"
 	"MTL.h"
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileSystem.cpp
+1546854386 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/FileSystem.cpp
 	"FileSystem.h"
 
 1533467414 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Graph.cpp
@@ -7685,7 +7721,7 @@
 	"LinkedMap.h"
 	"iostream"
 
-1520013321 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Logger/Logger.cpp
+1557303075 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Logger/Logger.cpp
 	"Logger.h"
 
 1533467415 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/PriorityQueue.cpp
@@ -7694,22 +7730,22 @@
 1533467415 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Queue.cpp
 	"Queue.h"
 
-1533467415 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/SplitResult.cpp
+1547180770 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/SplitResult.cpp
 	"SplitResult.h"
 
 1533467415 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Stack.cpp
 	"Stack.h"
 
-1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
+1546855692 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testAbstractDB.cpp
 	"testAbstractDB.h"
 
-1533467418 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
+1546856064 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testDataStructures.cpp
 	"testDataStructures.h"
 
 1546383203 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/test/testPType.cpp
 	"testPType.h"
 
-1546370038 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/TimeProfiler.cpp
+1546855388 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/TimeProfiler.cpp
 	"TimeProfiler.h"
 
 1533467415 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/TreeList.cpp
@@ -7721,47 +7757,47 @@
 1532315595 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/Events/MouseHandleEvent.cpp
 	"MouseHandleEvent.h"
 
-1533467418 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.cpp
+1551367911 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430.cpp
 	"msp430.h"
 
-1533467418 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Instructions.cpp
+1551367923 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Instructions.cpp
 	"msp430.h"
 
-1533467418 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Interrupts.cpp
+1551367936 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_Interrupts.cpp
 	"msp430.h"
 
-1533467418 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_timers.cpp
+1551367946 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_timers.cpp
 	"msp430.h"
 
-1533467418 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_USCI.cpp
+1551367955 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/MPU/msp430_USCI.cpp
 	"msp430.h"
 
 1533467416 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Emulation/SecondTick.cpp
 	"SecondTick.h"
 
-1534631066 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
+1556505377 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Atom.cpp
 	"Atom.h"
 
-1546186936 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
+1546853315 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Chemistry/Composite.cpp
 	"Composite.h"
 
 1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Components/ComponentRating.cpp
 	"ComponentRating.h"
 	<math.h>
 
-1533467423 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.cpp
+1546853213 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/General/IC555.cpp
 	"IC555.h"
 
-1533467421 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
+1546853067 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/IC.cpp
 	"IC.h"
 
-1533467421 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.cpp
+1551368722 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/IC/RAM.cpp
 	"RAM.h"
 
-1533467419 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.cpp
+1546853238 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Pin.cpp
 	"Pin.h"
 
-1533467419 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.cpp
+1546853284 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/PowerValue.cpp
 	"PowerValue.h"
 
 1491624374 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/Signal/CLKProvider.cpp
@@ -7786,10 +7822,10 @@
 1533467422 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/Collision1D.cpp
 	"Collision1D.h"
 
-1533467422 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.cpp
+1546852862 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Kinematics/FreeBody.cpp
 	"FreeBody.h"
 
-1534445678 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Orbit.cpp
+1546852701 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Orbit.cpp
 	"Orbit.h"
 
 1533467422 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Rotational/RotationalFuncs.cpp
@@ -7806,10 +7842,11 @@
 1520011741 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/test/testOrbit.cpp
 	"testOrbit.h"
 
-1533467423 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.cpp
+1549667123 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.cpp
 	"ThermalDynamics.h"
 
-1533467423 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.h
+1549667355 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/ThermalDynamics/ThermalDynamics.h
+	"../../../Data/LinkedList.hpp"
 
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Physics/Work.cpp
 	"Work.h"
@@ -7817,13 +7854,13 @@
 1533467416 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Localization/LanguageController.cpp
 	"LanguageController.h"
 
-1533467416 /media/NBackups/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
+1549666198 /media/NBackups/Dev/Cpp/EterniaLib/src/Localization/LanguageController.h
 	"../Data/CharString.h"
 
 1546192817 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Arbitrary.cpp
 	"Arbitrary.h"
 
-1546458984 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/ArbitraryInteger.cpp
+1546979375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/ArbitraryInteger.cpp
 	"ArbitraryInteger.h"
 
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.cpp
@@ -7832,16 +7869,16 @@
 1491624375 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Conversion/Convert.h
 	"../struct/vertex.h"
 
-1534445287 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Equation.cpp
+1546853345 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Equation.cpp
 	"Equation.h"
 
 1534445304 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Equation_CALC.cpp
 	"Equation.h"
 
-1534445367 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Eval.cpp
+1547001760 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Eval.cpp
 	"Eval.h"
 
-1534445008 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
+1557014250 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Basic.cpp
 	"Basic.h"
 
 1534445100 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/FFT.cpp
@@ -7854,12 +7891,14 @@
 1534445221 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Complex.hpp
 	<math.h>
 
-1534445116 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Sigmoid.cpp
+1546985252 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Sigmoid.cpp
 	"Sigmoid.h"
 
-1534445106 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Sigmoid.h
+1546985921 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Sigmoid.h
 	"Basic.h"
 	"../../constants.h"
+	"../LinkedListMath.def.h"
+	"../../Data/LinkedList.hpp"
 
 1533467420 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/Functions/Trig.cpp
 	"Trig.h"
@@ -7870,9 +7909,14 @@
 1534445400 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/Basis.h
 	"Matrix.h"
 
-1534445442 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
+1556505502 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/Matrix.cpp
 	"Matrix.h"
 	<iostream>
+	<stdio.h>
+	<signal.h>
+	<stdlib.h>
+	<unistd.h>
+	<execinfo.h>
 
 1534445610 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/VectorSpace.cpp
 	"VectorSpace.h"
@@ -7880,11 +7924,11 @@
 1546812456 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/vertex.cpp
 	"vertex.h"
 
-1546383458 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/test/testMath.cpp
+1546978685 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/test/testMath.cpp
 	"testMath.h"
 	<time.h>
 
-1532315595 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/Config.cpp
+1546852296 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/Config.cpp
 	"Config.h"
 
 1546813866 /media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/Config.h
@@ -7899,16 +7943,16 @@
 1534442587 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/InputRedirection.cpp
 	"InputRedirection.h"
 
-1533467416 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.cpp
+1556428483 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/LoadFile.cpp
 	"LoadFile.h"
 
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/SecuredParser.cpp
 	"SecuredParser.h"
 
-1533467417 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.cpp
+1556428796 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/SimpleParser.cpp
 	"SimpleParser.h"
 
-1533467421 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.cpp
+1546852341 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Parsing/test/testParsers.cpp
 	"testParsers.h"
 
 1533467417 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.cpp
@@ -7918,15 +7962,13 @@
 
 1533467417 /media/NBackups/Dev/Cpp/EterniaLib/src/Programming/EfficiencyTimer.h
 
-1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Program.cpp
+1556051997 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Program.cpp
 	"Program.h"
 
-1491624375 /media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Program.h
-	"../Data/CharString.h"
-	"../Data/LinkedList.hpp"
+1556434171 /media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Program.h
+	"../Data/includes.h"
 	"Visual/VProgramNode.h"
 	"Visual/VProgramError.h"
-	"Visual/VProgramVariable.h"
 	"../Math/Math.h"
 	<cstdlib>
 	<math.h>
@@ -7944,7 +7986,7 @@
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/ProgramError.cpp
 	"ProgramError.h"
 
-1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Visual/VisualProgram.cpp
+1556434228 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Visual/VisualProgram.cpp
 	"../Program.h"
 
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramError.cpp
@@ -7953,10 +7995,10 @@
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Visual/VProgramVariable.cpp
 	"VProgramVariable.h"
 
-1546812270 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
+1546851917 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer.cpp
 	"SpecificSerializer.h"
 
-1546811793 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer_JSON.cpp
+1546852269 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Serialization/SpecificSerializer_JSON.cpp
 	"SpecificSerializer.h"
 
 1546462569 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Planet/Ocean.cpp
@@ -7968,7 +8010,7 @@
 1491070427 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Planet/Planet_Atmosphere.cpp
 	"Planet.h"
 
-1546459278 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Planet/Planet_Terrain.cpp
+1546851451 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Planet/Planet_Terrain.cpp
 	"Planet.h"
 
 1546461570 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Environment/Universe/ULaw.cpp
@@ -7986,39 +8028,39 @@
 1534446485 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Society/Government/Government.cpp
 	"Government.h"
 
-1532302756 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledClient.cpp
+1546851663 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledClient.cpp
 	"ChannelledClient.h"
 
-1532306994 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledServer.cpp
+1546851658 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/ChannelledServer.cpp
 	"ChannelledServer.h"
 
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTMLServer.cpp
 
-1532312587 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTTPServer.cpp
+1546850761 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/HTTPServer.cpp
 	"HTTPServer.h"
 
 1532299258 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/PacketChannel.cpp
 	"PacketChannel.h"
 
-1532312534 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/RESTFulEndpoint.cpp
+1546844782 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/RESTFulEndpoint.cpp
 	"RESTFulServer.h"
 
-1532310182 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/RESTFulServer.cpp
+1546851673 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/RESTFulServer.cpp
 	"RESTFulServer.h"
 
-1532308874 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.cpp
+1556505736 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SockClient.cpp
 	"SockClient.h"
 
-1532306864 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
+1556505770 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/SocketServer.cpp
 	"SocketServer.h"
 
 1533461193 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTMLResponse.cpp
 	"HTMLResponse.h"
 
-1520011741 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPRequest.cpp
+1546852147 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPRequest.cpp
 	"HTTPRequest.h"
 
-1532309776 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPResponse.cpp
+1546851742 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPResponse.cpp
 	"HTTPResponse.h"
 
 1532307484 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Network/Types/HTTPTypes.cpp
@@ -8027,7 +8069,7 @@
 1491624375 source:/media/NBackups/Dev/Cpp/EterniaLib/src/WebFramework/Templates/Template.cpp
 	"Template.h"
 
-1546822119 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/GUI/LayoutObject.cpp
+1557004659 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/GUI/LayoutObject.cpp
 	"LayoutObject.h"
 
 1546822863 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256.c
@@ -8036,9 +8078,332 @@
 1546823035 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256r.c
 	<inttypes.h>
 
-1546822863 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256r.c
-	<inttypes.h>
+1546823281 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256r.c
+	"Aes256r.h"
 
 1546823468 /media/NBackups/Dev/Cpp/EterniaLib/src/Algorithm/Cryptography/Aes256r.h
 	<inttypes.h>
+
+1557012575 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/List.h
+	<iostream>
+	<malloc.h>
+	<stdlib.h>
+	<vector>
+	<iterator>
+	<stdio.h>
+	<execinfo.h>
+	<signal.h>
+	<unistd.h>
+
+1546986227 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/LinkedListMath.def.h
+
+1556044344 /media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/vertex4d.h
+	"../Functions/Basic.h"
+	"../Functions/Trig.h"
+	"../../constants.h"
+	<math.h>
+
+1547001825 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Stack.hpp
+	<iostream>
+
+1557338888 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/ThreadPool.h
+	<thread>
+	"../Queue.h"
+	"../CharString.h"
+	"../LinkedList.hpp"
+	"ThreadJob.h"
+	<time.h>
+	<chrono>
+	<vector>
+	<queue>
+	<mutex>
+	<condition_variable>
+	<future>
+	<functional>
+	<stdexcept>
+
+1557313136 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/ThreadJob.h
+	"../CharString.h"
+	<time.h>
+	<chrono>
+	<future>
+	<functional>
+	<stdarg.h>
+
+1557337634 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Object.h
+	"Location.h"
+	<iostream>
+	"../Serialization/SpecificSerializer.h"
+	"CharString.h"
+
+1557306973 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Location.h
+	"CharString.h"
+	"../Serialization/SpecificSerializer.h"
+	"../Math/Math.h"
+
+1557324120 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/CEntity.h
+	"../Data/includes.h"
+	"../Math/Math.h"
+	"../Data/Object.h"
+	"Action.h"
+	"BodyLocation.h"
+
+1557307126 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Action.h
+	"../Data/Object.h"
+
+1557307569 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/BodyLocation.h
+
+1551363741 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/test/testAI.h
+	"../NeuralNetwork/LSTM.h"
+
+1551363717 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/NeuralNetwork/LSTM.h
+	<limits>
+	"NeuralNetwork.h"
+	"LSTMNode.hpp"
+	"LSTMLayer.hpp"
+	"../../Math/Math.h"
+
+1557337100 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/NeuralNetwork/NeuralNetwork.h
+	"../../Data/LinkedList.hpp"
+
+1551362435 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/NeuralNetwork/LSTMNode.hpp
+	"../../Data/LinkedList.hpp"
+	"../../Math/Functions/Sigmoid.h"
+
+1557014283 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/NeuralNetwork/LSTMLayer.hpp
+	<limits>
+	"LSTMNode.hpp"
+	"../../Math/Math.h"
+
+1557303105 /media/NBackups/Dev/Cpp/EterniaLib/src/API/test/testAPI.h
+	"../APICore.h"
+	"../APIMod.h"
+	"../APIUser.h"
+
+1557289380 /media/NBackups/Dev/Cpp/EterniaLib/src/API/APIGroup.h
+	"../Serialization/SpecificSerializer.h"
+	"APIPermission.h"
+	"../Data/includes.h"
+	"APIUser.h"
+
+1546856175 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/ConcurrentLinkedList.hpp
+	"../LinkedList.hpp"
+	"Locker.hpp"
+
+1556505255 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/Locker.hpp
+	<time.h>
+	"../../../Mingw/mingw.thread.h"
+	"../../../Mingw/mingw.thread.h"
+	<thread>
+
+1551798562 /media/NBackups/Dev/Cpp/EterniaLib/Mingw/mingw.thread.h
+	<thread>
+	<cstddef>
+	<cerrno>
+	<exception>
+	<system_error>
+	<functional>
+	<tuple>
+	<chrono>
+	<memory>
+	<ostream>
+	<utility>
+	<type_traits>
+	<windows.h>
+	<process.h>
+	<cstdio>
+
+1551363273 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/AI.h
+	"AIFactory.h"
+	"AIMonarch.h"
+
+1551365764 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/AIFactory.h
+	"../Data/includes.h"
+	"NeuralNetwork/NeuralNetwork.h"
+	"NeuralNetwork/LSTM.h"
+
+1551363733 /media/NBackups/Dev/Cpp/EterniaLib/src/AI/AIMonarch.h
+	"../Data/includes.h"
+
+1556573752 /media/NBackups/Dev/Cpp/EterniaLib/src/Engineering/Electrical/VNode.h
+	"Components/ComponentRating.h"
+
+1556434944 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Mortal/Dwarf.h
+	"../Humanoid.h"
+
+1556435796 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Humanoid.h
+	"IntelligentCreature.h"
+
+1556434479 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/IntelligentCreature.h
+	"Creature.h"
+
+1557316502 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Creature.h
+	"../../../../Data/includes.h"
+	"Injury.h"
+	"../Skill/Spell.h"
+	"../Skill/Skill.h"
+	"../../../Action.h"
+	"Limb.h"
+	"CreatureStats.h"
+	"CreaturePools.h"
+	"CreatureEnergy.h"
+	"CreatureHealth.h"
+	"../../../CEntity.h"
+	"../../../Society/Race.h"
+	"Soul.h"
+
+1557307529 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Injury.h
+	"../../../../Data/Object.h"
+	"../../../BodyLocation.h"
+
+1556435350 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Limb.h
+	"Injury.h"
+	"../Items/Item.h"
+
+1557307293 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Items/Item.h
+	"../../../../Data/includes.h"
+
+1557315839 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreatureStats.h
+	"../../../../Serialization/SpecificSerializer.h"
+
+1557316441 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreaturePools.h
+	"../../../../Serialization/SpecificSerializer.h"
+
+1557315570 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreatureEnergy.h
+	"../../../../Data/includes.h"
+	"../../../../Serialization/SpecificSerializer.h"
+	"CreatureHealth.h"
+
+1557338671 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreatureHealth.h
+	"../../../../Data/includes.h"
+	"../../../../Serialization/SpecificSerializer.h"
+	"Limb.h"
+	"Injury.h"
+	"CreatureEnergy.h"
+
+1557307325 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Soul.h
+	"../../../../Math/Random.hpp"
+	"../../../../Data/includes.h"
+
+1557313885 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Inventory.h
+	"../../../Data/includes.h"
+
+1557313891 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Religion.h
+	"Creature/Creature.h"
+	"Creature/Immortal/God.h"
+
+1557314278 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Immortal/God.h
+	"../IntelligentCreature.h"
+	"GodDomain.h"
+	"../../Religion.h"
+
+1557313912 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Immortal/GodDomain.h
+	"../../../../../Data/includes.h"
+
+1557313925 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Workshops/Workshop.h
+	"../../../../Data/includes.h"
+	"WorkshopRecipe.h"
+
+1557313949 /media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Workshops/WorkshopRecipe.h
+	"../Items/Item.h"
+	"../../../../Data/includes.h"
+
+1551362973 source:/media/NBackups/Dev/Cpp/EterniaLib/src/AI/NeuralNetwork/LSTM.cpp
+	"LSTM.h"
+
+1551362452 source:/media/NBackups/Dev/Cpp/EterniaLib/src/AI/NeuralNetwork/LSTM_train.cpp
+	"LSTM.h"
+
+1551363037 source:/media/NBackups/Dev/Cpp/EterniaLib/src/AI/test/testLSTM_XOR4.cpp
+	"testAI.h"
+
+1557287531 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/test/testAPI.cpp
+	"testAPI.h"
+
+1557287460 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/test/testAPICore.cpp
+	"testAPI.h"
+
+1557287550 source:/media/NBackups/Dev/Cpp/EterniaLib/src/API/test/testAPIMod.cpp
+	"testAPI.h"
+
+1557338364 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/test/testThreadPool.cpp
+	"testConcurrent.h"
+
+1557301161 /media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/test/testConcurrent.h
+	"../ThreadPool.h"
+
+1557309660 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/ThreadJob.cpp
+	"ThreadJob.h"
+
+1557338848 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/ThreadPool.cpp
+	"ThreadPool.h"
+
+1557313593 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Concurrent/ThreadPool_Thread.cpp
+	"ThreadPool.h"
+
+1550013149 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/Model/IMaterial.h
+	"../../Math/struct/vertex.h"
+	"../../Data/CharString.h"
+	"../IAnimated.h"
+
+1546827275 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/IAnimated.h
+
+1557339025 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/Model/IModel.h
+	"../../Math/Math.h"
+	"../../Data/CharString.h"
+	"../../Data/LinkedList.hpp"
+	"IModelPart.h"
+	"IMaterial.h"
+	"../IAnimated.h"
+
+1557339055 /media/NBackups/Dev/Cpp/EterniaLib/src/Design/Model/IModelPart.h
+	"../../Math/Math.h"
+	"../../Data/CharString.h"
+	"../../Data/LinkedList.hpp"
+	"IMaterial.h"
+
+1546812362 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Data/Location.cpp
+	"Location.h"
+
+1546826802 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/IAnimated.cpp
+	"IAnimated.h"
+
+1550013145 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/Model/IMaterial.cpp
+	"IMaterial.h"
+
+1546855814 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/Model/IModel.cpp
+	"IModel.h"
+
+1546853427 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Design/Model/IModelPart.cpp
+	"IModelPart.h"
+
+1556044346 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Math/struct/vertex4d.cpp
+	"vertex4d.h"
+
+1556049799 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Programming/Forth/Forth.cpp
+
+1557324250 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/CEntity.cpp
+	"CEntity.h"
+
+1556429514 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Dwarves.cpp
+	"Dwarves.h"
+
+1556507652 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Dwarves_racecastes.cpp
+	"../Society/include.h"
+	"Dwarves.h"
+
+1557316499 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/Creature.cpp
+	"Creature.h"
+
+1557316097 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreatureEnergy.cpp
+	"CreatureEnergy.h"
+
+1557338683 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreatureHealth.cpp
+	"CreatureHealth.h"
+
+1557316372 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreaturePools.cpp
+	"CreaturePools.h"
+
+1557315701 source:/media/NBackups/Dev/Cpp/EterniaLib/src/Simulation/Dwarves/Entities/Creature/CreatureStats.cpp
+	"CreatureStats.h"
 

@@ -1,7 +1,7 @@
 #ifndef WORKSHOPRECIPE_H_
 #define WORKSHOPRECIPE_H_
 
-#include "../Item/Item.h"
+#include "../Items/Item.h"
 #include "../../../../Data/includes.h"
 class WorkshopRecipe : public Object{
 public:

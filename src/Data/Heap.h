@@ -1,6 +1,7 @@
 #ifndef HEAP_H_
 #define HEAP_H_
 
+// numerical Heap
 class Heap {
         int *HeapList, size;
     public:

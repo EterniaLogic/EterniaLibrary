@@ -1,13 +1,15 @@
 #ifndef CREATUREPOOLS_H_
 #define CREATUREPOOLS_H_
 
-class CreaturePools{
+#include "../../../../Serialization/SpecificSerializer.h"
+
+class CreaturePools : public SpecificSerializer{
 public:
     
     double MP, MPMax; // Mana
     double SP, SPMax; // Stamina Pool (not used when 'usefood' is on)
     
-    double MPregen, SPregen; // regen per minute
+    double MPRegen, SPRegen; // regen per minute
     
     CreaturePools();
     

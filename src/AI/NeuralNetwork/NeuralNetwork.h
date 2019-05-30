@@ -2,7 +2,7 @@
 #define AIML_H
 
 // Interface for Machine Learning
-#include "../../Data/includes.h"
+#include "../../Data/LinkedList.hpp"
 
 // Artificial Neural Networks
 // https://en.wikipedia.org/wiki/Artificial_neural_network

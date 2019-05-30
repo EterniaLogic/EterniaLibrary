@@ -23,15 +23,11 @@
 // i(  )
 
 namespace Math {
-    Equation Equation::derive(char* wrt) {
-
+    Equation Equation::derive(CharString wrt) {
+        
     }
 
-    Equation Equation::integrate(char* wrt) {
+    Equation Equation::integrate(CharString wrt) {
 
-    }
-
-    double Equation::evaluate(double a, double b) {
-        //
     }
 }

@@ -1,7 +1,6 @@
 #ifndef ITEM_H_
 #define ITEM_H_
 
-#include "../../../Object.h"
 #include "../../../../Data/includes.h"
 
 class Item : public Object{

@@ -9,7 +9,6 @@
 #define Citizen_h
 
 #include "../../Data/includes.h"
-#include "../Location.h"
 #include "../Business/AssetHolder.h"
 #include "Race.h"
 

@@ -1,7 +1,8 @@
 #ifndef INJURY_H_
 #define INJURY_H_
 
-#include "../../../Object.h"
+#include "../../../../Data/Object.h"
+#include "../../../BodyLocation.h"
 
 enum INJURYTYPE {IT_BURN, IT_CUT, IT_STAB, IT_BLUNT, IT_BREAK, IT_AMPUTATE};
 

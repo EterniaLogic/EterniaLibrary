@@ -23,7 +23,7 @@
 namespace Math {
     class Equation;
 
-    enum EqType {EVar, ENumber, EOperator, EComplex};
+    enum EqType {EVar, ENumber, EOperator, EComplex, EConstant};
 
     class EquationNode {
             EqType mode;
@@ -46,9 +46,8 @@ namespace Math {
             Equation* solveForVariable(CharString variable); // algeraeically solve the equation for variable.
 
             double solve(CharString variable); // calls solveForVariable() and determines if it can be solved directly for an answer.
-            Equation derive(char* wrt); // derive this equation.
-            Equation integrate(char* wrt); // integrate this equation.
-            double evaluate(double a, double b); // evaluate equation with a TO b. only works with one variable.
+            Equation derive(CharString wrt); // derive this equation.
+            Equation integrate(CharString wrt); // integrate this equation.
     };
 }
 

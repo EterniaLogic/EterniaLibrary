@@ -1,9 +1,13 @@
 #ifndef EVENT_H_
 #define EVENT_H_
 
-#include "../HashMap.hpp"
 #include "../CharString.h"
+#include "../HashMap.hpp"
+
+
 // An event sent to mods or systems.
+//  can be used to prevent a mod from accessing something or w/e.
+
 class Event{
 private:
     CharString name;

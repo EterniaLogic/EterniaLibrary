@@ -14,6 +14,18 @@ CreatureEnergy::CreatureEnergy(){
     
     // Food type that can digest
     foodtype = FOODT_OMNIVORE;
+    
+    
+    addSerial(&calories, "calories", SSE_double);
+    addSerial(&calories_max, "calories_max", SSE_double);
+    addSerial(&calories_fat, "calories_fat", SSE_double);
+    addSerial(&calories_use_rest, "calories_use_rest", SSE_double);
+    addSerial(&calories_use_excercise, "calories_use_excercise", SSE_double);
+    addSerial(&calories_use_vigorous, "calories_use_vigorous", SSE_double);
+    addSerial(&calories_conversion_gain, "calories_conversion_gain", SSE_double);
+    addSerial(&water_use, "water_use", SSE_double);
+    addSerial(&calories_use, "calories_use", SSE_double);
+    addSerial(&foodtype, "foodtype", SSE_Int);
 }
 
 void CreatureEnergy::starve(double seconds){

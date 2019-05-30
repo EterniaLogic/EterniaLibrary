@@ -4,7 +4,13 @@
 
 #define SIZEOFA(x) (sizeof(x) / sizeof(x[0]))
 
+
+CharString CS_TAB = CharString("\t",1);
+CharString CS_NL = CharString("\n",1);
+
 using namespace std;
+
+
 
 // pre-initialize
 CharString::CharString() {
@@ -53,11 +59,13 @@ CharString::CharString(char* stringg) {
 CharString::CharString(string &stringg) {
     stringx = (char*)stringg.c_str();
     len = stringg.length();
+    *this = clone(); // since strings might 'dissapear' due to freeing resources
 }
 
 CharString::CharString(const std::string &stringg) {
     stringx = (char*)stringg.c_str();;
     len = stringg.length();
+    *this = clone(); // since strings might 'dissapear' due to freeing resources
 }
 
 void CharString::operator =(char* stringg) {
@@ -548,6 +556,7 @@ void CharString::set(char* stringg) {
         
         //this->set(stringg,SIZEOFA(stringg));
         this->set(stringg,str.length());
+        *this=clone();
     }
 }
 
@@ -568,61 +577,12 @@ void CharString::set(CharString stringg){
     set(stringg.get(), stringg.getSize());
 }
 
-// fun thing to write :D
-// Desc:  Custom function to convert integers to a list of characters (string)
-// Input:  Integer (int)
-// return: character string (CharString)
-CharString CharString::ConvertFromInt(int integer) {
-    return ConvertFromLong((long)integer);
-}
 
-CharString CharString::ConvertFromLong(long integer) {
-    const int ASCIIOffset = 48; // offset on the ASCII chart
 
-    if(integer == 0) return CharString("0\0",1);
-    
-    // gets the digits based on modulus (to the 5th digit, [+-]32k is max/min)
-    int len = 0;
-    bool neg = false;
 
-    // is negative?
-    if(integer < 0) neg = true;
-    if(neg) integer = integer*(-1); // remove negative sign, we know the negation. :D
 
-    // determine # of digits
-    for(int i=0; i<32; i++) {
-        int exp = 1;
-        for(int j=0; j<i; j++) exp *= 10; // set exponent 10^i => exp
-        if((integer % (exp)) != integer) len++; // if integer mod exp is not equal to self, it is a digit (10/1000 = 10)
-    }
-
-    
-
-    const int tlen = len + (neg ? 1 : 0); // constify length, if negative, add digit.
-    char* out = new char[tlen+1];
-
-    int t=0; // temp var used to store modulus digit addifier
-    int kk = neg ? 1 : 0;
-    int offset = neg ? -2 : -1; // offsets char based on neg
-    
-    //cout << "CFL: " << tlen << " " << offset << endl;
-    
-    if(neg) out[0] = '-';
-    for(int i = tlen+offset; i >= 0; i--) {
-        int exp = 1;
-        for(int j=0; j<i; j++) exp *= 10; // set exponent 10^i => exp
-        int digit = integer / exp -(t*10);
-        t *= 10; // shift all digits in t left 1
-        t += digit; // enter digit into very last slot of t
-        //cout << "out["<<kk<<"] =" <<  (char)(digit+ASCIIOffset) << endl;
-        if(kk >= 0) out[kk] = (char)(digit+ASCIIOffset);
-        kk++; // increment out digit
-    }
-
-    out[tlen]='\0';
-    CharString cx = CharString(out,tlen);
-    cx.fixZeroing(' ');
-    return cx;
+bool CharString::equals(CharString b){
+    return compare(b);
 }
 
 
@@ -936,6 +896,25 @@ CharString CharString::operator +=(const char *val){
 CharString CharString::operator +(const char *val){
     CharString s(val);
     s.concatb(*this);
+    return s;
+}
+
+template<std::size_t N>
+CharString CharString::operator +(const char(&val)[N]){
+    CharString s(val, N);
+    s.concatb(*this);
+    return s;
+}
+
+
+CharString CharString::operator +=(CharString val){
+    concata(val);
+    return *this;
+}
+
+CharString CharString::operator +(CharString){
+    CharString s = this->clone();
+    s.concata(*this);
     return s;
 }
 

@@ -2,8 +2,7 @@
 
 
 
-#include "CharString.h"
-#include "SplitResult.h" // sub-part of CharString
+
 
 #include "CRCData.hpp"
 
@@ -23,8 +22,9 @@
 
 /// Data/List
 #include "LinkedList.hpp"
-#include "CyclicList.hpp"
-#include "DoubleList.h"
+#include "ArrayList.hpp" // [x] array
+#include "CyclicList.hpp" // for averages / data gathering
+#include "DoubleList.h" // doubles only
 #include "Queue.h"
 #include "Stack.hpp"
 
@@ -44,6 +44,12 @@
 #include "Logger/Logger.h"
 #include "TimeProfiler.h"
 
+
+#include "CharString.h"
+
+// 
+#include "Object.h"
+#include "Location.h"
 
 // MISC
 #include "UInt512.hpp"

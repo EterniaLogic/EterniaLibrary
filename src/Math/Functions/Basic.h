@@ -28,8 +28,8 @@ namespace Math {
 
     double sqrt(double x);
     
-    double min(double a, double b);
-    double max(double a, double b);
+    double minv(double a, double b);
+    double maxv(double a, double b);
     
     // enable linkedLists to be used here
     LLMATHH(abs, double);
@@ -41,8 +41,8 @@ namespace Math {
     LLMATHH(log10, double);
     LLMATHH(factorial, double);
     LLMATHH(sqrt, double);
-    LLMATHH_B(min, double, double);
-    LLMATHH_B(max, double, double);
+    LLMATHH_B(minv, double, double);
+    LLMATHH_B(maxv, double, double);
 }
 
 #endif /*MATHBASIC_H_*/

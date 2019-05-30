@@ -2,12 +2,13 @@
 #define CREATUREENERGY_H_
 
 #include "../../../../Data/includes.h"
+#include "../../../../Serialization/SpecificSerializer.h"
 
 #include "CreatureHealth.h"
 
 enum FOODT {FOODT_NONE, FOODT_OMNIVORE, FOODT_HERBIVORE, FOODT_CARNIVORE, FOODT_BLOOD, FOODT_SOUL};
 
-class CreatureEnergy{
+class CreatureEnergy : public SpecificSerializer{
 public:
     CreatureHealth* health;
     

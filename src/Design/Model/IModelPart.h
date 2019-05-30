@@ -11,7 +11,7 @@
 class IModelPart{
 public:
     IModelPart();
-    ~IModelPart(){}
+    virtual ~IModelPart(){}
 
     LinkedList<Math::vertex> verticies, normals, textureCoordinates;
     IMaterial material;
@@ -37,7 +37,7 @@ public:
     virtual void draw();
     virtual void bufferModel(); // Buffer this model in the graphics card
 
-    
+
     void addVertex(Math::vertex v);
     void setOffset(Math::vertex offset);
     void setScale(Math::vertex scale);

@@ -3,6 +3,10 @@
 
 #include "../../Data/LinkedList.hpp"
 #include "../../Data/CharString.h"
+#include <time.h>
+#include <iostream>
+#include <fstream>
+#include "../../Parsing/LoadFile.h"
 
 // Templates are HTML files where certain places can be replaced with active content.
 // A good example is an entire website layout in an HTML file, where the content and
@@ -26,8 +30,8 @@
 //              <td>{body_html}</td>
 //          </tr>
 //          <tr>
-//              {copyright*|Eternialogic}   // <-- © EterniaLogic 2016
-//              {copyright*|{url*|http://eternialogic.com|EterniaLogic}}    // <-- © <a href="http://eternialogic.com">EterniaLogic</a> 2016
+//              {copyright|Eternialogic}   // <-- © EterniaLogic 2016
+//              {copyright|{url|http://eternialogic.com|EterniaLogic}}    // <-- © <a href="http://eternialogic.com">EterniaLogic</a> 2016
 //          </tr>
 //      </table>
 //  </body>
@@ -38,12 +42,13 @@
 // {typeName&}  // HTML escapes {body_html&} = &lt;h1&gt;hah!&lt;/h1&gt;
 
 
-// Effective special types: (Asterisk used here only)
-// {date*} - outputs the date in MM/DD/YYYY format
-// {unixdate*} - outputs the date in seconds since 1/1/1970
-// {time24*} - outputs the time in HH:MM:SS format (24 hours)
-// {time12*} - outputs the time in HH:MM:SS format (12 hours)
-// {url*|http://example.com|Example} - outputs a url
+// Effective special types:
+// {date} - outputs the date in MM/DD/YYYY format
+// {unixdate} - outputs the date in seconds since 1/1/1970
+// {time24} - outputs the time in HH:MM:SS format (24 hours)
+// {time12} - outputs the time in HH:MM:SS format (12 hours)
+// {url|http://example.com|Example} - outputs a url
+
 
 
 /*
@@ -69,31 +74,33 @@ class TemplateDefinition;
 
 // Templates
 class Template {
-        LinkedList<TemplateDefinition> templateList;
-    public:
-        Template(CharString fileloc); // pre-loads a template file
-        Template();
-        virtual ~Template();
+private:
+    LinkedList<TemplateDefinition> templateList;
+    bool loaded;
+    CharString fileloc, templatetext; // loaded text to render
+public:
+    Template(CharString fileloc); // pre-loads a template file
+    Template();
+    virtual ~Template();
 
-        // the replace is a pointer string, so it can be changed later with replacer->set("");
-        void addRegexDefinition(CharString toreplace, CharString replacer); // Add a regex definition, occurs every single time during a render
-        void addReplacingDefinition(CharString toreplace, CharString replacer); // Add a replacing definition, occurs every single time during a render
+    // the replace is a pointer string, so it can be changed later with replacer->set("");
+    void addRegexDefinition(CharString toreplace, CharString replacer); // Add a regex definition, occurs every single time during a render
+    void addReplacingDefinition(CharString toreplace, CharString replacer); // Add a replacing definition, occurs every single time during a render
 
-        void addDefaultDefinitions(); // must be called to have default definitions like {date}, {page}
+    void addDefaultDefinitions(); // must be called to have default definitions like {date}, {page}
 
-        CharString render(); // Finalizes the template for usage
+    CharString render(); // Finalizes the template for usage
 };
 
 
 // A template definition
 class TemplateDefinition {
-        CharString toreplace;
-        CharString* replacer;
-        bool regex; // is regex or not?
-    public:
-
-
+public:
+    CharString toreplace;
+    CharString *replacer; // data pointer from outside of this class
+    bool regex; // is regex or not?
 };
+
 
 #endif
 

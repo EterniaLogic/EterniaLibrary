@@ -1,10 +1,11 @@
 #ifndef APIEVENTREG_H_
 #define APIEVENTREG_H_
 
+#include "../Data/LinkedList.hpp"
 #include "../Data/Events/Event.h"
 #include "../Data/Events/EventHandle.h"
 #include "../Data/Events/EventHandler.h"
-#include "../Data/LinkedList.hpp"
+
 
 // The API Registry allows for specific event handlers to be called, models added,
 //  scripts monitored, custom event handling.

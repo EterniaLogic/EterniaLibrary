@@ -10,8 +10,7 @@ enum SOUL_ATTUNEMENT : int {SA_FIRE=0, SA_WATER=1, SA_EARTH=2, SA_WIND=3, SA_ICE
 
 
 #include "../../../../Math/Random.hpp"
-#include "../../../Object.h"
-#include "../../../Location.h"
+#include "../../../../Data/includes.h"
 class Soul : public Object{
 public:
     bool alive; // a fully defeated soul is not alive

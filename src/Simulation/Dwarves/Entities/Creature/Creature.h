@@ -11,9 +11,7 @@
 #include "CreaturePools.h"
 #include "CreatureEnergy.h"
 #include "CreatureHealth.h"
-#include "../../../Object.h"
 #include "../../../CEntity.h"
-#include "../../../Location.h"
 #include "../../../Society/Race.h"
 #include "Soul.h"
 
@@ -24,9 +22,12 @@ enum CREATURETYPE {
     CT_Tree, CT_Plant, // non-moving
     CT_Animal, CT_Monster, // Monsters and animals are two different things entirely
     CT_Dwarf,
-    CT_Elf, CT_Human,
-    CT_Elemental, CT_God, CT_Devil,
-    CT_Devourer
+    CT_Elf, CT_Human, // Mortal Humanoids
+    CT_Elemental, CT_God, CT_Devil, // Immortals
+    CT_Devourer, // Monsters?
+    CT_Beast_Lion, // Basic Beast types
+    
+    CT_Mixed, // Half-type of creature. (Eg:  Half-Wolf, Half-Elf)
 };
 
 enum CREATURECLASS {
@@ -44,6 +45,8 @@ enum CREATURECLASS {
 
 
 class Creature : public CEntity{
+protected:
+    void _initSerializers();
 public:
     CREATURETYPE _type;
     CREATURECLASS _class;
@@ -51,10 +54,9 @@ public:
     
     Caste *caste; // read-only caste (Male Dwarf? etc, effects personality, age, etc.)
     Soul soul; // Generic/random soul for most humans, Gods and elementals have specific attunements
-    double age;
     
-    Creature *mother, *father;
-    LinkedList<Creature*> children;
+    Object *mother, *father;
+    LinkedList<Object*> children;
     
     
     LinkedList<Spell> spells;
@@ -67,6 +69,7 @@ public:
     CreatureEnergy energy; // calories/water
     
     bool alive; // spirit still connected with the body? (in cases of undead, etc)
+    double age;
     double weight_kg;
     
 

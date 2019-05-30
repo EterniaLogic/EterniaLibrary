@@ -1,8 +1,9 @@
 #ifndef CREATURESTATS_H_
 #define CREATURESTATS_H_
 
+#include "../../../../Serialization/SpecificSerializer.h"
 
-class CreatureStats{
+class CreatureStats : public SpecificSerializer{
 public:
     int level; // level
     

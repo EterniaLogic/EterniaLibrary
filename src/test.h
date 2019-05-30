@@ -3,6 +3,7 @@
 #include <ctime>
 
 #include "AI/test/testAI.h"
+#include "API/test/testAPI.h"
 #include "Algorithm/Cryptography/test/testExHash.hpp"
 
 #include "Engineering/Physics/test/tests.h"
@@ -11,7 +12,7 @@
 #include "Data/test/testDataStructures.h"
 //#include "Gamelogic/test/testGameLogic.h"
 
-#include "WebFramework/Network/test/NetworkTest.hpp"
+#include "Network/test/NetworkTest.hpp"
 
 #include "Algorithm/Cryptography/CryptoDefines.h"
 

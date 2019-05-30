@@ -1,7 +1,6 @@
 #ifndef SKILL_H_
 #define SKILL_H_
 #include "../../../../Data/includes.h"
-#include "../../../Object.h"
 
 
 enum SKILLTYPE {SKT_CLOSE, SKT_RANGED, SKT_MISC};

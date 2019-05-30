@@ -1,7 +1,6 @@
 #ifndef WORKSHOP_H_
 #define WORKSHOP_H_
 
-#include "../../../Object.h"
 #include "../../../../Data/includes.h"
 #include "WorkshopRecipe.h"
 

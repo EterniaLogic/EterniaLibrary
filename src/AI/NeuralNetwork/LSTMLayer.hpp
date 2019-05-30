@@ -109,7 +109,8 @@ public:
                 for(int j=0;j<prevlayer->nodes.size();j++){
                     LSTMNode* pnode = nodes[i];
                     Logx("+");
-                    node->addLink(pnode, r.nextDouble(std::numeric_limits<double>::min(),std::numeric_limits<double>::max()));
+
+                    node->addLink(pnode, r.nextDouble());
                 }
             }
             Logx("\n");

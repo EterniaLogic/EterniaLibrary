@@ -1,7 +1,7 @@
 #ifndef GODDOMAIN_H_
 #define GODDOMAIN_H_
 
-#include "../../../../Object.h"
+#include "../../../../../Data/includes.h"
 
 // A god's soul attunement must match domain type if elemental-based.
 //      god1.soul.attunement = SA_LIGHT;   // God with the "Light" Domain

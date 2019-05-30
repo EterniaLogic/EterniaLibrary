@@ -1,5 +1,6 @@
 #include "Creature.h"
 
+
 // Default values provided here are based on an average human male
 Creature::Creature(){
     classname="[Creature]";
@@ -25,6 +26,38 @@ Creature::Creature(){
     stats.canlevel = true;
     pools.MP = pools.MPMax = 100; // soul also has MP alongside Psi.
     pools.SP = pools.SPMax = 100;
+    
+    
+    mother = father = 0x0;
+    
+    _initSerializers(); // only for Creature, make other names for function?
+    
+    
+}
+
+void Creature::_initSerializers(){
+    
+    addSerial(&alive, "alive", SSE_bool);
+    addSerial(&weight_kg, "weight_kg", SSE_double);
+    addSerial(&age, "age", SSE_double);
+    addSerial(&_type, "type", SSE_Int);
+    addSerial(&_class, "class", SSE_Int);
+    
+    
+    addSerial(&spells, "spells", SSE_LinkedList);
+    addSerial(&skills, "skills", SSE_LinkedList);
+    addSerial(&actionqueue, "actionqueue", SSE_LinkedList);
+    
+    addSerial(&mother->name, "mother_name", SSE_CharString);
+    addSerial(&father->name, "mother_name", SSE_CharString);
+    //addSerial(&children, "children", SSE_LinkedList);
+    
+    
+    addSerial(&soul, "soul", SSE_SSerializer);
+    addSerial(&health, "health", SSE_SSerializer);
+    addSerial(&energy, "energy", SSE_SSerializer);
+    addSerial(&stats, "stats", SSE_SSerializer);
+    addSerial(&pools, "pools", SSE_SSerializer);
 }
 
 void Creature::_tick(double seconds){

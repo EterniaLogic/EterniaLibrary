@@ -1,7 +1,7 @@
 #ifndef SPELL_H_
 #define SPELL_H_
 
-#include "../../../Object.h"
+#include "../../../../Data/Object.h"
 
 class Spell : public Object{
 public:

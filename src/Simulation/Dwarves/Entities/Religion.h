@@ -1,7 +1,6 @@
 #ifndef RELIGION_H_
 #define RELIGION_H_
 
-#include "../../Object.h"
 #include "Creature/Creature.h"
 #include "Creature/Immortal/God.h"
 
