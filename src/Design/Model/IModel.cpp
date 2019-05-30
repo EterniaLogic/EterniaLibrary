@@ -1,6 +1,9 @@
 #include "IModel.h"
 
 
+IModel::IModel(){}
+IModel::~IModel(){}
+
 void IModel::addPart(IModelPart* frag){
     parts.add(frag);
 }
@@ -19,3 +22,6 @@ void IModel::setScale(Math::vertex scale) {
 
     }
 }
+
+void IModel::Draw(){}
+void IModel::bufferModel(){}

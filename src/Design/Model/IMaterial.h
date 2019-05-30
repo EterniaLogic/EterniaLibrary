@@ -8,7 +8,7 @@
 class IMaterial{
 public:
     IMaterial();
-    ~IMaterial(){}
+    virtual ~IMaterial();
 
     CharString name;
 

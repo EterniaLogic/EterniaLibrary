@@ -16,3 +16,5 @@ IMaterial::IMaterial(){
     ShinyMap=0x0;
     MirrorMap=0x0;
 }
+
+IMaterial::~IMaterial(){}

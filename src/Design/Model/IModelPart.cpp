@@ -6,6 +6,8 @@ IModelPart::IModelPart(){
     vertexbuffer = -1;
 }
 
+IModelPart::~IModelPart(){}
+
 void IModelPart::addVertex(Math::vertex v) {
     //debugLogm("Add Model " << this << " Vertex: (" << v.x << ", "<< v.y <<"," << v.z<<")");
     this->verticies.add(v);
@@ -23,3 +25,6 @@ void IModelPart::setMaterial(IMaterial material) {
 void IModelPart::setScale(Math::vertex scale) {
     this->scale = scale;
 }
+
+void IModelPart::draw(){}
+void IModelPart::bufferModel(){}

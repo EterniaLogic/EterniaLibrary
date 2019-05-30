@@ -69,6 +69,7 @@ public:
     // location for scripts, mod name, language, version
     APIMod(APICore* core, CharString loc); //, CharString name, CharString language, CharString version);
     APIMod(APICore* core);
+    APIMod();
 
     virtual ~APIMod();
 

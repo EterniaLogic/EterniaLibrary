@@ -11,7 +11,7 @@
 class IModelPart{
 public:
     IModelPart();
-    virtual ~IModelPart(){}
+    virtual ~IModelPart();
 
     LinkedList<Math::vertex> verticies, normals, textureCoordinates;
     IMaterial material;

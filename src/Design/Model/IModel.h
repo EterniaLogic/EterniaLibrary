@@ -11,14 +11,15 @@
 class IModel : public Math::VertexObject, public IAnimated{
         friend class IMaterial;
 public:
-    IModel(){}
-    virtual ~IModel(){}
+    IModel();
+    virtual ~IModel();
 
     LinkedList<IModelPart*> parts; // fragments of this model. Can be used to move individual parts.
     CharString loadedloc; // model loaded from this location
     // Verticies are loaded into this.
 
     virtual void Draw();
+    virtual void bufferModel();
 
     void addPart(IModelPart* frag);
     void setOffset(Math::vertex offset);

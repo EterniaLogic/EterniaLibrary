@@ -84,6 +84,13 @@ APIMod::APIMod(APICore* core){
     isfolder = iszip = false;
 }
 
+APIMod::APIMod(){
+    this->core = 0x0;
+    permscope = P_MOD;
+    loaded = propertiesloaded = inited = false;
+    isfolder = iszip = false;
+}
+
 APIMod::~APIMod(){
     onUnload();
 }
