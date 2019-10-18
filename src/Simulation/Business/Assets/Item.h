@@ -25,6 +25,10 @@ public:
     vertex getDimensionsMillimeters();
     vertex getDimensionsFeet();
     vertex getDimensionsInches();
+    
+    Item(){
+        type = AT_ITEM;
+    }
 };
 
 #endif

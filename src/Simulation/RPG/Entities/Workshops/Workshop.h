@@ -3,6 +3,7 @@
 
 #include "../../../../Data/includes.h"
 #include "WorkshopRecipe.h"
+#include "../Items/Item.h"
 
 enum WORKSHOPPOWER {WSP_NONE, WSP_ELECTRICITY, WSP_SOLIDFUEL, WSP_LIQUIDFUEL};
 
@@ -16,6 +17,10 @@ public:
     
     Workshop(){
         classname = "[Workshop]";
+    }
+
+    bool process(Item item){
+        
     }
 };
 

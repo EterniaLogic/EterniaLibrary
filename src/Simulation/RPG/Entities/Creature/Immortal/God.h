@@ -25,6 +25,8 @@ public:
         _type = CT_God;
         belief=1; // at least 1 believer to be a god.
         
+        stats.str = stats.agi = stats.vit = stats.spi = stats.will = stats.luck = stats.charisma = 500500; // Level 1000 stats copied across all. (Gods are cheats... assuming that they actually existed in the material plane)
+        
         health.uselimbs = false; // Gods can be any shape they like.
         health.regrowlimbs = true; // can regrow limbs?
         health.useblood = false;
@@ -45,6 +47,25 @@ public:
         // soul must be the same attunement as the god's domain type if an elemental type.
         // soul.attunement = SA_LIGHT;
         // God of War might be fighting for the LIGHT for example depending on the God's disposition.
+        
+        
+        
+        // Gods are very resistant to almost everything except for the opposing elemental/concept.
+        // defaults here are to help, a God's resistance is 100% in their field and 80% in the opposing concept.
+        resistances.Slashing = 0.99;
+        resistances.Hacking = 0.99;
+        resistances.Piercing = 0.99;
+        resistances.Blunt = 0.99;
+        
+        resistances.Fire = 0.9999;        
+        resistances.Explosion = 0.9999;
+        resistances.Water = 0.9999;
+        resistances.Earth = 0.9999;
+        resistances.Air = 0.9999;
+        resistances.Light = 0.9999;
+        resistances.Dark = 0.9999;
+        resistances.Void = 0.9;
+        resistances.Mind = 0.9999999; // very slight chance for a god to be brainwashed, but has to be an epically powerful enemy.
     }
 };
 

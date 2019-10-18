@@ -10,6 +10,15 @@ public:
     Vampire(){
         classname="Vampire";
         _type = CT_Vampire;
+        
+        // Stats derived from original race
+        // Str += 1 level
+        // Agi += 1 level
+        // Vit += 1 level
+        
+        // A vampire's age is the only way to level.
+        
+        
         health.regrowlimbs = true;
         health.uselimbs = true;
         health.useblood = true;

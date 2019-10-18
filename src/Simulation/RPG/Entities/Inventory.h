@@ -14,6 +14,8 @@ public:
     
     Inventory(){
         classname = "Inventory";
+        space = 0.025; // 25 liter backpack
+        usedspace = 0;
     }
 };
 

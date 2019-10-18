@@ -12,7 +12,10 @@ enum PAYROLL_TYPE {PAY_UNKNOWN, PAY_HOURLY, PAY_PARTTIME, PAY_FULLTIME};
 
 class Employee : public AssetHolder{
 public:
-    Employee();
+    Employee(){
+        classname="[Employee]";
+    }
+    
     AssetHolder *employer;
     CharString position_name;
     POSITION_ROLE role;

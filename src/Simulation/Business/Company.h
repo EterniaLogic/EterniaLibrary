@@ -38,6 +38,10 @@ public:
     // Standard lists for accounting
     LinkedList<Liability> liabilities; // Debts, obligations, issued payments, etc.
     LinkedList<Equity> equities; // owned equities (Capital, surplus, stock, earnings, reserve, assets, cash)
+    
+    Company(){
+        classname="[Company]";
+    }
 };
 
 

@@ -11,6 +11,15 @@ public:
         
         // limbs already inherited from Humanoid.
         
+        
+        stats.str = 9; // smaller?
+        stats.agi = 11;
+        stats.vit = 10;
+        stats.spi = 10;
+        stats.will = 11;
+        stats.luck = 12; // higher luck for crafters
+        stats.charisma = 10;
+        
         weight_kg = 40; // average dwarf weight
         
         energy.calories = energy.calories_max = 2000; // Carbo=2000, fat > 2000

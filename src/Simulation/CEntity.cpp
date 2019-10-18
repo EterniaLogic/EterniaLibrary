@@ -2,6 +2,7 @@
 
 CEntity::CEntity(){
     // nothing really to do here?
+    classname="[CEntity]";
 }
 
 // called before any action, also calls action and postaction

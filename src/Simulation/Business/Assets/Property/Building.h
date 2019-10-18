@@ -24,6 +24,9 @@ public:
    int janitorial_rooms;
    int bathrooms;
    double inventory_space; // estimated space in meters cubed.
+   
+   double land; // landscape space in meters^2 (Or sq. feet in US)
+   double floorspace; // floorspace in meters^2
 };
 
 #endif

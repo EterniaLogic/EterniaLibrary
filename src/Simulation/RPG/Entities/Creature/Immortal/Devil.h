@@ -38,6 +38,23 @@ public:
         
         sin = DSS_NONE; // sin type assigned later on after imp-stage of growth.
         subtype = "Imp"; // Standard low-level grunt, no seven-sin designation.
+        
+        
+        // Devils are very resistant to almost everything. They are not as unkillable as Gods are.
+        resistances.Slashing = 0.9;
+        resistances.Hacking = 0.9;
+        resistances.Piercing = 0.9;
+        resistances.Blunt = 0.9;
+        
+        resistances.Fire = 0.99999;        
+        resistances.Explosion = 0.99999;
+        resistances.Water = 0.8;
+        resistances.Earth = 0.9999;
+        resistances.Air = 0.7;
+        resistances.Light = 0.1; // Barely any resistance to light.
+        resistances.Dark = 0.99999999; // using Dark magic on a Devils is ill advised.
+        resistances.Void = 0.8; // Devils are still made of matter so they are affected by the Void.
+        resistances.Mind = 0.9; // Mortals can attempt to use collars on Devils. Probably not a good idea in the end.
     }
 };
 

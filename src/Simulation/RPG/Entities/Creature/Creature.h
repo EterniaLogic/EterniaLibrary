@@ -11,6 +11,7 @@
 #include "CreaturePools.h"
 #include "CreatureEnergy.h"
 #include "CreatureHealth.h"
+#include "CreatureResistances.h"
 #include "../../../CEntity.h"
 #include "../../../Society/Race.h"
 #include "Soul.h"
@@ -26,16 +27,20 @@ enum CREATURETYPE {
     CT_Elemental, CT_God, CT_Devil, // Immortals
     CT_Devourer, // Monsters?
     CT_Beast_Lion, // Basic Beast types
-    
+    CT_Lich, CT_Skeleton, CT_Zombie, // Standard undead types
+    CT_Hive,
     CT_Mixed, // Half-type of creature. (Eg:  Half-Wolf, Half-Elf)
 };
 
+// Social Hierarchy class types
 enum CREATURECLASS {
     CCL_NONE, // trees probably don't have a class.
     CCL_WARRIOR,
     CCL_RANGED, // guns/bows
     CCL_MAGE,
-    CCL_CRAFT
+    CCL_CRAFT,
+    CCL_GATHERER,
+    CCL_CHIEF, // Chiefs are all-arounders
 };
 
 
@@ -67,6 +72,7 @@ public:
     CreatureStats stats; // level, str, agi,... , attribute points
     CreatureHealth health; // HP, limbs
     CreatureEnergy energy; // calories/water
+    CreatureResistances resistances;
     
     bool alive; // spirit still connected with the body? (in cases of undead, etc)
     double age;

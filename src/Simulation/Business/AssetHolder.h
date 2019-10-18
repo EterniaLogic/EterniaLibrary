@@ -22,7 +22,7 @@ public:
     LinkedList<Account> accounts; // where money is stored in raw form.
     LinkedList<Transaction> transactions; // full relevant list of transactions in the previous fiscal quarter
     Budget *budget;
-    CharString name;
+    // CharString name; // from Object
     Person* identity;
     
     double getTotalValue(); // count up the total value of all assets

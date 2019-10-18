@@ -10,6 +10,7 @@ public:
         _type = CT_Human;
         
         // limbs already inherited from Humanoid.
+        stats.str = stats.agi = stats.vit = stats.spi = stats.will = stats.luck = stats.charisma = 10; // Level 0 stats
         
         weight_kg = 81; // average human weight
         
