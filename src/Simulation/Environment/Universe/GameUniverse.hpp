@@ -11,8 +11,8 @@ public:
         this->seed = seedx;
         // Define fundamental Laws
         
-        // Lowest level
-        laws.add(new ULaw(UL_ENERGY, "Particles")); // Raw ... whatever becomes particles
+        // sub-Lowest level
+        laws.add(new ULaw(UL_ENERGY, "Particles")); // Raw ... whatever becomes particles (Even lower is kinda useless in simulation)
         laws.add(new ULaw(UL_MATTER, "Atoms")); // Particles become Atoms
         laws.add(new ULaw(UL_MATTER, "Protons"));
         laws.add(new ULaw(UL_MATTER, "Neutrons"));

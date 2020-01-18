@@ -2,7 +2,9 @@ GNU GENERAL PUBLIC LICENSE
 Version 3, 29 June 2007
 
 Original Work by EterniaLogic: (May be modified in the interest of stability, cleanliness and portability)
-Copyright (C) 2016 Brent Clancy (eternialogic@gmail.com)
+Copyright (C) 2019 Brent Clancy (eternialogic@gmail.com)
+
+Sources related to Cryptography, such as Aes256 and crc32: All Rights Reserved.
 
 License copyright:
 Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>

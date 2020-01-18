@@ -20,6 +20,15 @@ IC555::~IC555() {
 
 }
 
+
+void IC555::setPin(int pin, double value){
+
+}
+
+double IC555::getPin(int pin){
+    return 0;
+}
+
 // operate the component
 void IC555::tick(SecondTick* tickTime) {
 

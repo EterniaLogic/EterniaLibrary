@@ -96,6 +96,9 @@ namespace electrical {
 namespace electromagnetic {
     namespace sound {
         // Returns the frequency of a specified note
+        // Letter is the frequency of said base note on the lowest octave.
+        // (27.50 hz is A 4 octaves down)
+        // Use electromagnetic::sound::A   to    electromagnetic::sound::F  to get the frequencies.
         double getNote(double Letter, double Octave) {
             return Letter * Octave   * octave; // ends with Octave constant
         }

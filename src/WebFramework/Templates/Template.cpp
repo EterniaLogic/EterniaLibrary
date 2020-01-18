@@ -24,7 +24,7 @@ void Template::addReplacingDefinition(CharString toreplace, CharString replacer)
 
 // must be called to have default definitions like {date}, {page}
 void Template::addDefaultDefinitions(){
-    
+
 }
 
 
@@ -35,31 +35,31 @@ CharString Template::render(){
         ifstream filex;
         fileOpen(filex, fileloc.get());
     }
-    
+
     // clone data
     CharString pretext = templatetext.clone();
-    
+
     // Iterate through the definitions in the file
     LinkedListIterator<TemplateDefinition> itt = templateList.getIterator();
     while(itt.hasNext()){
         TemplateDefinition td = itt.next();
-        
+
         if(td.toreplace.startsWith("{copyright")){
-            
+
         }else if(td.toreplace.startsWith("{url|")){
-            
-        }else if(td.toreplace.compare("{time24}")){
-            
+
+        }else if(td.toreplace.compare("{time24}",8)){
+
         }else if(td.toreplace.startsWith("{time12}")){
-            
+
         }else if(td.toreplace.startsWith("{date}")){
-            
+
         }else if(td.toreplace.startsWith("{unixtime}")){ // seconds since january 1, 1970
             uint64_t d = time(0x0);
         }else if(!td.regex){
             pretext.replace(td.toreplace.get(), td.replacer->get());
         }
     }
-    
+
     return pretext;
 }

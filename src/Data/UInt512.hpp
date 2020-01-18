@@ -2,6 +2,7 @@
 #define uint512_H_
 
 // incomplete attempt at 512-bit operations
+// NOTE: Does not work.
 
 
 #include <inttypes.h>

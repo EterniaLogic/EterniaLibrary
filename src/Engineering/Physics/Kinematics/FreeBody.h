@@ -9,7 +9,7 @@ using namespace physical;
 using namespace physical::constant; // KItem from here
 
 // converts KItem to a string
-CharString getVariableFromKItem(KItem item);
+//CharString getVariableFromKItem(KItem item);
 
 // Freebody diagram, automatic inter-sourcing of data.
 // Used to solve Kinematic problems

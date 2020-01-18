@@ -3,7 +3,7 @@
 
 #include "Component.h"
 
-// An H-Bridge is a device that allows current to run in either direction. With a voltage.
+// An H-Bridge is a device that allows current to run in either direction for a motor.
 
 class HBridge : private Component {
     public:

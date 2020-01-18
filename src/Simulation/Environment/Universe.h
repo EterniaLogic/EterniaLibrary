@@ -3,6 +3,7 @@
 
 #include "../../Data/includes.h"
 #include "Universe/ULaw.h"
+#include "Space/Galaxy.h"
 
 // A universe houses all galaxies and nebulae.
 // The inner workings of the universe are derived via the LAWs of it.

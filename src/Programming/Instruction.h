@@ -20,7 +20,7 @@ enum CPLBASEFMT {CPL_INTEL, CPL_AMD, CPL_NVIDIA, CPL_TI, CPLOTHER};
 class Instruction{
 private:
     char prefix; // some opcodes have a specific prefix
-    short opcode; // Primary opcode. 16-bit max. (Highly dependent on the OS, but 2^11,  1024 seems the be the max # of opcodes on 64-bits)
+    short opcode; // Primary opcode. 16-bit max. (Highly dependent on the OS+CPU, but 2^11,  1024 seems the be the max # of opcodes on 64-bits)
     
     // in/out/...? variables for instructions. Actual compiled size is dependent on manufacturer
     int R1; // Opcodes with a req for R1 (in/out?/...)

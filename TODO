@@ -1,2 +1,19 @@
-TODO
+TODO Code
 1.) extensive debugging & testing
+2.) Continue work on RESTFul server.
+3.) Debugging for HTTP+RESTFul server.
+4.) Get LSTM to work, Matrix multiplication results in all 0 values.
+5.) Test API with different languages, runtime compilation of c/c++, etc.
+
+TODO Non-code
+1.) Compile/test for MAC OS X
+
+
+TODO Planned Types
+
+
+
+TODO Planned external libraries included
+1.) File Compression
+2.) Localization using PO files, other translation software.
+3.) YAML, other config type Support.

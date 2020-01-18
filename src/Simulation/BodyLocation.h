@@ -1,6 +1,8 @@
 #ifndef BODYLOCATION_H_
 #define BODYLOCATION_H_
 
+// Generic body part locations
+
 enum BODY_LOCATION {BL_LFORELIMB, BL_RFORELIMB, BL_LARM, BL_RARM, BL_LHAND, BL_RHAND, // arms
     BL_HEAD, BL_NECK, BL_TORSO, BL_ABDOMEN, BL_CROTCH, // center mass
     BL_LLEG, BL_RLEG, BL_LFOOT, BL_RFOOT, // legs

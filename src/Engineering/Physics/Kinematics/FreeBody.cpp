@@ -16,11 +16,11 @@ FreeBody::FreeBody() {
 void FreeBody::addItem(KItem item, double quantity) {
     // Forces can be anything, albiet Gravity all the way to direct Newton force.
     // for now, we will only add it to the list to be calculated later.
-    CharString fromEq = getVariableFromKItem(item);
+    CharString* fromEq = getVariableFromKItem(&item);
     Force f;
     f.force = item;
     f.quantity = quantity;
-    f.equation = Equation(fromEq);
+    f.equation = Equation(*fromEq);
     forceList.add(f);
 }
 
