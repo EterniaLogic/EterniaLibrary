@@ -2,7 +2,8 @@ Data Structures are a method to organize data in a efficient approach. Every Dat
 
 
 
-**Generic Structures**
+Generic Structures
+=====
 
 ***Lists***
 
@@ -49,8 +50,13 @@ Special Types enable for big data or polymorphic 'easy' variables.
 * [Location](location.md) (XYZ Coordinates with name and dimension)
 * [Object](object.md) (polymorphic object, useful for debug reporting in simulation)
 
+**Other**
 
-**Special Types**
+* [FileSystem](filesystem.md)
+* [Graph](graph.md)
+
+Special Types
+===
 
 * [Concurrent](concurrent/index.md)
 * [Database](database.md)
@@ -59,7 +65,4 @@ Special Types enable for big data or polymorphic 'easy' variables.
 * [Logger](logger.md)
 * [ProtectType](protecttype.md) (PType)
 
-**Other**
 
-* [FileSystem](filesystem.md)
-* [Graph](graph.md)
