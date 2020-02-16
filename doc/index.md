@@ -1,4 +1,4 @@
-**Examples**
+**Common Documentation and Examples**
 -------------
 
 #### C++ ###
