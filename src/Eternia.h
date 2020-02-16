@@ -1,5 +1,7 @@
 
 // include includes
+#include <iostream>
+#include <stdio.h>
 using namespace std;
-#include "Eternia/include.h"
+#include "include.h"
 

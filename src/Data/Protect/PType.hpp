@@ -241,7 +241,7 @@ public:
 /////////////// BASIC OPERATIONS ///////////////
     // set this
     PType<T> operator =(T v){
-        _storeV(v); // store value
+    	_storeV(v); // store value
         return *this;
     }
 

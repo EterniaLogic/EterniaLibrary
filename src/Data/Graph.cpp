@@ -29,7 +29,7 @@ Graph::Graph(){
 
 // aaand take them all down! >:D
 Graph::~Graph(){
-  /*lookupEdges->~HashMap();
+  / *lookupEdges->~HashMap();
   lookupVerticies->~HashMap();
   verticiesList->~LinkedListT();
   edgesList->~LinkedListT();
@@ -158,7 +158,7 @@ void Graph::insertVertex(GVertex* o){
 }
 
 // insert the GEdge
-/*void Graph::insertEdge(GEdge* e){
+/ *void Graph::insertEdge(GEdge* e){
     // connect the names together.
     CharString* cnames = e->a->name->clone();
     char c[3];
