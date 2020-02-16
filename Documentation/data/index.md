@@ -34,9 +34,9 @@ Maps enable data to be stored with a 'key, name' approach.
 ***Types***
 
 Special Types enable for big data or polymorphic 'easy' variables.
-* [CharString](charstring.md)
+* [CharString](charstring.md) (Main String implementation, including conversion from numbers)
 * [CRCData](crcdata.md)
-* [DynamicType](dynamictype.md)
+* [DynamicType](dynamictype.md) (python-like variables)
 * [UInt512](uint512.md) (broken)
 
 ***Sorting***
@@ -58,11 +58,11 @@ Special Types enable for big data or polymorphic 'easy' variables.
 Special Types
 ===
 
-* [Concurrent](concurrent/index.md)
-* [Database](database.md)
-* [Event Handler](eventhandler.md)
-* [File Format](fileformat/index.md)
+* [Concurrent](concurrent/index.md) (concurrent data types, such as CopyOnWriteArrayList, ConcurrentLinkedList, ThreadPool, etc.)
+* [Database](database.md) (broken-ish, database implementation)
+* [Event Handler](eventhandler.md) (Full Event timing and execution suite)
+* [File Format](fileformat/index.md) (CSV, MTL, OBJ, XML types)
 * [Logger](logger.md)
-* [ProtectType](protecttype.md) (PType)
+* [ProtectType](protecttype.md) (PType, used to detect and prevent memory hacking, including honeytraps)
 
 
