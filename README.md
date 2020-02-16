@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 1.123.2
+**Version**: 1.151.9
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
