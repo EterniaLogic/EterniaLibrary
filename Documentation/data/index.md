@@ -5,6 +5,7 @@ Data Structures are a method to organize data in a efficient approach. Every Dat
 **Generic Structures**
 
 ***Lists***
+
 Store data that has an add/remove approach
 * [ArrayList](arraylist.md)
 * [CyclicList](cycliclist.md)
@@ -22,6 +23,7 @@ Store data that has an add/remove approach
 
 
 ***Maps***
+
 Maps enable data to be stored with a 'key, name' approach.
 * [HashMap](hashmap.md)
 * [LinkedMap](hashmap.md)
@@ -29,6 +31,7 @@ Maps enable data to be stored with a 'key, name' approach.
 
 
 ***Types***
+
 Special Types enable for big data or polymorphic 'easy' variables.
 * [CharString](charstring.md)
 * [CRCData](crcdata.md)
@@ -36,20 +39,19 @@ Special Types enable for big data or polymorphic 'easy' variables.
 * [UInt512](uint512.md) (broken)
 
 ***Sorting***
+
 * [Heap](arraylist.md)
 
 
 
-* [FileSystem](filesystem.md)
-* [Graph](graph.md)
-
-
 ***Generic Simulation objects***
+
 * [Location](location.md) (XYZ Coordinates with name and dimension)
 * [Object](object.md) (polymorphic object, useful for debug reporting in simulation)
 
 
 **Special Types**
+
 * [Concurrent](concurrent/index.md)
 * [Database](database.md)
 * [Event Handler](eventhandler.md)
@@ -57,4 +59,7 @@ Special Types enable for big data or polymorphic 'easy' variables.
 * [Logger](logger.md)
 * [ProtectType](protecttype.md) (PType)
 
+**Other**
 
+* [FileSystem](filesystem.md)
+* [Graph](graph.md)
