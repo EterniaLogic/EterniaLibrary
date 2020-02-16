@@ -3,6 +3,10 @@
 
 Dwarves::Dwarves(){
     instance=this;
+    tevent=true;
+    ttiles=true;
+    tentities=true;
+    tfps=true;
 }
 
 void Dwarves::onInit(){

@@ -5,7 +5,7 @@
 #include "LoadFile.h"
 #include "../Data/CharString.h"
 
-using namespace std;
+
 
 class InputRedirection {
         bool process(); // process line by line
@@ -13,6 +13,7 @@ class InputRedirection {
 
     public:
         InputRedirection();
+        virtual ~InputRedirection();
         // OVERRIDE with your input
         // virtual void handleInputLine(CharString* input);
         virtual void handleInputLine(CharString* input);

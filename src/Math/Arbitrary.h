@@ -62,9 +62,9 @@ namespace Math {
         OPALL(float);
         OPALL(double);
         
-        Arbitrary operator +(Arbitrary value);
-        Arbitrary operator =(Arbitrary value);
-        Arbitrary operator +=(Arbitrary value);
+        Arbitrary operator +(Arbitrary &value);
+        Arbitrary operator =(Arbitrary &value);
+        Arbitrary operator +=(Arbitrary &value);
         
         // calculates # of bits used
         int bitcalc();

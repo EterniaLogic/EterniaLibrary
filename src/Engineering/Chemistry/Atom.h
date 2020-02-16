@@ -33,7 +33,7 @@ enum ELEMENTTYPE {ELEM_Alkali, ELEM_Alkaline, ELEM_Halogen, ELEM_Lanthanide, ELE
 class Atom {
     public:
         // 12 doubles
-        Atom(const char* Name, const char* label, double Group, double Period, double Protons, double Neutrons, double Electrons, double Density, double Resistivity, double ThermConductivity, double Melting, double Boiling, double SpecificHeat, double Valence, vertex Color, ELEMENTTYPE Type); // assign base constants
+        Atom(const char* Name, const char* label, double Group, double Period, double Protons, double Neutrons, double Electrons, double Density, double Resistivity, double ThermConductivity, double Melting, double Boiling, double SpecificHeat, double Valence, Math::vertex Color, ELEMENTTYPE Type); // assign base constants
         virtual ~Atom();
 
         Atom* getAtom(); // get this material's atom.
@@ -75,7 +75,7 @@ class Atom {
         double boiling_point;
         double specific_heat;
 
-        vertex color;
+        Math::vertex color;
         ELEMENTTYPE type;
 };
 }

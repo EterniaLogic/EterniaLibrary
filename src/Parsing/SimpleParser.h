@@ -6,8 +6,6 @@
 #include "../Data/LinkedList.hpp"
 #include "../Data/CharString.h"
 
-using namespace std;
-
 // output: LinkedListT of (CharString *)
 LinkedList<CharString> SimpleParseLine(CharString inputfile, char separator); // parse input and split it by separator.
 

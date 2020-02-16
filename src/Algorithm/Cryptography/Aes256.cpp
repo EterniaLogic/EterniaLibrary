@@ -29,9 +29,13 @@ AES256::~AES256(){
  // auto-generate 256-bit key
 CharString AES256::genKey(){
      srand (time(0x0));
+     CharString k = "                ";
     for(int i=0;i<16;i++){
         key[i] = (uint8_t)rand();
+        k.get()[i] = (char)key[i];
     }
+
+    return k;
 }
 
 // get a 256-bit key

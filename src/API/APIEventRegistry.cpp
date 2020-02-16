@@ -13,10 +13,12 @@ APIEventRegistry::~APIEventRegistry(){
 bool APIEventRegistry::callEvent(CharString name, Event* event){
     if(handlers.get(name) != 0x0)
         handlers.get(name)->handleEvents();
+    return true;
 }
 // add a new event handler, return ID
 bool APIEventRegistry::addEventHandler(CharString name, EventHandler* handler){
     handlers.add(name,handler);
+    return true;
 }
 
 
@@ -28,7 +30,7 @@ EventHandler* APIEventRegistry::getHandler(CharString name){
 
 // get list of all handlers
 LinkedList<EventHandler*> APIEventRegistry::getHandlers(){
-	//return handlers;
+	return handlerList;
 }
 
 // register a handle with a specific handler
@@ -40,4 +42,6 @@ bool APIEventRegistry::registerHandle(CharString name, EventHandle *handle, int 
     }else{
         return false;
     }
+
+    return true;
 }

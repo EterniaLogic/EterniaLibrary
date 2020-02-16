@@ -1,6 +1,7 @@
 
 
 #include "SimpleParser.h"
+using namespace std;
 
 // simple parser parses line-by-line based on a separator.
 // ex:

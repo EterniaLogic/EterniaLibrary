@@ -25,7 +25,7 @@ namespace MSP430{
 #define _mem(addr) this->Memory[addr]
 #define _mem_2(addr) this->Memory[addr+1]
 #define _m(addr) _mem(addr)
-#define _m16(addr) _mem(addr) + _mem_2(addr)<<4 // Little Endian has MSB go first
+#define _m16(addr) _mem(addr) + (_mem_2(addr)<<4) // Little Endian has MSB go first
 #define _setTo16Value1(addr, value) _mem(addr) = value & 0xFF00; _mem_2(addr) = value & 0xFF;
 #define _setTo16Value2(addr, val, val16) _mem(addr) = val16; _mem_2(addr) = val;
 
@@ -39,7 +39,7 @@ enum INTERRUPT_ID {
 
 class InterruptHandle {
     public:
-        InterruptHandle() {}
+        InterruptHandle() {method=0x0;id=IID_RESET;}
         INTERRUPT_ID id;
         int* method; // << method to call
 };

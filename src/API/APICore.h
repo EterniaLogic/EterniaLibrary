@@ -78,6 +78,7 @@ protected:
 public:
     APICore(CharString name, CharString modfolder, CharString logfile);
     APICore();
+    virtual ~APICore(){}
 
     // Global Start/Stop
     void Init(); // run _onInit(), _onEnable(),

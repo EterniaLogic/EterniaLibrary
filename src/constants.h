@@ -791,7 +791,7 @@ namespace physical {
     namespace units = unit;
 
     namespace constant {
-        using namespace units;
+        using namespace units; // @suppress("Using directive in header")
         // speed of light
         const double c = 2.99792458e8*meters/second;
         // speed of sound
@@ -905,9 +905,9 @@ namespace electrical {
 
 // Advanced electromagnetic frequencies (EterniaLogic)
 namespace electromagnetic {
-    using namespace physical::unit;
+    using namespace physical::unit; // @suppress("Using directive in header")
     namespace sound {
-        using namespace physical::unit;
+        using namespace physical::unit; // @suppress("Using directive in header")
         const double octave = 2; // Frequency doubles every octave
         // note: AB = A#/Bb
         const double C = 16.35;

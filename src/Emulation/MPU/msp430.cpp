@@ -64,7 +64,7 @@ namespace MSP430{
 
             // non-msp430: Handle master timing (DCOCTL == CALDCO_1MHZ)?
             // BCSCTL2 DIVMx
-            char divm = (_m(BCSCTL2) & 0x8|0x10) >> 4;
+            char divm = (_m(BCSCTL2) & (0x8|0x10)) >> 4;
             char speed = _m(DCOCTL);
             int mdiv = CLOCKS_PER_SEC/(speed*1000000*divm);
 

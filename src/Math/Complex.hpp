@@ -10,6 +10,11 @@
     return *this; \
 }
 
+#define OPEQ_Reala(op, typex) Complex& operator op(typex val){ \
+    this->real=val; \
+    return *this; \
+}
+
 #define OPEQ_Imag(op, typex) Complex operator op(typex val){ \
     this->imaginary=val; \
     return *this; \
@@ -50,7 +55,7 @@ namespace Math {
         
         float real, imaginary;
         
-        Complex operator =(Complex val){
+        Complex& operator =(Complex val){
             *this = val;
             return val;
         }
@@ -84,9 +89,9 @@ namespace Math {
         
         // only set real part.
         // Complex operator =(Complex);
-        OPEQ_Real(=, int);
-        OPEQ_Real(=, float);
-        OPEQ_Real(=, long);
+        OPEQ_Reala(=, int);
+        OPEQ_Reala(=, float);
+        OPEQ_Reala(=, long);
         
         // direct set imaginary part
         OPEQ_Imag(&=, int);

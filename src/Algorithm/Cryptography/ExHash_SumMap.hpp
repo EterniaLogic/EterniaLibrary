@@ -23,7 +23,6 @@
 #define exa64_4 0x0dbf099e536a4633
 //#define exa256_2 0x6e4b8427716fc2b4daee7563982cceb4fb2e4507b4448ed36dbf099e536a4633
 
-using namespace std;
 
 // Constant shuffle bits
 const int shufflelocs[64] = {32, 41, 42, 12, 14, 45, 48, 37, 13, 63, 5, 44, 20, 58, 18, 22, 2, 8, 33, 6, 60, 51, 16, 49, 57, 50, 46, 21, 43, 19, 61, 38, 11, 10, 24, 3, 52, 47, 28, 9, 27, 35, 26, 25, 54, 62, 36, 4, 40, 0, 1, 56, 7, 34, 30, 15, 17, 31, 53, 39, 29, 23, 59, 55};
@@ -46,7 +45,7 @@ template<class T>
 T reverseBits(T val) {
     T newv = 0;
 
-    for(int i=0; i<sizeof(T)*8; i++) {
+    for(int i=0; i<(int)sizeof(T)*8; i++) {
         newv |= 2<<(sizeof(T)*8-1-i) & val;
     }
 

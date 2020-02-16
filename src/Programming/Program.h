@@ -9,8 +9,6 @@
 #include <cstdlib>
 #include <math.h>
 
-using namespace std;
-
 // A program is a script that enables for all forms of development for unique parts.
 // These programs are important for how the building, ship or vehicle works.
 

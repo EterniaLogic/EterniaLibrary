@@ -6,12 +6,12 @@ Regex::Regex(CharString regexstr){
 
 // output filter using input string
 CharString Regex::filter(CharString input){
-    
+    return ""; // TODO
 }
 
 // replace
 CharString Regex::replace(CharString input, CharString replaceregex){
-    
+	return ""; // TODO
 }
 
 

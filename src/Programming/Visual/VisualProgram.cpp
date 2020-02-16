@@ -111,6 +111,8 @@ VProgramError* Program::tickGNode(VProgramNode* node, VProgramError* error) {
 
         current = current->ifnode;
     }
+
+    return 0x0;
 }
 
 // get a specific variable from inputs or locals
@@ -123,6 +125,8 @@ DynamicType* Program::getVariable(int slot, VarTYPE typex) {
             return locals.get(slot);
             break;
     }
+
+    return 0x0;
 }
 
 // set a specific variable from inputs or locals
@@ -136,6 +140,8 @@ DynamicType* Program::setVariable(int slot, VarTYPE typex, DynamicType* var) {
             *vx = *var;
             break;
     }
+
+    return 0x0;
 }
 
 // compare these values for a conditional

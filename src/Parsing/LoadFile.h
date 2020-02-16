@@ -7,7 +7,6 @@
 #include <streambuf>
 #include "../Data/CharString.h"
 
-using namespace std;
 
 
 void fileOpen(ifstream &infile, char* filename); // open a file for writing

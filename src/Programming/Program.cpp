@@ -1,6 +1,12 @@
 #include "Program.h"
 
 Program::Program(int inslots, int actionslots, int outslots) {
+	nodeidinc=0;
+	runs=0;
+	display=0x0;
+	loops=0;
+	ptype=PTX_Textual;
+
     head = 0x0;
     inputs = (DynamicType*) calloc(inslots,sizeof(DynamicType));
     actions = (DynamicType*) calloc(outslots,sizeof(DynamicType));

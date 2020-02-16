@@ -68,8 +68,9 @@ CharString::CharString(const std::string &stringg) {
     *this = clone(); // since strings might 'dissapear' due to freeing resources
 }
 
-void CharString::operator =(char* stringg) {
+CharString CharString::operator =(char* stringg) {
     set(stringg);
+    return *this;
 }
 
 bool CharString::isValidCharString() {
@@ -702,6 +703,10 @@ bool CharString::contains(char* c) {
     return false;
 }
 
+bool CharString::contains(const char* c){
+	return contains((char*)c);
+}
+
 
 void CharString::concata_(const char* str, const int lenx) {
     if(!isValidCharString()) return;
@@ -884,6 +889,7 @@ istream& operator >> (istream &in,  CharString &c){
 
 CharString CharString::operator =(CharString str){
 	set(str);
+	return *this;
 }
 
 template<std::size_t N>

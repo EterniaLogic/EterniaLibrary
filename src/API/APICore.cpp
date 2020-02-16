@@ -152,14 +152,17 @@ void APICore::unloadMods(){
 
 APIMod* APICore::preloadModule(CharString file){ // preloads the module, reads "mod.properties" file.
 
+	return 0x0; //TODO
 }
 
 bool APICore::loadModule(CharString file){ // load a module from a file or folder. false if not loaded.
 
+	return false; //TODO
 }
 
 bool APICore::unloadModule(APIMod* mod){ // unload a module. false if kept loaded.
 
+	return false; //TODO
 }
 
 // Master module functions (Sent to actual implementation via APIMod)

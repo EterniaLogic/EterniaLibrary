@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include "../../../Data/CharString.h"
 #include "../ExHash.h"
-using namespace std;
 
 
 // Tests the ExHash algorithm for collisions

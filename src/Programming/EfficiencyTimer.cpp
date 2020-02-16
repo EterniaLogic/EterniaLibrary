@@ -7,7 +7,7 @@
 using namespace std;
 
 EfficiencyTimer::EfficiencyTimer() {
-
+	BaseTime = 0;
 }
 
 void EfficiencyTimer::Start() {

@@ -8,6 +8,8 @@
 
 class ProgrammingLanguage{
 public:
+	virtual ~ProgrammingLanguage(){}
+
     virtual void main(LinkedList<CharString> args); // startup
     virtual void tick(double timeseconds); // tick loop, time difference is given by user (limited by run_thread or runtick to prevent infinite loops maxing CPU)
     

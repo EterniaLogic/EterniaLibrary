@@ -21,8 +21,10 @@ namespace Math {
         {
             // convert from polar coords to complex
             Complex t = Complex::fromPolar(1.0, -2 * PI * k / N) * odd[k];
-            x[k    ] = even[k] + t;
-            x[k+N/2] = even[k] - t;
+            Complex a = even[k] + t;
+            Complex b = even[k] + t;
+            x[k    ] = a;
+            x[k+N/2] = b;
         }
     }
 }

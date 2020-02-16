@@ -75,6 +75,7 @@ APIMod::APIMod(APICore* core, CharString file){
     loaded = propertiesloaded = inited = false;
     isfolder = iszip = false;
     this->file = file;
+    type=APIMT_Server;
 }
 
 APIMod::APIMod(APICore* core){
@@ -82,6 +83,7 @@ APIMod::APIMod(APICore* core){
     permscope = P_MOD;
     loaded = propertiesloaded = inited = false;
     isfolder = iszip = false;
+    type=APIMT_Server;
 }
 
 APIMod::APIMod(){
@@ -89,6 +91,7 @@ APIMod::APIMod(){
     permscope = P_MOD;
     loaded = propertiesloaded = inited = false;
     isfolder = iszip = false;
+    type=APIMT_Server;
 }
 
 APIMod::~APIMod(){
@@ -136,7 +139,7 @@ void APIMod::loadProperties(){ // , CharString name, CharString language, CharSt
     //      this->dependencyversions.add("mod1:v12938");
     if(depvers.getSize() > 3){
         if(depvers.contains(", ")){
-            depvers.replace(" ", "");
+            depvers.replace((char*)" ", (char*)"");
             LinkedList<CharString> v = depvers.split(",");
             this->dependencyversions.addAll(v);
         }else{
@@ -167,6 +170,7 @@ CharString APIMod::getModFileData(CharString modfile){
     }else{
         cout << "could not open Mod File Data " << modfile << endl;
     }
+    return "";
 }
 
 // figure out what mods have good dependencies
@@ -188,6 +192,7 @@ bool APIMod::compareModDependencies(LinkedList<APIMod*> othermods){
             
         } // else invalid!
     }
+    return false;
 }
 
 // return a list of dependencies with name:version string for missing/different version mods.
@@ -227,6 +232,8 @@ int APIMod::countDependencies(){
 int APIMod::countModDependents(){
     int dep = 0;
     // tmp_dependents
+
+    return dep;
 }
 
 // NOT IMPLEMENTED HERE, use inheritance and declare there
@@ -297,6 +304,7 @@ void APIMod::onTick(double time){
 // send an event to the scripts
 Event APIMod::onEvent(Event event){
 
+	return event;
 }
 
 // Automatic updates (called every day or so)

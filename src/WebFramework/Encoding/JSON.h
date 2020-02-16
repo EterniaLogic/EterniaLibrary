@@ -3,7 +3,6 @@
 
 #include "../../Data/includes.h"
 #include <vector>
-using namespace std;
 // src/Serialization/SpecificSerializer.h has JSON to/from methods for classes, it is recommended.
 
 // JSON is a language that helps make text human readable between the server and client.

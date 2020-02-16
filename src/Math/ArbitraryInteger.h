@@ -21,7 +21,7 @@
 #define __TYPETMASK 0xFFFFFFFFUL
 
 // Multi-substitution
-#define OP1(OP, TP) ArbitraryInteger operator OP(TP value);
+#define OP1(OP, TP) ArbitraryInteger& operator OP(TP value);
 
 #define OPC(_TP) ArbitraryInteger(_TP val);
 

@@ -6,6 +6,8 @@ KeyHandleEvent::KeyHandleEvent(KEYEVENT event, unsigned char _key, int _modkey, 
     this->key = _key;
     this->modifier = _modkey;
     special = false;
+    x=_x;
+    y=_y;
 }
 
 // Dispose

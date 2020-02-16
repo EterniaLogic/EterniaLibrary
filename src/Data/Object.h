@@ -19,7 +19,7 @@ public:
 
     Object(){
         classname = typeid(*this).name(); // class name(?)
-        name = "Unknown"; // generic name, can be used for specific objects
+        name = (char*)"Unknown"; // generic name, can be used for specific objects
 
         addSerial(&classname, "classname", SSE_CharString);
         addSerial(&name, "name", SSE_CharString);

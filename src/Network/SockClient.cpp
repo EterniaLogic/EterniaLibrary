@@ -42,6 +42,23 @@ void SockClient::readhandler(){
 
 
 SockClient::SockClient() {
+	this->exVAL=0x0;
+	this->address=0x0;
+	this->ipv6=false;
+	this->addr=0x0;
+	this->server=0x0;
+	this->alive = false;
+	this->clientside = false;
+	this->sockd=-1;
+	this->async=false;
+	this->port=0;
+	this->ctype=SC_TCP;
+	this->bufferSize=64;
+	this->connected=0x0;
+	this->_clientHandler=0x0;
+	this->disconnected=0x0;
+	this->encryptor=0x0;
+
 #ifdef WINDOWSXX
     sockd = INVALID_SOCKET;
 #endif
@@ -52,12 +69,27 @@ SockClient::SockClient() {
 }
 
 SockClient::SockClient(SocketServer* server){
+	this->exVAL=0x0;
+	this->address=0x0;
+	this->ipv6=false;
+	this->addr=0x0;
+	this->server=0x0;
+	this->alive = false;
+	this->clientside = false;
+	this->async=false;
+	this->_clientHandler=0x0;
+	this->sockd=-1;
+	this->connected=0x0;
+	this->encryptor=0x0;
+	this->disconnected=0x0;
+	this->ctype=SC_TCP;
+	this->bufferSize=64;
+	this->port=0;
+
+
 #ifdef WINDOWSXX
     sockd = INVALID_SOCKET;
 #endif
-    this->alive = true;
-    this->clientside = false;
-    this->exVAL = 0x0; // set to null
     this->server = server;
 }
 

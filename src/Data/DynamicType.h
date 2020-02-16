@@ -74,8 +74,8 @@ OPERATION_EQ(type,typet,-=,-=) \
 OPERATION_EQ(type,typet,*=,*=) \
 OPERATION_EQ(type,typet,/=,/=) \
 //OPERATION_EQ(type,typet,==,==) \
-OPERATION_EQ(type,typet,>=,>=) \
-OPERATION_EQ(type,typet,<=,<=)
+//OPERATION_EQ(type,typet,>=,>=) \
+//OPERATION_EQ(type,typet,<=,<=)
 
 #define CONSTRUCTORTYPE(typex, typet) \
     DynamicType(typex val){\
@@ -86,10 +86,10 @@ OPERATION_EQ(type,typet,<=,<=)
     }
 
 #define EQOPER(typex, inferred, setnamex) \
-DynamicType operator=(typex v){ \
+DynamicType& operator=(typex v){ \
     return set##setnamex(v); \
 } \
-DynamicType set##setnamex(typex v){\
+DynamicType& set##setnamex(typex v){\
     if(data == 0x0) free(data); \
     data = malloc(sizeof(v)); \
     *((typex*)data) = v; \

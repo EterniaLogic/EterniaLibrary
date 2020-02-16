@@ -2,7 +2,7 @@
 #define VPROGRAM_NODES_H_
 
 // Data structure
-enum PNodeType {NT_None, NT_Cond, NT_Input, NT_Output, NT_Set, NT_Math, NT_Dispplay};
+enum PNodeType {NT_None, NT_Cond, NT_Input, NT_Output, NT_Set, NT_Math, NT_Display};
 enum PCondCompare {PCC_None, PCC_Equals, PCC_Greater, PCC_GreaterEq, PCC_Less, PCC_LessEq}; // NT_Cond
 enum PMathType {MT_None, MT_Add, MT_Sub, MT_Mul, MT_Div, MT_Mod, MT_Exponent}; // NT_Math
 enum VarTYPE {VAT_None, VAT_IN, VAT_LOCAL}; // select a variable channel

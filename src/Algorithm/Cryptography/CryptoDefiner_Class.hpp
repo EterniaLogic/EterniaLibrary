@@ -20,6 +20,7 @@ class CryptoDefiner {
     public:
         CryptoDefiner(PTypes t) {
             tpe = t;
+            key=0x0;
 
             //aes256_init(&cont, key);
             //aes256_done(&ctx);
@@ -33,7 +34,7 @@ class CryptoDefiner {
         }
 
         // basic operators
-        T operator =(CryptoDefiner<T> val) {
+        T& operator =(CryptoDefiner<T> val) {
             set(val);
         }
 
@@ -111,7 +112,7 @@ class CryptoDefiner {
 
         ///////// T Value types
         // basic operators
-        T operator =(T val) {
+        T& operator =(T val) {
             set(val);
         }
         T operator +(T val) {

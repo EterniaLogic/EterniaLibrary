@@ -21,6 +21,9 @@ LayoutObject::LayoutObject(){
     parent = 0x0;
     opacity = 1.0f;
     enabled = true;
+    resize=false;
+    mouseLocY=mouseLocX=0;
+	needCursorChange=false;
 
     needsDraw = true;
     needsUpdate = true;
@@ -38,7 +41,6 @@ LayoutObject::LayoutObject(){
     backColor = vertex(0,0,0);
 }
 
-LayoutObject::~LayoutObject() {}
 
 void LayoutObject::draw() {}
 void LayoutObject::update() {}

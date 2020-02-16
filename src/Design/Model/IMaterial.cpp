@@ -6,7 +6,11 @@ IMaterial::IMaterial(){
     SpecularColor=NULL_VERTEX;
     EmitColor=NULL_VERTEX;
     ModelColor=NULL_VERTEX;
+    Illumination=0.0;
+    Alpha=0.0;
+    Shininess=0.0;
     
+
     ColorMap=0x0;
     DiffuseMap=0x0;
     SpecularMap=0x0;
@@ -15,6 +19,7 @@ IMaterial::IMaterial(){
     BumpMap=0x0;
     ShinyMap=0x0;
     MirrorMap=0x0;
+
 }
 
 IMaterial::~IMaterial(){}

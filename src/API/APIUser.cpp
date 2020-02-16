@@ -16,6 +16,7 @@ bool APIUser::hasPermission(APIPermission perm){
     }
 
     //TODO: test based on type, modify perm string to test all possibilities.
+    return false;
 }
 
 // returns false if that user does not have perms to add perms.

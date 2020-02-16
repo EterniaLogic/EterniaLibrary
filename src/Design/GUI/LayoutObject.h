@@ -46,7 +46,7 @@ public:
 
 
     LayoutObject();
-    ~LayoutObject();
+    ~LayoutObject(){}
 
     // event methods
     void _draw();                    // pre-draw event

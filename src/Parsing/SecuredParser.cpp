@@ -23,6 +23,7 @@ CharString* SecuredParser::getText() {
     fileOpen(fileT, file->get());
 
     // TODO: return data?
+    return 0x0;
 }
 
 // read every line in the file
@@ -40,4 +41,6 @@ CharString* SecuredParser::encodeText(CharString* ss) {
     aes256_encrypt_ecb(&ctx, (unsigned char*)ss->get());
 
     // TODO: finish aes, ecb is start here
+
+    return 0x0;
 }

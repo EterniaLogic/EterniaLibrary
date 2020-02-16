@@ -4,6 +4,14 @@
 IModelPart::IModelPart(){
     indexbuffer = -1;
     vertexbuffer = -1;
+    pvertex=0x0;
+    indices=0x0;
+    vbosize=0;
+    buffered=false;
+    animFrame=0;
+    rendermode=0;
+    rotate_angle=0;
+
 }
 
 IModelPart::~IModelPart(){}

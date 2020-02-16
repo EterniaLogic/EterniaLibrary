@@ -1,9 +1,12 @@
 
 
 #include "InputRedirection.h"
-
+using namespace std;
 InputRedirection::InputRedirection() {
     stop = false;
+}
+
+InputRedirection::~InputRedirection() {
 }
 
 //void InputRedirection::handleInputLine(CharString* input){}

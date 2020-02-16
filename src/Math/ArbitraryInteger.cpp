@@ -33,19 +33,22 @@ namespace Math{
         bool c = true; // carry (initially true for adding 1)
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
             if(c){
-            	unsigned long d = (unsigned long)data->frozen[k];
-                if(v >= __MAXSIZET){ // carry
-                    d=0;
+            	unsigned long* d = (unsigned long*) (&data->frozen[k]);
+                if((unsigned long)v >= __MAXSIZET){ // carry
+                    *d=0;
                 }else{ // consume the carry
-                    d = v+1;
+                    *d = v+1;
                     //cout << v << endl;
                     c=false;
                 }
             }else{
+            	data->unfreeze(data->frozen,data->frozenlen);
                 return *this;
             }
         }
         
+        data->unfreeze(data->frozen,data->frozenlen);
+
         if(c) {
             cout << "carry addsize" << endl;
             data->add(1); // carry-add '1' to beginning of the list
@@ -56,14 +59,15 @@ namespace Math{
     }
     
     
-    ArbitraryInteger ArbitraryInteger::operator -=(long v){
+    ArbitraryInteger& ArbitraryInteger::operator -=(long v){
         cout << "-= long value " << toLong() << " same as ";
         resize(sizeof(long));
         cout << toLong() << endl;
+        return *this;
     }
     
     // Placeholder algorithm, needs faster algorithm to take it's place.
-    ArbitraryInteger ArbitraryInteger::operator +=(long v){
+    ArbitraryInteger& ArbitraryInteger::operator +=(long v){
         //cout << "+= long value " << toLong() << " same as ";
         resize(sizeof(long));
         cout << toLong() << endl;
@@ -110,7 +114,7 @@ namespace Math{
         return *this;
     }
 
-    ArbitraryInteger ArbitraryInteger::operator =(unsigned int v){
+    ArbitraryInteger& ArbitraryInteger::operator =(unsigned int v){
         set<unsigned int>(v);
         
         return *this;
@@ -138,7 +142,7 @@ namespace Math{
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
             cout << "set b " << k << endl;
             unsigned long d = (unsigned long)data->frozen[k];
-            for(int j=0;j<__TYPETBits;j++){ // loop through bits
+            for(unsigned long j=0;j<__TYPETBits;j++){ // loop through bits
                 unsigned long x = val & 1UL<<(j+t);
                 cout << "x & " << (1UL<<(j+t)) << "   => " << x   <<   "      " << getBinary() << endl;
                 
@@ -216,22 +220,22 @@ namespace Math{
                 //cout << "tohex c2 bit(" << j << ") = " << x << endl;
                 
                 switch(x){
-                    case 0: str.concata("0",1); break;
-                    case 1: str.concata("1",1); break;
-                    case 2: str.concata("2",1); break;
-                    case 3: str.concata("3",1); break;
-                    case 4: str.concata("4",1); break;
-                    case 5: str.concata("5",1); break;
-                    case 6: str.concata("6",1); break;
-                    case 7: str.concata("7",1); break;
-                    case 8: str.concata("8",1); break;
-                    case 9: str.concata("9",1); break;
-                    case 10: str.concata("A",1); break;
-                    case 11: str.concata("B",1); break;
-                    case 12: str.concata("C",1); break;
-                    case 13: str.concata("D",1); break;
-                    case 14: str.concata("E",1); break;
-                    case 15: str.concata("F",1); break;
+                    case 0: str.concata("0"); break;
+                    case 1: str.concata("1"); break;
+                    case 2: str.concata("2"); break;
+                    case 3: str.concata("3"); break;
+                    case 4: str.concata("4"); break;
+                    case 5: str.concata("5"); break;
+                    case 6: str.concata("6"); break;
+                    case 7: str.concata("7"); break;
+                    case 8: str.concata("8"); break;
+                    case 9: str.concata("9"); break;
+                    case 10: str.concata("A"); break;
+                    case 11: str.concata("B"); break;
+                    case 12: str.concata("C"); break;
+                    case 13: str.concata("D"); break;
+                    case 14: str.concata("E"); break;
+                    case 15: str.concata("F"); break;
                 }
             }
         }
@@ -255,8 +259,8 @@ namespace Math{
             for(int j=__TYPETBits-1;j>=0;j--){ // loop through bits
                 int x = d & 1<<(j);
                 //cout << "tostr c2 bit(" << j << ") = " << x << "   " << (int)*d << " & " << (1<<(j)) << endl;
-                if(x>0) str.concata("1", 1);
-                else str.concata("0", 1);
+                if(x>0) str.concata("1");
+                else str.concata("0");
             }
         }
         
@@ -270,7 +274,7 @@ namespace Math{
         int t=0;
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
         	unsigned long d = (unsigned long)data->frozen[k];
-            for(int j=0;j<__TYPETBits;j++){ // loop through bits
+            for(unsigned long j=0;j<__TYPETBits;j++){ // loop through bits
                 int x = d & 1<<j;
                 if(x>0) 
                     bits = t+((j+1));
@@ -290,7 +294,7 @@ namespace Math{
         int t=0;
         for(int k=0; k<data->frozenlen; k++){ // loop through bytes
         	unsigned long d = (unsigned long)data->frozen[k];
-            for(int j=0;j<__TYPETBits;j++){ // loop through bits
+            for(unsigned long j=0;j<__TYPETBits;j++){ // loop through bits
                 int x = d & 1<<j;
                 if(x>0) 
                     v ^= 1<<(j+t);

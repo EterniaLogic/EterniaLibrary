@@ -20,7 +20,7 @@ public:
     bool cancel; // prevents the action from being completed
     
     Action(){
-        classname="Action";
+        classname=(char*)"Action";
         type = AT_NONE;
         target = location = 0x0;
         cancel=false;
@@ -74,7 +74,9 @@ public:
             case AT_ATTACK: return "Attacking";
             
         }
+        return "Nothing";
     }
+
 };
 
 #endif

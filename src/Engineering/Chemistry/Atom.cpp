@@ -2,6 +2,8 @@
 
 #include "Atom.h"
 
+using namespace Math;
+
 using namespace physical::constant; // from constants.h
 namespace Chemistry{
 // assign base constants

@@ -9,10 +9,11 @@
 
 #include <string.h>
 
-#ifdef _WIN64 || _WIN32
+#if defined(_WIN64) || defined(_WIN32)
 #define WINDOWSXX
+#endif
 
-#else
+#ifndef WINDOWSXX
 #include <strings.h>
 #endif
 
@@ -35,7 +36,7 @@ class CharString {
         CharString(const std::string &stringg);
         virtual ~CharString();
 
-        void operator =(char* string);
+        CharString operator =(char* string);
         bool operator ==(CharString other); // operator for 'compare'
 
         bool isValidCharString(); // checks if empty
@@ -56,6 +57,7 @@ class CharString {
         bool compare(const char* b, int c); // compare exactly with another char
         bool compareNoCase(char* b, int c); // compare with a char* of length c if it contains the same letters with same case.
         bool contains(char* c); // does this string contain the single character 'c'?
+        bool contains(const char* c); // does this string contain the single character 'c'?
         CharString clone(); // creates a clone!
         void concata_(const char* str, const int lenx);
         

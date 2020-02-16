@@ -8,6 +8,7 @@
 SecondTick::SecondTick(double Frequency, double SecondTime) {
     frequency = Frequency;
     secondTime = SecondTime;
+    useTrue=true;
     lastTT = clock();
 }
 SecondTick::~SecondTick() {}

@@ -19,6 +19,7 @@ public:
     Math::Matrix* adjusted;
     
     LSTMLayer(double size){
+    	adjusted = 0x0;
         for(int i=0;i<size;i++)
             nodes.add(new LSTMNode());
     }
