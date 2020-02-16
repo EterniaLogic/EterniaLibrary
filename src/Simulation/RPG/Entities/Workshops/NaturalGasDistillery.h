@@ -9,7 +9,7 @@ public:
         classname="NaturalGasDistillery";
 
         // Skipping a lot of processing steps (Acid Gas removal, Dehydration, mercury removail, nitrogen rejection, NGL recovery, frationation, sweeteners)
-        recipes.add(new Recipe("1L Natural Gas","700ml Methane, 100ml Ethane, 100ml Propane, 100ml Butanes, 0.2ml Oxygen, 2ml Hydrogen Sulfide, pentanes", 2400)); // Generic Distillery function
+        recipes.add(WorkshopRecipe("1L Natural Gas","700ml Methane, 100ml Ethane, 100ml Propane, 100ml Butanes, 0.2ml Oxygen, 2ml Hydrogen Sulfide, pentanes", 2400)); // Generic Distillery function
     }
 };
 

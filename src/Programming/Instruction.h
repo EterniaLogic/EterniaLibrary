@@ -1,6 +1,8 @@
 #ifndef INSTRUCTION_H_
 #define INSTRUCTION_H_
 
+#include "../Data/includes.h"
+
 // Highly Generic instruction assembler. (8-256 bit assembler)
 // Also, it would seem that since each manufacturer tried to be innovative with each revision. This makes making a compiler more difficulty.
 

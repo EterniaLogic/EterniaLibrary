@@ -3,7 +3,7 @@
 
 #include "../Entities/Creature/Immortal/God.h"
 
-class World{
+class World : public Object{
 public:
     LinkedList<God> gods; // Major gods of the world.
     

@@ -32,8 +32,8 @@ void FCPolicy<T>::flush(){
 
 template<class T>
 FCRange<T>::FCRange(ulong a, ulong b){
-    this.a=a;
-    this.b=b;
+    this->a=a;
+    this->b=b;
 }
 
 template<class T>

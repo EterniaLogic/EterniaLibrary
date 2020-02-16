@@ -1,7 +1,7 @@
 #ifndef LION_BEAST_H_
 #define LION_BEAST_H_
 
-#include "../../Quadrupedal"
+#include "../../Quadrupedal.h"
 
 class Lion : public Quadrupedal{
 public:

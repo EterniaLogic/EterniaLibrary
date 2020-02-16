@@ -120,6 +120,8 @@ class CharString {
         CharString operator +=(int val);
         CharString operator +=(double);
 
+        CharString operator =(CharString);
+
         template<std::size_t N>
         bool operator ==(const char(&val)[N]); // direct compare
 

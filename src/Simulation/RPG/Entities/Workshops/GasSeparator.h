@@ -14,7 +14,7 @@ public:
         //      under high pressure, gases tend to be attracted to solid surfaces
         // Membrane Gas separation (Using special membranes, but pretty slow compared to the swing methods)
 
-        recipes.add(new Recipe("1L HGL","", 2400)); // Ethane, Propane, Butane, etc.
+        recipes.add(WorkshopRecipe("1L HGL","", 2400)); // Ethane, Propane, Butane, etc.
     }
 };
 

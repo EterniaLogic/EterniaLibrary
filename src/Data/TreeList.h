@@ -1,6 +1,7 @@
 #ifndef TREELIST_H_
 #define TREELIST_H_
 
+#include <stdio.h>
 
 class TreeNode {
     public:

@@ -6,9 +6,9 @@ class Sifter : public Workshop{
 public:
     Sifter(){
         classname="Sifter";
-        recipes.add(new Recipe("Raw Ore Dust","Ore Dust, Silicon dust"));
-        recipes.add(new Recipe("Dirt","organic matter, Silicon dust, aluminum dust, iron dust, magnesium dust, calcium dust, sodium dust, potassium dust"));
-        //recipes.add(new Recipe("Sand","Silicon dust"));
+        recipes.add(WorkshopRecipe("Raw Ore Dust","Ore Dust, Silicon dust"));
+        recipes.add(WorkshopRecipe("Dirt","organic matter, Silicon dust, aluminum dust, iron dust, magnesium dust, calcium dust, sodium dust, potassium dust"));
+        //recipes.add(WorkshopRecipe("Sand","Silicon dust"));
     }
 };
 

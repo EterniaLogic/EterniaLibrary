@@ -31,7 +31,7 @@ public:
         
         // HP is their soul-hp, but they cannot easily die. (AKA: death will send them back to the Devil domain, full-death in the devil domain will 'Resart' their life and memories in the devil domain)
         //  Soul HP only goes to a certain point, they will be ejected from the dimension if they are hurt too much at once.
-        hptype = HP_SOUL; 
+        health.hptype = HP_SOUL;
         
         // one of the few creatures that can eat souls. Their souls will grow in health and MP.
         soul.eatsouls = true;

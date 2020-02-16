@@ -3,6 +3,7 @@
 
 // Point of Sale Cart
 #include "../../../Data/includes.h"
+#include "../Assets/Item.h"
 
 class Cart{
 private:

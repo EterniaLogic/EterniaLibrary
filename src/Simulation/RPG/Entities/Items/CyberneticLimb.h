@@ -2,7 +2,7 @@
 #define CYBERLIMB_H_
 
 #include "EquippableItem.h"
-
+#include "../../../BodyLocation.h"
 
 // Prosthetic robotic limb. Can technically be any part of the body, but head would be a bad idea for a dumb limb.
 //  --Can be enchanted, assuming that the world contains mana.

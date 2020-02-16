@@ -2,6 +2,7 @@
 #define PAYROLL_H_
 #include "../../Data/includes.h"
 #include "Accounting/Transaction.h"
+#include "../Company.h"
 
 // Global Payroll pre-calculation for an entire segment of a company or a branch
 // cannot fill in for check-signing, auto-payroll, etc.

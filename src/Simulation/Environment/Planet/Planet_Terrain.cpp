@@ -5,7 +5,7 @@ Terrain::Terrain(long long seed, long long seed2) {
     this->seed2 = seed2;
     
      // generate radius
-    std::seed_seq seedx{seed};
+    std::seed_seq seedx{seed}; // @suppress("Invalid arguments")
     std::mt19937 rng(seedx);    // random-number engine used 
     
     std::uniform_int_distribution<long> uni(1000, 300000); // radius of planet
@@ -19,7 +19,7 @@ Terrain::Terrain(long long seed, long long seed2) {
 Terrain::Terrain() {}
 
 int Terrain::genRand(double phi, double theta){
-    std::seed_seq seedx{(long long)seed, (long long)seed2, (long long)phi, (long long)theta};
+    std::seed_seq seedx{(long long)seed, (long long)seed2, (long long)phi, (long long)theta}; // @suppress("Invalid arguments")
     std::mt19937 rng(seedx);    // random-number engine used 
     std::normal_distribution<> uni(0, eccentricity);
     

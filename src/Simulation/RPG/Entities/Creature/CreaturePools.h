@@ -6,8 +6,8 @@
 class CreaturePools : public SpecificSerializer{
 public:
     
-    double MP, MPMax; // Mana
-    double SP, SPMax; // Stamina Pool (not used when 'usefood' is on)
+    double mp, MPMax; // Mana
+    double sp, SPMax; // Stamina Pool (not used when 'usefood' is on)
     
     double MPRegen, SPRegen; // regen per minute
     

@@ -23,7 +23,7 @@ public:
         energy.usewater = false;
         stats.canlevel = false; // Gods cannot gain material power
         
-        hptype = HP_BELIEF;
+        health.hptype = HP_BELIEF;
         
         
         // soul must be the same attunement as the god's domain type if an elemental type.

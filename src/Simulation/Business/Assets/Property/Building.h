@@ -4,6 +4,7 @@
 #include "../../../Data/includes.h"
 #include "../../ALocation.h"
 #include "../../AssetHolder.h"
+#include "../../Employee.h"
 #include "Land.h"
 #include "../Item.h"
 

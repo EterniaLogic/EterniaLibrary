@@ -50,6 +50,13 @@ private:
     bool loaded, inited, propertiesloaded;
 
 public:
+    // location for scripts, mod name, language, version
+	APIMod(APICore* core, CharString file); //, CharString name, CharString language, CharString version);
+	APIMod(APICore* core);
+	APIMod();
+
+	virtual ~APIMod();
+
     // private data stored for this module.
     APICore* core; // Linked core
     CharString file, language, versionstr; // version string does not include unixname
@@ -62,16 +69,6 @@ public:
     CharString modcwdloc; // CWD directory for mod
     bool isfolder, iszip;
     
-    
-    
-
-
-    // location for scripts, mod name, language, version
-    APIMod(APICore* core, CharString loc); //, CharString name, CharString language, CharString version);
-    APIMod(APICore* core);
-    APIMod();
-
-    virtual ~APIMod();
 
     // Same as the initializer, used if main initializer isn't used.
     void init(CharString file);

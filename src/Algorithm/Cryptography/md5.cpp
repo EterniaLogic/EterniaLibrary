@@ -341,8 +341,8 @@ std::ostream& operator<<(std::ostream& out, MD5 md5) {
 
 //////////////////////////////
 
-std::string md5(const std::string str) {
-    MD5 md5 = MD5(str);
+std::string md5(const std::string &str) {
+    MD5 md5x = MD5(str); // @suppress("Invalid arguments")
 
-    return md5.hexdigest();
+    return md5x.hexdigest();
 }

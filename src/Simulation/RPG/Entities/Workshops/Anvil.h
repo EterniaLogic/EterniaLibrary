@@ -8,9 +8,9 @@ public:
     
     Anvil(){
         classname="Anvil";
-        recipes.add(new Recipe("NOCONSUME Metal Hammer, 1 Hot Metal Item","1 Semi-Hot Metal Item", 300));
+        recipes.add(WorkshopRecipe("NOCONSUME Metal Hammer, 1 Hot Metal Item","1 Semi-Hot Metal Item", 300));
         
-        recipes.add(new Recipe("NOCONSUME Metal Hammer, 1 Hot Metal Item","1 Shaped Metal Item", 300)); // assuming that item has been fully shaped (Takes like 6-50 cycles)
+        recipes.add(WorkshopRecipe("NOCONSUME Metal Hammer, 1 Hot Metal Item","1 Shaped Metal Item", 300)); // assuming that item has been fully shaped (Takes like 6-50 cycles)
     }
 };
 

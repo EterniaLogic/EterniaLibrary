@@ -1,7 +1,8 @@
 #ifndef ENVTREE_H_
 #define ENVTREE_H_
 
-#include <Eternia/include.h>
+#include "../../../Data/includes.h"
+#include "../../../Math/Math.h"
 
 // Trees are factorial when generated.
 // Branch size and limbs are randomized, but a seed is needed

@@ -1,6 +1,7 @@
 #ifndef AUDIT_H_
 #define AUDIT_H_
 #include "../../Data/includes.h"
+#include "../Employee.h"
 
 // FROM wikipedia
 // An audit is a systematic and independent examination of books, accounts, 

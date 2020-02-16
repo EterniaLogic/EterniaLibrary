@@ -8,10 +8,10 @@ public:
         classname = "weaver";
         // Fabrics can be made out of cotton, hemp, wool, steel wool
     
-        recipes.add(new Recipe("1 Fabric","Shirt"));
-        recipes.add(new Recipe("1 Fabric","Pants"));
-        recipes.add(new Recipe("1 Fabric","Hat"));
-        recipes.add(new Recipe("1 Fabric","Socks"));
+        recipes.add(WorkshopRecipe("1 Fabric","Shirt"));
+        recipes.add(WorkshopRecipe("1 Fabric","Pants"));
+        recipes.add(WorkshopRecipe("1 Fabric","Hat"));
+        recipes.add(WorkshopRecipe("1 Fabric","Socks"));
     }
 };
 

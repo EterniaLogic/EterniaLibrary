@@ -11,7 +11,7 @@ public:
         classname="Boiler";
         
         // 
-        recipes.add(new Recipe("100ml Liquid","120ml Gas", 800));
+        recipes.add(WorkshopRecipe("100ml Liquid","120ml Gas", 800));
     }
 };
 

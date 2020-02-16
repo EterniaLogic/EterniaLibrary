@@ -18,7 +18,7 @@ public:
         energy.usewater = false;
         energy.createswaste = false;
         
-        hptype = HP_MANA; // HP is mana, but cannot die
+        health.hptype = HP_MANA; // HP is mana, but cannot die
     }
 };
 

@@ -82,10 +82,10 @@ LinkedList<APIMod*> APICore::preloadMods(){ // pre-loads mod files and dependenc
     LinkedList<APIMod*> mlist; // temporary list to figure out dependencies
     
 	LinkedList<CharString> dirlist = getDirListing(modfolder);
-	LinkedListIterator<CharString> it = dirlist.getIterator();
-	while(it.hasNext()){
-		CharString iv = it.next();
-		mlist.add(createDirMod(this, modfolder, iv));
+	LinkedListIterator<CharString> iter = dirlist.getIterator();
+	while(iter.hasNext()){
+		CharString ivx = ((CharString)iter.next());
+		mlist.add(createDirMod(this, modfolder, ivx));
 	}
     
     
@@ -113,7 +113,7 @@ LinkedList<APIMod*> APICore::preloadMods(){ // pre-loads mod files and dependenc
     	    logs.log(CS_TAB);
     	    LinkedListIterator<CharString> depstrs = mod->getMissingDependencies(mlist).getIterator();
     	    while(depstrs.hasNext()){
-    	        CharString vstring = depstrs.next();
+    	        CharString vstring = (CharString)depstrs.next();
     	        logs.log(CS_TAB+vstring);
     	    }
     	    

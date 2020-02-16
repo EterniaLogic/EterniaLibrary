@@ -15,8 +15,8 @@ void testLSTM_XOR4(){
     for(int k=0;k<100;k++){
         //for(int i=0;i<16;i++){
         for(int i=0;i<15;i++){
-            LinkedList<double> inputs = {(i&1), (i&2)>>1, (i&4)>>2, (i&8)>>3};
-            LinkedList<double> outputs = {(i&1) ^ ((i&2)>>1) ^ ((i&4)>>2) ^ ((i&8)>>3)};
+            LinkedList<double> inputs = {(i&1), (i&2)>>1, (i&4)>>2, (i&8)>>3}; // @suppress("Invalid arguments")
+            LinkedList<double> outputs = {(i&1) ^ ((i&2)>>1) ^ ((i&4)>>2) ^ ((i&8)>>3)}; // @suppress("Invalid arguments")
             cout << "test train " << i << " " << k << endl;
             ai.train(inputs, outputs, 1);
             cout << "end test train " << i << " " << k << endl;
@@ -26,7 +26,7 @@ void testLSTM_XOR4(){
     cout << "test training done\n" << endl;
     
     for(int i=0;i<16;i++){
-        LinkedList<double> inputs = {(i&1), (i&2)>>1, (i&4)>>2, (i&8)>>3};
+        LinkedList<double> inputs = {(i&1), (i&2)>>1, (i&4)>>2, (i&8)>>3};  // @suppress("Invalid arguments")
         LinkedList<double> testin = ai.get(inputs);
         cout << "test " << (i&1)<<((i&2)>>1)<<((i&4)>>2)<<((i&8)>>3) << " = " << testin[0] << endl;
     }

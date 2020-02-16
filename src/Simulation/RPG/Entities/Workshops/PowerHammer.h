@@ -11,9 +11,9 @@ public:
         powertype = WSP_ELECTRICITY;
         wattage = 4800;
     
-        recipes.add(new Recipe("1 Hot Metal Item","1 Semi-Hot Metal Item", 50));
+        recipes.add(WorkshopRecipe("1 Hot Metal Item","1 Semi-Hot Metal Item", 50));
         
-        recipes.add(new Recipe("1 Hot Metal Item","1 Shaped Metal Item", 50)); // assuming that item has been fully shaped (Takes like 6-50 cycles)
+        recipes.add(WorkshopRecipe("1 Hot Metal Item","1 Shaped Metal Item", 50)); // assuming that item has been fully shaped (Takes like 6-50 cycles)
     }
 };
 

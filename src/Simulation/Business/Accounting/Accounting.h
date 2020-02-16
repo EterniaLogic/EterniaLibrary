@@ -1,6 +1,11 @@
 #ifndef ACCOUNTING_H_
 #define ACCOUNTING_H_
 
+#ifndef COMPANY_H_
+#include "../../Company.h"
+#else
+class Company;
+#endif
 
 // perform standard acconting operations
 

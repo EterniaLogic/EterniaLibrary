@@ -9,8 +9,8 @@ public:
         classname="DryingTable";
         // dry stuff out
         
-        recipes.add(new Recipe("98ml lye water","soap bar")); // used ash can be used as a fertilizer
-        recipes.add(new Recipe("5g wood pulp, 10ml water","1 paper sheet"));
+        recipes.add(WorkshopRecipe("98ml lye water","soap bar")); // used ash can be used as a fertilizer
+        recipes.add(WorkshopRecipe("5g wood pulp, 10ml water","1 paper sheet"));
     }
 };
 

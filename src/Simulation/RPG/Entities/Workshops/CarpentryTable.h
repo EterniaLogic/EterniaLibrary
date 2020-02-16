@@ -9,8 +9,8 @@ public:
         classname="CarpentryTable";
         // convert wood into stuffs
         
-        recipes.add(new Recipe("8m wood log, NOCONSUME sawblade","8 wood planks 8m")); // used ash can be used as a fertilizer
-        recipes.add(new Recipe("wood","wood chips"));
+        recipes.add(WorkshopRecipe("8m wood log, NOCONSUME sawblade","8 wood planks 8m")); // used ash can be used as a fertilizer
+        recipes.add(WorkshopRecipe("wood","wood chips"));
     }
 };
 

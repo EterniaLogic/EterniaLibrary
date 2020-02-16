@@ -2,6 +2,7 @@
 #define ARMOR_H_
 
 #include "EquippableItem.h"
+#include "../../../BodyLocation.h"
 class Armor : public EquippableItem{
 public:
     BODY_LOCATION location; // armor location

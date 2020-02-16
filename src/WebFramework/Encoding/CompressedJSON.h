@@ -1,6 +1,8 @@
 #ifndef COMPRESSEDJSON_H_
 #define COMPRESSEDJSON_H_
 
+#include "../../../Data/includes.h"
+
 // This is a modification of the JSON library where all of the data is compressed.
 //  This should help speed up network transmission of data, but will not be (directly) supported by other libraries.
 

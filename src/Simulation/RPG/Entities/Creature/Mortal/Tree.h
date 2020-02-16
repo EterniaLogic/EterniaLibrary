@@ -14,8 +14,8 @@ public:
     Tree(){
         classname="Tree";
         _type = CT_Tree;
-        skills.add(new Skill("Hibernate", 1, 100, 0)); // tree-souls can fall asleep
-        limbs.add(new Limb(BL_UNKNOWN, 100, 100, 0)); // tree limb base
+        skills.add(Skill(SKT_MISC,"Hibernate", 1, 100, 0)); // tree-souls can fall asleep
+        health.limbs.add(new Limb(BL_UNKNOWN, 100, 100, 0)); // tree limb base
         
         energy.usefood = true; // food derived from sun
         health.uselimbs = true;
@@ -25,7 +25,7 @@ public:
         health.hptype = HP_FOOD; // HP pool is the food pool
         energy.calories_conversion_sun = 100; // 100 calories per hour in sun
         
-        blood = bloodmax = 20; // trees can lose a lot of sap and still survive
+        health.blood = health.bloodmax = 20; // trees can lose a lot of sap and still survive
         
         
         soul.age = 0; // most trees have baby souls

@@ -66,14 +66,16 @@ public:
         }
         
         listx = tmplist;
-        
-        return val;
     }
     
     T get(long index){
         return listx[index];
     }
     
+    T get(long index) const{
+            return listx[index];
+        }
+
     // remove one of val from list (Expensive!)
     T remove(T val){
         for(long i=0;i<len;i++){
@@ -106,7 +108,7 @@ public:
     }
     
     T operator [](long index) const{
-        get(index);
+        return ((T)this->get(index));
     }
     
     T& operator [](long index){

@@ -882,6 +882,10 @@ istream& operator >> (istream &in,  CharString &c){
 	return in;
 }
 
+CharString CharString::operator =(CharString str){
+	set(str);
+}
+
 template<std::size_t N>
 CharString CharString::operator +=(const char(&val)[N]){
     concata(val, N);

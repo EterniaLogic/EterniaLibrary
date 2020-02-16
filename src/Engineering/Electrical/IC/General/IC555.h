@@ -5,7 +5,7 @@
 
 // The 555 is often used as a pulse driver
 
-class IC555 : private virtual IC {
+class IC555 : public IC {
     public:
         IC555();
         virtual ~IC555();

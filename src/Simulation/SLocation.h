@@ -2,7 +2,9 @@
 #define SLOCATION_H_
 
 #include "../Data/Location.h"
+#include "../Math/Math.h"
 
+using namespace Math;
 
 class SLocation : public Location {
 public:

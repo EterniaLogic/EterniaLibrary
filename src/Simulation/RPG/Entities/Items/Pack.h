@@ -14,7 +14,7 @@ public:
     Pack(){
         inventory.space = 0.025;
         inventory.usedspace = 0;
-        maxweight = 25; // kg
+        inventory.maxweight = 25; // kg
     }
     
     // Enchant [space+pocket] for larger space

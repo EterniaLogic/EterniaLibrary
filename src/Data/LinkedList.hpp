@@ -446,9 +446,14 @@ public:
 
     // retrieve item value?
     T operator [](long i) const {
-        //freeze(); // @suppress("Invalid arguments")
-//        ArrayList<T> alist = getArrayList();
-        return this->get(i);//alist[i];
+    	LinkedNode<T>* current = baseNode;
+    	int i1=0;
+    	while(current != 0x0){
+			if(i1 == i){
+				return current->data;
+			}
+			current = current->next;
+		}
     }
 
     T& operator [](long index){

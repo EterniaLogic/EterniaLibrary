@@ -26,8 +26,8 @@ class Statistics {
 
         // Data collection (Please use only one type at a time for each sampler)
         void sampleDouble(double number); // adds a double
-        void sampleVector(vertex v); // add a vertex
-        void sampleVectorWithWeight(vertex v, double weight); // adds a vertex with a weight (trails)
+        void sampleVector(Math::vertex v); // add a vertex
+        void sampleVectorWithWeight(Math::vertex v, double weight); // adds a vertex with a weight (trails)
 
         void sort(); // use nlog(n) sorting algorithm.
 
@@ -35,8 +35,8 @@ class Statistics {
 
         // double data
         double getMean(); // used to get the average of a list of Doubles
-        vertex getMedian(); // get the number is in the "Middle"
-        vertex getMode(); // returns the number that occurs the most times
+        Math::vertex getMedian(); // get the number is in the "Middle"
+        Math::vertex getMode(); // returns the number that occurs the most times
         double getRange(); // determines the max-min
         double getVariance(); // determines the variance of the values sum[(i-mean)^2]
         double getDeviation(); // determines the standard deviation of the points sqrt(variance)
@@ -44,9 +44,9 @@ class Statistics {
         double getIQR(); // returns the Inter-Quartile range
 
         //vertex data
-        vertex getMeanVector(); // returns the average vertex, sample with the weight to act as a center of mass
-        vertex getMedianVector(); // returns vertex that is in the "Middle" of all of the vertexs
-        vertex getModeVector(); // returns the vertex with most occurences
+        Math::vertex getMeanVector(); // returns the average vertex, sample with the weight to act as a center of mass
+        Math::vertex getMedianVector(); // returns vertex that is in the "Middle" of all of the vertexs
+        Math::vertex getModeVector(); // returns the vertex with most occurences
         double getRangeVector(); // determines the largest vertex (from origin)
 };
 

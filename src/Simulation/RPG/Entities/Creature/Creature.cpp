@@ -24,9 +24,8 @@ Creature::Creature(){
     energy.createswaste = true;
     stats.canlevel = false; // Gods cannot gain material power
     stats.canlevel = true;
-    pools.MP = pools.MPMax = 100; // soul also has MP alongside Psi.
-    pools.SP = pools.SPMax = 100;
-    
+    pools.mp = pools.MPMax = 100; // soul also has MP alongside Psi.
+    pools.sp = pools.SPMax = 100;
     
     mother = father = 0x0;
     
