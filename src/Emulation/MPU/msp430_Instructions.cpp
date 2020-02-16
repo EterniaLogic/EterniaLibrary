@@ -48,7 +48,7 @@ namespace MSP430{
 
     void MSP430::jn(unsigned int location) {
         if(_mem(SR) & _N) {
-            // C flag is set
+            // N flag is set
             PC = location; // jump to location
         }
     }

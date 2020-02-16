@@ -1,6 +1,11 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
-// copyright reserved.
+
+// Mixed copyright reserved
+// copyright E. Robert Tisdale (10/17/04)
+// modified copyright reserved. (Various other values)
+// modified copyright EterniaLogic (Brent Clancy)
+
 #include <cstring>
 #include "Data/CharString.h"
 

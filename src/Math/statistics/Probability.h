@@ -2,7 +2,7 @@
 #define PROBABILITY_H_
 
 // The probability can be defined!
-const float PMax = 1; // 100% Probability
+const float PMax = 1.0; // 100% Probability
 
 class Probability {
 

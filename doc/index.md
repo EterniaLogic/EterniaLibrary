@@ -8,15 +8,10 @@
 * Complete Web Framework (Templates, Scripting, HTML/RESTFul Server)
 * Encryption
 * CharString (Complete "String" replacement)
-* Data Structures (LinkedList, HashMap, ect)
+* [[Data Structures]] (LinkedList, HashMap, ect)
 * EventHandler (Self-timing and application of events)
 * Socket Server (TCP, UDP, ICMP)
 * Parsing
 * Serialization
 
-#### Python(?) ###
 
-
-
-
-More cites here please!
