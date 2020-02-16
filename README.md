@@ -51,7 +51,7 @@ Although EterniaLibrary is slowly becoming larger and relatively more stable wit
 
 Documentation and Examples
 --------------------------
-[Documentation Index](https://github.com/EterniaLogic/EterniaLibrary/blob/master/doc/index.md "Documentation Index")
+[Documentation Index](https://github.com/EterniaLogic/EterniaLibrary/blob/master/Documentation/index.md "Documentation Index")
 
 
 Usage
