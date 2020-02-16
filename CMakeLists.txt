@@ -66,43 +66,43 @@ SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
 SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 # STATIC SHARED
-ADD_LIBRARY("Eternia" STATIC ${CC_src2} "Eternia.h")
+ADD_LIBRARY("Eternia" STATIC ${CC_src2})
 TARGET_LINK_LIBRARIES(Eternia ${CMAKE_THREAD_LIBS_INIT})
-ADD_LIBRARY("Eternia32" STATIC ${CC_src2} "Eternia.h")
+ADD_LIBRARY("Eternia32" STATIC ${CC_src2})
 TARGET_LINK_LIBRARIES("Eternia32" ${CMAKE_THREAD_LIBS_INIT})
 set_target_properties("Eternia32" PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 
-ADD_LIBRARY("EterniaS" SHARED "Eternia.h") # ${CC_src2}
+ADD_LIBRARY("EterniaS" SHARED "src/Eternia.h") # ${CC_src2}
 TARGET_LINK_LIBRARIES(EterniaS "Eternia")
-ADD_EXECUTABLE("EterniaExec" "main.cpp")
+ADD_EXECUTABLE("EterniaExec" "src/main.cpp")
 TARGET_LINK_LIBRARIES(EterniaExec "Eternia")
 
-ADD_EXECUTABLE("EterniaTest" "test.cpp")
+ADD_EXECUTABLE("EterniaTest" "test/test.cpp")
 TARGET_LINK_LIBRARIES(EterniaTest "Eternia")
 
 add_custom_command(TARGET Eternia
                 POST_BUILD
-                WORKING_DIRECTORY ./
-                COMMAND bash version.sh
+                WORKING_DIRECTORY ../
+                COMMAND bash build/Scripts/version.sh
                 COMMENT "{EterniaLib} version up"
 )
 
 add_custom_command(TARGET EterniaExec
                 POST_BUILD
-                WORKING_DIRECTORY ./
+                WORKING_DIRECTORY ../
                 COMMENT "{EterniaLib} use ./bin/EterniaExec to run basic tests"
 )
 
 add_custom_command(TARGET Eternia
                 PRE_BUILD
-                WORKING_DIRECTORY ./
-                COMMAND bash build_scripts/copyincludes.sh
+                WORKING_DIRECTORY ../
+                COMMAND bash build/Scripts/copyincludes.sh
                 COMMENT "{EterniaLib} copy headers to includes"
 )
 
 add_custom_command(TARGET EterniaS
                 POST_BUILD
-                WORKING_DIRECTORY ./
+                WORKING_DIRECTORY ../
                 COMMAND cp lib/libEterniaS.so lib/libEternia.so
                 COMMENT "{EterniaLib} copy shared libEterniaS.so to libEternia.so"
 )

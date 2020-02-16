@@ -30,7 +30,8 @@ Linux:
 - no direct dependencies besides "build-essential" and pthreads
 
 
-		cmake .
+		cd build
+		cmake ..
 		make -j 4
 		make package  
 		

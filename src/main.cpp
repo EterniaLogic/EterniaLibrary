@@ -7,12 +7,12 @@
 
 #include <time.h>
 
-#include "src/test.h"
-#include "src/include.h"
-#include "src/asm/asm1.h"
+#include "test.h"
+#include "include.h"
+#include "asm/asm1.h"
 
 
-#include "src/Engineering/Chemistry/Composite.h"
+#include "Engineering/Chemistry/Composite.h"
 
 #include <iostream>
 #include <stdio.h>

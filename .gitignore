@@ -1,16 +1,16 @@
 builderrors.txt
-CMakeCache.txt
-CMakeFiles
+build/CMakeCache.txt
+build/CMakeFiles
 cmake_install.cmake
 libEternia.a
 EterniaLibrary
 Makefile
 Testing
 
-CPackConfig.cmake
-CPackSourceConfig.cmake
+build/CPackConfig.cmake
+build/CPackSourceConfig.cmake
 
-.gitignore
+#.gitignore
 
 src/Gamelogic/
 #AI/
@@ -45,6 +45,9 @@ install_manifest.txt
 *.la
 *.a
 *.lib
+
+Build/Code::Blocks/obj
+Build/Code::Blocks/bin
 
 # Executables
 *.exe
