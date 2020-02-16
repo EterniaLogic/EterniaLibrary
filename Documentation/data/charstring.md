@@ -26,7 +26,6 @@ The CharString is a complex implementation of char* to increase the ease of func
 
 | Function | Returns | Description |
 |---|---|---|
-
 | shiftLeft(int times) | char* | returns characters that are removed when shifted left. |
 | split(char splitter, char stopper) | LinkedList<CharString>  | splits a string into parts based off of the splitter, stops as stopper character. |
 | split(charstring splitter) | LinkedList<CharString>  | splits a string into parts based off of the splitter. |
