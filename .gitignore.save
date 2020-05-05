@@ -1,14 +1,11 @@
 builderrors.txt
 build/CMakeCache.txt
 build/CMakeFiles
-CMakeCache.txt
-CMakeFiles
-cmake_install.cmake
+build/cmake_install.cmake
 libEternia.a
 EterniaLibrary
 Makefile
 Testing
-.~lock*
 
 build/CPackConfig.cmake
 build/CPackSourceConfig.cmake
@@ -66,8 +63,8 @@ Windows/*.exe
 Windows/*.a
 
 install_manifest.txt
-test/testParsers.txt
-test/testSecureParser.txt
+#test/testParsers.txt
+#test/testSecureParser.txt
 test/test.txt
 valgrind.log
 build.txt

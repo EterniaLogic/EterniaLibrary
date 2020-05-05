@@ -9,6 +9,9 @@
 // sinc(i) is the best describer for fluid's oscillations when something falls into it. Without
 //      gravity, friction in water is almost nothing except for present air.
 
+// everything is dealt with in terms of meter^3 and kilograms.
+
+
 class FluidMechanics {
     public:
         FluidMechanics();

@@ -13,6 +13,10 @@
 #include "Physics/Work.h"
 #include "Physics/Orbit.h"
 #include "Physics/Equations.h"
+#include "Physics/FluidMechanics/FluidBaseEquations.h"
+#include "Physics/FluidMechanics/FluidMechanics.h"
+#include "Physics/FluidMechanics/ViscosityCurve.h"
+
 #include "Physics/Kinematics/FreeBody.h"
 #include "Physics/Kinematics/Collision1D.h"
 #include "Physics/Rotational/RotationalFuncs.h"

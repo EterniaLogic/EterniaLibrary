@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /media/CBackups/Dev/Cpp/EterniaLib
-# Build directory: /media/CBackups/Dev/Cpp/EterniaLib/build
+# Source directory: /media/CStuff/Dev/Cpp/EterniaLib
+# Build directory: /media/CStuff/Dev/Cpp/EterniaLib/build
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

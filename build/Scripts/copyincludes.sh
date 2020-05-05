@@ -4,7 +4,7 @@
 
 rm include -R
 mkdir include
-cp Eternia.h include/
+#cp Eternia.h include/
 mkdir include/Eternia
 cp src/* include/Eternia/ -R
 

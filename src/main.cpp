@@ -66,7 +66,8 @@ void InputRedirection::handleInputLine(CharString* input) {
     } else if(input->Compare("ExHashTest",10)) {
         testExHash();
     } else if(input->Compare("PhysTest",8)) {
-        testGravity();
+        //testGravity();
+        testViscosityCurve();
     } else if(input->Compare("EngineerTest",12)) {
 
     } else if(input->Compare("AbstractDB",10)) {
@@ -141,13 +142,14 @@ int main() {
     cout << "Version: " << FULLVERSION_STRING << endl;
     
 #ifdef LINUXX
-    signal(SIGSEGV, handler);   // install a handler
+    //1signal(SIGSEGV, handler);   // install a handler
 #endif
 
 #ifdef DEBUG
     CharString c = "test";
     cout << c << endl;
 
+    testViscosityCurve();
 
     //testGravity(); // tests Gravity calculation
     //testMath();
@@ -178,7 +180,7 @@ int main() {
     //testFileCache();
     
     //testExHash();
-    testHTTP();
+    //testHTTP();
     //testNetwork();
     //testOrbit();
     

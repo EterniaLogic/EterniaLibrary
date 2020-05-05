@@ -41,7 +41,7 @@ Linux:
 
 
 Windows:
-- Use the Code::Blocks project file or eclipse
+- Use Code::Blocks, Visual Basics or eclipse
 - libatomic.a and libws_32.a required. (usually supplied with windows)
 
 

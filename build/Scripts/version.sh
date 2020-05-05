@@ -7,7 +7,7 @@ echo $v > version.txt
 
 echo version $v
 
-echo "#ifndef VER_H" > version.h
-echo "#define VER_H" >> version.h
-echo "#define FULLVERSION_STRING \"$v\"" >> version.h
-echo "#endif" >> version.h
+echo "#ifndef VER_H" > src/version.h
+echo "#define VER_H" >> src/version.h
+echo "#define FULLVERSION_STRING \"$v\"" >> src/version.h
+echo "#endif" >> src/version.h

@@ -3,3 +3,8 @@
 #include "Business/include.h"
 #include "RPG/include.h"
 #include "Idle/include.h"
+#include "FluidMap/CellMaterial.h"
+#include "FluidMap/CellMaterials.h"
+#include "FluidMap/FluidCell.h"
+#include "FluidMap/FluidMap2D.h"
+

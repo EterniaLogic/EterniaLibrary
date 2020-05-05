@@ -13,6 +13,17 @@ else()
     set(LIBSUFFIX "32")
 endif()
 
+set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src")
+#set(PROJECT_BINARY_DIR "${PROJECT_BINARY_DIR}")
+
+message("${PROJECT_SOURCE_DIR} == ${PROJECT_BINARY_DIR}")
+message("${CMAKE_CURRENT_LIST_DIR}")
+
+
+if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+   message(SEND_ERROR "In-source builds are not allowed.")
+endif("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+
 
 #build for windows under linux
 ############################set(WIN32 1)
@@ -47,10 +58,10 @@ set( CMAKE_C_FLAGS "-fPIC" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
-    "src/*.h"
-    "src/*.c"
-    "src/*.cpp"
-    "src/*.hpp"
+    "*.h"
+    "*.c"
+    "*.cpp"
+    "*.hpp"
 )
 
 include_directories(src/)
@@ -82,8 +93,8 @@ TARGET_LINK_LIBRARIES(EterniaTest "Eternia")
 
 add_custom_command(TARGET Eternia
                 POST_BUILD
-                WORKING_DIRECTORY ../
-                COMMAND bash build/Scripts/version.sh
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../
+                COMMAND bash "build/Scripts/version.sh"
                 COMMENT "{EterniaLib} version up"
 )
 
@@ -95,7 +106,7 @@ add_custom_command(TARGET EterniaExec
 
 add_custom_command(TARGET Eternia
                 PRE_BUILD
-                WORKING_DIRECTORY ../
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../
                 COMMAND bash build/Scripts/copyincludes.sh
                 COMMENT "{EterniaLib} copy headers to includes"
 )
