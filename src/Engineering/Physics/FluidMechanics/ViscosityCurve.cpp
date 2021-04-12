@@ -19,19 +19,22 @@ ViscosityCurve::ViscosityCurve(double Viscosity){
 }
 
 // assumes data already solved for.
-ViscosityCurve::ViscosityCurve(double A, double B, double C, double freezingtemp){
+ViscosityCurve::ViscosityCurve(double A, double B, double C, double freezingtemp, bool gas){
     this->lowesttemp = freezingtemp;
     this->A = A;
     this->B = B;
     this->C = C;
     this->V = 0;
+    this->gas = gas;
 }
 
 // List of points in temperature and viscosity.
-ViscosityCurve::ViscosityCurve(LinkedList<TempViscosityPoint*> points, double lowesttemp){
+ViscosityCurve::ViscosityCurve(LinkedList<TempViscosityPoint*> points, double lowesttemp, bool gas){
     this->lowesttemp = lowesttemp;
     this->V = 0;
-    solveCurve(points);
+    this->gas = gas;
+    if(gas) solveGasCurve(points);
+    else solveLiquidCurve(points);
 }
 
 double runviscosity(double A, double B, double T, double C){
@@ -43,9 +46,18 @@ double runviscosity(double A, double B, double T, double C){
 }
 
 
+// Gases are the opposite of Liquids.
+//  They become more viscous the hotter they get.
+void ViscosityCurve::solveGasCurve(LinkedList<TempViscosityPoint*> points){
+    this->A = 0;
+    this->B = 0;
+    this->C = 0;
+    
+}
+
 // Solve extrapolation for equation Mu = Ae^(B/(T-C))
-// only 70-95% accurate depending on the given curve data, but really fast to interpolate.
-void ViscosityCurve::solveCurve(LinkedList<TempViscosityPoint*> points){
+// only 70-95% accurate depending on the given curve data, but relatively fast to interpolate for several materials.
+void ViscosityCurve::solveLiquidCurve(LinkedList<TempViscosityPoint*> points){
     this->A = 0;
     this->B = 0;
     this->C = 0;

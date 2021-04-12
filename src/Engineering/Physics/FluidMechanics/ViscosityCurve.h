@@ -37,14 +37,16 @@ class ViscosityCurve {
 private:
     double A, B, C, V;
     double lowesttemp; // starting temperature for a liquid/gas. (since assumed inifity if a solid)
+    bool gas;
 
 public:
     ViscosityCurve(); // assumes data will be entered incrementally
     ViscosityCurve(double V); // not a curve, constant (Very inaccurate at any other temperature than assumed)
-    ViscosityCurve(double A, double B, double C, double freezingtemp); // assumes data already solved for.
-    ViscosityCurve(LinkedList<TempViscosityPoint*> points, double freezingtemp); // solve List of points in temperature and viscosity.
+    ViscosityCurve(double A, double B, double C, double freezingtemp, bool gas); // assumes data already solved for.
+    ViscosityCurve(LinkedList<TempViscosityPoint*> points, double freezingtemp, bool gas); // solve List of points in temperature and viscosity.
     
-    void solveCurve(LinkedList<TempViscosityPoint*> points); // highest temp assumes 0.01 or less viscosity.
+    void solveGasCurve(LinkedList<TempViscosityPoint*> points);
+    void solveLiquidCurve(LinkedList<TempViscosityPoint*> points); // highest temp assumes 0.01 or less viscosity.
     
     float getViscosity(float temperature); // get viscosity from Kelvin temperature
     

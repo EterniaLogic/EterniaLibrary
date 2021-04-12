@@ -26,7 +26,7 @@ AES256::~AES256(){
     aes256_done(&ctx);
 }
 
- // auto-generate 256-bit key
+ // auto-generate 128-bit key
 CharString AES256::genKey(){
      srand (time(0x0));
      CharString k = "                ";

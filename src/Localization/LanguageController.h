@@ -2,6 +2,7 @@
 #define LANGCONTROLLER_H_
 
 #include "../Data/CharString.h"
+#include "../Parsing/LoadFile.h"
 
 // Languages are incredibly unique...
 // english, spanish, french, german, chinese, Bulgarian, Russian, Swedish, Italian, Japanese

@@ -27,13 +27,18 @@ private:
     double melting; // if solid, phase change to liquid, freezing, desublimation point
     double boiling; // if liquid, phase change to gas, condensation point, sublimation point
     double vaporpressure; // for materials like mercury that just dont want to stay a liquid at sea level. (increases with temperature)
+    double specific_heat; // joule/gram (4.186 water)
+    double thermal_conductivity; // W/m Kelvin (0.6 water)
     MATTERSTATE state;
     
     LinkedList<BoilingMaterial> materials;
     
 public:
+    CellMaterial(){}
     CellMaterial(MATTERSTATE state, double melting, double boiling);
+    CellMaterial(MATTERSTATE state, double melting, double boiling, double specific_heat, double thermal_conductivity);
     CellMaterial(MATTERSTATE state, double melting, double boiling, ViscosityCurve viscosity);
+    CellMaterial(MATTERSTATE state, double melting, double boiling, double specific_heat, double thermal_conductivity, ViscosityCurve viscosity);
     virtual ~CellMaterial();
     
     void setViscosity(ViscosityCurve viscosity); // required for simulation, just input list of kelvin+viscosity to get a curve

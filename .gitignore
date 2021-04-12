@@ -1,4 +1,7 @@
 builderrors.txt
+build/CPackConfig.cmake
+build/CPackSourceConfig.cmake
+build/CTestTestfile.cmake
 build/CMakeCache.txt
 build/CMakeFiles
 CMakeCache.txt

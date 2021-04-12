@@ -93,27 +93,27 @@ TARGET_LINK_LIBRARIES(EterniaTest "Eternia")
 
 add_custom_command(TARGET Eternia
                 POST_BUILD
-                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../
                 COMMAND bash "build/Scripts/version.sh"
                 COMMENT "{EterniaLib} version up"
 )
 
 add_custom_command(TARGET EterniaExec
                 POST_BUILD
-                WORKING_DIRECTORY .
+                WORKING_DIRECTORY ../
                 COMMENT "{EterniaLib} use ./bin/EterniaExec to run basic tests"
 )
 
 add_custom_command(TARGET Eternia
                 PRE_BUILD
-                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../
                 COMMAND bash build/Scripts/copyincludes.sh
                 COMMENT "{EterniaLib} copy headers to includes"
 )
 
 add_custom_command(TARGET EterniaS
                 POST_BUILD
-                WORKING_DIRECTORY .
+                WORKING_DIRECTORY ../
                 COMMAND cp lib/libEterniaS.so lib/libEternia.so
                 COMMENT "{EterniaLib} copy shared libEterniaS.so to libEternia.so"
 )

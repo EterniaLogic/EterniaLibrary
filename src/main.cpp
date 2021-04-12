@@ -7,7 +7,7 @@
 
 #include <time.h>
 
-#include "test.h"
+#include "../test/test.h"
 #include "include.h"
 #include "asm/asm1.h"
 
@@ -51,7 +51,7 @@ void InputRedirection::handleInputLine(CharString* input) {
     double ii = 0;
     double time1 = clock()/CLOCKS_PER_SEC;
     double basetime = clock()/CLOCKS_PER_SEC;
-    cout << "'" << input << "'" << endl; // 'test'
+    //cout << "'" << input << "'" << endl; // 'test'
     
     if(input->Compare("exit",4)) {
         this->stop = true;
@@ -146,12 +146,13 @@ int main() {
 #endif
 
 #ifdef DEBUG
-    CharString c = "test";
-    cout << c << endl;
+    //CharString c = "test";
+    //cout << c << endl;
 
-    testViscosityCurve();
-
+    
     //testGravity(); // tests Gravity calculation
+    //testViscosityCurve();
+    //testLogger();
     //testMath();
     //testParsers();
     //testDataStructures();

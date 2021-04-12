@@ -3,12 +3,15 @@
 
 
 // only for inaccurate situations, but filling in information when there is no graph data.
+//
 ViscosityCurve ViscosityCurve::curveInaccurateGas25C(double visc25c, double freezingpoint){
-    // copy data and scale
+    // copy data and scale from Hydrogen
+    
+    ViscosityCurve curve = ViscosityCurve();
 }
 
 ViscosityCurve ViscosityCurve::curveInaccurateLiquid25C(double visc25c, double freezingpoint){
-    // copy data and scale
+    // copy data and scale from Water
     
     double diff = visc25c/0.89;
     LinkedList<TempViscosityPoint*> tpoints;
@@ -62,7 +65,7 @@ ViscosityCurve ViscosityCurve::curveInaccurateLiquid25C(double visc25c, double f
     tpoints.add(new TempViscosityPoint(353.15, 0.354*diff));
     
     
-    ViscosityCurve curve = ViscosityCurve(tpoints,freezingpoint);
+    ViscosityCurve curve = ViscosityCurve(tpoints,freezingpoint,false);
     
     return curve;
 }

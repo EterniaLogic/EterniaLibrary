@@ -28,7 +28,7 @@ class SecuredParser {
         CharString* encodeText(CharString* ss);
 
     private:
-        uint8_t key[32];
+        uint8_t key[32]; // 256 bit key
         aes256_context ctx;
         CharString* file;
 };

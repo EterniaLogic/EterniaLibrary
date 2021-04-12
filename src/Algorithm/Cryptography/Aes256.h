@@ -38,7 +38,7 @@ private:
     uint8_t key[16];
 public:
     AES256(CharString key);
-    AES256(uint8_t keyv[16]);
+    AES256(uint8_t keyv[16]); // given key can also be generated in md5
     AES256(); // auto-generates key
     virtual ~AES256();
 

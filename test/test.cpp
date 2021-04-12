@@ -3,8 +3,7 @@
 #include "version.h"
 #include <iostream>
 #include <cstring>
-#include "../src/Testing/include.h"
-#include "../src/Math/test/testMath.h"
+#include "test.h"
 
 using namespace std;
 
