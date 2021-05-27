@@ -13,7 +13,7 @@ else()
     set(LIBSUFFIX "32")
 endif()
 
-set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src")
+set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/../src")
 #set(PROJECT_BINARY_DIR "${PROJECT_BINARY_DIR}")
 
 message("${PROJECT_SOURCE_DIR} == ${PROJECT_BINARY_DIR}")
@@ -58,13 +58,13 @@ set( CMAKE_C_FLAGS "-fPIC" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
-    "*.h"
-    "*.c"
-    "*.cpp"
-    "*.hpp"
+    "../*.h"
+    "../*.c"
+    "../*.cpp"
+    "../*.hpp"
 )
 
-include_directories(src/)
+include_directories(../src/)
 
 
 FIND_PACKAGE(Threads REQUIRED)
@@ -73,8 +73,8 @@ set(${PROJECT_NAME}_DEFINITIONS
     CACHE INTERNAL "${PROJECT_NAME}: Definitions" FORCE)
 
     
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
+SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../bin)
 
 # STATIC SHARED
 ADD_LIBRARY("Eternia" STATIC ${CC_src2})
@@ -83,12 +83,12 @@ ADD_LIBRARY("Eternia32" STATIC ${CC_src2})
 TARGET_LINK_LIBRARIES("Eternia32" ${CMAKE_THREAD_LIBS_INIT})
 set_target_properties("Eternia32" PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 
-ADD_LIBRARY("EterniaS" SHARED "src/Eternia.h") # ${CC_src2}
+ADD_LIBRARY("EterniaS" SHARED "../src/Eternia.h") # ${CC_src2}
 TARGET_LINK_LIBRARIES(EterniaS "Eternia")
-ADD_EXECUTABLE("EterniaExec" "src/main.cpp")
+ADD_EXECUTABLE("EterniaExec" "../src/main.cpp")
 TARGET_LINK_LIBRARIES(EterniaExec "Eternia")
 
-ADD_EXECUTABLE("EterniaTest" "test/test.cpp")
+ADD_EXECUTABLE("EterniaTest" "../test/test.cpp")
 TARGET_LINK_LIBRARIES(EterniaTest "Eternia")
 
 add_custom_command(TARGET Eternia
@@ -132,10 +132,16 @@ add_custom_target(windows
                 WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
 )
 
+add_custom_target(run
+                DEPENDS EterniaExec
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/
+                COMMAND ../bin/EterniaExec
+)
+
 enable_testing()
 set(CTEST_OUTPUT_ON_FAILURE 1)
-add_test(Math bin/EterniaTest "Math")
-add_test(DataStructureMemoryLeaks bin/EterniaTest "DataStruMemLeaks")
+add_test(Math ../bin/EterniaTest "Math")
+add_test(DataStructureMemoryLeaks ../bin/EterniaTest "DataStruMemLeaks")
 
 
 

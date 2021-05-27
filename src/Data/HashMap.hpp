@@ -6,8 +6,19 @@
 #include <iostream>
 #include "../Data/CharString.h"
 #include "LinkedList.hpp"
-#include "../Algorithm/Cryptography/ExHash_SumMap.hpp"
+#include "../Algorithm/Cryptography/ExSumMap.hpp"
 using namespace std;
+
+
+// HashMap
+/*
+
+    add(key, value);
+    get(key);
+    remove(key);
+
+*/
+
 
 template<class T>
 class HMEntry {
@@ -15,6 +26,7 @@ class HMEntry {
         // h(k), hashing function.
         void setID() {
             // does a HashMap<T> implementation.
+            // if size is too large, just attempts to xor previous bits?
 
             //cout << calcmaxsize(sizeof(uint8_t)) << endl;
             if(size < calcmaxsize(sizeof(uint8_t)))

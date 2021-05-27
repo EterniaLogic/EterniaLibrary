@@ -4,7 +4,7 @@
 #include "../../Data/includes.h"
 
 // Forth is an early programming language that implements the stack.
-// 49 years old language.
+//  51 years old language.
 
 
 // Built-in words:
@@ -12,7 +12,15 @@
 
 // 1 2 3 4 5 +   // put 1 2 3 4 5 into the stack
 
+
+// Several words are 
+
+
 class Forth{
+private:
+    HashMap<CharString> ForthWords;
+    
+    void initWords();
 public:
     Forth();
     virtual ~Forth();

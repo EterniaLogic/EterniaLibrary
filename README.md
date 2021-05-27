@@ -1,6 +1,6 @@
 # Eternia Library #
 
-**Version**: 1.151.9
+**Version**: 1.152.6
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -31,11 +31,13 @@ Linux:
 
 
 		cd build
-		cmake ..
+		cmake .
 		make -j 4
-		make package  
+		make package
 		
 - 'make package' generates .deb, .rpm, and .tar.gz files.
+- 'make -j 50 run' runs the base console environment.
+- 'make -j 50 runtest' runs the testing environment.
 
 
 

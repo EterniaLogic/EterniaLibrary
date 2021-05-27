@@ -10,7 +10,7 @@
 #include "../test/test.h"
 #include "include.h"
 #include "asm/asm1.h"
-
+#include "Algorithm/Cryptography/ExHash64.h"
 
 #include "Engineering/Chemistry/Composite.h"
 
@@ -138,14 +138,9 @@ void sleep( time_t delay ) {
 
 
 
-int main() {
-    cout << "Version: " << FULLVERSION_STRING << endl;
-    
-#ifdef LINUXX
-    //1signal(SIGSEGV, handler);   // install a handler
-#endif
 
-#ifdef DEBUG
+
+void oldtests(){ // old tests down below?
     //CharString c = "test";
     //cout << c << endl;
 
@@ -194,6 +189,28 @@ int main() {
     //testAPICore();
     //testARB();
     //malloc_stats();
+}
+
+
+
+
+
+int main() {
+    cout << "Version: " << FULLVERSION_STRING << endl;
+    
+#ifdef LINUXX
+    //1signal(SIGSEGV, handler);   // install a handler
+#endif
+
+#ifdef DEBUG
+    oldtests();
+    
+    //testExHash();
+    
+    //exHash2ComputeConstants();
+    
+    
+    
     
 #endif
 

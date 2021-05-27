@@ -28,7 +28,8 @@ namespace Sorting{
 #include "Cryptography/Aes256.h"
 #include "Cryptography/crc32.h"
 #include "Cryptography/CryptoDefines.h"
-#include "Cryptography/ExHash.h"
+#include "Cryptography/ExSum.h"
+#include "Cryptography/ExHash64.h"
 #include "Cryptography/md5.h"
 #include "Pathing/DijkstraPath.hpp" // borked
 #include "Sorting/InsertionSort.h"
