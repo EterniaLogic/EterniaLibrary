@@ -1,3 +1,12 @@
+2021:
+    - Optimizing cryptography
+    - Separated out Testing environments
+    - Started security measures for memory hack detection
+
+2020:
+    - Optimized Web Framework
+    - AI Neural Network types (CNN, LSTM, etc. -- has math problems still)
+
 2018:
     - RESTFul API (Needs documentation and testing)
     - Stability fixes and expansion of Data structures, Interfaces for EterniaEngine
