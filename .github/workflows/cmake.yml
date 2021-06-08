@@ -39,7 +39,7 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       # cmake --build . --config $BUILD_TYPE
-      run: cmake --build . --config release --target Eternia --parallel 2
+      run: cmake --build . --config release --target Eternia EterniaTest --parallel 10
 
     - name: Test
       working-directory: ${{runner.workspace}}/EterniaLibrary/build
