@@ -1,6 +1,7 @@
 # Eternia Library #
+[![CMake](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml/badge.svg)](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml)
 
-**Version**: 1.152.6
+**Version**: 1.152.6 
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
 
@@ -10,13 +11,13 @@
 
 **Original Creation Date**: January 13, 2012
 
-**Copyright**: Copyright 2019 Brent Clancy
+**Copyright**: Copyright 2021 Brent Clancy
 
 **License**: GNU v3
 
 **Language**: C/C++2011, ASM, HTML, Javascript
 
-	This library is used for server/client back-end systems and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.a, *.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
+	This library is used for server/client back-end systems, standard library applications and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.a, *.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
 
 
 	Anybody willing to help in this project may contribute!
