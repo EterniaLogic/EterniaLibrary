@@ -1,7 +1,7 @@
 
 
 #include <ctime>
-#include "../src/Testing/include.h"
+#include "../src/TestEnv/include.h"
 #include "AI/testAI.h"
 #include "API/testAPI.h"
 #include "Algorithm/Cryptography/testExHash.hpp"
