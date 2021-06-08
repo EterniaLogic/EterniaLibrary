@@ -1,5 +1,7 @@
 # Eternia Library #
 
+[![CMake](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml/badge.svg)](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml)
+
 **Version**: 1.152.6 
 
 **Author**: Brent Clancy (EterniaLogic) &nbsp;&nbsp;*[Other authors may list themselves below]*
