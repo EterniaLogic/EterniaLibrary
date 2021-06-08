@@ -1,7 +1,7 @@
 name: cppcheck-action
   # You may pin to the exact commit or the version.
-  # uses: deep5050/cppcheck-action@b4d7c69b911c24817691b4b210586568a858b4c5
-  uses: deep5050/cppcheck-action@v3.0
+  # uses: deep5050/cppcheck-action@v3
+  uses: deep5050/cppcheck-action@b4d7c69b911c24817691b4b210586568a858b4c5
   with:
     # GITHUB_TOKEN secret < automatically provided by Github , you don't need to set up >
     github_token: 
