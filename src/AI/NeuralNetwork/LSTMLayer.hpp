@@ -1,7 +1,6 @@
 #ifndef LSTMLAYER_H
 #define LSTMLAYER_H
 
-#include <limits>
 #include "LSTMNode.hpp"
 #include "../../Math/Math.h"
 

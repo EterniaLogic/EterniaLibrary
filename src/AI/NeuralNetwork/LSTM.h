@@ -4,7 +4,6 @@
 /* AIs use a graph-like structure that has weighted sums between each point.
 
 */
-#include <limits>
 #include "NeuralNetwork.h"
 #include "LSTMNode.hpp"
 #include "LSTMLayer.hpp"
