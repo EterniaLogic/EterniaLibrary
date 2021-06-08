@@ -38,7 +38,8 @@ jobs:
       working-directory: ${{runner.workspace}}/EterniaLibrary/build
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cmake --parallel 2 --target Eternia --build . --config $BUILD_TYPE
+      # cmake --build . --config $BUILD_TYPE
+      run: cmake --build . --config release --target Eternia --parallel 2
 
     - name: Test
       working-directory: ${{runner.workspace}}/EterniaLibrary/build
