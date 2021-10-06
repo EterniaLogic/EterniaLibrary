@@ -11,6 +11,8 @@ using namespace std;
 
 
 
+
+
 #ifdef _WIN64 || _WIN32
 
 #else
@@ -36,10 +38,14 @@ template<class T>
 class LinkedListIterator;
 #include "LinkedListIterator.hpp"
 #include "ArrayList.hpp"
+//#include "DynamicType.h"
 
 //#include "../Math/Functions/Basic.h"
 #include "../Math/struct/Matrix.h"
 
+
+//class CharString;
+//#include "CharString.h"
 
 template<class T>
 class LinkedList;
@@ -726,6 +732,40 @@ public:
         }
         cout << endl;
     }
+    
+    // returns a list based off of this list's type
+    // currently supports numeric values and strings
+    // NOTE: definitely slower than normal list operations with integers/floats
+    /*LinkedList<DynamicType> getDynamicList(){
+        LinkedList<DynamicType> listx;
+        
+        LinkedListIterator<T> it = getIterator();
+        
+        while(it.hasNext()){
+            T val = it.next();
+            DynamicType dyn = DynamicType(val); // supports   
+            listx.add(dyn); 
+        }
+        
+        return listx;
+    }*/
+    
+    // returns a comma-denoted list ()
+    // TODO FIX dependency problems
+    /*LinkedList<CharString> stringList(){
+        LinkedList<CharString> listvals;
+        LinkedListIterator<T> it = getIterator();
+        
+        while(it.hasNext()){
+            T val = it.next();
+            
+            
+            //listvals.add(CharString::getQuotedString(val));
+            
+        }
+        
+        return listvals;
+    }*/
     
 };
 

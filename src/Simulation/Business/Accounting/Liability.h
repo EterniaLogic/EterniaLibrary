@@ -1,7 +1,14 @@
 #ifndef LIABILITY__H
 #define LIABILITY__H
 
-enum LIABILITY_CLASS {LC_CURRENT, LC_LONGTERM};
+#include <ctime>
+#include <time.h>
+
+// Holdings are when someone puts money into your company to invest
+// Short term are for lump sums which are payable in a year
+enum LIABILITY_CLASS {LC_HOLDING, LC_SHORTTERM, LC_LONGTERM}; 
+
+// 
 enum LIABILITY_TYPE {
     LT_WAGE, LT_TAX, LT_ACCOUNTS_PAYABLE, // Current, easily liquidatable
     LT_BOND, LT_LEASE, LT_MORTGAGE, LT_LOAN, // debts
@@ -17,13 +24,24 @@ public:
     LIABILITY_CLASS ctype;
     LIABILITY_TYPE type;
     
-    double value;
+    
+    virtual double getValue(); // current value not including paid interest
+    virtual double paidInterest(); // sums up payments
+    
+    
+    double costbasis; // the current sum from all original transactions
+    
+    // Transactions related
+    // costbasis_requests -- a request for more debt
+    // lost_money -- spent the money
+    // gain_money -- dividends
+    LinkedList<Transaction> interestpayments, costbasis_requests, lost_money, gain_money;
     
     
     // DEBTS
-    double rate; // rate of change over period in percentage. 25% rate would increase $1,000 to $1,250 over a year for example. (1.25 = 25%)
-    double period; // days unto which a debt increases (monthly, yearly, etc.)
-    CharString last_loan_payment_date; // for loans
+    double interest_rate; // rate of change over period in percentage. 25% rate would increase $1,000 to $1,250 over a year for example. (1.25 = 25%)
+    double compound_period; // days unto which a debt compounds (monthly, yearly, etc.)
+    std::time_t startdate, expirydate; // unix time start/expiration time
 };
 
 #endif

@@ -12,8 +12,8 @@
 class Stock{
 private:
     Company* company;
-    int value; // value of each share
-    int total; // count of shares TOTAL in company
+    double last; // value of each share
+    int count; // count of shares TOTAL in company
     
 public:
     Stock();

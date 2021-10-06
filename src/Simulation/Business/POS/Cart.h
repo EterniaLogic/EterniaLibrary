@@ -7,11 +7,11 @@
 
 class Cart{
 private:
-    LinkedList<Item*> cartItems;
-    double discount; // coupon discounts
+    LinkedList<Item> cartItems;
+    double discount, salestax; // coupon discounts
     CharString cardstring; // string using a credit/debit card magnetic strip / chip.
 public:
-    Cart();
+    Cart(double salestax);
     
     double getGrossTotal(); // total only counting up items
     double getTaxedTotal(); // total including tax and discounts

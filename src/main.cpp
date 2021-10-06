@@ -189,6 +189,8 @@ void oldtests(){ // old tests down below?
     //testAPICore();
     //testARB();
     //malloc_stats();
+    
+    testSerializers();
 }
 
 

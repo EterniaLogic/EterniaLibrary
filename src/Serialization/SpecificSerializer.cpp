@@ -173,6 +173,7 @@ CharString SpecificSerializer::serializeId(int id){
         byteloc += xsize;
 
     } else if(pt.type == SSE_SSerializer){
+        ////
     } else if(pt.type == SSE_PType){ // Memory-protected type
         xsize = ((int*)ptr)[0];
         //type_info tinfo = ((type_info*)(ptr+sizeof(int))[0];

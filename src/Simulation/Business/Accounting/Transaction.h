@@ -6,7 +6,7 @@
 #include "../BEntity.h"
 
 
-enum TransType {TT_UNKNOWN, TT_BUY, TT_SELL, TT_SERVICE, TT_PAYROLL};
+enum TransType {TT_UNKNOWN, TT_BUY, TT_SELL, TT_SERVICE, TT_PAYROLL, TT_ACCOUNTSPAYABLE, TT_TRANSFER};
 
 // A transaction is a single event of changing one object of value for another object of value
 class Transaction{
@@ -19,7 +19,7 @@ public:
     TransType type;
     BEntity from, to; // from a person/ this company or to a person, this company
     BEntity *employee; // employee who processed this transaction (Who bought an item, etc)
-    CharString date; // Date / time this transaction occured
+    std::time_t date; // Date / time this transaction occured
     double value; // value in relevant currency (discounting tax)
     double tax; // tax incurred (Whether selling or buying)
     

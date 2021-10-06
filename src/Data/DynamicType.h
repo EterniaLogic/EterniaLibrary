@@ -58,7 +58,7 @@
 OPmacro(type,typet,+,+) \
 OPmacro(type,typet,-,-) \
 OPmacro(type,typet,*,*) \
-OPmacro(type,typet,/,/) \
+OPmacro(type,typet,/,/) 
 //OPmacro(type,typet,%,%) \
 //OPmacro(type,typet,<,<) \
 //OPmacro(type,typet,>,>)
@@ -66,13 +66,13 @@ OPmacro(type,typet,/,/) \
 #define TOPS_EQ_BIN(type, typet) \
 OPERATION_EQ(type,typet,|=,|=) \
 OPERATION_EQ(type,typet,^=,^=) \
-OPERATION_EQ(type,typet,&=,&=) \
+OPERATION_EQ(type,typet,&=,&=) 
 
 #define TOPS_EQ(type, typet)\
 OPERATION_EQ(type,typet,+=,+=) \
 OPERATION_EQ(type,typet,-=,-=) \
 OPERATION_EQ(type,typet,*=,*=) \
-OPERATION_EQ(type,typet,/=,/=) \
+OPERATION_EQ(type,typet,/=,/=) 
 //OPERATION_EQ(type,typet,==,==) \
 //OPERATION_EQ(type,typet,>=,>=) \
 //OPERATION_EQ(type,typet,<=,<=)
@@ -100,6 +100,8 @@ DynamicType& set##setnamex(typex v){\
 
 
 // Dynamic types are types that accept strings, classes, integers, longs, ect.
+//  they suffer from a massive performance impact due to having to use a subroutine every single operation
+
 // ex:
 //  DynamicType a = "test!";
 //  a = 10L;
@@ -107,6 +109,8 @@ DynamicType& set##setnamex(typex v){\
 //  a = CharString("blah!");
 //  a = new RandomClassThingy();
 //  ((RandomClassThingy*)a.get())->doThingy();
+
+
 
 // inferred internal type
 enum DTType {DT_NONE, DT_CHAR, DT_UCHAR, DT_SHORT, DT_USHORT, DT_INT, DT_UINT, DT_LONG, DT_ULONG,  DT_FLOAT, DT_DOUBLE, 
@@ -129,6 +133,13 @@ public:
     CONSTRUCTORTYPE(float, DT_FLOAT);
     CONSTRUCTORTYPE(double, DT_DOUBLE);
     CONSTRUCTORTYPE(CharString, DT_STRING);
+    //CONSTRUCTORTYPE(class, DT_CLASS); // Special case, copies over parameters/methods
+    //CONSTRUCTORTYPE(LinkedList, DT_LIST);
+    
+    
+    void parameter(CharString parametername);
+    void method(CharString methodname); // refactor use method from original class
+    
     
     void setZero(); // set value as (double)0
     

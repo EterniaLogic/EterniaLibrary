@@ -4,15 +4,16 @@
 
 class Company;
 
-#include "AssetHolder.h"
+#include "MarginHolder.h"
 #include "Employee.h"
 #include "Lawyer.h"
 #include "Accounting/Liability.h"
 #include "Accounting/Equity.h"
 
+enum CompanyType {CT_Defunct, CT_Sole, CT_LLC, CT_Corporation, CT_Joint, CT_Nonprofit, CT_Partnership, CT_Cooperative,
+                CT_Shell};
 
-
-class Company : public AssetHolder{
+class Company : public MarginHolder{
 public:
     // inherits assets, accounts, transactions, name from AssetHolder
     LinkedList<Employee> employees; // full list of employees
@@ -30,14 +31,17 @@ public:
     LinkedList<Lawyer> lawyers; // lawyers and related transactions for law-related consultations.
     
     
+    // standard parameters
+    CompanyType companytype; // LLC, Corporation, etc.
+    
+    // Material
+    
     // Shares
-    int totalShares; // total Stock Shares
+    long totalShares; // total Stock Shares
     LinkedList<AssetHolder> stock_owners;
     
     
-    // Standard lists for accounting
-    LinkedList<Liability> liabilities; // Debts, obligations, issued payments, etc.
-    LinkedList<Equity> equities; // owned equities (Capital, surplus, stock, earnings, reserve, assets, cash)
+    // Assets and liabilities are defined in MarginHolder
     
     Company(){
         classname="[Company]";

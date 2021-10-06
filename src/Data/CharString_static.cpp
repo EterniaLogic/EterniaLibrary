@@ -92,6 +92,38 @@ CharString CharString::ConvertFromDouble(double d) {
     
     
     std::string s = std::to_string(d);
-    cout << "dbl to str = " << s << " " << CharString(s) << endl;
+    //cout << "dbl to str = " << s << " " << CharString(s) << endl;
     return CharString(s);
+}
+
+
+
+CharString CharString::getQuotedString(int i){
+    return CharString(std::to_string(i));
+}
+
+CharString CharString::getQuotedString(long l){
+    return CharString(std::to_string(l));
+}
+
+CharString CharString::getQuotedString(double d){
+    return CharString(std::to_string(d));
+}
+
+CharString CharString::getQuotedString(float f){
+    return CharString(std::to_string(f));
+}
+
+CharString CharString::getQuotedString(CharString c){
+    CharString cval = "\"";
+    cval += c;
+    cval += "\"";
+    return cval;
+}
+
+CharString CharString::getQuotedString(std::string c){
+    CharString cval = "\'";
+    cval += c;
+    cval += "\'";
+    return cval;
 }

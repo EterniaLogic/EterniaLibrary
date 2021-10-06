@@ -6,6 +6,8 @@
 #include "../Data/CharString.h"
 #include "../Data/LinkedList.hpp"
 #include "../Algorithm/Cryptography/md5.h"
+#include "BinaryPacker.h"
+#include "BinaryUnpacker.h"
 
 
 #include "../Data/Protect/PType.hpp"
@@ -28,30 +30,39 @@ using namespace std;
 
 // Example:
 /*
-class testClass : public SpecificSerializer{
-public:
-    testClass(){
-        addSerial(&lista, SSE_LinkedList);
-        addSerial(&valuea, SSE_Int);
-        addSerial(&valueb, SSE_double);
-        addSerial(&class2, SSE_SUBClass);
-        addSerial(&tsc, SSE_SSerializer);
-        addSerial(&characterlevel, SSE_PType);
-    }
-    
-    LinkedList<int> lista;
-    int valuea;
-    double valueb;
-    testClass2 class2;
-    testSerClassA tsc; // Class that is a SpecificSerializer
-    PType<int> characterlevel = 0; // Protector type that prevents memory hacking via CheatEngine or scanmem
-}
+        class testClass : public SpecificSerializer{
+        public:
+            testClass(){
+                addSerial(&lista, SSE_LinkedList);
+                addSerial(&valuea, SSE_Int);
+                addSerial(&valueb, SSE_double);
+                addSerial(&class2, SSE_SUBClass);
+                addSerial(&tsc, SSE_SSerializer);
+                addSerial(&characterlevel, SSE_PType);
+            }
+            
+            LinkedList<int> lista;
+            int valuea;
+            double valueb;
+            testClass2 class2;
+            testSerClassA tsc; // Class that is a SpecificSerializer
+            PType<int> characterlevel = 0; // Protector type that prevents memory hacking via CheatEngine or scanmem
+        }
 
 */
 
 
+// NESTED Specific Serializer classes give the parents their parameters
+// SubClass:      {name: "mainclass", {"Subclass!","subclassdata"}}
+// SSerializer:   {name: "mainclass", subname"SubClass!",data:"subclassdata"}}
 
-#define addSerial_N(variablex, typex) this->addSerial(&variablex, typeid(variablex).name(), typex)
+// NOTE that this does introduce the possiblility of conflicting parameter names.
+
+
+
+
+// Extracts variable data, variable name and finally the requested variable type
+#define addSerial_N(variablex, typex) this->addSerial(&variablex, #variablex, typex)
 
 
 

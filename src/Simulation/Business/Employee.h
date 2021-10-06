@@ -3,7 +3,7 @@
 
 
 #include "AssetHolder.h"
-#include "Payroll/PHours.h"
+#include "Payroll/HourRate.h"
 
 
 
@@ -26,7 +26,7 @@ public:
     CharString hashed_password; // hashed form of an employee's password to use this backend.
     
     // Hours during current time period
-    LinkedList<PHours> phours;
+    LinkedList<HourRate> phours;
     double minimum_hours; // minimum hours / week for hourly
     
     double salary; // yearly salary

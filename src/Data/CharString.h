@@ -4,6 +4,8 @@
 #include <iostream>
 #include <malloc.h>
 
+template<class T>
+class LinkedList;
 #include "LinkedList.hpp"
 #include "../Math/Functions/Basic.h"
 
@@ -131,6 +133,15 @@ class CharString {
         static CharString ConvertFromInt(int l);
         static CharString ConvertFromLong(long l);
         static CharString ConvertFromDouble(double d); // digits represent precision below the 0th place.
+        
+        // easy identify input base types and convert them to a string
+        // NOTE: string and character types add quotes! numbers do not get quotes
+        static CharString getQuotedString(int i);
+        static CharString getQuotedString(long l);
+        static CharString getQuotedString(double d);
+        static CharString getQuotedString(float f);
+        static CharString getQuotedString(CharString c);
+        static CharString getQuotedString(std::string c);
 
     private:
         char* stringx;
