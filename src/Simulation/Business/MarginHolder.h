@@ -16,7 +16,8 @@ public:
     // Standard lists for accounting
     LinkedList<Liability> liabilities; // Debts, obligations, issued payments, etc.
     
-    
+    double creditscore; // calculated credit score, either directly given.
+    double average_risk_profit; // average risk/profit ratio from trades.
 
     Margin calculateMargin();
 };

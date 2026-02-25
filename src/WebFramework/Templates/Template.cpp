@@ -55,7 +55,7 @@ CharString Template::render(){
         }else if(td.toreplace.startsWith("{date}")){
 
         }else if(td.toreplace.startsWith("{unixtime}")){ // seconds since january 1, 1970
-            uint64_t d = time(0x0);
+            time_t d = time(0x0);
             pretext.replace(td.toreplace.get(), CharString::ConvertFromLong(d).get());
         }else if(!td.regex){
             pretext.replace(td.toreplace.get(), td.replacer->get());

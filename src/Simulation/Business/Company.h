@@ -1,6 +1,5 @@
 #ifndef COMPANY_H_
 #define COMPANY_H_
-#include "../../Data/includes.h"
 
 class Company;
 

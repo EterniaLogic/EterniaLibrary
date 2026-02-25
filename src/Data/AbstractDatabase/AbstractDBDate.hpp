@@ -17,11 +17,11 @@
 class AbstractDBDate {
 public:
         // 2038... cannot wait!
-        uint64_t unixtimestamp; // 32-bit timestamp = time(NULL);   seconds since jan1, 1970
+        time_t unixtimestamp; // 64-bit timestamp = time(NULL);   seconds since jan1, 1970
         
         int getDayOfYear();
         int getDayOfMonth();
-        uint8_t getDayOfWeek(); // 0 = sunday, 6 = saturday
+        int getDayOfWeek(); // 0 = sunday, 6 = saturday
         int getMonth();
         int getYear();
         int getSecond();
