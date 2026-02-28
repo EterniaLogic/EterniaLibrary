@@ -18,9 +18,12 @@ Testing
 
 build/CPackConfig.cmake
 build/CPackSourceConfig.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
 
 #.gitignore
 
+# eterniaengine tests
 src/Gamelogic/
 #AI/
 

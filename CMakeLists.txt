@@ -13,16 +13,16 @@ else()
     set(LIBSUFFIX "32")
 endif()
 
-set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/../src")
+set(PROJECT_SOURCE_DIR "${PROJECT_SOURCE_DIR}/src")
 #set(PROJECT_BINARY_DIR "${PROJECT_BINARY_DIR}")
 
 message("${PROJECT_SOURCE_DIR} == ${PROJECT_BINARY_DIR}")
 message("${CMAKE_CURRENT_LIST_DIR}")
 
 
-if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
-   message(SEND_ERROR "In-source builds are not allowed.")
-endif("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+#if("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
+#   message(SEND_ERROR "In-source builds are not allowed.")
+#endif("${PROJECT_SOURCE_DIR}" STREQUAL "${PROJECT_BINARY_DIR}")
 
 
 #build for windows under linux
@@ -53,18 +53,18 @@ ENDIF()
 # Extra options to GCC when compiling to help enforce memory security
 # -fPIC
 # -fstack-protector-all
-set( CMAKE_CXX_FLAGS "-pipe -std=c++11 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack-protector -Wstack-protector --param ssp-buffer-size=4" )
+set( CMAKE_CXX_FLAGS "-pipe -std=c++17 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack-protector -Wstack-protector --param ssp-buffer-size=4" )
 set( CMAKE_C_FLAGS "-fPIC" )
 
 #add ALL files. (If you don't want a file to compile, just change the extension)
 file(GLOB_RECURSE CC_src2
-    "../*.h"
-    "../*.c"
-    "../*.cpp"
-    "../*.hpp"
+    "*.h"
+    "*.c"
+    "*.cpp"
+    "*.hpp"
 )
 
-include_directories(../src/)
+include_directories(src/)
 
 
 FIND_PACKAGE(Threads REQUIRED)
@@ -72,9 +72,9 @@ FIND_PACKAGE(Threads REQUIRED)
 set(${PROJECT_NAME}_DEFINITIONS
     CACHE INTERNAL "${PROJECT_NAME}: Definitions" FORCE)
 
-    
-SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../lib)
-SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../bin)
+
+SET(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+SET(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 # STATIC SHARED
 ADD_LIBRARY("Eternia" STATIC ${CC_src2})
@@ -83,37 +83,37 @@ ADD_LIBRARY("Eternia32" STATIC ${CC_src2})
 TARGET_LINK_LIBRARIES("Eternia32" ${CMAKE_THREAD_LIBS_INIT})
 set_target_properties("Eternia32" PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 
-ADD_LIBRARY("EterniaS" SHARED "../src/Eternia.h") # ${CC_src2}
+ADD_LIBRARY("EterniaS" SHARED "src/Eternia.h") # ${CC_src2}
 TARGET_LINK_LIBRARIES(EterniaS "Eternia")
-ADD_EXECUTABLE("EterniaExec" "../src/main.cpp")
+ADD_EXECUTABLE("EterniaExec" "src/main.cpp")
 TARGET_LINK_LIBRARIES(EterniaExec "Eternia")
 
-ADD_EXECUTABLE("EterniaTest" "../test/test.cpp")
+ADD_EXECUTABLE("EterniaTest" "test/test.cpp")
 TARGET_LINK_LIBRARIES(EterniaTest "Eternia")
 
 add_custom_command(TARGET Eternia
                 POST_BUILD
-                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/
                 COMMAND bash "build/Scripts/version.sh"
                 COMMENT "{EterniaLib} version up"
 )
 
 add_custom_command(TARGET EterniaExec
                 POST_BUILD
-                WORKING_DIRECTORY ../
+                WORKING_DIRECTORY /
                 COMMENT "{EterniaLib} use ./bin/EterniaExec to run basic tests"
 )
 
 add_custom_command(TARGET Eternia
                 PRE_BUILD
-                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/../
+                WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/
                 COMMAND bash build/Scripts/copyincludes.sh
                 COMMENT "{EterniaLib} copy headers to includes"
 )
 
 add_custom_command(TARGET EterniaS
                 POST_BUILD
-                WORKING_DIRECTORY ../
+                WORKING_DIRECTORY /
                 COMMAND cp lib/libEterniaS.so lib/libEternia.so
                 COMMENT "{EterniaLib} copy shared libEterniaS.so to libEternia.so"
 )
@@ -135,41 +135,42 @@ add_custom_target(windows
 add_custom_target(run
                 DEPENDS EterniaExec
                 WORKING_DIRECTORY ${PROJECT_BINARY_DIR}/
-                COMMAND ../bin/EterniaExec
+                COMMAND bin/EterniaExec
 )
 
 enable_testing()
 set(CTEST_OUTPUT_ON_FAILURE 1)
-add_test(Math ../bin/EterniaTest "Math")
-add_test(DataStructureMemoryLeaks ../bin/EterniaTest "DataStruMemLeaks")
-
+add_test(Math bin/EterniaTest "Math")
+add_test(DataStructureMemoryLeaks bin/EterniaTest "DataStruMemLeaks")
+#add_subdirectory(test)
 
 
 #installing headers/source and binaries
 
-install (TARGETS EterniaExec DESTINATION bin)
-install (TARGETS EterniaTest DESTINATION bin)
-install (TARGETS Eternia Eternia32 DESTINATION lib)
+# Targets
+install (TARGETS EterniaExec DESTINATION build/bin)
+install (TARGETS EterniaTest DESTINATION build/bin)
+install (TARGETS Eternia Eternia32 DESTINATION build/lib)
 
-install (DIRECTORY include/ DESTINATION include)
-install (DIRECTORY doc/man DESTINATION share/doc/man)
+# includes sent for packaging
+install (DIRECTORY include/ DESTINATION build/include)
+install (DIRECTORY doc/man DESTINATION build/share/doc/man)
 
 
-# for EterniaS
-install (FILES lib/libEternia.so DESTINATION lib)
+# for EterniaS, *.so files for Linux
+install (FILES lib/libEternia.so DESTINATION build/lib)
 
 
 
 # Packaging
-if(WIN32) 
-    set(CPACK_GENERATOR "NSIS;ZIP") 
-else() 
-    set(CPACK_GENERATOR "TGZ;RPM;DEB") 
-endif() 
+if(WIN32)
+    set(CPACK_GENERATOR "NSIS;ZIP")
+else()
+    set(CPACK_GENERATOR "TGZ;RPM;DEB")
+endif()
 SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "EterniaLogic") #required
 set(CPACK_DEBIAN_PACKAGE_NAME "libEternia")
 set(CPACK_ROM_PACKAGE_NAME "libEternia")
 set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "Low-end support library, which includes basic algorithms and data structures.")
 set(CPACK_RPM_PACKAGE_DESCRIPTION "Low-end support library, which includes basic algorithms and data structures.")
 INCLUDE(CPack)
-
