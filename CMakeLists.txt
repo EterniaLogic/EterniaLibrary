@@ -177,14 +177,14 @@ endif()
 # dont send exec and tests to deb library file
 install (TARGETS EterniaExec DESTINATION bin COMPONENT Test64)
 install (TARGETS EterniaTest DESTINATION bin COMPONENT Test64)
-install(DIRECTORY doc/man DESTINATION share/man COMPONENT Test64) # man documents for tests
+install(DIRECTORY doc/man DESTINATION share/ COMPONENT Test64) # man documents for tests
 #install(DIRECTORY build/bin/www) DESTINATION
 
 # Primary packaged libraries
 install(TARGETS Eternia32 DESTINATION ${LIB_DIR} COMPONENT Library32)
 install(TARGETS Eternia   DESTINATION ${LIB_DIR} COMPONENT Library64)
-INSTALL(DIRECTORY build/include DESTINATION include COMPONENT Library32)
-INSTALL(DIRECTORY build/include DESTINATION include COMPONENT Library64)
+INSTALL(DIRECTORY build/include DESTINATION . COMPONENT Library32)
+INSTALL(DIRECTORY build/include DESTINATION . COMPONENT Library64)
 
 
 if(NOT(MINGW OR WIN32 OR CMAKE_SYSTEM_NAME STREQUAL "Windows"))
