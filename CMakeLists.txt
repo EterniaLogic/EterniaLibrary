@@ -37,7 +37,6 @@ if(MINGW OR WIN32 OR CMAKE_SYSTEM_NAME STREQUAL "Windows")
     set(EXTRA_LINKER_LIBRARIES_SET "ws2_32")
 	set(CMAKE_EXE_LINKER_FLAGS "${COMMON_LINKER_FLAGS} -lwinpthread" CACHE STRING "" FORCE)
 else()
-    include("CMake_DebianPackaging.cmake")
     set( CMAKE_CXX_FLAGS "-pipe -std=c++17 -fPIC -w -DDEBUG -s -pie -fPIE -fno-stack-protector -Wstack-protector --param ssp-buffer-size=4" )
     set( CMAKE_C_FLAGS "-fPIC" )
     #set(CMAKE_EXE_LINKER_FLAGS "${COMMON_LINKER_FLAGS} -rdynamic" CACHE STRING "" FORCE)
@@ -99,6 +98,7 @@ set_target_properties(EterniaExec PROPERTIES ENABLE_EXPORTS FALSE) #Fix for Ming
 ADD_LIBRARY("Eternia" SHARED "src/Eternia.h")
 TARGET_LINK_LIBRARIES(Eternia PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,EterniaS>" ${EXTRA_LINKER_LIBRARIES_SET})
 ADD_LIBRARY("Eternia32" SHARED "src/Eternia.h")
+TARGET_LINK_LIBRARIES(Eternia32 PRIVATE "$<LINK_LIBRARY:WHOLE_ARCHIVE,EterniaS32>" ${EXTRA_LINKER_LIBRARIES_SET})
 
 set_target_properties("Eternia32" PROPERTIES COMPILE_FLAGS "-m32" LINK_FLAGS "-m32")
 
@@ -158,3 +158,7 @@ add_test(Math build/bin/EterniaTest "Math")
 add_test(DataStructureMemoryLeaks build/bin/EterniaTest "DataStruMemLeaks")
 #add_subdirectory(test)
 
+if(MINGW OR WIN32 OR CMAKE_SYSTEM_NAME STREQUAL "Windows")
+else()
+    include("CMake_DebianPackaging.cmake")
+endif()
