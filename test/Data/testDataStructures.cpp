@@ -117,9 +117,9 @@ void testHashMap() {
     hm.add(t2,t2v);
 
     CharString str1 = hm.get(t1);
-    bool test1 = str1.Compare(t1v);
+    bool test1 = str1.compare(t1v);
     CharString str2 = hm.get(t2);
-    bool test2 = str2.Compare(t2v);
+    bool test2 = str2.compare(t2v);
     if(test1 && test2) {
         cout << "Pass" << endl;
     } else {

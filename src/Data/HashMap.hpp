@@ -108,7 +108,7 @@ class HMEntry {
             HMEntry<T>* current = this;
             // loop through the list.
             while(current != 0x0) {
-                if(current->getKey().Compare(key)) {
+                if(current->getKey().compare(key)) {
                     return current->getData();
                 }
                 current = current->next;
@@ -122,7 +122,7 @@ class HMEntry {
             HMEntry<T>* current = this;
             // loop through the list.
             while(current != 0x0) {
-                if(current->getKey().Compare(key)) {
+                if(current->getKey().compare(key)) {
                     return current->getData();
                 }
                 current = current->next;
@@ -136,7 +136,7 @@ class HMEntry {
             HMEntry<T>* current = this, last = 0x0;
             // loop through the list.
             while(current != 0x0) {
-                if(current->getKey().Compare(key)) {
+                if(current->getKey().compare(key)) {
                     T* data = current->getData();
 
                     if(last == 0x0) {
@@ -244,7 +244,7 @@ class HashMap {
             if(entries[S->getID()].id > 0) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
-                if(entries[S->getID()].getKey().Compare(key)) {
+                if(entries[S->getID()].getKey().compare(key)) {
                     return entries[S->getID()].getData();
                 } else {
                     // if not, then we need to loop through the linked list for it.

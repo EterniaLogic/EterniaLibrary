@@ -2,12 +2,12 @@
 
 # cd ../   # isn't needed here
 
-rm include -R
-mkdir include
-#cp Eternia.h include/
-mkdir include/Eternia
-cp src/* include/Eternia/ -R
+rm build/include -R
+mkdir build/include
+#cp Eternia.h build/include/
+mkdir build/include/Eternia
+cp src/* build/include/Eternia/ -R
 
 # filter out tests and cpp files
-rm $(find include -name "*.cpp") $(find include -name "*.c")
-rm $(find include -name "test") -R
+rm $(find build/include -name "*.cpp") $(find build/include -name "*.c")
+rm $(find build/include -name "test") -R

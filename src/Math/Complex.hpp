@@ -5,6 +5,7 @@
 // Complex Number!
 
 
+// Operator equals real ==
 #define OPEQ_Real(op, typex) Complex operator op(typex val){ \
     this->real=val; \
     return *this; \
@@ -15,6 +16,7 @@
     return *this; \
 }
 
+// comapre imaginary numbers ==
 #define OPEQ_Imag(op, typex) Complex operator op(typex val){ \
     this->imaginary=val; \
     return *this; \

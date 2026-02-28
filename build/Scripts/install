@@ -9,6 +9,8 @@ sudo mkdir /usr/include/Eternia
 
 bash copyincludes.sh
 
+cd build
+
 # copy into system
 sudo cp include/* /usr/include/ -R
 sudo cp lib/libEternia.a /usr/lib/

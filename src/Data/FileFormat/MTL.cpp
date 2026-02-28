@@ -34,71 +34,71 @@ LinkedList<IMaterial*> MTL::loadFromFile(CharString mtlFile) {
             // test if line is a valid OBJ value
             if(linet.size() > 1) {
 
-                if(linet.get(0).Compare("newmtl",6)) { // Ambient color
+                if(linet.get(0).compare("newmtl",6)) { // Ambient color
                     debugLogmm("newmtl " << linet.get(1));
                     material = new IMaterial();
                     material->name = linet.get(1);
                     materials.add(material);
-                } else if(linet.get(0).Compare("Ka",2)) { // Ambient color
+                } else if(linet.get(0).compare("Ka",2)) { // Ambient color
                     debugLogmm("Ka " << linet.get(1).getFloat() << " " << linet.get(2).getFloat() << " " << linet.get(3).getFloat());
 
                     material->AmbientColor = Math::vertex(linet.get(1).getFloat(), linet.get(2).getFloat(), linet.get(3).getFloat());
-                } else if(linet.get(0).Compare("Kd",2)) { // Diffuse Color
+                } else if(linet.get(0).compare("Kd",2)) { // Diffuse Color
                     debugLogmm("Kd " << linet.get(1).getFloat() << " " << linet.get(2).getFloat() << " " << linet.get(3).getFloat());
 
                     material->DiffuseColor = Math::vertex(linet.get(1).getFloat(), linet.get(2).getFloat(), linet.get(3).getFloat());
-                } else if(linet.get(0).Compare("Ks",2)) { // Specular Color
+                } else if(linet.get(0).compare("Ks",2)) { // Specular Color
                     debugLogmm("Ks " << linet.get(1).getFloat() << " " << linet.get(2).getFloat() << " " << linet.get(3).getFloat());
 
                     material->SpecularColor = Math::vertex(linet.get(1).getFloat(), linet.get(2).getFloat(), linet.get(3).getFloat());
-                } else if(linet.get(0).Compare("Ke",2)) { // Emit Color
+                } else if(linet.get(0).compare("Ke",2)) { // Emit Color
                     debugLogmm("Ke " << linet.get(1).getFloat() << " " << linet.get(2).getFloat() << " " << linet.get(3).getFloat());
 
                     material->EmitColor = Math::vertex(linet.get(1).getFloat(), linet.get(2).getFloat(), linet.get(3).getFloat());
-                } else if(linet.get(0).Compare("Ni",2)) { // Shininess
+                } else if(linet.get(0).compare("Ni",2)) { // Shininess
                     debugLogmm("Ni " << linet.get(1).getFloat());
 
                     material->Shininess = linet.get(1).getFloat();
-                } else if(linet.get(0).Compare("illum",5)) { // Illumination model
+                } else if(linet.get(0).compare("illum",5)) { // Illumination model
                     debugLogmm("illum " << linet.get(1).getFloat());
 
                     material->Illumination = linet.get(1).getFloat();
-                } else if(linet.get(0).Compare("d",1)) { // Alpha (dissolved)
+                } else if(linet.get(0).compare("d",1)) { // Alpha (dissolved)
                     debugLogmm("d " << linet.get(1).getFloat());
 
                     material->Alpha = linet.get(1).getFloat();
-                } else if(linet.get(0).Compare("Tr",2)) { // Alpha reversed (Opaque)
+                } else if(linet.get(0).compare("Tr",2)) { // Alpha reversed (Opaque)
                     debugLogmm("Tr " << linet.get(1).getFloat());
 
                     material->Alpha = 1-linet.get(1).getFloat();
-                } else if(linet.get(0).Compare("map_aas",6)) { // Anti-Aliasing on/off for textures?
+                } else if(linet.get(0).compare("map_aas",6)) { // Anti-Aliasing on/off for textures?
                     debugLogmm("map_aat " << linet.get(1));
 
                 }
 
 
                 // color maps
-                else if(linet.get(0).Compare("map_Ka",6)) { // Ambient color map
+                else if(linet.get(0).compare("map_Ka",6)) { // Ambient color map
                     //ColorMap.openImage(*(linet.get(1)),false);
                     material->ColorMap_loc = linet.get(1);
                     debugLogmm("map_Ka " << linet.get(1));
 
-                } else if(linet.get(0).Compare("map_Kd",6)) { // Diffuse Color map
+                } else if(linet.get(0).compare("map_Kd",6)) { // Diffuse Color map
                     //DiffuseMap.openImage(*(linet.get(1)),false);
                     material->DiffuseMap_loc = linet.get(1);
                     debugLogmm("map_Kd " << linet.get(1));
 
-                } else if(linet.get(0).Compare("map_Ks",6)) { // Specular Color map
+                } else if(linet.get(0).compare("map_Ks",6)) { // Specular Color map
                     //SpecularMap.openImage(*(linet.get(1)),false);
                     material->SpecularMap_loc = linet.get(1);
                     debugLogmm("map_Ks " << linet.get(1));
 
-                } else if(linet.get(0).Compare("map_Ke",6)) { // Emit Color map
+                } else if(linet.get(0).compare("map_Ke",6)) { // Emit Color map
                     //EmitMap.openImage(*(linet.get(1)),false);
                     material->EmitMap_loc = linet.get(1);
                     debugLogmm("map_Ke " << linet.get(1));
 
-                } else if(linet.get(0).Compare("map_Ni",6)) { // Shininess map
+                } else if(linet.get(0).compare("map_Ni",6)) { // Shininess map
                     //ShinyMap.openImage(*(linet.get(1)),false);
                     material->ShinyMap_loc = linet.get(1);
                     debugLogmm("map_Ni " << linet.get(1));
@@ -106,22 +106,22 @@ LinkedList<IMaterial*> MTL::loadFromFile(CharString mtlFile) {
                 }
 
                 // geometry maps
-                else if(linet.get(0).Compare("bump",4) || linet.get(0).Compare("map_bump",8)) { // Bump map
+                else if(linet.get(0).compare("bump",4) || linet.get(0).compare("map_bump",8)) { // Bump map
                     //BumpMap.openImage(*(linet.get(1)),false);
                     material->BumpMap_loc = linet.get(1);
                     debugLogmm("bump " << linet.get(1));
 
-                } else if(linet.get(0).Compare("disp",4)) { // disposition scalar map
+                } else if(linet.get(0).compare("disp",4)) { // disposition scalar map
                     debugLogmm("disp " << linet.get(1));
 
-                } else if(linet.get(0).Compare("decal",5)) { // Decal??? map (how colors are blended)
+                } else if(linet.get(0).compare("decal",5)) { // Decal??? map (how colors are blended)
                     debugLogmm("decal " << linet.get(1));
 
-                } else if(linet.get(0).Compare("refl",4)) { // Mirror intensity map
+                } else if(linet.get(0).compare("refl",4)) { // Mirror intensity map
                     //MirrorMap.openImage(*(linet.get(1)),false);
                     material->MirrorMap_loc = linet.get(1);
                     debugLogmm("refl " << linet.get(1));
-                } else if(linet.get(0).Compare("transparency",12)) { // Alpha intensity map
+                } else if(linet.get(0).compare("transparency",12)) { // Alpha intensity map
                     //AlphaMap.openImage(*(linet.get(1)),false);
                     material->AlphaMap_loc = linet.get(1);
                     debugLogmm("transparency " << linet.get(1));

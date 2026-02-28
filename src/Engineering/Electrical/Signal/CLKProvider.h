@@ -26,7 +26,7 @@ class CLKProvider {
         CLKProvider();
 
         // 1 Hz to 100+ MHz
-        void setFrequencyEvent(int frequency, void (function)());
+        void setFrequencyEvent(int frequency, void (func)());
 
         // Automatically figure out of this is the corresponding frequency.
         void tick();
