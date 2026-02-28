@@ -139,7 +139,7 @@ add_custom_target(runtest
 )
 
 add_custom_target(windows
-                COMMAND cmake . -DWIN32=1
+                COMMAND cmake . -DWIN32=1 -DCMAKE_TOOLCHAIN_FILE=CMake_MingW64.cmake
                 DEPENDS Eternia
                 DEPENDS EterniaExec
                 WORKING_DIRECTORY ${EXECUTABLE_OUTPUT_PATH}
@@ -158,7 +158,35 @@ add_test(Math build/bin/EterniaTest "Math")
 add_test(DataStructureMemoryLeaks build/bin/EterniaTest "DataStruMemLeaks")
 #add_subdirectory(test)
 
-if(MINGW OR WIN32 OR CMAKE_SYSTEM_NAME STREQUAL "Windows")
+
+#### Pre-packaging
+
+# Determine the architecture suffix
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+    set(LIB_DIR "lib/x86_64-linux-gnu")
+    set(PKG_ARCH "amd64")
 else()
+    set(LIB_DIR "lib/i386-linux-gnu")
+    set(PKG_ARCH "i386")
+endif()
+
+#installing headers/source and binaries
+
+# Targets
+
+# dont send exec and tests to deb library file
+install (TARGETS EterniaExec DESTINATION bin COMPONENT Test64)
+install (TARGETS EterniaTest DESTINATION bin COMPONENT Test64)
+install(DIRECTORY doc/man DESTINATION share/man COMPONENT Test64) # man documents for tests
+#install(DIRECTORY build/bin/www) DESTINATION
+
+# Primary packaged libraries
+install(TARGETS Eternia32 DESTINATION ${LIB_DIR} COMPONENT Library32)
+install(TARGETS Eternia   DESTINATION ${LIB_DIR} COMPONENT Library64)
+INSTALL(DIRECTORY build/include DESTINATION include COMPONENT Library32)
+INSTALL(DIRECTORY build/include DESTINATION include COMPONENT Library64)
+
+
+if(NOT(MINGW OR WIN32 OR CMAKE_SYSTEM_NAME STREQUAL "Windows"))
     include("CMake_DebianPackaging.cmake")
 endif()

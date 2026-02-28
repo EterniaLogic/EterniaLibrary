@@ -13,7 +13,7 @@ int main(int argc, char *argv[]){
     cout << argv[1] << " == Math" << endl;
     
     if(strcmp(argv[1], "Math")==0){
-        //return testMath()==true;
+        //return testMath();
     }else if(strcmp(argv[1], "DataStruMemLeaks")==0){
         
     }
