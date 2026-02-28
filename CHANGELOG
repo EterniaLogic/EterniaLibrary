@@ -1,3 +1,7 @@
+2026:
+    - fixed some cross-platform issues for building with windows and mingw64
+    - fixed small errors / optimizations
+
 2021:
     - Optimizing cryptography
     - Separated out Testing environments
