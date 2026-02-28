@@ -21,9 +21,10 @@ install(DIRECTORY doc/man DESTINATION share/man COMPONENT Test64) # man document
 #install(DIRECTORY build/bin/www) DESTINATION
 
 # Primary packaged libraries
-install(TARGETS Eternia DESTINATION ${LIB_DIR} COMPONENT Runtime64)
-install(TARGETS Eternia32 DESTINATION ${LIB_DIR} COMPONENT Runtime32)
-
+install(TARGETS Eternia32 DESTINATION ${LIB_DIR} COMPONENT Library32)
+install(TARGETS Eternia   DESTINATION ${LIB_DIR} COMPONENT Library64)
+INSTALL(DIRECTORY build/include DESTINATION include COMPONENT Library32)
+INSTALL(DIRECTORY build/include DESTINATION include COMPONENT Library64)
 
 
 # Packaging
