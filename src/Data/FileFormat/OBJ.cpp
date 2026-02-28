@@ -40,7 +40,7 @@ namespace OBJ{
                     //debugLogm("Line: " << readx.get() << " - " << linet.size() << "/" << linet.frozenlen << "  " << linet.top()->data);// << "=" << linet.get(0)<<"="<<linet.get(1)<<"="<<linet.frozen[0]);
 
                     if(linet.size() > 1) {
-                        if(linet.get(0).Compare("o",1)) { // Vertex Normal
+                        if(linet.get(0).compare("o",1)) { // Vertex Normal
                             debugLogm("o " << linet.get(1).get());
 
                             if(fragment != 0x0) {
@@ -53,19 +53,19 @@ namespace OBJ{
                             fragment->name = linet.get(1);
                             model->parts.add(fragment);
                             //cout << "MODEL add fragment" << endl;
-                        } else if(linet.get(0).Compare("vn",2)) { // Vertex Normal
+                        } else if(linet.get(0).compare("vn",2)) { // Vertex Normal
                             debugLogm("vn" << " " << linet.get(1).getFloat() << " " << linet.get(2).getFloat() << " " << linet.get(3).getFloat());
 
                             vlistn.add(Math::vertex(linet.get(1).getFloat(),linet.get(2).getFloat(),linet.get(3).getFloat()));
-                        } else if(linet.get(0).Compare("vt",2)) { // Vertex Texture
+                        } else if(linet.get(0).compare("vt",2)) { // Vertex Texture
                             debugLogm("vt" << " " << linet.get(1).getFloat() << " " << linet.get(2).getFloat());
 
                             vlistt.add(Math::vertex(linet.get(1).getFloat(),linet.get(2).getFloat(),0));
-                        } else if(linet.get(0).Compare("v",1)) { // Vertex
+                        } else if(linet.get(0).compare("v",1)) { // Vertex
                             debugLogm("v" << " " << linet.get(1).getFloat() << " " << linet.get(2).getFloat() << " " << linet.get(3).getFloat());
 
                             vlist.add(Math::vertex(linet.get(1).getFloat(),linet.get(2).getFloat(),linet.get(3).getFloat()));
-                        } else if(linet.get(0).Compare("f",1)) { // define Face
+                        } else if(linet.get(0).compare("f",1)) { // define Face
                             debugLogm("f '" << linet.get(1).get() << "' '" << linet.get(2).get() << "' '" << linet.get(3).get() << "' '" << linet.get(4)->get() << "'");
 
 
@@ -102,12 +102,12 @@ namespace OBJ{
                                         fragment->normals.add(vlistn.get(vn));
                                 }
                             }
-                        } else if(linet.get(0).Compare("mtllib",6)) { // Material lib location
+                        } else if(linet.get(0).compare("mtllib",6)) { // Material lib location
                             string s1 = objFile.get();
                             s1 = s1.substr(0, s1.find_last_of("\\/"))+"/"+linet.get(1).get();
                             debugLogm("mtllib " << s1);
                             matlist = MTL::loadFromFile(CharString(s1.c_str(), s1.length()));
-                        } else if(linet.get(0).Compare("usemtl",6)) { // Select material name
+                        } else if(linet.get(0).compare("usemtl",6)) { // Select material name
                             debugLogm("usemtl " << linet.get(1).get());
                             fragment->matname = linet.get(1);
                         }
@@ -125,7 +125,7 @@ namespace OBJ{
         for(int i=0; i<model->parts.frozenlen; i++) {
             for(int j=0; j<matlist.size(); j++) {
                 debugLogm("ModelMat: " << model->parts.frozen[i]->matname.get() << " - " << matlist.frozen[j]->name.get() << endl);
-                if(model->parts.frozen[i]->matname.Compare(matlist.frozen[j]->name)) {
+                if(model->parts.frozen[i]->matname.compare(matlist.frozen[j]->name)) {
                     // This model's material name compares with this material
                     model->parts.frozen[i]->material = *matlist.frozen[j];
 

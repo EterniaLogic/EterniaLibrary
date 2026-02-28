@@ -1,0 +1,5 @@
+if(EXISTS "/media/DDrive/Dev/Cpp/EterniaLib/tests/EterniaTests[1]_tests.cmake")
+  include("/media/DDrive/Dev/Cpp/EterniaLib/tests/EterniaTests[1]_tests.cmake")
+else()
+  add_test(EterniaTests_NOT_BUILT EterniaTests_NOT_BUILT)
+endif()

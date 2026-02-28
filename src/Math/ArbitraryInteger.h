@@ -25,6 +25,7 @@
 
 #define OPC(_TP) ArbitraryInteger(_TP val);
 
+// float/double operator definitions
 #define OPALL(TP) \
 OP1(+, TP); \
 OP1(-, TP); \
@@ -36,6 +37,7 @@ OP1(-=, TP); \
 OP1(*=, TP); \
 OP1(/=, TP);
 
+// Integer operator definitions
 #define OPALLI(TP) \
 OP1(+, TP); \
 OP1(-, TP); \

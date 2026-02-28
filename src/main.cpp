@@ -1,13 +1,6 @@
-//-----------------------------------------------------------------------------
-//  Copyright (C) 2013 Brent Clancy (EterniaLogic, dreadslicer)
-//
-//  Distributed under a Reference-only License.  The full license is in
-//  the file COPYRIGHT, distributed as part of this software.
-//-----------------------------------------------------------------------------
-
 #include <time.h>
 
-#include "../test/test.h"
+#include "../tests/test.h" // old tests (transitioning to more modern unit tests)
 #include "include.h"
 #include "asm/asm1.h"
 #include "Algorithm/Cryptography/ExHash64.h"
@@ -53,28 +46,28 @@ void InputRedirection::handleInputLine(CharString* input) {
     double basetime = clock()/CLOCKS_PER_SEC;
     //cout << "'" << input << "'" << endl; // 'test'
     
-    if(input->Compare("exit",4)) {
+    if(input->compare("exit",4)) {
         this->stop = true;
-    } else if(input->Compare("help",4)) {
+    } else if(input->compare("help",4)) {
         cout << "[Commands]:" << endl;
         cout << "  test         - lists possible tests" << endl;
         cout << "  exit         - Exits the program" << endl;
-    } else if(input->Compare("MathTest",8)) {
+    } else if(input->compare("MathTest",8)) {
         testMath();
-    } else if(input->Compare("AsmTest",7)) {
+    } else if(input->compare("AsmTest",7)) {
         testASM();
-    } else if(input->Compare("ExHashTest",10)) {
+    } else if(input->compare("ExHashTest",10)) {
         testExHash();
-    } else if(input->Compare("PhysTest",8)) {
+    } else if(input->compare("PhysTest",8)) {
         //testGravity();
         testViscosityCurve();
-    } else if(input->Compare("EngineerTest",12)) {
+    } else if(input->compare("EngineerTest",12)) {
 
-    } else if(input->Compare("AbstractDB",10)) {
+    } else if(input->compare("AbstractDB",10)) {
         testAbstractDB();
-    } else if(input->Compare("EventHandler",12)) {
+    } else if(input->compare("EventHandler",12)) {
         testEventHandler();
-    } else if(input->Compare("CTest",5)) {
+    } else if(input->compare("CTest",5)) {
         CharString* c = new CharString("-12038.22828282302012031929319",30);
         cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
         c = new CharString("0.0000000000000000000000000123",30);
@@ -85,19 +78,19 @@ void InputRedirection::handleInputLine(CharString* input) {
         cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
         c = new CharString("1.2345e+120",11);
         cout << "STRTEST Float: -" << c << " = " << c->getFloat() << endl;
-    } else if(input->Compare("LinearTest",10)) {
+    } else if(input->compare("LinearTest",10)) {
         char* a = new char();
         strcpy(a,"[LinearTest] ");
         testStructures(a);
-    } else if(input->Compare("DataStruTest",12)) {
+    } else if(input->compare("DataStruTest",12)) {
         testDataStructures();
-    } else if(input->Compare("PTypeTest",9)) {
+    } else if(input->compare("PTypeTest",9)) {
         testPType();
-    } else if(input->Compare("SerializerTest",12)) {
+    } else if(input->compare("SerializerTest",12)) {
         testSerializers();
-    }else if(input->Compare("NetworkTest",11)) {
+    }else if(input->compare("NetworkTest",11)) {
         testNetwork();
-    } else if(input->Compare("TestALL",8)) {
+    } else if(input->compare("TestALL",8)) {
         testDataStructures();
         testMath();
         char a[14];
@@ -105,7 +98,7 @@ void InputRedirection::handleInputLine(CharString* input) {
         testStructures(a);
         testGravity();
         //testASM();
-    } else if(input->Compare("test",4)) {
+    } else if(input->compare("test",4)) {
         cout << "[Tests]:" << endl;
         cout << "  AbstractDB    - tests the Abstract Database" << endl;
         cout << "  AsmTest       - tests embedded assembler" << endl;

@@ -19,7 +19,6 @@ class LinkedList;
 #include <strings.h>
 #endif
 
-#define Compare compare
 #define _CS(CHARS) CharString(CHARS) // fast-hand declare
 
 enum SortType {SBefore, SSame, SAfter};
@@ -63,11 +62,12 @@ class CharString {
         CharString clone(); // creates a clone!
         void concata_(const char* str, const int lenx);
         
+        // Concatenate After or Concatenate Before (a or b)
         template<std::size_t N>
         void concata(const char(val)[N]);
         void concata(char* str, int len);
         template<std::size_t N>
-		void concatb(const char(&val)[N]);
+        void concatb(const char(&val)[N]);
         void concatb(char* str, int len);
         void concata(CharString str); //Combine CharStrings after the current charString.
         void concatb(CharString str);  //Combine CharStrings before the current charString.
@@ -87,9 +87,10 @@ class CharString {
         void setSize(int size); // sets the size of the CharString
 
         template<std::size_t N>
-		void set_(const char(&val)[N]);
+        void set_(const char(&val)[N]);
         void set_(const char* stringg, const int length);
 
+        // directly set the string, replacing it. (same as Charstring = "??")
         template<std::size_t N>
         void set(const char(&val)[N]);
         void set(char* stringg, int length); // sets both the size and pointer for charString

@@ -1,0 +1,168 @@
+\chapter{Eternia Library}
+\hypertarget{md_README}{}\label{md_README}\index{Eternia Library@{Eternia Library}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+ \href{https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml}{\texttt{ }}
+
+{\bfseries{Version}}\+: 1.\+152.\+6
+
+{\bfseries{Author}}\+: Brent Clancy (Eternia\+Logic) ~~{\itshape \mbox{[}Other authors may list themselves below\mbox{]}}
+
+{\bfseries{Email}}\+: \href{mailto:eternialogic@gmail.com}{\texttt{ eternialogic@gmail.\+com}} (alias\texorpdfstring{$>$}{>} \href{mailto:dreadslicer@gmail.com}{\texttt{ dreadslicer@gmail.\+com}})
+
+{\bfseries{Subprojects}}\+: \href{https://github.com/EterniaLogic/EterniaEngine}{\texttt{ https\+://github.\+com/\+Eternia\+Logic/\+Eternia\+Engine}}
+
+{\bfseries{Original Creation Date}}\+: January 13, 2012
+
+{\bfseries{Copyright}}\+: Copyright 2021 Brent Clancy
+
+{\bfseries{License}}\+: GNU v3
+
+{\bfseries{Language}}\+: C/\+C++2011, ASM, HTML, Javascript \begin{DoxyVerb}This library is used for server/client back-end systems, standard library applications and simulations. It may also be applicable for game theory and systems emulation. The lib file (*.a, *.so, *.dll) may be used in any project to help decrease dependencies. The main goal of this library is to have zero dependencies, while also being originally flexible.
+
+
+Anybody willing to help in this project may contribute!
+\end{DoxyVerb}
+
+
+{\bfseries{Building}}\+:
+
+cmake, eclipse or code-\/blocks (project files may not be fully up-\/to-\/date)
+
+Linux\+:
+\begin{DoxyItemize}
+\item no direct dependencies besides "{}build-\/essential"{} and pthreads
+\end{DoxyItemize}
+
+\begin{DoxyVerb}    cd build
+    cmake .
+    make -j 4
+    make package
+\end{DoxyVerb}
+
+\begin{DoxyItemize}
+\item \textquotesingle{}make package\textquotesingle{} generates .deb, .rpm, and .tar.\+gz files.
+\item \textquotesingle{}make -\/j 50 run\textquotesingle{} runs the base console environment.
+\item \textquotesingle{}make -\/j 50 runtest\textquotesingle{} runs the testing environment.
+\end{DoxyItemize}
+
+Windows\+:
+\begin{DoxyItemize}
+\item Use Code\+::\+Blocks, Visual Basics or eclipse
+\item libatomic.\+a and libws\+\_\+32.\+a required. (usually supplied with windows)
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Code Testing}{Code Testing}}\label{md_README_autotoc_md1}
+Although Eternia\+Library is slowly becoming larger and relatively more stable with each iteration, it does not have testing for any test library.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Documentation and Examples}{Documentation and Examples}}\label{md_README_autotoc_md2}
+\href{https://github.com/EterniaLogic/EterniaLibrary/blob/master/Documentation/index.md}{\texttt{ Documentation Index}}\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{md_README_autotoc_md3}
+example using namespaces \begin{DoxyVerb}#include <Eternia/eternia.h>
+#include <iostream>
+using namespace std;
+
+int main(){
+        cout << Math::sin(20) << endl;
+
+        return 0;
+}
+\end{DoxyVerb}
+\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Sub-\/sections}{Sub-sections}}\label{md_README_autotoc_md4}
+{\bfseries{Artificial Intelligence}} \mbox{[}/\+AI/\mbox{]}\+:
+\begin{DoxyItemize}
+\item FSM AI -\/ Finite State machine AIs follow basic brain mechanics.
+\item Advanced Thinker -\/ Comparable to FSM AIs, yet also allow for multiple inputs and outputs, the \textquotesingle{}epoch\textquotesingle{} of self-\/learning AIs whether it be Sin functions all the way to image and video processing. Not necessarily more powerful than FSM AIs, only useful for specific applications.
+\item Self-\/learning controller (Research specific) -\/ sets goals and modifies the AI to meet the demands, over time will become what the user demands from a single entity.
+\item Genetic controller (Application specific) -\/ sets a user-\/specific goal and \textquotesingle{}kills\textquotesingle{} off a set number of simulated AIs until the goal is met, randomly creating a set and cross-\/breeds the best solutions of AI cores.
+\end{DoxyItemize}
+
+{\bfseries{Application Program Interface}} \mbox{[}/\+API/\mbox{]}\+:
+
+
+\begin{DoxyItemize}
+\item Core API system to allow multiple languages to cross-\/talk with shared memory
+\item Permissions for different users and API modules
+
+Not to be confused with a Web API, which interfaces a server\textquotesingle{}s language with a client of a different language. This API is to enable multiple languages to be connected with the core program.
+\end{DoxyItemize}
+
+{\bfseries{Web Framework}} \mbox{[}/\+Web\+Framework/\mbox{]}\+: (\texorpdfstring{$\ast$}{*}in progress, these are the initial goals)
+
+
+\begin{DoxyItemize}
+\item HTTP Server with multi-\/threading (C++2011)
+\item Template Engine for use with HTML template files
+\item RESTFul HTTP Server (30\%-\/ish)
+\item JSON marshal parsing (0\% done)
+\end{DoxyItemize}
+
+{\bfseries{Business}} \mbox{[}/\+Simulation/\+Business/\mbox{]}\+: (headers only, no implementations yet)
+
+
+\begin{DoxyItemize}
+\item Built for simulation, but could possibly be used for real
+\item Basic Accounting \mbox{[}Liabilities, Equities, Taxation\mbox{]}
+\item Tracking of assets, IP, Property, and inventory
+\item Tracking of employees and related transactions
+\item Stock tracking
+\item Payroll
+\item POS parts (excluding actual processing of credit cards, etc.)
+\end{DoxyItemize}
+
+{\bfseries{Mathematics}} \mbox{[}/\+Math/\mbox{]}\+:
+
+
+\begin{DoxyItemize}
+\item Economics
+\item Linear Algebra
+\item Statistics
+\end{DoxyItemize}
+
+{\bfseries{Audio \& Frequency manipulaiton}} \mbox{[}/\+Audio/~~~/\+Engineering/\+Electrical/\+Signal/\mbox{]}\+:
+
+
+\begin{DoxyItemize}
+\item Time to Frequency conversion using FFT (Time\+Signal.\+h)
+\item Frequency to Time conversion using IFFT (Freq\+Signal.\+h)
+\item White Noise generator
+\item Frequency Window generation / Audio filtering {\itshape Planned}
+\end{DoxyItemize}
+
+{\bfseries{Base Engineering}} \mbox{[}/\+Engineering/\mbox{]}\+:
+
+
+\begin{DoxyItemize}
+\item Physics
+\item Chemistry
+\item Electrical
+\end{DoxyItemize}
+
+{\bfseries{Computer Science}} \mbox{[}/\+Algorithm/~~~/\+Data/~~~/\+Programming\mbox{]}\+:
+
+
+\begin{DoxyItemize}
+\item Discrete Data Structures of all varieties
+\item Sorting Algorithms
+\item Cryptography~~~~{\itshape + Imported for more security}
+\item AI Systems
+\end{DoxyItemize}
+
+{\bfseries{Electrical Engineering}}\+:
+
+
+\begin{DoxyItemize}
+\item Emulation (MSP430 processor)
+\item PWM, Clocks, Time and Frequency domain signals.
+\end{DoxyItemize}
+
+{\bfseries{Localization}}\+:
+
+
+\begin{DoxyItemize}
+\item Simple word translation between languages.
+\end{DoxyItemize}
+
+{\bfseries{Other}}\+:
+
+
+\begin{DoxyItemize}
+\item Fully working Event Handler system, useful for threading.
+\item Extended string class "{}\+Char\+String"{}, which automatically handles strings along with conversions.
+\item Wrapper for Open\+GL/\+SDL, other frameworks to draw windows and 2D graphics. 
+\end{DoxyItemize}

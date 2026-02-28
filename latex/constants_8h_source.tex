@@ -1,0 +1,947 @@
+\doxysection{constants.\+h}
+\hypertarget{constants_8h_source}{}\label{constants_8h_source}\index{src/constants.h@{src/constants.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONSTANTS\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONSTANTS\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Mixed\ copyright\ reserved}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ copyright\ E.\ Robert\ Tisdale\ (10/17/04)}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ modified\ copyright\ reserved.\ (Various\ other\ values)}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ modified\ copyright\ EterniaLogic\ (Brent\ Clancy)}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Data/CharString.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ Unknown\ constant\ used\ to\ define\ unknown\ doubles}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ UNKNOWN\ 1.111e-\/11}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{namespace\ }physical\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{namespace\ }unit\ \{\ \textcolor{comment}{//\ conversion\ factor}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ radian\ =\ 1.0;}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ radians\ =\ radian;}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rad\ =\ radian;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ steradian\ =\ 1.0;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ steradians\ =\ steradian;}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sr\ =\ steradian;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dollar\ =\ 1.0;}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dollars\ =\ dollar;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cent\ =\ dollar/100.0;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cents\ =\ cent;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dozen\ =\ 12.0;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ doz\ =\ dozen;}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dz\ =\ dozen;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }bakers\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dozen\ =\ 13.0;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ doz\ =\ dozen;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dz\ =\ dozen;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gross\ =\ 12.0*dozen;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gro\ =\ gross;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quire\ =\ 25.0;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quires\ =\ quire;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ream\ =\ 500.0;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ reams\ =\ ream;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ percent\ =\ 1.0/100.0;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ proof\ =\ percent/2.0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ karat\ =\ 1.0/24.0;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ karats\ =\ karat;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mole\ =\ 6.0221367e+23;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ moles\ =\ mole;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mol\ =\ mole;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pi\ =\ 3.14159265358979323846*radians;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }arc\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ degree\ =\ pi/180.0;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ degrees\ =\ degree;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minute\ =\ degree/60.0;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minutes\ =\ minute;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ min\ =\ minute;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ second\ =\ minute/60.0;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seconds\ =\ second;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sec\ =\ second;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ grade\ =\ 0.9*degrees;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ grades\ =\ grade;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }centesimal\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minute\ =\ grade/100.0;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minutes\ =\ minute;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ min\ =\ minute;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ second\ =\ grade/10000.0;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seconds\ =\ second;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sec\ =\ second;}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SI\ units\ (mks)}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Prefixes}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilo\ =\ 1e3;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mega\ =\ 1e6;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tera\ =\ 1e9;}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ giga\ =\ 1e12;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ peta\ =\ 1e15;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ exa\ =\ 1e18;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ zetta\ =\ 1e21;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yotta\ =\ 1e24;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ length}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ meter\ =\ 1.0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ meters\ =\ meter;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ m\ =\ meter;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilometer\ =\ 1000.0*meters;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilometers\ =\ kilometer;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ km\ =\ kilometer;}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ decimeter\ =\ meters/10.0;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ decimeters\ =\ decimeter;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dm\ =\ decimeter;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ centimeter\ =\ meters/100.0;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ centimeters\ =\ centimeter;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cm\ =\ centimeter;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ millimeter\ =\ meters/1000.0;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ millimeters\ =\ millimeter;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mm\ =\ millimeter;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ micron\ =\ meter/1000000.0;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ microns\ =\ micron;}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nanometer\ =\ meter/1000000000.0;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nanometers\ =\ nanometer;}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nm\ =\ nanometer;}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ decinanometer\ =\ meter/10000000000.0;}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ decinanometers\ =\ decinanometer;}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Angstrom\ =\ decinanometer;}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Angstroms\ =\ Angstrom;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Xunit\ =\ 1.00202e-\/13*meters;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Xunits\ =\ Xunit;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Fermi\ =\ meter/1000000000000000.0;}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Fermis\ =\ Fermi;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ area}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hectare\ =\ 10000.0*meter*meter;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hectares\ =\ hectare;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ha\ =\ hectare;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ volume}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ stere\ =\ meter*meter*meter;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ steres\ =\ stere;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ liter\ =\ stere/1000.0;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ liters\ =\ liter;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ l\ =\ liter;}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliliter\ =\ stere/1000000.0;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliliters\ =\ milliliter;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ml\ =\ milliliter;}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cc\ =\ milliliter;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }displacement\ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ton\ =\ stere;}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tons\ =\ ton;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t\ =\ ton;}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mass}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilogram\ =\ 1.0;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilograms\ =\ kilogram;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kg\ =\ kilogram;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quintal\ =\ 100.0*kilograms;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quintals\ =\ quintal;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ doppelzentner\ =\ quintal;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ doppelzentners\ =\ doppelzentner;}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gram\ =\ kilograms/1000.0;}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ grams\ =\ gram;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ g\ =\ gram;}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milligram\ =\ kilogram/1000000.0;}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milligrams\ =\ milligram;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mg\ =\ milligram;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }metric\ \{\ \textcolor{comment}{//\ weight}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ carat\ =\ gram/5.0;}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ carats\ =\ carat;}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ton\ =\ 1000.0*kilograms;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tons\ =\ ton;}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ t\ =\ ton;}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ time}}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ second\ =\ 1.0;}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seconds\ =\ second;}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sec\ =\ second;}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ s\ =\ second;}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ millisecond\ =\ second/1000.0;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliseconds\ =\ millisecond;}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ms\ =\ millisecond;}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ microsecond\ =\ second/1000000.0;}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ microseconds\ =\ microsecond;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ us\ =\ microsecond;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nanosecond\ =\ second/1000000000.0;}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nanoseconds\ =\ nanosecond;}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ picosecond\ =\ second/1000000000000.0;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ picoseconds\ =\ picosecond;}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minute\ =\ 60.0*seconds;}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minutes\ =\ minute;}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ min\ =\ minute;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hour\ =\ 60.0*minutes;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hours\ =\ hour;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hr\ =\ hour;}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ day\ =\ 24.0*hours;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ days\ =\ day;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ da\ =\ day;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ week\ =\ 7.0*days;}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ weeks\ =\ week;}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fortnight\ =\ 2.0*weeks;}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fortnights\ =\ fortnight;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ year\ =\ 365.2421896698*days;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ years\ =\ year;}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yr\ =\ year;}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ month\ =\ year/12.0;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ months\ =\ month;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mo\ =\ month;}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ decade\ =\ 10.0*years;}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ decades\ =\ decade;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ century\ =\ 100.0*years;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ centuries\ =\ century;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ millenium\ =\ 1000.0*years;}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ millenia\ =\ millenium;}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ temporal\ frequency}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Hertz\ =\ 1.0/second;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Hz\ =\ Hertz;}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kiloHertz\ =\ kilo*Hertz;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kHz\ =\ kiloHertz;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ megaHertz\ =\ mega*Hertz;}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ MHz\ =\ megaHertz;}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gigaHertz\ =\ giga*Hertz;}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ GHz\ =\ gigaHertz;}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ teraHertz\ =\ tera*Hertz;}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ THz\ =\ teraHertz;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ petaHertz\ =\ peta*Hertz;}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ PHz\ =\ petaHertz;}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ exaHertz\ =\ exa*Hertz;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ EHz\ =\ exaHertz;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ zettaHertz\ =\ zetta*Hertz;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ZHz\ =\ zettaHertz;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yottaHertz\ =\ yotta*Hertz;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ YHz\ =\ yottaHertz;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ spacial\ frequency}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ diopter\ =\ 1.0/meter;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ diopters\ =\ diopter;}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ speed}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kph\ =\ kilometers/hour;}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ radioactivity}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Becquerel\ =\ 1.0/second;}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Becquerels\ =\ Becquerel;}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Bq\ =\ Becquerel;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Rutherford\ =\ 1000000.0*Becquerels;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Rutherfords\ =\ Rutherford;}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Curie\ =\ 3.7e+10*Becquerels;}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Curies\ =\ Curie;}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Ci\ =\ Curie;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ force}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Newton\ =\ kilogram*meter/(second*second);}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Newtons\ =\ Newton;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ N\ =\ Newton;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dyne\ =\ Newton/100000.0;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dynes\ =\ dyne;}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dyn\ =\ dyne;}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pressure}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Pascal\ =\ Newton/(meter*meter);}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Pascals\ =\ Pascal;}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Pa\ =\ Pascal;}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Barie\ =\ Pascal/10.0;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Baries\ =\ Barie;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Barye\ =\ Barie;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Baryes\ =\ Barye;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pieze\ =\ 1000.0*Pascals;}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ piezes\ =\ pieze;}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pz\ =\ pieze;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bar\ =\ 10000.0*Pascals;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bars\ =\ bar;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Torr\ =\ 133.3224*Pascals;}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ atmosphere\ =\ 760.0*Torr;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ atmospheres\ =\ atmosphere;}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ atm\ =\ atmosphere;}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ energy}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Joule\ =\ Newton*meter;}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Joules\ =\ Joule;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ J\ =\ Joule;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ erg\ =\ Joule/10000000.0;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ergs\ =\ erg;}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kiloWatthour\ =\ 3600000.0*Joules;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kiloWatthours\ =\ kiloWatthour;}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kWh\ =\ kiloWatthour;}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ power}}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Watt\ =\ Joule/second;}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Watts\ =\ Watt;}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ W\ =\ Watt;}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kiloWatt\ =\ 1000.0*Watts;}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kiloWatts\ =\ kiloWatt;}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kW\ =\ kiloWatt;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ megaWatt\ =\ 1000000.0*Watts;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ megaWatts\ =\ megaWatt;}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ MW\ =\ megaWatt;}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliWatt\ =\ Watt/1000.0;}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliWatts\ =\ milliWatt;}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mW\ =\ milliWatt;}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }dose\ \{\ \textcolor{comment}{//\ energy}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Gray\ =\ Joule/kilogram;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Grays\ =\ Gray;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Gy\ =\ Gray;}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Sievert\ =\ Gray;}
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Sieverts\ =\ Sieverts;}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rad\ =\ Gray/100.0;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rads\ =\ rad;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rd\ =\ rad;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electrical\ current}}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Ampere\ =\ 1.0;}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Amperes\ =\ Ampere;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ A\ =\ Ampere;}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Biot\ =\ 10.0*Amperes;}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Biots\ =\ Biot;}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electrical\ potential}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Volt\ =\ Watt/Ampere;}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Volts\ =\ Volt;}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ V\ =\ Volt;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electrical\ resistance}}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Ohm\ =\ Volt/Ampere;}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Ohms\ =\ Ohm;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electrical\ conductance}}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mho\ =\ 1.0/Ohm;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mhos\ =\ mho;}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Siemens\ =\ mho;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ S\ =\ Siemens;}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ elsectrical\ charge}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Coulomb\ =\ Ampere*second;}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Coulombs\ =\ Coulomb;}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ C\ =\ Coulomb;}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Franklin\ =\ 3.33564e-\/10*Coulombs;}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Franklins\ =\ Franklin;}
+\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electrical\ capacity}}
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Farad\ =\ Coulomb/Volt;}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Farads\ =\ Farad;}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ F\ =\ Farad;}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ magnetic\ flux}}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Weber\ =\ Volt*second;}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Webers\ =\ Weber;}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Wb\ =\ Weber;}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Maxwell\ =\ Weber/100000000.0;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Maxwells\ =\ Maxwell;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ M\ =\ Maxwell;}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ magnetic\ field\ B}}
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Tesla\ =\ Weber/(meter*meter);}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Teslas\ =\ Tesla;}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ T\ =\ Tesla;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Gauss\ =\ Tesla/10000.0;}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gamma\ =\ Tesla/1000000000.0;}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ magnetic\ field\ H}}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Oerstedt\ =\ 79.57747*Ampere/meter;}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Oerstedts\ =\ Oerstedt;}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Oe\ =\ Oerstedt;}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ magnetic\ inductivity}}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Henry\ =\ Weber/Ampere;}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Henrys\ =\ Henry;}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ H\ =\ Henry;}
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliHenry\ =\ Henry/1000.0;}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ milliHenrys\ =\ milliHenry;}
+\DoxyCodeLine{00329\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mH\ =\ milliHenry;}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ temperature}}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Kelvin\ =\ 1.0;}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Kelvins\ =\ Kelvin;}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ K\ =\ Kelvin;}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ luminous\ intensity}}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ candela\ =\ 1.0;}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ candelas\ =\ candela;}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cd\ =\ candela;}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ apostilb\ =\ candelas/meter/meter;}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ apostilbs\ =\ apostilb;}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nit\ =\ apostilb;}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nits\ =\ nit;}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ skot\ =\ apostilb/1000.0;}
+\DoxyCodeLine{00343\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ skots\ =\ skot;}
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ stilb\ =\ 10000.0*apostilbs;}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ stilbs\ =\ stilb;}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Blondel\ =\ apostilb/pi;}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Blondels\ =\ Blondel;}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Lambert\ =\ 10000.0*Blondels;}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Lamberts\ =\ Lambert;}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ light\ flux}}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lumen\ =\ candela*steradian;}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lumens\ =\ lumen;}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lm\ =\ lumen;}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ light\ intensity}}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lux\ =\ lumens/meter/meter;}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ luxes\ =\ lux;}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ luces\ =\ lux;}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lx\ =\ lux;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nox\ =\ lux/1000.0;}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ phot\ =\ lumens/centimeter/centimeter;}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ phots\ =\ phot;}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }equivalent\ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lux\ =\ unit::lux/pi;}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ luxes\ =\ lux;}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ luces\ =\ lux;}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lx\ =\ lux;}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lumen\ =\ unit::lumen/pi;}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lumens\ =\ lumen;}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lm\ =\ lumen;}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ phot\ =\ apostilb/pi;}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ phots\ =\ phot;}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ acceleration}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Galileo\ =\ centimeters/second/second;}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Galileos\ =\ Galileo;}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ standard\ gavitational\ acceleration\ at\ sea\ level}}
+\DoxyCodeLine{00377\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gravity\ =\ 9.80665*meters/second/second;}
+\DoxyCodeLine{00378\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mass}}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilohyl\ =\ kilogram*gravity*second*second/meter;}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilohyls\ =\ kilohyl;}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hyl\ =\ kilohyl/1000.0;}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hyls\ =\ hyl;}
+\DoxyCodeLine{00383\ }
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ English\ Units}}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ length}}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ inch\ =\ 0.0254*meters;}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ inches\ =\ inch;}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ in\ =\ inch;}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mil\ =\ inch/1000.0;}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mils\ =\ mil;}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ point\ =\ inch/72.27;}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ points\ =\ point;}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pt\ =\ point;}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bottommeasure\ =\ inch/40.0;}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bottommeasures\ =\ bottommeasure;}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ line\ =\ inch/12.0;}
+\DoxyCodeLine{00397\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lines\ =\ line;}
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pica\ =\ 12.0*points;}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ picas\ =\ pica;}
+\DoxyCodeLine{00400\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barleycorn\ =\ inch/3.0;}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barleycorns\ =\ barleycorn;}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ finger\ =\ 7.0*inches/8.0;}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fingers\ =\ finger;}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ palm\ =\ 3.0*inches;}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ palms\ =\ palm;}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hand\ =\ 4.0*inches;}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hands\ =\ hand;}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ link\ =\ 7.92*inches;}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ links\ =\ link;}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ li\ =\ link;}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ span\ =\ 9.0*inches;}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ spans\ =\ span;}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\ =\ 12.0*inches;}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ feet\ =\ foot;}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ft\ =\ foot;}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cubit\ =\ 18.0*inches;}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cubits\ =\ cubit;}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yard\ =\ 3.0*feet;}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yards\ =\ yard;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ yd\ =\ yard;}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nail\ =\ yard/16.0;}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nails\ =\ nail;}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ell\ =\ 45.0*inches;}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ells\ =\ ell;}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pace\ =\ 5.0*feet;}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ paces\ =\ pace;}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fathom\ =\ 6.0*feet;}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fathoms\ =\ fathom;}
+\DoxyCodeLine{00429\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fm\ =\ fathom;}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rod\ =\ 198.0*inches;}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rods\ =\ rod;}
+\DoxyCodeLine{00432\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rd\ =\ rod;}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pole\ =\ rod;}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ poles\ =\ pole;}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ p\ =\ pole;}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ perch\ =\ rod;}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ perches\ =\ perch;}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rope\ =\ 20.0*feet;}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ropes\ =\ rope;}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bolt\ =\ 40.0*yards;}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bolts\ =\ bolt;}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ chain\ =\ 4.0*rods;}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ chains\ =\ chain;}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ch\ =\ chain;}
+\DoxyCodeLine{00445\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Gunters\ \{}
+\DoxyCodeLine{00446\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ chain\ =\ unit::chain;}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ chains\ =\ chain;}
+\DoxyCodeLine{00448\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }engineers\ \{}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ link\ =\ foot;}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ links\ =\ link;}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ chain\ =\ 100.0*feet;}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ chains\ =\ chain;}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ skein\ =\ 120*yards;}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ skeins\ =\ skein;}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ furlong\ =\ 220*yards;}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ furlongs\ =\ furlong;}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ spindle\ =\ 14400*yards;}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ spindles\ =\ spindle;}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }US\ \{}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cable\_length\ =\ 120.0*fathoms;}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cable\_lengths\ =\ cable\_length;}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }British\ \{}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cable\_length\ =\ 100.0*fathoms;}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cable\_lengths\ =\ cable\_length;}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }statute\ \{}
+\DoxyCodeLine{00470\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mile\ =\ 5280.0*feet;}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ miles\ =\ mile;}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mi\ =\ mile;}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ league\ =\ 3.0*miles;}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ leagues\ =\ league;}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }nautical\ \{}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mile\ =\ 1852*meters;}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ miles\ =\ mile;}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ nm\ =\ mile;}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ league\ =\ 3.0*miles;}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ leagues\ =\ league;}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }marine\ =\ nautical;}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }geodetic\ \{}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\ =\ (1200.0/3937.0)*meters;}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ feet\ =\ foot;}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ft\ =\ foot;}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }geographical\ \{}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mile\ =\ nautical::mile;}
+\DoxyCodeLine{00491\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ miles\ =\ mile;}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mi\ =\ mile;}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ parasang\ =\ 3.5*statute::miles;}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ parasangs\ =\ parasang;}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ arpentcan\ =\ 27.52*statute::miles;}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ arpentcans\ =\ arpentcan;}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ arpentlin\ =\ 191.835*feet;}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ arpentlins\ =\ arpentlin;}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ astronomical\_unit\ =\ 1.49597871e11*meters;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ astronomical\_units\ =\ astronomical\_unit;}
+\DoxyCodeLine{00502\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ AU\ =\ astronomical\_unit;}
+\DoxyCodeLine{00503\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lightyear\ =\ 9.4605e15*meters;}
+\DoxyCodeLine{00504\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lightyears\ =\ lightyear;}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ly\ =\ lightyear;}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ parsec\ =\ AU*radians/arc::second;}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ parsecs\ =\ parsec;}
+\DoxyCodeLine{00508\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pc\ =\ parsec;}
+\DoxyCodeLine{00509\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ area}}
+\DoxyCodeLine{00510\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barn\ =\ 1.0e-\/28*meter*meter;}
+\DoxyCodeLine{00511\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barns\ =\ barn;}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ b\ =\ barn;}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ circular\_inch\ =\ 0.25*pi*inch*inch;}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ circular\_inches\ =\ circular\_inch;}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ circular\_mil\ =\ 0.25*pi*mil*mil;}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ circular\_mils\ =\ circular\_mil;}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sabin\ =\ foot*foot;}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sabins\ =\ sabin;}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ square\ =\ 100.0*sabin;}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ squares\ =\ square;}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ are\ =\ 100.0*meter*meter;}
+\DoxyCodeLine{00522\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ares\ =\ are;}
+\DoxyCodeLine{00523\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ a\ =\ are;}
+\DoxyCodeLine{00524\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ rood\ =\ 40.0*rod*rod;}
+\DoxyCodeLine{00525\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ roods\ =\ rood;}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ro\ =\ rood;}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ acre\ =\ 4.0*roods;}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ acres\ =\ acre;}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ section\ =\ statute::mile*statute::mile;}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sections\ =\ section;}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ homestead\ =\ section/4.0;}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ homesteads\ =\ homestead;}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ township\ =\ 36.0*sections;}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ townships\ =\ township;}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ volume}}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minim\ =\ 6.161152e-\/8*(m*m*m);}
+\DoxyCodeLine{00537\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minims\ =\ minim;}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drop\ =\ 0.03*cc;}
+\DoxyCodeLine{00539\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drops\ =\ drop;}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ teaspoon\ =\ 4.928922*cc;}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ teaspoons\ =\ teaspoon;}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tablespoon\ =\ 3.0*teaspoons;}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tablespoons\ =\ tablespoon;}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }US\ \{}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }liquid\ \{}
+\DoxyCodeLine{00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dram\ =\ 60.0*minims;}
+\DoxyCodeLine{00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drams\ =\ dram;}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dr\ =\ dram;}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounce\ =\ 8.0*drams;}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounces\ =\ ounce;}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ oz\ =\ ounce;}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gill\ =\ 4.0*ounces;}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gills\ =\ gill;}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gl\ =\ gill;}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pint\ =\ 4.0*gills;}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pints\ =\ pint;}
+\DoxyCodeLine{00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pt\ =\ pint;}
+\DoxyCodeLine{00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quart\ =\ 2.0*pints;}
+\DoxyCodeLine{00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarts\ =\ quart;}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ qt\ =\ quart;}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ magnum\ =\ 2.0*quarts;}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ magnums\ =\ magnum;}
+\DoxyCodeLine{00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gallon\ =\ 4.0*quarts;}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gallons\ =\ gallon;}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gal\ =\ gallon;}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }dry\ \{}
+\DoxyCodeLine{00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pint\ =\ 550.61047*cc;}
+\DoxyCodeLine{00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pints\ =\ pint;}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pt\ =\ pint;}
+\DoxyCodeLine{00571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quart\ =\ 2.0*pints;}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarts\ =\ quart;}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ qt\ =\ quart;}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ peck\ =\ 8.0*dry::quarts;}
+\DoxyCodeLine{00576\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pecks\ =\ peck;}
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pk\ =\ peck;}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bushel\ =\ 4.0*pecks;}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bushels\ =\ bushel;}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bu\ =\ bushel;}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barrel\ =\ 31.5*liquid::gallons;}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barrels\ =\ barrel;}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bbl\ =\ barrel;}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bl\ =\ barrel;}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }British\ \{}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }fluid\ \{}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drachm\ =\ 60.0*minims;}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drachms\ =\ drachm;}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dr\ =\ drachm;}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounce\ =\ 8.0*drachms;}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounces\ =\ ounce;}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ oz\ =\ ounce;}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gill\ =\ 5.0*ounces;}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gills\ =\ gill;}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gi\ =\ gill;}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pint\ =\ 4.0*gills;}
+\DoxyCodeLine{00598\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pints\ =\ pint;}
+\DoxyCodeLine{00599\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pt\ =\ pint;}
+\DoxyCodeLine{00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quart\ =\ 2.0*pints;}
+\DoxyCodeLine{00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarts\ =\ quart;}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ qt\ =\ quart;}
+\DoxyCodeLine{00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gallon\ =\ 4.0*quarts;}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gallons\ =\ gallon;}
+\DoxyCodeLine{00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gal\ =\ gallon;}
+\DoxyCodeLine{00606\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ peck\ =\ 2.0*fluid::gallons;}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pecks\ =\ peck;}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pk\ =\ peck;}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bushel\ =\ 4.0*pecks;}
+\DoxyCodeLine{00611\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bushels\ =\ bushel;}
+\DoxyCodeLine{00612\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bu\ =\ bushel;}
+\DoxyCodeLine{00613\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barrel\ =\ 36.0*fluid::gallons;}
+\DoxyCodeLine{00614\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ barrels\ =\ barrel;}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bbl\ =\ barrel;}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bl\ =\ barrel;}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ noggin\ =\ 2.0*US::liquid::ounces;}
+\DoxyCodeLine{00619\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ noggins\ =\ noggin;}
+\DoxyCodeLine{00620\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cup\ =\ 8.0*US::liquid::ounces;}
+\DoxyCodeLine{00621\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cups\ =\ cup;}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fifth\ =\ US::liquid::gallon/5.0;}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fifths\ =\ fifth;}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ jeroboam\ =\ 4.0*fifths;}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ jeroboams\ =\ jeroboam;}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ firkin\ =\ 9.0*US::liquid::gallons;}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ firkins\ =\ firkin;}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilderkin\ =\ 18.0*US::liquid::gallons;}
+\DoxyCodeLine{00629\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilderkins\ =\ kilderkin;}
+\DoxyCodeLine{00630\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ strike\ =\ 2.0*US::bushels;}
+\DoxyCodeLine{00631\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ strikes\ =\ strike;}
+\DoxyCodeLine{00632\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sack\ =\ 3.0*US::bushels;}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sacks\ =\ sack;}
+\DoxyCodeLine{00634\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ coomb\ =\ 4.0*US::bushels;}
+\DoxyCodeLine{00635\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ coombs\ =\ coomb;}
+\DoxyCodeLine{00636\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seam\ =\ 8.0*US::bushels;}
+\DoxyCodeLine{00637\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ seams\ =\ seam;}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ wey\ =\ 40.0*US::bushels;}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ weys\ =\ wey;}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ last\ =\ 80.0*US::bushels;}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lasts\ =\ last;}
+\DoxyCodeLine{00642\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ register\_ton\ =\ 100.0*(ft*ft*ft);}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ register\_tons\ =\ register\_ton;}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ register\_tn\ =\ register\_ton;}
+\DoxyCodeLine{00645\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cord\ =\ 128.0*(ft*ft*ft);}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cords\ =\ cord;}
+\DoxyCodeLine{00647\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cordfoot\ =\ cord;}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cordfeet\ =\ cordfoot;}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ boardfoot\ =\ 144.0*inch*inch*inch;}
+\DoxyCodeLine{00650\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ boardfeet\ =\ boardfoot;}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ timberfoot\ =\ foot*foot*foot;}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ timberfeet\ =\ timberfoot;}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hogshead\ =\ 2.0*US::barrels;}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hogsheads\ =\ hogshead;}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pipe\ =\ 4.0*US::barrels;}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pipes\ =\ pipe;}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tun\ =\ 8.0*US::barrels;}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tuns\ =\ tun;}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mass}}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ grain\ =\ 0.06479891*grams;}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ grains\ =\ grain;}
+\DoxyCodeLine{00662\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gr\ =\ grain;}
+\DoxyCodeLine{00663\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pennyweight\ =\ 24.0*grains;}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dwt\ =\ pennyweight;}
+\DoxyCodeLine{00665\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }apothecary\ \{\ \textcolor{comment}{//\ weight}}
+\DoxyCodeLine{00666\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scruple\ =\ 20.0*grains;}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ scruples\ =\ scruple;}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ s\ =\ scruple;}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dram\ =\ 3.0*scruples;}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drams\ =\ dram;}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dr\ =\ dram;}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounce\ =\ 8.0*drams;}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounces\ =\ ounce;}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ oz\ =\ ounce;}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pound\ =\ 12.0*ounces;}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pounds\ =\ pound;}
+\DoxyCodeLine{00677\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lb\ =\ pound;}
+\DoxyCodeLine{00678\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }troy\ =\ apothecary;}
+\DoxyCodeLine{00680\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }ap\ =\ apothecary;}
+\DoxyCodeLine{00681\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }t\ =\ apothecary;}
+\DoxyCodeLine{00682\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }avoirdupois\ \{\ \textcolor{comment}{//\ weight}}
+\DoxyCodeLine{00683\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pound\ =\ 7000.0*grains;}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pounds\ =\ pound;}
+\DoxyCodeLine{00685\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lb\ =\ pound;}
+\DoxyCodeLine{00686\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounce\ =\ pound/16.0;}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ounces\ =\ ounce;}
+\DoxyCodeLine{00688\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ oz\ =\ ounce;}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dram\ =\ ounce/16.0;}
+\DoxyCodeLine{00690\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ drams\ =\ dram;}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ dr\ =\ dram;}
+\DoxyCodeLine{00692\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00693\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }avdp\ =\ avoirdupois;}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }av\ =\ avoirdupois;}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ stone\ =\ 14.0*avoirdupois::pounds;}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ stones\ =\ stone;}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ st\ =\ stone;}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }US\ \{\ \textcolor{comment}{//\ short}}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hundredweight\ =\ 100.0*avoirdupois::pounds;}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cwt\ =\ hundredweight;}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarter\ =\ hundredweight/4.0;}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarters\ =\ quarter;}
+\DoxyCodeLine{00703\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ qr\ =\ quarter;}
+\DoxyCodeLine{00704\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ton\ =\ 20.0*hundredweight;}
+\DoxyCodeLine{00705\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tons\ =\ ton;}
+\DoxyCodeLine{00706\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tn\ =\ ton;}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ deadweight\ =\ ton;}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }British\ \{\ \textcolor{comment}{//\ long}}
+\DoxyCodeLine{00710\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ hundredweight\ =\ 112.0*avoirdupois::pounds;}
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cwt\ =\ hundredweight;}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarter\ =\ hundredweight/4.0;}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ quarters\ =\ quarter;}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ qr\ =\ quarter;}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ton\ =\ 20.0*hundredweight;}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tons\ =\ ton;}
+\DoxyCodeLine{00717\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ tn\ =\ ton;}
+\DoxyCodeLine{00718\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00719\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }English\ =\ British;}
+\DoxyCodeLine{00720\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Imperial\ =\ British;}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ crith\ =\ 0.0906*grams;}
+\DoxyCodeLine{00722\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ criths\ =\ crith;}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bag\ =\ 94.0*avoirdupois::pounds;}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ bags\ =\ bag;}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cental\ =\ 100.0*avoirdupois::pounds;}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ centals\ =\ cental;}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ weymass\ =\ 252.0*avoirdupois::pounds;}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rate}}
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mgd\ =\ 1000000.0*US::liquid::gallons/day;}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cfs\ =\ foot*foot*foot/second;}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ minersinch\ =\ 1.5*foot*foot*foot/minute;}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mpg\ =\ statute::miles/US::liquid::gallon;}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ speed}}
+\DoxyCodeLine{00734\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mph\ =\ statute::miles/hour;}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ knot\ =\ nautical::miles/hour;}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ knots\ =\ knot;}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }admiralty\ \{}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ knot\ =\ 6980.0*feet/hour;}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ knots\ =\ knot;}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ force}}
+\DoxyCodeLine{00742\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ poundal\ =\ avdp::pound*foot/(second*second);}
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ poundals\ =\ poundal;}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ pdl\ =\ poundal;}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lbf\ =\ avoirdupois::pound*gravity;}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pressure}}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ psi\ =\ lbf/(inch*inch);}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ energy}}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ calorie\ =\ 4.1868*Joules;}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ calories\ =\ calorie;}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ cal\ =\ calorie;}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilocalorie\ =\ 1000.0*calories;}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kilocalories\ =\ kilocalorie;}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ kcal\ =\ kilocalorie;}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Frigorie\ =\ kilocalorie;}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Frigories\ =\ Frigorie;}
+\DoxyCodeLine{00757\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Btu\ =\ 1055.06*Joules;}
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ therm\ =\ 10000.0*Btu;}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ therms\ =\ therm;}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ thermie\ =\ 1000000.0*calories;}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ thermies\ =\ thermie;}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ power}}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ horsepower\ =\ 735.49875*Watts;}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ HP\ =\ horsepower;}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electrical\ current}}
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Gilbert\ =\ 0.795775*Amperes;}
+\DoxyCodeLine{00767\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Gilberts\ =\ Gilbert;}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ temperature}}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Rankin\ =\ 1.8*Kelvins;}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Rankins\ =\ Rankin;}
+\DoxyCodeLine{00771\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ R\ =\ Rankin;}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ luminous\ intensity}}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ candle\ =\ 1.02*candelas;}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ candles\ =\ candle;}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }Hefner\ \{}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ candle\ =\ 0.9*unit::candles;}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ candles\ =\ candle;}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ light\ intensity}}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\_candle\ =\ lumens/foot/foot;}
+\DoxyCodeLine{00781\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\_candles\ =\ foot\_candle;}
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fc\ =\ foot\_candle;}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\_Lambert\ =\ candelas/foot/foot/pi;}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\_Lamberts\ =\ foot\_Lambert;}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \textcolor{keyword}{namespace\ }equivalent\ \{}
+\DoxyCodeLine{00786\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\_candle\ =\ unit::foot\_candle/pi;}
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ foot\_candles\ =\ foot\_candle;}
+\DoxyCodeLine{00788\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ fc\ =\ foot\_candle;}
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00790\ \ \ \ \ \}}
+\DoxyCodeLine{00791\ \ \ \ \ \textcolor{keyword}{namespace\ }units\ =\ unit;}
+\DoxyCodeLine{00792\ }
+\DoxyCodeLine{00793\ \ \ \ \ \textcolor{keyword}{namespace\ }constant\ \{}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }units;\ \textcolor{comment}{//\ @suppress("{}Using\ directive\ in\ header"{})}}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ speed\ of\ light}}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ c\ =\ 2.99792458e8*meters/second;}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ speed\ of\ sound}}
+\DoxyCodeLine{00798\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Mach\ =\ 331.46*meters/second;}
+\DoxyCodeLine{00799\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Planck\ constant}}
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ h\ =\ 6.6260755e-\/34*Joule*seconds;}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ h\_bar\ =\ h/(2.0*pi);}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ standard\ gavitational\ acceleration\ at\ sea\ level}}
+\DoxyCodeLine{00803\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ g\ =\ units::gravity;}
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electron\ charge}}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ e\ =\ 1.60217733e-\/19*Coulombs;}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ elevtron\ Volt}}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ eV\ =\ e*V;}
+\DoxyCodeLine{00808\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ keV\ =\ 1000.0*eV;}
+\DoxyCodeLine{00809\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ MeV\ =\ 1000000.0*eV;}
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ GeV\ =\ 1000000000.0*eV;}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Rydberg\ =\ 13.6054*eV;}
+\DoxyCodeLine{00812\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Rydbergs\ =\ Rydberg;}
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electron\ mass}}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ m\_e\ =\ 9.1093897e-\/31*kilograms;}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ proton\ mass}}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ m\_P\ =\ 1.6726231e-\/27*kilograms;}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ deuteron\ mass}}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ m\_D\ =\ 1875.61339*MeV/(c*c);}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ unified\ atomic\ mass\ unit}}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ atomic\_mass\_unit\ =\ 1.6605402e-\/27*kilograms;}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ atomic\_mass\_units\ =\ atomic\_mass\_unit;}
+\DoxyCodeLine{00822\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ amu\ =\ atomic\_mass\_unit;}
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Dalton\ =\ atomic\_mass\_unit;}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ Daltons\ =\ Dalton;}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ permittivity\ of\ free\ space}}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ epsilon\ =\ 8.854187817e-\/12*Farads/meter;}
+\DoxyCodeLine{00827\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ permeability\ of\ free\ space}}
+\DoxyCodeLine{00828\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mu\ =\ 12.566370614e-\/7*Newtons/(A*A);}
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fine-\/structure\ constant}}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ alpha\ =\ 1.0/137.0359895;}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ classical\ electron\ radius}}
+\DoxyCodeLine{00832\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ r\_e\ =\ 2.81794092e-\/15*meters;}
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electron\ Compton\ wavelength}}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lambda\_bar\ =\ 3.86159323e-\/13*meters;}
+\DoxyCodeLine{00835\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bohr\ radius}}
+\DoxyCodeLine{00836\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ a\_0\ =\ 0.529177249e-\/10*meters;}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ wavelength\ of\ 1\ eV/c\ particle}}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ lambda\_1eV\ =\ 1.23984244e-\/6*meters;}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Thomson\ cross\ section}}
+\DoxyCodeLine{00840\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sigma\_0\ =\ 0.66524616*barns;}
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bohr\ magneton}}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mu\_B\ =\ 5.78838263e-\/11*MeV/Tesla;}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ nuclear\ magneton}}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mu\_N\ =\ 3.15245166e-\/14*MeV/Tesla;}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ electron\ cyclotron\ frequency/field}}
+\DoxyCodeLine{00846\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ E\_M\_e\ =\ 1.75881962e11*C/kg*(rad/(s*T));}
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ proton\ cyclotron\ frequency/field}}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ E\_M\_P\ =\ 9.5788309e7*C/kg*(rad/(s*T));}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ gravitational\ constant}}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ G\ =\ 6.67259e-\/11*m*m*m/(kg*s*s);\ \textcolor{comment}{//\ meters\string^3\ /\ (kilogram\ *\ seconds\string^2)}}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Avogadro's\ constant}}
+\DoxyCodeLine{00852\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ N\_A\ =\ 6.0221367e23;}
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Boltzmann\ constant}}
+\DoxyCodeLine{00854\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ K\_B\ =\ 1.380658e-\/23*Joules/Kelvin;}
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ molar\ volume,\ ideal\ gas\ at\ standard\ temperature\ and\ pressure}}
+\DoxyCodeLine{00856\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ V\_molar\ =\ 2.897756e-\/3*meter*Kelvins;}
+\DoxyCodeLine{00857\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Stefan-\/Boltzmann\ constant}}
+\DoxyCodeLine{00858\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ sigma\_SB\ =\ 5.67051e-\/8*W/(m*m*K*K*K*K);}
+\DoxyCodeLine{00859\ \ \ \ \ \}}
+\DoxyCodeLine{00860\ \ \ \ \ \textcolor{keyword}{namespace\ }constants\ =\ constant;}
+\DoxyCodeLine{00861\ }
+\DoxyCodeLine{00862\ }
+\DoxyCodeLine{00863\ \ \ \ \ \textcolor{comment}{//\ enumerators\ for\ Physics,\ ect.}}
+\DoxyCodeLine{00864\ \ \ \ \ \textcolor{keyword}{enum}\ KItem\ \{KNormal,\ KDistance,\ KNewton,\ KGravity,\ KFriction,}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KCentripetal,\ KMu,\ KVelocity,\ KVelocityFinal,\ KAcceleration,}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KTime,\ KTension,\ Kxi,\ Kxf,}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KMass}
+\DoxyCodeLine{00868\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00869\ }
+\DoxyCodeLine{00870\ \ \ \ \ \textcolor{comment}{//\ direction\ (Axis)\ on\ which\ this\ is\ directed\ to.}}
+\DoxyCodeLine{00871\ \ \ \ \ \textcolor{keyword}{enum}\ KDirection\ \{Kx,\ Ky,\ Kz\};}
+\DoxyCodeLine{00872\ }
+\DoxyCodeLine{00873\ \ \ \ \ \textcolor{keyword}{enum}\ KEnergyType\ \{PotentialGravEnergy,\ PotentialSpringEnergy,\ KineticTEnergy,\ KineticREnergy\};}
+\DoxyCodeLine{00874\ }
+\DoxyCodeLine{00875\ \ \ \ \ CharString*\ getVariableFromKItem(KItem\ *item);}
+\DoxyCodeLine{00876\ \}}
+\DoxyCodeLine{00877\ }
+\DoxyCodeLine{00878\ }
+\DoxyCodeLine{00879\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00880\ \textcolor{comment}{\ *\ Author:\ Brent\ clancy\ (EterniaLogic)}}
+\DoxyCodeLine{00881\ \textcolor{comment}{\ *\ Desc:\ Provides\ constants\ and\ functions\ for\ both\ EE\ and\ CE\ concepts.}}
+\DoxyCodeLine{00882\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{00883\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00884\ }
+\DoxyCodeLine{00885\ }
+\DoxyCodeLine{00886\ }
+\DoxyCodeLine{00887\ \textcolor{keyword}{namespace\ }chemistry\ \{}
+\DoxyCodeLine{00888\ \ \ \ \ \textcolor{keyword}{namespace\ }mass\ \{}
+\DoxyCodeLine{00889\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ proton\ =\ 1.672621777e-\/27;}
+\DoxyCodeLine{00890\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ neutron\ =\ 1.672621777e-\/27;}
+\DoxyCodeLine{00891\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ electron\ =\ 9.10938188e-\/31;}
+\DoxyCodeLine{00892\ \ \ \ \ \}}
+\DoxyCodeLine{00893\ \}}
+\DoxyCodeLine{00894\ }
+\DoxyCodeLine{00895\ \textcolor{keyword}{namespace\ }electrical\ \{}
+\DoxyCodeLine{00896\ \ \ \ \ \textcolor{keywordtype}{double}\ getWatts(\textcolor{keywordtype}{double}\ volts,\ \textcolor{keywordtype}{double}\ amps);}
+\DoxyCodeLine{00897\ \ \ \ \ \textcolor{keywordtype}{double}\ getAmps(\textcolor{keywordtype}{double}\ volts,\ \textcolor{keywordtype}{double}\ watts);}
+\DoxyCodeLine{00898\ \ \ \ \ \textcolor{keywordtype}{double}\ getVolts(\textcolor{keywordtype}{double}\ amps,\ \textcolor{keywordtype}{double}\ watts);}
+\DoxyCodeLine{00899\ \ \ \ \ \textcolor{keywordtype}{double}\ getOhms(\textcolor{keywordtype}{double}\ volts,\ \textcolor{keywordtype}{double}\ amps);}
+\DoxyCodeLine{00900\ }
+\DoxyCodeLine{00901\ \ \ \ \ \textcolor{keywordtype}{double}\ Capacitance(\textcolor{keywordtype}{double}\ coulomb,\ \textcolor{keywordtype}{double}\ volt);}
+\DoxyCodeLine{00902\ \ \ \ \ \textcolor{keywordtype}{double}\ SeriesSum(\textcolor{keywordtype}{double}*\ C,\ \textcolor{keywordtype}{int}\ Clen);}
+\DoxyCodeLine{00903\ \ \ \ \ \textcolor{keywordtype}{double}\ ParallelSum(\textcolor{keywordtype}{double}*\ C,\ \textcolor{keywordtype}{int}\ Clen);}
+\DoxyCodeLine{00904\ \}}
+\DoxyCodeLine{00905\ }
+\DoxyCodeLine{00906\ \textcolor{comment}{//\ Advanced\ electromagnetic\ frequencies\ (EterniaLogic)}}
+\DoxyCodeLine{00907\ \textcolor{keyword}{namespace\ }electromagnetic\ \{}
+\DoxyCodeLine{00908\ \ \ \ \ \textcolor{keyword}{using\ namespace\ }physical::unit;\ \textcolor{comment}{//\ @suppress("{}Using\ directive\ in\ header"{})}}
+\DoxyCodeLine{00909\ \ \ \ \ \textcolor{keyword}{namespace\ }sound\ \{}
+\DoxyCodeLine{00910\ \ \ \ \ \ \ \ \ \textcolor{keyword}{using\ namespace\ }physical::unit;\ \textcolor{comment}{//\ @suppress("{}Using\ directive\ in\ header"{})}}
+\DoxyCodeLine{00911\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ octave\ =\ 2;\ \textcolor{comment}{//\ Frequency\ doubles\ every\ octave}}
+\DoxyCodeLine{00912\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ note:\ AB\ =\ A\#/Bb}}
+\DoxyCodeLine{00913\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ C\ =\ 16.35;}
+\DoxyCodeLine{00914\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ CD\ =\ 17.32;}
+\DoxyCodeLine{00915\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ D\ =\ 18.35;}
+\DoxyCodeLine{00916\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ DE\ =\ 19.45;}
+\DoxyCodeLine{00917\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ E\ =\ 20.60;}
+\DoxyCodeLine{00918\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ F\ =\ 21.83;}
+\DoxyCodeLine{00919\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ FG\ =\ 23.12;}
+\DoxyCodeLine{00920\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ G\ =\ 24.50;}
+\DoxyCodeLine{00921\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ GA\ =\ 25.96;}
+\DoxyCodeLine{00922\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ A\ =\ 27.50;}
+\DoxyCodeLine{00923\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ BA\ =\ 29.14;}
+\DoxyCodeLine{00924\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ B\ =\ 30.87;}
+\DoxyCodeLine{00925\ }
+\DoxyCodeLine{00926\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ getNote(\textcolor{keywordtype}{double}\ Letter,\ \textcolor{keywordtype}{double}\ Octave);}
+\DoxyCodeLine{00927\ \ \ \ \ \}}
+\DoxyCodeLine{00928\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ radio\ =\ 50*megaHertz;\textcolor{comment}{//6}}
+\DoxyCodeLine{00929\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ microwave\ =\ 3*gigaHertz;\ \textcolor{comment}{//9}}
+\DoxyCodeLine{00930\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ infared\ =\ 300*gigaHertz;\ \textcolor{comment}{//9}}
+\DoxyCodeLine{00931\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ light\ =\ 400*teraHertz;\textcolor{comment}{//12}}
+\DoxyCodeLine{00932\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ ultraviolet\ =\ 750*petaHertz;\textcolor{comment}{//15}}
+\DoxyCodeLine{00933\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ xray\ =\ 3*exaHertz;\ \textcolor{comment}{//18}}
+\DoxyCodeLine{00934\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ gamma\ =\ 30*exaHertz;\ \textcolor{comment}{//19}}
+\DoxyCodeLine{00935\ \}}
+\DoxyCodeLine{00936\ }
+\DoxyCodeLine{00937\ \textcolor{keyword}{namespace\ }PlanetaryConstants\ \{}
+\DoxyCodeLine{00938\ \ \ \ \ \textcolor{keyword}{enum}\ TerrainTypes\ \{TTOcean,\ TTGrassland,\ TTMarsh,\ TTForest,\ TTBurning\};}
+\DoxyCodeLine{00939\ \}}
+\DoxyCodeLine{00940\ }
+\DoxyCodeLine{00941\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*CONSTANTS\_H\_*/}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

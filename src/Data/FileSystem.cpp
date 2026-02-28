@@ -169,7 +169,7 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString location) {
                 // quickie loop through this dirs siblings
                 while(tmp != 0x0) {
                     // compare the tmp node with the item we are seeking.
-                    if(tmp->name.Compare(sresult.get(i))) {
+                    if(tmp->name.compare(sresult.get(i))) {
                         current = tmp;
                         break;
                     }
@@ -188,7 +188,7 @@ FileStructureNode* FileSystem::getBaseNodeFromString(CharString location) {
 
             // loop through and find the item based on name.
             while(tmp != 0x0) {
-                if(tmp->name.Compare(location)) {
+                if(tmp->name.compare(location)) {
                     current = tmp;
                     exists=true;
                     break;
@@ -228,7 +228,7 @@ FileStructureNode* FileSystem::getNodeFromString(CharString location) {
                 bool exists = false;
                 while(tmp != 0x0) {
                     // compare items
-                    if(tmp->name.Compare(sresult.get(i))) {
+                    if(tmp->name.compare(sresult.get(i))) {
                         current = tmp;
                         exists=true;
                         break;
@@ -255,7 +255,7 @@ FileStructureNode* FileSystem::getNodeFromString(CharString location) {
 
             // loop through and determine if it exists in the sibling set.
             while(tmp != 0x0) {
-                if(tmp->name.Compare(location)) {
+                if(tmp->name.compare(location)) {
                     current = tmp;
                     exists=true;
                     break;
@@ -471,7 +471,7 @@ void FileStructure::listDirs(CharString location){
 
 // Set the Current variable to the current directory.
 void FileSystem::callDirectory(CharString location) {
-    if(location.Compare("..",2)) {
+    if(location.compare("..",2)) {
         if(Current->Parent != 0x0) {
             Current = Current->Parent;
         }

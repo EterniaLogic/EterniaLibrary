@@ -174,7 +174,7 @@ bool Program::compareVars(VProgramNode* node) {
                 break;
         }
     } else if(v1->getType() == DT_STRING && node->ctype == PCC_Equals) {
-        if(v1->getString().Compare(v2->getString())) return true;
+        if(v1->getString().compare(v2->getString())) return true;
     } else if(v1->getType() == DT_CLASS && node->ctype == PCC_Equals) {
         if(v1->get() == v2->get()) return true;
     }

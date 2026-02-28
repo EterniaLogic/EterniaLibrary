@@ -20,7 +20,7 @@ void TimeProfiler::profileItem(CharString name){
     items.freeze();
     bool hasItem = false;
     for(int i=0;i<items.frozenlen;i++){
-        if(items.frozen[i].Compare(name)){
+        if(items.frozen[i].compare(name)){
             hasItem = true;
             break;
         }
