@@ -10,8 +10,8 @@ Logger Logger::GlobalLogger("global.log", "[GLOBAL]", true, true, true);
 Logger Logger::ErrorLogger("error.log", "[ERROR]", true, true, true);
 
 /*void initGlobalLogger(){
-    Logger Logger::GlobalLogger("global.log", "[GLOBAL]", true, true, true);
-}*/
+ *    Logger Logger::GlobalLogger("global.log", "[GLOBAL]", true, true, true);
+ * }*/
 
 void loggerThread(Logger* logger){
     long ticks_per_sec, time, last;
@@ -56,10 +56,10 @@ Logger::Logger(CharString logfileloc, CharString prefix, bool async, bool consol
 }
 
 Logger::Logger(){
- //???
-	async=false;
-	ending=false;
-	console=false;
+    //???
+    async=false;
+    ending=false;
+    console=false;
     opened=false;
     //cout << "Logger basic start" << endl;
 }
@@ -142,14 +142,14 @@ Logger& Logger::operator=(const Logger& l){
     this->console = l.console;
     this->ending = false;
 
-    l.~Logger();
 
-    // open file
+    /*// open file
     //if(clearfile) file.open (logfileloc.get(), ios::out | ios::app);
     //else
     file.open (logfileloc.get(), ios::out | ios::app | ios::trunc);
     file.seekp(0, ios::end);
 
     this->ending = false; // reset ending
-    asyncthread = std::thread(loggerThread, this);
+    asyncthread = std::thread(loggerThread, this);*/
+    return (Logger&)l;
 }

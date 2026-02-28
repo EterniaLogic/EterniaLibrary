@@ -770,7 +770,7 @@ void CharString::concatb(const char(&val)[N]){
 // Combine CharStrings before the current charString.=
 void CharString::concatb(char* str, int lenx) {
     // initialize variables
-    if(!isValidCharString()) return;
+    if(!isValidCharString() || !CharString(str,len).isValidCharString()) return;
     int lena = lenx;
     int lenb = len;
     const int lenab = lena+lenb;
@@ -792,7 +792,7 @@ void CharString::concatb(char* str, int lenx) {
 
     //cout << "tmp: '" << tmp << "' (" << lena << "," << lenb << "="<< lenab <<")" << endl;
     // imprint changes
-    delete stringx;
+    delete[] stringx; // added [] to remove undefined behavior and malloc crashes
     this->set(tmp,lenab);
 }
 
