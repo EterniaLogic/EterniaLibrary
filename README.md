@@ -1,6 +1,6 @@
 # Eternia Library #
 
-[![CMake](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml/badge.svg)](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml)
+[![CMake](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml/badge.svg?branch=master)](https://github.com/EterniaLogic/EterniaLibrary/actions/workflows/cmake.yml)
 
 **Version**: 1.152.6 
 

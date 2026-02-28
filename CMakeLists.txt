@@ -183,6 +183,7 @@ install(DIRECTORY doc/man DESTINATION share/ COMPONENT Test64) # man documents f
 # Primary packaged libraries
 install(TARGETS Eternia32 DESTINATION ${LIB_DIR} COMPONENT Library32)
 install(TARGETS Eternia   DESTINATION ${LIB_DIR} COMPONENT Library64)
+
 INSTALL(DIRECTORY build/include DESTINATION . COMPONENT Library32)
 INSTALL(DIRECTORY build/include DESTINATION . COMPONENT Library64)
 
