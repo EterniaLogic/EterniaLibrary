@@ -5,7 +5,12 @@
 #include "../Parsing/LoadFile.h"
 #include "../Parsing/SimpleParser.h"
 #include "APIEventRegistry.h"
-#include "APICore.h"
+
+#ifndef APICore_H_
+    #include "APICore.h"
+#else
+    class APICore;
+#endif
 
 // Core header for a mod.
 //  Actual module using C++ can use this directly via inheritance. (C++ loaded .dll/.so on runtime)

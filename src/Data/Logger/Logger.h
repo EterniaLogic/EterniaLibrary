@@ -38,8 +38,8 @@ public:
     CharString logfileloc, prefix;
     bool async, console, ending;
     Queue asyncLog;
-
-    static Logger GLOBAL, ERROR;
+    static Logger GlobalLogger;
+    static Logger ErrorLogger;
 };
 
 #endif

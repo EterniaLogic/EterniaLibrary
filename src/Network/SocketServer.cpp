@@ -105,12 +105,12 @@ void ServerClientHandler_(SockClient *tclient, SocketServer *server) {
                 }
             }
         }
-        else if (iResult == 0) {} // no bytes?
+        else if (iResult == 0) { // no bytes?
             //printf("Connection closing...\n");
             if(server->disconnected != 0x0) server->disconnected(server, tclient);
             tclient->alive = false;
             server->clients.remove(tclient);
-        else  {
+        }else  {
             printf("recv failed with error: %d\n", WSAGetLastError());
             closesocket(tclient->sockd);
             WSACleanup();
@@ -118,7 +118,7 @@ void ServerClientHandler_(SockClient *tclient, SocketServer *server) {
         }
 #endif
     }
-    Logger::GLOBAL.log("[SocketServer] closing client thread");
+    Logger::GlobalLogger.log("[SocketServer] closing client thread");
 }
 
 
@@ -126,7 +126,7 @@ void ServerClientHandler_(SockClient *tclient, SocketServer *server) {
 void SocketServer::tcpConnectionAcceptor() {
     SockClient *c;
     bool gotClient=true;
-    Logger::GLOBAL.log("starting TCP listener");
+    Logger::GlobalLogger.log("starting TCP listener");
 #ifdef LINUXXX
     listen(socketfd,500); // Listen for clients
 #elif defined(WINDOWSXX)
@@ -142,7 +142,7 @@ void SocketServer::tcpConnectionAcceptor() {
     sl += address;
     sl += ":";
     sl += port;
-    Logger::GLOBAL.log(sl);
+    Logger::GlobalLogger.log(sl);
     while(this->dolisten) {
         // Construct the client
         c = new SockClient(this);
@@ -176,17 +176,17 @@ void SocketServer::tcpConnectionAcceptor() {
         sl += CharString(s);
         sl += ":";
         sl += c->cli_addr.sin_port;
-        Logger::GLOBAL.log(sl);
+        Logger::GlobalLogger.log(sl);
         c->addr = s;
         c->port = c->cli_addr.sin_port;
         //cout << "[SocketServer] Client connected: " << s << endl;
 #elif defined(WINDOWSXX)
-        Logger::GLOBAL.log("[SocketServer] windows listening...");
+        Logger::GlobalLogger.log("[SocketServer] windows listening...");
         // Setup the TCP listening socket
         
         // Accept a client socket
         c->sockd = accept(socketfd, NULL, NULL);
-        if (ClientSocket == INVALID_SOCKET) {
+        if (c->sockd == INVALID_SOCKET) {
             printf("accept failed with error: %d\n", WSAGetLastError());
             std::this_thread::sleep_for(std::chrono::microseconds(10000));
             continue;
@@ -197,7 +197,7 @@ void SocketServer::tcpConnectionAcceptor() {
         clients.add(c);
          
         //cout << clients.size() << endl;
-        Logger::GLOBAL.log("[SocketServer] added client");
+        Logger::GlobalLogger.log("[SocketServer] added client");
         // create a new client thread
         //if(async){
             c->clientthread = std::thread(&ServerClientHandler_, c, this);
@@ -205,7 +205,7 @@ void SocketServer::tcpConnectionAcceptor() {
         //    ServerClientHandler_(c,this);
         //}
     }
-    Logger::GLOBAL.log("[SocketServer] closing tcp acceptor thread");
+    Logger::GlobalLogger.log("[SocketServer] closing tcp acceptor thread");
 }
 
 void SocketServer::startAsync(){
@@ -323,7 +323,7 @@ void SocketServer::start() {
 // Close the server
 void SocketServer::Close() {
     // close the main acceptor (if it is active)
-    Logger::GLOBAL.log("[SocketServer] closing");
+    Logger::GlobalLogger.log("[SocketServer] closing");
 
     this->dolisten=false;
     //if(async) acceptorThread.join();
@@ -335,7 +335,7 @@ void SocketServer::Close() {
     closesocket(socketfd);
     WSACleanup();
 #endif
-    //Logger::GLOBAL.log("[SocketServer] closing [2]");
+    //Logger::GlobalLogger.log("[SocketServer] closing [2]");
     
     //if(async) acceptorThread.join();
 
@@ -353,5 +353,5 @@ void SocketServer::Close() {
     clients.clear();
     std::this_thread::sleep_for(std::chrono::milliseconds(30));
     if(async) acceptorThread.join();
-    //Logger::GLOBAL.log("[SocketServer] closing [3]");
+    //Logger::GlobalLogger.log("[SocketServer] closing [3]");
 }

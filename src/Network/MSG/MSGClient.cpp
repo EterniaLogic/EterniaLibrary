@@ -9,7 +9,7 @@ void _clientHandler_MSGCLIENT(CharString dataIn, CharString &dataOut, SockClient
     if(dataIn.getSize() <= 2) return;
     CharString l = "[MSGClient] handler: ";
     l+=dataIn;
-    Logger::GLOBAL.log(l);
+    Logger::GlobalLogger.log(l);
     
     MSGClient* mclient = 0x0;
     bool clientside = client->clientside;
@@ -33,7 +33,7 @@ void _clientHandler_MSGCLIENT(CharString dataIn, CharString &dataOut, SockClient
         
         CharString l2 = "[MSGClient] assigned new id ";
         l2+=mclient->identity;
-        Logger::GLOBAL.log(l2);
+        Logger::GlobalLogger.log(l2);
     }else if(dataIn.startsWith("idname:")){ // other client's idname is client-specific, but stored on the broadcast servers
         // idname:NAME:ID
         // useful for finding out what ID goes where... "[Emailserver]" sent received an email. instead of "[-1020302]" sent an email.
@@ -79,7 +79,7 @@ void MSGClient::sendNewIdentity(){
     l+=":";
     l+=client->port;
     l+=") new ID";
-    Logger::GLOBAL.log(l);
+    Logger::GlobalLogger.log(l);
     
     CharString idstr = "id:";
     CharString newid = CharString::ConvertFromLong(r.nextLong());

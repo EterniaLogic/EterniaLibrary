@@ -6,7 +6,9 @@
 
 #if defined(_WIN64) || defined(_WIN32)
 #define WINDOWSXX
-#include <Windows.h>
+#define byte win_byte_override  // Rename 'byte' before including windows.h
+#include <windows.h>
+#undef byte                    // Restore 'byte' so C++ std::byte works again
 #else
 #define LINUXXX
 #include <dirent.h>
@@ -18,10 +20,15 @@
 #include "APIPermissionsRegistry.h"
 
 
-#include "APIMod.h"
+
+
 #include "APIUser.h"
 
-
+#ifndef APIMod_H_ // prevent infinitely nested headers
+#include "APIMod.h"
+#else
+class APIMod;
+#endif
 
 
 

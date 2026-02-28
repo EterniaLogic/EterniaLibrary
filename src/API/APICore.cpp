@@ -40,14 +40,14 @@ APIMod* createDirMod(APICore* core, CharString folder, CharString ename) {
 LinkedList<CharString> getDirListing(CharString loc) {
 	LinkedList<CharString> list;
 #ifdef WINDOWSXX // Windows-only
-	std::string pattern(modfolder.get());
+	std::string pattern(loc.get());
 	pattern.append("\\*");
 	WIN32_FIND_DATA data;
 	HANDLE hFind;
 	if ((hFind = FindFirstFile(pattern.c_str(), &data)) != INVALID_HANDLE_VALUE) {
 		do {
 			//createDirMod(data.cFileName);
-			list.add(Data.cFileName);
+			list.add(data.cFileName);
 		} while (FindNextFile(hFind, &data) != 0);
 		FindClose(hFind);
 	}

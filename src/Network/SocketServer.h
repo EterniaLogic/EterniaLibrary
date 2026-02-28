@@ -35,7 +35,9 @@
 //#include <math>
 
 #ifdef WINDOWSXX
+#define byte win_byte_override  // Rename 'byte' before including windows.h
 #include <windows.h>
+#undef byte                    // Restore 'byte' so C++ std::byte works again
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #pragma comment (lib, "Ws2_32.lib")

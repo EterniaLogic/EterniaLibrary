@@ -6,16 +6,19 @@ void SockClient::readhandler(){
     char buffer[buflen];
     CharString writeto;
     
-    Logger::GLOBAL.log("[SockClient]  reading thread started");
+    Logger::GlobalLogger.log("[SockClient]  reading thread started");
     
     while(alive){
-        
+#ifdef WINDOWSXX // slightly different for windows
+        n = recv(sockd, buffer, buflen, 0);
+#else
         n = read(sockd, buffer, buflen);
+#endif
         if (n < 0){
             std::this_thread::sleep_for(std::chrono::milliseconds(5));
             continue;
         }else if(n==0){
-            Logger::GLOBAL.log("[SockClient] disconnected from server");
+            Logger::GlobalLogger.log("[SockClient] disconnected from server");
             if(disconnected != 0x0) disconnected(server, this);
             alive = false;
             return;
@@ -36,16 +39,15 @@ void SockClient::readhandler(){
         }
     }
     
-    Logger::GLOBAL.log("[SockClient] reading thread ended");
+    Logger::GlobalLogger.log("[SockClient] reading thread ended");
     alive = false;
 }
 
 
 SockClient::SockClient() {
 	this->exVAL=0x0;
-	this->address=0x0;
 	this->ipv6=false;
-	this->addr=0x0;
+	this->addr=0x0; // ip?
 	this->server=0x0;
 	this->alive = false;
 	this->clientside = false;
@@ -62,6 +64,9 @@ SockClient::SockClient() {
 #ifdef WINDOWSXX
     sockd = INVALID_SOCKET;
 #endif
+#ifdef LINUXXX
+    this->address=0x0; // linux address
+#endif
     this->alive = true;
     this->clientside = false;
     this->exVAL = 0x0; // set to null
@@ -70,7 +75,6 @@ SockClient::SockClient() {
 
 SockClient::SockClient(SocketServer* server){
 	this->exVAL=0x0;
-	this->address=0x0;
 	this->ipv6=false;
 	this->addr=0x0;
 	this->server=0x0;
@@ -89,6 +93,9 @@ SockClient::SockClient(SocketServer* server){
 
 #ifdef WINDOWSXX
     sockd = INVALID_SOCKET;
+#endif
+#ifdef LINUXXX
+    this->address=0x0;
 #endif
     this->server = server;
 }
@@ -114,7 +121,7 @@ void SockClient::connectc(SocketClientType ctype,
     sl += addr;
     sl += ":";
     sl += port;
-    Logger::GLOBAL.log(sl);
+    Logger::GlobalLogger.log(sl);
     // socket setup is the same as the server.
     int ntype = SOCK_STREAM;
     int proto = 0;
@@ -164,7 +171,7 @@ void SockClient::connectc(SocketClientType ctype,
        return;
     } 
     
-    Logger::GLOBAL.log("[SockClient] connected");
+    Logger::GlobalLogger.log("[SockClient] connected");
 
     // start a data thread, if async
     if(_clientHandler != 0x0){
@@ -205,7 +212,7 @@ void SockClient::disconnect(){
         shutdown(sockd, 2); // full socket dc
     }
 #else defined(WINDOWSXX)
-    closesocket(socketfd);
+    closesocket(sockd);
     WSACleanup();
 #endif
 }

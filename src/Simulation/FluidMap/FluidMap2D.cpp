@@ -21,6 +21,7 @@ FluidMap2D::FluidMap2D(float _cellsize, int _width, int _height){
     }
 }
 
+FluidMap2D::~FluidMap2D() {}
 
 void FluidMap2D::simulate(double timeseconds){
     // fluid cells will pressurize-depressurize depending on local cells.

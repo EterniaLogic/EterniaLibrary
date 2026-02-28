@@ -4,6 +4,8 @@ Forth::Forth(){
     initWords();
 }
 
+Forth::~Forth(){}
+
 void Forth::initWords(){
     // TODO: Perhaps make a better setup for word initializers?
     

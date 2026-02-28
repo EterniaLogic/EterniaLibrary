@@ -4,12 +4,10 @@
 #include <time.h>
 
 
-#ifdef _WIN64
+#ifdef _WIN64 || _WIN32
    #define WINDOWSXX
-   #include "../../../Mingw/mingw.thread.h"
-#elif _WIN32
-   #define WINDOWSXX
-   #include "../../../Mingw/mingw.thread.h"
+   #include <thread>
+   #include <mutex>
 #else
    #define LINUXX
    #include <thread>

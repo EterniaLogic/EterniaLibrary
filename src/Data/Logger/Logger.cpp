@@ -2,10 +2,16 @@
 
 using namespace std;
 
-Logger Logger::GLOBAL("global.log", "[GLOBAL]", true, true, true);
+
+// TODO: Perhaps, just maybe not force a global log unless it is needed?
+Logger Logger::GlobalLogger("global.log", "[GLOBAL]", true, true, true);
 //Logger Logger::SERVER("server.log", "[SERVER]", true, true, true);
 //Logger Logger::CLIENT("client.log", "[CLIENT]", true, true, true);
-Logger Logger::ERROR("error.log", "[ERROR]", true, true, true);
+Logger Logger::ErrorLogger("error.log", "[ERROR]", true, true, true);
+
+/*void initGlobalLogger(){
+    Logger Logger::GlobalLogger("global.log", "[GLOBAL]", true, true, true);
+}*/
 
 void loggerThread(Logger* logger){
     long ticks_per_sec, time, last;

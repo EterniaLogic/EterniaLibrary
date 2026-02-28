@@ -1,6 +1,5 @@
-
-
 #include "InputRedirection.h"
+
 using namespace std;
 InputRedirection::InputRedirection() {
     stop = false;

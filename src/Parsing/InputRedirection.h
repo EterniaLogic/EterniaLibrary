@@ -8,15 +8,15 @@
 
 
 class InputRedirection {
+    public:
         bool process(); // process line by line
         bool stop;
 
-    public:
         InputRedirection();
         virtual ~InputRedirection();
         // OVERRIDE with your input
         // virtual void handleInputLine(CharString* input);
-        virtual void handleInputLine(CharString* input);
+        virtual void handleInputLine(CharString* input) = 0; // pure virtual
 
         // InputRedirector redirects line of data to handleInputLine
         // common usage: InputRedirector(&cin);  Will do a while loop until program is forcibly stopped.

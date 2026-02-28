@@ -15,11 +15,13 @@ EterniaLibrary
 Makefile
 Testing
 .~lock*
+*.kate-swap
 
 build/CPackConfig.cmake
 build/CPackSourceConfig.cmake
 CPackConfig.cmake
 CPackSourceConfig.cmake
+install*.txt
 
 #.gitignore
 

@@ -9,10 +9,10 @@ void testLogger(){
     D = Logger("D.log", "[D]",true,true,true);
     
     // wait
-    sleep(1);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
     A.log("AA");
     B.log("BB");
     C.log("CC");
     D.log("DD");
-    sleep(1);
+    std::this_thread::sleep_for(std::chrono::seconds(1));
 }
