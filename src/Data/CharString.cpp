@@ -5,8 +5,8 @@
 #define SIZEOFA(x) (sizeof(x) / sizeof(x[0]))
 
 
-CharString CS_TAB = CharString("\t",1);
-CharString CS_NL = CharString("\n",1);
+CharString CS_TAB = CharString("\t\0",1); // add \0 at the end just in case?
+CharString CS_NL = CharString("\n\0",1);
 
 using namespace std;
 
