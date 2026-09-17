@@ -103,8 +103,9 @@ void AbstractDBCacheMap::clearCache() {
 
 }
 
+// returns -1 if no key
 int AbstractDBCacheMap::getKey(double index) {
-    if (index == 0) return 0;
+    if (index == 0) return -1;
     double b = 0;
 
     switch (base) {
@@ -167,6 +168,7 @@ int AbstractDBCacheMap::getKey(double index) {
             return index;
             break;
     }
+    return -1;
 }
 
 AbstractDBRow AbstractDBCacheMap::getRow(double index) {

@@ -22,6 +22,15 @@
 //  ThreadJob (Future-like command)
 //  EventHandler (uses the ThreadPool to enqueue jobs with certain priorities)
 
+
+// TODO:
+/*
+ * - Consistency and memory leaks
+ * - data races
+ * - crashes                                        *Severe
+ * - sequential execution and not a thread pool     *Severe
+ */
+
 class ThreadPool;
 
 class PoolThread{

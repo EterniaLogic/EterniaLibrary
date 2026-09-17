@@ -141,6 +141,8 @@ LinkedList<uint64> calcWords(LinkedList<uint64> block, int bits){
 // compression using original compression words
 LinkedList<uint64> compressWords(LinkedList<uint64> prevcompresed, LinkedList<uint64> wordlist, int bits){
     // TODO
+
+    return prevcompresed;
 }
 
 

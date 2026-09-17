@@ -57,9 +57,10 @@ namespace Math {
         
         float real, imaginary;
         
+        // overwrite data
         Complex& operator =(Complex val){
-            *this = val;
-            return val;
+            real = val.real;
+            imaginary = val.imaginary;
         }
         
         Complex operator +(Complex val){

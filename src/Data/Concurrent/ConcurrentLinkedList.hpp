@@ -28,7 +28,10 @@ private:
     LockedNode<T> *head, *currentNode; // use a list for each node instead of just a node
     
 public:
-    ConcurrentLinkedList(){head=0x0;currentNode=0x0;}
+    ConcurrentLinkedList(){
+        head=0x0;
+        currentNode=0x0;
+    }
     
     void add(T cc){
         // 
@@ -45,7 +48,7 @@ public:
     }
     
     
-    T get(int i){
+    /*T get(int i){
         //    
     }
     
@@ -62,7 +65,7 @@ public:
     
     void clear(){
         //
-    }
+    }*/
 
 
 

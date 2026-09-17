@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.9..3.1)
+cmake_minimum_required(VERSION 3.5..4.1)
 set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 PROJECT(EterniaLibrary)
 

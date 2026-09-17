@@ -489,7 +489,7 @@ public:
     void freeze() {
         LinkedNode<T>* current;
         const int len = _size;
-        int i;
+        int i = 0;
 
         if(changed || _size != frozenlen) {
             dbgLog("freeze-1 " << _size);

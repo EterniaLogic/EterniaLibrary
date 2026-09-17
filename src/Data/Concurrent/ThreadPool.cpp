@@ -94,6 +94,7 @@ bool ThreadPool::hasFreeThread(){
     return false;
 }
 
+// Count how many free threads are available
 int ThreadPool::countFreeThreads(){
     int freet = 0;
 
@@ -189,6 +190,7 @@ void ThreadPool::_threadpoolmanager_manageThreads(){
     }
 }
 
+// TODO: Zero mutex citing on the tasks queue
 void ThreadPool::_threadpoolmanager_manageThreadQueue(){
     // start enqueued jobs
     while(!tasks.empty() && (hasFreeThread() || startextra)){
@@ -209,7 +211,7 @@ void ThreadPool::_threadpoolmanager_manageThreadQueue(){
         if(!found && startextra){
             PoolThread* pt = new PoolThread(this);
             threads.add(pt);
-            pt->run(tasks.front());
+            pt->run(tasks.front()); // starts the thread indirectly
             tasks.pop();
         }
     }

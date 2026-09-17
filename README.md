@@ -12,7 +12,7 @@
 
 **Original Creation Date**: January 13, 2012
 
-**Copyright**: Copyright 2021 Brent Clancy
+**Copyright**: Copyright 2026 Brent Clancy
 
 **License**: GNU v3
 
@@ -22,7 +22,14 @@
 
 
 	Anybody willing to help in this project may contribute!
-	
+
+**Current Issues**:
+- Memory management issues, memory leaks
+- untested code
+- many assumptions that are probably waiting to cause bugs
+- Data races with atmoic task queues and data structures
+- Threadpool sync flaws
+- spin-looping cpu
 
 **Building**:
 
@@ -34,7 +41,7 @@ Linux:
 
 		cd build
 		cmake .
-		make -j 4
+		make -j 16
 		make package
 		
 - 'make package' generates .deb, .rpm, and .tar.gz files.

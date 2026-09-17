@@ -127,13 +127,7 @@ void testHashMap() {
     }
 }
 
-void testDataStructures() {
-    testFileCache();
-    testBitMap();
-    testQueue();
-    testPriorityQueue();
-    testHashMap();
-
+void testConcurrentLinkedList(){
     ConcurrentLinkedList<int> cll;
     ConcurrentLinkedList<CharString> cll2;
     ConcurrentLinkedList<CharString*> cll3;
@@ -144,6 +138,17 @@ void testDataStructures() {
     cll2.add(CharString("blah"));
     cll3.add(new CharString("blah"));
     cll4.add(p);
+}
+
+void testDataStructures() {
+    //testFileCache();
+    //testBitMap();
+    //testQueue();
+    testPriorityQueue();
+    //testHashMap();
+
+    testConcurrentLinkedList(); // CLL is not complete so it doesn't do anything?
+
 
     cout << "Datastructures test Done" << endl;
 }

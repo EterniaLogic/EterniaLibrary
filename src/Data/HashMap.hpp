@@ -3,7 +3,6 @@
 
 // woo for messy template time! =P
 
-#include <iostream>
 #include "../Data/CharString.h"
 #include "LinkedList.hpp"
 #include "../Algorithm/Cryptography/ExSumMap.hpp"
@@ -12,11 +11,9 @@ using namespace std;
 
 // HashMap
 /*
-
     add(key, value);
     get(key);
     remove(key);
-
 */
 
 
@@ -42,7 +39,7 @@ class HMEntry {
             //cout.flush();
         }
         
-        uint64_t calcmaxsize(int wid){
+        uint64_t calcmaxsize(uint64_t wid){
             return (2<<((8*wid)-1));
         }
 
@@ -171,6 +168,8 @@ class HashMap {
         HMEntry<T>* entries;
         LinkedList<CharString> keys;
     public:
+        int collides,size; // for use with hashmap debugging.
+
         HashMap() {
             // initialize hashmap
             entries=new HMEntry<T>[65535];
@@ -198,6 +197,11 @@ class HashMap {
             }
         };
 
+        ~HashMap(){
+            clear();
+            delete[] entries;
+        };
+
 
         void add(CharString key, T data) {
             //cout << "add(key,*data)" << endl;
@@ -215,9 +219,9 @@ class HashMap {
         };
 
         void addL(uint64_t key, T data) {
-            HMEntry<T>* entry = new HMEntry<T>(key,data,size);
-            entry->size = size;
-            this->addLoc(key,entry);
+            HMEntry<T> entry(key,data,size);
+            entry.size = size;
+            this->addLoc(key,&entry);
         };
 
         void addLoc(uint64_t key, HMEntry<T>* entry) {
@@ -238,17 +242,17 @@ class HashMap {
 
         T get(CharString key) {
             // basic key to search with.
-            HMEntry<T>* S = new HMEntry<T>(key, T(), size);
+            HMEntry<T> S(key, T(), size);
             // does this key exist?
 
-            if(entries[S->getID()].id > 0) {
+            if(entries[S.getID()].id > 0) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
-                if(entries[S->getID()].getKey().compare(key)) {
-                    return entries[S->getID()].getData();
+                if(entries[S.getID()].getKey().compare(key)) {
+                    return entries[S.getID()].getData();
                 } else {
                     // if not, then we need to loop through the linked list for it.
-                    return entries[S->getID()].get(key);
+                    return entries[S.getID()].get(key);
                 }
             }
             return T();
@@ -285,23 +289,23 @@ class HashMap {
         // remove item based on key.
         T remove(CharString key) {
             // basic key to search with.
-            HMEntry<T>* S = new HMEntry<T>(key, 0x0, size);
+            HMEntry<T> S(key, 0x0, size);
             // does this key exist?
-            if(entries[S->getID()].getID() > -1) {
+            if(entries[S.getID()].getID() > -1) {
                 // if so, compare the key in the list.
                 // determine if item on this list is within bounds.
 
-                //cout << "a1" << key->get() << endxl;
-                if(entries[S->getID()].getKey().Compare(key)) {
+                //cout << "a1" << key.get() << endxl;
+                if(entries[S.getID()].getKey().Compare(key)) {
                     //cout << "a2" << endxl;
-                    T item = entries[S->getID()].getData();
-                    entries[S->getID()].reset();
+                    T item = entries[S.getID()].getData();
+                    entries[S.getID()].reset();
                     return item;
                 } else {
                     // if not, then we need to loop through the linked list for it.
-                    //cout << "a3" << key->get() << endxl;
-                    T item = entries[S->getID()].get(key);
-                    entries[S->getID()].remove(key);
+                    //cout << "a3" << key.get() << endxl;
+                    T item = entries[S.getID()].get(key);
+                    entries[S.getID()].remove(key);
                     return item;
                 }
             }
@@ -323,7 +327,16 @@ class HashMap {
             return T();
         };
 
-        int collides,size; // for use with hashmap debugging.
+        // help with garbage collection
+        void clear() {
+            // loop through all entries.
+            for (uint64_t i; i<size; i++){
+                delete entries[i].next;
+                entries[i].next = 0x0;
+            }
+        };
+
+
 };
 
 #endif /*HashMap_H_*/
